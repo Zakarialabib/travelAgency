@@ -161,6 +161,7 @@
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{{route('sale_edit', $sale->id)}}">{{__('Edit')}}</a>
                                     <a class="dropdown-item" href="{{route('sale_invoice', $sale->id)}}">{{__('Invoice')}}</a>
+                                    <a class="dropdown-item" href="{{route('sale_quotation', $sale->id)}}">{{__('Quotation')}}</a>
                                     <form action="{{route('sale_delete',$sale->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf

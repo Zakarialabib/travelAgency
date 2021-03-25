@@ -322,6 +322,16 @@ class SaleController extends Controller
         return view('pages.backend.sale.invoice', compact('sales', 'users', 'customers','saledetails'));
     }
 
+    public function genQuotation($id)
+    {
+        $sales = Sale::find($id);
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        return view('pages.backend.sale.quotation', compact('sales', 'users', 'customers','saledetails'));
+    }
+
 }
 
 

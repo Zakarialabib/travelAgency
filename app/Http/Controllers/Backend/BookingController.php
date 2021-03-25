@@ -158,4 +158,8 @@ class BookingController extends Controller
         Booking::destroy($id);
         return back()->with('success', 'Booking Deleted with success!');
     }
+
+
+
+
 }

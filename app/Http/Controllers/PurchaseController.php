@@ -283,4 +283,16 @@ class PurchaseController extends Controller
         return view('pages.backend.purchase.invoice', compact('purchases', 'users', 'suppliers','purchasedetails'));
     }
 
+
+    public function genQuotation($id)
+    {
+        $purchases = Purchase::find($id);
+        $purchasedetails = PurchaseDetails::where('purchase_id', $id)->get();
+        $users = User::all();
+        $suppliers = Supplier::find($purchases->supplier_id);
+
+        return view('pages.backend.purchase.quotation', compact('purchases', 'users', 'suppliers','purchasedetails'));
+    }
+
+
 }

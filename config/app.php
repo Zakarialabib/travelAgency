@@ -161,16 +161,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
         Harimayco\Menu\MenuServiceProvider::class,
-        NotificationChannels\FacebookPoster\FacebookPosterServiceProvider::class,
         
-             /*
-         * BotMan Service Providers...
-         */
-        BotMan\BotMan\BotManServiceProvider::class,
-        BotMan\Drivers\Web\Providers\WebServiceProvider::class,
-        App\Providers\DriverServiceProvider::class,
-        BotMan\Drivers\Facebook\Providers\FacebookServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
