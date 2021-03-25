@@ -16,7 +16,7 @@ Kindly follow the link below to manage your dashboard to manage your booking ...
 
 @component('mail::button', ['url' => '/dashboard'])
 
-<i class="la la-dashboard"></i> Dashboard
+<i class="la la-dashboard"></i> {{__('Dashboard')}}
 
 @endcomponent
 

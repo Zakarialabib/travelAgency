@@ -75,8 +75,8 @@
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
-                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                            <li><a data-action="expand"><i class="la la-expand"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -88,9 +88,9 @@
                                 <th>(S/N)</th>
                                 <th>Reference</th>
                                 <th>Deal Name</th>
-                                <th>Adults</th>
-                                <th>Children</th>
-                                <th>Infants</th>
+                                <th>{{__('Adults')}}</th>
+                                <th>{{__('Children')}}</th>
+                                <th>{{__('Infants')}}</th>
                                 <th>Amount Paid</th>
                                 <th>Payment Status</th>
                                 <th>Date Booked</th>

@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: UniQue
- * Date: 4/11/2018
- * Time: 1:24 PM
- */
 
 namespace App\Services;
-
 
 use App\Markdown;
 use App\Markup;

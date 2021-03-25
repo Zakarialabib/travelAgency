@@ -9,7 +9,7 @@
     <!-- START: PAGE TITLE -->
     <div class="row page-title">
         <div class="container clear-padding text-center">
-            <h3>WONDERFUL EUROPE</h3>
+            <h3>{{$deal->name}}</h3>
             <h4>6 Nights/7 Days</h4>
             <span>Paris (2)<i class="fa fa-long-arrow-right"></i>London (2)<i class="fa fa-long-arrow-right"></i>Amesterdam (2)</span>
         </div>
@@ -52,7 +52,7 @@
                 <div class="package-complete-detail">
                     <ul class="nav nav-tabs">
                         <li><a data-toggle="tab" href="#overview"><i class="fa fa-suitcase"></i> <span>Detail</span></a></li>
-                        <li><a data-toggle="tab" href="#inclusion"><i class="fa fa-check-square"></i> <span>Inclusion</span></a></li>
+                        <li><a data-toggle="tab" href="#inclusion"><i class="fa fa-check-square"></i> <span>{{__('Inclusion')}}</span></a></li>
                         <li class="active"><a data-toggle="tab" href="#itinerary"><i class="fa fa-street-view"></i> <span>Itinerary</span></a></li>
                         <li><a data-toggle="tab" href="#add-info"><i class="fa fa-info-circle"></i> <span>Additional Info</span></a></li>
                     </ul>
@@ -62,7 +62,7 @@
                             <p>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
-                            <h4 class="tab-heading">Inclusion</h4>
+                            <h4 class="tab-heading">{{__('Inclusion')}}</h4>
                             <p class="inc">
                                 <i class="fa fa-check-circle"></i> Return Economy economy class airfare<br>
                                 <i class="fa fa-check-circle"></i> Welcome drinks at hotel<br>
@@ -75,7 +75,7 @@
                                 <i class="fa fa-check-circle"></i> Welcome drinks at hotel<br>
                                 <i class="fa fa-check-circle"></i> Stay in 3 star hotel<br>
                             </p>
-                            <h4 class="tab-heading">Exclusion</h4>
+                            <h4 class="tab-heading">{{__('Exclusion')}}</h4>
                             <p class="inc">
                                 <i class="fa fa-times-circle-o"></i> Travel insurance<br>
                                 <i class="fa fa-times-circle-o"></i> Increase in airfare<br>
@@ -86,7 +86,7 @@
                             </p>
                         </div>
                         <div id="inclusion" class="tab-pane fade">
-                            <h4 class="tab-heading">Inclusion</h4>
+                            <h4 class="tab-heading">{{__('Inclusion')}}</h4>
                             <div class="inclusion-wrapper">
                                 <div class="inclusion-title">
                                     <p><span><i class="fa fa-bed"></i></span>Hotel</p>
@@ -160,7 +160,7 @@
                             </div>
                             <div class="inclusion-wrapper">
                                 <div class="inclusion-title">
-                                    <p><span><i class="fa fa-suitcase"></i></span>Other Inclusion</p>
+                                    <p><span><i class="fa fa-suitcase"></i></span>Other {{__('Inclusion')}}</p>
                                 </div>
                                 <div class="inclusion-body">
                                     <p class="inc">
@@ -271,7 +271,7 @@
                             </div>
                         </div>
                         <div id="add-info" class="tab-pane fade">
-                            <h4 class="tab-heading">Inclusion</h4>
+                            <h4 class="tab-heading">{{__('Inclusion')}}</h4>
                             <p class="inc">
                                 <i class="fa fa-check-circle"></i> Return Economy economy class airfare<br>
                                 <i class="fa fa-check-circle"></i> Welcome drinks at hotel<br>
@@ -284,7 +284,7 @@
                                 <i class="fa fa-check-circle"></i> Welcome drinks at hotel<br>
                                 <i class="fa fa-check-circle"></i> Stay in 3 star hotel<br>
                             </p>
-                            <h4 class="tab-heading">Exclusion</h4>
+                            <h4 class="tab-heading">{{__('Exclusion')}}</h4>
                             <p class="inc">
                                 <i class="fa fa-times-circle-o"></i> Travel insurance<br>
                                 <i class="fa fa-times-circle-o"></i> Increase in airfare<br>

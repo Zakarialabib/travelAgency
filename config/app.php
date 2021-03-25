@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Travel Pro'),
+    'name' => env('APP_NAME', 'Rentacs tours'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,16 +154,33 @@ return [
         /*
          * Package Service Providers...
          */
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        'Barryvdh\TranslationManager\ManagerServiceProvider',
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
+        Harimayco\Menu\MenuServiceProvider::class,
+        NotificationChannels\FacebookPoster\FacebookPosterServiceProvider::class,
+        
+             /*
+         * BotMan Service Providers...
+         */
+        BotMan\BotMan\BotManServiceProvider::class,
+        BotMan\Drivers\Web\Providers\WebServiceProvider::class,
+        App\Providers\DriverServiceProvider::class,
+        BotMan\Drivers\Facebook\Providers\FacebookServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+       // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+
 
     ],
 
@@ -217,7 +234,11 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Flash' => Laracasts\Flash\Flash::class
+        'Flash' => Laracasts\Flash\Flash::class,
+        'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Menu' => Harimayco\Menu\Facades\Menu::class,
     ],
 
 ];

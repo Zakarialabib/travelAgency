@@ -63,7 +63,7 @@
                 <div class="card-footer">
                     <input type="hidden" name="editOrSave" id="editOrSave" value="1"/>
                     <input type="hidden" name="id" id="bank_details_id" value=""/>
-                    <button class="btn btn-alt-primary upload-bank pull-right" id="bank_upload_button">Save</button>
+                    <button class="btn btn-alt-primary upload-bank pull-right" id="bank_upload_button">{{__('Save')}}</button>
                 </div>
             </div>
         </div>

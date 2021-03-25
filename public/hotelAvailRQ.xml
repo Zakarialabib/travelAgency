@@ -5,7 +5,7 @@
 <wmHotelAvail xmlns="http://traveltalk.com/wsHotelAvail">
 <OTA_HotelAvailRQ>
      <POS>
-        <Source PseudoCityCode="MIA1S21AV" ISOCurrency="NGN">
+        <Source PseudoCityCode="MIA1S21AV" ISOCurrency="MAD">
          <RequestorID Type="21" ID="RubyTravel"/>
         </Source>
          <TPA_Extensions>
@@ -19,7 +19,7 @@
       </POS>
    <AvailRequestSegments>
       <AvailRequestSegment>
-         <StayDateRange Start="2018-07-10" End="2018-07-13" />
+         <StayDateRange Start="2021-01-30" End="2021-01-31" />
          <RoomStayCandidates>
             <RoomStayCandidate>
                <GuestCounts IsPerRoom="true">
@@ -29,7 +29,7 @@
          </RoomStayCandidates>
          <HotelSearchCriteria>
             <Criterion ExactMatch="true">
-               <HotelRef HotelCityCode="LHR" />
+               <HotelRef HotelCityCode="HKG" />
             </Criterion>
          </HotelSearchCriteria>
       </AvailRequestSegment>

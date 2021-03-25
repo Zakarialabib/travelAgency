@@ -48,7 +48,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <button id="save_markup" class="btn btn-alt-primary btn-sm pull-right" type="button">Save</button>
+                            <button id="save_markup" class="btn btn-alt-primary btn-sm pull-right" type="button">{{__('Save')}}</button>
                         </div>
                     </div>
 

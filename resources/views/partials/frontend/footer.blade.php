@@ -1,100 +1,67 @@
-<section id="footer">
-    <footer>
-        <div class="row main-footer-sub">
-            <div class="container clear-padding">
-                <div class="col-md-7 col-sm-7">
-                    <form >
-                        <label>SUBSCRIBE TO OUR NEWSLETTER</label>
-                        <div class="clearfix"></div>
-                        <div class="col-md-9 col-sm-8 col-xs-6 clear-padding">
-                            <input class="form-control subscription_email" type="email" required placeholder="Enter Your Email" name="email">
+<section >
+    <footer id="footer" class="footer">
+            <div class="container-fluid">
+                <div class="footer__top row">
+                        <div class="col-lg-4 col-sm-4">
+                            <div class="footer__top__info">
+                                <a title="Logo" href="#" class="footer__top__info__logo"><img src="{{asset('backend/app-assets/images/logo/logo.png')}}" alt="logo"></a>
+                                <p class="footer__top__info__desc">{{setting('footer_description')}}</p>
+                                <div class="footer__top__info__app">
+                                    <a title="Google Play" href="#" class="banner-apps__download__android"><img src="{{asset('images/google-play.png')}}" alt="Google Play"></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-3 col-sm-4 col-xs-6 clear-padding">
-                            <button type="button"><i class="fa fa-paper-plane save_email_subscription"></i>SUBSCRIBE</button>
+                        <div class="col-lg-4 col-sm-4">
+                            <aside class="footer__top__nav">
+                             <h3>{{__('Quick Links')}}</h3>
+                                <ul class="footer-nav">
+                                    @if($menuitems)
+                                        @foreach($menuitems as $menu)
+                                        <li class="">
+                                                <a href="{{ $menu['link'] }}" title="">{{ __($menu['label']) }}</a>
+                                        </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </aside>
                         </div>
-                    </form>
-                </div>
-                <div class="col-md-5 col-sm-5">
-                    <div class="social-media pull-right">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="main-footer row">
-            <div class="container clear-padding">
-                <div class="col-md-3 col-sm-6 about-box">
-                    <h3>CRUISE</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                    <a href="#">READ MORE</a>
-                </div>
-                <div class="col-md-3 col-sm-6 links">
-                    <h4>Popular Tours</h4>
-                    <ul>
-                        <li><a href="#">Romantic France</a></li>
-                        <li><a href="#">Wonderful Lodnon</a></li>
-                        <li><a href="#">Awesome Amsterdam</a></li>
-                        <li><a href="#">Wild Africa</a></li>
-                        <li><a href="#">Beach Goa</a></li>
-                        <li><a href="#">Casino Los Vages</a></li>
-                        <li><a href="#">Romantic France</a></li>
-                    </ul>
-                </div>
-                <div class="clearfix visible-sm-block"></div>
-                <div class="col-md-3 col-sm-6 links">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="#">Domestic Flights</a></li>
-                        <li><a href="#">International Flights</a></li>
-                        <li><a href="#">Tours & Holidays</a></li>
-                        <li><a href="#">Domestic Hotels</a></li>
-                        <li><a href="#">International Hotels</a></li>
-                        <li><a href="#">Cruise Holidays</a></li>
-                        <li><a href="#">Car Rental</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-6 contact-box">
-                    <h4>Contact Us</h4>
-                    <p><i class="fa fa-home"></i> Street #156 Burbank, Studio City Hollywood, California USA</p>
-                    <p><i class="fa fa-phone"></i> +91 1234567890</p>
-                    <p><i class="fa fa-envelope-o"></i> support@domain.com</p>
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-md-12 text-center we-accept">
-                    <h4>We Accept</h4>
-                    <ul>
-                        <li><img src="assets/images/card/card.jpg" alt="cruise"></li>
-                        <li><img src="assets/images/card/card.jpg" alt="cruise"></li>
-                        <li><img src="assets/images/card/card.jpg" alt="cruise"></li>
-                        <li><img src="assets/images/card/card.jpg" alt="cruise"></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="main-footer-nav row">
-            <div class="container clear-padding">
-                <div class="col-md-6 col-sm-6">
-                    <p>Copyright &copy; {{date('Y')}} {{config('app.name')}}. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <ul>
-                        <li><a href="#">FLIGHTS</a></li>
-                        <li><a href="#">TOURS</a></li>
-                        <li><a href="#">CARS</a></li>
-                        <li><a href="#">HOTELS</a></li>
-                        <li><a href="#">BLOG</a></li>
-                    </ul>
-                </div>
-                <div class="go-up">
-                    <a href="#"><i class="fa fa-arrow-up"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+                        <div class="col-lg-4 col-sm-4">
+                            <aside class="footer__top__nav footer__top__nav--contact">
+                                <h3>{{__('Contact Us')}}</h3>
+                                <p><i class="la la-map-marker la-24" style="color: #ee5000;"></i><a target="_blank" rel="noopener noreferrer" href="https://goo.gl/maps/JmDVU6ChhN8TWtj28" style="color: #fff;" title="{{__('Get Direction')}}">  {{setting('home_adresse')}}</a> </p>
+                                <p><i class="la la-envelope la-24" style="color: #ee5000;"></i><a title="email" target="_blank" rel="noopener noreferrer" href="mailto:{{setting('home_email')}}" style="color: #fff;">  {{setting('home_email')}}</a> </p>
+                                <p><i class="la la-phone la-24" style="color: #ee5000;"></i> <a title="phone" target="_blank" rel="noopener noreferrer"  href="tel:{{setting('home_phone')}}" style="color: #fff;"> {{setting('home_phone')}}</a></p>
+                            </aside>
+                                <form action="#" class="footer-subscribe">
+                                    <div class="footer_subscribe">
+                                        <input type="email" name="email" placeholder="{{__('Enter your email')}}" value="">
+                                    </div>
+                                    <button><i class="las la-arrow-right"></i></button>
+                                </form>
+                                <p class="footer_subscribe_desc">{{__('Sign up to receive our best offers.')}}</p>
+                        </div>
+                </div><!-- .top-footer -->
+                <div class="footer__bottom">
+            <p class="footer__bottom__copyright">
+               <a class="social-media" title="Facebook" target="_blank" rel="noopener noreferrer" href="{{setting('social_facebook')}}">
+                  <i class="la la-facebook la-24"></i>
+                </a>
+               <a class="social-media" title="Instagram" target="_blank" rel="noopener noreferrer" href="{{setting('social_instagram')}}">
+                        <i class="la la-instagram la-24"></i>
+                    </a>
+                           <a class="social-media" title="Linkedin" target="_blank" rel="noopener noreferrer" href="{{setting('social_linkedin')}}">
+                        <i class="la la-linkedin la-24"></i>
+                    </a>
+                <a class="social-media" title="Youtube" target="_blank" rel="noopener noreferrer" href="{{setting('social_youtube')}}">
+                        <i class="la la-youtube la-24"></i>
+               </a>
+             
+             </p>
+              <p class="footer__bottom__copyright">
+                    <a title="CMI"><img class="footer_icns" src="{{asset('images/cmi-4.png')}}" alt="CMI"></a>
+                </p>
+                <p class="footer__bottom__copyright">{{now()->year}} &copy; {{setting('app_name')}}. {{__('All rights reserved.')}}</p>
+                </div><!-- .top-footer -->
+            </div><!-- .container -->
+        </footer><!-- site-footer -->
 </section>

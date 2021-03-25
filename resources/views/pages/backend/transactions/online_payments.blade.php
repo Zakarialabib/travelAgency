@@ -16,7 +16,7 @@
                    <div class="card-body">
                        <div class="media d-flex">
                            <div class="media-body text-left">
-                               <h3 class="success"> ({{$countSuccessful}}) 	&#x20A6;{{number_format(($amountSuccessful/100),2)}}</h3>
+                               <h3 class="success"> ({{$countSuccessful}}) 	{{number_format(($amountSuccessful/100),2)}}DH</h3>
                                <h6>Successful</h6>
                            </div>
                            <div>
@@ -36,7 +36,7 @@
                    <div class="card-body">
                        <div class="media d-flex">
                            <div class="media-body text-left">
-                               <h3 class="danger">({{$countPending}}) 	&#x20A6;{{number_format(($amountPending/100), 2)}}</h3>
+                               <h3 class="danger">({{$countPending}}) 	{{number_format(($amountPending/100), 2)}}DH</h3>
                                <h6>Pending/Failed</h6>
                            </div>
                            <div>
@@ -60,8 +60,8 @@
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
-                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                            <li><a data-action="expand"><i class="la la-expand"></i></a></li>
                         </ul>
                     </div>
                 </div>

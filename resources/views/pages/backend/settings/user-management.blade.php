@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('page-title') Users Management  @endsection
+@section('page-title') {{__('Users Management')}}  @endsection
 
 @section('activeSettings') open hover  @endsection
 
@@ -17,7 +17,7 @@
 
                         @csrf
                         <div class="modal-header">
-                            <h3 class="modal-title" id="myModalLabel17">Create User</h3>
+                            <h3 class="modal-title" id="myModalLabel17">{{__('Create User')}}</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">{{__('Close')}}</button>
                             <button type="submit"  class="btn btn-outline-primary">Create User</button>
                         </div>
                     </form>
@@ -117,7 +117,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <strong>Oh snap!</strong> {{$error}}
+                        <strong>{{__('Oh snap!')}}</strong> {{$error}}
                     </div>
                 @endforeach
             @endif
@@ -129,8 +129,8 @@
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                         <div class="heading-elements">
                             <ul class="list-inline mb-0">
-                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                                <li><a data-action="expand"><i class="la la-expand"></i></a></li>
                                 <li>
                                     <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create-user"><i class="ft-plus white"></i> Create New User</button>
                                 </li>
@@ -155,7 +155,7 @@
                                  @foreach($users as $serial => $user)
                                      <div class="modal fade text-left edit_user_{{$user->user_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17"
                                           aria-hidden="true">
-                                         <div class="modal-dialog modal-lg" role="document">
+                                         <div class="modal-dialog modal-lg" style="padding: 60px;" role="document">
                                              <div class="modal-content">
                                                  <form method="POST" action="{{url('/settings/users/update-user')}}">
 
@@ -248,7 +248,7 @@
                                                          </div>
                                                      </div>
                                                      <div class="modal-footer">
-                                                         <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+                                                         <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">{{__('Close')}}</button>
                                                          <button type="submit"  class="btn btn-outline-primary">Update User</button>
                                                      </div>
                                                  </form>
@@ -281,7 +281,7 @@
 				                        <button id="btnSearchDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i class="ft-settings"></i></button>
 				                        <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
                                             <button class="dropdown-item btn edit_user" data-toggle="modal" data-target=".edit_user_{{$user->user_id}}" value="{{$user->user_id}}"><i class="la la-edit"></i> Edit</button>
-                                            <button class="dropdown-item btn delete_user" value="{{$user->user_id}}"><i class="la la-trash"></i> Delete</button>
+                                            <button class="dropdown-item btn delete_user" value="{{$user->user_id}}"><i class="la la-trash"></i> {{__('Delete')}}</button>
 				                        </span>
 				                    </span>
                                          </td>

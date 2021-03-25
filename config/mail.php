@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@travelpro.com.ng'),
-        'name' => env('MAIL_FROM_NAME', 'Travel Pro'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@rentacstours.com'),
+        'name' => env('MAIL_FROM_NAME', 'Rentacs Tours'),
     ],
 
     /*

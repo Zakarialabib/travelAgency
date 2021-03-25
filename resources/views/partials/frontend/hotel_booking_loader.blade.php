@@ -17,35 +17,35 @@
             <div class="search-box">
                 <table class="table">
                     <tr>
-                        <td>Departure Airport</td>
+                        <td>{{__('Departure Airport')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                     <tr>
-                        <td>Destination Airport</td>
+                        <td>{{__('Destination Airport')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                     <tr>
-                        <td>Departure Date</td>
+                        <td>{{__('Departure Date')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                     <tr>
-                        <td>Return Date</td>
+                        <td>{{__('Return Date')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                     <tr>
-                        <td>Adults</td>
+                        <td>{{__('Adults')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                     <tr>
-                        <td>Children</td>
+                        <td>{{__('Children')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                     <tr>
-                        <td>Infants</td>
+                        <td>{{__('Infants')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                     <tr>
-                        <td>Cabin</td>
+                        <td>{{__('Cabin')}}</td>
                         <td><span>New York</span></td>
                     </tr>
                 </table>

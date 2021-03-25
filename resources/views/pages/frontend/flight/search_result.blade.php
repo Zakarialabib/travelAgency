@@ -15,28 +15,28 @@
                 <div id="round_trip_flight_search_holder" class="search-holder hidden-sm hidden-xs">
                     <div class="clearfix"></div>
                     <div class="col-md-3 col-sm-3 search-col-padding">
-                        <label>Departure City</label>
+                        <label>{{__('Departure City')}}</label>
                         <div class="input-group">
                             <input type="text" name="departure_city" class="form-control type-ahead round_trip_departure_city" required placeholder="E.g. London">
                             <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 search-col-padding">
-                        <label>Destination City</label>
+                        <label>{{__('Destination City')}}</label>
                         <div class="input-group">
                             <input type="text" name="destination_city" class="form-control type-ahead round_trip_destination_city"  required placeholder="E.g. New York">
                             <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 search-col-padding">
-                        <label>Departure Date</label>
+                        <label>{{__('Departure Date')}}</label>
                         <div class="input-group">
                             <input type="text" name="departure_date" class="form-control round_trip_departure_date date-picker" placeholder="DD/MM/YYYY">
                             <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 search-col-padding">
-                        <label>Return Date</label>
+                        <label>{{__('Return Date')}}</label>
                         <div class="input-group">
                             <input type="text" class="form-control round_trip_return_date date-picker" name="return_date" placeholder="DD/MM/YYYY">
                             <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
@@ -45,7 +45,7 @@
                     <div class="clearfix"></div>
                     <div class="col-md-3 col-sm-3 search-col-padding">
                         <div class="form-group">
-                            <label>Adults <small>Above 12yrs</small></label>
+                            <label>{{__('Adults')}} <small>Above 12yrs</small></label>
                             <select name="adult_count" class="selectpicker round_trip_adult_count">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-md-3 col-sm-3 search-col-padding">
                         <div class="form-group">
-                            <label>Infants <small>below 2yrs</small></label>
+                            <label>{{__('Infants')}} <small>below 2yrs</small></label>
                             <select name="infant_count" class="selectpicker round_trip_infant_count">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="filter-area">
                     <div class="price-filter filter">
-                        <h5> Price Filter</h5>
+                        <h5> {{__('Price Filter')}}</h5>
                         <p>
                             <label></label>
                             <input type="text" id="price_filter" readonly>
@@ -200,7 +200,7 @@
                      </div>
 
                          <div class="modal fade flight-details_{{$serial}}" tabindex="-1" role="dialog">
-                             <div class="modal-dialog modal-lg">
+                             <div class="modal-dialog modal-lg" style="padding: 60px;">
                                  <div class="modal-content">
                                      <div class="modal-body">
                                          <div class="flight-details-header">

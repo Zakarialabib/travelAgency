@@ -143,7 +143,7 @@
                                 <div class="clearfix visible-sm-block"></div>
                                 <div class="col-md-3 text-center booking-box">
                                     <div class="price">
-                                        <h3>&#x20A6;{{number_format(round($room['roomPrice']/100))}}</h3>
+                                        <h3>DH{{number_format(round($room['roomPrice']/100))}}</h3>
                                     </div>
                                     <div class="book">
                                         <a href="{{url('/hotel-room-booking/'.$ro)}}"> SELECT </a>

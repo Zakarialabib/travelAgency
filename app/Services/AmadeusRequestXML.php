@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: UniQue
- * Date: 4/6/2018
- * Time: 1:09 PM
- */
 
 namespace App\Services;
-
 
 use App\Title;
 

@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('page-title') Vats Management  @endsection
+@section('page-title') {{__('Vats Management')}}  @endsection
 
 @section('activeSettings') open hover  @endsection
 
@@ -10,7 +10,7 @@
         <div class="col-md-12 col-lg-4">
             <div class="card">
                 <div class="card-header" id="vat_header">
-                    Add VAT
+                    {{__('Add VAT')}}
                 </div>
                 <div class="card-body">
                     <div class="alert alert-info" role="alert">
@@ -23,24 +23,24 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::select('vat_type',$vat_types ,null, ['id'=>'vat_type', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose vat type']) !!}
+                                {!! Form::select('vat_type',$vat_types ,null, ['id'=>'vat_type', 'class'=>'form-control form-control-sm', 'placeholder'=>"{{__('choose vat type')}}"]) !!}
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::select('vat_value_type',$vat_value_types ,null, ['id'=>'vat_value_type', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose vat value type']) !!}
+                                {!! Form::select('vat_value_type',$vat_value_types ,null, ['id'=>'vat_value_type', 'class'=>'form-control form-control-sm', 'placeholder'=>"{{__('choose vat type')}}"]) !!}
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                {!! Form::number('vat_value',null, ['id'=>'vat_value', 'class'=>'form-control', 'placeholder'=>'vat value e.g. 12.00']) !!}
+                                {!! Form::number('vat_value',null, ['id'=>'vat_value', 'class'=>'form-control', 'placeholder'=>"{{__('vat value e.g. 12.00')}}"]) !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            <button id="save_vat" class="btn btn-alt-primary btn-sm pull-right" type="button">Save</button>
+                            <button id="save_vat" class="btn btn-alt-primary btn-sm pull-right" type="button">{{__('Save')}}</button>
                         </div>
                     </div>
 
@@ -51,14 +51,14 @@
 
         <div class="col-md-12 col-lg-8">
             <div class="card">
-                <div class="card-header">Vat List</div>
+                <div class="card-header"> {{__('Vat List')}}</div>
                 <div class="card-body table-responsive">
                     <table class="table table-sm">
                         <thead>
                         <tr>
                             <th>Type</th>
-                            <th>Value Type</th>
-                            <th>Value</th>
+                            <th>{{__('Value Type')}}</th>
+                            <th>{{__('Value')}}</th>
                             <th>Action</th>
                         </tr>
                         </thead>

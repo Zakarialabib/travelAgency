@@ -67,7 +67,7 @@
                         </div>
                         @if(auth()->guest())
                             <div class="login-box">
-                                <h3>Existing customer  ?  <button class="btn btn_travel_portal btn-sm pull-right sign-in">Sign in <i class="fa fa-sign-in"></i></button></h3>
+                                <h3>Existing customer  ?  <button class="btn btn_travel_portal btn-sm pull-right sign-in">{{__('Sign in')}} <i class="fa fa-sign-in"></i></button></h3>
                                 <div class="booking-form sign-in-container hidden">
                                     <h4>Sign In</h4>
                                     <form >
@@ -270,19 +270,19 @@
                                 <table class="table">
                                     <tr>
                                         <td>SERVICE FEES</td>
-                                        <td>&#x20A6;{{number_format(($selectedRoom['customerMarkUp']/100),2)}}</td>
+                                        <td>DH{{number_format(($selectedRoom['customerMarkUp']/100),2)}}</td>
                                     </tr>
                                     <tr>
                                         <td>TAXES</td>
-                                        <td>&#x20A6;{{number_format(($selectedRoom['vat']/100),2)}}</td>
+                                        <td>DH{{number_format(($selectedRoom['vat']/100),2)}}</td>
                                     </tr>
                                     <tr>
                                         <td>DISCOUNT</td>
-                                        <td>&#x20A6; {{number_format(($selectedRoom['customerMarkDown']/100),2)}} </td>
+                                        <td>DH {{number_format(($selectedRoom['customerMarkDown']/100),2)}} </td>
                                     </tr>
                                     <tr>
                                         <td>TOTAL PRICE</td>
-                                        <td class="total">&#x20A6;{{number_format(($selectedRoom['customerTotalAmount']/100),2)}}</td>
+                                        <td class="total">DH{{number_format(($selectedRoom['customerTotalAmount']/100),2)}}</td>
                                     </tr>
                                 </table>
                             </div>

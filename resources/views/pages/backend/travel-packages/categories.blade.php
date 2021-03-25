@@ -1,13 +1,14 @@
 @extends('layouts.backend')
 
-@section('page-title')Packages Categories @endsection
+@section('page-title'){{__('Packages Categories')}} @endsection
 
 @section('content')
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          Package Categories                     <a class="btn btn-success btn-addon pull-right btn-sm" data-toggle="modal" data-target="#add_package_category"><i class="fa fa-plus"></i> Add New</a>
+          {{__('Package Categories')}}      
+          <a class="btn btn-success btn-addon pull-right btn-sm" data-toggle="modal" data-target="#add_package_category"><i class="fa fa-plus"></i> {{__('Add new')}}</a>
 
         </div>
         <div class="card-body">
@@ -25,9 +26,9 @@
                 <thead>
                 <tr>
                   <th rowspan="1" colspan="1">#</th>
-                  <th rowspan="1" colspan="1">Package Category</th>
-                  <th rowspan="1" colspan="1">Status</th>
-                  <th rowspan="1" colspan="1">Action</th>
+                  <th rowspan="1" colspan="1">{{__('Package Category')}} </th>
+                  <th rowspan="1" colspan="1">{{__('Status')}} </th>
+                  <th rowspan="1" colspan="1">{{__('Action')}} </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,9 +38,9 @@
                     <td>{{$package_category->category}}</td>
                     <td id="status_{{$package_category->id}}">
                       @if($package_category->status == 1)
-                        <span class="badge badge-success"><i class="fa fa-check"></i> Active</span>
+                        <span class="badge badge-success"><i class="fa fa-check"></i> {{__('Active')}} </span>
                         @elseif($package_category->status == 0)
-                        <span class="badge badge-danger"><i class="fa fa-check"></i> Disabled</span>
+                        <span class="badge badge-danger"><i class="fa fa-check"></i> {{__('Disabled')}} </span>
                       @endif
                     </td>
                     <td>
@@ -54,7 +55,7 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="mySmallModalLabel">Edit package category</h4>
+                          <h4 class="modal-title" id="mySmallModalLabel">{{__('Edit package category')}} </h4>
                         </div>
                         <form method="post" action="{{url('backend/travel-packages/categoryCreateOrUpdate')}}">
                           {{csrf_field()}}
@@ -72,8 +73,8 @@
 
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success"> Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Close')}}</button>
+                            <button type="submit" class="btn btn-success"> {{__('Save')}}</button>
 
                           </div>
                         </form>
@@ -112,7 +113,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Close')}}</button>
           <button type="submit" class="btn btn-success"> Save</button>
 
         </div>

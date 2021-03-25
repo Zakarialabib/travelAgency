@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if($request->isXmlHttpRequest()){
-            return response()->json(['Internal Server Error',$exception]);
+           return response()->json(['Internal Server Error',$exception]);
         }
 
         return parent::render($request, $exception);

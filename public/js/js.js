@@ -1,9 +1,3 @@
-/**
-* Author: LimpidThemes
-* Version: 1.0
-* Description: Javascript file for the theme
-* Date: 20-07-2015
-**/
 
 /**********************************************************
 		BEGIN: PRELOADER

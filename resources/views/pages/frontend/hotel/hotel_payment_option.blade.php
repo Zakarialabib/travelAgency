@@ -117,7 +117,7 @@
                                             <div class="col-md-8 col-sm-8">
                                                 @if($walletBalance > $selectedRoom['totalAmount'])
                                                     <form method="post" action="{{url('hotel-wallet-payment')}}">
-                                                        <b> Wallet Balance = &#x20A6; {{number_format(($walletBalance/100),2)}} </b>
+                                                        <b> Wallet Balance = DH {{number_format(($walletBalance/100),2)}} </b>
                                                         @csrf
                                                         <p>
                                                             You have enough credit in your wallet, you can now make payment for this booking with your wallet credit.
@@ -146,7 +146,7 @@
                                             <div class="col-md-8 col-sm-8">
                                                 @if($walletBalance > $selectedRoom['totalAmount'])
                                                     <form method="post" action="{{url('hotel-wallet-payment')}}">
-                                                        <b> Wallet Balance = &#x20A6; {{number_format(($walletBalance/100),2)}} </b>
+                                                        <b> Wallet Balance = DH {{number_format(($walletBalance/100),2)}} </b>
                                                         @csrf
                                                         <p>
                                                             You have enough credit in your wallet, you can now make payment for this booking with your wallet credit.

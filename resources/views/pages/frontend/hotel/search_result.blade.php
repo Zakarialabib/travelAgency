@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-1 col-sm-6 col-xs-3">
                     <div class="form-gp">
-                        <label>Adults</label>
+                        <label>{{__('Adults')}}</label>
                         <select class="form-control adult_count">
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -158,7 +158,7 @@
                             <div class="col-md-2 rating-price-box text-center clear-padding">
                                 <div class="room-book-box">
                                     <div class="price">
-                                        <h5>&#x20A6;{{number_format($availableHotel['minimumRate']/100)}} <br/><small>(Excluding Tax)</small></h5>
+                                        <h5>{{number_format($availableHotel['minimumRate']/100)}}DH <br/><small>(Excluding Tax)</small></h5>
                                     </div>
                                     <div class="book">
                                         <button class="btn_travel_portal select_hotel" value="{{$serial}}">Select</button>

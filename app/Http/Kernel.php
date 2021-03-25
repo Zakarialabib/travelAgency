@@ -20,6 +20,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+    
+        
     ];
 
     /**
@@ -36,6 +38,23 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+            // Force redirect to HTTPS
+            \App\Http\Middleware\HttpsProtocol::class,
+
+             // Set language
+             \App\Http\Middleware\Locale::class,
+
+                // Page Speed
+       \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class,
+     \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
+      \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+       \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class, 
+   //     \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
+ //    \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
+
+
         ],
 
         'api' => [
@@ -75,5 +94,20 @@ class Kernel extends HttpKernel
         'flight.selected' => \App\Http\Middleware\CheckSelectedItinerary::class,
         'hotel.room.selected' => \App\Http\Middleware\CheckSelectedRoom::class,
         'deals.booking.id' => \App\Http\Middleware\checkDealBookingId::class,
+    ];
+
+        /**
+     * The priority-sorted list of middleware.
+     *
+     * This forces non-global middleware to always be in the given order.
+     *
+     * @var array
+     */
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
     ];
 }

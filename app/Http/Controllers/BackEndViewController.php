@@ -21,6 +21,13 @@ use App\MarkupValueType;
 use App\Vat;
 use App\Role;
 use App\Markdown;
+use App\Booking;
+use App\City;
+use App\Place;
+use App\Review;
+use App\Post;
+use App\Sale;
+use App\Purchase;
 use nilsenj\Toastr\Facades\Toastr;
 use App\Services\InterswitchConfig;
 
@@ -28,6 +35,41 @@ class BackEndViewController extends Controller
 {
 
     public function dashboard(){
+        $count_cities = City::query()
+        ->count();
+        
+    $count_places = Place::query()
+        ->count();
+
+    $count_bookings = Booking::query()
+        ->count();
+
+    $count_reviews = Review::query()
+        ->count();
+
+    $count_users = User::query()
+        ->count();
+
+    $count_sales = Sale::query()
+    ->count();
+
+    $count_purchases = Purchase::query()
+    ->count();
+    
+    $count_posts = Post::query()
+    ->where('type', Post::TYPE_BLOG)
+    ->where('status', Post::STATUS_ACTIVE)
+    ->count();
+
+    $count_purchases = Purchase::query()
+    ->count();
+
+    $bookings = Booking::query()
+    ->with('user')
+    ->with('place')
+    ->orderBy('created_at', 'desc')
+    ->get();
+
         $visaApplications = VisaApplication::orderBy('id','desc')->get();
         $generalTotalFlightBookings = FlightBooking::where('payment_status','1')->count();
         $generalTotalHotelBookings = HotelBooking::where('payment_status','1')->count();
@@ -41,8 +83,31 @@ class BackEndViewController extends Controller
         $userGeneralSuccessfulFlightBookingPrice =  FlightBooking::where('payment_status',1)->where('user_id',auth()->id())->sum('total_amount');
         $userGeneralSuccessfulHotelBookingPrice  = HotelBooking::where('payment_status',1)->where('user_id',auth()->id())->sum('total_amount');
         $userGeneralSuccessfulPackageBookingPrice = PackageBooking::where('payment_status',1)->where('user_id',auth()->id())->sum('total_amount');
-        return view('pages.backend.dashboard',compact('visaApplications','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
+        return view('pages.backend.dashboard',compact('count_cities', 'bookings', 'count_posts' ,'count_places', 'count_bookings','count_reviews','count_users','count_sales','count_purchases','visaApplications','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
+
     }
+    
+    public function searchPlaces(Request $request)
+    {
+    $keyword = $request->keyword;
+
+    $places = $places = Place::query()
+        ->whereTranslationLike('name', "%{$keyword}%")
+        ->where('status', Place::STATUS_ACTIVE)
+        ->get(['id', 'name', 'price']);
+
+    $html = '<ul class="listing_items list-group">';
+    foreach ($places as $key => $place) {
+        $html .= '<li class="list-group-item" data-id="'.$place->id.'" data-name="'.$place->name.'" data-price="'.$place->price.'">'.$place->name.'</li>';
+    }
+    $html .= '</ul>';
+
+    $html_notfound = "<ul><li>No listing found!</li></ul>";
+
+    $response = count($places) ? $html : $html_notfound;
+
+    return response($response, 200);
+}
 
     public function vat(){
         $markups = new MarkupType();

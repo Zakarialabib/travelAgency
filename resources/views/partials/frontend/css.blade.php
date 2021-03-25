@@ -1,27 +1,31 @@
 <!-- STYLES -->
-<link rel="shortcut icon" type="image/x-icon" href="{{asset('backend/img/core-img/favicon.png')}}">
-<link href="{{asset('frontend/assets/css/animate.min.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/bootstrap-select.min.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/owl.carousel.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/owl-carousel-theme.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
-<link href="{{asset('frontend/assets/css/flexslider.css')}}" rel="stylesheet" media="screen">
-<link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet" media="screen">
 
+<link rel="apple-touch-icon" href="{{asset('images/favicon-apple.png')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.png')}}">
+<link href="{{asset('frontend/assets/css/all.css')}}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/line-awesome@1.3.0/dist/line-awesome/css/line-awesome.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"/>
+<link href="https://cdn.jsdelivr.net/npm/chosen-jquery@0.1.1/lib/chosen.min.css" rel="stylesheet" type="text/css"/>
 <!-- LIGHT -->
-
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/dummy.css')}}" id="select-style">
-<link href="{{asset('frontend/assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/iziModal.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/iziToast.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/materialize.css')}}" rel="stylesheet">
-<link href="{{asset('frontend/assets/css/toastr.min.css')}}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/plugins/ion.rangeSlider-2.2.0/css/normalize.css')}}"/>
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/plugins/ion.rangeSlider-2.2.0/css/ion.rangeSlider.css')}}"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/ion-rangeslider@2.3.1/css/ion.rangeSlider.min.css"/>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/plugins/ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinHTML5.css')}}"/>
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/plugins/printJs/css/print.css')}}"/>
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/travel_portal.css')}}"/>
-
 <!-- FONTS -->
+<link href='https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap' rel='stylesheet'>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script async>
+    var app_url = window.location.origin;
+</script>
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600' rel='stylesheet' type='text/css'>
+<script defer>
+{{setting('google_js_key')}}
+</script>
+
+<script defer>
+{{setting('facebook_js_key')}}
+</script>

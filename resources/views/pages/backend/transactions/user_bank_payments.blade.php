@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
-                                <h3 class="success"> ({{$countSuccessful}}) 	&#x20A6;{{number_format(($amountSuccessful/100),2)}}</h3>
+                                <h3 class="success"> ({{$countSuccessful}}) 	DH{{number_format(($amountSuccessful/100),2)}}</h3>
                                 <h6>Successful</h6>
                             </div>
                             <div>
@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
-                                <h3 class="warning">({{$countPending}}) 	&#x20A6;{{number_format(($amountPending/100), 2)}}</h3>
+                                <h3 class="warning">({{$countPending}}) 	DH{{number_format(($amountPending/100), 2)}}</h3>
                                 <h6>Pending</h6>
                             </div>
                             <div>
@@ -56,7 +56,7 @@
                     <div class="card-body">
                         <div class="media d-flex">
                             <div class="media-body text-left">
-                                <h3 class="danger">({{$countDeclined}}) 	&#x20A6;{{number_format(($amountDeclined/100), 2)}}</h3>
+                                <h3 class="danger">({{$countDeclined}}) 	DH{{number_format(($amountDeclined/100), 2)}}</h3>
                                 <h6>Declined</h6>
                             </div>
                             <div>
@@ -81,7 +81,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <strong>Oh snap!</strong> {{$error}}
+                        <strong>{{__('Oh snap!')}}</strong> {{$error}}
                     </div>
                 @endforeach
             @endif
@@ -93,8 +93,8 @@
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
-                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
+                            <li><a data-action="expand"><i class="la la-expand"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
 
                             <tr>
                                 <div class="modal fade text-left payment_proof_{{$bankPayment->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-dialog modal-lg" style="padding: 60px;" role="document">
                                         <div class="modal-content">
                                             <div class="card">
                                                 <div class="card-header">

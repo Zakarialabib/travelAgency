@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('page-title') Edit {{$package->name}} | Travel Packages @endsection
+@section('page-title') {{__('Edit')}} {{$package->name}} | {{__('Travel Packages')}} @endsection
 
 @section('content')
 
@@ -87,19 +87,19 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>(&#x20A6;) Adult Price *</label>
+                                <label>(DH) Adult Price *</label>
                                 <input type="number" value="{{$package->adult_price}}" class="form-control adult_price" name="adult_price" placeholder="e.g 100000"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>(&#x20A6;) Child Price *</label>
+                                <label>(DH) Child Price *</label>
                                 <input type="number" value="{{$package->child_price}}" class="form-control child_price" name="child_price" placeholder="e.g 100000"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>(&#x20A6;) Infant Price *</label>
+                                <label>(DH) Infant Price *</label>
                                 <input type="number" value="{{$package->infant_price}}" class="form-control infant_price" name="infant_price" placeholder="e.g 100000"/>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-md-12" align="right">
-                            <button type="button" class="btn btn-alt-primary create_new_package"> Continue(Save Package) </button>
+                            <button type="button" class="btn btn-alt-primary create_new_package"> {{__('Continue(Save Package)')}} </button>
                         </div>
                     </div>
                 </div>
@@ -456,7 +456,7 @@
                             <img class="card-img img-fluid mb-1" src="{{asset($hotel_image['image_path'])}}" alt="Card image cap">
                             <h4 class="card-title">Image path</h4>
                             <p class="card-text">{{$hotel_image['image_path']}}</p>
-                            <button type="button" class="btn btn-outline-teal delete_image" value="{{$hotel_image->id}}"> <i class="la la-trash"></i> Delete</button>
+                            <button type="button" class="btn btn-outline-teal delete_image" value="{{$hotel_image->id}}"> <i class="la la-trash"></i> {{__('Delete')}}</button>
                         </div>
                     </div>
                 </div>
@@ -504,25 +504,25 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            Attraction
+                            {{__('Attraction')}}
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Attraction Name *</label>
+                                        <label> {{__('Attraction Name')}} *</label>
                                         <input type="text" value="" class="form-control attraction_name"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Attraction City *</label>
+                                        <label> {{__('Attraction City')}} *</label>
                                         <input type="text" value="" class="form-control attraction_city typeahead"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Attraction Date *</label>
+                                        <label> {{__('Attraction Date')}} *</label>
                                         <input type="text" value="" class="form-control attraction_date datepicker"/>
                                     </div>
                                 </div>
@@ -530,13 +530,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Location Description *</label>
+                                        <label>{{__('Location Description')}} *</label>
                                         <textarea class="form-control attraction_location_description" rows="5"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Attraction Additional Information *</label>
+                                        <label>{{__('Attraction Additional Information')}} *</label>
                                         <textarea class="form-control attraction_information" rows="5"></textarea>
                                     </div>
                                 </div>
@@ -545,17 +545,17 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            Sight Seeings
-                                            <button type="button" class="btn btn-alt-primary add_more_sight_seeing float-lg-right">Add More Sight Seeing <i class="fa fa-plus"></i></button>
+                                            {{__('Sight Seeings')}}
+                                            <button type="button" class="btn btn-alt-primary add_more_sight_seeing float-lg-right">{{__('Add More Sight Seeing')}} <i class="fa fa-plus"></i></button>
                                         </div>
                                         <div class="card-body">
                                             <div class="row sight_seeing_container">
                                                     <div class="col-md-4">
-                                                        <label>Sight Seeing Title</label>
+                                                        <label>{{__('Sight Seeing Title')}}</label>
                                                         <input class="form-control attraction_sight_seeing_title" value="" type="text" placeholder="e.g Eiffel Tower Visit"/>
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <label>Sight Seeing Description *</label>
+                                                        <label>{{__('Sight Seeing Description')}} *</label>
                                                         <textarea class="form-control attraction_sight_seeing_description" rows="5" placeholder="A brief or detailed explanation of what the sight seeing is about"></textarea>
                                                     </div>
                                             </div>
@@ -567,7 +567,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary submit_attraction">Continue (Save Attraction)</button>
+                                    <button type="button" class="btn btn-alt-primary submit_attraction">{{__('Continue (Save Attraction)')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -578,7 +578,7 @@
                 <div class="col-md-12">
                     <div class="card card-white">
                         <div class="card-header clearfix">
-                            <h4 class="card-title"><i class="fa fa-info"></i>Attraction Gallery</h4>
+                            <h4 class="card-title"><i class="fa fa-info"></i>{{__('Attraction Gallery')}}</h4>
                         </div>
                         <div class="card-body">
                             {!! Form::open(['url'=>'backend/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
@@ -589,7 +589,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group col-md-12">
                                         <div>
-                                            <h3>Drag and Drop or Click On Box to Select Multiple Images</h3>
+                                            <h3>{{__('Drag and Drop or Click On Box to Select Multiple Images')}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -599,7 +599,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
+                                    <button type="button" class="btn btn-alt-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> {{__('Continue')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -612,25 +612,25 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            Attraction
+                            {{__('Attraction')}}
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Attraction Name *</label>
+                                        <label> {{__('Attraction Name')}} *</label>
                                         <input type="text" value="{{$attraction->name}}" class="form-control attraction_name"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Attraction City *</label>
+                                        <label> {{__('Attraction City')}} *</label>
                                         <input type="text" value="{{$attraction->city}}" class="form-control attraction_city typeahead"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Attraction Date *</label>
+                                        <label> {{__('Attraction Date')}} *</label>
                                         <input type="text" value="{{$attraction->date}}" class="form-control attraction_date datepicker"/>
                                     </div>
                                 </div>
@@ -638,7 +638,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Location Description *</label>
+                                        <label>{{__('Location Description')}} *</label>
                                         <textarea class="form-control attraction_location_description" rows="5">
                                     {{$attraction->address}}
                                 </textarea>
@@ -646,7 +646,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Attraction Additional Information *</label>
+                                        <label>{{__('Attraction Additional Information')}} *</label>
                                         <textarea class="form-control attraction_information" rows="5">
                                     {{$attraction->information}}
                                 </textarea>
@@ -657,8 +657,8 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            Sight Seeings
-                                            <button type="button" class="btn btn-alt-primary add_more_sight_seeing float-lg-right">Add More Sight Seeing <i class="fa fa-plus"></i></button>
+                                            {{__('Sight Seeings')}}
+                                            <button type="button" class="btn btn-alt-primary add_more_sight_seeing float-lg-right">{{__('Add More Sight Seeing')}} <i class="fa fa-plus"></i></button>
                                         </div>
                                         <div class="card-body">
                                             <div class="sight_seeing_container">
@@ -666,11 +666,11 @@
                                                     <input type="hidden" class="attraction_sight_seeing_id" value="{{$sight_seeing->id}}">
                                                     <div class="row sight_seeing_{{$sight_seeing->id}}">
                                                         <div class="col-md-3">
-                                                            <label>Sight Seeing Title</label>
+                                                            <label>{{__('Sight Seeing Title')}}</label>
                                                             <input class="form-control attraction_sight_seeing_title" value="{{$sight_seeing->title}}" type="text" placeholder="e.g Eiffel Tower Visit"/>
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <label>Sight Seeing Description *</label>
+                                                            <label>{{__('Sight Seeing Description')}} *</label>
                                                             <textarea class="form-control attraction_sight_seeing_description" rows="5" placeholder="A brief or detailed explanation of what the sight seeing is about"> {{$sight_seeing->description}} </textarea>
                                                         </div>
                                                         <div class="col-md-2">
@@ -687,7 +687,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary submit_attraction">Continue (Save Attraction)</button>
+                                    <button type="button" class="btn btn-alt-primary submit_attraction">{{__('Continue (Save Attraction)')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -701,9 +701,9 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <img class="card-img img-fluid mb-1" src="{{asset($attraction_image['image_path'])}}" alt="Card image cap">
-                                    <h4 class="card-title">Image path</h4>
+                                    <h4 class="card-title">Image path')}}</h4>
                                     <p class="card-text">{{$attraction_image['image_path']}}</p>
-                                    <button type="button" class="btn btn-outline-teal delete_image" value="{{$attraction_image->id}}"> <i class="la la-trash"></i> Delete</button>
+                                    <button type="button" class="btn btn-outline-teal delete_image" value="{{$attraction_image->id}}"> <i class="la la-trash"></i> {{__('Delete')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -712,7 +712,7 @@
                 <div class="col-md-12">
                     <div class="card card-white">
                         <div class="card-header clearfix">
-                            <h4 class="card-title"><i class="fa fa-info"></i>Attraction Gallery</h4>
+                            <h4 class="card-title"><i class="fa fa-info"></i>{{__('Attraction Gallery')}}</h4>
                         </div>
                         <div class="card-body">
                             {!! Form::open(['url'=>'backend/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
@@ -723,7 +723,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group col-md-12">
                                         <div>
-                                            <h3>Drag and Drop or Click On Box to Select Multiple Images</h3>
+                                            <h3>{{__('Drag and Drop or Click On Box to Select Multiple Images')}}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -733,7 +733,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
+                                    <button type="button" class="btn btn-alt-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> {{__('Continue')}}</button>
                                 </div>
                             </div>
                         </div>

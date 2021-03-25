@@ -85,19 +85,19 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>(&#x20A6;) Adult Price *</label>
+                                <label>(DH) Adult Price *</label>
                                 <input type="number" value="" class="form-control adult_price" name="adult_price" placeholder="e.g 100000"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>(&#x20A6;) Child Price *</label>
+                                <label>(DH) Child Price *</label>
                                 <input type="number" value="" class="form-control child_price" name="child_price" placeholder="e.g 100000"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>(&#x20A6;) Infant Price *</label>
+                                <label>(DH) Infant Price *</label>
                                 <input type="number" value="" class="form-control infant_price" name="infant_price" placeholder="e.g 100000"/>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-md-12" align="right">
-                            <button type="button" class="btn btn-alt-primary create_new_package"> Continue(Save Package) </button>
+                            <button type="button" class="btn btn-alt-primary create_new_package"> {{__('Continue(Save Package)')}} </button>
                         </div>
                     </div>
                 </div>

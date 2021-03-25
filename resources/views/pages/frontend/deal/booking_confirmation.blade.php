@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title') Booking Confirmation @endsection
+@section('page-title') {{__('Booking Confirmation')}} @endsection
 
 @section('activeDeals') active @endsection
 
@@ -15,7 +15,7 @@
                     <div class="col-xs-12 col-md-8 col-md-offset-2">
                         <ul class="banner-breadcrumb color-white clearfix">
                             <li><a class="link-blue-2" href="{{url('/')}}">home</a> /</li>
-                            <li><span>Booking Confirmation</span></li>
+                            <li><span>{{__('Booking Confirmation')}}</span></li>
                         </ul>
                         <h2 class="color-white">{{$deal->name}}</h2>
                     </div>
@@ -30,7 +30,7 @@
             <div class="row padd-90">
                 <div class="col-xs-12 col-md-8">
                     <div class="detail-content-block">
-                        <h3 class="small-title">Booking Confirmation</h3>
+                        <h3 class="small-title">{{__('Booking Confirmation')}}</h3>
                         @if($paymentInfo['status'] == 0)
                             <div class="confirm-label bg-dr-blue-2 radius-5">
                                 <img class="confirm-img" src="{{url('frontend/img/flag_icon.png')}}" alt="">
@@ -86,7 +86,7 @@
                                 </tr>
                                 <tr>
                                     <td class="table-label color-grey">AMOUNT:</td>
-                                    <td class="table-label color-dark-2"><strong> &#x20A6;{{number_format(($booking->total_amount/100),2)}}</strong></td>
+                                    <td class="table-label color-dark-2"><strong> DH{{number_format(($booking->total_amount/100),2)}}</strong></td>
                                 </tr>
 
                                 </tbody>

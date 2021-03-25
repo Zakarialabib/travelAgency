@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="hotels-block">
-                                    <h5>Adults</h5>
+                                    <h5>{{__('Adults')}}</h5>
                                     <select name="adult_count" id="hotel_adult_count" class="dynax_input_2 adult_count">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="hotels-block">
-                                    <h5>Children</h5>
+                                    <h5>{{__('Children')}}</h5>
                                     <select name="adult_count" id="hotel_child_Count" class="dynax_input_2 child_count">
                                         <option value="0">0</option>
                                         <option value="1">1</option>

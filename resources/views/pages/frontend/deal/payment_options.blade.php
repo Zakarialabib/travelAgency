@@ -124,7 +124,7 @@
                                         <p>You do not have enough money in your wallet to make payment for this booking. Please top up your wallet and try again later.</p>
                                     @endif
 
-                                    <footer><cite title="Source Title"> Wallet Balance = &#x20A6; {{number_format(($walletBalance/100),2)}} </cite></footer>
+                                    <footer><cite title="Source Title"> Wallet Balance = DH {{number_format(($walletBalance/100),2)}} </cite></footer>
                                 </blockquote>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                         <p>You do not have enough money in your wallet to make payment for this booking. Please top up your wallet and try again later.</p>
                                     @endif
 
-                                    <footer><cite title="Source Title"> Wallet Balance = &#x20A6; {{number_format(($walletBalance/100),2)}} </cite></footer>
+                                    <footer><cite title="Source Title"> Wallet Balance = DH {{number_format(($walletBalance/100),2)}} </cite></footer>
                                 </blockquote>
                             </div>
                         </div>
@@ -177,10 +177,10 @@
                                 <p class="color-pink">FLIGHT: <span class="color-white"> @if($deal->flight == 1) <i class=" fa fa-check"></i>Available @else <i class=" fa fa-times"></i>Not Available @endif </span></p>
                                 <p class="color-pink">HOTEL: <span class="color-white"> @if($deal->hotel == 1) <i class=" fa fa-check"></i>Available @else <i class=" fa fa-times"></i>Not Available @endif </span></p>
                                 <p class="color-pink">ATTRACTION: <span class="color-white"> @if($deal->attraction == 1) <i class=" fa fa-check"></i>Available @else <i class=" fa fa-times"></i>Not Available @endif </span></p>
-                                <p class="color-pink">ADULT ({{$booking->adults}}): <span class="color-white"> &#x20A6;{{number_format(($booking->adults * $deal->adult_price),2)}} </span></p>
-                                <p class="color-pink">CHILD ({{$booking->children}}): <span class="color-white"> &#x20A6;{{number_format(($booking->children * $deal->child_price),2)}} </span></p>
-                                <p class="color-pink">INFANT ({{$booking->infants}}): <span class="color-white"> &#x20A6;{{number_format(($booking->infants * $deal->infant_price),2)}}  </span></p>
-                                <p class="color-pink">TOTAL AMOUNT : <span class="color-white"> &#x20A6;{{number_format(($booking->total_amount/100),2)}}  </span></p>
+                                <p class="color-pink">ADULT ({{$booking->adults}}): <span class="color-white"> DH{{number_format(($booking->adults * $deal->adult_price),2)}} </span></p>
+                                <p class="color-pink">CHILD ({{$booking->children}}): <span class="color-white"> DH{{number_format(($booking->children * $deal->child_price),2)}} </span></p>
+                                <p class="color-pink">INFANT ({{$booking->infants}}): <span class="color-white"> DH{{number_format(($booking->infants * $deal->infant_price),2)}}  </span></p>
+                                <p class="color-pink">TOTAL AMOUNT : <span class="color-white"> DH{{number_format(($booking->total_amount/100),2)}}  </span></p>
                                 <p class="color-pink">CONTACT NUMBER: <span class="color-white"> {{$deal->phone_number}} </span></p>
                             </div>
                         </div>

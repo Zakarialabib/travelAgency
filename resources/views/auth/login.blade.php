@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('page-title')  Login @endsection
+@section('page-title')  {{__('Login')}} @endsection
 
 @section('content')
 
@@ -14,29 +14,29 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <strong>Oh snap!</strong> {{$error}}
+                            <strong>{{__('Oh snap!')}}</strong> {{$error}}
                         </div>
                     @endforeach
                 @endif
                 <div class="card border-grey border-lighten-3 m-0">
                     <div class="card-header border-0">
                         <div class="card-title text-center">
-                            <div class="p-1"><img src="{{asset('backend/app-assets/images/logo/logo.png')}}" alt="{{config('app.name')}}"></div>
+                            <div class="p-1"><img style="width: 120px;" src="{{asset('backend/app-assets/images/logo/logo.png')}}" alt="{{config('app.name')}}"></div>
                         </div>
-                        <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>Login with {{config('app.name')}}</span></h6>
+                        <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>{{__('Login with')}} {{config('app.name')}}</span></h6>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form-horizontal form-simple" method="post" action="{{ route('login')}}" >
                                 @csrf
-                                <fieldset class="form-group position-relative has-icon-left mb-0">
-                                    <input type="email" class="form-control form-control-lg input-lg" name="email" id="email" placeholder="Your Email" required>
+                                <fieldset class="form-group position-relative has-icon-left mb-2">
+                                    <input type="email" class="form-control form-control-lg input-lg" name="email" id="email" placeholder="{{__('Your Email')}}" required>
                                     <div class="form-control-position">
-                                        <i class="ft-envelope"></i>
+                                        <i class="la la-envelope"></i>
                                     </div>
                                 </fieldset>
                                 <fieldset class="form-group position-relative has-icon-left">
-                                    <input type="password" class="form-control form-control-lg input-lg" id="password" name="password" placeholder="Enter Password" required>
+                                    <input type="password" class="form-control form-control-lg input-lg" id="password" name="password" placeholder="{{__('Enter Password')}}" required>
                                     <div class="form-control-position">
                                         <i class="la la-key"></i>
                                     </div>
@@ -45,19 +45,19 @@
                                     <div class="col-md-6 col-12 text-center text-md-left">
                                         <fieldset>
                                             <input type="checkbox" id="remember-me" class="chk-remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <label for="remember-me"> Remember Me</label>
+                                            <label for="remember-me"> {{__('Remember Me')}}</label>
                                         </fieldset>
                                     </div>
-                                    <div class="col-md-6 col-12 text-center text-md-right"><a href="{{ route('password.request') }}" class="card-link">Forgot Password?</a></div>
+                                    <div class="col-md-6 col-12 text-center text-md-right"><a href="{{ route('password.request') }}" class="card-link">{{__('Forgot Password?')}}</a></div>
                                 </div>
-                                <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i> Login</button>
+                                <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i> {{__('Login')}}</button>
                             </form>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="">
-                            <p class="float-sm-left text-center m-0"><a href="{{ route('password.request') }}" class="card-link">Recover password</a></p>
-                            <p class="float-sm-right text-center m-0">New to {{config('app.name')}}? <a href="{{url('/register')}}" class="card-link">Sign Up</a></p>
+                            <p class="col-12 text-center m-0"><a href="{{ route('password.request') }}" class="card-link">{{__('Recover password')}}</a></p>
+                            <p class="col-12 text-center m-0">{{__('New to')}} {{config('app.name')}}? <a href="{{url('/register')}}" class="card-link">{{__('Sign Up')}}</a></p>
                         </div>
                     </div>
                 </div>

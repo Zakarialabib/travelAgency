@@ -184,7 +184,7 @@
                     <div class="col-md-8 col-sm-8">
                         @if(auth()->guest())
                         <div class="login-box">
-                            <h3>Existing customer  ?  <button class="btn btn_travel_portal btn-sm pull-right sign-in">Sign in <i class="fa fa-sign-in"></i></button></h3>
+                            <h3>Existing customer  ?  <button class="btn btn_travel_portal btn-sm pull-right sign-in">{{__('Sign in')}} <i class="fa fa-sign-in"></i></button></h3>
                             <div class="booking-form sign-in-container hidden">
                                 <h4>Sign In</h4>
                                     <form >

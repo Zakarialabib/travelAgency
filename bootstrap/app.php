@@ -15,6 +15,12 @@ $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
 
+// ...
+
+$app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
+
+// ...
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
