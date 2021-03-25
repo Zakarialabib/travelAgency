@@ -1,6 +1,7 @@
 
 
-TravelPortal
+rentacs 
+
 
 User : admin@admin.com
 Password : admin
