@@ -1,106 +1,188 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{asset('backend/app-assets/images/logo/logo.png')}}" />
     <title>{{setting('app_name')}}</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-
-    <style type="text/css">
-        * {
-            font-size: 14px;
-            line-height: 24px;
-            font-family: 'Ubuntu', sans-serif;
-            text-__form: capitalize;
-        }
-        .btn {
-            padding: 7px 10px;
-            text-decoration: none;
-            border: none;
-            display: block;
-            text-align: center;
-            margin: 7px;
-            cursor:pointer;
-        }
-
-        .btn-info {
-            background-color: #999;
-            color: #FFF;
-        }
-
-        .btn-primary {
-            background-color: #6449e7;
-            color: #FFF;
-            width: 100%;
-        }
-        .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
-.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
-.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
-.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
-.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
-.col-xl-auto {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
+    <style>
+        #invoice{
+    padding: 30px;
 }
-        .col-6 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%;
-  text-align: left;
-        }
-.col-12 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
-  max-width: 100%;
-display: grid;
-}
-.right{ 
-text-align: right; padding-right: 20px;
-}
-        td,
-        th,
-        tr,
-        table {
-            border-collapse: collapse;
-            border: 1px solid #eeeeee91;
-        }
-        tr {border-bottom: 1px dotted #ddd;}
-        td,th {padding: 7px 0}
 
-        table {width: 100%;}
-        tfoot tr th:first-child {text-align: left;}
-        .row {
-            display:flex;
-            text-align: center;
-            align-content: center;
-        }
-        .invoice-buttom{
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 100%;
-         flex: 0 0 100%;
-         max-width: 100%;
-         justify-content: center;
-         display: grid;
-         padding: 10px 0 10px 0;
-        }
-        .centered {
-            text-align: center;
-            align-content: center;
-        }
-        small{font-size:11px;}
-        hr {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        color: #eee;
-      }
-        @media print {
+.invoice {
+    max-width:600px;
+    background-color: #FFF;
+    min-height: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.invoice header {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3989c6
+}
+
+.invoice .company-details {
+    text-align: right
+}
+
+.invoice .company-details .name {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.invoice .contacts {
+    margin-bottom: 20px
+}
+
+.invoice .invoice-to {
+    text-align: left
+}
+
+.invoice .invoice-to .to {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.invoice .invoice-details {
+    text-align: right
+}
+
+.invoice .invoice-details .invoice-id {
+    margin-top: 0;
+    color: #e5511e;
+    font-size: 16px;
+}
+
+.invoice main {
+    padding-bottom: 50px
+}
+
+.invoice main .thanks {
+    margin-top: -100px;
+    font-size: 2em;
+    margin-bottom: 50px
+}
+
+.invoice main .notices {
+    padding-left: 6px;
+    border-left: 6px solid #3989c6
+}
+
+.invoice main .notices .notice {
+    font-size: 1.2em
+}
+
+.invoice table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px
+}
+
+.invoice table td,.invoice table th {
+    padding: 15px;
+    background: #eee;
+    border-bottom: 1px solid #fff
+}
+
+.invoice table th {
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 16px
+}
+
+.invoice table td h3 {
+    margin: 0;
+    font-weight: 400;
+    color: #3989c6;
+    font-size: 1.2em
+}
+
+.invoice table .qty,.invoice table .total,.invoice table .unit {
+    text-align: right;
+    font-size: 1.2em
+}
+
+.invoice table .no {
+    color: #fff;
+    font-size: 1.6em;
+    background: #e5511e
+}
+
+.invoice table .unit {
+    background: #ddd
+}
+
+.invoice table .total {
+    background: #e5511e;
+    color: #fff
+}
+
+.invoice table tbody tr:last-child td {
+    border: none
+}
+
+.invoice table tfoot td {
+    background: 0 0;
+    border-bottom: none;
+    white-space: nowrap;
+    text-align: right;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-top: 1px solid #aaa
+}
+.g
+{
+    color:white;
+}
+
+.invoice table tfoot tr:first-child td {
+    border-top: none
+}
+
+.invoice table tfoot tr:last-child td {
+    color: #3989c6;
+    font-size: 1.4em;
+    border-top: 1px solid #3989c6
+}
+
+.invoice table tfoot tr td:first-child {
+    border: none
+}
+
+.invoice footer {
+    text-align: center;
+    color: #777;
+    border-top: 1px solid #aaa;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media print {
+    .invoice {
+        font-size: 11px!important;
+        overflow: hidden!important
+    }
+
+    .invoice footer {
+        position: absolute;
+        bottom: 10px;
+        page-break-after: always
+    }
+
+    .invoice>div:last-child {
+        page-break-before: always
+    }
+}
+@media print {
             * {
                 font-size:12px;
                 line-height: 20px;
@@ -112,101 +194,123 @@ text-align: right; padding-right: 20px;
             @page { margin: 0; } body { margin: 0.5cm; margin-bottom:1.6cm; } 
         }
     </style>
-  </head>
+</head>
 <body>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<div style="max-width:600px;margin:0 auto">
-  
-        @php $url = url()->previous(); @endphp
-    
-    <div class="hidden-print">
-        <table>
-            <tr>
-                <td><a href="{{$url}}" class="btn btn-info"><i class="fa fa-arrow-left"></i> {{__('Back')}}</a> </td>
-                <td><button onclick="window.print();" class="btn btn-primary"><i class="dripicons-print"></i> {{__('Print')}}</button></td>
-            </tr>
-        </table>
-        <br>
+<div id="invoice">
+    <div class="toolbar hidden-print">
+        <div class="text-right">
+    <a  href="{{ url()->previous() }}" class="btn btn-info">
+    <i class="fa fa-arrow-circle-o-left"></i>
+    <span>Back</span>
+    </a>            
+    <button class="btn btn-info"  onclick="auto_print()">{{__('Print')}}</button>
+        </div>
+        <hr>
     </div>
-        
-    <div id="receipt-data" style="max-height:29.7cm;">
-    <div class="row">
-        <div class="col-6">
-                <img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
-            <p>
-            {{__('reference')}}: {{$purchases->reference_no}}<br>
-            Date d’émission: {{$purchases->created_at->toDateString()}}<br>
-            </p>
-        </div>
-        </div>
-        <hr />
-        <div class="row">
-        <div class="col-6">
-            <br>{{__('VAT Number')}}:
-            <br>{{__('Email')}}: {{setting('home_email')}}
-            <br>{{__('Phone Number')}}: {{setting('home_phone')}}
-            </p>
-        </div>
-        <div class="col-6">
-         <p>
-            {{__('Customer')}}: {{$suppliers->name}}<br>
-            {{$suppliers->address}}<br>
-            {{__('Tax Number')}}: {{$suppliers->tax_no}}
-        </p>
-        </div>
-        </div>
-        <table>
-            <tbody>
-                <?php $total_product_tax = 0;?>
-                @foreach($purchasedetails as $purchasedetail)
-                <tr style="background: #c0c0c045;">
-                <td class="centered">Objet</td>
-                <td class="centered">Details</td>
-				<td class="centered">{{__('Unit Price')}}</td>
-                <td class="centered">Qté.</td>
-                <td class="centered">{{__('Order Tax')}}</td>
-				<td  class="right" >Total HT</td>
-                </tr>
-                <tr>
-                <td class="centered">{{$purchasedetail->name}}</td>
-                <td class="centered">{{$purchases->purchase_note}}</td>
-                <td class="centered">{{number_format((float) ($purchasedetail->total / $purchasedetail->qty), 2, '.', '')}}</td>
-                <td class="centered">{{$purchasedetail->qty}}</td>
-                <td class="centered">{{number_format((float)$purchases->tax, 2, '.', '')}}</td>
-            	<td class="right"  >{{number_format((float)$purchasedetail->total, 2, '.', '')}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-            </table>
-            <div class="row">
-        <div class="col-6">
-        <p></p>
-        </div>
-        <div class="col-6" style="background: #c0c0c045;padding-bottom: 50px;">
-            <p class="right">Total HT : {{number_format((float)$purchases->tax, 2, '.', '')}}<br>
-            TVA :  {{number_format((float)$purchases->tax, 2, '.', '')}}<br>
-            TOTAL TTC : {{number_format((float)$purchases->grand_total, 2, '.', '')}}</p>
-       </div>
-       </div>
-       <div 
-       class="col-12 centered"
-       style="position: fixed;
-       bottom: 20px;
-       width: 600px;">
-       ALPHABOOST SARL
-9, Rue Abou Maachar, Bureau N°11, Quartier Les Hôpitaux, 20360 Casablanca
-Tél: +212 5 22 86 27 51 - Mail: contact@alphaboost.ma - Site: www.alphaboost.ma
-ICE 002271601000067 - RC 435203 - IF 37528652 - TP 34100605
-</div>
-    </div>
-</div>
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px">
+            <header>
+                <div class="row">
+                    <div class="col">
+                        <a target="_blank" href="https://lobianijs.com">
+                            <img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
+                        </a>
+                    </div>
+                    <div class="col company-details">
+                        <h3 class="name">
+                            Rentacs Tours
+                        </h3>
+                        <div>13, Rue El Kassar, 1er Etage Maarif </div>
+                        <div>20100 Casablanca, Maroc</div>
+                        <div>{{__('Phone Number')}}: {{setting('home_phone')}}</div>
+                        <div>{{__('Email')}}: {{setting('home_email')}}</div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="row contacts">
+                    <div class="col invoice-to">
+                        
+                        <h4 class="to"> {{$suppliers->name}}</h2>
+                        <div class="address">{{$suppliers->company_name}}</div>
+                        <div class="address"> {{$suppliers->address}}</div>
+                        <div class="address"> {{$suppliers->city}}, {{$suppliers->postal_code}}</div>
+                        <div class="email">{{__('Phone Number')}}: {{$suppliers->phone_number}}</div>
+                    </div>
+                    <div class="col invoice-details">
+                        <h1 class="invoice-id">{{__('reference')}} : {{$purchases->reference_no}}</h1>
+                        <div class="date">Date d’émission: {{$purchases->created_at->toDateString()}}</div>
+                    </div>
+                </div>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-left">Destination</th>
+                            <th class="text-right">{{__('Unit Price')}}</th>
+                            <th class="text-right">Qté.</th>
+                            <th class="text-right">{{__('Order Tax')}}</th>
+                            <th class="text-right">Total HT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php $total_product_tax = 0; $i=1;?>
+                    @foreach($purchasedetails as $purchasedetail)
+                        <tr>
+                            <td class="no">0{{$i++}}</td>
+                            <td class="text-left">
+                            <h3>
+                            {{$purchasedetail->name}}
+                                </h3>
+                            </td>
+                            <td class="total">{{number_format((float) ($purchasedetail->total / $purchasedetail->qty), 2, '.', '')}}</td>
+                            <td class="total">{{$purchasedetail->qty}}</td>
+                            <td class="total">{{number_format((float)$purchases->tax, 2, '.', '')}}</td>
+                            <td class="total">{{number_format((float)$purchasedetail->total, 2, '.', '')}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">Total HT :</td>
+                            <td>{{number_format((float)$purchases->tax, 2, '.', '')}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">TVA</td>
+                            <td>{{number_format((float)$purchases->tax, 2, '.', '')}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">TOTAL TTC</td>
+                            <td>{{number_format((float)$purchases->grand_total, 2, '.', '')}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
 
+            </main>
+            <footer style='width:600px; text-align:left; border-left:tomato 2px solid; padding:10px;'>
+                                 <p><font color="#E5511E;">RENTACS TOURS </font> - <b>Capital: </b> 300.000DH</p>
+                                 <p> <b>Adresse:</b> 13, Rue El Kassar, 1er Etage Maarif 20100 Casablanca, Maroc </p>   
+                                <p><b>Code Postal: </b>  20100 - <b>Tél:</b> +212 522 252 386 - <b>Email:</b> info@rentacstours.com</p>
+                                 <p><i class="la la-map-marker la-24" ></i> <b>RC: </b> 382573 <b>CNSS:</b> 4284098 <b>Patente:</b> 35781728 <b>IF:</b> 15220706 <b>ICE:</b> 001565693000053 </p>
+                                <p><i class="la la-envelope la-24" style="color: black;"></i> Attijariwafabank Agence centre d'affaire YACOUP EL MANSOUR</a> </p>
+                                <p><i class="la la-phone la-24" ></i>  <b>Code IBAN:</b> 007 780 000 339 400 000 25 46 93 - <b>Code SWIFT:</b> BCMAMAMC </a></p>
+            </footer>
+        </div>
+    </div>
 <script type="text/javascript">
     function auto_print() {     
         window.print()
     }
     setTimeout(auto_print, 1000);
-</script>
 
+</script>
 </body>
 </html>
