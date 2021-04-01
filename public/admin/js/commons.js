@@ -166,3 +166,7 @@ function notify(noti_content, noti_type = 'success',) {
         delay: 3000
     });
 }
+
+$(document).ready(function() {
+    $('.myselect').select2();    
+});

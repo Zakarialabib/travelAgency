@@ -5015,6 +5015,8 @@ function previewUploadImage(input, element_id) {
     "use strict";
     $(document).ready(function () {
 
+        $('.myselect').select2();
+        
         /*  [ jQuery Countdown ]
         - - - - - - - - - - - - - - - - - - - - */
         setInterval(function () {

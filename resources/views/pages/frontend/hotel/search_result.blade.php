@@ -77,11 +77,11 @@
             <!-- START: FILTER AREA -->
             <div class="col-md-3 clear-padding">
                 <div class="filter-head text-center">
-                    <h4>{{count($availableHotels)}} Result Found Matching Your Search.</h4>
+                    <h4>{{count($availableHotels)}} {{ __('Result Found Matching Your Search') }}.</h4>
                 </div>
                 <div class="filter-area">
                     <div class="price-filter filter">
-                        <h5><i class="fa fa-usd"></i> Price</h5>
+                        <h5><i class="fa fa-usd"></i> {{ __('Price') }}</h5>
                         <p>
                             <label></label>
                             <input type="text" id="price_filter" readonly>
@@ -89,7 +89,7 @@
                         <div id="price-range"></div>
                     </div>
                     <div class="star-filter filter">
-                        <h5 class="show-star-ratings"><i class="fa fa-star"></i> Star <i class="fa fa-list pull-right"></i></h5>
+                        <h5 class="show-star-ratings"><i class="fa fa-star"></i> {{ __('Star') }} <i class="fa fa-list pull-right"></i></h5>
                         <ul class="hidden-sm hidden-xs available-star-ratings">
                             @foreach($starRatings as $serial => $starRating)
                                 <li>
@@ -102,7 +102,7 @@
                                     @endfor
                                 </li>
                             @endforeach
-                            <li><input type="checkbox" value="all" class="select"> <i class="fa fa-star"></i> Any</li>
+                            <li><input type="checkbox" value="all" class="select"> <i class="fa fa-star"></i> {{ __('Any') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -158,10 +158,10 @@
                             <div class="col-md-2 rating-price-box text-center clear-padding">
                                 <div class="room-book-box">
                                     <div class="price">
-                                        <h5>{{number_format($availableHotel['minimumRate']/100)}}DH <br/><small>(Excluding Tax)</small></h5>
+                                        <h5>{{number_format($availableHotel['minimumRate']/100)}}DH <br/><small>{{ __('(Excluding Tax)') }}</small></h5>
                                     </div>
                                     <div class="book">
-                                        <button class="btn_travel_portal select_hotel" value="{{$serial}}">Select</button>
+                                        <button class="btn_travel_portal select_hotel" value="{{$serial}}">{{ __('Select') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -187,8 +187,4 @@
     </script>
     <script src="{{asset('frontend/assets/js/pages/hotel/hotel_search_management.js')}}"></script>
     <script src="{{asset('frontend/assets/js/pages/hotel/search_result.js')}}"></script>
-@endsection
-
-@section('css')
-
 @endsection

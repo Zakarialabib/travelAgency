@@ -79,21 +79,21 @@
                                                             @endif
                                                         </p>
                                                         <p>
-                                                            <strong>Payment Status: </strong>
+                                                            <strong>{{__('Payment Status')}}: </strong>
                                                             @if($sale->payment_status == App\Payment::STATUS_PENDING){{__('Pending')}}
                                                             @elseif($sale->payment_status == App\Payment::STATUS_DUE){{__('Due')}}
                                                             @elseif($sale->payment_status == App\Payment::STATUS_PARTIAL){{__('Partial')}}
                                                             @elseif($sale->payment_status == App\Payment::STATUS_PAID){{__('Paid')}}
                                                             @endif
                                                         </p>
-                                                        <h3>Orders Table</h3>
+                                                        <h3>{{__('Orders Table')}}</h3>
                                                         <table style="border-collapse: collapse; width: 100%;">
                                                             <thead>
                                                                 <th style="border: 1px solid #000; padding: 5px">#</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Product')}}</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">Qty</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Price')}}</th>
-                                                                <th style="border: 1px solid #000; padding: 5px">SubTotal</th>
+                                                                <th style="border: 1px solid #000; padding: 5px">{{__('SubTotal')}}</th>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach($sale->details as $key => $detail)

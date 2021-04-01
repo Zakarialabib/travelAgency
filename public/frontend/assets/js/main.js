@@ -2,6 +2,8 @@
     "use strict";
     $(document).ready(function () {
 
+        $('.myselect').select2();
+        
         /*  [ jQuery Countdown ]
         - - - - - - - - - - - - - - - - - - - - */
         setInterval(function () {

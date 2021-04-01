@@ -81,6 +81,8 @@
 <script src="{{asset('frontend/assets/js/materialize.js')}}"></script>
 <script src="{{asset('frontend/assets/js/bootstrap3-typeahead.js')}}"></script>
 <script src="{{asset('backend/js/required.js')}}"></script>
+<script src="{{asset('admin/vendors/select2/select2.full.min.js')}}"></script>
+
 <!-- END TOOLS FROM FRONTEND-->
 @stack('scripts')
 

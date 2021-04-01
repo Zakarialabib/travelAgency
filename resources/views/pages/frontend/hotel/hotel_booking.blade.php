@@ -265,32 +265,32 @@
                     </div>
                     <div class="col-md-4 col-sm-4 booking-sidebar">
                         <div class="sidebar-item">
-                            <h4><i class="fa fa-bookmark"></i>Price Details</h4>
+                            <h4><i class="fa fa-bookmark"></i>{{ __('Price Details') }}</h4>
                             <div class="sidebar-body">
                                 <table class="table">
                                     <tr>
-                                        <td>SERVICE FEES</td>
-                                        <td>DH{{number_format(($selectedRoom['customerMarkUp']/100),2)}}</td>
+                                        <td>{{ __('SERVICE FEES') }}</td>
+                                        <td>{{number_format(($selectedRoom['customerMarkUp']/100),2)}}DH</td>
                                     </tr>
                                     <tr>
-                                        <td>TAXES</td>
-                                        <td>DH{{number_format(($selectedRoom['vat']/100),2)}}</td>
+                                        <td>{{ __('TAXES') }}</td>
+                                        <td>{{number_format(($selectedRoom['vat']/100),2)}}DH</td>
                                     </tr>
                                     <tr>
-                                        <td>DISCOUNT</td>
-                                        <td>DH {{number_format(($selectedRoom['customerMarkDown']/100),2)}} </td>
+                                        <td>{{ __('DISCOUNT') }}</td>
+                                        <td>{{number_format(($selectedRoom['customerMarkDown']/100),2)}}DH </td>
                                     </tr>
                                     <tr>
-                                        <td>TOTAL PRICE</td>
-                                        <td class="total">DH{{number_format(($selectedRoom['customerTotalAmount']/100),2)}}</td>
+                                        <td>{{ __('TOTAL PRICE') }}</td>
+                                        <td class="total">{{number_format(($selectedRoom['customerTotalAmount']/100),2)}}DH</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                         <div class="sidebar-item contact-box">
-                            <h4><i class="fa fa-phone"></i>Need Help?</h4>
+                            <h4><i class="fa fa-phone"></i>{{ __('Need Help') }}?</h4>
                             <div class="sidebar-body text-center">
-                                <p>Need Help? Call us or drop a message. Our agents will be in touch shortly.</p>
+                                <p>{{ __('Need Help? Call us or drop a message. Our agents will be in touch shortly') }}.</p>
                                 <h3><a href="tel:{{\App\Services\PortalConfig::$adminBookingsNumber}}">{{\App\Services\PortalConfig::$adminBookingsNumber}}</a></h3>
                                 <h3><a href="mailto:{{\App\Services\PortalConfig::$adminBookingsEmail}}">{{\App\Services\PortalConfig::$adminBookingsEmail}}</a></h3>
                             </div>
@@ -306,8 +306,4 @@
 
 @section('javascript')
     <script src="{{asset('frontend/assets/js/pages/hotel/hotel_booking.js')}}"></script>
-@endsection
-
-@section('css')
-
 @endsection

@@ -4719,6 +4719,7 @@ function init_echarts() {
 }
 
 
+
 $(document).ready(function () {
 
     init_sparklines();
