@@ -30,6 +30,14 @@ class SaleController extends Controller
         return view('pages.backend.sale.sale_list', compact('customer', 'sales') );
     }
 
+    public function updateStatus(Request $request)
+    {
+        $sale = Sale::find($request->sale_id);
+        $sale->is_locked = $request->is_locked;
+        $sale->save();
+        return response()->json(['succes'=>'status changed succesfully']);
+    }
+
     public function createView(Request $request)
     {
         $booking = null;

@@ -28,6 +28,15 @@ class PurchaseController extends Controller
         ]);
     }
 
+    public function updateStatus(Request $request)
+    {
+        $purchase = Purchase::find($request->purchase_id);
+        $purchase->is_locked = $request->is_locked;
+        $purchase->save();
+        
+        return response()->json(['succes'=>'status changed succesfully']);
+    }
+
     public function createView(Request $request)
     {
         $purchases = Purchase::all();

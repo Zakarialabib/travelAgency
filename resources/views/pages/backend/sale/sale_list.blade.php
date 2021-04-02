@@ -34,9 +34,10 @@
                             <th width="10%">{{__('User')}}</th>
                             <th width="10%">{{__('Customer')}}</th>
                             <th width="10%">{{__('Grand total')}}</th>
-                            <th width="10%">{{__('Payment status')}}</th>
+                            <th width="5%">{{__('Payment status')}}</th>
                             <th width="5%">{{__('Created at')}}</th>
                             <th width="5%">{{__('View details')}}</th>
+                            <th width="5%">{{__('Status')}}</th>
                             <th width="10%">Action</th>
                         </tr>
                         </thead>
@@ -154,6 +155,9 @@
                                     <!-- Modal End -->
                                 </td>
                                 <td>
+                                    <input data-id="{{$sale->id}}" class="js-switch toggle-class" type="checkbox" {{isChecked($sale->is_locked, 1)}}/> 
+                                </td>
+                                <td>
                                     <div class="dropdown">
                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Actions') }}
@@ -183,6 +187,7 @@
 
 @push('scripts')
     <script src="{{asset('admin/js/page_user.js')}}"></script>
+    <script src="{{asset('admin/js/page_sale.js')}}"></script>
 @endpush
 
 @section('css')

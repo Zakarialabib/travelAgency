@@ -39,7 +39,7 @@
 <!-- END MODERN CSS-->
 
 <!-- BEGIN Custom CSS-->
-<link rel="stylesheet" type="text/css" href="{{asset('backend/css/style.css')}}"
+<link rel="stylesheet" type="text/css" href="{{asset('backend/css/style.css')}}">
 <link href="{{asset('frontend/assets/css/iziModal.css')}}" rel="stylesheet">
 <link href="{{asset('frontend/assets/css/iziToast.css')}}" rel="stylesheet">
 <link href="{{asset('frontend/assets/css/materialize.css')}}" rel="stylesheet">
@@ -56,6 +56,9 @@
         notify("{{ session('success') }}");
     </script>
 @endif
+
+@stack('css')
+
 <script>
     var app_url = window.location.origin;
 </script>
