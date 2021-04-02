@@ -43,6 +43,14 @@ class SaleController extends Controller
         return $this->response->formatResponse(200, $model, 'Update Sale status success!');
     }
 
+    public function updateStatus(Request $request)
+    {
+        $sale = Sale::find($request->sale_id);
+        $sale->is_locked = $request->is_locked;
+        $sale->save();
+        return response()->json(['succes'=>'status changed succesfully']);
+    }
+
     public function createView(Request $request)
     {
         $booking = null;

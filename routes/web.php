@@ -289,6 +289,7 @@ Route::group(['prefix' => 'purchases'],function(){
     Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
     Route::get('gen_invoice/{id}', 'PurchaseController@genInvoice')->name('purchase_invoice');
     Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
+    Route::get('/status', 'PurchaseController@updateStatus');
 
 });
 
@@ -304,7 +305,7 @@ Route::group(['prefix' => 'sales'],function(){
     Route::delete('/{id}', 'SaleController@destroy')->name('sale_delete');
 	Route::get('gen_invoice/{id}', 'SaleController@genInvoice')->name('sale_invoice');
     Route::get('gen_devis/{id}', 'SaleController@genQuotation')->name('sale_quotation');
-    Route::post('/status', 'SaleController@updateStatus')->name('sale_update_status');
+    Route::get('/status', 'SaleController@updateStatus');
     });
     
     Route::group(['prefix' => 'settings'],function(){

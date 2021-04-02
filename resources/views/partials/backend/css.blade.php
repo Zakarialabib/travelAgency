@@ -58,6 +58,9 @@
         notify("{{ session('success') }}");
     </script>
 @endif
+
+@stack('css')
+
 <script>
     var app_url = window.location.origin;
 </script>
