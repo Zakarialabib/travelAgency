@@ -82,11 +82,11 @@
                                <th>{{$booking->pnr}}</th>
                            </tr>
                            <tr>
-                               <td>Reference</td>
+                               <td>{{__('Reference')}}</td>
                                <td>{{$booking->reference}}</td>
                            </tr>
                            <tr>
-                               <td>Payment Status</td>
+                               <td>{{__('Payment Status')}}</td>
                                <td>
                                    @if($booking->payment_status == 1)
                                        <b class="success"><i class="la la-check"></i> Paid</b>
@@ -96,7 +96,7 @@
                                </td>
                            </tr>
                            <tr>
-                               <td>Reservation Status</td>
+                               <td>{{__('Reservation Status')}}</td>
                                <td>
                                    @if($booking->cancel_ticket_status == 1)
                                        <b class="danger"><i class="la la-danger"></i> Cancelled</b>

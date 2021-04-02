@@ -218,6 +218,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input type="number" name="is_locked" class="form-control" id="is_locked" value="{{$sale->is_locked}}" step="any" readonly/>
 
                 <div class="row m-b-md">
                     <div class="col-md-12">

@@ -18,7 +18,7 @@ class BookingController extends Controller
     public function list()
     {
         $bookings = Booking::query()
-            ->where('id', Auth::user()->id)
+      //      ->where('id', Auth::user()->id)
             ->with('user')
             ->with('place')
             ->orderBy('created_at', 'desc')

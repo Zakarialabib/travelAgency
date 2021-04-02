@@ -123,21 +123,21 @@
                                                 <div class="col-md-10">
                                                     <div class="row">
                                                         <div class="col-md-4">
-                                                            <label>Surname</label>
+                                                            <label>{{__('Surname')}}</label>
                                                             <div class="input-group">
                                                                 <input name="sur_name" type="text" class="form-control sur_name" placeholder="Surname (Family name)" required>
                                                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label>First name</label>
+                                                            <label>{{__('First Name')}}</label>
                                                             <div class="input-group">
                                                                 <input name="first_name" type="text" class="form-control first_name" placeholder="First name (Your name)" required>
                                                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label>Other name</label>
+                                                            <label>{{__('Other Name')}}</label>
                                                             <div class="input-group">
                                                                 <input name="other_name" type="text" class="form-control other_name" placeholder="Other name (Your other name)" required>
                                                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
@@ -217,21 +217,21 @@
                                         <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <label>Surname</label>
+                                                    <label>{{__('Surname')}}</label>
                                                     <div class="input-group">
                                                         <input name="sur_name" type="text" class="form-control booking_sur_name" placeholder="Surname (Family name)" required>
                                                         <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label>First name</label>
+                                                    <label>{{__('First Name')}}</label>
                                                     <div class="input-group">
                                                         <input name="first_name" type="text" class="form-control booking_first_name" placeholder="First name (Your name)" required>
                                                         <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label>Other name</label>
+                                                    <label>{{__('Other Name')}}</label>
                                                     <div class="input-group">
                                                         <input name="other_name" type="text" class="form-control booking_other_name" placeholder="Other name (Your other name)" required>
                                                         <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>

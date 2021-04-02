@@ -20,7 +20,7 @@
 
                         <p>You have contact from website {{setting('app_name')}}</p>
 
-                        <p>First name: {{$first_name}}</p>
+                        <p>{{__('First Name')}}: {{$first_name}}</p>
                         <p>Last name: {{$last_name}}</p>
                         <p>Email: {{$email}}</p>
                         <p>Phone: {{$phone_number}}</p>

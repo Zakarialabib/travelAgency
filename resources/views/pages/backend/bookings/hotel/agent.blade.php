@@ -20,7 +20,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="info">{{count($customerBookings)}}</h3>
-                                <h6>Reservations Attempts</h6>
+                                <h6>{{__('Reservations Attempts')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-home info font-large-2 float-right"></i>
@@ -40,7 +40,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="primary">{{number_format($paidSuccessfulBookings)}}</h3>
-                                <h6>Payed Successful Reservations</h6>
+                                <h6>{{__('Payed Successful Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-check primary font-large-2 float-right"></i>
@@ -60,7 +60,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="warning">{{number_format($paidUnsuccessfulBookings)}}</h3>
-                                <h6>Payed Unsuccessful Reservations</h6>
+                                <h6>{{__('Payed Unsuccessful Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-fire warning font-large-2 float-right"></i>
@@ -80,7 +80,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="danger">{{number_format($failedBookings)}}</h3>
-                                <h6>Failed Reservations</h6>
+                                <h6>{{__('Failed Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-shield danger font-large-2 float-right"></i>
@@ -100,7 +100,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="danger">{{number_format($cancelledBookings)}}</h3>
-                                <h6>Cancelled Reservations</h6>
+                                <h6>{{__('Cancelled Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-close danger font-large-2 float-right"></i>
@@ -120,7 +120,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Agents Hotel reservations</h4>
+                    <h4 class="card-title">Agents Hotel reservations')}}</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -134,15 +134,15 @@
                         <table class="table table-striped table-responsive table-bordered">
                             <thead>
                             <tr>
-                                <th>Reference</th>
-                                <th>PNR(Booking Code)</th>
-                                <th>Customer Name</th>
-                                <th>Hotel Name</th>
-                                <th>Due Date</th>
-                                <th>Payment Status</th>
-                                <th>Reservation Status</th>
-                                <th>Cancellation Status</th>
-                                <th>Actions</th>
+                                <th>{{__('Reference')}}</th>
+                                <th>{{__('PNR')}}(Booking Code)</th>
+                                <th>{{__('Customer Name')}}</th>
+                                <th>{{__('Hotel Name')}}</th>
+                                <th>{{__('Due Date')}}</th>
+                                <th>{{__('Payment Status')}}</th>
+                                <th>{{__('Reservation Status')}}</th>
+                                <th>{{__('Cancellation Status')}}</th>
+                                <th>{{__('Actions')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -157,36 +157,36 @@
                                     <td>{{$booking->check_in_date}}</td>
                                     <td>
                                         @if($booking->payment_status == 1)
-                                            <p class="success"><i class="la la-check"></i> Successful</p>
+                                            <p class="success"><i class="la la-check"></i> {{__('Successful')}}</p>
                                         @elseif($booking->payment_status == 0)
-                                            <p class="warning"><i class="la la-warning"></i> Incomplete</p>
+                                            <p class="warning"><i class="la la-warning"></i> {{__('Incomplete')}}</p>
                                         @endif
                                     </td>
                                     <td>
                                         @if($booking->reservation_status == 1)
-                                            <p class="success"><i class="la la-check"></i> Successful</p>
+                                            <p class="success"><i class="la la-check"></i> {{__('Successful')}}</p>
                                         @elseif($booking->reservation_status == 0)
-                                            <p class="warning"><i class="la la-warning"></i> Incomplete</p>
+                                            <p class="warning"><i class="la la-warning"></i> {{__('Incomplete')}}</p>
                                         @endif
                                     </td>
                                     <td class="cancel_status_">
                                         @if($booking->cancellation_status == 1)
-                                            <p class="success"><i class="la la-check"></i> Successful</p>
+                                            <p class="success"><i class="la la-check"></i> {{__('Successful')}}</p>
                                         @elseif($booking->cancellation_status == 0)
-                                            <p class="warning"><i class="la la-warning"></i> Incomplete</p>
+                                            <p class="warning"><i class="la la-warning"></i> {{__('Incomplete')}}</p>
                                         @endif
                                     </td>
                                     <td>
                                       <span class="dropdown">
-				                        <button id="btnSearchDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i class="ft-settings"></i></button>
+				                        <button id="btnSearchDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-danger dropdown-toggle">Actions</button>
 				                        <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
-				                            <a href="{{url('bookings/hotel/hotel-reservation-information/'.$booking->reference)}}" class="dropdown-item"><i class="la la-eye"></i> View</a>
+				                            <a href="{{url('bookings/hotel/hotel-reservation-information/'.$booking->reference)}}" class="dropdown-item"><i class="las la-eye"></i> {{__('View')}}</a>
                                             @if(strtotime(date('y-m-d H:i:s')) < strtotime($booking->check_in_date))
                                                 @if($booking->cancel_ticket_status == 0)
-                                                    <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i> Cancel</button>
+                                                    <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i> {{__('Cancel')}}</button>
                                                 @endif
                                             @else
-                                                <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i> Cancel</button>
+                                                <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i>{{__('Cancel')}}</button>
                                             @endif
 				                        </span>
 				                    </span>

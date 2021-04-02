@@ -29,6 +29,7 @@ use App\Post;
 use App\Sale;
 use App\Purchase;
 use nilsenj\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 use App\Services\InterswitchConfig;
 
 class BackEndViewController extends Controller
@@ -65,10 +66,11 @@ class BackEndViewController extends Controller
     ->count();
 
     $bookings = Booking::query()
-    ->with('user')
-    ->with('place')
-    ->orderBy('created_at', 'desc')
-    ->get();
+    ->where('id', Auth::user()->id)
+     ->with('user')
+     ->with('place')
+     ->orderBy('created_at', 'desc')
+     ->get();
 
         $visaApplications = VisaApplication::orderBy('id','desc')->get();
         $generalTotalFlightBookings = FlightBooking::where('payment_status','1')->count();

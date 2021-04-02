@@ -302,11 +302,101 @@
             </div>
         </div>
     </div>
+    @endrole
+
+    @role('customer')
+
+    <div class="row">
+        <div class="col-xl-12 col-12">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h6 class="text-muted">{{__('Successful Flight Bookings')}}</h6>
+                                        <h3>{{number_format(($userGeneralSuccessfulFlightBookingPrice/100),2)}}DH</h3>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="icon-plane primary font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h6 class="text-muted">{{__('Successful Hotel Bookings')}}</h6>
+                                        <h3>{{number_format(($userGeneralSuccessfulHotelBookingPrice/100),2)}}DH</h3>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="icon-home primary font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-left">
+                                        <h6 class="text-muted">{{__('Successful Package Bookings')}} </h6>
+                                        <h3>{{number_format(($userGeneralSuccessfulPackageBookingPrice/100),2)}}DH</h3>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="icon-bag primary font-large-2 float-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title text-center">{{__('Booking Size')}}</h4>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                                <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalFlightBookings)}}</h4>
+                                <p class="blue-grey lighten-2 mb-0">{{__('Flight')}}</p>
+                            </div>
+                            <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                                <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalHotelBookings)}}</h4>
+                                <p class="blue-grey lighten-2 mb-0">{{__('Hotel')}}</p>
+                            </div>
+                            <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
+                                <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalPackageBookings)}}</h4>
+                                <p class="blue-grey lighten-2 mb-0">{{__('Packages')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"><a href="{{route('booking_list')}}">{{__('Latest Booking')}}</a></h4>
+                    <h4 class="card-title"><a>{{__('Latest Booking')}}</a></h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -321,7 +411,7 @@
                             <table class="table table-bordered file-export">
                                 <thead>
                                 <tr>
-                                    <th>{{__('Client infos')}}</th>
+                                    <th>{{__('Infos')}}</th>
                                     <th>{{__('Place')}}</th>
                                     <th>{{__('Booking For')}}</th>
                                     <th>{{__('Booking at')}}</th>
@@ -374,97 +464,6 @@
             </div>
         </div>
     </div>
-
-    @endrole
-
-    @role('customer')
-
-    <div class="row">
-        <div class="col-xl-12 col-12">
-            <div class="row">
-                <div class="col-lg-4 col-12">
-                    <div class="card pull-up">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div class="media d-flex">
-                                    <div class="media-body text-left">
-                                        <h6 class="text-muted">Successful Flight Bookings</h6>
-                                        <h3>{{number_format(($userGeneralSuccessfulFlightBookingPrice/100),2)}}DH</h3>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="icon-plane primary font-large-2 float-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="card pull-up">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div class="media d-flex">
-                                    <div class="media-body text-left">
-                                        <h6 class="text-muted">Successful Hotel Bookings</h6>
-                                        <h3>{{number_format(($userGeneralSuccessfulHotelBookingPrice/100),2)}}DH</h3>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="icon-home primary font-large-2 float-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="card pull-up">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div class="media d-flex">
-                                    <div class="media-body text-left">
-                                        <h6 class="text-muted">Successful Package Bookings </h6>
-                                        <h3>{{number_format(($userGeneralSuccessfulPackageBookingPrice/100),2)}}DH</h3>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="icon-bag primary font-large-2 float-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12 col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title text-center">Booking Size</h4>
-                </div>
-                <div class="card-content collapse show">
-                    <div class="card-body pt-0">
-                        <div class="row">
-                            <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
-                                <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalFlightBookings)}}</h4>
-                                <p class="blue-grey lighten-2 mb-0">Flight</p>
-                            </div>
-                            <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
-                                <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalHotelBookings)}}</h4>
-                                <p class="blue-grey lighten-2 mb-0">Hotel</p>
-                            </div>
-                            <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
-                                <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalPackageBookings)}}</h4>
-                                <p class="blue-grey lighten-2 mb-0">Packages</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     @endrole
 
     @role('agent')
@@ -478,7 +477,7 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <h6 class="text-muted">Successful Flight Bookings</h6>
+                                        <h6 class="text-muted">{{__('Successful Flight Bookings')}}</h6>
                                         <h3>{{number_format(($userGeneralSuccessfulFlightBookingPrice/100),2)}}DH</h3>
                                     </div>
                                     <div class="align-self-center">
@@ -495,7 +494,7 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <h6 class="text-muted">Successful Hotel Bookings</h6>
+                                        <h6 class="text-muted">{{__('Successful Hotel Bookings')}}</h6>
                                         <h3>{{number_format(($userGeneralSuccessfulHotelBookingPrice/100),2)}}DH</h3>
                                     </div>
                                     <div class="align-self-center">
@@ -512,7 +511,7 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <h6 class="text-muted">Successful Package Bookings </h6>
+                                        <h6 class="text-muted">{{__('Successful Package Bookings')}} </h6>
                                         <h3>{{number_format(($userGeneralSuccessfulPackageBookingPrice/100),2)}}DH</h3>
                                     </div>
                                     <div class="align-self-center">
@@ -531,22 +530,22 @@
         <div class="col-12 col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title text-center">Booking Size</h4>
+                    <h4 class="card-title text-center">{{__('Booking Size')}}</h4>
                 </div>
                 <div class="card-content collapse show">
                     <div class="card-body pt-0">
                         <div class="row">
                             <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
                                 <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalFlightBookings)}}</h4>
-                                <p class="blue-grey lighten-2 mb-0">Flight</p>
+                                <p class="blue-grey lighten-2 mb-0">{{__('Flight')}}</p>
                             </div>
                             <div class="col-md-4 col-12 text-center border-right-blue-grey border-right-lighten-5">
                                 <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalHotelBookings)}}</h4>
-                                <p class="blue-grey lighten-2 mb-0">Hotel</p>
+                                <p class="blue-grey lighten-2 mb-0">{{__('Hotel')}}</p>
                             </div>
                             <div class="col-md-4 col-12 border-right-blue-grey border-right-lighten-5 text-center">
                                 <h4 class="font-large-2 text-bold-400">{{number_format($userGeneralTotalPackageBookings)}}</h4>
-                                <p class="blue-grey lighten-2 mb-0">Packages</p>
+                                <p class="blue-grey lighten-2 mb-0">{{__('Packages')}}</p>
                             </div>
                         </div>
                     </div>

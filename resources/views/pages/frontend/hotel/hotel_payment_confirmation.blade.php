@@ -55,7 +55,7 @@
                             <td>{{$bookingInfo['pnr']}}</td>
                         </tr>
                         <tr>
-                            <td>Hotel Name</td>
+                            <td>{{__('Hotel Name')}}</td>
                             <td>{{$hotelInformation['hotelName']}}</td>
                         </tr>
                         <tr>

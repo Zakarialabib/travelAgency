@@ -42,10 +42,10 @@
                                 <fieldset class="form-group position-relative has-icon-left">
                                     <input type="email" class="form-control form-control-lg input-lg" name="email" id="user-email" placeholder="{{__('Your Email Address')}}" required>
                                     <div class="form-control-position">
-                                        <i class="ft-mail"></i>
+                                        <i class="fas fa-envelope"></i>
                                     </div>
                                 </fieldset>
-                                <button type="submit" class="btn btn-outline-info btn-lg btn-block"><i class="ft-unlock"></i> {{__('Recover Password')}}</button>
+                                <button type="submit" class="btn btn-outline-info btn-lg btn-block"><i class="fas fa-unlock"></i> {{__('Recover Password')}}</button>
                             </form>
                         </div>
                     </div>

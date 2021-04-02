@@ -60,7 +60,7 @@
                                 </td>
                                 <td>{{formatDate($purchase->created_at, 'H:i d/m/Y')}}</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#modal-{{$purchase->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$purchase->id}}"><i class="la la-eye"></i></button>
+                                    <button data-toggle="modal" data-target="#modal-{{$purchase->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$purchase->id}}"><i class="las la-eye"></i></button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="modal-{{$purchase->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel-{{$purchase->id}}" aria-hidden="true">
                                         <div class="modal-dialog" style="margin-top: 6rem; max-width: 700px" role="document">

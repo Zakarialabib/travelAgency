@@ -24,7 +24,7 @@
                                 <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Surname</th>
+                                    <th>{{__('Surname')}}</th>
                                     <th>Given name</th>
                                     <th>Email</th>
                                     <th>Phone</th>

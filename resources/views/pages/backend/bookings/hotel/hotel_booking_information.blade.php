@@ -127,7 +127,7 @@
                             <table class="table">
                                 <tbody>
                                 <tr>
-                                    <td>PNR(Booking Code)</td>
+                                    <td>{{__('PNR')}}(Booking Code)</td>
                                     <th>{{$booking->pnr}}</th>
                                 </tr>
                                 <tr>
@@ -135,7 +135,7 @@
                                     <td>{{$booking->reference}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Payment Status</td>
+                                    <td>{{__('Payment Status')}}</td>
                                     <td>
                                         @if($booking->payment_status == 1)
                                             <b class="success"><i class="la la-check"></i> Paid</b>
@@ -145,7 +145,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Reservation Status</td>
+                                    <td>{{__('Reservation Status')}}</td>
                                     <td>
                                         @if($booking->reservation_status == 1)
                                             <b class="success"><i class="la la-check"></i> Reserved</b>
@@ -159,7 +159,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Cancellation Status</td>
+                                    <td>{{__('Cancellation Status')}}</td>
                                     <td>
                                         @if($booking->cancellation_status == 1)
                                             <b class="success"><i class="la la-check"></i> Issued</b>
@@ -232,7 +232,7 @@
                                     <div class="col-md-12">
                                         <table class="table">
                                             <tr>
-                                                <th>Hotel Name</th>
+                                                <th>{{__('Hotel Name')}}</th>
                                                 <th>{{$booking->hotel_name}}</th>
                                             </tr>
                                             <tr>

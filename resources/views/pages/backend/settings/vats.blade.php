@@ -56,7 +56,7 @@
                     <table class="table table-sm">
                         <thead>
                         <tr>
-                            <th>Type</th>
+                            <th>{{__('Type')}}</th>
                             <th>{{__('Value Type')}}</th>
                             <th>{{__('Value')}}</th>
                             <th>Action</th>

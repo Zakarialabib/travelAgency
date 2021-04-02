@@ -16,7 +16,5 @@ class VerifyCsrfToken extends Middleware
         '/interswitch-payment-verification',
         '/backend/paystack-payment-verification',
         '/backend/interswitch-payment-verification',
-        'botman',
-        'webhook',
     ];
 }

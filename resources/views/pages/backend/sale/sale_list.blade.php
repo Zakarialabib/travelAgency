@@ -37,6 +37,7 @@
                             <th width="10%">{{__('Payment status')}}</th>
                             <th width="5%">{{__('Created at')}}</th>
                             <th width="5%">{{__('View details')}}</th>
+                            <th width="5%">Status</th>
                             <th width="10%">Action</th>
                         </tr>
                         </thead>
@@ -55,7 +56,7 @@
                                     @endif
                                 </td>
                                 <td>{{formatDate($sale->created_at, 'H:i d/m/Y')}}</td>
-                                <td> <button data-toggle="modal" data-target="#modal-{{$sale->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$sale->id}}"><i class="la la-eye"></i></button>
+                                <td> <button data-toggle="modal" data-target="#modal-{{$sale->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$sale->id}}"><i class="las la-eye"></i></button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="modal-{{$sale->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel-{{$sale->id}}" aria-hidden="true">
                                         <div class="modal-dialog" style="margin-top: 6rem; max-width: 700px" role="document">
@@ -152,6 +153,11 @@
                                         </div>
                                     </div>
                                     <!-- Modal End -->
+                                </td>
+                                <td>
+                                    @if($user->is_admin === 1)
+                                        <input type="checkbox" class="js-switch sale_is_locked" name="is_locked" data-id="{{$sale->id}}" {{isChecked(1, $sale->is_locked)}} />
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="dropdown">
