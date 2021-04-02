@@ -85,7 +85,7 @@
                                                             @endif
                                                         </p>
                                                         <p>
-                                                            <strong>Payment Status: </strong>
+                                                            <strong>{{__('Payment Status')}}: </strong>
                                                             @if($purchase->payment_status == App\Payment::STATUS_PENDING){{__('Pending')}}
                                                             @elseif($purchase->payment_status == App\Payment::STATUS_DUE){{__('Due')}}
                                                             @elseif($purchase->payment_status == App\Payment::STATUS_PARTIAL){{__('Partial')}}
@@ -99,7 +99,7 @@
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Product')}}</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">Qty</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Price')}}</th>
-                                                                <th style="border: 1px solid #000; padding: 5px">SubTotal</th>
+                                                                <th style="border: 1px solid #000; padding: 5px">{{__('SubTotal')}}</th>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach($purchase->details as $key => $detail)

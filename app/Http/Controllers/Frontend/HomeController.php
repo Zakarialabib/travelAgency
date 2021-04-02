@@ -135,7 +135,7 @@ SEOMeta("Home - {$app_name}");
     {
         $app_name = setting('app_name', 'Rentacs tours');
         SEOMeta("Contact - {$app_name}");
-        return view('frontend.page.contact',);
+        return view('frontend.page.contact');
     }
 
     public function pageLanding($page_number)
@@ -211,13 +211,6 @@ SEOMeta("Home - {$app_name}");
         $page = Page::query()
             ->where('id', $id)
             ->first();
-
-        // SEO Meta
-      //   $app_name = setting('app_name', 'Rentacs tours');
-        // $title = $page->seo_title ? $page->seo_title : $page->title;
-        // $description = $page->seo_description ? $page->seo_description : '';
-        // SEOMeta($title, $description);
-        // SEOMeta("{$title} - {$app_name}");
 
         return view('frontend.page.page_detail', [
             'page' => $page,
