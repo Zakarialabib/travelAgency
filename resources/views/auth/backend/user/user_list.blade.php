@@ -32,7 +32,7 @@
                             <th width="3%">ID</th>
                             <th width="15%">{{__('Name')}}</th>
                             <th width="15%">{{__('Email')}}</th>
-                            <th width="10%">Role</th>
+                            <th width="10%">{{__('Role')}}</th>
                             <th width="10%">{{__('Status')}}</th>
                             <th width="10%">{{__('Is Admin')}}</th>
                             <th width="10%">{{__('Created at')}}</th>

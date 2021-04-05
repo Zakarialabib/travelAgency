@@ -202,7 +202,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <label>Hotel Name *</label>
+                                <label>{{__('Hotel Name')}} *</label>
                                 <input type="text" name="hotel_deal_hotel_name"  class="form-control hotel_deal_hotel_name" placeholder="e.g Radisson Blu"/>
                             </div>
                         </div>

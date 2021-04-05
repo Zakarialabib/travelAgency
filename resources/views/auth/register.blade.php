@@ -34,7 +34,7 @@
                                         <fieldset class="form-group position-relative has-icon-left">
                                             <input type="text" name="sur_name" id="sur_name" class="form-control input-lg" required placeholder="{{__('Sur Name')}}" tabindex="1">
                                             <div class="form-control-position">
-                                                <i class="ft-user"></i>
+                                                <i class="fas fa-user"></i>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -42,7 +42,7 @@
                                         <fieldset class="form-group position-relative has-icon-left">
                                             <input type="text" name="first_name" id="first_name" class="form-control input-lg" required placeholder="{{__('Name')}}" tabindex="1">
                                             <div class="form-control-position">
-                                                <i class="ft-user"></i>
+                                                <i class="fas fa-user"></i>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -106,10 +106,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6 col-md-6">
-                                        <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i> {{__('Register')}}</button>
+                                        <button type="submit" class="btn btn-info btn-lg btn-block"><i class="fas fa-user"></i> {{__('Register')}}</button>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6">
-                                        <a  href="{{url('/login')}}" class="btn btn-danger btn-lg btn-block"><i class="ft-unlock"></i> {{__('Login')}}</a>
+                                        <a  href="{{url('/login')}}" class="btn btn-danger btn-lg btn-block"><i class="fas fa-unlock"></i> {{__('Login')}}</a>
                                     </div>
                                 </div>
                             </form>

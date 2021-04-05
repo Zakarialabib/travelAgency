@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Role;
-use App\Services\PortalCustomNotificationHandler;
 use App\User;
-use Illuminate\Http\Request;
 use App\Profile;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Services\PortalCustomNotificationHandler;
 
 class ProfileController extends Controller
 {

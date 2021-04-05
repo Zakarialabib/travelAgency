@@ -107,13 +107,13 @@
                         <table class="table table-striped table-responsive table-bordered">
                             <thead>
                             <tr>
-                                <th>Reference</th>
+                                <th>{{__('Reference')}}</th>
                                 <th>PNR</th>
                                 <th>Agent Name</th>
                                 <th>Amount</th>
                                 <th>Ticket Time Limit</th>
-                                <th>Payment Status</th>
-                                <th>Reservation Status</th>
+                                <th>{{__('Payment Status')}}</th>
+                                <th>{{__('Reservation Status')}}</th>
                                 <th>Ticket Status</th>
                                 <th>Created Date</th>
                                 <th>Actions</th>
@@ -168,9 +168,9 @@
                                         <td>{{date('d D, M Y G:i A',strtotime($booking->created_at))}}</td>
                                         <td>
                                     <span class="dropdown">
-				                        <button id="btnSearchDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i class="ft-settings"></i></button>
+				                        <button id="btnSearchDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-danger dropdown-toggle">Actions</button>
 				                        <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
-				                            <a href="{{url('bookings/flight/itinerary-booking-information/'.$booking->reference)}}" class="dropdown-item"><i class="la la-eye"></i> View</a>
+				                            <a href="{{url('bookings/flight/itinerary-booking-information/'.$booking->reference)}}" class="dropdown-item"><i class="las la-eye"></i> View</a>
                                             {{--<button class="dropdown-item btn issue_ticket" value="{{$booking->pnr}}"><i class="la la-check"></i> Issue Ticket</button>--}}
                                             @if($booking->issue_ticket_status == 1)
                                                 {{-- @if(strtotime(date('y-m-d H:i:s')) < strtotime($booking->ticket_time_limit))

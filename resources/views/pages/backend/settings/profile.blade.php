@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><strong> Manage Your Information</strong></h3>
+                            <h3><strong> {{__('Manage Your Information')}}</strong></h3>
                         </div>
                         <div class="col-md-12">
                             <form method="post" action="{{route('update-profile')}}">
@@ -43,19 +43,19 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Surname</label>
+                                            <label>{{__('Surname')}}</label>
                                             <input type="text" name="customer_sur_name" required class="form-control" value="{{$profile->sur_name}}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>First Name</label>
+                                            <label>{{__('First Name')}}</label>
                                             <input type="text" name="customer_first_name" required class="form-control" value="{{$profile->first_name}}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Other Name</label>
+                                            <label>{{__('Other Name')}}</label>
                                             <input type="text" name="customer_other_name" required class="form-control" value="{{$profile->other_name}}"/>
                                         </div>
                                     </div>
@@ -63,26 +63,29 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Phone Number</label>
+                                            <label>{{__('Phone Number')}}</label>
                                             <input type="text" name="customer_phone_number" required class="form-control" value="{{$profile->phone_number}}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Email</label>
+                                            <label>{{__('Email')}}</label>
                                             <input type="email" name="customer_email" required disabled class="form-control" value="{{$user->email}}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Address</label>
-                                            <textarea class="form-control" name="customer_address" required placeholder="Enter your address to help use serve you better">{{$profile->address}}</textarea>
+                                            <label>{{__('Address')}}</label>
+                                            <textarea class="form-control" name="customer_address" required placeholder="{{__('Enter your address to help use serve you better')}}">{{$profile->address}}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
+
+                                </div>
+                                <div class="row">
                                     <div class="col-md-12">
-                                        <button class="btn btn-primary pull-left" type="button" id="update_customer_information">Update Customer Information</button>
+                                        <button class="btn btn-primary pull-left" type="button" id="update_customer_information">{{__('Update Customer Information')}}</button>
                                     </div>
                                 </div>
 
@@ -92,7 +95,7 @@
                     <br/>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><strong> Edit Your Profile Image</strong></h3>
+                            <h3><strong> {{__('Edit Your Profile Image')}}</strong></h3>
                         </div>
                         <div class="col-md-12">
                             <form method="post" id="profile_image_form" enctype="multipart/form-data" action="{{route('update-profile-image')}}">
@@ -100,14 +103,14 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label>Enter New Image</label>
+                                            <label>{{__('Enter New Image')}}</label>
                                             <input class="form-control" type="file" id="customer_profile_photo" name="customer_profile_photo" required/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button class="btn btn-primary btn-block" name="profile_upload" id="update_image" type="button">Update</button>
+                                            <button class="btn btn-primary btn-block" name="profile_upload" id="update_image" type="button">{{__('Update')}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -117,27 +120,27 @@
                     <br/>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><strong> Change Password</strong></h3>
+                            <h3><strong> {{__('Change Password')}}</strong></h3>
                         </div>
                         <div class="col-md-12">
                             <form>
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label>Enter New Password</label>
+                                            <label>{{__('Enter New Password')}}</label>
                                             <input class="form-control" type="password" name="customer_new_password" required/>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label>Confirm New Password</label>
+                                            <label>{{__('Confirm New Password')}}</label>
                                             <input class="form-control" type="password" name="customer_new_password_confirm" required/>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button class="btn btn-primary btn-block" type="button" id="update_password">Update</button>
+                                            <button class="btn btn-primary btn-block" type="button" id="update_password">{{__('Update')}}</button>
                                         </div>
                                     </div>
                                 </div>

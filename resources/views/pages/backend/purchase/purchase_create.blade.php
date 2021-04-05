@@ -26,7 +26,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> {{__('Supplier')}} *</label>
-                                            <select name="supplier_id" id="supplier_id" class="form-control" data-live-search="true" data-live-search-style="begins" title="Select supplier...">
+                                            <select name="supplier_id" id="supplier_id" class="form-control myselect" data-live-search="true" data-live-search-style="begins" title="{{__('Select supplier')}}...">
                                                @foreach($suppliers as $supplier)
                                                 <option value="{{$supplier->id}}">{{$supplier->company_name}}</option>
                                                 @endforeach
@@ -36,7 +36,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> {{__('User')}} *</label>
-                                            <select name="user_id" id="user_id" class="form-control" data-live-search="true" data-live-search-style="begins"  title="{{__('Select user')}}...">
+                                            <select name="user_id" id="user_id" class="form-control myselect" data-live-search="true" data-live-search-style="begins"  title="{{__('Select user')}}...">
                                                @foreach($users as $user)
                                                 <option value="{{$user->id}}">{{$user->profile->sur_name}}</option>
                                                 @endforeach
@@ -203,67 +203,5 @@
 
 
 @push('scripts')
-    <script>
-
-var users = {!! json_encode($purchases->toArray()) !!};
-
- $(document).ready(function(){
-    var i=1;
-    $("#add_row").click(function(){b=i-1;
-      	$('#addr'+i).html($('#addr'+b).html()).find('td:first-child').html(i+1);
-      	$('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
-      	i++; 
-  	});
-    $("#delete_row").click(function(){
-    	if(i>1){
-		$("#addr"+(i-1)).html('');
-		i--;
-		}
-		calc();
-	});
-	
-	$('#tab_logic tbody').on('keyup change',function(){
-		calc();
-	});
-	$('#tax').on('keyup change',function(){
-		calc_total();
-	});
-
-    $('#paid_amount').on('keyup change', function(){
-        calc_total();
-    });
-	
-
-});
-
-function calc()
-{
-	$('#tab_logic tbody tr').each(function(i, element) {
-		var html = $(this).html();
-		if(html!='')
-		{
-			var qty = $(this).find('.qty').val();
-			var prix = $(this).find('.prix').val();
-			$(this).find('.total').val(qty*prix);
-			
-			calc_total();
-		}
-    });
-}
-
-function calc_total()
-{
-	total=0;
-	$('.total').each(function() {
-        total += parseInt($(this).val());
-    });
-	$('#sub_total').val(total.toFixed(2));
-	tax_sum=total/100*$('#tax').val();
-	$('#tax_amount').val(tax_sum.toFixed(2));
-	$('#total_amount').val((tax_sum+total).toFixed(2));
-    $('#amount_topay').val((tax_sum+total).toFixed(2));
-    if(parseInt($('#paid_amount').val()) > 0)
-	    $('#change').val((tax_sum+total) - parseInt($('#paid_amount').val()).toFixed(2));
-}
-</script>
+<script src="{{asset('admin/js/page_purchase_create.js')}}"></script>
 @endpush

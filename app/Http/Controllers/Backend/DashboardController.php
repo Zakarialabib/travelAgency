@@ -42,6 +42,7 @@ class DashboardController extends Controller
         $count_purchases = Purchase::query()
         ->count();
 
+
         return view('backend.dashboard.index', [
             'count_cities' => $count_cities,
             'count_places' => $count_places,
@@ -50,6 +51,7 @@ class DashboardController extends Controller
             'count_users' => $count_users,
             'count_sales' => $count_sales,
             'count_purchases' => $count_purchases,
+
         ]);
     }
 }

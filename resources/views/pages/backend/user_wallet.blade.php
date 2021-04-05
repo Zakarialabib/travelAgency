@@ -48,32 +48,10 @@
                     <div class="card-body">
                        <div class="row">
                            <div class="col-md-12">
-                                 <img src="{{asset('frontend/assets/images/portal_images/interswitch.png')}}" class="img-responsive col-md-12"/>
+                                 <img src="" class="img-responsive col-md-12"/>
                            </div>
                            <div class="col-md-12">
-                               <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
-                                   <div class="col-md-12">
-                                       <input type="hidden" class="reference" name="txn_ref" value=""/>
-                                       <input type="hidden" name="currency" value="566"/>
-                                       <input type="hidden" class="item_id" name="pay_item_id" value="{{$InterswitchConfig->item_id}}"/>
-                                       <input type="hidden" class="redirect_url" name="site_redirect_url" value=""/>
-                                       <input type="hidden" class="product_id" name="product_id" value="{{$InterswitchConfig->product_id}}"/>
-                                       <input type="hidden" class="cust_id" name="cust_id" value="{{$user->user_id}}"/>
-                                       <input type="hidden" name="cust_name" value="{{$user->sur_name}} {{$user->first_name}}"/>
-                                       <input type="hidden" class="hash" name="hash" value=""/>
-                                       <input type="hidden" class="actual_amount form-control" name="amount" value=""/>
-                                       <div class="form-group">
-                                           <label>(&#x20a6;) Top Up Amount</label>
-                                           <input type="number" class="amount form-control" value=""/>
-                                       </div>
-                                   </div>
-                                   <div class="col-md-12">
-                                       <div class="form-group">
-                                           <button type="button" class="btn btn-primary btn-sm generate_wallet_payment"><i class="la la-lock"></i> GENERATE PAYMENT </button>
-                                           <button type="submit" class="btn btn-primary btn-sm interswitch_pay_now hidden"><i class="la la-money"></i> PAY NOW</button>
-                                       </div>
-                                   </div>
-                               </form>
+
                            </div>
                         </div>
                     </div>

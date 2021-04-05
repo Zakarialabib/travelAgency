@@ -34,9 +34,10 @@
                             <th width="10%">{{__('User')}}</th>
                             <th width="10%">{{__('Customer')}}</th>
                             <th width="10%">{{__('Grand total')}}</th>
-                            <th width="10%">{{__('Payment status')}}</th>
+                            <th width="5%">{{__('Payment status')}}</th>
                             <th width="5%">{{__('Created at')}}</th>
                             <th width="5%">{{__('View details')}}</th>
+                            <th width="5%">{{__('Status')}}</th>
                             <th width="10%">Action</th>
                         </tr>
                         </thead>
@@ -55,7 +56,7 @@
                                     @endif
                                 </td>
                                 <td>{{formatDate($sale->created_at, 'H:i d/m/Y')}}</td>
-                                <td> <button data-toggle="modal" data-target="#modal-{{$sale->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$sale->id}}"><i class="la la-eye"></i></button>
+                                <td> <button data-toggle="modal" data-target="#modal-{{$sale->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$sale->id}}"><i class="las la-eye"></i></button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="modal-{{$sale->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel-{{$sale->id}}" aria-hidden="true">
                                         <div class="modal-dialog" style="margin-top: 6rem; max-width: 700px" role="document">
@@ -79,21 +80,21 @@
                                                             @endif
                                                         </p>
                                                         <p>
-                                                            <strong>Payment Status: </strong>
+                                                            <strong>{{__('Payment Status')}}: </strong>
                                                             @if($sale->payment_status == App\Payment::STATUS_PENDING){{__('Pending')}}
                                                             @elseif($sale->payment_status == App\Payment::STATUS_DUE){{__('Due')}}
                                                             @elseif($sale->payment_status == App\Payment::STATUS_PARTIAL){{__('Partial')}}
                                                             @elseif($sale->payment_status == App\Payment::STATUS_PAID){{__('Paid')}}
                                                             @endif
                                                         </p>
-                                                        <h3>Orders Table</h3>
+                                                        <h3>{{__('Orders Table')}}</h3>
                                                         <table style="border-collapse: collapse; width: 100%;">
                                                             <thead>
                                                                 <th style="border: 1px solid #000; padding: 5px">#</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Product')}}</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">Qty</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Price')}}</th>
-                                                                <th style="border: 1px solid #000; padding: 5px">SubTotal</th>
+                                                                <th style="border: 1px solid #000; padding: 5px">{{__('SubTotal')}}</th>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach($sale->details as $key => $detail)
@@ -154,6 +155,11 @@
                                     <!-- Modal End -->
                                 </td>
                                 <td>
+                                @if($user->is_admin === 1)
+                                    <input data-id="{{$sale->id}}" class="js-switch toggle-class" type="checkbox" {{isChecked($sale->is_locked, 1)}}/> 
+                                @endif
+                                </td>
+                                <td>
                                     <div class="dropdown">
                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Actions') }}
@@ -183,6 +189,7 @@
 
 @push('scripts')
     <script src="{{asset('admin/js/page_user.js')}}"></script>
+    <script src="{{asset('admin/js/page_sale.js')}}"></script>
 @endpush
 
 @section('css')

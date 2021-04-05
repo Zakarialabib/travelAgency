@@ -95,7 +95,7 @@ class RegisterController extends Controller
         PortalCustomNotificationHandler::registrationSuccessful($user);
 
 
-        Toastr::success('Thanks for signing up on our portal');
+        Toastr::success('Merci pour votre inscription');
 
         return $user;
     }

@@ -106,7 +106,7 @@
                             <th>Booking Reference</th>
                             <th>Amount</th>
                             <th>Bank</th>
-                            <th>Payment Status</th>
+                            <th>{{__('Payment Status')}}</th>
                             <th>Payment Proof</th>
                         </tr>
                         </thead>

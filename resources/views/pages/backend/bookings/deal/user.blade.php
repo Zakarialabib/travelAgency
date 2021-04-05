@@ -86,13 +86,13 @@
                             <thead>
                             <tr>
                                 <th>(S/N)</th>
-                                <th>Reference</th>
+                                <th>{{__('Reference')}}</th>
                                 <th>Deal Name</th>
                                 <th>{{__('Adults')}}</th>
                                 <th>{{__('Children')}}</th>
                                 <th>{{__('Infants')}}</th>
                                 <th>Amount Paid</th>
-                                <th>Payment Status</th>
+                                <th>{{__('Payment Status')}}</th>
                                 <th>Date Booked</th>
                                 <th>Actions</th>
                             </tr>
@@ -118,7 +118,7 @@
                                         {{date('D d,M. Y. H:i:s',strtotime($userBooking->created_at))}}
                                     </td>
                                     <td>
-                                        <a href="{{url('/booking/package/package-reservation-information/'.$userBooking->reference)}}" class="btn btn-primary"> <i class="la la-eye"></i> View</a>
+                                        <a href="{{url('/booking/package/package-reservation-information/'.$userBooking->reference)}}" class="btn btn-primary"> <i class="las la-eye"></i> View</a>
                                     </td>
                                 </tr>
                             @endforeach

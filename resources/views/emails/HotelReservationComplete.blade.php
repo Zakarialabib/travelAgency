@@ -9,7 +9,7 @@ Your booking was successful. Find below the details of the hotel and room you ju
 
 <b>Booking Ref</b>      :  {{ $bookingInfo['reference']}}<br/>
 <b>Reservation Code</b> :  {{ $bookingInfo['pnr']}}<br/>
-<b>Hotel Name</b>       :  {{$hotelInfo['hotelName']}}<br/>
+<b>{{__('Hotel Name')}}</b>       :  {{$hotelInfo['hotelName']}}<br/>
 <b>Room Info</b>        :  {{$roomInfo['roomDescription']}}<br/>
 <b>Check In</b>         :  {{date('d, D M. Y',strtotime($hotelInfo['startDate']))}}<br/>
 <b>Check Out</b>        :  {{date('d, D M. Y',strtotime($hotelInfo['endDate']))}}<br/>

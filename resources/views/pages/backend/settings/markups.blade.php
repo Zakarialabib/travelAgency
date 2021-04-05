@@ -9,13 +9,13 @@
         <div class="col-lg-4 col-md-12">
             <div class="card">
                 <div class="card-header" id="header_info">
-                    Add Markup
+                {{__('Add Markup')}}
                 </div>
                 <div class="card-body">
                     <div class="alert alert-info" role="alert">
                         <i class="la la-info-circle"></i>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        <strong>Note!</strong> all fields are required
+                        <strong>Note!</strong> {{__('all fields are required')}}
                     </div>
 
                     {!! Form::open(['route'=> 'backend-save-markup']) !!}

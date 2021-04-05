@@ -104,10 +104,10 @@
                         <tr>
                             <th>Transaction Reference</th>
                             <th>Booking Reference</th>
-                            <th>Customer Name</th>
+                            <th>{{__('Customer Name')}}</th>
                             <th>Amount</th>
                             <th>Bank</th>
-                            <th>Payment Status</th>
+                            <th>{{__('Payment Status')}}</th>
                             <th>Payment Proof</th>
                             <th>Actions</th>
                         </tr>

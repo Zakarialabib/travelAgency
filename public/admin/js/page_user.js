@@ -1,5 +1,5 @@
 (function ($) {
-    'use strict';
+    'use strict';    
 
     $(document).on("change", ".user_status", function () {
         let user_id = $(this).attr('data-id');
@@ -60,9 +60,6 @@
             } 
           });
     });
-
-
-  
 
 
 })(jQuery);

@@ -35,8 +35,9 @@
                             <th width="10%">{{__('Status')}}</th>
                             <th width="10%">{{__('Grand total')}}</th>
                             <th width="10%">{{__('Payment status')}}</th>
-                            <th width="10%">{{__('Created at')}}</th>
-                            <th width="3%">{{__('View details')}}</th>
+                            <th width="5%">{{__('Created at')}}</th>
+                            <th width="5%">{{__('View details')}}</th>
+                            <th width="5%">{{__('Status')}}</th>
                             <th width="10%">Action</th>
                         </tr>
                         </thead>
@@ -60,7 +61,7 @@
                                 </td>
                                 <td>{{formatDate($purchase->created_at, 'H:i d/m/Y')}}</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#modal-{{$purchase->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$purchase->id}}"><i class="la la-eye"></i></button>
+                                    <button data-toggle="modal" data-target="#modal-{{$purchase->id}}" type="button" class="btn-sm btn-success js-see-more" data-id="{{$purchase->id}}"><i class="las la-eye"></i></button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="modal-{{$purchase->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel-{{$purchase->id}}" aria-hidden="true">
                                         <div class="modal-dialog" style="margin-top: 6rem; max-width: 700px" role="document">
@@ -84,7 +85,7 @@
                                                             @endif
                                                         </p>
                                                         <p>
-                                                            <strong>Payment Status: </strong>
+                                                            <strong>{{__('Payment Status')}}: </strong>
                                                             @if($purchase->payment_status == App\Payment::STATUS_PENDING){{__('Pending')}}
                                                             @elseif($purchase->payment_status == App\Payment::STATUS_DUE){{__('Due')}}
                                                             @elseif($purchase->payment_status == App\Payment::STATUS_PARTIAL){{__('Partial')}}
@@ -98,7 +99,7 @@
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Product')}}</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">Qty</th>
                                                                 <th style="border: 1px solid #000; padding: 5px">{{__('Price')}}</th>
-                                                                <th style="border: 1px solid #000; padding: 5px">SubTotal</th>
+                                                                <th style="border: 1px solid #000; padding: 5px">{{__('SubTotal')}}</th>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach($purchase->details as $key => $detail)
@@ -159,6 +160,11 @@
                                     <!-- Modal End -->
                                 </td>
                                 <td>
+                                @if($user->is_admin === 1)
+                                    <input data-id="{{$purchase->id}}" class="js-switch toggle-class" type="checkbox" {{isChecked($purchase->is_locked, 1)}}/> 
+                                @endif
+                                </td>
+                                <td>
                                     <div class="dropdown">
                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Actions') }}
@@ -188,6 +194,7 @@
 
 @push('scripts')
     <script src="{{asset('admin/js/page_user.js')}}"></script>
+    <script src="{{asset('admin/js/page_sale.js')}}"></script>
 @endpush
 
 @section('css')

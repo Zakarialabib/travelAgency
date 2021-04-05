@@ -5,7 +5,7 @@
 @endphp
 <html>
 <head>
-    <title>Email new booking</title>
+    <title>{{__('Email new booking')}}</title>
 </head>
 <body>
 <table {!! $table_style !!}>
@@ -16,23 +16,23 @@
                 <tbody>
                 <tr>
                     <td>
-                        <p>Hello,</p>
+                        <p>{{__('Hello')}},</p>
 
-                        <p>You have booking from website {{setting('app_name')}}</p>
+                        <p>{{__('You have booking from website')}} {{setting('app_name')}}</p>
 
-                        <p>Name: {{$name}}</p>
-                        <p>Email: {{$email}}</p>
-                        <p>Phone number: {{$phone}}</p>
+                        <p>{{__('Name')}}: {{$name}}</p>
+                        <p>{{__('Email')}}: {{$email}}</p>
+                        <p>{{__('Phone Number')}}: {{$phone}}</p>
                         <p>{{__('Place name')}}: {{$place}}</p>
-                        <p>Datetime: {{$datetime}}</p>
-                        <p>Number of adult: {{$numberofadult}}</p>
-                        <p>Number of children: {{$numberofchildren}}</p>
-                        <p>Message: {{$text_message}}</p>
-                        <p>Booking at: {{$booking_at}}</p>
+                        <p>{{__('Datetime')}}: {{$datetime}}</p>
+                        <p>{{__('Number of adult')}}: {{$numberofadult}}</p>
+                        <p>{{__('Number of children')}}: {{$numberofchildren}}</p>
+                        <p>{{__('Message')}}: {{$text_message}}</p>
+                        <p>{{__('Booking at')}}: {{$booking_at}}</p>
 
                         <p>
                             <em>
-                                Email from system,<br/>
+                            {{__('Email from system')}},<br/>
                                 {{setting('app_name')}}
                             </em>
                         </p>

@@ -47,7 +47,7 @@
                                 <td>{{number_format(($booking->total_amount/100),2)}}</td>
                             </tr>
                             <tr>
-                                <td>Customer Name</td>
+                                <td>{{__('Customer Name')}}</td>
                                 <td>{{$profile->first_name}} {{$profile->middle_name}} {{$profile->last_name}}</td>
                             </tr>
                             <tr>

@@ -5,11 +5,13 @@
     <a href="#" class="place-item__addwishlist @if($place->wish_list_count) remove_wishlist active @else @guest open-login @else add_wishlist @endguest @endif" data-id="{{$place->id}}" title="Add Wishlist">
         <i class="la la-bookmark la-24"></i>
     </a>
+{{-- 
    @guest()
     <a class="place-item__cart open-login"><i class="las la-shopping-cart la-24"></i> </a>
  @else 
     <a href="{{ url('add-to-cart/'.$place->id) }}" class="place-item__cart">  <i class="las la-shopping-cart la-24"></i>   </a>
  @endguest 
+ --}}
     <div class="places-item__info">
          
         <div class="places-item__category">

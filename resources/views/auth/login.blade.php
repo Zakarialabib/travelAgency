@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-md-6 col-12 text-center text-md-right"><a href="{{ route('password.request') }}" class="card-link">{{__('Forgot Password?')}}</a></div>
                                 </div>
-                                <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i> {{__('Login')}}</button>
+                                <button type="submit" class="btn btn-info btn-lg btn-block"><i class="fas fa-unlock"></i> {{__('Login')}}</button>
                             </form>
                         </div>
                     </div>

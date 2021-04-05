@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers;
 
-use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Role;
 use App\Profile;
-use App\Services\PortalCustomNotificationHandler;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use nilsenj\Toastr\Facades\Toastr;
 use App\Wallet;
 use App\Place;
 use App\RoleUser;
 use App\Wishlist;
+use App\Services\PortalCustomNotificationHandler;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use nilsenj\Toastr\Facades\Toastr;
 use App\Commons\Response;
 
 class UserController extends Controller

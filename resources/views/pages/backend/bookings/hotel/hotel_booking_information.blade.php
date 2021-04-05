@@ -8,7 +8,6 @@
         $user = \App\User::find($booking->user_id);
         $profile = \App\Profile::where('user_id',$booking->user_id)->first();
         $user['profile'] = $profile;
-        $InterswitchConfig = new \App\Services\InterswitchConfig();
     @endphp
 
     <div class="row">
@@ -33,22 +32,10 @@
                                     <table class="table">
                                         <tbody>
                                         <tr>
-                                            <th>Pay with Interswitch</th>
+                                            <th>Pay with</th>
                                             <td>
                                                 <input  type="hidden"  class="booking_reference" value="{{$booking->reference}}"/>
-                                                <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
-                                                    <input  type="hidden"  class="reference" name="txn_ref" value=""/>
-                                                    <input  type="hidden"  class="amount" name="amount" value="{{$booking->total_amount}}"/>
-                                                    <input  type="hidden"  name="currency" value="566"/>
-                                                    <input  type="hidden"  class="item_id" name="pay_item_id" value="{{$InterswitchConfig->item_id}}"/>
-                                                    <input  type="hidden"  class="redirect_url" name="site_redirect_url" value=""/>
-                                                    <input  type="hidden"  class="product_id" name="product_id" value="{{$InterswitchConfig->product_id}}"/>
-                                                    <input  type="hidden"  class="cust_id" name="cust_id" value="{{$user->id}}"/>
-                                                    <input  type="hidden"  name="cust_name" value="{{$profile->first_name}}"/>
-                                                    <input  type="hidden"  class="hash" name="hash" value=""/>
-                                                    <button type="button"  class="btn btn-primary btn-sm confirm_interswitch_booking"><i class="la la-lock"></i> CONFIRM BOOKING </button>
-                                                    <button type="submit"  class="btn btn-primary btn-sm interswitch_pay_now hidden"><i class="la la-money"></i> PAY NOW</button>
-                                                </form>
+                                              
                                             </td>
                                         </tr>
                                         </tbody>
@@ -127,7 +114,7 @@
                             <table class="table">
                                 <tbody>
                                 <tr>
-                                    <td>PNR(Booking Code)</td>
+                                    <td>{{__('PNR')}}(Booking Code)</td>
                                     <th>{{$booking->pnr}}</th>
                                 </tr>
                                 <tr>
@@ -135,7 +122,7 @@
                                     <td>{{$booking->reference}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Payment Status</td>
+                                    <td>{{__('Payment Status')}}</td>
                                     <td>
                                         @if($booking->payment_status == 1)
                                             <b class="success"><i class="la la-check"></i> Paid</b>
@@ -145,7 +132,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Reservation Status</td>
+                                    <td>{{__('Reservation Status')}}</td>
                                     <td>
                                         @if($booking->reservation_status == 1)
                                             <b class="success"><i class="la la-check"></i> Reserved</b>
@@ -159,7 +146,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Cancellation Status</td>
+                                    <td>{{__('Cancellation Status')}}</td>
                                     <td>
                                         @if($booking->cancellation_status == 1)
                                             <b class="success"><i class="la la-check"></i> Issued</b>
@@ -232,7 +219,7 @@
                                     <div class="col-md-12">
                                         <table class="table">
                                             <tr>
-                                                <th>Hotel Name</th>
+                                                <th>{{__('Hotel Name')}}</th>
                                                 <th>{{$booking->hotel_name}}</th>
                                             </tr>
                                             <tr>

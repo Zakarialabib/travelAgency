@@ -22,12 +22,21 @@ class SaleController extends Controller
     public function list()
     {
         $customer = Customer::all();
+        $user = User::where('is_admin','=',1)->first();
 
         $sales = Sale::query()
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('pages.backend.sale.sale_list', compact('customer', 'sales') );
+        return view('pages.backend.sale.sale_list', compact('customer','user' ,'sales') );
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $sale = Sale::find($request->sale_id);
+        $sale->is_locked = $request->is_locked;
+        $sale->save();
+        return response()->json(['succes'=>'status changed succesfully']);
     }
 
     public function createView(Request $request)
@@ -44,6 +53,7 @@ class SaleController extends Controller
         $customers = Customer::all();
           
         return view('pages.backend.sale.sale_create', [
+            'user' => $user,
             'sales' => $sales,
             'suppliers' => $suppliers,
             'users' => $users,
@@ -73,7 +83,8 @@ class SaleController extends Controller
                 "paid_amount" => "",
                 "payment_note" => "",
                 "note" => "",
-                "staff_note" => ""
+                "staff_note" => "",
+                "is_locked" => ""
             ]);
 
             $document = $request->document;
@@ -123,6 +134,7 @@ class SaleController extends Controller
                 'payment_note' => $data['payment_note'],
                 'note' => $data['note'],
                 'staff_note' => $data['staff_note'],
+                'is_locked' => $data['is_locked'],
             ]);
 
             if($sale) {
@@ -212,7 +224,8 @@ class SaleController extends Controller
                 "paid_amount" => "",
                 "payment_note" => "",
                 "note" => "",
-                "staff_note" => ""
+                "staff_note" => "",
+                "is_locked" => ""
             ]);
 
             $sale = Sale::find($id);
@@ -276,6 +289,7 @@ class SaleController extends Controller
                     'payment_note' => $data['payment_note'],
                     'note' => $data['note'],
                     'staff_note' => $data['staff_note'],
+                    'is_locked' => $data['is_locked'],
                 ]);
 
                 Toastr::success("Sale updated successfully");

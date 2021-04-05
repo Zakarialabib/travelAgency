@@ -18,14 +18,24 @@ class PurchaseController extends Controller
 {
     public function list()
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $purchases = Purchase::query()
             ->with('supplier')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('pages.backend.purchase.purchase_list', [
-            'purchases' => $purchases
-        ]);
+        return view('pages.backend.purchase.purchase_list', compact('purchases','user') );
+
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $purchase = Purchase::find($request->purchase_id);
+        $purchase->is_locked = $request->is_locked;
+        $purchase->save();
+        
+        return response()->json(['succes'=>'status changed succesfully']);
     }
 
     public function createView(Request $request)

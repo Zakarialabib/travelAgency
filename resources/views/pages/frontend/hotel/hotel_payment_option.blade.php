@@ -7,7 +7,6 @@
     @php
         $AmadeusConfig = new \App\Services\AmadeusConfig();
         $AmadeusHelper = new \App\Services\AmadeusHelper();
-        $InterswitchConfig = new \App\Services\InterswitchConfig();
     @endphp
 
 
@@ -64,46 +63,15 @@
                                         <div class="payment-seperator clearfix"></div>
                                     @endif
                                     <div class="paypal-pay">
-                                        <h4>Pay Using Interswitch</h4>
-                                        <div class="col-md-8 col-sm-8">
-                                            <img src="{{asset('frontend/assets/images/portal_images/interswitch.png')}}" class="img-responsive"/>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <input  type="hidden"  class="booking_reference" value="{{$selectedRoom['bookingReference']}}"/>
-                                            <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
-
-                                                <input  type="hidden"  class="reference"      name="txn_ref" value=""/>
-                                                <input  type="hidden"  class="amount"         name="amount" value="{{$selectedRoom['totalAmount']}}"/>
-                                                <input  type="hidden"  name="currency"        value="566"/>
-                                                <input  type="hidden"  class="item_id"        name="pay_item_id" value="{{$InterswitchConfig->item_id}}"/>
-                                                <input  type="hidden"  class="redirect_url"   name="site_redirect_url" value=""/>
-                                                <input  type="hidden"  class="product_id"     name="product_id" value="{{$InterswitchConfig->product_id}}"/>
-                                                <input  type="hidden"  class="cust_id"        name="cust_id" value="{{auth()->user()->id}}"/>
-                                                <input  type="hidden"  name="cust_name"       value="{{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}"/>
-                                                <input  type="hidden"  class="hash"           name="hash" value=""/>
-
-                                                <button type="button"  class="btn btn_travel_portal confirm_interswitch_booking">CONFIRM BOOKING </button>
-                                                <button type="submit"  class="btn btn_travel_portal interswitch_pay_now hidden">PAY NOW</button>
-
-                                            </form>
-                                        </div>
+                                    <h4>Pay Using </h4>
+                                    <div class="col-md-8 col-sm-8">
+                                       <img src="" class="img-responsive"/>
                                     </div>
-                                    <div class="payment-seperator clearfix"></div>
-                                    <div class="paypal-pay">
-                                        <h4>Pay Using PayStack</h4>
-                                        <div class="col-md-8 col-sm-8">
-                                            <img src="{{asset('frontend/assets/images/portal_images/paystack.png')}}" class="img-responsive"/>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <form method="post" action="{{url('/generate-paystack-payment')}}">
-                                                @csrf
-                                                <input type="hidden" name="amount" value="{{$selectedRoom['totalAmount']}}"/>
-                                                <input type="hidden" name="booking_reference" value="{{$selectedRoom['bookingReference']}}"/>
-                                                <input type="hidden" name="email" value="{{auth()->user()->email}}"/>
-                                                <button type="submit">Pay Now </button>
-                                            </form>
-                                        </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <input  type="hidden"  class="booking_reference" value="{{$booking->reference}}"/>
+                                       
                                     </div>
+                                </div>
                                         @role('agent')
                                         <div class="payment-seperator clearfix"></div>
                                         <div class="paypal-pay">

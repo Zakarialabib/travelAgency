@@ -72,9 +72,9 @@
                             <th>S/N</th>
                             <th>Transaction Reference</th>
                             <th>Booking Reference</th>
-                            <th>Customer Name</th>
+                            <th>{{__('Customer Name')}}</th>
                             <th>Amount</th>
-                            <th>Payment Status</th>
+                            <th>{{__('Payment Status')}}</th>
                             <th>Response Code</th>
                             <th>Response Description</th>
                             <th>Transaction Date</th>
@@ -91,7 +91,7 @@
                             <td>&#x20a6;{{number_format(($interswitchPayment->amount/100),2)}}</td>
                             <th class="payment_status_{{$interswitchPayment->id}}">
                                 @if($interswitchPayment->payment_status == 1)
-                                    <p class="success"><i class="la la-check"></i> Successful</p>
+                                    <p class="success"><i class="la la-check"></i> {{__('Successful')}}</p>
                                     @else
                                     <p class="warning"><i class="la la-warning"></i> Pending</p>
                                 @endif

@@ -27,7 +27,7 @@
                                <div class="row">
                                    <div class="col-md-4">
                                        <div class="form-group">
-                                           <label>Title</label>
+                                           <label>{{__('Title')}}</label>
                                            <select class="form-control" name="title_id" required>
                                             @foreach($titles as $serial => $title)
                                              <option value="{{$title->id}}">{{$title->name}}</option>
@@ -37,7 +37,7 @@
                                    </div>
                                    <div class="col-md-4">
                                        <div class="form-group">
-                                         <label>Gender</label>
+                                         <label>{{__('Gender')}}</label>
                                            <select class="form-control" name="gender_id" required>
                                                @foreach($genders as $serial => $gender)
                                                    <option value="{{$gender->id}}">{{$gender->type}}</option>
@@ -46,7 +46,7 @@
                                        </div>
                                    </div>
                                    <div class="col-md-4">
-                                       <label>User Type</label>
+                                       <label>{{__('User Type')}}</label>
                                        <select class="form-control" name="user_type" required>
                                            @foreach($roles as $serial => $role)
                                                <option value="{{$role->id}}">{{$role->display_name}}</option>
@@ -57,42 +57,42 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Surname</label>
-                                            <input name="sur_name" type="text" class="form-control" placeholder="Surname (Family name)" required>
+                                            <label>{{__('Surname')}}</label>
+                                            <input name="sur_name" type="text" class="form-control" placeholder="{{__('Surname (Family name)')}}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>First name</label>
-                                            <input name="first_name" type="text" class="form-control" placeholder="First name (Your name)" required>
+                                            <label>{{__('First name')}}</label>
+                                            <input name="first_name" type="text" class="form-control" placeholder="{{__('First name (Your name)')}}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Other name</label>
-                                            <input name="other_name" type="text" class="form-control" placeholder="Other name (Your other name)">
+                                            <label>{{__('Other name')}}</label>
+                                            <input name="other_name" type="text" class="form-control" placeholder="{{__('Other name (Your other name)')}}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Email</label>
-                                            <input name="email" type="email" class="form-control" placeholder="Email" required>
+                                            <label>{{__('Email')}}</label>
+                                            <input name="email" type="email" class="form-control" placeholder="{{__('Email')}}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Phone</label>
-                                            <input name="phone" type="tel" class="form-control" placeholder="Phone number" required>
+                                            <label>{{__('Phone')}}</label>
+                                            <input name="phone" type="tel" class="form-control" placeholder="{{__('Phone number')}}" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Address</label>
-                                            <textarea class="form-control" name="address" required>
+                                            <label>{{__('Address')}}</label>
+                                            <textarea class="form-control" name="{{__('address')}}" required>
 
                                             </textarea>
                                         </div>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                            <button type="submit"  class="btn btn-outline-primary">Create User</button>
+                            <button type="submit"  class="btn btn-outline-primary">{{__('Create User')}}</button>
                         </div>
                     </form>
                 </div>
@@ -125,17 +125,18 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                        <h4 class="card-title">All Users</h4>
+                        <h4 class="card-title">{{__('All Users')}}</h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
-                        <div class="heading-elements">
-                            <ul class="list-inline mb-0">
+                        <div class="title_right">
+                        <div class="pull-right">
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create-user">Create New User</button>
+                        <ul class="list-inline mb-0">
                                 <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
                                 <li><a data-action="expand"><i class="la la-expand"></i></a></li>
-                                <li>
-                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create-user"><i class="ft-plus white"></i> Create New User</button>
-                                </li>
-                            </ul>
+                            </ul>  
+                    </div>
                         </div>
+                      
                     </div>
                 <div class="card-content">
                     <div class="table-responsive">
@@ -143,12 +144,12 @@
                             <thead>
                             <tr>
                                 {{--<th>SN</th>--}}
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Profile Status</th>
-                                <th>Role</th>
-                                <th>Actions</th>
+                                <th>{{__('Name')}}</th>
+                                <th>{{__('Email')}}</th>
+                                <th>{{__('Phone')}}</th>
+                                <th>{{__('Profile Status')}}</th>
+                                <th>{{__('Role')}}</th>
+                                <th>{{__('Actions')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -162,7 +163,7 @@
                                                      @csrf
                                                      <input type="hidden" value="{{$user->user_id}}" name="user_id"/>
                                                      <div class="modal-header">
-                                                         <h3 class="modal-title" id="myModalLabel17">Create User</h3>
+                                                         <h3 class="modal-title" id="myModalLabel17">{{__('Create User')}}</h3>
                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                              <span aria-hidden="true">&times;</span>
                                                          </button>
@@ -172,7 +173,7 @@
                                                              <div class="row">
                                                                  <div class="col-md-4">
                                                                      <div class="form-group">
-                                                                         <label>Title</label>
+                                                                         <label>{{__('Title')}}</label>
                                                                          <select class="form-control" name="title_id" required>
                                                                              <option value="{{$user->title_id}}">{{\App\Title::find($user->title_id)->name}}</option>
                                                                              @foreach($titles as $serial => $title)
@@ -183,7 +184,7 @@
                                                                  </div>
                                                                  <div class="col-md-4">
                                                                      <div class="form-group">
-                                                                         <label>Gender</label>
+                                                                         <label>{{__('Gender')}}</label>
                                                                          <select class="form-control" name="gender_id" required>
                                                                              <option value="{{$user->gender_id}}">{{\App\Gender::find($user->gender_id)->type}}</option>
                                                                              @foreach($genders as $serial => $gender)
@@ -193,7 +194,7 @@
                                                                      </div>
                                                                  </div>
                                                                  <div class="col-md-4">
-                                                                     <label>User Type</label>
+                                                                     <label>{{__('User Type')}}</label>
                                                                      <select class="form-control" name="user_type" required>
                                                                          <option value="{{$user->role_id}}">{{\App\Role::find($user->role_id)->display_name}}</option>
                                                                          @foreach($roles as $serial => $role)
@@ -205,19 +206,19 @@
                                                              <div class="row">
                                                                  <div class="col-md-4">
                                                                      <div class="form-group">
-                                                                         <label>Surname</label>
+                                                                         <label>{{__('Surname')}}</label>
                                                                          <input name="sur_name" value="{{$user->sur_name}}" type="text" class="form-control" placeholder="Surname (Family name)" required>
                                                                      </div>
                                                                  </div>
                                                                  <div class="col-md-4">
                                                                      <div class="form-group">
-                                                                         <label>First name</label>
+                                                                         <label>{{__('First name')}}</label>
                                                                          <input name="first_name" type="text" value="{{$user->first_name}}" class="form-control" placeholder="First name (Your name)" required>
                                                                      </div>
                                                                  </div>
                                                                  <div class="col-md-4">
                                                                      <div class="form-group">
-                                                                         <label>Other name</label>
+                                                                         <label>{{__('Other name')}}</label>
                                                                          <input name="other_name" type="text" value="{{$user->other_name}}" class="form-control" placeholder="Other name (Your other name)">
                                                                      </div>
                                                                  </div>
@@ -225,13 +226,13 @@
                                                              <div class="row">
                                                                  <div class="col-md-6">
                                                                      <div class="form-group">
-                                                                         <label>Email</label>
+                                                                         <label>{{__('Email')}}</label>
                                                                          <input name="email" type="email" value="{{$user->email}}" class="form-control" placeholder="Email" required>
                                                                      </div>
                                                                  </div>
                                                                  <div class="col-md-6">
                                                                      <div class="form-group">
-                                                                         <label>Phone</label>
+                                                                         <label>{{__('Phone')}}</label>
                                                                          <input name="phone" type="tel" value="{{$user->phone_number}}" class="form-control" placeholder="Phone number" required>
                                                                      </div>
                                                                  </div>
@@ -239,7 +240,7 @@
                                                              <div class="row">
                                                                  <div class="col-md-12">
                                                                      <div class="form-group">
-                                                                         <label>Address</label>
+                                                                         <label>{{__('Address')}}</label>
                                                                          <textarea class="form-control" name="address" required>{{$user->address}}</textarea>
                                                                      </div>
                                                                  </div>
@@ -249,7 +250,7 @@
                                                      </div>
                                                      <div class="modal-footer">
                                                          <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                                                         <button type="submit"  class="btn btn-outline-primary">Update User</button>
+                                                         <button type="submit"  class="btn btn-outline-primary">{{__('Update User')}}</button>
                                                      </div>
                                                  </form>
                                              </div>
@@ -262,28 +263,30 @@
                                          <td>{{$user->phone_number}}</td>
                                          <td>
                                              @if($user->profile_complete_status == 0)
-                                                 <p class="warning"><i class="la la-warning"></i> Incomplete</p>
+                                                 <p class="warning"><i class="la la-warning"></i> {{__('Incomplete')}}</p>
                                              @elseif($user->profile_complete_status == 0)
-                                                 <p class="success"><i class="la la-success"></i> Complete</p>
+                                                 <p class="success"><i class="la la-success"></i> {{__('Complete')}}</p>
                                              @endif
                                          </td>
                                          <td>
                                              @if($user->role_id == 1)
-                                                 <p class="danger">Super Admin</p>
+                                                 <p class="danger">{{__('Super Admin')}}</p>
                                              @elseif($user->role_id == 2)
-                                                 <p class="success">Agent</p>
+                                                 <p class="success">{{__('Agent')}}</p>
                                              @elseif($user->role_id == 3)
-                                                 <p class="info"> Customer</p>
+                                                 <p class="info"> {{__('Customer')}}</p>
                                              @endif
                                          </td>
                                          <td>
-                                         <span class="dropdown">
-				                        <button id="btnSearchDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-primary dropdown-toggle dropdown-menu-right"><i class="ft-settings"></i></button>
-				                        <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1 dropdown-menu-right">
-                                            <button class="dropdown-item btn edit_user" data-toggle="modal" data-target=".edit_user_{{$user->user_id}}" value="{{$user->user_id}}"><i class="la la-edit"></i> Edit</button>
+                                         <div class="dropdown">
+                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ __('Actions') }}
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <button class="dropdown-item btn edit_user" data-toggle="modal" data-target=".edit_user_{{$user->user_id}}" value="{{$user->user_id}}"><i class="la la-edit"></i> {{__('Edit')}}</button>
                                             <button class="dropdown-item btn delete_user" value="{{$user->user_id}}"><i class="la la-trash"></i> {{__('Delete')}}</button>
-				                        </span>
-				                    </span>
+                                              </div>
+				                           </div>
                                          </td>
                                      </tr>
                                  @endforeach
