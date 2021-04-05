@@ -183,14 +183,9 @@
     }
 }
 @media print {
-            * {
-                font-size:12px;
-                line-height: 20px;
-            }
+            * { font-size:12px; line-height: 20px; }
             td,th {padding: 5px 0;}
-            .hidden-print {
-                display: none !important;
-            }
+            .hidden-print { display: none !important; }
             @page { margin: 0; } body { margin: 0.5cm; margin-bottom:1.6cm; } 
         }
     </style>
@@ -201,13 +196,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<!--Author      : @arboshiki-->
 <div id="invoice">
     <div class="toolbar hidden-print">
         <div class="text-right">
     <a  href="{{ url()->previous() }}" class="btn btn-info">
     <i class="fa fa-arrow-circle-o-left"></i>
-    <span>Back</span>
+    <span>{{__('Back')}}</span>
     </a>            
     <button class="btn btn-info"  onclick="auto_print()">{{__('Print')}}</button>
         </div>
@@ -218,7 +212,7 @@
             <header>
                 <div class="row">
                     <div class="col">
-                        <a target="_blank" href="https://lobianijs.com">
+                        <a target="_blank" href="">
                             <img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
                         </a>
                     </div>

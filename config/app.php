@@ -161,6 +161,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
         Harimayco\Menu\MenuServiceProvider::class,
+        Way\Generators\GeneratorsServiceProvider::class,
+        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         
         /*
          * Application Service Providers...

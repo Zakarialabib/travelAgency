@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>{{__('Change')}}</label>
+                                                <label>{{__('Change Amount')}}</label>
                                                 <input type="number" name="change" class="form-control" id="change" value="0" step="any" readonly/>
                                             </div>
                                         </div>

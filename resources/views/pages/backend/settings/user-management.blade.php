@@ -93,7 +93,6 @@
                                         <div class="form-group">
                                             <label>{{__('Address')}}</label>
                                             <textarea class="form-control" name="{{__('address')}}" required>
-
                                             </textarea>
                                         </div>
                                     </div>
