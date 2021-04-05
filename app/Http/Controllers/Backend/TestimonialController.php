@@ -18,7 +18,7 @@ class TestimonialController extends Controller
             ->where('status', Testimonial::STATUS_ACTIVE)
             ->get();
 
-        return view('backend.testimonial.testimonial_list', [
+        return view('pages.backend.testimonial.testimonial_list', [
             'testimonials' => $testimonials
         ]);
     }
@@ -26,7 +26,7 @@ class TestimonialController extends Controller
     public function pageCreate($id = null)
     {
         $testimonial = Testimonial::find($id);
-        return view('backend.testimonial.testimonial_create', [
+        return view('pages.backend.testimonial.testimonial_create', [
             'testimonial' => $testimonial
         ]);
     }

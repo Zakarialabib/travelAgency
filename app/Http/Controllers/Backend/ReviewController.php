@@ -29,7 +29,7 @@ class ReviewController extends Controller
             ->with('place')
             ->get();
 
-        return view('backend.review.review_list', [
+        return view('pages.backend.review.review_list', [
             'reviews' => $reviews
         ]);
     }

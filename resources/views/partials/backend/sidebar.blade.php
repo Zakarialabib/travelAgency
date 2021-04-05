@@ -122,7 +122,13 @@
                       <li><a class="menu-item" href="{{route('purchase_list')}}" >{{__('Purchase List')}}</a></li>
                    </ul>
                 </li>
-                
+                <li><a class="menu-item" href="#">{{__('Return')}}</a>
+                    <ul class="menu-content">
+                      <li><a class="menu-item" href="{{route('return_create_view')}}">{{__('Create New')}}</a></li>
+                      <li><a class="menu-item" href="{{route('return_list')}}" >{{__('Return List')}}</a></li>
+                   </ul>
+                </li>
+
              </ul>
            </li>
             @endrole

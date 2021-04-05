@@ -12,21 +12,10 @@
         </div>
     </div>
     <div class="clearfix"></div>
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
             <div class="x_panel">
-                <div class="x_title">
-                    <div class="row">
-                        <div class="col-md-3 form-group">
-
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-
                 <div class="x_content">
-
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
@@ -55,13 +44,11 @@
                                         @csrf
                                         <button type="button" class="btn-sm btn-danger user_delete">{{__('Delete')}}</button>
                                     </form>
-                                   
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
