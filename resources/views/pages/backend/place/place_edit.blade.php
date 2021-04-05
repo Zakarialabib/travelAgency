@@ -1,49 +1,38 @@
 @extends('layouts.backend')
-
+@section('css')
+    <link rel="stylesheet" href="{{asset('backend/app-assets/css/multi-step-form.css')}}">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+@endsection
 @section('content')
-    <div class="page-title">
-        <div class="title_left">
-            <h3>{{__('Edit place')}}</h3>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
-            <div class="x_panel">
-                <div class="x_content row">
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <ul class="nav nav-tabs tabs-left place_create_menu">
-                            <li class=""><a href="#genaral">{{__('Genaral')}}</a></li>
-                            <li class=""><a href="#hightlight">{{__('Hightlight')}}</a></li>
-                            <li class=""><a href="#location">{{__('Location')}}</a></li>
-                            <li class=""><a href="#contact_info">{{__('Contact info')}}</a></li>
-                            <li class=""><a href="#social_network">{{__('Social network')}}</a></li>
-                            <li class=""><a href="#opening_hours">{{__('Open hourses')}}</a></li>
-                            <li class=""><a href="#media">{{__('Media')}}</a></li>
-                            <li class=""><a href="#link_affiliate">{{__('BOOKING TYPE')}}</a></li>
-                            <li class=""><a href="#golo_seo">{{__('SEO')}}</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-9 col-md-9 col-sm-9 place_create">
-                        <form action="{{ route('place_update' , $place->id) }}" enctype="multipart/form-data" method="post">
-                            @method('put')
-                            @csrf
-                        
-                            <div class="tab-content">
-                        
-                                <ul class="nav nav-tabs bar_tabs" role="tablist">
+<h2 id="heading" style="text-align: center;">{{__('Add place')}}</h2>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class=".col-xs-12 .col-md-12">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3 place_create">
+            <form id='msform' action="{{ route('place_update' , $place->id) }}" enctype="multipart/form-data" method="post">
+                @method('put')
+                @csrf
+                <ul class="nav nav-tabs bar_tabs" role="tablist">
                                     @foreach($languages as $index => $language)
                                         <li class="nav-item">
                                             <a class="nav-link {{$index !== 0 ?: "active"}}" id="home-tab" data-toggle="tab" href="#language_{{$language->code}}" role="tab" aria-controls="" aria-selected="">{{$language->name}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
-                                
-                                    <div id="genaral">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active" id="account"><strong>Générale</strong></li>
+                        <li id="personal"><strong>Informations personnelles</strong></li>
+                        <li id="details"><strong>Détails</strong></li>
+                        <li id="payment"><strong>Médias et SEO</strong></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br> <!-- fieldsets -->
+                    <fieldset>
+                    <div id="genaral" style='padding:10px;'>
                                     <p class="lead">{{__('Genaral')}}</p>
-                        
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="tab-content">
@@ -66,7 +55,6 @@
                                             </div>
                                         </div>
                                     </div>
-                        
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="name">{{__('Price range')}}: *</label>
@@ -85,8 +73,7 @@
                                         <input type="date" class="form-control" id="date" name="date"  value="{{$place->date}}" autocomplete="off">
                                         </div>
                                     </div>
-                        
-                        
+
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="name">{{__('Category')}}: *</label>
@@ -110,9 +97,7 @@
                                             </select>
                                         </div>
                                     </div>
-                        
                                 </div>
-                        
                         
                                 <div id="hightlight">
                                     <p class="lead">{{__('Amenities')}}</p>
@@ -124,7 +109,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                        
+
                                 <div id="location">
                                     <p class="lead">{{__('Location')}}</p>
                         
@@ -161,7 +146,20 @@
                                     <div id="map"></div>
                                 </div>
                         
-                                <div id="contact_info">
+                                <div id="link_affiliate">
+                                <p class="lead">{{__('Booking type')}}</p>
+                     
+                     <select class="form-control" name="booking_type" required>
+                                     <option  value="{{\App\Booking::TYPE_BOOKING_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BOOKING_FORM)}}>{{__('Booking form')}}</option>
+                                     <option  value="{{\App\Booking::TYPE_CONTACT_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_CONTACT_FORM)}}>{{__('Contact form')}}</option>
+                                     <option  value="{{\App\Booking::TYPE_BANNER}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BANNER)}}>{{__('Banner Ads')}}</option>
+                     </select>
+                                </div>
+                                                            
+                    <input type="button" name="next" class="next action-button" value="Suivant" style='margin-right:10px;'/>
+                    </fieldset>
+                    <fieldset>
+                    <div id="contact_info"  style='padding:10px;'>
                                     <p class="lead">{{__('Contact info')}}</p>
                                      <div class="form-group row">
                                     <div class="col-md-4">
@@ -178,7 +176,6 @@
                                     </div>
                                     </div>
                                 </div>
-                        
                                 <div id="social_network">
                                     <p class="lead">{{__('Social Networks')}}</p>
                         
@@ -205,7 +202,39 @@
                                     </div>
                                     <button type="button" class="btn btn-round btn-primary" id="social_addmore">+{{__('Add more')}}</button>
                                 </div>
-                                <div id="opening_hours">
+                                
+                        
+                                <div id="social_network" style='padding-left:20px;'>
+                                    <p class="lead">{{__('Social Networks')}}</p>
+                        
+                                    <div id="social_list">
+                                        @if($place->social)
+                                            @foreach($place->social as $index => $social)
+                                                <div class="row form-group social_item" id="social_item_{{$index}}">
+                                                    <div class="col-md-5">
+                                                        <select class="form-control" name="social[{{$index}}][name]">
+                                                            @foreach(SOCIAL_LIST as $value)
+                                                                <option value="{{$value['name']}}" {{isSelected($value['name'], $social['name'])}}>{{$value['name']}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" name="social[{{$index}}][url]" value="{{$social['url']}}">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <button type="button" class="btn btn-danger social_item_remove" id="{{$index}}">X</button>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                    <button type="button" class="btn btn-round btn-primary" id="social_addmore">+{{__('Add more')}}</button>
+                                </div>
+                                
+                         <input type="button" name="next" class="next action-button" value="Suivant" /> <input type="button" name="precedent" class="previous action-button-previous" value="précédent" />
+                    </fieldset>
+                    <fieldset>
+                    <div id="opening_hours" style='padding-left:10px;'>
                                    <p class="lead">{{__('Opening hours')}}</p>
                                     <div id="openinghour_list">
                                         @if($place->opening_hour)
@@ -225,10 +254,10 @@
                                     </div>
                                     <input type="hidden" name="place_id" value="{{$place->id}}">
                                     <button type="button" class="btn btn-round btn-primary" id="openinghour_addmore">+{{__('Add more')}}</button>
-                                </div>
+                                </div>     
                                 <div id="itinerary">
                                     <p class="lead">{{__('itinerary')}}</p>
-                                    <div id="itinerary_list">
+                                    <div id="itinerary_list" style='padding-left:20px;'>
                                         @if($place->itinerary)
                                             @foreach($place->itinerary as $key => $menu)
                                                 <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}">
@@ -250,7 +279,10 @@
                                     </div>
                                     <button type="button" class="btn btn-round btn-info" id="itinerary_addmore">+{{__('Add more')}}</button>
                                 </div>
-                                <div id="media">
+                                <input type="button" name="next" class="next action-button" value="Suivant" /> <input type="button" name="previous" class="previous action-button-previous" value="Précedent" />
+                    </fieldset>
+                    <fieldset>
+                    <div id="media">
                                     <p class="lead">{{__('Media')}}</p>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -295,62 +327,19 @@
                                         <input type="text" class="form-control" id="place_video" name="video" placeholder="Youtube, Vimeo video url">
                                     </div>
                                 </div>
-                                <div id="link_affiliate">
-                                   <p class="lead">{{__('Booking type')}}</p>
-                                    <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-secondary {{isActive($place->booking_type, \App\Booking::TYPE_BOOKING_FORM)}}" data-toggle-class="btn-primary" data-toggle-passive-class="btn-primary">
-                                            <input type="radio" class="join-btn" name="booking_type"
-                                                   value="{{\App\Booking::TYPE_BOOKING_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BOOKING_FORM)}}>{{__('Booking form')}}
-                                        </label>
-                                        {{--       <label class="btn btn-secondary {{isActive($place->booking_type, \App\Booking::TYPE_BOOKING_NOW)}}" data-toggle-class="btn-primary" data-toggle-passive-class="btn-primary">
-                                            <input type="radio" class="join-btn" name="booking_type"
-                                                   value="{{\App\Booking::TYPE_BOOKING_NOW}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BOOKING_NOW)}}>{{__('Booking Now')}}
-                                        </label>
-                                        <label class="btn btn-secondary {{isActive($place->booking_type, \App\Booking::TYPE_CONTACT_FORM)}}" data-toggle-class="btn-primary" data-toggle-passive-class="btn-primary">
-                                            <input type="radio" class="join-btn" name="booking_type"
-                                                   value="{{\App\Booking::TYPE_CONTACT_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_CONTACT_FORM)}}>{{__('Contact form')}}
-                                        </label>
-                                        <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-primary">
-                                            <input type="radio" name="booking_type" value="{{\App\Booking::TYPE_BANNER}}"
-                                                   class="join-btn" {{isChecked($place->booking_type, \App\Booking::TYPE_BANNER)}}>{{__('Banner Ads')}}
-                                        </label>--}}
-                                    </div>
-                                </div>
-                                <div class="ln_solid"></div>
-                                <div id="golo_seo">
-                                    <p class="lead">{{__('SEO')}}</p>
-                                    <div class="form-group">
-                                        <label for="seo_title">{{__('SEO title')}} - <small>{{__('60 characters or less')}}</small> :</label>
-                                        <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{$place['seo_title']}}">
-                                        <div id="count">
-                                          <span id="current_count">0</span>
-                                           <span id="maximum_count">/ 60</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="seo_description">{{__('Meta Description')}} - <small>{{__('160 characters or less')}}</small> :</label>
-                                        <textarea class="form-control" id="seo_description" name="seo_description">{{$place['seo_description']}}</textarea>
-                                          <div id="counter">
-                                          <span id="count_current">0</span>
-                                           <span id="count_maximum">/ 160</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-20">{{__('Update')}}</button>
-                        </form>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-
+                                                      <input type="button" name="previous" class="previous action-button-previous" value=" Précedent " />
+                                <input type="submit" class="btn btn-primary mt-20" style='color:white; background-color:tomato;'>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @push('scripts')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{asset('admin/js/page_place_create.js')}}"></script>
-<script src="{{asset('admin/js/page_post.js')}}"></script>
-
+    <script src="{{asset('js/page_place_create.js')}}"></script>
+    <script src="{{asset('admin/js/page_post.js')}}"></script>
+    <script src="{{asset('js/multi-step-form.js')}}" type="text/javascript"></script>
 @endpush
