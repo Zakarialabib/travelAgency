@@ -18,10 +18,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'title',  'first_name', 'last_name', 'other_name',
+        'title',  'first_name', 'last_name', 'other_name','customer_id',
         'date_of_birth', 'email',  'phone_number',
         'address', 'gender', 'password', 'account_status',
-        'agency_name', 'agency_id', 'office_number'
+        'agency_name', 'agency_id', 'office_number',"is_admin"
     ];
 
     /**
@@ -354,4 +354,9 @@ class User extends Authenticatable
         return static::hasOne(CooperateCustomerProfile::class,'user_id','id');
     }
 
-}
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'customer_id', 'id');
+    }
+
+    }

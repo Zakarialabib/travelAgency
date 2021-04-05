@@ -155,7 +155,9 @@
                                     <!-- Modal End -->
                                 </td>
                                 <td>
+                                @if($user->is_admin === 1)
                                     <input data-id="{{$sale->id}}" class="js-switch toggle-class" type="checkbox" {{isChecked($sale->is_locked, 1)}}/> 
+                                @endif
                                 </td>
                                 <td>
                                     <div class="dropdown">

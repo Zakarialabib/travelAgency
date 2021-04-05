@@ -55,6 +55,7 @@
                                         @csrf
                                         <button type="button" class="btn-sm btn-danger user_delete">{{__('Delete')}}</button>
                                     </form>
+                                   
                                 </td>
                             </tr>
                         @endforeach

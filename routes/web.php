@@ -54,18 +54,6 @@ Route::get('/cancel-pnr/{pnr}','FlightController@cancelPNR');
 Route::get('/issue-ticket/{pnr}','FlightController@issueTicket');
 Route::get('/void-ticket/{pnr}','FlightController@voidTicket');
 
-Route::post('/generate-interswitch-payment','OnlinePaymentController@generateInterswitchPayment');
-
-Route::post('/interswitch-payment-verification','OnlinePaymentController@interswitchPaymentVerification');
-
-Route::post('/generate-paystack-payment','OnlinePaymentController@generatePayStackPayment');
-Route::get('/paystack-payment-verification','OnlinePaymentController@payStackPaymentVerification');
-
-
-Route::post('backend/generate-interswitch-payment','OnlinePaymentController@generateInterswitchPaymentBackEnd');
-Route::post('backend/interswitch-payment-verification','OnlinePaymentController@interswitchPaymentVerificationBackEnd');
-Route::post('backend/generate-paystack-payment','OnlinePaymentController@generatePayStackPaymentBackEnd');
-Route::get('backend/paystack-payment-verification','OnlinePaymentController@payStackPaymentVerificationBackEnd');
 
 
 Route::get('/get-logged-in-user',function(){
@@ -252,8 +240,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/search-portal','BackEndViewController@searchPortal');
 
     Route::get('backend/payment-confirmation','BackEndViewController@paymentConfirmation');
-
-    Route::post('/backend/generate-interswitch-wallet-payment','OnlinePaymentController@generateInterswitchWalletPayment');
 
     Route::get('/dashboard','BackEndViewController@dashboard')->name('dashboard');    
 

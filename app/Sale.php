@@ -15,7 +15,7 @@ class Sale extends Model
         'user_id', 'customer_id', 'reference_no',
         "total_qty", "tax", "total_tax", "total_price", "grand_total",
         "status", "payment_status","paid_amount", "paid_by",
-        "document", "note", "staff_note", "payment_note"
+        "document", "note", "staff_note", "payment_note","is_locked"
     ];
 
     protected $casts = [

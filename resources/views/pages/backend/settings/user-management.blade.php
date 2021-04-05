@@ -278,13 +278,15 @@
                                              @endif
                                          </td>
                                          <td>
-                                         <span class="dropdown">
-				                        <button id="btnSearchDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-danger dropdown-toggle">Actions</button>
-				                        <span aria-labelledby="btnSearchDrop2" class="dropdown-menu mt-1">
+                                         <div class="dropdown">
+                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ __('Actions') }}
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <button class="dropdown-item btn edit_user" data-toggle="modal" data-target=".edit_user_{{$user->user_id}}" value="{{$user->user_id}}"><i class="la la-edit"></i> {{__('Edit')}}</button>
                                             <button class="dropdown-item btn delete_user" value="{{$user->user_id}}"><i class="la la-trash"></i> {{__('Delete')}}</button>
-				                        </span>
-				                    </span>
+                                              </div>
+				                           </div>
                                          </td>
                                      </tr>
                                  @endforeach

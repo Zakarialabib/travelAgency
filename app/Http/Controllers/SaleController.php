@@ -33,18 +33,6 @@ class SaleController extends Controller
 
     public function updateStatus(Request $request)
     {
-        $data = $this->validate($request, [
-            'is_locked' => 'required',
-        ]);
-
-        $model = Sale::find($request->sale_id);
-        $model->fill($data)->save();
-
-        return $this->response->formatResponse(200, $model, 'Update Sale status success!');
-    }
-
-    public function updateStatus(Request $request)
-    {
         $sale = Sale::find($request->sale_id);
         $sale->is_locked = $request->is_locked;
         $sale->save();
@@ -58,8 +46,6 @@ class SaleController extends Controller
             $booking = Booking::where('id', $request->input('id'))->with(['user', 'place'])->first();
             //dd($booking);
         }
-
-        $user = User::where('is_admin','=',1)->first();
 
         $users = User::all();
         $sales = Sale::all();

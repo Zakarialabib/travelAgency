@@ -46,9 +46,9 @@
                     <div class="col-md-6 form-group">
                     <label>{{__('Role')}}</label>
                     <select name="role"  class="form-control">
-                    <option  class="form-control" value="Visiteur">{{__('Visitor')}}</option>
-                    <option  class="form-control" value="Fournisseur">{{__('Wholeseller')}}</option>
-                    <option  class="form-control" value="Agent">{{__('Agent')}}</option>
+                    <option class="form-control" value="Client">{{__('Client')}}</option>
+                    <option class="form-control" value="Fournisseur">{{__('Wholeseller')}}</option>
+                    <option class="form-control" value="Agent">{{__('Agent')}}</option>
                     </select>
                     </div>
 

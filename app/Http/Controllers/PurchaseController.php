@@ -18,14 +18,15 @@ class PurchaseController extends Controller
 {
     public function list()
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $purchases = Purchase::query()
             ->with('supplier')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('pages.backend.purchase.purchase_list', [
-            'purchases' => $purchases
-        ]);
+        return view('pages.backend.purchase.purchase_list', compact('purchases','user') );
+
     }
 
     public function updateStatus(Request $request)

@@ -11,7 +11,6 @@
       $user = \App\User::find($booking->user_id);
       $profile = \App\Profile::where('user_id',$booking->user_id)->first();
       $user['profile'] = $profile;
-      $InterswitchConfig = new \App\Services\InterswitchConfig();
    @endphp
 <div class="row">
     <div class="col-md-4">
@@ -35,22 +34,10 @@
                         <table class="table">
                             <tbody>
                             <tr>
-                                <th>Pay with Interswitch</th>
+                                <th>Pay with </th>
                                 <td>
                                     <input  type="hidden"  class="booking_reference" value="{{$booking->reference}}"/>
-                                    <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
-                                        <input  type="hidden"  class="reference" name="txn_ref" value=""/>
-                                        <input  type="hidden"  class="amount" name="amount" value="{{$booking->total_amount}}"/>
-                                        <input  type="hidden"  name="currency" value="566"/>
-                                        <input  type="hidden"  class="item_id" name="pay_item_id" value="{{$InterswitchConfig->item_id}}"/>
-                                        <input  type="hidden"  class="redirect_url" name="site_redirect_url" value=""/>
-                                        <input  type="hidden"  class="product_id" name="product_id" value="{{$InterswitchConfig->product_id}}"/>
-                                        <input  type="hidden"  class="cust_id" name="cust_id" value="{{$user->id}}"/>
-                                        <input  type="hidden"  name="cust_name" value="{{$profile->first_name}}"/>
-                                        <input  type="hidden"  class="hash" name="hash" value=""/>
-                                        <button type="button"  class="btn btn-primary btn-sm confirm_interswitch_booking"><i class="la la-lock"></i> CONFIRM BOOKING </button>
-                                        <button type="submit"  class="btn btn-primary btn-sm interswitch_pay_now hidden"><i class="la la-money"></i> PAY NOW</button>
-                                    </form>
+                                   
                                 </td>
                             </tr>
                             </tbody>
