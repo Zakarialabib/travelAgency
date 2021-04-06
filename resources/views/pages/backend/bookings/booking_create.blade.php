@@ -8,7 +8,7 @@
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-12 bg-white"> 
-            <form method="post" action="{{ route('booking_create') }}" class="form-horizontal" role="form" enctype="multipart/form-data">
+            <form method="post" action="{{ route('booking_store') }}" class="form-horizontal" role="form" enctype="multipart/form-data">
                 @csrf
                   <div class="row mb-2">
                             <div class="col-md-12 col-sm-12 bg-white ">

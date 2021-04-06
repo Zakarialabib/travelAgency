@@ -20,7 +20,11 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label> {{__('Reference no')}} *</label>
-                                                   <input type="text" name="reference_no" id="reference_no" class="form-control" />
+                                                <input type="text" name="reference_no" id="reference_no" class="form-control" value="{{$reference_no}}" />
+                                                @if ($booking)    
+                                                <input type="hidden" name="booking_reference" value="{{$booking->reference}}" />
+                                                @endif
+                                                <input type="hidden" name="is_locked" value="1" />
                                             </div>
                                         </div>
                                     <div class="col-md-4">

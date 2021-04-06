@@ -42,6 +42,12 @@ class BookingController extends Controller
             'type' => ''
         ]);
 
+        // generate refenrce number
+        $lastBooking = Booking::latest()->first();
+        $lastBooking->reference++;
+        $data['reference'] = $lastBooking->reference;
+        
+
         $booking = new Booking();
         $booking->fill($data);
 

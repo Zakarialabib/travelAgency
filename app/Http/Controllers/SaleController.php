@@ -16,6 +16,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class SaleController extends Controller
 {
@@ -47,14 +48,15 @@ class SaleController extends Controller
             //dd($booking);
         }
 
+        $lastSale = Sale::latest()->first();
+        $lastSale->reference_no++;
+
         $users = User::all();
-        $sales = Sale::all();
         $suppliers = Supplier::all();
         $customers = Customer::all();
           
         return view('pages.backend.sale.sale_create', [
-            'user' => $user,
-            'sales' => $sales,
+            'reference_no' => $lastSale->reference_no,
             'suppliers' => $suppliers,
             'users' => $users,
             'customers' => $customers,
@@ -67,6 +69,7 @@ class SaleController extends Controller
         try {
             $data = $this->validate($request, [
                 "reference_no" => "",
+                "booking_reference" => "",
                 "user_id" => "",
                 "customer_id" => "",
                 "name" => "",
@@ -119,6 +122,7 @@ class SaleController extends Controller
     
             $sale = Sale::create([
                 'reference_no' => $data['reference_no'],
+                'booking_reference' => $data['booking_reference'],
                 'user_id' => $data['user_id'],
                 'customer_id' => $data['customer_id'],
                 'total_qty' => count($saleDetails),
@@ -154,6 +158,7 @@ class SaleController extends Controller
             return redirect()->route('sale_list')->with('success', 'Sale Updated success');
     
         } catch (QueryException $e) {
+            Log::info($e);
             Toastr::error("Unable to create new Sale");
             return back()->with('error', 'Unable to create new Sale');;
         }

@@ -93,24 +93,32 @@ class BackEndViewController extends Controller
                 'sales' => Sale::whereDate('created_at', '>=' , Carbon::now())->count(),
                 'purchases' => Purchase::whereDate('created_at', '>=' , Carbon::now())->count(),
                 'users' => User::whereDate('created_at', '>=' , Carbon::now())->count(),
+                'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
+                'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
             ),
             'month' => array(
                 'package_bookings' => PackageBooking::where('payment_status','1')->whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
                 'sales' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
                 'purchases' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
+                'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
+                'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
             ),
             'semi' => array(
                 'package_bookings' => PackageBooking::where('payment_status','1')->whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'sales' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'purchases' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
+                'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
+                'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
             ),
             'year' => array(
                 'package_bookings' => PackageBooking::where('payment_status','1')->whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
                 'sales' => Sale::whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
                 'purchases' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
+                'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
+                'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
             ),
         );
         //dd($data);
