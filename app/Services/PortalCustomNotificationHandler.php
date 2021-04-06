@@ -20,11 +20,21 @@ use App\Mail\WalletDebit;
 use App\Mail\VisaApplicationRequest;
 use App\Mail\PackageReservationComplete;
 use Exception;
+use App\Mail\RegistrationInvitation;
 use Illuminate\Support\Facades\Mail;
 use nilsenj\Toastr\Facades\Toastr;
 
 class PortalCustomNotificationHandler
 {
+     public static function registrationInvite($booking){
+   
+        try{
+           Mail::to($booking['email'])->send(new RegistrationInvitation($booking));
+        }catch(Exception $e){
+           Toastr::info('We could not send a registration email.');
+        }
+        return 0;
+    }
 
     public static function registrationSuccessful($user){
         try{

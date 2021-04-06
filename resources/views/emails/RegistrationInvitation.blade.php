@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class FlightReservationReminder extends Mailable
+class RegistrationInvitation extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,12 @@ class FlightReservationReminder extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $booking;
+
+    public function __construct($booking)
     {
-        //
+        $this->booking = $booking;
     }
 
     /**
@@ -29,6 +32,7 @@ class FlightReservationReminder extends Mailable
     public function build()
     {
         return $this->from('no-reply@rentacstours.com',config('app.name'))
-            ->markdown('emails.FlightReservationReminder');
+            ->subject('Inscription sur RentacsTours')
+            ->markdown('emails.RegistrationInvitation');
     }
 }

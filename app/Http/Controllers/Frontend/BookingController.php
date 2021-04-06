@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Services\PortalCustomNotificationHandler;
 
 class BookingController extends Controller
 {
@@ -88,6 +89,7 @@ class BookingController extends Controller
             });
 
         }
+        PortalCustomNotificationHandler::registrationInvite($booking);
         
         Toastr::success('You successfully created your booking','Success');
 
