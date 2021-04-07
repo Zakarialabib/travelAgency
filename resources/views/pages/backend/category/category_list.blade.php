@@ -77,7 +77,6 @@
         </div>
     </div>
     @include('pages.backend.category.modal_add_category')
-
 @endsection
 
 @push('scripts')

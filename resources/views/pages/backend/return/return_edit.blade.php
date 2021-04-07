@@ -1,12 +1,11 @@
 @extends('layouts.backend')
 @section('page-title')  {{__('Edit Purchase')}}  @endsection
-
 @section('content')
-<div class="page-title">
-        <div class="title_left">
-            <h3>{{__('Edit Purchase')}}</h3>
+    <div class="page-title">
+            <div class="title_left">
+                <h3>{{__('Edit Purchase')}}</h3>
+            </div>
         </div>
-    </div>
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-12 bg-white"> 
@@ -205,9 +204,7 @@
             </form>
         </div>
     </div>
-
 @stop
-
 
 @push('scripts')
 <script src="{{asset('admin/js/page_return_edit.js')}}"></script>

@@ -39,8 +39,8 @@
                     <table class="table table-striped table-bordered golo-datatable post_list">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
-                            <th width="5%">Image</th>
+                            <th >ID</th>
+                            <th >Image</th>
                             <th>{{__('Title')}}</th>
                             <th>{{__('Status')}}</th>
                             <th width="15%">Action</th>

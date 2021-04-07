@@ -37,9 +37,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-
                 <div class="x_content">
-
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
@@ -49,7 +47,6 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         @foreach($place_types as $place_type)
                             <tr>
                                 <td>{{$place_type->id}}</td>
@@ -72,18 +69,13 @@
                                 </td>
                             </tr>
                         @endforeach
-
                         </tbody>
                     </table>
-
-
                 </div>
-
             </div>
         </div>
     </div>
     @include('pages.backend.place_type.modal_add_place_type')
-
 @endsection
 
 @push('scripts')

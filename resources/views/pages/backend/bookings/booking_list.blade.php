@@ -17,14 +17,13 @@
                 <div class="x_content">
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
-                            <thead>
                                 <tr>
-                                    <th width="10%">{{__('Client infos')}}</th>
-                                    <th width="10%">{{__('Place')}}</th>
-                                    <th width="10%">{{__('Booking For')}}</th>
-                                    <th width="5%">{{__('Booking at')}}</th>
-                                    <th width="5%">{{__('Status')}}</th>
-                                    <th width="10%">{{__('Actions')}}</th>
+                                    <th >{{__('Client infos')}}</th>
+                                    <th >{{__('Place')}}</th>
+                                    <th >{{__('Booking For')}}</th>
+                                    <th >{{__('Booking at')}}</th>
+                                    <th >{{__('Status')}}</th>
+                                    <th >{{__('Actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -127,7 +126,6 @@
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

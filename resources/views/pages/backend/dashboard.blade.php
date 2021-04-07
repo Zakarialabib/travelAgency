@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('page-title')  Dashboard  @endsection
+@section('page-title')  {{__('Dashboard')}}  @endsection
 
 @section('content')
 
@@ -119,7 +119,7 @@
 
     <h2><strong>{{__('Staticts')}}:</strong></h2>
     <div class="row">
-        <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -149,22 +149,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="fa fa-calendar text-danger font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_bookings}}</h2>
-                        <p class="mb-0 line-ellipsis"> {{__('Bookings')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
+
+
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -178,55 +165,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-success  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="fa fa-user text-success font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_users}}</h2>
-                        <p class="mb-0 line-ellipsis">{{__('Users')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="fa fa-money text-danger font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_sales}}</h2>
-                        <p class="mb-0 line-ellipsis">{{__('Sales')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-info  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-eye text-info font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_purchases}}</h2>
-                        <p class="mb-0 line-ellipsis">{{__('Purchases')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
+        </div>        
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -237,66 +177,6 @@
                         </div>
                         <h2 class="text-bold-700">{{$count_posts}}</h2>
                         <p class="mb-0 line-ellipsis">{{__('Posts')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-shopping-bag text-danger font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-primary  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-heart text-primary font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-success  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-award text-success font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-truck text-danger font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
                     </div>
                 </div>
             </div>
@@ -322,7 +202,7 @@
     @if ($loop->first)
     <div class="row js-date-row" id="{{$key}}">
         <div class="row w-100">
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -337,7 +217,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -352,7 +232,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -367,7 +247,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -384,7 +264,7 @@
             </div>
         </div>
         <div class="row w-100">
-            <div class="col-xl-4 col-12 col-sm-6">
+            <div class="col-xl-6 col-12 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -399,7 +279,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-12 col-sm-6">
+            <div class="col-xl-6 col-12 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -419,7 +299,7 @@
     @else
     <div class="row js-date-row" style="display: none" id="{{$key}}">
         <div class="row w-100">
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -434,7 +314,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -449,7 +329,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -464,7 +344,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">

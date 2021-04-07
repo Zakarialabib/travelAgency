@@ -37,8 +37,8 @@
                     <table class="table table-striped table-bordered golo-datatable post_list">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
-                            <th width="5%">{{__('Thumb')}}</th>
+                            <th >ID</th>
+                            <th >{{__('Thumb')}}</th>
                             <th>Title</th>
                             @unless(isRoute('post_list_page'))
                                 <th>{{__('Category')}}</th>

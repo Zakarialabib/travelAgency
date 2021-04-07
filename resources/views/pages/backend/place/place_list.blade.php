@@ -67,8 +67,8 @@
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
-                            <th width="5%">Image</th>
+                            <th >ID</th>
+                            <th >Image</th>
                             <th>{{__('Place name')}}</th>
                             <th>{{__('City')}}</th>
                             <th>{{__('Activity')}}</th>
