@@ -33,6 +33,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/extensions/toastr.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/extensions/toastr.css')}}">
 <link  rel="stylesheet" type="text/css" href="{{asset('/admin/vendors/select2/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/assets/css/intlTelInput.min.css')}}">
 
 <!-- END Page Level CSS-->
 

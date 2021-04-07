@@ -65,12 +65,9 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6">
-                                        <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="tel" name="phone" id="phone" class="form-control input-lg" required placeholder="{{__('Phone Number')}} (0661010101)" tabindex="1">
-                                            <div class="form-control-position">
-                                                <i class="la la-phone"></i>
-                                            </div>
-                                        </fieldset>
+                                        <div class="iti iti--allow-dropdown">
+                                            <input type="tel" name="phone" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -122,4 +119,17 @@
 
 @endsection
 
+
+@section('javascript')
+<script src="{{asset('frontend/assets/js/intlTelInput.min.js')}}"></script>
+<script>
+  var input = document.querySelector("#phone");
+  window.intlTelInput(input, {
+    initialCountry: "MA",
+    autoHideDialCode: true,
+    autoPlaceholder: true,
+    nationalMode: false,
+  });
+</script>
+@endsection
 
