@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Booking;
@@ -74,6 +73,8 @@ class BookingController extends Controller
                 $text_message = "";
             }
 
+            PortalCustomNotificationHandler::registrationInvite($booking);
+
             Mail::send('frontend.mail.new_booking', [
                 'name' => $name,
                 'email' => $email,
@@ -89,7 +90,6 @@ class BookingController extends Controller
             });
 
         }
-        PortalCustomNotificationHandler::registrationInvite($booking);
         
         Toastr::success('You successfully created your booking','Success');
 

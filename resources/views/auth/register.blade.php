@@ -126,7 +126,7 @@
   var input = document.querySelector("#phone");
   window.intlTelInput(input, {
     initialCountry: "MA",
-    autoHideDialCode: true,
+    autoHideDialCode: false,
     autoPlaceholder: true,
     nationalMode: false,
   });
