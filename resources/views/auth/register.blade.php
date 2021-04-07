@@ -106,7 +106,7 @@
                                         <button type="submit" class="btn btn-info btn-lg btn-block"><i class="fas fa-user"></i> {{__('Register')}}</button>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6">
-                                        <a  href="{{url('/login')}}" class="btn btn-danger btn-lg btn-block"><i class="fas fa-unlock"></i> {{__('Login')}}</a>
+                                        <a  href="{{url('/login')}}" class="btn btn-danger btn-lg btn-block">{{__('Login')}}</a>
                                     </div>
                                 </div>
                             </form>

@@ -19,13 +19,13 @@
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
+                            <th >ID</th>
                             <th width="15%">{{__('Name')}}</th>
                             <th width="15%">{{__('Email')}}</th>
                             <th width="15%">{{__('Company name')}}</th>
                             <th width="15%">{{__('Phone')}}</th>
                             <th width="15%">{{__('Created at')}}</th>
-                            <th width="10%">Action</th>
+                            <th >Action</th>
                         </tr>
                         </thead>
                         <tbody>

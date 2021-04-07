@@ -45,7 +45,7 @@
                                         <i class="fas fa-envelope"></i>
                                     </div>
                                 </fieldset>
-                                <button type="submit" class="btn btn-outline-info btn-lg btn-block"><i class="fas fa-unlock"></i> {{__('Recover Password')}}</button>
+                                <button type="submit" class="btn btn-outline-info btn-lg btn-block">{{__('Recover Password')}}</button>
                             </form>
                         </div>
                     </div>

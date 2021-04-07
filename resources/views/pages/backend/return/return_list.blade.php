@@ -1,14 +1,14 @@
 @extends('layouts.backend')
 @section('content')
+<div>
     <div class="page-title">
         <div class="title_left">
             <h3>{{__('Returns')}}</h3>
         </div>
         <div class="title_right">
-        <div class="pull-right">
-        <a class="btn btn-primary" href="{{route('return_create_view')}}">{{__('Add New Return')}}</a>
-
-        </div>
+            <div class="pull-right">
+                  <a class="btn btn-primary" href="{{route('return_create_view')}}">{{__('Add New Return')}}</a>
+            </div>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -30,14 +30,14 @@
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
-                            <th width="10%">{{__('Status')}}</th>
-                            <th width="10%">{{__('Grand total')}}</th>
-                            <th width="10%">{{__('Payment status')}}</th>
-                            <th width="5%">{{__('Created at')}}</th>
-                            <th width="5%">{{__('View details')}}</th>
-                            <th width="5%">{{__('Status')}}</th>
-                            <th width="10%">Action</th>
+                            <th >ID</th>
+                            <th >{{__('Status')}}</th>
+                            <th >{{__('Grand total')}}</th>
+                            <th >{{__('Payment status')}}</th>
+                            <th >{{__('Created at')}}</th>
+                            <th >{{__('View details')}}</th>
+                            <th >{{__('Status')}}</th>
+                            <th >Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -187,6 +187,7 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @push('scripts')

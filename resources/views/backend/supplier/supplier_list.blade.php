@@ -20,12 +20,12 @@
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
-                            <th width="10%">{{__('Supplier Name')}}</th>
-                            <th width="10%">{{__('Supplier Company')}}</th>
-                            <th width="10%">{{__('Phone Number')}}</th>
-                            <th width="10%">{{__('Email')}}</th>
-                            <th width="10%">{{__('Created at')}}</th>
+                            <th >ID</th>
+                            <th >{{__('Supplier Name')}}</th>
+                            <th >{{__('Supplier Company')}}</th>
+                            <th >{{__('Phone Number')}}</th>
+                            <th >{{__('Email')}}</th>
+                            <th >{{__('Created at')}}</th>
                             <th width="10">Action</th>
                         </tr>
                         </thead>

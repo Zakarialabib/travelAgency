@@ -24,13 +24,13 @@
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
+                            <th >ID</th>
                             <th width="15%">{{__('Reviewer')}}</th>
                             <th width="15%">{{__('Place name')}}</th>
                             <th>{{__('Comment')}}</th>
-                            <th width="10%">{{__('Star')}}</th>
-                            <th width="10%">{{__('Status')}}</th>
-                            <th width="10%">{{__('Action')}}</th>
+                            <th >{{__('Star')}}</th>
+                            <th >{{__('Status')}}</th>
+                            <th >{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -29,13 +29,13 @@
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
+                            <th >ID</th>
                             <th width="15%">{{__('Name')}}</th>
                             <th width="15%">{{__('Email')}}</th>
-                            <th width="10%">Role</th>
-                            <th width="10%">{{__('Status')}}</th>
-                            <th width="10%">{{__('Is Admin')}}</th>
-                            <th width="10%">{{__('Created at')}}</th>
+                            <th >Role</th>
+                            <th >{{__('Status')}}</th>
+                            <th >{{__('Is Admin')}}</th>
+                            <th >{{__('Created at')}}</th>
                             <th width="10">Action</th>
                         </tr>
                         </thead>
