@@ -122,7 +122,7 @@ class SaleController extends Controller
     
             $sale = Sale::create([
                 'reference_no' => $data['reference_no'],
-                'booking_reference' => $data['booking_reference'],
+                'booking_reference' => $data['booking_reference'] ?? null,
                 'user_id' => $data['user_id'],
                 'customer_id' => $data['customer_id'],
                 'total_qty' => count($saleDetails),

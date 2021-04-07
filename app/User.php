@@ -24,6 +24,10 @@ class User extends Authenticatable
         'agency_name', 'agency_id', 'office_number',"is_admin"
     ];
 
+    protected $casts = [
+        'is_admin' => 'integer',
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *

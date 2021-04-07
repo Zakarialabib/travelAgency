@@ -12,7 +12,6 @@
         </div>
     </div>
     <div class="clearfix"></div>
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
             <div class="x_panel">
@@ -155,8 +154,12 @@
                                     <!-- Modal End -->
                                 </td>
                                 <td>
-                                @if($user->is_admin === 1)
+                                @if(Auth::user()->is_admin === 1)
                                     <input data-id="{{$sale->id}}" class="js-switch toggle-class" type="checkbox" {{isChecked($sale->is_locked, 1)}}/> 
+                                @elseif($sale->is_locked)
+                                    <i class="la la-lock"></i>
+                                @else
+                                    <i class="la la-lock-open"></i>
                                 @endif
                                 </td>
                                 <td>
