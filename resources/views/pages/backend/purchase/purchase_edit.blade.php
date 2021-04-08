@@ -20,7 +20,8 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label> {{__('Reference no')}} *</label>
-                                                   <input type="text" name="reference_no" value="{{$purchase->reference_no}}" class="form-control" />
+                                                <input type="text" name="reference_no" value="{{$purchase->reference_no}}" class="form-control" />
+                                                <input type="hidden" name="is_locked" value="{{$purchase->is_locked}}" />
                                             </div>
                                         </div>
                                     <div class="col-md-4">
@@ -135,7 +136,8 @@
                                             <select name="paid_by" class="form-control">
                                                 <option value="{{App\Payment::MEDIUM_CASH}}" {{$purchase->paid_by === App\Payment::MEDIUM_CASH ? 'selected="selected"' : ''}}>{{__('Cash')}}</option>
                                                 <option value="{{App\Payment::MEDIUM_CHECK}}" {{$purchase->paid_by === App\Payment::MEDIUM_CHECK ? 'selected="selected"' : ''}}>{{__('Cheque')}}</option>
-                                                <option value="{{App\Payment::MEDIUM_DEPOSIT}}" {{$purchase->paid_by === App\Payment::MEDIUM_DEPOSIT ? 'selected="selected"' : ''}}>{{__('Deposit')}}</option>
+                                                <option value="{{App\Payment::MEDIUM_WIRE}}" {{$purchase->paid_by === App\Payment::MEDIUM_WIRE ? 'selected="selected"' : ''}}>{{__('Wire')}}</option>
+                                                <option value="{{App\Payment::MEDIUM_TRAIT}}" {{$purchase->paid_by === App\Payment::MEDIUM_TRAIT ? 'selected="selected"' : ''}}>{{__('Trait')}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -178,7 +180,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>{{__('Change')}} *</label>
+                                    <label>{{__('Change Amount')}} *</label>
                                     <input type="number" name="change" class="form-control" id="change" value="0" step="any" readonly/>
                                 </div>
                             </div>
@@ -206,7 +208,10 @@
                     </div>
                 <div class="row m-b-md">
                     <div class="col-md-12">
-                        <button class="btn-primary btn">
+                        <button class="btn-primary btn" id="js-validate-btn">
+                            {{__('Validate')}}
+                       </button>
+                        <button class="btn-primary btn" id="js-save">
                              {{__('Save')}}
                         </button>
                         <a class="btn btn-primary" href="{{route('purchase_list')}}"> {{__('Back')}}</a>
@@ -221,4 +226,28 @@
 
 @push('scripts')
 <script src="{{asset('admin/js/page_purchase_edit.js')}}"></script>
+<script>
+$('#js-validate-btn').click(function(event){
+    event.preventDefault();
+    $('input[name="is_locked"]').val(1);
+    swal({
+        title: "Validation success",
+        text: "sale validated successfully",
+        icon: "success",
+    });
+});
+
+$( "#js-save" ).click(function(event) {
+    event.preventDefault();
+    if($('input[name="is_locked"]').val() == 0) {
+        swal({
+            title: "Validation",
+            text: "Sale need validation",
+            icon: "error",
+        });
+    } else {
+        $( "#form" ).submit();
+    }
+});
+</script>
 @endpush

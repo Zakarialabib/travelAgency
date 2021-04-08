@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('page-title')  Dashboard  @endsection
+@section('page-title')  {{__('Dashboard')}}  @endsection
 
 @section('content')
 
@@ -119,7 +119,7 @@
 
     <h2><strong>{{__('Staticts')}}:</strong></h2>
     <div class="row">
-        <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -149,22 +149,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="fa fa-calendar text-danger font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_bookings}}</h2>
-                        <p class="mb-0 line-ellipsis"> {{__('Bookings')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
+
+
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -178,55 +165,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-success  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="fa fa-user text-success font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_users}}</h2>
-                        <p class="mb-0 line-ellipsis">{{__('Users')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="fa fa-money text-danger font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_sales}}</h2>
-                        <p class="mb-0 line-ellipsis">{{__('Sales')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-info  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-eye text-info font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">{{$count_purchases}}</h2>
-                        <p class="mb-0 line-ellipsis">{{__('Purchases')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
+        </div>        
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
                 <div class="card-content">
                     <div class="card-body">
@@ -241,67 +181,220 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-shopping-bag text-danger font-medium-5"></i>
+    </div>
+    <div class="row my-3 w-100">
+        <ul class="d-flex justify-content-end w-100">
+            <li class="mr-2">
+                <button type="button" data-date="today" class="js-date btn btn-outline-secondary btn-round-lg active">{{__('Today')}}</button>
+            </li>
+            <li class="mr-2">
+                <button type="button" data-date="month" class="js-date btn btn-outline-secondary btn-round-lg">{{__('Last month')}}</button>
+            </li>
+            <li class="mr-2">
+                <button type="button" data-date="semi" class="js-date btn btn-outline-secondary btn-round-lg">{{__('Last 6 month')}}</button>
+            </li>
+            <li class="mr-2">
+                <button type="button" data-date="year" class="js-date btn btn-outline-secondary btn-round-lg">{{__('Last year')}}</button>
+            </li>
+        </ul>
+    </div>
+    @foreach ($data as $key => $d)
+    @if ($loop->first)
+    <div class="row js-date-row" id="{{$key}}">
+        <div class="row w-100">
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-calendar text-danger font-medium-5"></i>
+                                </div>
                             </div>
+                            <h2 class="text-bold-700">{{$d['package_bookings']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Bookings')}}</p>
                         </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-money text-danger font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['sales']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Sales')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="feather icon-eye text-info font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['purchases']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Purchases')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-user text-success font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['users']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Users')}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-primary  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-heart text-primary font-medium-5"></i>
+        <div class="row w-100">
+            <div class="col-xl-6 col-12 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-money text-danger font-medium-5"></i>
+                                </div>
                             </div>
+                            <h2 class="text-bold-700">{{$d['sales_total']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Total Sales')}}</p>
                         </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-success  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-award text-success font-medium-5"></i>
+            <div class="col-xl-6 col-12 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="feather icon-eye text-info font-medium-5"></i>
+                                </div>
                             </div>
+                            <h2 class="text-bold-700">{{$d['purchases_total']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Total Purchases')}}</p>
                         </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2 col-md-4 col-sm-6">
-            <div class="card text-center">
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="avatar bg-rgba-danger  m-0 mb-1">
-                            <div class="avatar-content">
-                                <i class="feather icon-truck text-danger font-medium-5"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-bold-700">00</h2>
-                        <p class="mb-0 line-ellipsis">DATA</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @else
+    <div class="row js-date-row" style="display: none" id="{{$key}}">
+        <div class="row w-100">
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-calendar text-danger font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['package_bookings']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Bookings')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-money text-danger font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['sales']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Sales')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="feather icon-eye text-info font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['purchases']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Purchases')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-user text-success font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['users']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Users')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-xl-6 col-12 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="fa fa-money text-danger font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['sales_total']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Total Sales')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-12 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="avatar bg-rgba-info  m-0 mb-1">
+                                <div class="avatar-content">
+                                    <i class="feather icon-eye text-info font-medium-5"></i>
+                                </div>
+                            </div>
+                            <h2 class="text-bold-700">{{$d['purchases_total']}}</h2>
+                            <p class="mb-0 line-ellipsis">{{__('Total Purchases')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    @endforeach
     @endrole
 
     @role('customer')
@@ -564,4 +657,26 @@
 
 @section('javascript')
     <script src="{{asset('backend/app-assets/js/scripts/pages/dashboard-sales.min.js')}}" type="text/javascript"></script>
+    <script>
+        document.querySelectorAll('.js-date').forEach(el => {
+            el.addEventListener('click', event => {
+                clearActive();
+                hideAll();
+                el.classList.add('active');
+                document.querySelector(`#${el.dataset.date}`).style.display = 'flex';
+            });
+        });
+
+        const clearActive = () => {
+            document.querySelectorAll('.js-date').forEach(el => {
+                el.classList.remove('active');
+            });
+        };
+
+        const hideAll = () => {
+            document.querySelectorAll('.js-date-row').forEach(el => {
+                el.style.display = 'none';
+            });
+        };
+    </script>
 @endsection

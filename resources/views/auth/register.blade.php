@@ -25,10 +25,11 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span>Using Email</span></p>
+                        <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span>{{__('Using Email')}}</span></p>
                         <div class="card-body pt-0">
                             <form class="form-horizontal" method="post" action="{{ route('register') }}">
                                 @csrf
+                                <input type="hidden" name="booking_id" value="{{$booking}}">
                                 <div class="row">
                                     <div class="col-12 col-sm-4 col-md-4">
                                         <fieldset class="form-group position-relative has-icon-left">
@@ -65,12 +66,9 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6">
-                                        <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="tel" name="phone" id="phone" class="form-control input-lg" required placeholder="{{__('Phone Number')}} (0661010101)" tabindex="1">
-                                            <div class="form-control-position">
-                                                <i class="la la-phone"></i>
-                                            </div>
-                                        </fieldset>
+                                        <div class="iti iti--allow-dropdown">
+                                            <input type="tel" name="phone" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -109,7 +107,7 @@
                                         <button type="submit" class="btn btn-info btn-lg btn-block"><i class="fas fa-user"></i> {{__('Register')}}</button>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6">
-                                        <a  href="{{url('/login')}}" class="btn btn-danger btn-lg btn-block"><i class="fas fa-unlock"></i> {{__('Login')}}</a>
+                                        <a  href="{{url('/login')}}" class="btn btn-danger btn-lg btn-block">{{__('Login')}}</a>
                                     </div>
                                 </div>
                             </form>
@@ -122,4 +120,17 @@
 
 @endsection
 
+
+@section('javascript')
+<script src="{{asset('frontend/assets/js/intlTelInput.min.js')}}"></script>
+<script>
+  var input = document.querySelector("#phone");
+  window.intlTelInput(input, {
+    initialCountry: "MA",
+    autoHideDialCode: true,
+    autoPlaceholder: true,
+    nationalMode: false,
+  });
+</script>
+@endsection
 

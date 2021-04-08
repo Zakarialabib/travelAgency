@@ -26,7 +26,7 @@ class BookingController extends Controller
 
 //        return $bookings;
 
-        return view('backend.booking.booking_list', [
+        return view('pages.backend.bookings.booking_list', [
             'bookings' => $bookings
         ]);
     }
@@ -36,7 +36,7 @@ class BookingController extends Controller
         $places = Place::all();
         $users = User::all();
           
-        return view('backend.booking.booking_create', [
+        return view('pages.backend.bookings.booking_create', [
             'places' => $places,
             'users' => $users,
         ]);
@@ -74,7 +74,7 @@ class BookingController extends Controller
         $booking->fill($data);
         $booking->save();
            
-        return view('backend.booking.booking_create', [
+        return view('pages.backend.bookings.booking_create', [
             'booking' => $booking,
             'places' => $places,
             'users' => $users,
@@ -93,7 +93,7 @@ class BookingController extends Controller
         $places = Place::all();
         $users = User::all();
 
-        return view('backend.booking.booking_edit',compact('booking','users','places'));
+        return view('pages.backend.bookings.booking_edit',compact('booking','users','places'));
     }
 
 

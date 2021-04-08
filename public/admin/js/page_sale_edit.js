@@ -138,7 +138,7 @@ function clearElementInputsValue(element)
 }
 
 function handleDocumentDelete() {
-    var saleId = $('#update-form').data('sale');
+    var returnId = $('#update-form').data('return');
 
     swal({
         title: "Are you sure?",
@@ -150,9 +150,9 @@ function handleDocumentDelete() {
         .then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: `/sales/ajax-delete-file`,
+                    url: `/return/ajax-delete-file`,
                     data: {
-                        'sale': saleId
+                        'return': returnId
                     },
                     beforeSend: function () {
                     },

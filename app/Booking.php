@@ -10,7 +10,7 @@ class Booking extends Model
 
     protected $fillable = [
         'user_id', 'place_id', 'numbber_of_adult', 'numbber_of_children', 'date',
-        'name', 'email', 'phone_number', 'message', 'type', 'status'
+        'name', 'email', 'phone_number', 'message', 'type', 'status', 'reference'
     ];
 
     protected $hidden = [];

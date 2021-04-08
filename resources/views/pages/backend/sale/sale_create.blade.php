@@ -11,7 +11,7 @@
     
     <div class="row">
         <div class="col-md-12 bg-white"> 
-            <form method="post" action="{{ route('sale_create') }}" class="form-horizontal" role="form" enctype="multipart/form-data">
+            <form id="form" method="post" action="{{ route('sale_create') }}" class="form-horizontal" role="form" enctype="multipart/form-data">
                 @csrf
                   <div class="row mb-2">
                             <div class="col-md-12 col-sm-12">
@@ -20,7 +20,11 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label> {{__('Reference no')}} *</label>
-                                                   <input type="text" name="reference_no" id="reference_no" class="form-control" />
+                                                <input type="text" name="reference_no" id="reference_no" class="form-control" value="{{$reference_no}}" />
+                                                @if ($booking)    
+                                                <input type="hidden" name="booking_reference" value="{{$booking->reference}}" />
+                                                @endif
+                                                <input type="hidden" name="is_locked" value="0" />
                                             </div>
                                         </div>
                                     <div class="col-md-4">
@@ -133,7 +137,8 @@
                                                 <select name="paid_by" class="form-control">
                                                     <option value="{{App\Payment::MEDIUM_CASH}}">{{__('Cash')}}</option>
                                                     <option value="{{App\Payment::MEDIUM_CHECK}}">{{__('Cheque')}}</option>
-                                                    <option value="{{App\Payment::MEDIUM_DEPOSIT}}">{{__('Deposit')}}</option>
+                                                    <option value="{{App\Payment::MEDIUM_WIRE}}">{{__('Wire')}}</option>
+                                                    <option value="{{App\Payment::MEDIUM_TRAIT}}">{{__('Trait')}}</option>
                                                 </select>
                                             </div>
                                     </div>
@@ -166,7 +171,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>{{__('Change')}} *</label>
+                                                <label>{{__('Change Amount')}} *</label>
                                                 <input type="number" name="change" class="form-control" id="change" value="0" step="any" readonly/>
                                             </div>
                                         </div>
@@ -198,7 +203,10 @@
 
                 <div class="row m-b-md">
                     <div class="col-md-12">
-                        <button class="btn-primary btn" type="submit">
+                        <button class="btn-primary btn" id="js-validate-btn">
+                            {{__('Validate')}}
+                       </button>
+                        <button class="btn-primary btn" type="submit" id="js-save">
                              {{__('Save')}}
                         </button>
                         <a class="btn btn-primary" href="{{route('sale_list')}}"> {{__('Back')}}</a>
@@ -213,8 +221,29 @@
 
 @push('scripts')
 <script src="{{asset('admin/js/page_sale_create.js')}}"></script>
-<script type="text/javascript">
+<script>
+$('#js-validate-btn').click(function(event){
+    event.preventDefault();
+    $('input[name="is_locked"]').val(1);
+    swal({
+        title: "Validation success",
+        text: "sale validated successfully",
+        icon: "success",
+    });
+});
 
+$( "#js-save" ).click(function(event) {
+    event.preventDefault();
+    if($('input[name="is_locked"]').val() == 0) {
+        swal({
+            title: "Validation",
+            text: "Sale need validation",
+            icon: "error",
+        });
+    } else {
+        $( "#form" ).submit();
+    }
+});
 
 </script>
 @endpush

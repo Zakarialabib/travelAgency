@@ -11,11 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Listage de la structure de la base pour rentacs
-CREATE DATABASE IF NOT EXISTS `rentacs` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `rentacs`;
-
 -- Listage de la structure de la table rentacs. admin_menus
 CREATE TABLE IF NOT EXISTS `admin_menus` (
   `id` bigint(20) unsigned NOT NULL,
@@ -52,7 +47,7 @@ INSERT INTO `admin_menu_items` (`id`, `label`, `link`, `parent`, `sort`, `class`
 	(3, 'Blog', '/blog/all', 0, 3, NULL, 1, 0, '2021-03-01 12:31:25', '2021-03-01 12:32:29'),
 	(4, 'Meilleures offres', '/Meilleures-offres', 0, 1, NULL, 1, 0, '2021-03-01 12:31:45', '2021-03-01 12:32:25'),
 	(5, 'À propos', '/a-propos-21', 0, 4, NULL, 1, 0, '2021-03-01 12:32:08', '2021-03-01 12:32:27'),
-	(6, 'Villes à visiter', '#', 0, 2, NULL, 1, 0, '2021-03-01 12:32:20', '2021-03-01 12:32:33'),
+	(6, 'Villes à visiter', '#See-Cities', 0, 2, NULL, 1, 0, '2021-03-01 12:32:20', '2021-04-05 10:11:27'),
 	(7, 'About Us', '/a-propos-21', 0, 0, NULL, 3, 0, '2021-03-01 14:52:08', '2021-03-08 17:28:29'),
 	(8, 'Best offers', '/Meilleures-offres', 0, 1, NULL, 3, 0, '2021-03-01 14:52:38', '2021-03-08 17:28:51'),
 	(9, 'Cities to visit', '#', 0, 2, NULL, 3, 0, '2021-03-01 14:52:51', '2021-03-08 17:28:58'),
@@ -17244,6 +17239,7 @@ CREATE TABLE IF NOT EXISTS `bank_payments` (
 -- Listage de la structure de la table rentacs. bookings
 CREATE TABLE IF NOT EXISTS `bookings` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `reference` varchar(50) DEFAULT NULL,
   `place_id` int(11) DEFAULT NULL,
   `numbber_of_adult` int(11) DEFAULT NULL,
   `numbber_of_children` int(11) DEFAULT NULL,
@@ -17257,17 +17253,19 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table rentacs.bookings : ~6 rows (environ)
+-- Listage des données de la table rentacs.bookings : ~8 rows (environ)
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT INTO `bookings` (`id`, `place_id`, `numbber_of_adult`, `numbber_of_children`, `date`, `name`, `email`, `phone_number`, `message`, `type`, `status`, `created_at`, `updated_at`) VALUES
-	(1, 33, 1, 0, '2021-02-26', 'zak', 'connect@chrilia.com', '666', NULL, 1, 1, '2021-02-09 08:39:21', '2021-02-15 10:06:57'),
-	(115, 35, 1, 0, '2021-03-10', 'ggg ggg', 'gg@g.c', '66666', NULL, 1, 2, '2021-03-02 12:01:59', '2021-03-02 12:01:59'),
-	(116, 35, 1, 0, '2021-03-10', 'ggg ggg', 'gg@g.c', '66666', NULL, 1, 2, '2021-03-02 13:54:25', '2021-03-02 13:54:25'),
-	(119, 35, 1, 0, '2021-03-02', 'hhhhh', 'gg@g.ch', '66666', NULL, 1, 2, '2021-03-02 14:35:29', '2021-03-02 14:35:29'),
-	(120, 35, 1, 0, '2021-03-10', 'hhhhh', 'gg@g.ch', '66666', NULL, 1, 2, '2021-03-02 16:23:25', '2021-03-02 16:23:25'),
-	(121, 35, 1, 0, '2021-03-18', 'gfd gfd', 'admin@admin.com', '66666', NULL, 1, 2, '2021-03-02 16:24:53', '2021-03-02 16:24:53');
+INSERT INTO `bookings` (`id`, `reference`, `place_id`, `numbber_of_adult`, `numbber_of_children`, `date`, `name`, `email`, `phone_number`, `message`, `type`, `status`, `created_at`, `updated_at`) VALUES
+	(1, NULL, 33, 1, 0, '2021-02-26', 'zak', 'connect@chrilia.com', '666', NULL, 1, 1, '2021-02-09 08:39:21', '2021-02-15 10:06:57'),
+	(115, NULL, 35, 1, 0, '2021-03-10', 'ggg ggg', 'gg@g.c', '66666', NULL, 1, 2, '2021-03-02 12:01:59', '2021-03-02 12:01:59'),
+	(116, NULL, 35, 1, 0, '2021-03-10', 'ggg ggg', 'gg@g.c', '66666', NULL, 1, 2, '2021-03-02 13:54:25', '2021-03-02 13:54:25'),
+	(119, NULL, 35, 1, 0, '2021-03-02', 'hhhhh', 'gg@g.ch', '66666', NULL, 1, 2, '2021-03-02 14:35:29', '2021-03-02 14:35:29'),
+	(120, NULL, 35, 1, 0, '2021-03-10', 'hhhhh', 'gg@g.ch', '66666', NULL, 1, 2, '2021-03-02 16:23:25', '2021-03-02 16:23:25'),
+	(121, NULL, 35, 1, 0, '2021-03-18', 'gfd gfd', 'admin@admin.com', '66666', NULL, 1, 2, '2021-03-02 16:24:53', '2021-03-02 16:24:53'),
+	(122, NULL, 35, 1, 0, '2021-04-30', 'Zakaria', 'zakarialabib@gmail.com', '06606', NULL, 1, 2, '2021-04-06 11:52:59', '2021-04-06 11:52:59'),
+	(123, NULL, 35, 1, 0, '2021-04-16', 'Zakaria labib', 'zakarialabib@gmail.com', '06606', NULL, 1, 2, '2021-04-06 11:54:25', '2021-04-06 11:54:25');
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. cabin_types
@@ -17501,7 +17499,7 @@ INSERT INTO `countries` (`id`, `name`, `slug`, `priority`, `status`, `iata_descr
 -- Listage de la structure de la table rentacs. customers
 CREATE TABLE IF NOT EXISTS `customers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `company_name` text COLLATE utf8mb4_unicode_ci,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -17513,7 +17511,9 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `country` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `customer_user_id` (`user_id`),
+  CONSTRAINT `customer_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.customers : ~2 rows (environ)
@@ -19152,12 +19152,110 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.migrations : ~1 rows (environ)
+-- Listage des données de la table rentacs.migrations : ~99 rows (environ)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-	(51, '2020_02_26_041322_create_post_translations_table', 1);
+	(51, '2020_02_26_041322_create_post_translations_table', 1),
+	(52, '2021_04_05_114424_create_admin_menu_items_table', 0),
+	(53, '2021_04_05_114424_create_admin_menus_table', 0),
+	(54, '2021_04_05_114424_create_agency_profiles_table', 0),
+	(55, '2021_04_05_114424_create_airlines_table', 0),
+	(56, '2021_04_05_114424_create_airports_table', 0),
+	(57, '2021_04_05_114424_create_amenities_table', 0),
+	(58, '2021_04_05_114424_create_amenities_translations_table', 0),
+	(59, '2021_04_05_114424_create_attractions_table', 0),
+	(60, '2021_04_05_114424_create_bank_details_table', 0),
+	(61, '2021_04_05_114424_create_bank_payments_table', 0),
+	(62, '2021_04_05_114424_create_banks_table', 0),
+	(63, '2021_04_05_114424_create_bookings_table', 0),
+	(64, '2021_04_05_114424_create_cabin_types_table', 0),
+	(65, '2021_04_05_114424_create_car_bookings_table', 0),
+	(66, '2021_04_05_114424_create_categories_table', 0),
+	(67, '2021_04_05_114424_create_category_translations_table', 0),
+	(68, '2021_04_05_114424_create_cities_table', 0),
+	(69, '2021_04_05_114424_create_city_translations_table', 0),
+	(70, '2021_04_05_114424_create_comments_table', 0),
+	(71, '2021_04_05_114424_create_cooperate_customer_profiles_table', 0),
+	(72, '2021_04_05_114424_create_countries_table', 0),
+	(73, '2021_04_05_114424_create_customers_table', 0),
+	(74, '2021_04_05_114424_create_email_subscribers_table', 0),
+	(75, '2021_04_05_114424_create_flight_bookings_table', 0),
+	(76, '2021_04_05_114424_create_flight_deals_table', 0),
+	(77, '2021_04_05_114424_create_galleries_table', 0),
+	(78, '2021_04_05_114424_create_genders_table', 0),
+	(79, '2021_04_05_114424_create_good_to_knows_table', 0),
+	(80, '2021_04_05_114424_create_hotel_bookings_table', 0),
+	(81, '2021_04_05_114424_create_hotel_deals_table', 0),
+	(82, '2021_04_05_114424_create_hotels_table', 0),
+	(83, '2021_04_05_114424_create_languages_table', 0),
+	(84, '2021_04_05_114424_create_ltm_translations_table', 0),
+	(85, '2021_04_05_114424_create_markdowns_table', 0),
+	(86, '2021_04_05_114424_create_markup_types_table', 0),
+	(87, '2021_04_05_114424_create_markup_value_types_table', 0),
+	(88, '2021_04_05_114424_create_markups_table', 0),
+	(89, '2021_04_05_114424_create_notifications_table', 0),
+	(90, '2021_04_05_114424_create_online_payments_table', 0),
+	(91, '2021_04_05_114424_create_package_attractions_table', 0),
+	(92, '2021_04_05_114424_create_package_bookings_table', 0),
+	(93, '2021_04_05_114424_create_package_categories_table', 0),
+	(94, '2021_04_05_114424_create_package_flights_table', 0),
+	(95, '2021_04_05_114424_create_package_hotels_table', 0),
+	(96, '2021_04_05_114424_create_package_types_table', 0),
+	(97, '2021_04_05_114424_create_packages_table', 0),
+	(98, '2021_04_05_114424_create_page_translations_table', 0),
+	(99, '2021_04_05_114424_create_password_resets_table', 0),
+	(100, '2021_04_05_114424_create_pay_laters_table', 0),
+	(101, '2021_04_05_114424_create_permission_role_table', 0),
+	(102, '2021_04_05_114424_create_permissions_table', 0),
+	(103, '2021_04_05_114424_create_place_translations_table', 0),
+	(104, '2021_04_05_114424_create_place_type_translations_table', 0),
+	(105, '2021_04_05_114424_create_place_types_table', 0),
+	(106, '2021_04_05_114424_create_places_table', 0),
+	(107, '2021_04_05_114424_create_post_translations_table', 0),
+	(108, '2021_04_05_114424_create_posts_table', 0),
+	(109, '2021_04_05_114424_create_profiles_table', 0),
+	(110, '2021_04_05_114424_create_purchase_details_table', 0),
+	(111, '2021_04_05_114424_create_purchases_table', 0),
+	(112, '2021_04_05_114424_create_return_details_table', 0),
+	(113, '2021_04_05_114424_create_returns_table', 0),
+	(114, '2021_04_05_114424_create_reviews_table', 0),
+	(115, '2021_04_05_114424_create_role_user_table', 0),
+	(116, '2021_04_05_114424_create_roles_table', 0),
+	(117, '2021_04_05_114424_create_sale_details_table', 0),
+	(118, '2021_04_05_114424_create_sales_table', 0),
+	(119, '2021_04_05_114424_create_settings_table', 0),
+	(120, '2021_04_05_114424_create_sight_seeings_table', 0),
+	(121, '2021_04_05_114424_create_suppliers_table', 0),
+	(122, '2021_04_05_114424_create_testimonial_translations_table', 0),
+	(123, '2021_04_05_114424_create_testimonials_table', 0),
+	(124, '2021_04_05_114424_create_titles_table', 0),
+	(125, '2021_04_05_114424_create_travel_packages_table', 0),
+	(126, '2021_04_05_114424_create_users_table', 0),
+	(127, '2021_04_05_114424_create_vats_table', 0),
+	(128, '2021_04_05_114424_create_visa_applications_table', 0),
+	(129, '2021_04_05_114424_create_vouchers_table', 0),
+	(130, '2021_04_05_114424_create_wallet_log_types_table', 0),
+	(131, '2021_04_05_114424_create_wallet_logs_table', 0),
+	(132, '2021_04_05_114424_create_wallets_table', 0),
+	(133, '2021_04_05_114424_create_wishlists_table', 0),
+	(134, '2021_04_05_114428_add_foreign_keys_to_amenities_translations_table', 0),
+	(135, '2021_04_05_114428_add_foreign_keys_to_city_translations_table', 0),
+	(136, '2021_04_05_114428_add_foreign_keys_to_customers_table', 0),
+	(137, '2021_04_05_114428_add_foreign_keys_to_page_translations_table', 0),
+	(138, '2021_04_05_114428_add_foreign_keys_to_permission_role_table', 0),
+	(139, '2021_04_05_114428_add_foreign_keys_to_place_translations_table', 0),
+	(140, '2021_04_05_114428_add_foreign_keys_to_place_type_translations_table', 0),
+	(141, '2021_04_05_114428_add_foreign_keys_to_post_translations_table', 0),
+	(142, '2021_04_05_114428_add_foreign_keys_to_purchase_details_table', 0),
+	(143, '2021_04_05_114428_add_foreign_keys_to_purchases_table', 0),
+	(144, '2021_04_05_114428_add_foreign_keys_to_return_details_table', 0),
+	(145, '2021_04_05_114428_add_foreign_keys_to_returns_table', 0),
+	(146, '2021_04_05_114428_add_foreign_keys_to_role_user_table', 0),
+	(147, '2021_04_05_114428_add_foreign_keys_to_sale_details_table', 0),
+	(148, '2021_04_05_114428_add_foreign_keys_to_sales_table', 0),
+	(149, '2021_04_05_114428_add_foreign_keys_to_users_table', 0);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. notifications
@@ -19454,9 +19552,9 @@ CREATE TABLE IF NOT EXISTS `places` (
   `updated_at` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table rentacs.places : ~6 rows (environ)
+-- Listage des données de la table rentacs.places : ~7 rows (environ)
 /*!40000 ALTER TABLE `places` DISABLE KEYS */;
 INSERT INTO `places` (`id`, `user_id`, `country_id`, `city_id`, `category`, `place_type`, `name`, `slug`, `description`, `price_range`, `price`, `amenities`, `address`, `lat`, `lng`, `email`, `phone_number`, `website`, `social`, `opening_hour`, `date`, `thumb`, `gallery`, `menu`, `itinerary`, `video`, `booking_type`, `link_bookingcom`, `status`, `seo_title`, `seo_description`, `updated_at`, `created_at`) VALUES
 	(33, NULL, 13, 35, '["22"]', '["34"]', NULL, 'mazagan-beach-golf-resort', NULL, 1, 1280, '["9","8","7","6"]', 'Km 10, Route de Casablanca، El Jadida 24000, Maroc', 33.281561, -8.383829, 'info@rentacstours.com', '00212 522 252 386', 'www.rentacstours.com', '[{"name":"Facebook","url":null}]', '[{"title":"Monday","value":null},{"title":"Tuesday","value":null},{"title":"Wednesday","value":null},{"title":"Thursday","value":null},{"title":"Friday","value":null},{"title":"Saturday","value":null},{"title":"Sunday","value":null}]', NULL, '6024f892640ba_1613035666.jpg', '["6024f7be7fade_1613035454.jpg","6024f7c0743c1_1613035456.jpg","6024f85689f32_1613035606.jpg"]', NULL, '[{"question":"Day 1","answer":"<p>Description<\\/p>"}]', NULL, 1, NULL, 0, 'Hôtel Mazagan Beach & Golf Resort', 'Vivez l’une des plus belles expériences de votre vie à l\'hôtel Mazagan Beach Golf avec Rentacs Tours. Réservez votre prochain séjour dès maintenant.', '2021-03-04 14:38:51', '2021-02-03 09:34:48'),
@@ -19464,7 +19562,8 @@ INSERT INTO `places` (`id`, `user_id`, `country_id`, `city_id`, `category`, `pla
 	(35, NULL, 13, 34, '["22","21"]', '["34"]', NULL, 'sol-house-taghazout-bay-surf', NULL, 1, 999, '["9","8","7","6"]', 'Station Touristique de Taghazout, Avenue Hassan II, Taghazout 80023, Maroc', 30.5402361, -9.7005859, NULL, NULL, NULL, '[{"name":"Facebook","url":null}]', '[{"title":"Monday","value":null},{"title":"Tuesday","value":null},{"title":"Wednesday","value":null},{"title":"Thursday","value":null},{"title":"Friday","value":null},{"title":"Saturday","value":null},{"title":"Sunday","value":null}]', NULL, '6023e118a7872_1612964120.jpg', '["60240945cdd71_1612974405.jpg","6024094ca18dc_1612974412.jpg"]', NULL, NULL, NULL, 1, NULL, 1, 'Voyage à Sol House Taghazout Bay', 'Rentacs Tours vous emmène à Sol House Taghazout Bay Surf, un univers assez spéciale situé au bord de la mer à Taghazout, à 18 km d\'Agadir.', '2021-03-04 14:37:06', '2021-02-10 13:35:20'),
 	(36, NULL, 13, 23, '["13","22","12","21","20","11"]', '["32"]', NULL, 'dakhla-attitude', NULL, 1, 920, '["9","8","7","6"]', 'DAKHLA', NULL, NULL, 'info@rentacstours.com', NULL, NULL, '[{"name":"Facebook","url":null}]', '[{"title":"Monday","value":null},{"title":"Tuesday","value":null},{"title":"Wednesday","value":null},{"title":"Thursday","value":null},{"title":"Friday","value":null},{"title":"Saturday","value":null},{"title":"Sunday","value":null}]', NULL, '602e8ff06c81c_1613664240.jpg', '["602e90250f964_1613664293.jpg"]', NULL, '{"6":{"question":"S\\u00e9jour en Pension Compl\\u00e9te & Transferts A\\u00e9roport\\/H\\u00f4tel\\/A\\u00e9roport","answer":"<p>Bungalow double : 1295 DHS\\/ Nuit<br \\/>Bungalow Single: 920 DHS \\/Nuit<\\/p>"}}', NULL, 1, NULL, 1, 'Voyage à DAKHLA', 'Rentacs Tours vous emmène vers la ville de Dakhla pour découvrir ce merveilleux paradis. Loin de tout bruit, découvrez maintenant notre offre de voyage et d\'activités à Dakhla.', '2021-03-04 14:34:45', '2021-02-18 16:04:00'),
 	(37, NULL, 13, 31, '["22","11"]', '["30"]', NULL, 'douceur-de-vivre-hivernal-by-kenzi', NULL, 3, 870, '["9","8","7","6"]', 'KENZI', NULL, NULL, NULL, NULL, NULL, '[{"name":"Facebook","url":null}]', '[{"title":"Monday","value":null},{"title":"Tuesday","value":null},{"title":"Wednesday","value":null},{"title":"Thursday","value":null},{"title":"Friday","value":null},{"title":"Saturday","value":null},{"title":"Sunday","value":null}]', NULL, '602e92d33e60e_1613664979.jpg', '["602e93c79fed7_1613665223.jpg","602e93caad1e8_1613665226.jpg"]', NULL, '{"6":{"question":"D\\u00e9part Tardif","answer":"<p>Navette au centre-ville 717, horaire selon programme affich&eacute;.<\\/p>"}}', NULL, 1, NULL, 1, 'Hôtel Kenzi - Marrakech', 'Rentacs Tours vous emmène à l\'hôtel KENZI. Réservez maintenant votre séjour dans ce lieu privilégié de classe mondiale.', '2021-03-04 14:21:01', '2021-02-18 16:16:19'),
-	(38, NULL, 13, 31, '["22"]', '["32"]', NULL, 'aqua-mirage-marrakech', NULL, 1, 1025, '["8","7","6"]', 'Km 5, Route de Tahanaout، Marrakech 40065, Maroc', 31.5347314, -7.992452, 'info@rentacstours.com', NULL, 'www.rentacstours.com', '[{"name":"Facebook","url":null}]', '[{"title":"Monday","value":null},{"title":"Tuesday","value":null},{"title":"Wednesday","value":null},{"title":"Thursday","value":null},{"title":"Friday","value":null},{"title":"Saturday","value":null},{"title":"Sunday","value":null}]', NULL, '6046551d0c0ae_1615222045.jpg', '["6046332cd4ea1_1615213356.jpg"]', NULL, '{"6":{"question":null,"answer":null}}', NULL, NULL, NULL, 1, 'Aqua Mirage Club Marrakech - Hôtel à Marrakech', 'Vous êtes à la recherche d\'un hôtel à Marrakech pour passer une expérience singulière ? Rentacs Tours vous propose Aqua Mirage Club.', '2021-03-08 16:47:25', '2021-03-08 16:39:56');
+	(38, NULL, 13, 31, '["22"]', '["32"]', NULL, 'aqua-mirage-marrakech', NULL, 1, 1025, '["8","7","6"]', 'Km 5, Route de Tahanaout، Marrakech 40065, Maroc', 31.5347314, -7.992452, 'info@rentacstours.com', NULL, 'www.rentacstours.com', '[{"name":"Facebook","url":null}]', '[{"title":"Monday","value":null},{"title":"Tuesday","value":null},{"title":"Wednesday","value":null},{"title":"Thursday","value":null},{"title":"Friday","value":null},{"title":"Saturday","value":null},{"title":"Sunday","value":null}]', NULL, '6046551d0c0ae_1615222045.jpg', '["6046332cd4ea1_1615213356.jpg"]', NULL, '{"6":{"question":null,"answer":null}}', NULL, NULL, NULL, 1, 'Aqua Mirage Club Marrakech - Hôtel à Marrakech', 'Vous êtes à la recherche d\'un hôtel à Marrakech pour passer une expérience singulière ? Rentacs Tours vous propose Aqua Mirage Club.', '2021-03-08 16:47:25', '2021-03-08 16:39:56'),
+	(39, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', 'Maroc', NULL, NULL, 'info@rentacstours.com', NULL, 'www.rentacstours.com', '[{"name":"Facebook","url":null}]', '[{"title":"Monday","value":null},{"title":"Tuesday","value":null},{"title":"Wednesday","value":null},{"title":"Thursday","value":null},{"title":"Friday","value":null},{"title":"Saturday","value":null},{"title":"Sunday","value":null}]', NULL, NULL, NULL, NULL, '{"6":{"question":null,"answer":null}}', NULL, NULL, NULL, 1, NULL, NULL, '2021-04-06 10:18:30', '2021-04-06 10:18:30');
 /*!40000 ALTER TABLE `places` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. place_translations
@@ -19478,9 +19577,9 @@ CREATE TABLE IF NOT EXISTS `place_translations` (
   UNIQUE KEY `place_translations_place_id_locale_unique` (`place_id`,`locale`),
   KEY `place_translations_locale_index` (`locale`),
   CONSTRAINT `place_translations_place_id_foreign` FOREIGN KEY (`place_id`) REFERENCES `places` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Listage des données de la table rentacs.place_translations : ~12 rows (environ)
+-- Listage des données de la table rentacs.place_translations : ~14 rows (environ)
 /*!40000 ALTER TABLE `place_translations` DISABLE KEYS */;
 INSERT INTO `place_translations` (`id`, `place_id`, `locale`, `name`, `description`) VALUES
 	(24, 33, 'en', 'Mazagan Beach & Golf Resort', '<div class="ie001e">Hotel details</div>\r\n<p><span class="ggV7z kno-desc-sh" data-ved="2ahUKEwjmz-mVwOHuAhUtUBUIHX2wDXAQ200wDHoECAoQAw">In a modern Moorish-style complex, this upscale beach and golf resort on the Atlantic Ocean lies 104 km from Casablanca Mohammed V International Airport <span class="yZlgBd kd-hc" data-ved="2ahUKEwjmz-mVwOHuAhUtUBUIHX2wDXAQ3E0wDHoECAoQBQ"><span class="lnMzfb"><br /><br />Posh rooms have French balconies, sitting areas and minibars, plus flat-screens and free Wi-Fi; some offer ocean views. Elegant suites add living rooms. Room service is available 24/7.</span><span class="lnMzfb"><br /><br />Airport transfers are complimentary. There are 13 restaurants, in addition to a bar, a nightclub and a casino. Other amenities include an 18-hole golf course and a spa, plus tennis, an outdoor pool with a kids\' section, and a kids\' club. Breakfast is offered.</span></span></span></p>'),
@@ -19494,7 +19593,9 @@ INSERT INTO `place_translations` (`id`, `place_id`, `locale`, `name`, `descripti
 	(32, 37, 'en', 'Douceur de vivre Hivernal BY KENZI', '<p>Profitez d\'un s&eacute;jour en All Inclusive &agrave; Marrakech:<br />Gratuit&eacute; pour 1 enfant de moins de 5ans<br />Acc&egrave;s &agrave; la piscine chauff&eacute;e<br />Acc&egrave;s &agrave; la salle de sport sous r&eacute;servation &agrave; l\'avance<br /><br />Navette au centre-ville 717, horaire selon programme affich&eacute;.<br />A Partir de 870 DHS par personne en chambre double de luxe<br />en formule ALL INCLUSIVE<br />* Offre Valable jusqu\'au 20 Mars 2021 Hors taxes de s&eacute;jour</p>'),
 	(33, 37, 'fr', 'Douceur de vivre Hivernal BY KENZI', '<p>Profitez d\'un s&eacute;jour en All Inclusive &agrave; Marrakech:<br />Gratuit&eacute; pour 1 enfant de moins de 5ans<br />Acc&egrave;s &agrave; la piscine chauff&eacute;e<br />Acc&egrave;s &agrave; la salle de sport sous r&eacute;servation &agrave; l\'avance<br /><br />Navette au centre-ville 717, horaire selon programme affich&eacute;.<br />A Partir de 870 DHS par personne en chambre double de luxe<br />en formule ALL INCLUSIVE<br />* Offre Valable jusqu\'au 20 Mars 2021 Hors taxes de s&eacute;jour</p>'),
 	(34, 38, 'en', NULL, NULL),
-	(35, 38, 'fr', 'Aqua Mirage Marrakech', '<p>Bienvenue &agrave; Aqua Mirage Club, &eacute;lu Meilleure H&ocirc;tel pour familles &agrave; Marrakech pour 4 ann&eacute;es cons&eacute;cutives. Ce lieu s\'&eacute;tend sur 20 hectares de nature au pied des fabuleuses montagnes de l\'Atlas. Il pr&eacute;sente aussi un point de d&eacute;part id&eacute;al pour explorer les environs de la ville de Marrakech. Avec son personnel professionnel, sa cuisine Marocaine et son &eacute;quipe d\'animation, Aqua Mirage est le choix id&eacute;al pour tous les amoureux du plaisir, du calme et de la haute qualit&eacute; du service. Il dispose de plusieurs piscines, un aqua parc, un sauna, un centre de massage et un centre de fitness. Profitez d\'un wifi gratuit, une navette centre ville, un club pour enfants, un centre de conf&eacute;rence et beaucoup plus...</p>');
+	(35, 38, 'fr', 'Aqua Mirage Marrakech', '<p>Bienvenue &agrave; Aqua Mirage Club, &eacute;lu Meilleure H&ocirc;tel pour familles &agrave; Marrakech pour 4 ann&eacute;es cons&eacute;cutives. Ce lieu s\'&eacute;tend sur 20 hectares de nature au pied des fabuleuses montagnes de l\'Atlas. Il pr&eacute;sente aussi un point de d&eacute;part id&eacute;al pour explorer les environs de la ville de Marrakech. Avec son personnel professionnel, sa cuisine Marocaine et son &eacute;quipe d\'animation, Aqua Mirage est le choix id&eacute;al pour tous les amoureux du plaisir, du calme et de la haute qualit&eacute; du service. Il dispose de plusieurs piscines, un aqua parc, un sauna, un centre de massage et un centre de fitness. Profitez d\'un wifi gratuit, une navette centre ville, un club pour enfants, un centre de conf&eacute;rence et beaucoup plus...</p>'),
+	(36, 39, 'en', NULL, NULL),
+	(37, 39, 'fr', NULL, NULL);
 /*!40000 ALTER TABLE `place_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. place_types
@@ -19664,6 +19765,7 @@ CREATE TABLE IF NOT EXISTS `purchases` (
   `note` text COLLATE utf8mb4_unicode_ci,
   `payment_note` text COLLATE utf8mb4_unicode_ci,
   `staff_note` text COLLATE utf8mb4_unicode_ci,
+  `is_locked` int(11) DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -19675,8 +19777,8 @@ CREATE TABLE IF NOT EXISTS `purchases` (
 
 -- Listage des données de la table rentacs.purchases : ~1 rows (environ)
 /*!40000 ALTER TABLE `purchases` DISABLE KEYS */;
-INSERT INTO `purchases` (`id`, `reference_no`, `user_id`, `supplier_id`, `total_qty`, `tax`, `total_tax`, `total_cost`, `grand_total`, `paid_amount`, `status`, `paid_by`, `payment_status`, `document`, `note`, `payment_note`, `staff_note`, `created_at`, `updated_at`) VALUES
-	(7, '369', 1, 3, 1, 100, 4995, 10989, 9990, 21978, 1, 1, 1, '369-Absolue_Oleo_Serum_600X600.jpg', NULL, NULL, NULL, '2021-03-09 17:31:44', '2021-03-09 17:56:49');
+INSERT INTO `purchases` (`id`, `reference_no`, `user_id`, `supplier_id`, `total_qty`, `tax`, `total_tax`, `total_cost`, `grand_total`, `paid_amount`, `status`, `paid_by`, `payment_status`, `document`, `note`, `payment_note`, `staff_note`, `is_locked`, `created_at`, `updated_at`) VALUES
+	(7, '369', 1, 3, 1, 100, 4995, 10989, 9990, 21978, 1, 1, 1, '369-Absolue_Oleo_Serum_600X600.jpg', NULL, NULL, NULL, 0, '2021-03-09 17:31:44', '2021-04-02 09:55:10');
 /*!40000 ALTER TABLE `purchases` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. purchase_details
@@ -19699,6 +19801,59 @@ CREATE TABLE IF NOT EXISTS `purchase_details` (
 INSERT INTO `purchase_details` (`id`, `purchase_id`, `name`, `qty`, `price`, `total`, `updated_at`, `created_at`) VALUES
 	(21, 7, 'merceds', 5, 999, 4995, '2021-03-09', '2021-03-09');
 /*!40000 ALTER TABLE `purchase_details` ENABLE KEYS */;
+
+-- Listage de la structure de la table rentacs. returns
+CREATE TABLE IF NOT EXISTS `returns` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `reference_no` varchar(191) NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `total_qty` double NOT NULL,
+  `tax` double NOT NULL,
+  `total_tax` double NOT NULL,
+  `total_cost` double NOT NULL,
+  `grand_total` double NOT NULL,
+  `paid_amount` double NOT NULL,
+  `status` int(11) NOT NULL,
+  `paid_by` int(11) NOT NULL,
+  `payment_status` int(11) NOT NULL,
+  `document` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `note` text,
+  `payment_note` text,
+  `staff_note` text,
+  `is_locked` int(11) DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Return_User_ID` (`user_id`),
+  CONSTRAINT `Return_User_ID` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table rentacs.returns : ~2 rows (environ)
+/*!40000 ALTER TABLE `returns` DISABLE KEYS */;
+INSERT INTO `returns` (`id`, `reference_no`, `user_id`, `total_qty`, `tax`, `total_tax`, `total_cost`, `grand_total`, `paid_amount`, `status`, `paid_by`, `payment_status`, `document`, `note`, `payment_note`, `staff_note`, `is_locked`, `created_at`, `updated_at`) VALUES
+	(1, '5454', 1, 1, 20, 121, 605, 726, 725, 1, 0, 2, NULL, NULL, NULL, NULL, 1, '2021-04-05 12:03:58', '2021-04-05 14:52:48');
+/*!40000 ALTER TABLE `returns` ENABLE KEYS */;
+
+-- Listage de la structure de la table rentacs. return_details
+CREATE TABLE IF NOT EXISTS `return_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `return_id` int(10) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `qty` double NOT NULL DEFAULT '0',
+  `price` double NOT NULL DEFAULT '0',
+  `total` double NOT NULL DEFAULT '0',
+  `updated_at` date DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Return_Details_ID` (`return_id`),
+  CONSTRAINT `Return_Details_ID` FOREIGN KEY (`return_id`) REFERENCES `returns` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table rentacs.return_details : ~0 rows (environ)
+/*!40000 ALTER TABLE `return_details` DISABLE KEYS */;
+INSERT INTO `return_details` (`id`, `return_id`, `name`, `qty`, `price`, `total`, `updated_at`, `created_at`) VALUES
+	(3, 1, 'lklk', 11, 55, 605, '2021-04-05', '2021-04-05');
+/*!40000 ALTER TABLE `return_details` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. reviews
 CREATE TABLE IF NOT EXISTS `reviews` (
@@ -19734,10 +19889,10 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- Listage des données de la table rentacs.roles : ~5 rows (environ)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'Portal Admin', 'General control of the entire system', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
-	(2, 'agent', 'Portal Agent', 'A customer that books for his/her personal customer', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
-	(3, 'customer', 'Portal Customer', 'A registered visitor, customer', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
-	(4, 'branch', 'Portal Branch', 'A branch of the portal company', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
+	(1, 'admin', 'Admin', 'General control of the entire system', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
+	(2, 'agent', 'Agent', 'A customer that books for his/her personal customer', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
+	(3, 'customer', 'Customer', 'A registered visitor, customer', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
+	(4, 'branch', 'Branch', 'A branch of the portal company', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
 	(5, 'cooperate', 'Cooperate Customer', 'A cooperate customer of the portal', '2021-01-28 10:14:54', '2021-01-28 10:14:54');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
@@ -19768,6 +19923,7 @@ INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
 CREATE TABLE IF NOT EXISTS `sales` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `reference_no` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `booking_reference` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) unsigned NOT NULL,
   `customer_id` int(11) unsigned NOT NULL,
   `total_qty` double NOT NULL,
@@ -19783,6 +19939,7 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `payment_note` text COLLATE utf8mb4_unicode_ci,
   `note` text COLLATE utf8mb4_unicode_ci,
   `staff_note` text COLLATE utf8mb4_unicode_ci,
+  `is_locked` int(11) DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -19794,8 +19951,8 @@ CREATE TABLE IF NOT EXISTS `sales` (
 
 -- Listage des données de la table rentacs.sales : ~1 rows (environ)
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` (`id`, `reference_no`, `user_id`, `customer_id`, `total_qty`, `tax`, `total_tax`, `total_price`, `grand_total`, `status`, `payment_status`, `document`, `paid_amount`, `paid_by`, `payment_note`, `note`, `staff_note`, `created_at`, `updated_at`) VALUES
-	(63, '25424', 1, 1, 1, 20, 256, 1280, 1536, 1, 2, '25424-purchase.docx', 0, 0, NULL, NULL, NULL, '2021-03-09 17:29:05', '2021-03-09 17:47:44');
+INSERT INTO `sales` (`id`, `reference_no`, `booking_reference`, `user_id`, `customer_id`, `total_qty`, `tax`, `total_tax`, `total_price`, `grand_total`, `status`, `payment_status`, `document`, `paid_amount`, `paid_by`, `payment_note`, `note`, `staff_note`, `is_locked`, `created_at`, `updated_at`) VALUES
+	(63, '25424', NULL, 1, 1, 1, 20, 256, 1280, 1536, 1, 2, '25424-purchase.docx', 0, 0, NULL, NULL, NULL, 0, '2021-03-09 17:29:05', '2021-04-02 09:54:10');
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. sale_details
@@ -20007,23 +20164,27 @@ CREATE TABLE IF NOT EXISTS `users` (
   `profile_complete_status` int(11) NOT NULL DEFAULT '0',
   `api_token` longtext COLLATE utf8mb4_unicode_ci,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_id` int(10) unsigned DEFAULT NULL,
+  `is_admin` int(11) DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
+  UNIQUE KEY `users_email_unique` (`email`),
+  KEY `customer_id_user_id` (`customer_id`),
+  CONSTRAINT `customer_id_user_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.users : ~8 rows (environ)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `email`, `password`, `delete_status`, `profile_complete_status`, `api_token`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'b666gsgQ4BRcjbvRo1zVGXIU6pXKrnwBvCFgKDLxMkxEp7BwXDrVngPuuwNX', '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
-	(2, 'agent@agent.com', '$2y$10$1.KCk1DJuYp4ZaPgLgDE0.t9Ob0zGegdWu11uKR8uT3cFJfT/6oRe', 0, 0, '', '0R82vHJuH2EMedA0yZOMPp53Nify6JwM4Xv6N16YNIHkSenT2GcH3kEj2H57', '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
-	(3, 'customer@customer.com', '$2y$10$liBmx5acvAXNb3O6e9tFBOU3bmNwwLlMXpRnM8UyutR9IkH1Cqcr2', 0, 0, '', NULL, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
-	(4, 'first_agency@firstagency.com', '$2y$10$eyiO28RvYh.NIpwpmKuHY.V2imHUlRVvN92WY3NYs4zIQuTpDn8Cm', 1, 0, '', NULL, '2021-01-28 10:14:55', '2021-03-02 22:37:57'),
-	(10, 'zakarialabib@gmail.com', '$2y$10$SmWHSt2kh.oheEoRsxNzHuR.AN4LjjP1.XlrH1nTOlvScAcVPCB4.', 1, 0, NULL, NULL, '2021-02-05 11:30:32', '2021-03-02 22:38:04'),
-	(11, 'abderrahimybouhamidi@gmail.com', '$2y$10$xR.eBd8NcQdyivUrsnPvderNO3Ut08uf.IuXmU5I/h6iszR3Bzoc2', 0, 0, NULL, NULL, '2021-03-01 05:22:28', '2021-03-01 05:22:28'),
-	(12, 'z@admin.com', '$2y$10$LcCoHDgDg5mNcrpAZ38MBO..wxFos6Etv8fBXwwH3exOSCWsDVDiK', 1, 0, NULL, NULL, '2021-03-02 22:32:57', '2021-03-02 22:53:46'),
-	(13, 'gg@g.c', '$2y$10$jsVKqzKjKHJIlAoeTl8kbeCIVsAuYVRSFRdoGox6j8FdMuolv55zu', 0, 0, NULL, NULL, '2021-03-08 16:05:57', '2021-03-08 16:05:57');
+INSERT INTO `users` (`id`, `email`, `password`, `delete_status`, `profile_complete_status`, `api_token`, `remember_token`, `customer_id`, `is_admin`, `created_at`, `updated_at`) VALUES
+	(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'TEEFiZTZ7ydZbxEDtVoo6uhQ2w2RG6gR2VR6D1VztIbknZDPvTf12w5WvstT', NULL, 1, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
+	(2, 'agent@agent.com', '$2y$10$1.KCk1DJuYp4ZaPgLgDE0.t9Ob0zGegdWu11uKR8uT3cFJfT/6oRe', 0, 0, '', '0R82vHJuH2EMedA0yZOMPp53Nify6JwM4Xv6N16YNIHkSenT2GcH3kEj2H57', NULL, 0, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
+	(3, 'customer@customer.com', '$2y$10$liBmx5acvAXNb3O6e9tFBOU3bmNwwLlMXpRnM8UyutR9IkH1Cqcr2', 0, 0, '', NULL, NULL, 0, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
+	(4, 'first_agency@firstagency.com', '$2y$10$eyiO28RvYh.NIpwpmKuHY.V2imHUlRVvN92WY3NYs4zIQuTpDn8Cm', 1, 0, '', NULL, NULL, 0, '2021-01-28 10:14:55', '2021-03-02 22:37:57'),
+	(10, 'zakarialabib@gmail.com', '$2y$10$SmWHSt2kh.oheEoRsxNzHuR.AN4LjjP1.XlrH1nTOlvScAcVPCB4.', 1, 0, NULL, NULL, NULL, 0, '2021-02-05 11:30:32', '2021-03-02 22:38:04'),
+	(11, 'abderrahimybouhamidi@gmail.com', '$2y$10$xR.eBd8NcQdyivUrsnPvderNO3Ut08uf.IuXmU5I/h6iszR3Bzoc2', 0, 0, NULL, NULL, NULL, 0, '2021-03-01 05:22:28', '2021-03-01 05:22:28'),
+	(12, 'z@admin.com', '$2y$10$LcCoHDgDg5mNcrpAZ38MBO..wxFos6Etv8fBXwwH3exOSCWsDVDiK', 1, 0, NULL, NULL, NULL, 0, '2021-03-02 22:32:57', '2021-03-02 22:53:46'),
+	(13, 'gg@g.c', '$2y$10$jsVKqzKjKHJIlAoeTl8kbeCIVsAuYVRSFRdoGox6j8FdMuolv55zu', 0, 0, NULL, NULL, NULL, 0, '2021-03-08 16:05:57', '2021-03-08 16:05:57');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. vats
@@ -20095,14 +20256,15 @@ CREATE TABLE IF NOT EXISTS `wallets` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.wallets : ~3 rows (environ)
 /*!40000 ALTER TABLE `wallets` DISABLE KEYS */;
 INSERT INTO `wallets` (`id`, `user_id`, `balance`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1000000000, '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
 	(2, 2, 499950000, '2021-01-28 10:16:31', '2021-01-28 10:40:30'),
-	(3, 4, 0, '2021-02-12 16:50:12', '2021-02-12 16:50:12');
+	(3, 4, 0, '2021-02-12 16:50:12', '2021-02-12 16:50:12'),
+	(4, 3, 0, '2021-04-02 14:59:14', '2021-04-02 14:59:14');
 /*!40000 ALTER TABLE `wallets` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. wallet_logs

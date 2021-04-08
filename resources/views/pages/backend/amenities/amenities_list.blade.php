@@ -19,8 +19,8 @@
                     <table class="table table-striped table-bordered golo-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
-                            <th width="5%">Icon</th>
+                            <th >ID</th>
+                            <th >Icon</th>
                             <th>{{__('Amenities Name')}}</th>
                             <th>Action</th>
                         </tr>

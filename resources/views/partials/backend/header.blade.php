@@ -40,25 +40,26 @@
                         </ul>
                         @endif
                     </li>
-                    
-                        <li class="dropdown nav-item">
-                            <a class="dropdown-toggle nav-link" href="javascript:;" id="notf_user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-bell"></i>
-                              <span data-href="{{ route('user-notf-count') }}" id="user-notf-count">{{ App\Notification::countRegistration() }}</span>
-                            </a>
-                              <ul class="dropdown-menu" style="width:300px;">
-                                <div class="dropdownmenu-wrapper" data-href="{{ route('user-notf-show') }}" id="user-notf-show">
+                    @role('admin')
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:;" id="notf_user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span data-href="{{ route('user-notf-count') }}" id="user-notf-count">{{ App\Notification::countRegistration() }}</span>
+                        </a>
+                            <ul class="dropdown-menu" style="width:300px;">
+                            <div class="dropdownmenu-wrapper" data-href="{{ route('user-notf-show') }}" id="user-notf-show">
+                        </ul>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:;" id="notf_booking" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span data-href="{{ route('booking-notf-count') }}" id="booking-notf-count">{{ App\Notification::countBooking() }}</span>
+                        </a>
+                            <ul class="dropdown-menu" style="width:300px;">
+                            <div class="dropdownmenu-wrapper" data-href="{{ route('booking-notf-show') }}" id="booking-notf-show">
                             </ul>
-                        </li>
-                        <li class="dropdown nav-item">
-                            <a class="dropdown-toggle nav-link" href="javascript:;" id="notf_booking" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-bell"></i>
-                              <span data-href="{{ route('booking-notf-count') }}" id="booking-notf-count">{{ App\Notification::countBooking() }}</span>
-                            </a>
-                              <ul class="dropdown-menu" style="width:300px;">
-                                <div class="dropdownmenu-wrapper" data-href="{{ route('booking-notf-show') }}" id="booking-notf-show">
-                                </ul>
-                        </li>
+                    </li>
+                    @endrole
                     
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">

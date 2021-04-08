@@ -55,14 +55,14 @@ class UserController extends Controller
             $wislist->fill($data)->save();
             return $this->response->formatResponse(200, [], "success");
         } else {
-            return $this->response->formatResponse(208, [], "This place is already in your wishlist!");
+            return $this->response->formatResponse(208, [], "La destination est déja dans la list des souhaits!");
         }
 
         if($wislist AND $have_wishlist){
-            Toastr::success('New wislist created successfully');
+            Toastr::success('Nouvelle destination ajoutée dans la list des souhaits');
         }
         else{
-            Toastr::error('This place is already in your wishlist!');
+            Toastr::error('La destination est déja dans la list des souhaits!');
         }
 
     }
@@ -86,10 +86,10 @@ class UserController extends Controller
 
     public function index()
     {
-        $users    = User::join('profiles','profiles.user_id','=','users.id')
-                          ->join('role_user','role_user.user_id','=','users.id')
-                          ->get();
-                return view('pages.backend.settings.user-management',compact('users'));
+        $users = User::join('profiles','profiles.user_id','=','users.id')
+                      ->join('role_user','role_user.user_id','=','users.id')
+                      ->get();
+         return view('pages.backend.settings.user-management',compact('users'));
     }
 
     public function createUser(Request $request){
@@ -142,10 +142,10 @@ class UserController extends Controller
         ]);
 
         if($profile AND $user){
-            Toastr::success('New users created successfully');
+            Toastr::success('Nouvelle inscription');
         }
         else{
-            Toastr::error('Unable to create new user');
+            Toastr::error('Erreur lors de la nouvelle inscription');
         }
 
         if($user->hasRole('agent') || $user->hasRole('admin')){
@@ -271,10 +271,10 @@ class UserController extends Controller
         }
 
         if($updateUser AND $updateProfile){
-            Toastr::success('User information updated successfully');
+            Toastr::success('Les informations sont à jour');
         }
         else{
-            Toastr::error('Unable to edit user information');
+            Toastr::error('Erreur lors de la mise à jour des nouvelles informations');
         }
 
         if($request->user_type != 3){

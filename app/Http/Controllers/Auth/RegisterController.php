@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Profile;
 use App\Services\PortalCustomNotificationHandler;
 use App\User;
+use App\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use nilsenj\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -58,6 +60,7 @@ class RegisterController extends Controller
             'email'      => 'required|string|email|max:255|unique:users',
             'phone'      => 'required',
             'password'   => 'required|string|min:6|confirmed',
+            'booking_id' => '',
         ]);
 
         if ($validator->fails()) {
@@ -72,6 +75,15 @@ class RegisterController extends Controller
 
 
 
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm(Request $request)
+    {
+        return view('auth.register', ['booking' => $request->booking]);
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -91,6 +103,12 @@ class RegisterController extends Controller
         $data['user'] = $user;
 
         Profile::store($data);
+
+        if($data['booking_id'])
+        {
+            $booking = Booking::find($data['booking_id']);
+            $booking->update(['user_id' => $user->id]);
+        }
 
         PortalCustomNotificationHandler::registrationSuccessful($user);
 

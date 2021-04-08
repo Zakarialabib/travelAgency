@@ -33,23 +33,23 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>{{__('Tax Number')}}</label>
-                                    <input type="text" name="tax_no" class="form-control">
+                                    <input type="text" name="tax_no" class="form-control"  placeholder="{{__('ICE')}}">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>{{__('Address')}}</label>
-                                    <input type="text" name="address" class="form-control">
+                                    <input type="text" name="address" class="form-control"  placeholder="{{__('Adresse')}}">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>{{__('Postal Code')}}</label>
-                                    <input type="text" name="postal_code" class="form-control">
+                                    <input type="text" name="postal_code" class="form-control"  placeholder="{{__('Code Postal')}}">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>{{__('City')}} *</label>
-                                    <input type="text" name="city" class="form-control">
+                                    <input type="text" name="city" class="form-control"  placeholder="{{__('Ville')}}">
                                 </div>
                                  <div class="col-md-6 form-group">
                                     <label>{{__('Country')}}</label>
-                                    <input type="text" name="country" class="form-control">
+                                    <input type="text" name="country" class="form-control"  placeholder="{{__('Pays')}}">
                                  </div>
                               <div class="clearfix"></div>
                          </div>

@@ -74,7 +74,8 @@ class PurchaseController extends Controller
                 "payment_note" => "",
                 "note" => "",
                 "note" => "",
-                "staff_note" => ""
+                "staff_note" => "",
+                "is_locked" => "",
             ]);
 
             $document = $request->document;
@@ -124,6 +125,7 @@ class PurchaseController extends Controller
                 'payment_note' => $data['payment_note'],
                 'note' => $data['note'],
                 'staff_note' => $data['staff_note'],
+                'is_locked' => $data['is_locked'],
             ]);
 
             if($purchase) {
@@ -248,6 +250,7 @@ class PurchaseController extends Controller
                     'payment_note' => $data['payment_note'],
                     'note' => $data['note'],
                     'staff_note' => $data['staff_note'],
+                    'is_locked' => $data['is_locked'],
                 ]);
                 Toastr::success("Purchase updated successfully");
             } else {

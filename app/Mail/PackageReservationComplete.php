@@ -40,7 +40,7 @@ class PackageReservationComplete extends Mailable
 
     public function build()
     {
-        return $this->from('no-reply@travelpro.com.ng',config('app.name'))
+        return $this->from('no-reply@rentacstours.com',config('app.name'))
                     ->subject('Travel Deal Booking')
                     ->markdown('emails.PackageReservationComplete');
     }

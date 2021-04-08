@@ -1,4 +1,4 @@
-		<a class="clear">{{ __('New Booking(s).') }} 
+		<a class="clear dropdown-item">
 			@if(count($datas) > 0)
 			<span id="booking-notf-clear" class="clear-notf" data-href="{{ route('booking-notf-clear') }}">
 				{{ __('Clear All') }}
@@ -10,8 +10,8 @@
 		<ul>
 		@foreach($datas as $data)
 			<li>
-				<a href="{{-- route('admin-order-show',$data->order_id) --}}">
-					 <i class="fas fa-2x fa-newspaper"></i> {{ __('You Have a new order.') }}
+				<a class="dropdown-item" >
+					 <i class="fas fa-newspaper-o"></i> {{ __('You Have a reservation.') }}
 					<small class="d-block notf-time ">{{ $data->created_at->diffForHumans() }}</small>
 				</a>
 			</li>
@@ -21,7 +21,7 @@
 
 		@else 
 
-		<a class="clear" href="javascript:;">
+		<a class="clear dropdown-item" href="javascript:;">
 			{{ __('No New Notifications.') }}
 		</a>
 

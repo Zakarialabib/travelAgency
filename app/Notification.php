@@ -10,6 +10,8 @@ class Notification extends Model
 {
     use Notifiable;
 
+    protected $guarded = [];
+
     public function booking()
     {
     	return $this->belongsTo('App\Booking')->withDefault(function ($data) {

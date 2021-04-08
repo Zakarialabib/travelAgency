@@ -176,6 +176,29 @@ Route::group([
         Route::put('/city/status', 'CityController@updateStatus')->name('city_update_status');
         Route::delete('/city/{id}', 'CityController@destroy')->name('city_delete');
     
+
+        Route::group(['prefix' => 'customers'],function(){
+
+        Route::get('/', 'CustomerController@list')->name('customer_list');
+        Route::get('/add', 'CustomerController@create')->name('customer_create_view');
+        Route::post('/', 'CustomerController@store')->name('customer_create');
+        Route::get('/edit/{id}', 'CustomerController@edit')->name('customer_edit');
+        Route::put('/update/{id}', 'CustomerController@update')->name('customer_update');
+        Route::delete('/{id}', 'CustomerController@destroy')->name('customer_delete');
+    
+        });
+
+        Route::group(['prefix' => 'suppliers'],function(){
+
+        Route::get('/', 'SupplierController@list')->name('supplier_list');
+        Route::get('/add', 'SupplierController@create')->name('supplier_create_view');
+        Route::post('/', 'SupplierController@store')->name('supplier_create');
+        Route::get('/edit/{id}', 'SupplierController@edit')->name('supplier_edit');
+        Route::put('/update/{id}', 'SupplierController@update')->name('supplier_update');
+        Route::delete('/{id}', 'SupplierController@destroy')->name('supplier_delete');
+      });
+              
+
         Route::get('/category/{type}', 'CategoryController@list')->name('category_list');
         Route::post('/category', 'CategoryController@create')->name('category_create');
         Route::put('/category', 'CategoryController@update')->name('category_update');
@@ -243,27 +266,6 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/dashboard','BackEndViewController@dashboard')->name('dashboard');    
 
-    Route::group(['prefix' => 'customers'],function(){
-
-    Route::get('/', 'CustomerController@list')->name('customer_list');
-    Route::get('/add', 'CustomerController@create')->name('customer_create_view');
-    Route::post('/', 'CustomerController@store')->name('customer_create');
-    Route::get('/edit/{id}', 'CustomerController@edit')->name('customer_edit');
-    Route::put('/update/{id}', 'CustomerController@update')->name('customer_update');
-    Route::delete('/{id}', 'CustomerController@destroy')->name('customer_delete');
-
-    });
-
-    Route::group(['prefix' => 'suppliers'],function(){
-
-    Route::get('/', 'SupplierController@list')->name('supplier_list');
-    Route::get('/add', 'SupplierController@create')->name('supplier_create_view');
-    Route::post('/', 'SupplierController@store')->name('supplier_create');
-    Route::get('/edit/{id}', 'SupplierController@edit')->name('supplier_edit');
-    Route::put('/update/{id}', 'SupplierController@update')->name('supplier_update');
-    Route::delete('/{id}', 'SupplierController@destroy')->name('supplier_delete');
-  });
-  
 Route::group(['prefix' => 'purchases'],function(){
 
     Route::get('/', 'PurchaseController@list')->name('purchase_list');
@@ -297,6 +299,22 @@ Route::group(['prefix' => 'sales'],function(){
     Route::get('/status', 'SaleController@updateStatus');
     });
     
+
+    Route::group(['prefix' => 'return'],function(){
+
+        Route::get('/', 'ReturnController@list')->name('return_list');
+        Route::get('/ajax-delete-file', 'ReturnController@deleteSaleFile');
+        Route::get('/add', 'ReturnController@createView')->name('return_create_view');
+        Route::post('/add', 'ReturnController@createView')->name('return_create_view');
+        Route::post('/', 'ReturnController@create')->name('return_create');
+        Route::get('/edit/{id}', 'ReturnController@edit')->name('return_edit');
+        Route::put('/update/{id}', 'ReturnController@update')->name('return_update');
+        Route::delete('/{id}', 'ReturnController@destroy')->name('return_delete');
+        Route::get('gen_invoice/{id}', 'ReturnController@genInvoice')->name('return_invoice');
+        Route::get('gen_devis/{id}', 'ReturnController@genQuotation')->name('return_quotation');
+        Route::get('/status', 'ReturnController@updateStatus');
+        });
+
     Route::group(['prefix' => 'settings'],function(){
 
         Route::get('menu','MenuController@index')->name('menu.get');

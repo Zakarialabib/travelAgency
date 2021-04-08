@@ -35,7 +35,7 @@ class ReservationCancelled extends Mailable
     public function build()
     {
         return $this->subject('Reservation Cancelled')
-            ->from('no-reply@travelpro.com.ng',config('app.name'))
+            ->from('no-reply@rentacstours.com',config('app.name'))
             ->markdown('emails.ReservationCancelled');
     }
 }

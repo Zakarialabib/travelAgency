@@ -56,7 +56,7 @@ class PostController extends Controller
             ->where('type', Category::TYPE_POST)
             ->get();
 
-        return view('backend.post.post_list', [
+        return view('pages.backend.post.post_list', [
             'posts' => $posts,
             'post_type' => $post_type,
             'categories' => $categories,
@@ -75,7 +75,7 @@ class PostController extends Controller
 
         $post = Post::find($request->id);
 
-        return view('backend.post.post_add', [
+        return view('pages.backend.post.post_add', [
             'post_type' => $post_type,
             'categories' => $categories,
             'post' => $post,
@@ -179,29 +179,6 @@ class PostController extends Controller
         if ($model->save()) {
             return $this->response->formatResponse(200, $model, 'Update post status success!');
         }
-    }
-
-
-    public function createPostTest()
-    {
-//        App::setLocale('fr');
-//        config(['app.locale' => 'fr']);
-
-        $data = [
-            'en' => [
-                'title' => "Test TA"
-            ],
-            'fr' => [
-                'title' => "Test TV"
-            ]
-        ];
-
-
-        $test = Post::query()
-            ->first();
-
-        return $test;
-
     }
 
 

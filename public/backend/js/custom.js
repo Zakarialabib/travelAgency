@@ -134,17 +134,3 @@ function previewUploadImage(input, element_id) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-
-function notify(noti_content, noti_type = 'success',) {
-    /**
-     * Type: success, info, danger
-     */
-    new PNotify({
-        title: 'Notify!',
-        text: noti_content,
-        type: noti_type,
-        styling: 'bootstrap3',
-        delay: 3000
-    });
-}

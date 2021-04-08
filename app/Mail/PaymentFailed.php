@@ -32,7 +32,7 @@ class PaymentFailed extends Mailable
     public function build()
     {
         return $this->subject('Payment Failed')
-            ->from('no-reply@travelpro.com.ng',config('app.name'))
+            ->from('no-reply@rentacstours.com',config('app.name'))
             ->markdown('emails.PaymentFailed');
     }
 }
