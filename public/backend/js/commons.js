@@ -143,16 +143,3 @@ function previewUploadImage(input, element_id) {
     }
 }
 
-
-function notify(noti_content, noti_type = 'success',) {
-    /**
-     * Type: success, info, danger
-     */
-    new PNotify({
-        title: 'Notify!',
-        text: noti_content,
-        type: noti_type,
-        styling: 'bootstrap3',
-        delay: 3000
-    });
-}

@@ -2,9 +2,7 @@
 <!-- BEGIN VENDOR JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- BEGIN PAGE VENDOR JS-->
-<script src="{{asset('backend/app-assets/vendors/js/ui/headroom.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/vendors/js/charts/raphael-min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/timeline/horizontal-timeline.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/vendors/js/tables/datatable/datatables.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/vendors/js/tables/buttons.flash.min.js')}}" type="text/javascript"></script>
@@ -30,27 +28,12 @@
 <script src="{{asset('/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
 <!-- iCheck -->
 <script src="{{asset('/admin/vendors/iCheck/icheck.min.js')}}"></script>
-<!-- Skycons -->
-<script src="{{asset('/admin/vendors/skycons/skycons.js')}}"></script>
-<!-- Flot -->
-<script src="{{asset('/admin/vendors/Flot/jquery.flot.js')}}"></script>
-<script src="{{asset('/admin/vendors/Flot/jquery.flot.pie.js')}}"></script>
-<script src="{{asset('/admin/vendors/Flot/jquery.flot.time.js')}}"></script>
-<script src="{{asset('/admin/vendors/Flot/jquery.flot.stack.js')}}"></script>
-<script src="{{asset('/admin/vendors/Flot/jquery.flot.resize.js')}}"></script>
-{{--Flot plugins--}}
-<script src="{{asset('/admin/vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
-<script src="{{asset('/admin/vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
-<script src="{{asset('/admin/vendors/flot.curvedlines/curvedLines.js')}}"></script>
 <!-- JQVMap -->
 <script src="{{asset('/admin/vendors/jqvmap/dist/jquery.vmap.js')}}"></script>
 <script src="{{asset('/admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
 <script src="{{asset('/admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
 <script src="{{asset('/admin/vendors/morris.js/morris.min.js')}}"></script>
-{{--pnotify--}}
-<script src="{{asset('/admin/vendors/pnotify/dist/pnotify.js')}}"></script>
-<script src="{{asset('/admin/vendors/pnotify/dist/pnotify.buttons.js')}}"></script>
-<script src="{{asset('/admin/vendors/pnotify/dist/pnotify.nonblock.js')}}"></script>
+
 {{--dataTables--}}
 <script src="{{asset('/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('/admin/vendors/datatables.net-bs/js/dataTables.bootstrap5.min.js')}}"></script>
@@ -61,10 +44,12 @@
 <script src="{{asset('admin/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
 <script src="{{asset('/admin/vendors/DateJS/build/date.js')}}"></script>
 <script src="{{asset('/admin/vendors/laravel-filemanager/js/stand-alone-button.js')}}"></script>
+
 <!-- Custom Theme Scripts -->
 <script src="{{asset('/admin/build/js/custom.min.js')}}"></script>
 <script src="{{asset('/admin/js/commons.js?v=1.2')}}"></script>
 <!-- END PAGE VENDOR JS-->
+
 <!-- BEGIN MODERN JS-->
 <script src="{{asset('backend/app-assets/js/core/core.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/js/core/app-menu.min.js')}}" type="text/javascript"></script>
@@ -76,8 +61,6 @@
 <script src="{{asset('frontend/assets/js/axios.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/iziModal.js')}}"></script>
 <script src="{{asset('frontend/assets/js/iziToast.js')}}"></script>
-<script src="{{asset('frontend/assets/js/jspdf.debug.js')}}"></script>
-<script src="{{asset('frontend/assets/js/jspdf.min.js')}}"></script>
 <script src="{{asset('frontend/assets/js/materialize.js')}}"></script>
 <script src="{{asset('frontend/assets/js/bootstrap3-typeahead.js')}}"></script>
 <script src="{{asset('backend/js/required.js')}}"></script>
@@ -85,5 +68,16 @@
 
 <!-- END TOOLS FROM FRONTEND-->
 @stack('scripts')
+
+@if (session('error'))
+    <script>
+        notify("{{ session('error') }}", "error");
+    </script>
+@endif
+@if (session('success'))
+    <script>
+        notify("{{ session('success') }}");
+    </script>
+@endif
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-2mhVoLX7oIOgRQ-6bxlJt4TF5k0xhWc&libraries=places&callback=placeMap"></script>
