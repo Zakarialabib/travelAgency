@@ -664,7 +664,13 @@ $('#stoggle').on('click', function(){
                     if (data.code === 200) {
                         $('.booking_success').show();
                         $('.booking_error').hide();
-                        // $('form :input').val('');
+                        swal({
+                            title: "Booking Successfull",
+                            icon: "success",
+                            button: "Inscription",
+                        }).then(() => {
+                            window.open(`${window.location.origin}/register?booking=${data.data.id}`);
+                        });
                     } else {
                         $('.booking_success').hide();
                         $('.booking_error').show();

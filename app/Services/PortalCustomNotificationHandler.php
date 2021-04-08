@@ -31,7 +31,7 @@ class PortalCustomNotificationHandler
    
         try{
             NotificationController::add_booking_notif($booking->id);
-           Mail::to($booking['email'])->send(new RegistrationInvitation($booking));
+           //Mail::to($booking['email'])->send(new RegistrationInvitation($booking));
         }catch(Exception $e){
            Toastr::info('We could not send a registration email.');
         }

@@ -361,7 +361,7 @@
             </div>
         </div>
         <div class="row w-100">
-            <div class="col-xl-4 col-12 col-sm-6">
+            <div class="col-xl-6 col-12 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
@@ -376,7 +376,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-12 col-sm-6">
+            <div class="col-xl-6 col-12 col-sm-6">
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">

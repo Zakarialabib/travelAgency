@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Booking;
@@ -55,6 +54,7 @@ class BookingController extends Controller
         if ($booking->save()) {
             PortalCustomNotificationHandler::registrationInvite($booking);
             $place = Place::find($request['place_id']);
+            /*
             if ($request->type == Booking::TYPE_CONTACT_FORM) {
                 Log::debug("Booking::TYPE_CONTACT_FORM: " . $request->type);
                 $name = $request->name;
@@ -74,7 +74,7 @@ class BookingController extends Controller
                 $text_message = "";
             }
 
-            Mail::send('frontend.mail.new_booking', [
+             Mail::send('frontend.mail.new_booking', [
                 'name' => $name,
                 'email' => $email,
                 'phone' => $phone,
@@ -87,8 +87,10 @@ class BookingController extends Controller
             ], function ($message) use ($request) {
                 $message->to(setting('email_system'), "{$request->first_name}")->subject('Booking from ' . $request->first_name);
             });
+            */
 
         }
+        
         Toastr::success('You successfully created your booking','Success');
 
         return $this->response->formatResponse(200, $booking, 'You successfully created your booking!');

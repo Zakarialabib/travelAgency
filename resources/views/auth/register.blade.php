@@ -29,6 +29,7 @@
                         <div class="card-body pt-0">
                             <form class="form-horizontal" method="post" action="{{ route('register') }}">
                                 @csrf
+                                <input type="hidden" name="booking_id" value="{{$booking}}">
                                 <div class="row">
                                     <div class="col-12 col-sm-4 col-md-4">
                                         <fieldset class="form-group position-relative has-icon-left">
@@ -125,8 +126,7 @@
 <script>
   var input = document.querySelector("#phone");
   window.intlTelInput(input, {
-    initialCountry: "MA",
-    autoHideDialCode: true,
+    autoHideDialCode: false,
     autoPlaceholder: true,
     nationalMode: false,
   });

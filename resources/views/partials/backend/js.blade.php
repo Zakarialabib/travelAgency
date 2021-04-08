@@ -15,7 +15,7 @@
 <script src="{{asset('backend/app-assets/vendors/js/tables/buttons.print.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/js/scripts/tables/datatables/datatable-advanced.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/js/scripts/extensions/toastr.min.js')}}" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dropzone@5.7.6/dist/dropzone.min.js" type="text/javascript"></script>
 <script src="{{asset('backend/js/switchery.min.js')}}" type="text/javascript"></script>
 <!-- FastClick -->
