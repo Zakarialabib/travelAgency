@@ -273,7 +273,7 @@
                             <td class="total">{{number_format((float)$sales->tax, 2, '.', '')}}</td>
                             <td class="total">{{number_format((float)$saledetail->total, 2, '.', '')}}</td>
                         </tr>
-                        @endforeach
+                    @endforeach
                     </tbody>
                     <tfoot>
                         <tr>

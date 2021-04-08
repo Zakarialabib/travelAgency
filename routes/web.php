@@ -273,7 +273,10 @@ Route::group(['prefix' => 'purchases'],function(){
     Route::get('/edit/{id}', 'PurchaseController@edit')->name('purchase_edit');
     Route::put('/update/{id}', 'PurchaseController@update')->name('purchase_update');
     Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
-    Route::get('gen_invoice/{id}', 'PurchaseController@genInvoice')->name('purchase_invoice');
+    Route::get('template/{id}', 'SaleController@genInvoice')->name('sale_invoice');
+    Route::get('invoice/template1/{id}', 'SaleController@Invoice')->name('invoice_sale1');
+    Route::get('invoice/template2/{id}', 'SaleController@Invoiceun')->name('invoice_sale2');
+    Route::get('invoice/template3/{id}', 'SaleController@Invoicedeux')->name('invoice_sale3');
     Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
     Route::get('/status', 'PurchaseController@updateStatus');
 
