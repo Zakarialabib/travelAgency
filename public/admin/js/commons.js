@@ -40,21 +40,41 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     tinymce.init(editor_config);
 
     $(document).ready(function () {
-        console.log('readytogo')
         $('.golo-datatable').DataTable({
             language: {
                 url: '/admin/vendors/datatables.net/js/french.json'
             },
             dom: 'Bfrtip',
-          buttons: [
-         'excel', 'pdf', 'print'
-        ],
             responsive: true,
             lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            order: [0, "desc"]
+            order: [0, "desc"],
+            buttons: [
+                {
+                    extend: 'pdf',
+                    text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="{{__("PDF")}}" />',
+                    footer:true
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="{{__("Excel")}}" />',
+                    footer:true
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="{{__("Print")}}" />',
+                    footer:true
+                },
+            ],
+
         });
 
         $('.right_col').css('min-height', 'auto');
+
+    });
+
+
+    $(function() {
+        $('[data-toggle="popover"]').popover();
     });
 
     /*  [ Chosen ]
