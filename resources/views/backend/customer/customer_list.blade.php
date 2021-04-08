@@ -26,7 +26,7 @@
 
                 <div class="x_content">
 
-                    <table class="table table-striped table-bordered golo-datatable">
+                    <table class="table table-striped table-bordered col-5-datatable">
                         <thead>
                         <tr>
                             <th >ID</th>

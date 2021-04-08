@@ -40,7 +40,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     tinymce.init(editor_config);
 
     $(document).ready(function () {
-        $('.golo-datatable').DataTable({
+        $('.col-5-datatable').DataTable({
             language: {
                 url: '/admin/vendors/datatables.net/js/french.json'
             },
@@ -52,17 +52,62 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 {
                     extend: 'pdf',
                     text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="{{__("PDF")}}" />',
-                    footer:true
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5 ]
+                    },
                 },
                 {
                     extend: 'excel',
                     text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="{{__("Excel")}}" />',
-                    footer:true
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5 ]
+                    },
                 },
                 {
                     extend: 'print',
                     text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="{{__("Print")}}" />',
-                    footer:true
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5 ]
+                    },
+                },
+            ],
+
+        });
+        $('.col-4-datatable').DataTable({
+            language: {
+                url: '/admin/vendors/datatables.net/js/french.json'
+            },
+            dom: 'Bfrtip',
+            responsive: true,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            order: [0, "desc"],
+            buttons: [
+                {
+                    extend: 'pdf',
+                    text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="{{__("PDF")}}" />',
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="{{__("Excel")}}" />',
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="{{__("Print")}}" />',
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
                 },
             ],
 
@@ -70,6 +115,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
         $('.right_col').css('min-height', 'auto');
 
+        $('.myselect').select2();    
     });
 
 
@@ -191,7 +237,3 @@ function notify(noti_content, noti_type = 'success',) {
         delay: 3000
     });
 }
-
-$(document).ready(function() {
-    $('.myselect').select2();    
-});
