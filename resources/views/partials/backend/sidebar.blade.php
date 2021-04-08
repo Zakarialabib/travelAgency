@@ -216,7 +216,12 @@
                     <span class="menu-title" >{{__('Log Out')}}</span>
                 </a>
             </li>
-
+            <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main"><i class="la la-money"></i>{{ __('Subscribers') }}</a>
+                <ul class="menu-content">
+                  <li><a class="menu-item" href="{{ route('admin.newsletter')}}" data-i18n="nav.templates.vert.main">{{ __('Subscribers') }}</a></li>
+                  <li><a class="menu-item" href="{{route('admin.mailsubscriber')}}" data-i18n="nav.templates.horz.main">{{ __('Mail to Subscribers') }}</a></li>
+               </ul>
+           </li>
         </ul>
     </div>
 </div>
