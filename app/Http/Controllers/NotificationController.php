@@ -12,7 +12,20 @@ class NotificationController extends Controller
     {
         $data = Notification::where('user_id','!=',null)->where('is_read','=',0)->get()->count();
         return response()->json($data);            
-    } 
+    }
+
+    public static function add_user_notif($id)
+    {
+      try {
+        //code...
+        $notification = Notification::create([
+          'user_id' => $id,
+        ]);
+        return $notification;
+      } catch (\Throwable $th) {
+        return null;
+      }
+    }
 
     public function user_notf_clear()
     {
@@ -38,7 +51,20 @@ class NotificationController extends Controller
     {
         $data = Notification::where('booking_id','!=',null)->where('is_read','=',0)->get()->count();
         return response()->json($data);            
-    } 
+    }
+
+    public static function add_booking_notif($id)
+    {
+      try {
+        //code...
+        $notification = Notification::create([
+          'booking_id' => $id,
+        ]);
+        return $notification;
+      } catch (\Throwable $th) {
+        return null;
+      }
+    }
 
     public function booking_notf_clear()
     {

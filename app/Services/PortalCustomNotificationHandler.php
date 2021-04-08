@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\FlightBooking;
+use App\Http\Controllers\NotificationController;
 use App\Mail\BankPaymentOptionNotification;
 use App\Mail\FlightReservationComplete;
 use App\Mail\HotelReservationComplete;
@@ -29,6 +30,7 @@ class PortalCustomNotificationHandler
      public static function registrationInvite($booking){
    
         try{
+            NotificationController::add_booking_notif($booking->id);
            Mail::to($booking['email'])->send(new RegistrationInvitation($booking));
         }catch(Exception $e){
            Toastr::info('We could not send a registration email.');
@@ -38,6 +40,7 @@ class PortalCustomNotificationHandler
 
     public static function registrationSuccessful($user){
         try{
+            NotificationController::add_user_notif($user->id);
            Mail::to($user['email'])->send(new SuccessfulRegistration($user));
         }catch(Exception $e){
            Toastr::info('We could not send you a welcome email.');

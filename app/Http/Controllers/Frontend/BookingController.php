@@ -53,8 +53,8 @@ class BookingController extends Controller
         $booking->fill($data);
 
         if ($booking->save()) {
+            PortalCustomNotificationHandler::registrationInvite($booking);
             $place = Place::find($request['place_id']);
-
             if ($request->type == Booking::TYPE_CONTACT_FORM) {
                 Log::debug("Booking::TYPE_CONTACT_FORM: " . $request->type);
                 $name = $request->name;
@@ -89,8 +89,6 @@ class BookingController extends Controller
             });
 
         }
-        PortalCustomNotificationHandler::registrationInvite($booking);
-        
         Toastr::success('You successfully created your booking','Success');
 
         return $this->response->formatResponse(200, $booking, 'You successfully created your booking!');
