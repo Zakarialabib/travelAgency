@@ -185,16 +185,16 @@
     <div class="row my-3 w-100">
         <ul class="d-flex justify-content-end w-100">
             <li class="mr-2">
-                <button type="button" data-date="today" class="js-date btn btn-outline-primary btn-round-lg active">{{__('Today')}}</button>
+                <button type="button" data-date="today" class="js-date btn btn-outline-secondary btn-round-lg active">{{__('Today')}}</button>
             </li>
             <li class="mr-2">
-                <button type="button" data-date="month" class="js-date btn btn-outline-primary btn-round-lg">{{__('Last month')}}</button>
+                <button type="button" data-date="month" class="js-date btn btn-outline-secondary btn-round-lg">{{__('Last month')}}</button>
             </li>
             <li class="mr-2">
-                <button type="button" data-date="semi" class="js-date btn btn-outline-primary btn-round-lg">{{__('Last 6 month')}}</button>
+                <button type="button" data-date="semi" class="js-date btn btn-outline-secondary btn-round-lg">{{__('Last 6 month')}}</button>
             </li>
             <li class="mr-2">
-                <button type="button" data-date="year" class="js-date btn btn-outline-primary btn-round-lg">{{__('Last year')}}</button>
+                <button type="button" data-date="year" class="js-date btn btn-outline-secondary btn-round-lg">{{__('Last year')}}</button>
             </li>
         </ul>
     </div>

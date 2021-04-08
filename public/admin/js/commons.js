@@ -44,8 +44,9 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             language: {
                 url: '/admin/vendors/datatables.net/js/french.json'
             },
+           
             "responsive": true,
-            "pageLength": 10,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             "order": [0, "desc"]
         });
 
