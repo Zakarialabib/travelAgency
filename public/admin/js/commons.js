@@ -40,14 +40,18 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     tinymce.init(editor_config);
 
     $(document).ready(function () {
+        console.log('readytogo')
         $('.golo-datatable').DataTable({
             language: {
                 url: '/admin/vendors/datatables.net/js/french.json'
             },
-           
-            "responsive": true,
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            "order": [0, "desc"]
+            dom: 'Bfrtip',
+          buttons: [
+         'excel', 'pdf', 'print'
+        ],
+            responsive: true,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            order: [0, "desc"]
         });
 
         $('.right_col').css('min-height', 'auto');

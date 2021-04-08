@@ -733,4 +733,16 @@
 
 @push('scripts')
     <script src="{{asset('frontend/assets/js/page_place_detail.js')}}"></script>
+  <!-- 
+ <script src="{{asset('frontend/assets/js/intlTelInput.min.js')}}"></script>
+<script>
+  var input = document.querySelector("#phone_number");
+  window.intlTelInput(input, {
+    initialCountry: "MA",
+    autoHideDialCode: true,
+    autoPlaceholder: true,
+    nationalMode: false,
+  });
+</script>
+ --> 
 @endpush

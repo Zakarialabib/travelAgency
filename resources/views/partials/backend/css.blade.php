@@ -9,9 +9,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/css/vendors.min.css')}}">
 <!--<link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/weather-icons/climacons.min.css')}}">-->
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/fonts/meteocons/style.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/admin/vendors/datatables.net/cs/jquery.dataTables.min.css')}}">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/datatables.net/css/jquery.dataTables.min.css')}}">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/dropzone@5.7.6/dist/min/dropzone.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/switchery@0.0.2/switchery.css">
 <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">

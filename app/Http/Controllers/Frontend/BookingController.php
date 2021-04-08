@@ -42,6 +42,8 @@ class BookingController extends Controller
             'type' => ''
         ]);
 
+        $data['user_id'] = Auth::user() ? Auth::user()->id : NULL; 
+
         // generate refenrce number
         $lastBooking = Booking::latest()->first();
         $lastBooking->reference++;

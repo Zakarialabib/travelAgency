@@ -3,15 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- BEGIN PAGE VENDOR JS-->
 <script src="{{asset('backend/app-assets/vendors/js/charts/raphael-min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/datatable/datatables.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/buttons.flash.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/jszip.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/pdfmake.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/vfs_fonts.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/buttons.html5.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/vendors/js/tables/buttons.print.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/js/scripts/tables/datatables/datatable-advanced.min.js')}}" type="text/javascript"></script>
+
 <script src="{{asset('backend/app-assets/js/scripts/extensions/toastr.min.js')}}" type="text/javascript"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dropzone@5.7.6/dist/dropzone.min.js" type="text/javascript"></script>
@@ -34,9 +26,18 @@
 <script src="{{asset('/admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
 <script src="{{asset('/admin/vendors/morris.js/morris.min.js')}}"></script>
 
-{{--dataTables--}}
-<script src="{{asset('/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('/admin/vendors/datatables.net-bs/js/dataTables.bootstrap5.min.js')}}"></script>
+<!--dataTables-->
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('admin/vendors/datatables.net-bs/js/dataTables.bootstrap5.min.js')}}"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js" type="text/javascript"></script>
+<script src="{{asset('backend/app-assets/vendors/js/tables/buttons.flash.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('backend/app-assets/vendors/js/tables/jszip.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('backend/app-assets/vendors/js/tables/pdfmake.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('backend/app-assets/vendors/js/tables/vfs_fonts.js')}}" type="text/javascript"></script>
+<script src="{{asset('backend/app-assets/vendors/js/tables/buttons.html5.min.js')}}" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js" type="text/javascript"></script>
+<script src="{{asset('backend/app-assets/js/scripts/tables/datatables/datatable-advanced.min.js')}}" type="text/javascript"></script>
+
 <script src="{{asset('/admin/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=e8cgxme8kbsc3u65sf2y8iixj1z0mzqlejahfw9hp9yoi1to"></script>
@@ -47,7 +48,7 @@
 
 <!-- Custom Theme Scripts -->
 <script src="{{asset('/admin/build/js/custom.min.js')}}"></script>
-<script src="{{asset('/admin/js/commons.js?v=1.2')}}"></script>
+<script src="{{asset('/admin/js/commons.js')}}"></script>
 <!-- END PAGE VENDOR JS-->
 
 <!-- BEGIN MODERN JS-->
