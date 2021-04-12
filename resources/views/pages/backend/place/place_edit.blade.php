@@ -22,7 +22,7 @@
                                 </ul>
                     <!-- progressbar -->
                     <ul id="progressbar">
-                        <li class="active" id="account"><strong>Générale</strong></li>
+                        <li class="active" id="account"><strong>{{__('Genaral')}}</strong></li>
                         <li id="personal"><strong>Informations personnelles</strong></li>
                         <li id="details"><strong>Détails</strong></li>
                         <li id="payment"><strong>Médias et SEO</strong></li>
@@ -74,19 +74,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <label for="name">{{__('Category')}}: *</label>
-                                            <select class="form-control chosen-select" id="" name="category[]" multiple data-live-search="true" required>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="categpry">{{__('Category')}}:*
+                                            <select class="form-control myselect" id="category" name="category[]" multiple data-live-search="true" required>
                                                 @foreach($categories as $cat)
                                                     <option value="{{$cat->id}}" {{isSelected($cat->id, $place->category)}}>{{$cat->name}}</option>
                                                 @endforeach
                                             </select>
+                                            </label>
                                         </div>
                         
-                                        <div class="col-md-6">
-                                            <label for="name">{{__('Place type')}}: *</label>
-                                            <select class="form-control chosen-select" id="" name="place_type[]" multiple data-live-search="true" required>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="place_type">{{__('Place type')}}:*
+                                            <select class="form-control myselect" id="place_type" name="place_type[]" multiple data-live-search="true" required>
                                                 @foreach($place_types as $cat)
                                                     <optgroup label="{{$cat->name}}">
                                                         @foreach($cat['place_type'] as $type)
@@ -95,6 +96,7 @@
                                                     </optgroup>
                                                 @endforeach
                                             </select>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +127,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="place_address">{{__('City')}}: *</label>
-                                            <select class="form-control" id="select_city" name="city_id" required>
+                                            <select class="form-control myselect" id="select_city" name="city_id" required>
                                                 <option value="">{{__('Please select country first')}}</option>
                                                 @foreach($cities as $city)
                                                     <option value="{{$city->id}}" {{isSelected($city->id, $place->city_id)}}>{{$city->name}}</option>
@@ -137,7 +139,6 @@
                                     <div class="form-group">
                                         <label for="place_address">{{__('Place Address')}}: *</label>
                                         <input type="text" class="form-control" id="place_address" name="address" value="{{$place->address}}" placeholder="Full Address" autocomplete="off" required>
-                        
                                         <input type="hidden" id="place_lat" name="lat" value="{{$place->lat}}">
                                         <input type="hidden" id="place_lng" name="lng" value="{{$place->lng}}">
                                     </div>

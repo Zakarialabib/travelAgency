@@ -23,7 +23,7 @@
                             <label>{{__('Select Category')}}:</label>
                             <form>
                                 <select class="form-control" id="select_category_id" name="category_id" onchange="this.form.submit()">
-                                    <option value="">--- {{__('Select Category')}} ---</option>
+                                    <option value="">{{__('Select Category')}}</option>
                                     @foreach($categories as $cat)
                                         @if($category_id)
                                             <option value="{{$cat->id}}" {{isSelected($cat->id, $category_id)}}>{{$cat->name}}</option>

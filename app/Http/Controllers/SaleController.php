@@ -330,8 +330,16 @@ class SaleController extends Controller
         Sale::destroy($id);
         return back()->with('success', 'Sale Deleted with success!');
     }
+  public function genInvoice($id)
+    {
+        $sales = Sale::find($id);
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
 
-    public function genInvoice($id)
+        return view('pages.backend.sale.models', compact('sales', 'users', 'customers','saledetails'));
+    }
+    public function Invoice($id)
     {
         $sales = Sale::find($id);
         $saledetails = SaleDetails::where('sale_id', $id)->get();
@@ -340,6 +348,25 @@ class SaleController extends Controller
 
         return view('pages.backend.sale.invoice', compact('sales', 'users', 'customers','saledetails'));
     }
+    public function Invoiceun($id)
+    {
+        $sales = Sale::find($id);
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        return view('pages.backend.sale.invoice2', compact('sales', 'users', 'customers','saledetails'));
+    }
+    public function Invoicedeux($id)
+    {
+        $sales = Sale::find($id);
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        return view('pages.backend.sale.invoice3', compact('sales', 'users', 'customers','saledetails'));
+    }
+
 
     public function genQuotation($id)
     {
