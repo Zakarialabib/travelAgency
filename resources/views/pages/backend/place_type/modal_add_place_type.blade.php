@@ -48,9 +48,9 @@
 
                 <div class="modal-footer">
                     <input type="hidden" id="place_type_id" name="place_type_id" value="">
-                    <button class="btn btn-primary" id="submit_add_place_type">Add</button>
-                    <button class="btn btn-primary" id="submit_edit_place_type">Save</button>
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" id="submit_add_place_type">{{__('Add')}}</button>
+                    <button class="btn btn-primary" id="submit_edit_place_type">{{__('Save')}}</button>
+                    <button class="btn btn-default" data-dismiss="modal">{{__('Cancel')}}</button>
                 </div>
 
             </form>

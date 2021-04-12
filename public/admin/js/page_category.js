@@ -25,7 +25,7 @@
         $('#submit_edit_category').show();
         $('#add_category_method').val('PUT');
         $('#category_id').val(category_id);
-        // $('#category_name').val(category_name);
+        $('#category_name').val(category_name);
         $('#category_slug').val(category_slug);
         $('#category_priority').val(category_priority);
         $('#category_is_feature').val(category_is_feature);
