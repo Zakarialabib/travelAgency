@@ -115,7 +115,9 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
         $('.right_col').css('min-height', 'auto');
 
-        $('.myselect').select2();    
+        $('.myselect').select2({
+            theme: 'bootstrap4',
+        });  
     });
 
 

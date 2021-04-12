@@ -19,9 +19,9 @@
                     @unless(isRoute('post_list_page'))
                         <form class="row">
                             <div class="col-md-3 form-group">
-                                <label>Select Categories:</label>
+                                <label>{{__('Select Categories')}}:</label>
                                 <select class="form-control" id="select_category_id" name="category_id" onchange="this.form.submit()">
-                                    <option value="">All Categories</option>
+                                    <option value="">{{__('All Categories')}}</option>
                                     @foreach($categories as $cat)
                                         <option value="{{$cat->id}}" {{isSelected($cat->id, $filter['category_id'])}}>{{$cat->name}}</option>
                                     @endforeach
@@ -31,24 +31,21 @@
                     @endunless
                     <div class="clearfix"></div>
                 </div>
-
                 <div class="x_content">
-
                     <table class="table table-striped table-bordered golo-datatable post_list">
                         <thead>
                         <tr>
                             <th >ID</th>
                             <th >{{__('Thumb')}}</th>
-                            <th>Title</th>
+                            <th>{{__('Title')}}</th>
                             @unless(isRoute('post_list_page'))
                                 <th>{{__('Category')}}</th>
                             @endunless
-                            <th>Status</th>
-                            <th width="15%">Action</th>
+                            <th>{{__('Status')}}</th>
+                            <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
-
                         @foreach($posts as $post)
                             <tr>
                                 <td>{{$post->id}}</td>

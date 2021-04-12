@@ -76,18 +76,18 @@
                                     </div>
                         
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="form-group col-md-6">
                                             <label for="place_category">{{__('Category')}}: *</label>
-                                            <select class="form-control chosen-select" id="place_category" name="category[]" multiple data-live-search="true" required>
+                                            <select class="form-control myselect" id="place_category" name="category[]" multiple data-live-search="true" required>
                                                 @foreach($categories as $cat)
                                                     <option value="{{$cat->id}}">{{$cat->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                         
-                                        <div class="col-md-4">
+                                        <div class="form-group col-md-4">
                                             <label for="place_type">{{__('Place type')}}: *</label>
-                                            <select class="form-control chosen-select" id="place_type" name="place_type[]" multiple data-live-search="true" required>
+                                            <select class="form-control myselect" id="place_type" name="place_type[]" multiple data-live-search="true" required>
                                                 @foreach($place_types as $cat)
                                                     <optgroup label="{{$cat->name}}">
                                                         @foreach($cat['place_type'] as $type)
@@ -126,7 +126,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="select_city">{{__('City')}}: *</label>
-                                            <select class="form-control" id="select_city" name="city_id" required>
+                                            <select class="form-control myselect" id="select_city" name="city_id" required>
                                                 <option value="">{{__('Please select country first')}}</option>
                                             </select>
                                         </div>
