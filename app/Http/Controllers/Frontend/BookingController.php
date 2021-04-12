@@ -48,9 +48,9 @@ class BookingController extends Controller
         $latest = Booking::latest()->first();
         $place = Place::find($data['place_id']);
         if($latest) {
-            $data['reference'] = 'BOOK' . $place->reference . $data['user_id'] . $latest->id . Carbon::now()->format('dmy');
+            $data['reference'] = $place->reference . $data['user_id'] . $latest->id . Carbon::now()->format('dmy');
         } else {
-            $data['reference'] = 'BOOK' . $place->reference . $data['user_id'] . '1' . Carbon::now()->format('dmy');
+            $data['reference'] = $place->reference . $data['user_id'] . '1' . Carbon::now()->format('dmy');
         }
         
 

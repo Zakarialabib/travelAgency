@@ -137,7 +137,7 @@ class PlaceController extends Controller
         // generate place reference
         $latest = Place::latest()->first();
         if(!$latest) {
-            $data['reference'] = 'PLACE0000000001';
+            $data['reference'] = '0000000001';
         }else{
             $latest->reference++;
             $data['reference'] = $latest->reference;
