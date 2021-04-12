@@ -664,13 +664,16 @@ $('#stoggle').on('click', function(){
                     if (data.code === 200) {
                         $('.booking_success').show();
                         $('.booking_error').hide();
-                        swal({
-                            title: "Booking Successfull",
-                            icon: "success",
-                            button: "Inscription",
-                        }).then(() => {
-                            window.open(`${window.location.origin}/register?booking=${data.data.id}`);
-                        });
+                        if(!$('.js-user-auth')[0]) {
+                        
+                            swal({
+                                title: "Booking Successfull",
+                                icon: "success",
+                                button: "Inscription",
+                            }).then(() => {
+                                window.open(`${app_url}/register?booking=${data.data.id}`);
+                            });
+                        }
                     } else {
                         $('.booking_success').hide();
                         $('.booking_error').show();

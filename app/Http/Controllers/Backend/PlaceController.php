@@ -134,6 +134,15 @@ class PlaceController extends Controller
             $data['thumb'] = $thumb_file;
         }
 
+        // generate place reference
+        $latest = Place::latest()->first();
+        if(!$latest) {
+            $data['reference'] = 'PLACE0000000001';
+        }else{
+            $latest->reference++;
+            $data['reference'] = $latest->reference;
+        }
+
         $model = new Place();
         $model->fill($data);
         $model->save();

@@ -22,26 +22,39 @@ use App\Mail\VisaApplicationRequest;
 use App\Mail\PackageReservationComplete;
 use Exception;
 use App\Mail\RegistrationInvitation;
+use App\Notifications\BookingCreated;
+use App\Notifications\UserCreated;
 use Illuminate\Support\Facades\Mail;
 use nilsenj\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Log;
 
 class PortalCustomNotificationHandler
 {
-     public static function registrationInvite($booking){
+     public static function bookingCreated($booking){
    
         try{
             NotificationController::add_booking_notif($booking->id);
-           //Mail::to($booking['email'])->send(new RegistrationInvitation($booking));
+            if($booking->user)
+                $booking->user->notify(new BookingCreated($booking));
         }catch(Exception $e){
            Toastr::info('We could not send a registration email.');
         }
         return 0;
     }
 
+    public static function bookingAttachedToUser($booking){
+        try {
+            $booking->user->notify(new BookingCreated($booking));
+        } catch (Exception $e) {
+            Toastr::info('We could not send a registration email.');
+        }
+    }
+
     public static function registrationSuccessful($user){
         try{
             NotificationController::add_user_notif($user->id);
-           Mail::to($user['email'])->send(new SuccessfulRegistration($user));
+           $user->notify(new UserCreated());
+        
         }catch(Exception $e){
            Toastr::info('We could not send you a welcome email.');
         }

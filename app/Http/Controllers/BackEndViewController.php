@@ -66,12 +66,7 @@ class BackEndViewController extends Controller
         $count_purchases = Purchase::query()
         ->count();
 
-        $bookings = Booking::query()
-        ->where('id', Auth::user()->id)
-        ->with('user')
-        ->with('place')
-        ->orderBy('created_at', 'desc')
-        ->get();
+        $bookings = Auth::user()->bookings()->with(['place'])->get();
 
         $visaApplications = VisaApplication::orderBy('id','desc')->get();
         $generalTotalFlightBookings = FlightBooking::where('payment_status','1')->count();
