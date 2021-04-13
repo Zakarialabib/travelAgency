@@ -67,6 +67,7 @@ class ReturnController extends Controller
                 $return = Returns::create([
                     'user_id' => $sale->user_id,
                     'reference_no' => $sale->reference_no,
+                    'booking_reference' => $sale->booking_reference,
                     'user_id' => $sale->user_id,
                     'customer_id' => $sale->customer_id,
                     'total_qty' => $sale->details()->count(),

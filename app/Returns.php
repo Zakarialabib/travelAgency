@@ -12,7 +12,7 @@ class Returns extends Model
     protected $table = 'returns';
 
     protected $fillable = [
-        'user_id', 'reference_no', 'customer_id', 
+        'user_id', 'reference_no', 'customer_id', 'booking_reference',
         "total_qty","tax", "total_tax", "total_cost", "grand_total",
         "status", "payment_status", "paid_amount", "paid_by",
          "document", "note", "staff_note", "payment_note", "is_locked"
