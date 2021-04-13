@@ -45,7 +45,7 @@
                             <tr>
                                 <td>{{$sale->id}}</td>
                                 <td>{{$sale->user->profile->sur_name}}</td>
-                                <td>{{$sale->customer->name}}</td>
+                                <td>{{$sale->customer->profile->sur_name}}</td>
                                 <td>{{$sale->grand_total}}</td>
                                 <td>
                                     @if($sale->payment_status == App\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>

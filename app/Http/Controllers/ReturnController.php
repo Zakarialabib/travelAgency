@@ -60,10 +60,12 @@ class ReturnController extends Controller
             
             if($sale)
             {
+
                 if($sale->document)
                 {
                     Storage::disk('public_upload')->move('sales/documents/' . $sale->document, 'returns/documents/' . $sale->document);
                 }
+
                 $return = Returns::create([
                     'user_id' => $sale->user_id,
                     'reference_no' => $sale->reference_no,
@@ -85,7 +87,7 @@ class ReturnController extends Controller
                     'staff_note' => $sale->staff_note,
                     'is_locked' => $sale->is_locked,
                 ]);
-
+                
                 if($return) {
 
                     foreach ($sale->details as $detail) {
@@ -97,8 +99,13 @@ class ReturnController extends Controller
                             'total' => $detail->total,
                         ]);
                     }
+                    
+                    $return->customer->wallet->update([
+                        'balance' => $return->customer->wallet->balance + $sale->paid_amount,
+                    ]);
 
                     $sale->delete();
+
     
                     Toastr::success("Return created successfully");
     

@@ -346,10 +346,6 @@ class User extends Authenticatable
         ]);
     }
 
-    public function profile(){
-        return static::hasOne(Profile::class,'user_id','id');
-    }
-
     public function agency_profile(){
         return static::hasOne(AgencyProfile::class,'user_id','id');
     }
@@ -366,6 +362,43 @@ class User extends Authenticatable
     public function bookings()
     {
         return $this->hasMany(Booking::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function scopeCustomers($query)
+    {
+        return $query->whereHas('roles', function ($roles) {
+            $roles->where('id', 3);
+        });
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('is_admin', 1);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function returns()
+    {
+        return $this->hasMany(Returns::class);
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
     }
 
 }

@@ -40,9 +40,9 @@
                                                 <select name="customer_id" class="form-control myselect" title="{{__('Select Customer')}}...">
                                                 @foreach($customers as $customer)
                                                     @if ($customer->id === $sale->customer->id)
-                                                    <option value="{{$customer->id}}" selected="selected">{{$customer->name}}</option>
+                                                    <option value="{{$customer->id}}" selected="selected">{{$customer->profile->sur_name}}</option>
                                                     @else
-                                                    <option value="{{$customer->id}}">{{$customer->name}}</option>
+                                                    <option value="{{$customer->id}}">{{$customer->profile->sur_name}}</option>
                                                     @endif
                                                 @endforeach
                                                 </select>
