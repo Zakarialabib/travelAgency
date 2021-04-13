@@ -22,7 +22,7 @@
                             <label>{{__('Select country')}}:</label>
                             <form>
                                 <select class="form-control" id="select_country_id" name="country_id" onchange="this.form.submit()">
-                                    <option value="">--- {{__('Select country')}} ---</option>
+                                    <option value="">{{__('Select country')}}</option>
                                     @foreach($countries as $country)
                                         @if($country_id)
                                             <option value="{{$country->id}}" {{isSelected($country->id, $country_id)}}>{{$country->name}}</option>

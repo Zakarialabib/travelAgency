@@ -179,10 +179,10 @@
 				                            <a href="{{url('bookings/hotel/hotel-reservation-information/'.$booking->reference)}}" class="dropdown-item"><i class="las la-eye"></i> View</a>
                                                     @if(strtotime(date('y-m-d H:i:s')) < strtotime($booking->check_in_date))
                                                         @if($booking->cancel_ticket_status == 0)
-                                                            <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i> Cancel</button>
+                                                            <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i> {{__('Cancel')}}</button>
                                                         @endif
                                                     @else
-                                                        <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i> Cancel</button>
+                                                        <button class="dropdown-item btn cancel_pnr" value="{{$booking->pnr}}"><i class="la la-times-circle"></i> {{__('Cancel')}}</button>
                                                     @endif
 				                        </span>
 				                    </span>

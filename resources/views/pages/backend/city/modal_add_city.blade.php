@@ -56,16 +56,6 @@
                                 @endforeach
                             </div>
 
-                            {{--<div class="form-group">--}}
-                            {{--<label for="city_name">{{__('City Name')}}: *</label>--}}
-                            {{--<input type="text" class="form-control" id="city_name" name="name" required>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group">--}}
-                            {{--<label for="city_slug">Slug: *</label>--}}
-                            {{--<input type="text" class="form-control" id="city_slug" name="slug" required>--}}
-                            {{--</div>--}}
-
                             <div class="row city_image">
                                 <div class="col-md-4">
                                     <p><strong>{{__('Thumbnail image')}}:</strong></p>

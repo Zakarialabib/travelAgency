@@ -108,10 +108,10 @@ class RegisterController extends Controller
         {
             $booking = Booking::find($data['booking_id']);
             $booking->update(['user_id' => $user->id]);
+            PortalCustomNotificationHandler::bookingAttachedToUser($booking);
         }
 
         PortalCustomNotificationHandler::registrationSuccessful($user);
-
 
         Toastr::success('Merci pour votre inscription');
 

@@ -19,7 +19,7 @@
                                     <a title="Sign Up" href="{{url('/register')}}" class="">{{__('Sign Up')}}</a>
                                 </div>
                                 @else
-                                <div class="account">
+                                <div class="account js-user-auth">
                                     <a href="#" title="{{Auth::user()->name}}">
                                         <span class="account-side">
                                             {{Auth::user()->name}}
@@ -113,7 +113,7 @@
                        </div> 
                     </div><!-- .account -->
                     @elseif(auth()->user())
-                    <div class="account">
+                    <div class="account js-user-auth">
                         <a href="#" style="color: white;" title="{{Auth::user()->name}}">
                             @if(!empty(\App\Profile::getUserInfo(auth()->user()->id)->photo))
                             <img src="{{asset(\App\Profile::getUserInfo(auth()->user()->id)->photo)}}"

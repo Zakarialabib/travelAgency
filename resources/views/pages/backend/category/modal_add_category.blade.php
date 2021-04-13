@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" style="padding: 60px;" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add category</h4>
+                <h4 class="modal-title">Ajouté une nouvelle activité</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
 
@@ -26,7 +26,7 @@
                                 @foreach($languages as $index => $language)
                                     <div class="tab-pane fade show {{$index !== 0 ?: "active"}}" id="language_{{$language->code}}" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="form-group">
-                                            <label for="name">Category name
+                                            <label for="name">Nom de l'activité
                                                 <small>({{$language->code}})</small>
                                                 : *</label>
                                             <input type="text" class="form-control" name="{{$language->code}}[name]" {{$index !== 0 ?: "required"}}>
@@ -34,7 +34,7 @@
 
                                         @if($type === \App\Category::TYPE_PLACE)
                                             <div class="form-group">
-                                                <label for="name">Feature title <small>({{$language->code}})</small>:</label>
+                                                <label for="name">{{__('Feature title')}} <small>({{$language->code}})</small>:</label>
                                                 <input type="text" class="form-control" id="category_feature_title" name="{{$language->code}}[feature_title]">
                                             </div>
                                         @endif
@@ -42,53 +42,51 @@
                                 @endforeach
                             </div>
 
-                            {{--<div class="form-group">--}}
-                            {{--<label for="name">Category name: *</label>--}}
-                            {{--<input type="text" class="form-control" id="category_name" name="name" required>--}}
-                            {{--</div>--}}
-                            {{--<div class="form-group">--}}
-                            {{--<label for="name">Category slug: *</label>--}}
-                            {{--<input type="text" class="form-control" id="category_slug" name="slug" required>--}}
-                            {{--</div>--}}
+                         
                             @if($type === \App\Category::TYPE_PLACE)
-                                <div class="form-group">
-                                    <label for="name">Priority:</label>
-                                    <input type="text" class="form-control" id="category_priority" name="priority">
-                                </div>
-                                {{--                                <div class="form-group">--}}
-                                {{--                                    <label for="name">Feature title:</label>--}}
-                                {{--                                    <input type="text" class="form-control" id="category_feature_title" name="feature_title">--}}
-                                {{--                                </div>--}}
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p><strong>Icon Map Marker:</strong></p>
-                                        <img id="preview_icon" src="https://via.placeholder.com/100x100?text=icon" style="width:60px;height:60px;object-fit:cover;margin-bottom:10px">
-                                        <input type="file" class="form-control" id="icon_map_marker" name="icon_map_marker">
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">{{__('Priority')}}:</label>
+                                        <input type="text" class="form-control" id="category_priority" name="priority">
                                     </div>
                                 </div>
-
-                                <div class="row mt-2">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <p><strong>Color:</strong></p>
+                                <div class="col-md-6">
+                                      <div class="form-group">
+                                            <p><strong>{{__('Color')}} :</strong></p>
                                             <div class="input-group demo2">
                                                 <input class="form-control" id="category_color_code" type="text" name="color_code"/>
                                                 <span class="input-group-addon"><i></i></span>
                                             </div>
-                                        </div>
+                                      </div>
+                                </div>
+                             </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p><strong>{{__('Icon Marker')}}:</strong></p>
+                                        <img id="preview_icon" src="https://via.placeholder.com/100x100?text=icon" style="width:60px;height:60px;object-fit:cover;margin-bottom:10px">
+                                        <input type="file" class="form-control" id="icon_map_marker" name="icon_map_marker">
                                     </div>
                                 </div>
                             @endif
 
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="seo_title">SEO title:</label>
+                                     <div class="form-group">
+                                        <label for="seo_title">{{__('SEO title')}} - <small>{{__('60 characters or less')}}</small>:</label>
                                         <input type="text" class="form-control" id="seo_title" name="seo_title">
+                                       <div id="count">
+                                          <span id="current_count">0</span>
+                                           <span id="maximum_count">/ 60</span>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="seo_description">Meta Description:</label>
+                                        <label for="seo_description">{{__('Meta Description')}} - <small>{{__('160 characters or less')}}</small>:</label>
                                         <textarea class="form-control" id="seo_description" name="seo_description"></textarea>
+                                        <div id="counter">
+                                          <span id="count_current">0</span>
+                                           <span id="count_maximum">/ 160</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -100,9 +98,9 @@
                 <div class="modal-footer">
                     <input type="hidden" id="category_id" name="category_id" value="">
                     <input type="hidden" id="category_type" name="type" value="{{$type}}">
-                    <button type="submit" class="btn btn-primary" id="submit_add_category">Add</button>
-                    <button class="btn btn-primary" id="submit_edit_category">Save</button>
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submit_add_category">{{__('Add')}}</button>
+                    <button class="btn btn-primary" id="submit_edit_category">{{__('Save')}}</button>
+                    <button class="btn btn-default" data-dismiss="modal">{{__('Cancel')}}</button>
                 </div>
 
             </form>
