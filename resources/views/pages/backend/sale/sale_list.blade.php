@@ -171,6 +171,11 @@
                                     <a class="dropdown-item" href="{{route('sale_edit', $sale->id)}}">{{__('Edit')}}</a>
                                     <a class="dropdown-item" href="{{route('sale_invoice', $sale->id)}}">{{__('Invoice')}}</a>
                                     <a class="dropdown-item" href="{{route('sale_quotation', $sale->id)}}">{{__('Quotation')}}</a>
+                                    <form class="d-inline" action="{{route('return_create')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$sale->id}}">
+                                        <button type="submit" class="dropdown-item">{{__('Return')}}</button>
+                                    </form>
                                     <form action="{{route('sale_delete',$sale->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf

@@ -124,7 +124,8 @@
                                             <select name="paid_by" class="form-control">
                                                 <option value="{{App\Payment::MEDIUM_CASH}}" {{$return->paid_by === App\Payment::MEDIUM_CASH ? 'selected="selected"' : ''}}>{{__('Cash')}}</option>
                                                 <option value="{{App\Payment::MEDIUM_CHECK}}" {{$return->paid_by === App\Payment::MEDIUM_CHECK ? 'selected="selected"' : ''}}>{{__('Cheque')}}</option>
-                                                <option value="{{App\Payment::MEDIUM_DEPOSIT}}" {{$return->paid_by === App\Payment::MEDIUM_DEPOSIT ? 'selected="selected"' : ''}}>{{__('Deposit')}}</option>
+                                                <option value="{{App\Payment::MEDIUM_TRAIT}}" {{$return->paid_by === App\Payment::MEDIUM_TRAIT ? 'selected="selected"' : ''}}>{{__('TRAIT')}}</option>
+                                                <option value="{{App\Payment::MEDIUM_WIRE}}" {{$return->paid_by === App\Payment::MEDIUM_WIRE ? 'selected="selected"' : ''}}>{{__('WIRE')}}</option>
                                             </select>
                                         </div>
                                     </div>
