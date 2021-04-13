@@ -53,12 +53,6 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $('.right_col').css('min-height', 'auto');
     });
 
-    /*  [ Chosen ]
-        - - - - - - - - - - - - - - - - - - - - */
-    $('.chosen-select').chosen({
-        no_results_text: "Oops, nothing found!"
-    });
-
 })(jQuery);
 
 

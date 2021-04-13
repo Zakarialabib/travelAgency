@@ -114,7 +114,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Close')}}</button>
-          <button type="submit" class="btn btn-success"> Save</button>
+          <button type="submit" class="btn btn-success"> {{__('Save')}}</button>
 
         </div>
         </form>

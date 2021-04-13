@@ -226,8 +226,8 @@ $('#js-validate-btn').click(function(event){
     event.preventDefault();
     $('input[name="is_locked"]').val(1);
     swal({
-        title: "Validation success",
-        text: "sale validated successfully",
+        title: "Accompli",
+        text: "Vente Validée avec Succes",
         icon: "success",
     });
 });
@@ -236,8 +236,8 @@ $( "#js-save" ).click(function(event) {
     event.preventDefault();
     if($('input[name="is_locked"]').val() == 0) {
         swal({
-            title: "Validation",
-            text: "Sale need validation",
+            title: "Alert",
+            text: "Valider la vente pour enregistrer",
             icon: "error",
         });
     } else {

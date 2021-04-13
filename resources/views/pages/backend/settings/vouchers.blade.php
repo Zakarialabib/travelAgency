@@ -25,7 +25,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>&nbsp;&nbsp;</label>
-                                <button class="btn btn-primary btn-block" id="create_voucher"> Save</button>
+                                <button class="btn btn-primary btn-block" id="create_voucher"> {{__('Save')}}</button>
                             </div>
                         </div>
                     </div>

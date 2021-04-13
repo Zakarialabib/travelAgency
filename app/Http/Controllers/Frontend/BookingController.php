@@ -45,51 +45,21 @@ class BookingController extends Controller
         $data['user_id'] = Auth::user() ? Auth::user()->id : NULL; 
 
         // generate refenrce number
-        $lastBooking = Booking::latest()->first();
-        $lastBooking->reference++;
-        $data['reference'] = $lastBooking->reference;
+        $latest = Booking::latest()->first();
+        $place = Place::find($data['place_id']);
+        if($latest) {
+            $data['reference'] = $place->reference . $data['user_id'] . $latest->id . Carbon::now()->format('dmy');
+        } else {
+            $data['reference'] = $place->reference . $data['user_id'] . '1' . Carbon::now()->format('dmy');
+        }
         
 
         $booking = new Booking();
         $booking->fill($data);
 
         if ($booking->save()) {
-            PortalCustomNotificationHandler::registrationInvite($booking);
+            PortalCustomNotificationHandler::bookingCreated($booking);
             $place = Place::find($request['place_id']);
-            /*
-            if ($request->type == Booking::TYPE_CONTACT_FORM) {
-                Log::debug("Booking::TYPE_CONTACT_FORM: " . $request->type);
-                $name = $request->name;
-                $email = $request->email;
-                $phone = $request->phone_number;
-                $numberofadult = "";
-                $numberofchildren = "";
-                $text_message = $request->message;
-            } else {
-                Log::debug("Booking::submit: " . $request->type);
-                $name = $request->name;
-                $email = $request->email;
-                $phone = $request->phone_number;
-                $datetime = Carbon::parse($booking->date)->format('Y-m-d') . " " . $booking->time;
-                $numberofadult = $booking->numbber_of_adult;
-                $numberofchildren = $booking->numbber_of_children;
-                $text_message = "";
-            }
-
-             Mail::send('frontend.mail.new_booking', [
-                'name' => $name,
-                'email' => $email,
-                'phone' => $phone,
-                'place' => $place->name,
-                'datetime' => $datetime,
-                'numberofadult' => $numberofadult,
-                'numberofchildren' => $numberofchildren,
-                'text_message' => $text_message,
-                'booking_at' => $booking->created_at
-            ], function ($message) use ($request) {
-                $message->to(setting('email_system'), "{$request->first_name}")->subject('Booking from ' . $request->first_name);
-            });
-            */
 
         }
         

@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{__('Place')}}</label>
-                        <select name="place_id" id="place_id" class="form-control">
+                        <select name="place_id" id="place_id" class="form-control myselect">
                         @foreach ($places as $place)
                             <option  value="{{$place->id}}">{{$place->name}}</option>
                         @endforeach
