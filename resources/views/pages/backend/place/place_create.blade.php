@@ -7,11 +7,9 @@
 @endsection
 
 @section('content')
-<h2 id="heading" style="text-align: center;">{{__('Add place')}}</h2>
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class=".col-xs-12 .col-md-12">
-            <div class="card px-0 pt-4 pb-0 mt-3 mb-3 place_create">
+<h2 style="text-align: center; color:black;">{{__('Add place')}}</h2>
+<div class="row">
+        <div class="card col-md-12 col-sm-12 col-xs-12 bg-white">
             <form id='msform' action=" {{route('place_store')}} " enctype="multipart/form-data" method="post" novalidate>
             @method('post')
             @csrf
@@ -23,22 +21,30 @@
                         <li id="details"><strong>Détails</strong></li>
                         <li id="payment"><strong>Médias et SEO</strong></li>
                     </ul>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div> <br> <!-- fieldsets -->
+                   
+                    
                     <fieldset>
                     <div id="genaral" style='padding:10px;'>
+                    <ul class="nav nav-tabs bar_tabs" role="tablist">
+                                    @foreach($languages as $index => $language)
+                                        <li class="nav-item">
+                                            <a class="nav-link {{$index !== 0 ?: "active"}}" id="home-tab" data-toggle="tab" href="#language_{{$language->code}}" role="tab">{{$language->name}}</a>
+                                        </li>
+                                    @endforeach
+                    </ul>
                                     <p class="lead">{{__('Genaral')}}</p>
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="tab-content">
                                                 @foreach($languages as $index => $language)
+                                                    @php
+                                                        $trans = $place ? $place->translate($language->code) : [];
+                                                    @endphp
                                                     <div class="tab-pane fade show {{$index !== 0 ?: "active"}}" id="language_{{$language->code}}" role="tabpanel" aria-labelledby="home-tab">
                                                         <div class="form-group">
-                                                        {!!Form::label('place_name', __('Place name')); !!}
-                                                                <small>({{$language->code}})</small>  : *
+                                                        <label for="place_name">{{__('Place name')}} <small>({{$language->code}})</small>: *</label>
 
-                                                            <input type="text" class="form-control" name="{{$language->code}}[name]" placeholder="{{__('What the name of place')}}" autocomplete="off" {{$index !== 0 ?: "required"}}>
+                                                            <input type="text" class="form-control" name="{{$language->code}}[name]" placeholder="{{__('What the name of place')}}" value="{{$trans ? $trans['name'] : ''}}" autocomplete="off" {{$index !== 0 ?: "required"}}>
                                                         </div>
                         
                                                         <div class="form-group">
@@ -85,6 +91,7 @@
                                             </select>
                                         </div>
                         
+                                        <div class="col-md-6">
                                         <div class="form-group col-md-4">
                                             <label for="place_type">{{__('Place type')}}: *</label>
                                             <select class="form-control myselect" id="place_type" name="place_type[]" multiple data-live-search="true" required>
@@ -105,7 +112,7 @@
                                     <p class="lead">{{__('Amenities')}}</p>
                                     <div class="checkbox row">
                                         @foreach($amenities as $item)
-                                            <div class="col-md-2 mb-10">
+                                            <div class="col-md-2 mb-12">
                                                 <label class="p-0"><input type="checkbox" class="flat" name="amenities[]" value="{{$item->id}}"> {{$item->name}}</label>
                                             </div>
                                         @endforeach
@@ -168,7 +175,7 @@
                                 <input type="hidden" name="type" value="{{\App\Booking::TYPE_CONTACT_FORM}}">
                                 <input type="hidden" name="place_id">
                         </div>
-                    <button type='button' name="next" class="next action-button" value="Suivant" style='margin-right:10px;'/>
+                    <input type='button' name="next" class="next action-button" value="Suivant" style='margin-right:10px;'/>
                     </fieldset>
                     <fieldset>
                     <div id="contact_info" style='padding:10px;'>
@@ -209,7 +216,7 @@
                                     </div>
                                     <button type="button" class="btn btn-round btn-primary" id="social_addmore">+{{__('Add more')}}</button>
                                 </div>
-                         <button type='button' name="next" class="next action-button" value="Suivant" /> <button type='button' name="precedent" class="previous action-button-previous" value="précédent" />
+                         <input type='button' name="next" class="next action-button" value="Suivant" /> <input type='button' name="precedent" class="previous action-button-previous" value="précédent" />
                     </fieldset>
                     <fieldset>
                     <div id="opening_hours" style="padding:5px;">
@@ -217,7 +224,7 @@
                                     <div id="openinghour_list">
                                         @foreach(DAYS as $key => $day)
                                             <div class="row form-group openinghour_item">
-                                                <div class="col-md-5">
+                                                <div class="col-md-6">
                                                     <input type="text" class="form-control" name="opening_hour[{{$key}}][title]" value="{{$day}}">
                                                 </div>
                                                 <div class="col-md-6">
@@ -250,13 +257,13 @@
                                     </div>
                                     <button type="button" class="btn btn-round btn-primary" id="itinerary_addmore">+{{__('Add more')}}</button>
                                 </div>
-                         <button type='button' name="next" class="next action-button" value="Suivant" /> <button type='button' name="previous" class="previous action-button-previous" value="Précedent" />
+                         <input type='button' name="next" class="next action-button" value="Suivant" /> <input type='button' name="previous" class="previous action-button-previous" value="Précedent" />
                     </fieldset>
                     <fieldset>
                     <div id="media" style='padding:10px;'>
                                     <p class="lead">{{__('Media')}}</p>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <p><strong>{{__('Thumbnail image')}}:</strong></p>
                                             <img id="preview_thumb" src="https://via.placeholder.com/120x150?text=thumbnail">
                                             <input type="file" class="form-control" id="thumb" name="thumb" accept="image/*">
@@ -267,7 +274,7 @@
                                             <p><strong>{{__('Gallery images')}}:</strong></p>
                                             <div id="place_gallery_thumbs"></div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <input type="file" class="form-control" id="gallery" accept="image/*">
                                         </div>
                                     </div>
@@ -296,15 +303,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type='button' name="previous" class="previous action-button-previous" value="Précedent" />
-                                <input type="submit" class="btn btn-primary mt-20" style='color:white; background-color:tomato;'>
+                                <input type='button' name="previous" class="previous action-button-previous" value="Précedent" />
+                                <input type="submit" class="btn btn-danger mt-20" style='color:white; background-color:tomato;'>
                     </fieldset>
                     <div id="link_affiliate" style="padding:10px;">
                 </form>
             </div>
         </div>
-    </div>
-</div>
 @endsection
 
 @push('scripts')
