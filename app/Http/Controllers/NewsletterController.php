@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\notify;
 use App\Emailsetting;
