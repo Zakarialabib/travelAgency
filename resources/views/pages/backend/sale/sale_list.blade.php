@@ -173,7 +173,7 @@
                                     <a class="dropdown-item" href="{{route('sale_quotation', $sale->id)}}">{{__('Quotation')}}</a>
                                     <form class="d-inline" action="{{route('return_create')}}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{$sale->id}}">
+                                        <input type="hidden" name="sale_id" value="{{$sale->id}}">
                                         <button type="submit" class="dropdown-item">{{__('Return')}}</button>
                                     </form>
                                     <form action="{{route('sale_delete',$sale->id)}}" method="POST">

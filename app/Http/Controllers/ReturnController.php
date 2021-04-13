@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Returns;
 use App\ReturnDetails;
+use App\Sale;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -52,85 +53,60 @@ class ReturnController extends Controller
         try {
 
             $data = $this->validate($request, [
-                "reference_no" => "",
-                "user_id" => "",
-                "name" => "",
-                "qty" => "",
-                "price" => "",
-                "total" => "",
-                "tax" => "",
-                "tax_amount" => "",
-                "sub_total" => "", 
-                "status" => "", 
-                "total_amount" => "",
-                "payment_status" => "",
-                "paid_by" => "",
-                "paid_amount" => "",
-                "payment_note" => "",
-                "note" => "",
-                "note" => "",
-                "staff_note" => ""
+                "sale_id" => "",
             ]);
 
-            $document = $request->document;
-            if ($document) {
-                $v = Validator::make(
-                    [
-                        'extension' => strtolower($request->document->getClientOriginalExtension()),
-                    ],
-                    [
-                        'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
-                    ]
-                );
-                if ($v->fails())
-                    return redirect()->back()->withErrors($v->errors());
-
-                $documentName = $document->getClientOriginalName();
-                $documentPath = $document->storeAs('returns/documents', $data['reference_no'] . '-' . $documentName, 'public_upload');
-                $data['document'] = $data['reference_no'] . '-' . $documentName;
-            }
-
-            $returnDetails = [];
-            foreach ($data['name'] as $key => $name) {
-                if($name) {
-                    array_push($returnDetails, new ReturnDetails([
-                        'name' => $data['name'][$key],
-                        'qty' => $data['qty'][$key], 
-                        'price' => $data['price'][$key],
-                        'total' => $data['total'][$key],
-                    ]));
+            $sale = Sale::find($data['sale_id']);
+            
+            if($sale)
+            {
+                if($sale->document)
+                {
+                    Storage::disk('public_upload')->move('sales/documents/' . $sale->document, 'returns/documents/' . $sale->document);
                 }
-            }
+                $return = Returns::create([
+                    'user_id' => $sale->user_id,
+                    'reference_no' => $sale->reference_no,
+                    'user_id' => $sale->user_id,
+                    'customer_id' => $sale->customer_id,
+                    'total_qty' => $sale->details()->count(),
+                    'tax' => $sale->tax,
+                    'total_tax' => $sale->total_tax,
+                    'total_cost' => $sale->total_price,
+                    'grand_total' => $sale->grand_total,
+                    'status' => $sale->status,
+                    'payment_status' => $sale->payment_status,
+                    'document' => $sale->document,
+                    'paid_amount' => $sale->paid_amount,
+                    'paid_by' => $sale->paid_by,
+                    'payment_note' => $sale->payment_note,
+                    'note' => $sale->note,
+                    'staff_note' => $sale->staff_note,
+                    'is_locked' => $sale->is_locked,
+                ]);
 
-            $return = Returns::create([
-                'reference_no' => $data['reference_no'],
-                'user_id' => $data['user_id'],
-                'total_qty' => count($returnDetails),
-                'tax' => $data['tax'],
-                'total_tax' => $data['tax_amount'],
-                'total_cost' => $data['sub_total'],
-                'grand_total' => $data['total_amount'],
-                'status' => $data['status'],
-                'payment_status' => $data['payment_status'],  // need to define payment status
-                'document' => $data['document'] ?? null,
-                'paid_amount' => $data['paid_amount'],
-                'paid_by' => $data['paid_by'],
-                'payment_note' => $data['payment_note'],
-                'note' => $data['note'],
-                'staff_note' => $data['staff_note'],
-            ]);
+                if($return) {
 
-            if($return) {
+                    foreach ($sale->details as $detail) {
+                        $returnDetail = ReturnDetails::create([
+                            'return_id' => $return->id,
+                            'name' => $detail->name,
+                            'qty' => $detail->qty,
+                            'price' => $detail->price,
+                            'total' => $detail->total,
+                        ]);
+                    }
 
-                $return->details()->saveMany($returnDetails);
-
-                Toastr::success("Return created successfully");
-
-            } else {
-                Toastr::error("Unable to create new Return");
-            }
+                    $sale->delete();
     
-            return redirect(route('return_list'))->with('success', 'Return created successfully');
+                    Toastr::success("Return created successfully");
+    
+                } else {
+                    Toastr::error("Unable to create new Return");
+                }
+        
+                return redirect(route('return_list'))->with('success', 'Return created successfully');
+            }
 
         } catch (\QueryException $e) {
             Toastr::error("Unable to update new Return");
