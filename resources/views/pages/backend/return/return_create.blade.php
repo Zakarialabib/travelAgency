@@ -113,7 +113,8 @@
                                                 <select name="paid_by" class="form-control">
                                                     <option value="{{App\Payment::MEDIUM_CASH}}">{{__('Cash')}}</option>
                                                     <option value="{{App\Payment::MEDIUM_CHECK}}">{{__('Cheque')}}</option>
-                                                    <option value="{{App\Payment::MEDIUM_DEPOSIT}}">{{__('Deposit')}}</option>
+                                                    <option value="{{App\Payment::MEDIUM_TRAIT}}">{{__('TRAIT')}}</option>
+                                                    <option value="{{App\Payment::MEDIUM_WIRE}}">{{__('WIRE')}}</option>
                                                 </select>
                                             </div>
                                     </div>
