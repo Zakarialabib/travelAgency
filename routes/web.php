@@ -435,14 +435,14 @@ Route::group(['prefix' => 'sales'],function(){
         Route::post('categoryCreateOrUpdate','TravelPackageController@categoryCreateOrUpdate');
         Route::post('storeGalleryInfo','TravelPackageController@storeGalleryImages');
         // Newsletter Route
-        Route::get('/subscriber', 'Admin\NewsletterController@newsletter')->name('admin.newsletter');
-        Route::get('/mailsubscriber', 'Admin\NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
-        Route::post('/subscribers/sendmail', 'Admin\NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
-        Route::get('/subscriber/add', 'Admin\NewsletterController@add')->name('admin.newsletter.add');
-        Route::post('/subscriber/store', 'Admin\NewsletterController@store')->name('admin.newsletter.store');
-        Route::post('/subscriber/delete/{id}/', 'Admin\NewsletterController@delete')->name('admin.newsletter.delete');
-        Route::get('/subscriber/edit/{id}/', 'Admin\NewsletterController@edit')->name('admin.newsletter.edit');
-        Route::post('/subscriber/update/{id}/', 'Admin\NewsletterController@update')->name('admin.newsletter.update');
+        Route::get('/subscriber', 'NewsletterController@newsletter')->name('admin.newsletter');
+        Route::get('/mailsubscriber', 'NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
+        Route::post('/subscribers/sendmail', 'NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
+        Route::get('/subscriber/add', 'NewsletterController@add')->name('admin.newsletter.add');
+        Route::post('/subscriber/store', 'NewsletterController@store')->name('admin.newsletter.store');
+        Route::post('/subscriber/delete/{id}/', 'NewsletterController@delete')->name('admin.newsletter.delete');
+        Route::get('/subscriber/edit/{id}/', 'NewsletterController@edit')->name('admin.newsletter.edit');
+        Route::post('/subscriber/update/{id}/', 'NewsletterController@update')->name('admin.newsletter.update');
 
 
     });
