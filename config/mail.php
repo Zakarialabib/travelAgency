@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,10 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@rentacstours.com'),
-        'name' => env('MAIL_FROM_NAME', 'Rentacs Tours'),
+        'address' => 'abderrahimybouhamidi@gmail.com',
+        'name' => 'Abderrahim Bouhamidi'
+        // 'address' => env('MAIL_FROM_ADDRESS', 'no-reply@rentacstours.com'),
+        // 'name' => env('MAIL_FROM_NAME', 'Rentacs Tours'),
     ],
 
     /*
@@ -71,7 +73,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -100,6 +102,13 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

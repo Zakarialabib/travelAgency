@@ -434,7 +434,7 @@ Route::group(['prefix' => 'sales'],function(){
         Route::post('deActivate/category','TravelPackageController@deActivateCategory');
         Route::post('categoryCreateOrUpdate','TravelPackageController@categoryCreateOrUpdate');
         Route::post('storeGalleryInfo','TravelPackageController@storeGalleryImages');
-        //newsletters
+        // Newsletter Route
         Route::get('/subscriber', 'Admin\NewsletterController@newsletter')->name('admin.newsletter');
         Route::get('/mailsubscriber', 'Admin\NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
         Route::post('/subscribers/sendmail', 'Admin\NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
@@ -443,6 +443,7 @@ Route::group(['prefix' => 'sales'],function(){
         Route::post('/subscriber/delete/{id}/', 'Admin\NewsletterController@delete')->name('admin.newsletter.delete');
         Route::get('/subscriber/edit/{id}/', 'Admin\NewsletterController@edit')->name('admin.newsletter.edit');
         Route::post('/subscriber/update/{id}/', 'Admin\NewsletterController@update')->name('admin.newsletter.update');
+
 
     });
 

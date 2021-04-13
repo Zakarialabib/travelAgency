@@ -36,7 +36,7 @@
                                           </div>
                                           <div class="mb-4">
                                             <label for="">Message <span class="text-red-600">*</span></label>
-                                            <textarea type="text" class="form-control tinymce_editor" id="place_description" name="message" rows="6"></textarea>
+                                            <textarea type="text" class="form-control tinymce_editor" id="place_description" name="content_message" rows="6"></textarea>
 
                                             @if ($errors->has('message'))
                                               <p class="text-red-600 mb-0">{{$errors->first('message')}}</p>
