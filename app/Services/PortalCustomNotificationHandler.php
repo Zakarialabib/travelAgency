@@ -37,7 +37,7 @@ class PortalCustomNotificationHandler
             if($booking->user)
                 $booking->user->notify(new BookingCreated($booking));
         }catch(Exception $e){
-           Toastr::info('We could not send a registration email.');
+           Toastr::info("Nous n'avons pas pu envoyer un email d'inscription.");
         }
         return 0;
     }
@@ -46,7 +46,7 @@ class PortalCustomNotificationHandler
         try {
             $booking->user->notify(new BookingCreated($booking));
         } catch (Exception $e) {
-            Toastr::info('We could not send a registration email.');
+            Toastr::info("Nous n'avons pas pu envoyer un email d'inscription.");
         }
     }
 
@@ -56,7 +56,7 @@ class PortalCustomNotificationHandler
            $user->notify(new UserCreated());
         
         }catch(Exception $e){
-           Toastr::info('We could not send you a welcome email.');
+           Toastr::info("Nous n'avons pas pu vous envoyer d'email de bienvenue.");
         }
         return 0;
     }

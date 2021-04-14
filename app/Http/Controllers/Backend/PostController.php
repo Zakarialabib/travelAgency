@@ -11,12 +11,9 @@ use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Notifications\ArticlePublished;
-use Illuminate\Notifications\Notifiable;
 
 class PostController extends Controller
 {
-    use Notifiable;
     private $response;
 
     public function __construct(Response $response)
@@ -122,10 +119,7 @@ class PostController extends Controller
         ($request->type === Post::TYPE_BLOG) ? $route_name = "post_list_blog" : $route_name = "post_list_page";
         
 
-        $post->notify(new ArticlePublished());
-
-
-        return redirect(route($route_name))->with('success', 'Create blog post success!');
+        return redirect(route($route_name))->with('success', 'Article crée avec succès!');
     }
 
     public function update(Request $request)
@@ -158,13 +152,13 @@ class PostController extends Controller
 
         ($post->type === Post::TYPE_BLOG) ? $route_name = "post_list_blog" : $route_name = "post_list_page";
 
-        return redirect(route($route_name))->with('success', 'Update post success!');
+        return redirect(route($route_name))->with('success', 'Article à jour avec succes!');
     }
 
     public function destroy($id)
     {
         Post::destroy($id);
-        return back()->with('success', 'Delete post success!');
+        return back()->with('success', 'Article supprimée avec succès!');
     }
 
     public function updateStatus(Request $request)

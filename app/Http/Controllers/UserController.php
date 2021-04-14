@@ -55,14 +55,14 @@ class UserController extends Controller
             $wislist->fill($data)->save();
             return $this->response->formatResponse(200, [], "success");
         } else {
-            return $this->response->formatResponse(208, [], "La destination est déja dans la list des souhaits!");
+            return $this->response->formatResponse(208, [], "La destination est déja dans la liste des souhaits!");
         }
 
         if($wislist AND $have_wishlist){
-            Toastr::success('Nouvelle destination ajoutée dans la list des souhaits');
+            Toastr::success('Nouvelle destination ajoutée dans la liste des souhaits');
         }
         else{
-            Toastr::error('La destination est déja dans la list des souhaits!');
+            Toastr::error('La destination est déja dans la liste des souhaits!');
         }
 
     }

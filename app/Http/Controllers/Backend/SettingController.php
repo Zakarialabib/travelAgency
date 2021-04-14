@@ -36,7 +36,7 @@ class SettingController extends Controller
             }
         }
 
-        return back()->with('success', 'Settings has been saved.');
+        return back()->with('success', 'Réglage enregitrer avec succès.');
     }
 
     public function pageLanguage()

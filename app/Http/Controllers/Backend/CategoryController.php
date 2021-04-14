@@ -82,7 +82,7 @@ class CategoryController extends Controller
         $model = new Category();
         $model->fill($data)->save();
 
-        return back()->with('success', 'Add category success!');
+        return back()->with('success', 'Activitée Ajouter avec succès!');
     }
 
     public function update(Request $request)
@@ -123,15 +123,15 @@ class CategoryController extends Controller
         $model->fill($data);
 
         if ($model->save())
-            return back()->with('success', 'Update category success!');
+            return back()->with('success', 'Activité à jour avec succès!');
         else
-            return back()->with('error', 'Update category fail!');
+            return back()->with('error', 'Impossible de faire la mise à jour!');
     }
 
     public function destroy($id)
     {
         Category::destroy($id);
-        return back()->with('success', 'Delete category success!');
+        return back()->with('success', 'Activité à jour avec succès!');
     }
 
     /**
@@ -147,7 +147,7 @@ class CategoryController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
-            return $this->response->formatResponse(200, $model, 'Update category status success!');
+            return $this->response->formatResponse(200, $model, 'Status à jour avec succes!');
         }
     }
 

@@ -74,7 +74,7 @@ class CityController extends Controller
         $model = new City();
         $model->fill($data)->save();
 
-        return back()->with('success', 'Add city success!');
+        return back()->with('success', 'Ville ajoutée avec succes!');
     }
 
     public function update(Request $request)
@@ -116,7 +116,7 @@ class CityController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
-            return back()->with('success', 'Update city success!');
+            return back()->with('success', 'Ville à jour avec succes!');
         }
     }
 
@@ -130,14 +130,14 @@ class CityController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
-            return $this->response->formatResponse(200, $model, 'Update city status success!');
+            return $this->response->formatResponse(200, $model, 'Status à jour!');
         }
     }
 
     public function destroy(Request $request, $id)
     {
         City::destroy($id);
-        return back()->with('success', 'Delete city success!');
+        return back()->with('success', 'Ville supprimée avec succès!');
     }
 
     public function getListByCountry($country_id)

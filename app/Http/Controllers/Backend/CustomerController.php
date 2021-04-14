@@ -51,10 +51,10 @@ class CustomerController extends Controller
         $customers->save();
 
         if($customers){
-            Toastr::success('New customer successfully');
+            Toastr::success('Client ajoutée avec succès');
         }
         else{
-            Toastr::error('Unable to create new customer');
+            Toastr::error('Ajoute du client impossible');
         }
   
         return view('pages.backend.customer.customer_create', [
@@ -95,10 +95,10 @@ class CustomerController extends Controller
             $customer->update($input);
 
             if($customer){
-                Toastr::success('Customer updated successfully');
+                Toastr::success('Client à jour avec succès');
             }
             else{
-                Toastr::error('Unable to updated customer infos');
+                Toastr::error('Impossible de faire la mise à jour du client');
             }
     
            return redirect()->route('customer_list');    
@@ -108,7 +108,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         Customer::destroy($id);
-        return back()->with('success', 'Customer Deleted with success!');
+        return back()->with('success', 'Client supprimé avec succès!');
     }
 
 }

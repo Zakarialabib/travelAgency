@@ -148,10 +148,10 @@ class PlaceController extends Controller
         $model->save();
 
         if($model){
-            Toastr::success('New place successfully');
+            Toastr::success('Destination ajoutée avec succès');
         }
         else{
-            Toastr::error('Unable to create new place');
+            Toastr::error("Impossible d'ajouter la destination");
         }
 
         return redirect()->route('place_list');
@@ -229,7 +229,7 @@ class PlaceController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
-            return redirect(route('place_list'))->with('success', 'Update place success!');
+            return redirect(route('place_list'))->with('success', 'Destination à jour!');
         }
     }
 
@@ -242,12 +242,12 @@ class PlaceController extends Controller
         $model = Place::find($request->place_id);
         $model->fill($data)->save();
 
-        return $this->response->formatResponse(200, $model, 'Update place status success!');
+        return $this->response->formatResponse(200, $model, 'Status à jour!');
     }
 
     public function destroy($id)
     {
         Place::destroy($id);
-        return back()->with('success', 'Delete place success!');
+        return back()->with('success', 'Destination supprimée avec succes!');
     }
 }
