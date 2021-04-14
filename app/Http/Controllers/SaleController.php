@@ -351,26 +351,37 @@ class SaleController extends Controller
     }
     public function invoiceSend(Request $request,$id)
     {
-        $request->validate([
+        $data = $request->validate([
             'recepient' => 'required',
             'subject' =>'required',
-            'msg' => 'required'
+            'msg' => 'required',
+            'invoice_id' => '',
           ]);
-            
-         
-          $sub = $request->subject;
-          $msg = $request->msg;
-          $recepient = $request->recepient;
-          $data["email"] = $recepient;
-          $data["title"] = $sub;
-          $data["body"] = $msg; 
+        
+        $page1='pages.backend.sale.invoice';
+        $page2='pages.backend.sale.invoice2';
+        $page3='pages.backend.sale.invoice';
+        $page4='pages.backend.sale.invoice2';
+
+        if($data['invoice_id']==1){
+            $page = $page1;
+        }
+        elseif($data['invoice_id']==2){
+            $page = $page2;
+        }
+        elseif($data['invoice_id']==3){
+            $page = $page3;
+        }
+        elseif($data['invoice_id']==4){
+            $page = $page4;
+        }
 
         $sales = Sale::find($id);   
         $saledetails = SaleDetails::where('sale_id', $id)->get();
         $users = User::all();
         $customers = Customer::find($sales->customer_id);
 
-        $pdf = PDF::loadView('pages.backend.sale.invoice', [
+        $pdf = PDF::loadView($page, [
             'customers' => $customers,
             'sales' => $sales,
             'users' => $users,
@@ -378,15 +389,14 @@ class SaleController extends Controller
             ]);
        
           
-        Mail::send('pages.backend.sale.invoice',[
+        Mail::send($page,[
             'customers' => $customers,
             'sales' => $sales,
             'users' => $users,
             'saledetails' => $saledetails,
-            'content'=>$msg
         ] , function($message) use($data, $pdf) {
-            $message->to($data["email"], 'rentacs Tours')
-                    ->subject($data["title"])
+            $message->to($data["recepient"], 'rentacs Tours')
+                    ->subject($data["subject"])
                     ->attachData($pdf->output(), "rapport.pdf");
         });
 
@@ -408,6 +418,52 @@ class SaleController extends Controller
             ]);        
         return $pdf->download('facture.pdf');
     }
+    public function printToPDF2($id)
+    {
+        $sales = Sale::find($id);   
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        $pdf = PDF::loadView('pages.backend.sale.invoice2', [
+            'customers' => $customers,
+            'sales' => $sales,
+            'users' => $users,
+            'saledetails' => $saledetails,
+            ]);        
+        return $pdf->download('facture.pdf');
+    }
+    public function printToPDF3($id)
+    {
+        $sales = Sale::find($id);   
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        $pdf = PDF::loadView('pages.backend.sale.invoice3', [
+            'customers' => $customers,
+            'sales' => $sales,
+            'users' => $users,
+            'saledetails' => $saledetails,
+            ]);        
+        return $pdf->download('facture.pdf');
+    }
+    public function printToPDF4($id)
+    {
+        $sales = Sale::find($id);   
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        $pdf = PDF::loadView('pages.backend.sale.invoice4', [
+            'customers' => $customers,
+            'sales' => $sales,
+            'users' => $users,
+            'saledetails' => $saledetails,
+            ]);        
+        return $pdf->download('facture.pdf');
+    }
+
 
     public function Invoice($id)
     {

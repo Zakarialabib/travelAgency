@@ -279,6 +279,10 @@ Route::group(['prefix' => 'purchases'],function(){
     Route::get('invoice/template1/{id}', 'PurchaseController@Invoice')->name('invoice_sale1');
     Route::get('invoice/template2/{id}', 'PurchaseController@Invoiceun')->name('invoice_sale2');
     Route::get('invoice/template3/{id}', 'PurchaseController@Invoicedeux')->name('invoice_sale3');
+    Route::get('download/{id}', 'SaleController@printToPDF')->name('download_pdf');
+    Route::get('download2/{id}', 'SaleController@printToPDF2')->name('download_pdf2');
+    Route::get('download3/{id}', 'SaleController@printToPDF3')->name('download_pdf3');
+    Route::get('download4/{id}', 'SaleController@printToPDF4')->name('download_pdf4');
     Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
     Route::get('/status', 'PurchaseController@updateStatus');
 
