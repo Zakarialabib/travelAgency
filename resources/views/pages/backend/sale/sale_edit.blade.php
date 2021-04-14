@@ -10,7 +10,7 @@
     
     <div class="row">
         <div class="col-md-12"> 
-        <form method="POST" action="{{ route('sale_update' , $sale->id) }}" class="form-horizontal" id="update-form" data-sale="{{$sale->id}}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('sale_update' , $sale->id) }}" class="form-horizontal" id="form" data-sale="{{$sale->id}}" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="put">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <div class="row mb-2">
