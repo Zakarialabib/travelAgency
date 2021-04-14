@@ -39,7 +39,6 @@ Route::group([
     //Route::get('/search', 'Frontend\HomeController@ajaxSearch')->name('search');
 
     Route::put('/posts/status', 'Backend\PostController@updateStatus')->name('post_update_status');
-    Route::put('/pages/status', 'Backend\PageController@updateStatus')->name('page_update_status');
     Route::put('/users/status', 'Backend\UserController@updateStatus')->name('user_update_status');
     Route::put('/users/role', 'Backend\UserController@updateRole')->name('user_update_role');
 

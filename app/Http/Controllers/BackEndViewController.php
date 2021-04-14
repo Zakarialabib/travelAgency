@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\BankPayment;
-use App\EmailSubscriber;
 use App\FlightBooking;
 use App\Gender;
 use App\HotelBooking;
@@ -14,8 +13,8 @@ use App\Title;
 use App\User;
 use App\VisaApplication;
 use App\Wallet;
+use App\Newsletter;
 use App\WalletLog;
-use Illuminate\Http\Request;
 use App\MarkupType;
 use App\MarkupValueType;
 use App\Vat;
@@ -28,6 +27,8 @@ use App\Review;
 use App\Post;
 use App\Sale;
 use App\Purchase;
+use App\Returns;
+use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use App\Services\InterswitchConfig;
@@ -46,7 +47,7 @@ class BackEndViewController extends Controller
         $count_bookings = Booking::query()
         ->count();
 
-        $count_reviews = Review::query()
+        $count_suscribers = Newsletter::query()
         ->count();
 
         $count_users = User::query()
@@ -65,6 +66,8 @@ class BackEndViewController extends Controller
 
         $count_purchases = Purchase::query()
         ->count();
+
+        $userWallet = Wallet::where('user_id',auth()->id())->first();
 
         $bookings = Auth::user()->bookings()->with(['place'])->get();
 
@@ -90,6 +93,7 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now())->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
             ),
             'month' => array(
                 'package_bookings' => Booking::whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
@@ -98,6 +102,7 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
             ),
             'semi' => array(
                 'package_bookings' => Booking::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
@@ -106,6 +111,7 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
             ),
             'year' => array(
                 'package_bookings' => Booking::whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
@@ -114,10 +120,11 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
             ),
         );
         //dd($data);
-        return view('pages.backend.dashboard',compact('data', 'count_cities', 'bookings', 'count_posts' ,'count_places', 'count_bookings','count_reviews','count_users','count_sales','count_purchases','visaApplications','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
+        return view('pages.backend.dashboard',compact('data','userWallet', 'count_cities', 'bookings', 'count_posts' ,'count_places', 'count_bookings','count_suscribers','count_users','count_sales','count_purchases','visaApplications','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
 
     }
     
@@ -477,10 +484,6 @@ class BackEndViewController extends Controller
         return view('pages.backend.transactions.user_bank_payments',compact('bankPayments','amountSuccessful','amountPending','amountDeclined','countSuccessful','countPending','countDeclined'));
     }
 
-    public function emailSubscriptions(){
-        $emails = EmailSubscriber::orderBy('id','desc')->get();
-        return view('pages.backend.settings.email_subscriptions',compact('emails'));
-    }
 
     public function visaApplicationRequests(){
         $visaApplications = VisaApplication::orderBy('id','desc')->get();

@@ -512,7 +512,7 @@
                 id="path64" inkscape:connector-curvature="0" style="fill:#ee5000" />
         </svg>
     </div>
-    <div id="discover-cities" class="container">
+    <div id="see-cities" class="container">
         <h2 class="cities__title title">{{__('Cities to visit')}}</h2>
         <div class="cities__content">
             <div class="row">

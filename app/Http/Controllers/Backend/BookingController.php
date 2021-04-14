@@ -124,10 +124,10 @@ class BookingController extends Controller
     $booking->update($data);
 
     if($booking){
-        Toastr::success('Update booking success!');
+        Toastr::success('Reservation à jour avec succès!');
     }
     else{
-        Toastr::error('Unable to updated booking infos');
+        Toastr::error('Impossible de faire la mise à jour');
     }
 
    return redirect()->route('booking_list');    
@@ -144,20 +144,20 @@ class BookingController extends Controller
         $model->fill($data)->save();
 
       if($model){
-        Toastr::success('Status Updated with success!');
+        Toastr::success('Status à jour avec Succès!');
     }
     else{
-        Toastr::error('Unable to update Status');
+        Toastr::error('Impossible de faire la mise à jour');
     }
 
 
-        return back()->with('success', 'Update status success!');
+        return back()->with('success', 'Status à jour avec Succès!');
     }
     
     public function destroy($id)
     {
         Booking::destroy($id);
-        return back()->with('success', 'Booking Deleted with success!');
+        return back()->with('success', 'Reservation supprimé avec succès!');
     }
 
 

@@ -65,7 +65,7 @@ class PlaceTypeController extends Controller
         $model = new PlaceType();
         $model->fill($data)->save();
 
-        return back()->with('success', 'Add place type success!');
+        return back()->with('success', "Type d'activité ajoutée avec succes!");
     }
 
     public function update(Request $request)
@@ -81,13 +81,13 @@ class PlaceTypeController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
-            return back()->with('success', 'Update place type success!');
+            return back()->with('success', "Type d'activité à jour");
         }
     }
 
     public function destroy($id)
     {
         PlaceType::destroy($id);
-        return back()->with('success', 'Delete place type success!');
+        return back()->with('success', "Type d'activtié suprimée avec succes");
     }
 }

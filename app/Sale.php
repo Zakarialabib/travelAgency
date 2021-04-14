@@ -32,14 +32,14 @@ class Sale extends Model
         return static::hasOne(Profile::class,'user_id','id');
     }
 
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class, 'customer_id', 'id');
-    }
-
     public function details()
     {
         return $this->hasMany(SaleDetails::class, 'sale_id', 'id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(User::class);
     }
 
     /*

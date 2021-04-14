@@ -275,10 +275,10 @@ Route::group(['prefix' => 'purchases'],function(){
     Route::get('/edit/{id}', 'PurchaseController@edit')->name('purchase_edit');
     Route::put('/update/{id}', 'PurchaseController@update')->name('purchase_update');
     Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
-    Route::get('template/{id}', 'SaleController@genInvoice')->name('sale_invoice');
-    Route::get('invoice/template1/{id}', 'SaleController@Invoice')->name('invoice_sale1');
-    Route::get('invoice/template2/{id}', 'SaleController@Invoiceun')->name('invoice_sale2');
-    Route::get('invoice/template3/{id}', 'SaleController@Invoicedeux')->name('invoice_sale3');
+    Route::get('template/{id}', 'PurchaseController@genInvoice')->name('purchase_invoice');
+    Route::get('invoice/template1/{id}', 'PurchaseController@Invoice')->name('invoice_sale1');
+    Route::get('invoice/template2/{id}', 'PurchaseController@Invoiceun')->name('invoice_sale2');
+    Route::get('invoice/template3/{id}', 'PurchaseController@Invoicedeux')->name('invoice_sale3');
     Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
     Route::get('/status', 'PurchaseController@updateStatus');
 
@@ -371,7 +371,7 @@ Route::group(['prefix' => 'sales'],function(){
       
         });
         
-        Route::get('subscribers','BackEndViewController@emailSubscriptions');
+    //    Route::get('subscribers','BackEndViewController@emailSubscriptions');
 
         Route::get('visa-application-requests','BackEndViewController@visaApplicationRequests');
 
@@ -434,15 +434,16 @@ Route::group(['prefix' => 'sales'],function(){
         Route::post('deActivate/category','TravelPackageController@deActivateCategory');
         Route::post('categoryCreateOrUpdate','TravelPackageController@categoryCreateOrUpdate');
         Route::post('storeGalleryInfo','TravelPackageController@storeGalleryImages');
+
         // Newsletter Route
-        Route::get('/subscriber', 'Admin\NewsletterController@newsletter')->name('admin.newsletter');
-        Route::get('/mailsubscriber', 'Admin\NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
-        Route::post('/subscribers/sendmail', 'Admin\NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
-        Route::get('/subscriber/add', 'Admin\NewsletterController@add')->name('admin.newsletter.add');
-        Route::post('/subscriber/store', 'Admin\NewsletterController@store')->name('admin.newsletter.store');
-        Route::post('/subscriber/delete/{id}/', 'Admin\NewsletterController@delete')->name('admin.newsletter.delete');
-        Route::get('/subscriber/edit/{id}/', 'Admin\NewsletterController@edit')->name('admin.newsletter.edit');
-        Route::post('/subscriber/update/{id}/', 'Admin\NewsletterController@update')->name('admin.newsletter.update');
+        Route::get('/subscriber', 'NewsletterController@newsletter')->name('admin.newsletter');
+        Route::get('/mailsubscriber', 'NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
+        Route::post('/subscribers/sendmail', 'NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
+        Route::get('/subscriber/add', 'NewsletterController@add')->name('admin.newsletter.add');
+        Route::post('/subscriber/store', 'NewsletterController@store')->name('admin.newsletter.store');
+        Route::post('/subscriber/delete/{id}/', 'NewsletterController@delete')->name('admin.newsletter.delete');
+        Route::get('/subscriber/edit/{id}/', 'NewsletterController@edit')->name('admin.newsletter.edit');
+        Route::post('/subscriber/update/{id}/', 'NewsletterController@update')->name('admin.newsletter.update');
 
 
     });

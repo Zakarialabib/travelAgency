@@ -132,17 +132,17 @@ class PurchaseController extends Controller
 
                 $purchase->details()->saveMany($purchaseDetails);
 
-                Toastr::success("Purchase created successfully");
+                Toastr::success("Achat créé avec succès");
 
             } else {
-                Toastr::error("Unable to create new Purchase");
+                Toastr::error("Impossible de créer un nouvel achat");
             }
     
-            return redirect(route('purchase_list'))->with('success', 'Purchase created successfully');
+            return redirect(route('purchase_list'))->with('success', 'Achat créé avec succès');
 
         } catch (\QueryException $e) {
-            Toastr::error("Unable to update new Purchase");
-            return back()->with('error', 'Unable to create new Purchase');
+            Toastr::error("Impossible de mettre à jour le nouvel achat");
+            return back()->with('error', 'Impossible de créer un nouvel achat');
         }
     }
 
@@ -252,16 +252,16 @@ class PurchaseController extends Controller
                     'staff_note' => $data['staff_note'],
                     'is_locked' => $data['is_locked'],
                 ]);
-                Toastr::success("Purchase updated successfully");
+                Toastr::success("Achat à jour avec succès");
             } else {
-                Toastr::error("Unable to update new Purchase");
+                Toastr::error("Impossible de faire la mise à jour");
             }
 
-            return redirect(route('purchase_list'))->with('success', 'Update Purchase success!');
+            return redirect(route('purchase_list'))->with('success', "Achat à jour avec succès");
 
         } catch (\QueryException $e) {
-            Toastr::error("Unable to update new Purchase");
-            return back()->with('error', 'Unable to update new Purchase');;
+            Toastr::error("Impossible de faire la mise à jour");
+            return back()->with('error', 'Impossible de faire la mise à jour');;
         }
         
     }
@@ -283,7 +283,7 @@ class PurchaseController extends Controller
     public function destroy($id)
     {
         Purchase::destroy($id);
-        return back()->with('success', 'Purchase Deleted with success!');
+        return back()->with('success', 'Achat Supprimé avec succès!');
     }
 
     public function genInvoice($id)

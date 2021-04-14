@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\notify;
 use App\Emailsetting;
@@ -21,15 +22,15 @@ class NewsletterController extends Controller
         
         $newsletters = Newsletter::orderBy('id', 'DESC')->get();
 
-        return view('backend.newsletter.index', compact('newsletters'));
+        return view('pages.backend.newsletter.index', compact('newsletters'));
     }
 
     // Add newsletter Category
     public function add(){
-        return view('backend.newsletter.add');
+        return view('pages.backend.newsletter.add');
     }
 
-    // Store newsletter Category
+    // Store newsletter Email
     public function store(Request $request){
         
 
@@ -39,18 +40,18 @@ class NewsletterController extends Controller
 
         Newsletter::create($request->all());
 
-        $notification = array(
-            'messege' => 'Newsletter Added successfully!',
-            'alert' => 'success'
-        );
-        return redirect()->back()->with('notification', $notification);
+        Toastr::succes("Email Ajoutée avec succès !");
+
+        return redirect()->back();
     }
 
-    // newsletter Category Delete
+    // newsletter Email Delete
     public function delete($id){
 
         $newsletter = Newsletter::find($id);
         $newsletter->delete();
+
+        Toastr::warning("Email Ajoutée avec succès !");
 
         return back();
     }
@@ -59,7 +60,7 @@ class NewsletterController extends Controller
     public function edit($id){
 
         $newsletter = Newsletter::find($id);
-        return view('backend.newsletter.edit', compact('newsletter'));
+        return view('pages.backend.newsletter.edit', compact('newsletter'));
 
     }
 
@@ -74,19 +75,16 @@ class NewsletterController extends Controller
         $newsletter = Newsletter::find($id);
         $newsletter->update($request->all());
 
-        $notification = array(
-            'messege' => 'Newsletter Updated successfully!',
-            'alert' => 'success'
-        );
-        return redirect(route('admin.newsletter'))->with('notification', $notification);
+        Toastr::warning("Email Mise à jour avec succès !");
+      
+        return redirect(route('admin.newsletter'));
     }
 
 
     public function mailsubscriber() {
-        return view('backend.newsletter.mail');
+        return view('pages.backend.newsletter.mail');
       }
 
-  
   
     public function subscsendmail(Request $request) {
         $request->validate([
@@ -98,17 +96,17 @@ class NewsletterController extends Controller
         $msg = $request->content_message;
         $users = Newsletter::all();
         foreach ($users as $user){
-            Mail::send('backend.newsletter.test', ['subject'=>$sub, 'content'=>$msg, 'user'=>$user],
+            Mail::send('pages.backend.newsletter.test', ['subject'=>$sub, 'content'=>$msg, 'user'=>$user],
              function($message) use ($user){
-                $message->to($user->email)->from('zlabib@alphaboost.ma','zakaria labib')->
-                subject('welcome');
+                $message->to($user->email)->from('no_reply@rentacstours.com','Rentacs Tours')
+                ->subject('Rentacs Tours');
              });
         }
-        $notification = array(
-            'messege' => 'Newsletter Updated successfully!',
-            'alert' => 'success'
-        );
-        return redirect(route('admin.newsletter'))->with('notification', $notification);
+
+        Toastr::succes("Email à jour avec succès !");
+
+
+        return redirect(route('admin.newsletter'));
       }
 
 

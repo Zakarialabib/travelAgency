@@ -22,7 +22,10 @@ class SaleController extends Controller
 {
     public function list()
     {
-        $customer = Customer::all();
+
+      $customer = Customer::all();
+        $customer = User::customers()->get();
+        $user = User::admin()->first();
 
         $sales = Sale::query()
             ->orderBy('created_at', 'desc')
@@ -47,6 +50,22 @@ class SaleController extends Controller
         return view('pages.backend.sale.sale_create', [
             'sales' => $sales,
             'suppliers' => $suppliers,
+        ]);
+        $lastSale = Sale::latest()->first();
+        if($lastSale) {
+            $reference = $lastSale->reference_no++;
+        } else {
+            $reference = '000000001';
+        }
+
+        $users = User::all();
+        $customers = User::customers()->get();
+        
+        //dd(['users' => $users, 'customers' => $customers]);
+          
+        return view('pages.backend.sale.sale_create', [
+            'reference_no' => $reference,
+
             'users' => $users,
             'customers' => $customers,
             'booking' => $booking,
@@ -186,7 +205,7 @@ class SaleController extends Controller
         $sale = Sale::where('id', $id)->with(['details', 'user', 'customer'])->first();
         $users = User::all();
         $suppliers = Supplier::all();
-        $customers = Customer::all();
+        $customers = User::customers()->get();
 
         return view('pages.backend.sale.sale_edit',compact('sale','suppliers','users','customers'));
     }
