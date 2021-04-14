@@ -54,7 +54,6 @@
                                             data-isfeature="{{$category->is_feature}}"
                                             data-featuretitle="{{$category->feature_title}}"
                                             data-colorcode="{{$category->color_code}}"
-                                            data-icon="{{$category->icon_map_marker}}"
                                             data-image="{{$category->image}}"
                                             data-translations="{{$category->translations}}"
                                             data-seotitle="{{$category->seo_title}}"
