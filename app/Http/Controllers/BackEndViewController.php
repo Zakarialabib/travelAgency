@@ -106,7 +106,7 @@ class BackEndViewController extends Controller
             ),
             'semi' => array(
                 'package_bookings' => Booking::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
-                'sales' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
+                'sales' => Sale::whereDate( 'created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'purchases' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),

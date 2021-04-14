@@ -38,43 +38,43 @@
 
             <li class="@yield('activeBookings') nav-item"><a href="#"><i class="la la-history"></i><span class="menu-title">{{__('Manage Bookings')}}</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="#">Flight</a>
+                    <li><a class="menu-item" href="#">{{__('Flight')}}</a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="{{url('/bookings/flight/user')}}">My Bookings</a>
+                            <li><a class="menu-item" href="{{url('/bookings/flight/user')}}">{{__('My Bookings')}}</a>
                             </li>
                             @role('admin')
-                            <li><a class="menu-item" href="{{url('/bookings/flight/agent')}}">Agent</a>
+                            <li><a class="menu-item" href="{{url('/bookings/flight/agent')}}">{{__('Agent')}}</a>
                             </li>
-                            <li><a class="menu-item" href="{{url('/bookings/flight/customer')}}">Customer</a>
+                            <li><a class="menu-item" href="{{url('/bookings/flight/customer')}}">{{__('Customer')}}</a>
                             </li>
                             @endrole
                         </ul>
                     </li>
 
                     <li>
-                        <a class="menu-item" href="#" >Hotel</a>
+                        <a class="menu-item" href="#" >{{__('Hotel')}}</a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="{{url('/bookings/hotel/user')}}">My Bookings</a>
+                            <li><a class="menu-item" href="{{url('/bookings/hotel/user')}}">{{__('My Bookings')}}</a>
                             </li>
                             @role('admin')
-                            <li><a class="menu-item" href="{{url('/bookings/hotel/agent')}}">Agent</a>
+                            <li><a class="menu-item" href="{{url('/bookings/hotel/agent')}}">{{__('Agent')}}</a>
                             </li>
-                            <li><a class="menu-item" href="{{url('/bookings/hotel/customer')}}">Customer</a>
+                            <li><a class="menu-item" href="{{url('/bookings/hotel/customer')}}">{{__('Customer')}}</a>
                             </li>
                             @endrole
                         </ul>
                     </li>
 
-                    <li><a class="menu-item" href="#" >Packages</a>
+                    <li><a class="menu-item" href="#" >{{__('Packages')}}</a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="{{url('/bookings/package/user')}}" >My Bookings</a>
+                            <li><a class="menu-item" href="{{url('/bookings/package/user')}}" >{{__('My Bookings')}}</a>
                             </li>
                             @role('admin')
                             <li><a class="menu-item" href="{{route('booking_list')}}" >{{__('Booking list')}}</a>
                             </li>
-                        {{--      <li><a class="menu-item" href="{{url('/bookings/package/agent')}}" >Agent</a>
+                        {{--      <li><a class="menu-item" href="{{url('/bookings/package/agent')}}" >{{__('Agent')}}</a>
                             </li>
-                            <li><a class="menu-item" href="{{url('/bookings/package/customer')}}" >Customer</a>
+                            <li><a class="menu-item" href="{{url('/bookings/package/customer')}}" >{{__('Customer')}}</a>
                             </li>--}}
 
                             @endrole
@@ -140,7 +140,14 @@
              </ul>
            </li>
             @endrole
-         
+
+            <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main"><i class="la la-money"></i>{{ __('Subscribers') }}</a>
+                <ul class="menu-content">
+                  <li><a class="menu-item" href="{{ route('admin.newsletter')}}" data-i18n="nav.templates.vert.main">{{ __('Subscribers') }}</a></li>
+                  <li><a class="menu-item" href="{{route('admin.mailsubscriber')}}" data-i18n="nav.templates.horz.main">{{ __('Mail to Subscribers') }}</a></li>
+               </ul>
+           </li>
+
           {{--
             @role('admin')
             <li class="nav-item @yield('activeTransaction')"><a href="#"><i class="la la-money"></i><span class="menu-title" >{{__('Transactions')}}</span></a>
@@ -179,6 +186,7 @@
                     </li>
                 </ul>
             </li>
+
             @endrole--}}
 
     
@@ -204,8 +212,6 @@
                     </li>--}}
                     <li><a class="menu-item" href="{{url('settings/users')}}" >{{__('Users Management')}}</a>
                     </li>
-                    <li><a class="menu-item" href="{{url('settings/subscribers')}}" >{{__('Email Subscribers')}}</a>
-                    </li>
                     {{--   <li><a class="menu-item" href="{{url('/settings/visa-application-requests')}}" >{{__('Visa Applications')}}</a>
                     </li> --}}
                     <li><a href="{{url('settings/language')}}"> {{__('Language')}}</a></li>
@@ -221,12 +227,7 @@
                     <span class="menu-title" >{{__('Log Out')}}</span>
                 </a>
             </li>
-            <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main"><i class="la la-money"></i>{{ __('Subscribers') }}</a>
-                <ul class="menu-content">
-                  <li><a class="menu-item" href="{{ route('admin.newsletter')}}" data-i18n="nav.templates.vert.main">{{ __('Subscribers') }}</a></li>
-                  <li><a class="menu-item" href="{{route('admin.mailsubscriber')}}" data-i18n="nav.templates.horz.main">{{ __('Mail to Subscribers') }}</a></li>
-               </ul>
-           </li>
+            
         </ul>
     </div>
 </div>

@@ -325,10 +325,10 @@ Contactez-nous et planifiez maintenant votre prochain voyage!
                                 @csrf
                                 <div class="field-inline">
                                     <div class="field-input">
-                                        <input type="text" name="first_name" placeholder="{{__('First name')}} *" required>
+                                        <input type="text" name="first_name" class="form-control" placeholder="{{__('First name')}} *" required>
                                     </div>
                                     <div class="field-input">
-                                        <input type="text" name="last_name" placeholder="{{__('Last name')}} *" required>
+                                        <input type="text" name="last_name" class="form-control" placeholder="{{__('Last name')}} *" required>
                                     </div>
                                 </div>
                                 <div class="field-input">

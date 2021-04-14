@@ -17,21 +17,22 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class SaleController extends Controller
 {
     public function list()
     {
 
-      $customer = Customer::all();
         $customer = User::customers()->get();
-        $user = User::admin()->first();
+        $user = User::where('is_admin','=',1)->first();
+
 
         $sales = Sale::query()
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('pages.backend.sale.sale_list', compact('customer', 'sales') );
+        return view('pages.backend.sale.sale_list', compact('customer', 'sales','user') );
     }
 
     public function createView(Request $request)
@@ -42,15 +43,7 @@ class SaleController extends Controller
             //dd($booking);
         }
 
-        $users = User::all();
-        $sales = Sale::all();
-        $suppliers = Supplier::all();
-        $customers = Customer::all();
-          
-        return view('pages.backend.sale.sale_create', [
-            'sales' => $sales,
-            'suppliers' => $suppliers,
-        ]);
+
         $lastSale = Sale::latest()->first();
         if($lastSale) {
             $reference = $lastSale->reference_no++;
@@ -64,12 +57,19 @@ class SaleController extends Controller
         //dd(['users' => $users, 'customers' => $customers]);
           
         return view('pages.backend.sale.sale_create', [
-            'reference_no' => $reference,
-
+            'reference_no' => $lastSale->reference_no,
             'users' => $users,
             'customers' => $customers,
             'booking' => $booking,
         ]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $sale = Sale::find($request->sale_id);
+        $sale->is_locked = $request->is_locked;
+        $sale->save();
+        return response()->json(['succes'=>'status changed succesfully']);
     }
 
     public function create(Request $request)
@@ -77,6 +77,7 @@ class SaleController extends Controller
         try {
             $data = $this->validate($request, [
                 "reference_no" => "",
+                "booking_reference" => "",
                 "user_id" => "",
                 "customer_id" => "",
                 "name" => "",
@@ -93,7 +94,8 @@ class SaleController extends Controller
                 "paid_amount" => "",
                 "payment_note" => "",
                 "note" => "",
-                "staff_note" => ""
+                "staff_note" => "",
+                "is_locked" => ""
             ]);
 
             $document = $request->document;
@@ -128,6 +130,7 @@ class SaleController extends Controller
     
             $sale = Sale::create([
                 'reference_no' => $data['reference_no'],
+                'booking_reference' => $data['booking_reference'] ?? null,
                 'user_id' => $data['user_id'],
                 'customer_id' => $data['customer_id'],
                 'total_qty' => count($saleDetails),
@@ -143,6 +146,7 @@ class SaleController extends Controller
                 'payment_note' => $data['payment_note'],
                 'note' => $data['note'],
                 'staff_note' => $data['staff_note'],
+                'is_locked' => $data['is_locked'],
             ]);
 
             if($sale) {
@@ -162,6 +166,7 @@ class SaleController extends Controller
             return redirect()->route('sale_list')->with('success', 'Sale Updated success');
     
         } catch (QueryException $e) {
+            Log::info($e);
             Toastr::error("Unable to create new Sale");
             return back()->with('error', 'Unable to create new Sale');;
         }
@@ -216,6 +221,7 @@ class SaleController extends Controller
 
             $data = $request->validate([
                 "reference_no" => "",
+                "booking_reference" => "",
                 "user_id" => "",
                 "customer_id" =>"",
                 "name" => "",
@@ -232,7 +238,9 @@ class SaleController extends Controller
                 "paid_amount" => "",
                 "payment_note" => "",
                 "note" => "",
-                "staff_note" => ""
+                "staff_note" => "",
+                "is_locked" => ""
+
             ]);
 
             $sale = Sale::find($id);
@@ -305,7 +313,7 @@ class SaleController extends Controller
         
             return redirect()->route('sale_list')->with('success', 'Sale Updated success!');
         
-        } catch (QueryException $e) {
+        } catch (\QueryException $e) {
             Toastr::error("Unable to update Purchase");
             return back();
         }

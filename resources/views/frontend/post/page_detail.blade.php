@@ -49,18 +49,18 @@
                             <form action="{{route('send')}}" method="POST" class="form-underline">
                                 @csrf
                                 <div class="field-inline">
-                                    <div class="field-input">
+                                    <div class="field-input col-lg-12">
                                         <input type="text" name="first_name" placeholder="{{__('First name')}} *" required>
                                     </div>
-                                    <div class="field-input">
+                                    <div class="field-input col-lg-12">
                                         <input type="text" name="last_name" placeholder="{{__('Last name')}} *" required>
                                     </div>
                                 </div>
                                 <div class="field-inline">
-                                <div class="field-input">
+                                <div class="field-input col-lg-12">
                                     <input type="email" name="email" placeholder="{{__('Email')}} *" required>
                                 </div>
-                                <div class="field-input">
+                                <div class="field-input col-lg-12">
                                     <input type="tel" name="phone_number" placeholder="{{__('Phone number')}} *" required>
                                 </div>
                                 </div>
