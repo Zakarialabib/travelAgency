@@ -46,7 +46,7 @@ class CountryController extends Controller
         $model = new Country();
         $model->fill($data)->save();
 
-        return redirect()->route('country_list')->with('success', 'Add country success!');
+        return redirect()->route('country_list')->with('success', 'Ajoutez le succès du pays !');
     }
 
     /**
@@ -68,9 +68,9 @@ class CountryController extends Controller
         $model->fill($data);
 
         if ($model->save())
-            return redirect()->route('country_list')->with('success', 'Update country success!');
+            return redirect()->route('country_list')->with('success', 'Pays à jour avec succès!');
         else
-            return redirect()->route('country_list')->with('error', 'Update country fail!');
+            return redirect()->route('country_list')->with('error', 'Échec de la mise à jour du pays !');
     }
 
     /**
@@ -82,6 +82,6 @@ class CountryController extends Controller
     public function destroy($id)
     {
         Country::destroy($id);
-        return redirect()->route('country_list')->with('success', 'Delete country success!');
+        return redirect()->route('country_list')->with('success', 'Supprimer le succès du pays !');
     }
 }

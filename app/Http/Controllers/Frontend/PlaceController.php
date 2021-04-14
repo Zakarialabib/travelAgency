@@ -218,7 +218,7 @@ class PlaceController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
-            return redirect(route('user_my_place'))->with('success', 'Create place success. Wating admin review and apporeve!');
+            return redirect(route('user_my_place'))->with('success', 'Destination créer avec succès. En attente de confirmation!');
         }
 
         return $request;
@@ -266,7 +266,7 @@ class PlaceController extends Controller
         $model->fill($data);
 
         if ($model->save()) {
-            return redirect(route('user_my_place'))->with('success', 'Update place success!');
+            return redirect(route('user_my_place'))->with('success', 'Destination à jour!');
         }
 
         return $request;

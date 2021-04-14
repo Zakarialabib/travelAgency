@@ -1,9 +1,5 @@
 @extends('layouts.backend')
-@section('css')
-    <link rel="stylesheet" href="{{asset('backend/app-assets/css/multi-step-form.css')}}">
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-@endsection
+
 @section('content')
 <h2 id="heading" style="text-align: center;">{{__('Edit  place')}}</h2>
 <div class="row">
@@ -351,8 +347,12 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{asset('admin/js/page_place_create.js')}}"  type="text/javascript"></script>
     <script src="{{asset('admin/js/page_post.js')}}"  type="text/javascript"></script>
     <script src="{{asset('js/multi-step-form.js')}}" type="text/javascript"></script>
 @endpush
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('backend/app-assets/css/multi-step-form.css')}}">
+
+@endsection

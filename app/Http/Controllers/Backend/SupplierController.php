@@ -89,10 +89,10 @@ class SupplierController extends Controller
             $supplier->update($input);
 
             if($supplier){
-                Toastr::success('Supplier updated successfully');
+                Toastr::success('Fournisseur à jour');
             }
             else{
-                Toastr::error('Unable to updated supplier infos');
+                Toastr::error('Impossible de faire la mise à jour');
             }
     
            return redirect()->route('supplier_list');    
@@ -101,6 +101,6 @@ class SupplierController extends Controller
     public function destroy($id)
     {
         Supplier::destroy($id);
-        return back()->with('success', 'Supplier Deleted with success!');
+        return back()->with('success', 'Fournisseur supprimé avec succès!');
     }
 }

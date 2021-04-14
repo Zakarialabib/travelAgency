@@ -4,29 +4,16 @@
         <div class="title_left">
             <h3>{{__('Purchases')}}</h3>
         </div>
-        <div class="title_right">
-        <div class="pull-right">
-        <a class="btn btn-primary" href="{{route('purchase_create_view')}}">{{__('Add New Purchase')}}</a>
-
-        </div>
-        </div>
     </div>
     <div class="clearfix"></div>
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
             <div class="x_panel">
-                <div class="x_title">
-                    <div class="row">
-                        <div class="col-md-3 form-group">
-
-                        </div>
+                    <div class="pull-right list-inline">
+                        <a class="btn btn-primary" href="{{route('purchase_create_view')}}">{{__('Add New Purchase')}}</a>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
-
                 <div class="x_content">
-
                     <table class="table table-striped table-bordered col-5-datatable">
                         <thead>
                         <tr>

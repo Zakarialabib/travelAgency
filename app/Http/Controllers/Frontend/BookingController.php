@@ -63,9 +63,9 @@ class BookingController extends Controller
 
         }
         
-        Toastr::success('You successfully created your booking','Success');
+        Toastr::success('Vous avez créé votre réservation avec succès','Success');
 
-        return $this->response->formatResponse(200, $booking, 'You successfully created your booking!');
+        return $this->response->formatResponse(200, $booking, 'Vous avez créé votre réservation avec succès!');
     }
 
     public function cart()

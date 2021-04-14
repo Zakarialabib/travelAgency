@@ -160,8 +160,8 @@
                                 <i class="fa fa-pencil text-primary font-medium-5"></i>
                             </div>
                         </div>
-                        <h2 class="text-bold-700">{{$count_reviews}}</h2>
-                        <p class="mb-0 line-ellipsis">{{__('reviews')}}</p>
+                        <h2 class="text-bold-700">{{$count_suscribers}}</h2>
+                        <p class="mb-0 line-ellipsis">{{__('Subscribers')}}</p>
                     </div>
                 </div>
             </div>
@@ -273,7 +273,7 @@
                                     <i class="fa fa-money text-danger font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700">{{$d['sales_total']}}</h2>
+                            <h2 class="text-bold-700">{{$d['sales_total']}}DH</h2>
                             <p class="mb-0 line-ellipsis">{{__('Total Sales')}}</p>
                         </div>
                     </div>
@@ -288,7 +288,7 @@
                                     <i class="feather icon-eye text-info font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700">{{$d['purchases_total']}}</h2>
+                            <h2 class="text-bold-700">{{$d['purchases_total']}}DH</h2>
                             <p class="mb-0 line-ellipsis">{{__('Total Purchases')}}</p>
                         </div>
                     </div>
@@ -370,7 +370,7 @@
                                     <i class="fa fa-money text-danger font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700">{{$d['sales_total']}}</h2>
+                            <h2 class="text-bold-700">{{$d['sales_total']}}DH</h2>
                             <p class="mb-0 line-ellipsis">{{__('Total Sales')}}</p>
                         </div>
                     </div>
@@ -385,7 +385,7 @@
                                     <i class="feather icon-eye text-info font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700">{{$d['purchases_total']}}</h2>
+                            <h2 class="text-bold-700">{{$d['purchases_total']}}DH</h2>
                             <p class="mb-0 line-ellipsis">{{__('Total Purchases')}}</p>
                         </div>
                     </div>

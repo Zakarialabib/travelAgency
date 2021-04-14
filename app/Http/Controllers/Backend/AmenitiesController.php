@@ -43,7 +43,7 @@ class AmenitiesController extends Controller
         $model = new Amenities();
         $model->fill($data)->save();
 
-        return back()->with('success', 'Add amenities success!');
+        return back()->with('success', 'Ajoute des services avec succès!');
     }
 
     public function update(Request $request)
@@ -64,12 +64,12 @@ class AmenitiesController extends Controller
         $model = Amenities::findOrFail($request->amenities_id);
         $model->fill($data)->save();
 
-        return back()->with('success', 'Update amenities success!');
+        return back()->with('success', 'Service à jour!');
     }
 
     public function destroy($id)
     {
         Amenities::destroy($id);
-        return back()->with('success', 'Delete amenities success!');
+        return back()->with('success', 'Service Supprimé avec succès!');
     }
 }
