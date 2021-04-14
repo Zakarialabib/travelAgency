@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Sale;
 use App\SaleDetails;
 use App\User;
@@ -16,28 +17,18 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
 
 class SaleController extends Controller
 {
     public function list()
     {
         $customer = Customer::all();
-        $user = User::where('is_admin','=',1)->first();
 
         $sales = Sale::query()
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('pages.backend.sale.sale_list', compact('customer','user' ,'sales') );
-    }
-
-    public function updateStatus(Request $request)
-    {
-        $sale = Sale::find($request->sale_id);
-        $sale->is_locked = $request->is_locked;
-        $sale->save();
-        return response()->json(['succes'=>'status changed succesfully']);
+        return view('pages.backend.sale.sale_list', compact('customer', 'sales') );
     }
 
     public function createView(Request $request)
@@ -48,15 +39,13 @@ class SaleController extends Controller
             //dd($booking);
         }
 
-        $lastSale = Sale::latest()->first();
-        $lastSale->reference_no++;
-
         $users = User::all();
+        $sales = Sale::all();
         $suppliers = Supplier::all();
         $customers = Customer::all();
           
         return view('pages.backend.sale.sale_create', [
-            'reference_no' => $lastSale->reference_no,
+            'sales' => $sales,
             'suppliers' => $suppliers,
             'users' => $users,
             'customers' => $customers,
@@ -69,7 +58,6 @@ class SaleController extends Controller
         try {
             $data = $this->validate($request, [
                 "reference_no" => "",
-                "booking_reference" => "",
                 "user_id" => "",
                 "customer_id" => "",
                 "name" => "",
@@ -86,8 +74,7 @@ class SaleController extends Controller
                 "paid_amount" => "",
                 "payment_note" => "",
                 "note" => "",
-                "staff_note" => "",
-                "is_locked" => ""
+                "staff_note" => ""
             ]);
 
             $document = $request->document;
@@ -122,7 +109,6 @@ class SaleController extends Controller
     
             $sale = Sale::create([
                 'reference_no' => $data['reference_no'],
-                'booking_reference' => $data['booking_reference'] ?? null,
                 'user_id' => $data['user_id'],
                 'customer_id' => $data['customer_id'],
                 'total_qty' => count($saleDetails),
@@ -138,7 +124,6 @@ class SaleController extends Controller
                 'payment_note' => $data['payment_note'],
                 'note' => $data['note'],
                 'staff_note' => $data['staff_note'],
-                'is_locked' => $data['is_locked'],
             ]);
 
             if($sale) {
@@ -158,7 +143,6 @@ class SaleController extends Controller
             return redirect()->route('sale_list')->with('success', 'Sale Updated success');
     
         } catch (QueryException $e) {
-            Log::info($e);
             Toastr::error("Unable to create new Sale");
             return back()->with('error', 'Unable to create new Sale');;
         }
@@ -229,8 +213,7 @@ class SaleController extends Controller
                 "paid_amount" => "",
                 "payment_note" => "",
                 "note" => "",
-                "staff_note" => "",
-                "is_locked" => ""
+                "staff_note" => ""
             ]);
 
             $sale = Sale::find($id);
@@ -294,7 +277,6 @@ class SaleController extends Controller
                     'payment_note' => $data['payment_note'],
                     'note' => $data['note'],
                     'staff_note' => $data['staff_note'],
-                    'is_locked' => $data['is_locked'],
                 ]);
 
                 Toastr::success("Sale updated successfully");
@@ -304,7 +286,7 @@ class SaleController extends Controller
         
             return redirect()->route('sale_list')->with('success', 'Sale Updated success!');
         
-        } catch (\QueryException $e) {
+        } catch (QueryException $e) {
             Toastr::error("Unable to update Purchase");
             return back();
         }
@@ -330,7 +312,8 @@ class SaleController extends Controller
         Sale::destroy($id);
         return back()->with('success', 'Sale Deleted with success!');
     }
-  public function genInvoice($id)
+
+    public function genInvoice($id)
     {
         $sales = Sale::find($id);
         $saledetails = SaleDetails::where('sale_id', $id)->get();
@@ -339,6 +322,66 @@ class SaleController extends Controller
 
         return view('pages.backend.sale.models', compact('sales', 'users', 'customers','saledetails'));
     }
+    public function invoiceSend(Request $request,$id)
+    {
+        $request->validate([
+            'recepient' => 'required',
+            'subject' =>'required',
+            'msg' => 'required'
+          ]);
+            
+         
+          $sub = $request->subject;
+          $msg = $request->msg;
+          $recepient = $request->recepient;
+          $data["email"] = $recepient;
+          $data["title"] = $sub;
+          $data["body"] = $msg; 
+
+        $sales = Sale::find($id);   
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        $pdf = PDF::loadView('pages.backend.sale.invoice', [
+            'customers' => $customers,
+            'sales' => $sales,
+            'users' => $users,
+            'saledetails' => $saledetails,
+            ]);
+       
+          
+        Mail::send('pages.backend.sale.invoice',[
+            'customers' => $customers,
+            'sales' => $sales,
+            'users' => $users,
+            'saledetails' => $saledetails,
+            'content'=>$msg
+        ] , function($message) use($data, $pdf) {
+            $message->to($data["email"], 'rentacs Tours')
+                    ->subject($data["title"])
+                    ->attachData($pdf->output(), "rapport.pdf");
+        });
+
+        return back();
+
+    }
+    public function printToPDF($id)
+    {
+        $sales = Sale::find($id);   
+        $saledetails = SaleDetails::where('sale_id', $id)->get();
+        $users = User::all();
+        $customers = Customer::find($sales->customer_id);
+
+        $pdf = PDF::loadView('pages.backend.sale.invoice', [
+            'customers' => $customers,
+            'sales' => $sales,
+            'users' => $users,
+            'saledetails' => $saledetails,
+            ]);        
+        return $pdf->download('facture.pdf');
+    }
+
     public function Invoice($id)
     {
         $sales = Sale::find($id);
@@ -366,7 +409,6 @@ class SaleController extends Controller
 
         return view('pages.backend.sale.invoice3', compact('sales', 'users', 'customers','saledetails'));
     }
-
 
     public function genQuotation($id)
     {
