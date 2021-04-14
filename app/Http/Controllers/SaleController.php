@@ -22,8 +22,8 @@ class SaleController extends Controller
 {
     public function list()
     {
-        $customer = Customer::all();
-        $user = User::where('is_admin','=',1)->first();
+        $customer = User::customers()->get();
+        $user = User::admin()->first();
 
         $sales = Sale::query()
             ->orderBy('created_at', 'desc')
@@ -52,12 +52,12 @@ class SaleController extends Controller
         $lastSale->reference_no++;
 
         $users = User::all();
-        $suppliers = Supplier::all();
-        $customers = Customer::all();
+        $customers = User::customers()->get();
+        
+        //dd(['users' => $users, 'customers' => $customers]);
           
         return view('pages.backend.sale.sale_create', [
             'reference_no' => $lastSale->reference_no,
-            'suppliers' => $suppliers,
             'users' => $users,
             'customers' => $customers,
             'booking' => $booking,
@@ -202,7 +202,7 @@ class SaleController extends Controller
         $sale = Sale::where('id', $id)->with(['details', 'user', 'customer'])->first();
         $users = User::all();
         $suppliers = Supplier::all();
-        $customers = Customer::all();
+        $customers = User::customers()->get();
 
         return view('pages.backend.sale.sale_edit',compact('sale','suppliers','users','customers'));
     }

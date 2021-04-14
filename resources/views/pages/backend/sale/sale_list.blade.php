@@ -45,7 +45,7 @@
                             <tr>
                                 <td>{{$sale->id}}</td>
                                 <td>{{$sale->user->profile->sur_name}}</td>
-                                <td>{{$sale->customer->name}}</td>
+                                <td>{{$sale->customer->profile->sur_name}}</td>
                                 <td>{{$sale->grand_total}}</td>
                                 <td>
                                     @if($sale->payment_status == App\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
@@ -173,7 +173,7 @@
                                     <a class="dropdown-item" href="{{route('sale_quotation', $sale->id)}}">{{__('Quotation')}}</a>
                                     <form class="d-inline" action="{{route('return_create')}}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{$sale->id}}">
+                                        <input type="hidden" name="sale_id" value="{{$sale->id}}">
                                         <button type="submit" class="dropdown-item">{{__('Return')}}</button>
                                     </form>
                                     <form action="{{route('sale_delete',$sale->id)}}" method="POST">

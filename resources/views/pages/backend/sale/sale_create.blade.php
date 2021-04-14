@@ -42,7 +42,7 @@
                                             <label> {{__('Customer')}} *</label>
                                             <select name="customer_id" class="form-control myselect" title="{{__('Select Customer')}}...">
                                             @foreach($customers as $customer)
-                                                <option value="{{$customer->id}}">{{$customer->name}}</option>
+                                                <option value="{{$customer->id}}">{{$customer->profile->sur_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

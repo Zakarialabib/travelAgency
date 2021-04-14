@@ -173,12 +173,12 @@
             </li>
             @endrole--}}
 
-            {{--        <li class="@yield('activeMyWallet') nav-item">
+           <li class="@yield('activeMyWallet') nav-item">
                 <a href="{{url('settings/wallets/user-wallet')}}">
                     <i class="la la-google-wallet"></i>
                     <span class="menu-title" >{{__('My Wallet')}}</span>
                 </a>
-            </li> --}}
+            </li>
 
     
             <li class="nav-item @yield('activeSettings')"><a href="#"><i class="la la-cogs"></i><span class="menu-title" >{{__('Settings')}}</span></a>
@@ -186,7 +186,6 @@
                     <li class="menu-item"><a href="{{route('profile')}}" >{{__('Manage Profile')}}</a>
                     </li>
                  @role('admin') 
-                   </li>
                     <li><a class="menu-item" href="{{ route('clear-cache') }}"  >
                             {{__('Clear Cache')}}
                         </a>
@@ -209,13 +208,12 @@
                     {{--   <li><a class="menu-item" href="{{url('/settings/visa-application-requests')}}" >{{__('Visa Applications')}}</a>
                     </li> --}}
                     <li><a href="{{url('settings/language')}}"> {{__('Language')}}</a></li>
-                    <li ><a href="{{ route('clear-translations') }}">{{__('Clear translations')}}</a></li>
-                   {{--   <li><a href="{{url('translations')}}"> {{__('Translations')}}</a></li>
+                    {{--<li ><a href="{{ route('clear-translationsp') }}">{{__('Clear translations')}}</a></li>--}}
+                   <li><a href="{{url('translations')}}"> {{__('Translations')}}</a></li>
                    <li><a href="{{url('settings/wallets')}}" class="menu-item">{{__('Wallets Management')}}</a></li>
-                    </li> --}}
                   @endrole
                 </ul>
-              </li>
+            </li>
             <li class="nav-item">
                 <a href="{{url('/logout')}}">
                     <i class="la la-sign-out"></i>

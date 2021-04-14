@@ -38,4 +38,9 @@ class Profile extends Model
         return static::where('user_id',$id)->first();
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

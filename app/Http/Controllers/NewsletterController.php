@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Admin\notify;
 use App\Emailsetting;
+use App\User;
 use App\Setting;
 use App\Language;
 use App\Newsletter;
@@ -76,7 +79,7 @@ class NewsletterController extends Controller
             'messege' => 'Newsletter Updated successfully!',
             'alert' => 'success'
         );
-        return redirect(route('admin.newsletter'))->with('notification', $notification);;
+        return redirect(route('admin.newsletter'))->with('notification', $notification);
     }
 
 
@@ -89,68 +92,24 @@ class NewsletterController extends Controller
     public function subscsendmail(Request $request) {
         $request->validate([
           'subject' => 'required',
-          'message' => 'required'
+          'content_message' => 'required'
         ]);
   
         $sub = $request->subject;
-        $msg = $request->message;
-  
-        $subscs = Newsletter::all();
-  
-        $be = Emailsetting::first(); 
-  
-          $mail = new PHPMailer(true);
-
-          if ($be->is_smtp == 1) {
-              try {
-              
-     
-                  $mail->isSMTP();                                            
-                  $mail->Host       = $be->smtp_host;                   
-                  $mail->SMTPAuth   = true;                                   
-                  $mail->Username   = $be->smtp_user;                    
-                  $mail->Password   = $be->smtp_pass;                               
-                  $mail->SMTPSecure = $be->email_encryption;         
-                  $mail->Port       = $be->smtp_port;     
-                 
-                  //Recipients
-                  $mail->setFrom($be->from_email, $be->from_name);
-
-                  foreach ($subscs as $key => $subsc) {
-                      $mail->addAddress($subsc->email);   
-                  }
-                   
-                  
-
-                    
-              } catch (Exception $e) {
-                  // die($e->getMessage());
-              }
-          } else {
-              try {
-  
-                  //Recipients
-                  $mail->setFrom($be->from_email, $be->from_name);
-                  foreach ($subscs as $key => $subsc) {
-                      $mail->addAddress($subsc->email);     // Add a recipient
-                  }
-
-              } catch (Exception $e) {
-                  // die($e->getMessage());
-              }
-          }
-      
-          $mail->isHTML(true);                        
-          $mail->Subject = $sub;
-          $mail->Body    = $msg;
-  
-          $mail->send();
-
-          $notification = array(
-            'messege' => 'Mail sent successfully!',
+        $msg = $request->content_message;
+        $users = Newsletter::all();
+        foreach ($users as $user){
+            Mail::send('backend.newsletter.test', ['subject'=>$sub, 'content'=>$msg, 'user'=>$user],
+             function($message) use ($user){
+                $message->to($user->email)->from('zlabib@alphaboost.ma','zakaria labib')->
+                subject('welcome');
+             });
+        }
+        $notification = array(
+            'messege' => 'Newsletter Updated successfully!',
             'alert' => 'success'
         );
-        return redirect()->back()->with('notification', $notification);
+        return redirect(route('admin.newsletter'))->with('notification', $notification);
       }
 
 
