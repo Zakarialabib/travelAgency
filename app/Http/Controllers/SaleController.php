@@ -49,7 +49,11 @@ class SaleController extends Controller
         }
 
         $lastSale = Sale::latest()->first();
-        $lastSale->reference_no++;
+        if($lastSale) {
+            $reference = $lastSale->reference_no++;
+        } else {
+            $reference = '000000001';
+        }
 
         $users = User::all();
         $customers = User::customers()->get();
@@ -57,7 +61,7 @@ class SaleController extends Controller
         //dd(['users' => $users, 'customers' => $customers]);
           
         return view('pages.backend.sale.sale_create', [
-            'reference_no' => $lastSale->reference_no,
+            'reference_no' => $reference,
             'users' => $users,
             'customers' => $customers,
             'booking' => $booking,

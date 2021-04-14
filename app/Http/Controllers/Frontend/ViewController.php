@@ -378,7 +378,7 @@ class ViewController extends Controller
             'email' => $request->email,
             'note' => $request->note
         ], function ($message) use ($request) {
-            $message->to(setting('email_system'), "{$request->first_name}")->subject('Contact from ' . $request->first_name);
+            $message->to(setting('email_system'), "{$request->first_name}")->subject('Formulaire de Contact ' . $request->first_name);
         });
 
 
@@ -394,7 +394,7 @@ class ViewController extends Controller
             'email' => $request->email,
             'note' => $request->note
         ], function ($message) use ($request) {
-            $message->to(setting('email_system'), "{$request->first_name}")->subject('Contact from ' . $request->first_name);
+            $message->to(setting('email_system'), "{$request->first_name}")->subject('Formulaire de Contact ' . $request->first_name);
         });
 
         return back()->with('success', 'Formulaire de contact envoyé avec succès!');

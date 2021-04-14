@@ -12,7 +12,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h6 class="text-muted">Wallet Balance </h6>
-                                <h2>&#x20a6;{{$userWallet->balance}}</h2>
+                                <h2>{{$userWallet->balance}}DH</h2>
                             </div>
                             <div class="align-self-center">
                                 <i class="icon-wallet success font-large-2 float-right"></i>

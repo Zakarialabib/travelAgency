@@ -27,6 +27,7 @@ use App\Review;
 use App\Post;
 use App\Sale;
 use App\Purchase;
+use App\Returns;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,8 @@ class BackEndViewController extends Controller
         $count_purchases = Purchase::query()
         ->count();
 
+        $userWallet = Wallet::where('user_id',auth()->id())->first();
+
         $bookings = Auth::user()->bookings()->with(['place'])->get();
 
         $visaApplications = VisaApplication::orderBy('id','desc')->get();
@@ -90,6 +93,7 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now())->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now())->sum('grand_total'),
             ),
             'month' => array(
                 'package_bookings' => Booking::whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
@@ -98,6 +102,7 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subMonth())->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now()->subMonth())->sum('grand_total'),
             ),
             'semi' => array(
                 'package_bookings' => Booking::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
@@ -106,6 +111,7 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now()->subMonths(6))->sum('grand_total'),
             ),
             'year' => array(
                 'package_bookings' => Booking::whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
@@ -114,10 +120,11 @@ class BackEndViewController extends Controller
                 'users' => User::whereDate('created_at', '>=' , Carbon::now()->subYear())->count(),
                 'sales_total' => Sale::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
                 'purchases_total' => Purchase::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
+                'return_total' => Returns::whereDate('created_at', '>=' , Carbon::now()->subYear())->sum('grand_total'),
             ),
         );
         //dd($data);
-        return view('pages.backend.dashboard',compact('data', 'count_cities', 'bookings', 'count_posts' ,'count_places', 'count_bookings','count_suscribers','count_users','count_sales','count_purchases','visaApplications','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
+        return view('pages.backend.dashboard',compact('data','userWallet', 'count_cities', 'bookings', 'count_posts' ,'count_places', 'count_bookings','count_suscribers','count_users','count_sales','count_purchases','visaApplications','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
 
     }
     

@@ -27,6 +27,14 @@
                     <span class="menu-title" >{{__('Dashboard')}}</span>
                 </a>
             </li>
+            @role('admin')
+            <li class="@yield('activebooking_list') nav-item">
+                <a href="{{route('booking_list')}}">
+                    <i class="la la-money"></i>
+                    <span class="menu-title" >{{__('Booking list')}}</span>
+                </a>
+            </li>
+            @endrole
 
             <li class="@yield('activeBookings') nav-item"><a href="#"><i class="la la-history"></i><span class="menu-title">{{__('Manage Bookings')}}</span></a>
                 <ul class="menu-content">
@@ -172,13 +180,6 @@
                 </ul>
             </li>
             @endrole--}}
-
-           <li class="@yield('activeMyWallet') nav-item">
-                <a href="{{url('settings/wallets/user-wallet')}}">
-                    <i class="la la-google-wallet"></i>
-                    <span class="menu-title" >{{__('My Wallet')}}</span>
-                </a>
-            </li>
 
     
             <li class="nav-item @yield('activeSettings')"><a href="#"><i class="la la-cogs"></i><span class="menu-title" >{{__('Settings')}}</span></a>
