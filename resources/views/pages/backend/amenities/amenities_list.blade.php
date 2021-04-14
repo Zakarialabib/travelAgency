@@ -36,7 +36,6 @@
                                     <button type="button" class="btn-sm btn-warning amenities_edit"
                                             data-id="{{$item->id}}"
                                             data-name="{{$item->name}}"
-                                            data-icon="{{$item->icon}}"
                                             data-translations="{{$item->translations}}"
                                     >{{__('Edit')}}
                                     </button>

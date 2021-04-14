@@ -61,6 +61,7 @@
                                       </div>
                                 </div>
                              </div>
+                             {{--
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p><strong>{{__('Icon Marker')}}:</strong></p>
@@ -68,6 +69,7 @@
                                         <input type="file" class="form-control" id="icon_map_marker" name="icon_map_marker">
                                     </div>
                                 </div>
+                            --}}
                             @endif
 
                             <div class="row mt-2">

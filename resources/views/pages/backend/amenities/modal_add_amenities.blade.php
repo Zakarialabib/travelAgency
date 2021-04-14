@@ -32,10 +32,10 @@
                                 @endforeach
                             </div>
 
-                            {{--<div class="form-group">--}}
-                                {{--<label for="name">{{__('Amenities Name')}}: *</label>--}}
-                                {{--<input type="text" class="form-control" id="amenities_name" name="name" required>--}}
-                            {{--</div>--}}
+                            {{--<div class="form-group">
+                                <label for="name">{{__('Amenities Name')}}: *</label>
+                                <input type="text" class="form-control" id="amenities_name" name="name" required>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <p><strong>Icon:</strong></p>
@@ -43,6 +43,7 @@
                                     <input type="file" class="form-control" id="amenities_icon" name="icon">
                                 </div>
                             </div>
+                            --}}
                         </div>
                     </div>
                 </div>

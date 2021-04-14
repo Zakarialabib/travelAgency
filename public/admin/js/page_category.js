@@ -2,8 +2,9 @@
     'use strict';
 
     $(document).on("click", ".category_edit", function () {
+        console.log('here');
         let category_id = $(this).attr('data-id');
-        // let category_name = $(this).attr('data-name');
+        let category_name = $(this).attr('data-name');
         let translations = JSON.parse($(this).attr('data-translations'));
 
         translations.forEach(function (value) {
