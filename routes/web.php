@@ -263,6 +263,10 @@ Route::middleware(['auth'])->group(function(){
 
 });
 
+Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
+	Route::get('create/{type}/{id}', 'InvoiceController@create')->name('invoice_create');
+});
+
 Route::group(['prefix' => 'sales'],function(){
     Route::get('/', 'SaleController@list')->name('sale_list');
     Route::get('/ajax-delete-file', 'SaleController@deleteSaleFile');
@@ -272,7 +276,6 @@ Route::group(['prefix' => 'sales'],function(){
     Route::get('/edit/{id}', 'SaleController@edit')->name('sale_edit');
     Route::put('/update/{id}', 'SaleController@update')->name('sale_update');
     Route::delete('/{id}', 'SaleController@destroy')->name('sale_delete');
-	Route::get('gen_invoice/{id}', 'SaleController@genInvoice')->name('sale_invoice');
     Route::get('gen_devis/{id}', 'SaleController@genQuotation')->name('sale_quotation');
     Route::get('/status', 'SaleController@updateStatus');
     Route::get('template/{id}', 'SaleController@genInvoice')->name('purchase_invoice');

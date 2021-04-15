@@ -9,6 +9,18 @@ $id= request()->route('id');
           <h2> CHOOSE A TEMPLATE </h2>
           <div class="row">
             <div class="card-group col-md-12 col-sm-12 col-xs-12 bg-white" style='padding:10px;'>
+                @foreach ($templates as $key => $template)
+                <div class="card">
+                  <img class="card-img-top" src="{{$template->image}}" alt="Card image cap">
+                  <div class="card-block">
+                    <h4 class="card-title" style="text-align:center;">{{$template->name}}</h4>
+                    <button type="button" class="btn btn-success" ><a href="{{route('invoice_sale1', $id)}}" style='text-decoration:none;color:white;'>Preview</a></button>
+                    <button type="button" class="btn btn-dark js-send-download" data-invoice="5">  <a href="{{route('download_pdf', $id)}}" style='text-decoration:none;color:white;'>Download</a></button>
+                    <button type="button" class="btn btn-warning js-send-invoice" data-toggle="modal" data-target="#invoice-modal" data-invoice="1" data-whatever="@mdo"  id='ok'>Envoyer</button>
+                  </div>
+                </div>
+                @endforeach
+                {{--
                 <div class="card">
                   <img class="card-img-top" src="https://templates.invoicehome.com/invoice-template-us-neat-750px.png" alt="Card image cap">
                   <div class="card-block">
@@ -49,6 +61,7 @@ $id= request()->route('id');
                   </div>
                 
                 </div>
+                --}}
               </div>
         
 

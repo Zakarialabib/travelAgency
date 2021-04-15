@@ -235,16 +235,22 @@
             <main>
                 <div class="row contacts">
                     <div class="col invoice-to">
-                        
-                        <h4 class="to"> {{$customers->name}}</h4>
-                        <div class="address">{{$customers->company_name}}</div>
-                        <div class="address"> {{$customers->address}}</div>
-                        <div class="address"> {{$customers->city}}, {{$customers->postal_code}}</div>
-                        <div class="email">{{__('Phone Number')}}: {{$customers->phone_number}}</div>
+                        @if ($type === \App\Invoice::PURCHASE_TYPE)
+                        <h4 class="to"> {{$beneficiary->name}}</h4>
+                        <div class="address">{{$beneficiary->company_name}}</div>
+                        <div class="address"> {{$beneficiary->address}}</div>
+                        <div class="address"> {{$beneficiary->city}}, {{$beneficiary->postal_code}}</div>
+                        <div class="email">{{__('Phone Number')}}: {{$beneficiary->phone_number}}</div>
+                        @else
+                        <h4 class="to"> {{$beneficiary->profile->sur_name}}</h4>
+                        <div class="address">{{$beneficiary->first_name}}</div>
+                        <div class="address"> {{$beneficiary->address}}</div>
+                        <div class="email">{{__('Phone Number')}}: {{$beneficiary->phone_number}}</div>
+                        @endif
                     </div>
                     <div class="col invoice-details">
-                        <h1 class="invoice-id">{{__('reference')}} : {{$sales->reference_no}}</h1>
-                        <div class="date">Date d’émission: {{$sales->created_at->toDateString()}}</div>
+                        <h1 class="invoice-id">{{__('reference')}} : {{$entity->reference_no}}</h1>
+                        <div class="date">Date d’émission: {{$entity->created_at->toDateString()}}</div>
                     </div>
                 </div>
                 <table border="0" cellspacing="0" cellpadding="0">
@@ -260,18 +266,18 @@
                     </thead>
                     <tbody>
                     <?php $total_product_tax = 0; $i=1;?>
-                    @foreach($saledetails as $saledetail)
+                    @foreach($entity->details as $detail)
                         <tr>
                             <td class="no">0{{$i++}}</td>
                             <td class="text-left">
                             <h3>
-                            {{$saledetail->name}}
+                            {{$detail->name}}
                                 </h3>
                             </td>
-                            <td class="total">{{number_format((float) ($saledetail->total / $saledetail->qty), 2, '.', '')}}</td>
-                            <td class="total">{{$saledetail->qty}}</td>
-                            <td class="total">{{number_format((float)$sales->tax, 2, '.', '')}}</td>
-                            <td class="total">{{number_format((float)$saledetail->total, 2, '.', '')}}</td>
+                            <td class="total">{{number_format((float) ($detail->total / $detail->qty), 2, '.', '')}}</td>
+                            <td class="total">{{$detail->qty}}</td>
+                            <td class="total">{{number_format((float)$entity->tax, 2, '.', '')}}</td>
+                            <td class="total">{{number_format((float)$detail->total, 2, '.', '')}}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -279,17 +285,17 @@
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">Total HT :</td>
-                            <td>{{number_format((float)$sales->tax, 2, '.', '')}}</td>
+                            <td>{{number_format((float)$entity->tax, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">TVA</td>
-                            <td>{{number_format((float)$sales->tax, 2, '.', '')}}</td>
+                            <td>{{number_format((float)$entity->tax, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">TOTAL TTC</td>
-                            <td>{{number_format((float)$sales->grand_total, 2, '.', '')}}</td>
+                            <td>{{number_format((float)$entity->grand_total, 2, '.', '')}}</td>
                         </tr>
                     </tfoot>
                 </table>
