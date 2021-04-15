@@ -53,7 +53,15 @@ Route::get('/logout','Auth\LoginController@logout');
 Route::get('/cancel-pnr/{pnr}','FlightController@cancelPNR');
 Route::get('/issue-ticket/{pnr}','FlightController@issueTicket');
 Route::get('/void-ticket/{pnr}','FlightController@voidTicket');
-
+Route::post('/custom-sign-in','UserController@signIn');
+Route::post('/custom-sign-up','UserController@signUp');
+Route::get('/user/my-place', 'UserController@pageMyPlace')->name('user_my_place')->middleware('auth');
+Route::delete('/user/my-place', 'UserController@deleteMyPlace')->name('user_my_place_delete')->middleware('auth');
+Route::post('/wishlist', 'UserController@addWishlist')->name('add_wishlist')->middleware('auth');
+Route::delete('/wishlist', 'UserController@removeWishlist')->name('remove_wishlist')->middleware('auth');
+Route::get('/user/profile', 'UserController@pageProfile')->name('user_profile')->middleware('auth');
+Route::put('/user/profile', 'UserController@updateProfile')->name('user_profile_update')->middleware('auth');     
+Route::get('/user/wishlist', 'UserController@pageWishList')->name('user_wishlist')->middleware('auth');
 
 
 Route::get('/get-logged-in-user',function(){
@@ -71,54 +79,39 @@ Route::group([
               'middleware' => []], function(){
                   
                 Route::get('/', 'ViewController@home');
-
-                Route::get('/home', 'ViewController@home')->name('home');
-                
+                Route::get('/home', 'ViewController@home')->name('home');                
                 Route::get('/language/{locale}', 'ViewController@changeLanguage')->name('change_language');
-                Route::post('/custom-sign-in','UserController@signIn');
-Route::post('/custom-sign-up','UserController@signUp');
+        Route::get('/itinerary-booking','ViewController@itineraryBooking')->middleware('flight.search.param','flight.selected','flight.pricing.info');
+        Route::get('/available-itineraries','ViewController@availableItineraries')->middleware('flight');
+        Route::get('/flight-booking-payment-page','ViewController@flightBookingPayment')->middleware('flight.search.param','flight.selected','flight.pricing.info','pnr');
+        Route::get('/flight-booking-confirmation','ViewController@flightPaymentConfirmation')->middleware('flight.search.param','flight.selected','flight.pricing.info','payment.info');
+        Route::get('/available-hotels','ViewController@availableHotels')->middleware('hotel','hotel.search.param');
+        Route::get('/hotel-information','ViewController@hotelInformation')->middleware('hotel.information');
+        Route::get('/hotel-room-booking/{id}','ViewController@hotelRoomBooking')->middleware('hotel.search.param');
+        Route::get('/search', 'ViewController@search')->name('search');
+        Route::get('/termes-et-conditions', 'ViewController@termsConditions')->name('page_terms_conditions');
+        Route::get('/contact', 'ViewController@pageContact')->name('page_contact');
+        Route::get('/about', 'ViewController@pageAbout')->name('page_about');
+        Route::post('/about', 'ViewController@sendAbout')->name('page_about_send');
+        Route::post('/contact', 'ViewController@sendContact')->name('page_contact_send');
+        Route::get('/ajax-search', 'ViewController@ajaxSearch');
+        Route::get('/ajax-search-listing', 'ViewController@searchListing');
+        Route::get('/search', 'ViewController@search')->name('search');
 
-                Route::get('/itinerary-booking','ViewController@itineraryBooking')->middleware('flight.search.param','flight.selected','flight.pricing.info');
-                
-                Route::get('/available-itineraries','ViewController@availableItineraries')->middleware('flight');
-                Route::get('/flight-booking-payment-page','ViewController@flightBookingPayment')->middleware('flight.search.param','flight.selected','flight.pricing.info','pnr');
-                Route::get('/flight-booking-confirmation','ViewController@flightPaymentConfirmation')->middleware('flight.search.param','flight.selected','flight.pricing.info','payment.info');
-                
-                Route::get('/available-hotels','ViewController@availableHotels')->middleware('hotel','hotel.search.param');
-                
-                Route::get('/hotel-information','ViewController@hotelInformation')->middleware('hotel.information');
-                
-                Route::get('/hotel-room-booking/{id}','ViewController@hotelRoomBooking')->middleware('hotel.search.param');
-                
-        
-Route::get('/search', 'ViewController@search')->name('search');
-Route::get('/termes-et-conditions', 'ViewController@termsConditions')->name('page_terms_conditions');
-Route::get('/contact', 'ViewController@pageContact')->name('page_contact');
-Route::get('/about', 'ViewController@pageAbout')->name('page_about');
-Route::post('/about', 'ViewController@sendAbout')->name('page_about_send');
-Route::post('/contact', 'ViewController@sendContact')->name('page_contact_send');
-Route::get('/ajax-search', 'ViewController@ajaxSearch');
-Route::get('/ajax-search-listing', 'ViewController@searchListing');
-Route::get('/search', 'ViewController@search')->name('search');
+        Route::post('/searchHotel','HotelController@searchHotel');
+        Route::get('/get-selected-hotel-information/{id}','HotelController@getSelectedHotelInformation');
+        Route::get('/get-selected-hotel-rooms-information/{id}','HotelController@getSelectHotelRoomsInformation');
+        Route::get('/get-selected-hotel-room-information/{id}','HotelController@getSelectedHotelRoomInformation');
+        Route::get('/selected-hotel-information','HotelController@selectedHotel');
+        Route::get('/hotel-room-information/{id}','HotelController@hotelRoomInformation');
+        Route::post('/hold-customer-hotel-booking-information','HotelController@holdCustomerHotelBookingInfo');
+        Route::get('/hotel-booking-confirmation','HotelController@hotelPaymentConfirmation');
 
-Route::post('/searchHotel','HotelController@searchHotel');
-Route::get('/get-selected-hotel-information/{id}','HotelController@getSelectedHotelInformation');
-Route::get('/get-selected-hotel-rooms-information/{id}','HotelController@getSelectHotelRoomsInformation');
-Route::get('/get-selected-hotel-room-information/{id}','HotelController@getSelectedHotelRoomInformation');
-Route::get('/selected-hotel-information','HotelController@selectedHotel');
-Route::get('/hotel-room-information/{id}','HotelController@hotelRoomInformation');
-Route::post('/hold-customer-hotel-booking-information','HotelController@holdCustomerHotelBookingInfo');
-Route::get('/hotel-booking-confirmation','HotelController@hotelPaymentConfirmation');
-
-Route::get('/page/landing/{page_number}', 'ViewController@pageLanding')->name('page_landing');
-Route::get('/search-listing-input', 'ViewController@searchListing')->name('search_listing');
-Route::get('/search-listing', 'ViewController@pageSearchListing')->name('page_search_listing');
-Route::get('/hotel-booking-payment-page','ViewController@hotelBookingPaymentPage')->middleware('hotel.search.param','hotel.room.selected');
-Route::get('/hotel-booking-completion','ViewCOntroller@hotelBookingCompletion')->middleware('hotel.search.param','hotel.room.selected','payment.info');
-Route::post('/wishlist', 'UserController@addWishlist')->name('add_wishlist')->middleware('auth');
-Route::delete('/wishlist', 'UserController@removeWishlist')->name('remove_wishlist')->middleware('auth');
-Route::get('/user/profile', 'UserController@pageProfile')->name('user_profile')->middleware('auth');
-Route::put('/user/profile', 'UserController@updateProfile')->name('user_profile_update')->middleware('auth');    
+        Route::get('/page/landing/{page_number}', 'ViewController@pageLanding')->name('page_landing');
+        Route::get('/search-listing-input', 'ViewController@searchListing')->name('search_listing');
+        Route::get('/search-listing', 'ViewController@pageSearchListing')->name('page_search_listing');
+        Route::get('/hotel-booking-payment-page','ViewController@hotelBookingPaymentPage')->middleware('hotel.search.param','hotel.room.selected');
+        Route::get('/hotel-booking-completion','ViewCOntroller@hotelBookingCompletion')->middleware('hotel.search.param','hotel.room.selected','payment.info');
 
         Route::get('/Meilleures-offres', 'PlaceController@list')->name('best_offers');
         Route::get('/offres/{slug}', 'PlaceController@detail')->name('place_detail');
@@ -131,7 +124,7 @@ Route::put('/user/profile', 'UserController@updateProfile')->name('user_profile_
         Route::get('/blog/all', 'PostController@list')->name('post_list_all');
         Route::post('/post', 'PostController@send')->name('send');
         Route::get('/blog/{cat_slug}', 'PostController@list')->where('cat_slug', '[a-zA-Z0-9-_]+')->name('post_list');
-         Route::get('{slug}-{id}', 'PostController@detail')
+        Route::get('{slug}-{id}', 'PostController@detail')
         ->where('slug', '[a-zA-Z0-9-_]+')
         ->where('id', '[0-9]+')->name('post_detail');
         Route::get('/city/{slug}', 'CityController@detail')->name('city_detail');
@@ -142,25 +135,17 @@ Route::put('/user/profile', 'UserController@updateProfile')->name('user_profile_
         Route::get('/categorie/type/{slug}', 'CategoryController@typeDetail')->name('category_type_detail');
         Route::get('/categories', 'CategoryController@search')->name('category_search');
         Route::post('/review', 'ReviewController@create')->name('review_create')->middleware('auth');
-        
-    Route::get('/user/my-place', 'UserController@pageMyPlace')->name('user_my_place')->middleware('auth');
-    Route::delete('/user/my-place', 'UserController@deleteMyPlace')->name('user_my_place_delete')->middleware('auth');
-
-    Route::get('/user/wishlist', 'UserController@pageWishList')->name('user_wishlist')->middleware('auth');
-
-    Route::get('/cart', 'BookingController@cart')->middleware('auth');
-    Route::get('/add-to-cart/{id}', 'BookingController@addToCart')->name('add-to-cart')->middleware('auth');
-    Route::put('/update-cart', 'BookingController@update')->middleware('auth');
-    Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart')->middleware('auth');
-
-    Route::post('/bookings', 'BookingController@booking')->name('booking_submit');
-  
-      Route::get('/places/map', 'PlaceController@getListMap')->name('place_get_list_map');
-
-    Route::get('/cities/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
-    Route::get('/cities', 'CityController@search')->name('city_search');
+        Route::get('/cart', 'BookingController@cart')->middleware('auth');
+        Route::get('/add-to-cart/{id}', 'BookingController@addToCart')->name('add-to-cart')->middleware('auth');
+        Route::put('/update-cart', 'BookingController@update')->middleware('auth');
+        Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart')->middleware('auth');
+        Route::post('/bookings', 'BookingController@booking')->name('booking_submit');
+        Route::get('/places/map', 'PlaceController@getListMap')->name('place_get_list_map');
+        Route::get('/cities/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
+        Route::get('/cities', 'CityController@search')->name('city_search');
 
 });
+
 Route::group([
     'namespace' => 'Backend', 
     'middleware' => ['auth']], function(){
@@ -169,16 +154,13 @@ Route::group([
         Route::post('/country', 'CountryController@create')->name('country_create');
         Route::put('/country', 'CountryController@update')->name('country_update');
         Route::delete('/country/{id}', 'CountryController@destroy')->name('country_delete');
-    
         Route::get('/city', 'CityController@list')->name('city_list');
         Route::post('/city', 'CityController@create')->name('city_create');
         Route::put('/city', 'CityController@update')->name('city_update');
         Route::put('/city/status', 'CityController@updateStatus')->name('city_update_status');
         Route::delete('/city/{id}', 'CityController@destroy')->name('city_delete');
-    
 
         Route::group(['prefix' => 'customers'],function(){
-
         Route::get('/', 'CustomerController@list')->name('customer_list');
         Route::get('/add', 'CustomerController@create')->name('customer_create_view');
         Route::post('/', 'CustomerController@store')->name('customer_create');
@@ -189,7 +171,6 @@ Route::group([
         });
 
         Route::group(['prefix' => 'suppliers'],function(){
-
         Route::get('/', 'SupplierController@list')->name('supplier_list');
         Route::get('/add', 'SupplierController@create')->name('supplier_create_view');
         Route::post('/', 'SupplierController@store')->name('supplier_create');
@@ -259,15 +240,11 @@ Route::group([
 Route::middleware(['auth'])->group(function(){
 
     Route::get('/ajax-search-places', 'BackEndViewController@searchPlaces');
-    
     Route::post('/search-portal','BackEndViewController@searchPortal');
-
     Route::get('backend/payment-confirmation','BackEndViewController@paymentConfirmation');
+    Route::get('/dashboard','BackEndViewController@dashboard')->name('dashboard');
 
-    Route::get('/dashboard','BackEndViewController@dashboard')->name('dashboard');    
-
-Route::group(['prefix' => 'purchases'],function(){
-
+    Route::group(['prefix' => 'purchases'],function(){
     Route::get('/', 'PurchaseController@list')->name('purchase_list');
     Route::get('/ajax-delete-file', 'PurchaseController@deletePurchaseFile');
     Route::get('/add', 'PurchaseController@createView')->name('purchase_create_view');
@@ -287,7 +264,6 @@ Route::group(['prefix' => 'purchases'],function(){
 });
 
 Route::group(['prefix' => 'sales'],function(){
-
     Route::get('/', 'SaleController@list')->name('sale_list');
     Route::get('/ajax-delete-file', 'SaleController@deleteSaleFile');
     Route::get('/add', 'SaleController@createView')->name('sale_create_view');
@@ -332,11 +308,9 @@ Route::group(['prefix' => 'sales'],function(){
         Route::get('vats','BackEndViewController@vat')->name('vats');
         Route::post('vat', 'VatController@saveVat')->name('backend-save-vat');
         Route::get('getVat/{type}','VatController@getVat');
-
         Route::get('markups', 'BackEndViewController@markupView');
         Route::post('markup/admin', 'MarkupController@saveAdminMarkup')->name('backend-save-markup');
         Route::get('getMarkup/{id}','MarkupController@getMarkupById');
-
         Route::get('markdown', 'BackEndViewController@index');
         Route::post('createOrUpdateMarkdown','MarkdownController@createOrUpdate');
         Route::get('getMarkdown/{id}','MarkdownController@getMarkdownById');

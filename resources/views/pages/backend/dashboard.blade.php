@@ -116,8 +116,6 @@
             </div>
         </div>
     </div>
-
-    <h2><strong>{{__('Staticts')}}:</strong></h2>
     <div class="row">
         <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="card text-center">
@@ -268,13 +266,15 @@
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="avatar bg-rgba-info  m-0 mb-1">
-                                <div class="avatar-content">
-                                    <i class="fa fa-money text-danger font-medium-5"></i>
-                                </div>
+                        <div class="media d-flex">
+                            <div class="media-body text-left">
+                                <h6 class="text-muted">{{__('Total Sales')}}</h6>
+                                <h3>{{$d['sales_total']}}DH</h3>
                             </div>
-                            <h2 class="text-bold-700">{{$d['sales_total']}}DH</h2>
-                            <p class="mb-0 line-ellipsis">{{__('Total Sales')}}</p>
+                            <div class="align-self-center">
+                                <i class="fa fa-arrow-up primary font-large-2 float-right"></i>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -283,13 +283,15 @@
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="avatar bg-rgba-info  m-0 mb-1">
-                                <div class="avatar-content">
-                                    <i class="feather icon-eye text-info font-medium-5"></i>
-                                </div>
+                        <div class="media d-flex">
+                            <div class="media-body text-left">
+                                <h6 class="text-muted">{{__('Total Purchases')}}</h6>
+                                <h3>{{$d['purchases_total']}}DH</h3>
                             </div>
-                            <h2 class="text-bold-700">{{$d['purchases_total']}}DH</h2>
-                            <p class="mb-0 line-ellipsis">{{__('Total Purchases')}}</p>
+                            <div class="align-self-center">
+                                <i class="fa fa-money primary font-large-2 float-right"></i>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -298,13 +300,15 @@
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="avatar bg-rgba-info  m-0 mb-1">
-                                <div class="avatar-content">
-                                    <i class="feather icon-eye text-info font-medium-5"></i>
-                                </div>
+                          <div class="media d-flex">
+                            <div class="media-body text-left">
+                                <h6 class="text-muted">{{__('Total Return')}}</h6>
+                                <h3>{{$d['return_total']}}DH</h3>
                             </div>
-                            <h2 class="text-bold-700">{{$d['return_total']}}DH</h2>
-                            <p class="mb-0 line-ellipsis">{{__('Total Return')}}</p>
+                            <div class="align-self-center">
+                                <i class="fa fa-arrow-down primary font-large-2 float-right"></i>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -380,13 +384,15 @@
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="avatar bg-rgba-info  m-0 mb-1">
-                                <div class="avatar-content">
-                                    <i class="fa fa-money text-danger font-medium-5"></i>
-                                </div>
+                        <div class="media d-flex">
+                            <div class="media-body text-left">
+                                <h6 class="text-muted">{{__('Total Sales')}}</h6>
+                                <h3>{{$d['sales_total']}}DH</h3>
                             </div>
-                            <h2 class="text-bold-700">{{$d['sales_total']}}DH</h2>
-                            <p class="mb-0 line-ellipsis">{{__('Total Sales')}}</p>
+                            <div class="align-self-center">
+                                <i class="fa fa-arrow-up primary font-large-2 float-right"></i>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -395,13 +401,15 @@
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="avatar bg-rgba-info  m-0 mb-1">
-                                <div class="avatar-content">
-                                    <i class="feather icon-eye text-info font-medium-5"></i>
-                                </div>
+                        <div class="media d-flex">
+                            <div class="media-body text-left">
+                                <h6 class="text-muted">{{__('Total Purchases')}}</h6>
+                                <h3>{{$d['purchases_total']}}DH</h3>
                             </div>
-                            <h2 class="text-bold-700">{{$d['purchases_total']}}DH</h2>
-                            <p class="mb-0 line-ellipsis">{{__('Total Purchases')}}</p>
+                            <div class="align-self-center">
+                                <i class="fa fa-money primary font-large-2 float-right"></i>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -410,13 +418,15 @@
                 <div class="card text-center">
                     <div class="card-content">
                         <div class="card-body">
-                            <div class="avatar bg-rgba-info  m-0 mb-1">
-                                <div class="avatar-content">
-                                    <i class="feather icon-eye text-info font-medium-5"></i>
-                                </div>
+                        <div class="media d-flex">
+                            <div class="media-body text-left">
+                                <h6 class="text-muted">{{__('Total Return')}}</h6>
+                                <h3>{{$d['return_total']}}DH</h3>
                             </div>
-                            <h2 class="text-bold-700">{{$d['return_total']}}DH</h2>
-                            <p class="mb-0 line-ellipsis">{{__('Total Return')}}</p>
+                            <div class="align-self-center">
+                                <i class="fa fa-arrow-down primary font-large-2 float-right"></i>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
