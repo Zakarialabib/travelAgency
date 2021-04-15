@@ -63,7 +63,6 @@
                     <div class="col-md text-center text-md-left mb-3 mb-md-0">
                     <img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
                         <br>
-
                         <h3 class="name">
                             Rentacs Tours
                         </h3>
@@ -108,11 +107,10 @@
              @foreach($saledetails as $saledetail)
         <tr>
             <td>
-                <h5 class="mb-1">{{$saledetail->name}}</h5>
+                <h5 class="mb-1">{{$detail->name}}</h5>
                 quantité: {{$saledetail->qty}}
             </td>
             <td class="font-weight-bold align-middle text-right text-nowrap">{{number_format((float)$saledetail->total, 2, '.', '')}}</td>
-        
         </tr>
         @endforeach
 

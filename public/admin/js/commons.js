@@ -51,7 +51,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             buttons: [
                 {
                     extend: 'pdf',
-                    text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="{{__("PDF")}}" />',
+                    text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="PDF" />',
                     footer:true,
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4, 5 ]
@@ -59,7 +59,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 },
                 {
                     extend: 'excel',
-                    text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="{{__("Excel")}}" />',
+                    text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="Excel" />',
                     footer:true,
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4, 5 ]
@@ -67,7 +67,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 },
                 {
                     extend: 'print',
-                    text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="{{__("Print")}}" />',
+                    text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="Print" />',
                     footer:true,
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4, 5 ]
@@ -87,7 +87,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             buttons: [
                 {
                     extend: 'pdf',
-                    text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="{{__("PDF")}}" />',
+                    text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="PDF" />',
                     footer:true,
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4]
@@ -95,7 +95,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 },
                 {
                     extend: 'excel',
-                    text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="{{__("Excel")}}" />',
+                    text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="Excel" />',
                     footer:true,
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4]
@@ -103,7 +103,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 },
                 {
                     extend: 'print',
-                    text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="{{__("Print")}}" />',
+                    text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="Print" />',
                     footer:true,
                     exportOptions: {
                         columns: [ 0, 1, 2, 3, 4]
