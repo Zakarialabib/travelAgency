@@ -159,6 +159,7 @@ return [
         'Barryvdh\TranslationManager\ManagerServiceProvider',
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
         Harimayco\Menu\MenuServiceProvider::class,
         //Way\Generators\GeneratorsServiceProvider::class,
@@ -232,6 +233,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Menu' => Harimayco\Menu\Facades\Menu::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
