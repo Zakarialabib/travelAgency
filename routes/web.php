@@ -265,6 +265,8 @@ Route::middleware(['auth'])->group(function(){
 
 Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
 	Route::get('create/{type}/{id}', 'InvoiceController@create')->name('invoice_create');
+	Route::get('action/{action}/{type}/{id}/{template}', 'InvoiceController@action')->name('invoice_action');
+	Route::post('send/{id}', 'InvoiceController@sendEmail')->name('invoice_send');
 });
 
 Route::group(['prefix' => 'sales'],function(){

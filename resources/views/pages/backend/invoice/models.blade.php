@@ -14,8 +14,8 @@ $id= request()->route('id');
                   <img class="card-img-top" src="{{$template->image}}" alt="Card image cap">
                   <div class="card-block">
                     <h4 class="card-title" style="text-align:center;">{{$template->name}}</h4>
-                    <button type="button" class="btn btn-success" ><a href="{{route('invoice_sale1', $id)}}" style='text-decoration:none;color:white;'>Preview</a></button>
-                    <button type="button" class="btn btn-dark js-send-download" data-invoice="5">  <a href="{{route('download_pdf', $id)}}" style='text-decoration:none;color:white;'>Download</a></button>
+                    <button type="button" class="btn btn-success" ><a href="{{route('invoice_action', ['action' => \App\Invoice::PREVIEW_ACTION,'type' => $type, 'id' => $id, 'template' => $template->id])}}" style='text-decoration:none;color:white;'>Preview</a></button>
+                    <button type="button" class="btn btn-dark js-send-download" data-invoice="{{$template->id}}">  <a href="{{route('invoice_action', ['action' => \App\Invoice::DOWNLOAD_ACTION,'type' => $type, 'id' => $id, 'template' => $template->id])}}" style='text-decoration:none;color:white;'>Download</a></button>
                     <button type="button" class="btn btn-warning js-send-invoice" data-toggle="modal" data-target="#invoice-modal" data-invoice="1" data-whatever="@mdo"  id='ok'>Envoyer</button>
                   </div>
                 </div>
@@ -65,7 +65,7 @@ $id= request()->route('id');
               </div>
         
 
-        <form class="" action="" method="post" enctype="multipart/form-data">
+        <form action="{{route('invoice_send', ['id' => $id])}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal fade" id="invoice-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -75,7 +75,8 @@ $id= request()->route('id');
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
-                    <input type='hidden' name="invoice_id" id="js-invoice-id" value="1" />
+                    <input type='hidden' name="type" id="js-invoice-type" value="{{$type}}" />
+                    <input type='hidden' name="template_id" id="js-invoice-template" value="1" />
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -110,7 +111,7 @@ $id= request()->route('id');
 <script>
 $('.js-send-invoice').on('click', function(event) {
   let invoiceId = $(event.target).data('invoice');
-  $('#js-invoice-id').val(invoiceId);
+  $('#js-invoice-template').val(invoiceId);
 });
 </script>
 @endpush

@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Invoice;
+use App\Purchase;
+use App\Returns;
+use App\Sale;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Mail;
 
 class InvoiceController extends Controller
 {
@@ -19,7 +24,92 @@ class InvoiceController extends Controller
         return view('pages.backend.invoice.models', compact('type', 'id', 'templates'));
     }
 
-    public function preview($type, $id, $template) {
+    public function sendEmail(Request $request, $id)
+    {
+        $data = $request->validate([
+            'recepient' => 'required',
+            'subject' =>'required',
+            'msg' => 'required',
+            'template_id' => '',
+            'type' => '',
+        ]);
+
+        switch ($data['type']) {
+            case Invoice::SALE_TYPE :
+                $entity = Sale::find($id);
+                $beneficiary = $entity->customer;
+                break;
+            case Invoice::PURCHASE_TYPE:
+                $entity = Purchase::find($id);
+                $beneficiary = $entity->supplier;
+                break;
+
+            case Invoice::RETURN_TYPE:
+                $entity = Returns::find($id);
+                $beneficiary = $entity->supplier;
+                break;
+            
+            default:
+                $entity = Sale::find($id);
+                break;
+        }
+
+        $pdf = PDF::loadView('pages.backend.invoice.invoice-' . $data['template_id'], [
+            'entity' => $entity,
+            'beneficiary' => $beneficiary,
+            'type' => $data['type'],
+        ]);
+
+        Mail::send('pages.backend.invoice.invoice-' . $data['template_id'], [
+            'entity' => $entity,
+            'beneficiary' => $beneficiary,
+            'type' => $data['type'],
+        ] , function($message) use($data, $pdf) {
+            $message->to($data['recepient'], 'rentacs Tours')
+                    ->subject($data["subject"])
+                    ->attachData($pdf->output(), "rapport.pdf");
+        });
+
+        return back();
+    }
+
+    public function action($action, $type, $id, $template) {
+        switch ($type) {
+            case Invoice::SALE_TYPE :
+                $entity = Sale::find($id);
+                $beneficiary = $entity->customer;
+                break;
+            case Invoice::PURCHASE_TYPE:
+                $entity = Purchase::find($id);
+                $beneficiary = $entity->supplier;
+                break;
+
+            case Invoice::RETURN_TYPE:
+                $entity = Returns::find($id);
+                $beneficiary = $entity->supplier;
+                break;
+            
+            default:
+                $entity = Sale::find($id);
+                break;
+        }
+
+        switch ($action) {
+            case Invoice::PREVIEW_ACTION:
+                return view('pages.backend.invoice.invoice-' . $template, compact('entity', 'beneficiary', 'type'));
+            
+            case Invoice::DOWNLOAD_ACTION:
+                $pdf = PDF::loadView('pages.backend.invoice.invoice-' . $template, [
+                    'entity' => $entity,
+                    'beneficiary' => $beneficiary,
+                    'type' => $type,
+                ]);        
+                return $pdf->download('facture.pdf');
+            
+            default:
+                return view('pages.backend.invoice.invoice-' . $template, compact('entity', 'beneficiary', 'type'));
+                break;
+        }
 
     }
 }

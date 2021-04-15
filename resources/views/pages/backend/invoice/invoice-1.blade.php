@@ -243,9 +243,9 @@
                         <div class="email">{{__('Phone Number')}}: {{$beneficiary->phone_number}}</div>
                         @else
                         <h4 class="to"> {{$beneficiary->profile->sur_name}}</h4>
-                        <div class="address">{{$beneficiary->first_name}}</div>
-                        <div class="address"> {{$beneficiary->address}}</div>
-                        <div class="email">{{__('Phone Number')}}: {{$beneficiary->phone_number}}</div>
+                        <div class="address">{{$beneficiary->profile->first_name}}</div>
+                        <div class="address"> {{$beneficiary->profile->address}}</div>
+                        <div class="email">{{__('Phone Number')}}: {{$beneficiary->profile->phone_number}}</div>
                         @endif
                     </div>
                     <div class="col invoice-details">
