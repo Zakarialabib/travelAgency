@@ -59,7 +59,6 @@ $id= request()->route('id');
                     <button type="button" class="btn btn-dark js-send-download" data-invoice="8"><a href="{{route('download_pdf4', $id)}}" style='text-decoration:none;color:white;' >Download</a></button>
                     <button type="button" class="btn btn-warning js-send-invoice" data-toggle="modal" data-target="#invoice-modal" data-invoice="4" data-whatever="@mdo"  id='ok'>Envoyer</button>
                   </div>
-                
                 </div>
                 --}}
               </div>
@@ -118,5 +117,4 @@ $('.js-send-invoice').on('click', function(event) {
 
 @section('css')
 <link rel="stylesheet" href="{{asset('backend/app-assets/css/cards.css')}}">
-<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 @endsection

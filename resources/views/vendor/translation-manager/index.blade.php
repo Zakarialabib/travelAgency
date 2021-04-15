@@ -1,20 +1,20 @@
 @extends('layouts.backend')
-@section('page-title')  Translation Dashboard  @endsection
+@section('page-title')  {{__('Translation Dashboard')}}  @endsection
 @section('content')
 
 <div class="container-fluid">
-    <p>Warning, translations are not visible until they are exported back to the app/lang file, using <code>php artisan translation:export</code> command or publish button.</p>
+    <p>{{__('Warning, translations are not visible until they are exported back to the app/lang file')}}</p>
     <div class="alert alert-success success-import" style="display:none;">
-        <p>Done importing, processed <strong class="counter">N</strong> items! Reload this page to refresh the groups!</p>
+        <p>{{__('Done importing, processed')}} <strong class="counter">N</strong> {{__('items! Reload this page to refresh the groups')}}!</p>
     </div>
     <div class="alert alert-success success-find" style="display:none;">
-        <p>Done searching for translations, found <strong class="counter">N</strong> items!</p>
+        <p>{{__('Done searching for translations, found')}} <strong class="counter">N</strong> {{__('items')}}!</p>
     </div>
     <div class="alert alert-success success-publish" style="display:none;">
-        <p>Done publishing the translations for group '<?php echo $group ?>'!</p>
+        <p>{{__('Done publishing the translations for group')}} '<?php echo $group ?>'!</p>
     </div>
     <div class="alert alert-success success-publish-all" style="display:none;">
-        <p>Done publishing the translations for all group!</p>
+        <p>{{__('Done publishing the translations for all group')}}!</p>
     </div>
     <?php if(Session::has('successPublish')) : ?>
         <div class="alert alert-info">
@@ -29,12 +29,12 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <select name="replace" class="form-control">
-                            <option value="0">Append new translations</option>
-                            <option value="1">Replace existing translations</option>
+                            <option value="0">{{__('Append new translations')}}</option>
+                            <option value="1">{{__('Replace existing translations')}}</option>
                         </select>
                     </div>
                     <div class="col-sm-2">
-                    <button type="submit" class="btn btn-success btn-block"  data-disable-with="Loading..">Import groups</button>
+                    <button type="submit" class="btn btn-success btn-block"  data-disable-with="Loading..">{{__('Import groups')}}</button>
                     </div>
                 </div>
             </div>
@@ -42,22 +42,22 @@
         <form class="form-find" method="POST" action="<?php echo action('\Barryvdh\TranslationManager\Controller@postFind') ?>" data-remote="true" role="form" data-confirm="Are you sure you want to scan you app folder? All found translation keys will be added to the database.">
             <div class="form-group">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                <button type="submit" class="btn btn-info" data-disable-with="Searching.." >Find translations in files</button>
+                <button type="submit" class="btn btn-info" data-disable-with="Searching.." >{{__('Find translations in files')}}</button>
             </div>
         </form>
         <?php endif; ?>
         <?php if(isset($group)) : ?>
             <form class="form-inline form-publish" method="POST" action="<?php echo action('\Barryvdh\TranslationManager\Controller@postPublish', $group) ?>" data-remote="true" role="form" data-confirm="Are you sure you want to publish the translations group '<?php echo $group ?>? This will overwrite existing language files.">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                <button type="submit" class="btn btn-info" data-disable-with="Publishing.." >Publish translations</button>
-                <a href="<?= action('\Barryvdh\TranslationManager\Controller@getIndex') ?>" class="btn btn-default">Back</a>
+                <button type="submit" class="btn btn-info" data-disable-with="Publishing.." >{{__('Publish translations')}}</button>
+                <a href="<?= action('\Barryvdh\TranslationManager\Controller@getIndex') ?>" class="btn btn-default">{{__('Back')}}</a>
             </form>
         <?php endif; ?>
     </p>
     <form role="form" method="POST" action="<?php echo action('\Barryvdh\TranslationManager\Controller@postAddGroup') ?>">
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <div class="form-group">
-            <p>Choose a group to display the group translations. If no groups are visisble, make sure you have run the migrations and imported the translations.</p>
+            <p>{{__('Choose a group to display the group translations. If no groups are visisble, make sure you have run the migrations and imported the translations.')}}</p>
             <select name="group" id="group" class="form-control group-select">
                 <?php foreach($groups as $key => $value): ?>
                     <option value="<?php echo $key ?>"<?php echo $key == $group ? ' selected':'' ?>><?php echo $value ?></option>
@@ -65,7 +65,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Enter a new group name and start edit translations in that group</label>
+            <label>{{__('Enter a new group name and start edit translations in that group')}}</label>
             <input type="text" class="form-control" name="new-group" />
         </div>
         <div class="form-group">
@@ -76,49 +76,15 @@
         <form action="<?php echo action('\Barryvdh\TranslationManager\Controller@postAdd', array($group)) ?>" method="POST"  role="form">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <div class="form-group">
-                <label>Add new keys to this group</label>
+                <label>{{__('Add new keys to this group')}}</label>
                 <textarea class="form-control" rows="3" name="keys" placeholder="Add 1 key per line, without the group prefix"></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" value="Add keys" class="btn btn-primary">
             </div>
         </form>
-        <div class="row">
-            <div class="col-sm-2">
-                <span class="btn btn-default enable-auto-translate-group">Use Auto Translate</span>
-            </div>
-        </div>
-        <form class="form-add-locale autotranslate-block-group hidden" method="POST" role="form" action="<?php echo action('\Barryvdh\TranslationManager\Controller@postTranslateMissing') ?>">
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="base-locale">Base Locale for Auto Translations</label>
-                        <select name="base-locale" id="base-locale" class="form-control">
-                            <?php foreach ($locales as $locale): ?>
-                                <option value="<?= $locale ?>"><?= $locale ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="new-locale">Enter target locale key</label>
-                        <input type="text" name="new-locale" class="form-control" id="new-locale" placeholder="Enter target locale key" />
-                    </div>
-                    <?php if(!config('laravel_google_translate.google_translate_api_key')): ?>
-                        <p>
-                            <code>Translating using stichoza/google-translate-php. If you would like to use Google Translate API enter your Google Translate API key to config file laravel_google_translate</code>
-                        </p>
-                    <?php endif; ?>
-                    <div class="form-group">
-                        <input type="hidden" name="with-translations" value="1">
-                        <input type="hidden" name="file" value="<?= $group ?>">
-                        <button type="submit" class="btn btn-default btn-block"  data-disable-with="Adding..">Auto translate missing translations</button>
-                    </div>
-                </div>
-            </div>
-        </form>
         <hr>
-    <h4>Total: <?= $numTranslations ?>, changed: <?= $numChanged ?></h4>
+    <h4>Total: <?= $numTranslations ?>, {{__('changed')}}: <?= $numChanged ?></h4>
         <table class="table">
             <thead>
             <tr>
@@ -162,9 +128,9 @@
         </table>
     <?php else: ?>
         <fieldset>
-            <legend>Supported locales</legend>
+            <legend>{{__('Supported locales')}}</legend>
             <p>
-                Current supported locales:
+                {{__('Current supported locales:')}}
             </p>
             <form  class="form-remove-locale" method="POST" role="form" action="<?php echo action('\Barryvdh\TranslationManager\Controller@postRemoveLocale') ?>" data-confirm="Are you sure to remove this locale and all of data?">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
@@ -186,24 +152,24 @@
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <div class="form-group">
                     <p>
-                        Enter new locale key:
+                        {{__('Enter new locale key:')}}
                     </p>
                     <div class="row">
                         <div class="col-sm-3">
                             <input type="text" name="new-locale" class="form-control" />
                         </div>
                         <div class="col-sm-2">
-                            <button type="submit" class="btn btn-default btn-block"  data-disable-with="Adding..">Add new locale</button>
+                            <button type="submit" class="btn btn-default btn-block"  data-disable-with="Adding..">{{__('Add new locale')}}</button>
                         </div>
                     </div>
                 </div>
             </form>
         </fieldset>
         <fieldset>
-            <legend>Export all translations</legend>
+            <legend>{{__('Export all translations')}}</legend>
             <form class="form-inline form-publish-all" method="POST" action="<?php echo action('\Barryvdh\TranslationManager\Controller@postPublish', '*') ?>" data-remote="true" role="form" data-confirm="Are you sure you want to publish all translations group? This will overwrite existing language files.">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                <button type="submit" class="btn btn-primary" data-disable-with="Publishing.." >Publish all</button>
+                <button type="submit" class="btn btn-primary" data-disable-with="Publishing.." >{{__('Publish all')}}</button>
             </form>
         </fieldset>
 

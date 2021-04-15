@@ -186,8 +186,6 @@
                                   @endif
                               </td>
                           </tr>
-
-
                         @endforeach
                         </tbody>
                     </table>
