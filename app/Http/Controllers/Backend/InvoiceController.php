@@ -46,11 +46,12 @@ class InvoiceController extends Controller
 
             case Invoice::RETURN_TYPE:
                 $entity = Returns::find($id);
-                $beneficiary = $entity->supplier;
+                $beneficiary = $entity->customer;
                 break;
             
             default:
                 $entity = Sale::find($id);
+                $beneficiary = $entity->customer;
                 break;
         }
 
@@ -79,6 +80,7 @@ class InvoiceController extends Controller
                 $entity = Sale::find($id);
                 $beneficiary = $entity->customer;
                 break;
+
             case Invoice::PURCHASE_TYPE:
                 $entity = Purchase::find($id);
                 $beneficiary = $entity->supplier;
@@ -86,11 +88,12 @@ class InvoiceController extends Controller
 
             case Invoice::RETURN_TYPE:
                 $entity = Returns::find($id);
-                $beneficiary = $entity->supplier;
+                $beneficiary = $entity->customer;
                 break;
             
             default:
                 $entity = Sale::find($id);
+                $beneficiary = $entity->customer;
                 break;
         }
 
@@ -103,7 +106,7 @@ class InvoiceController extends Controller
                     'entity' => $entity,
                     'beneficiary' => $beneficiary,
                     'type' => $type,
-                ]);        
+                ]);
                 return $pdf->download('facture.pdf');
             
             default:
