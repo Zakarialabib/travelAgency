@@ -108,7 +108,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-md-12" align="right">
-                            <button type="button" class="btn btn-alt-primary create_new_package"> {{__('Continue(Save Package)')}} </button>
+                            <button type="button" class="btn btn-primary create_new_package"> {{__('Continue(Save Package)')}} </button>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="col-md-12" align="right">
-                                <button class="btn btn-alt-primary submit_flight_deal">Continue (Save Flight Deal)</button>
+                                <button class="btn btn-primary submit_flight_deal">Continue (Save Flight Deal)</button>
                             </div>
                         </div>
                     </div>
@@ -240,7 +240,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="col-md-12" align="right">
-                        <button class="btn btn-alt-primary submit_flight_deal">Continue (Save Flight Deal)</button>
+                        <button class="btn btn-primary submit_flight_deal">Continue (Save Flight Deal)</button>
                     </div>
                 </div>
             </div>
@@ -323,7 +323,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="col-md-12" align="right">
-                                <button type="button" class="btn btn-alt-primary submit_hotel_deal">Continue (Save Hotel Deal)</button>
+                                <button type="button" class="btn btn-primary submit_hotel_deal">Continue (Save Hotel Deal)</button>
                             </div>
                         </div>
                     </div>
@@ -355,7 +355,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary hotel_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
+                                    <button type="button" class="btn btn-primary hotel_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
                                 </div>
                             </div>
                         </div>
@@ -440,7 +440,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="col-md-12" align="right">
-                        <button type="button" class="btn btn-alt-primary submit_hotel_deal">Continue (Save Hotel Deal)</button>
+                        <button type="button" class="btn btn-primary submit_hotel_deal">Continue (Save Hotel Deal)</button>
                     </div>
                 </div>
             </div>
@@ -487,7 +487,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-md-12" align="right">
-                            <button type="button" class="btn btn-alt-primary hotel_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
+                            <button type="button" class="btn btn-primary hotel_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
                         </div>
                     </div>
                 </div>
@@ -546,7 +546,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             {{__('Sight Seeings')}}
-                                            <button type="button" class="btn btn-alt-primary add_more_sight_seeing float-lg-right">{{__('Add More Sight Seeing')}} <i class="fa fa-plus"></i></button>
+                                            <button type="button" class="btn btn-primary add_more_sight_seeing float-lg-right">{{__('Add More Sight Seeing')}} <i class="fa fa-plus"></i></button>
                                         </div>
                                         <div class="card-body">
                                             <div class="row sight_seeing_container">
@@ -567,7 +567,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary submit_attraction">{{__('Continue (Save Attraction)')}}</button>
+                                    <button type="button" class="btn btn-primary submit_attraction">{{__('Continue (Save Attraction)')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -599,7 +599,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> {{__('Continue')}}</button>
+                                    <button type="button" class="btn btn-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> {{__('Continue')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -658,7 +658,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             {{__('Sight Seeings')}}
-                                            <button type="button" class="btn btn-alt-primary add_more_sight_seeing float-lg-right">{{__('Add More Sight Seeing')}} <i class="fa fa-plus"></i></button>
+                                            <button type="button" class="btn btn-primary add_more_sight_seeing float-lg-right">{{__('Add More Sight Seeing')}} <i class="fa fa-plus"></i></button>
                                         </div>
                                         <div class="card-body">
                                             <div class="sight_seeing_container">
@@ -687,7 +687,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary submit_attraction">{{__('Continue (Save Attraction)')}}</button>
+                                    <button type="button" class="btn btn-primary submit_attraction">{{__('Continue (Save Attraction)')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -733,7 +733,7 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button type="button" class="btn btn-alt-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> {{__('Continue')}}</button>
+                                    <button type="button" class="btn btn-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> {{__('Continue')}}</button>
                                 </div>
                             </div>
                         </div>

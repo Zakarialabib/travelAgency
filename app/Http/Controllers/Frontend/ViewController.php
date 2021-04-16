@@ -133,7 +133,7 @@ class ViewController extends Controller
 
     public function pageFaqs()
     {
-        return view('frontend.page.faqs');
+        return view('pages.frontend.page.faqs');
     }
     
 
@@ -165,24 +165,24 @@ class ViewController extends Controller
 
     $places = $places->paginate(4);
 
-        return view('frontend.page.about',[
+        return view('pages.frontend.page.about',[
             'places' => $places,
             'keyword' => $keyword
         ]);
     }
         public function termsConditions()
     {
-        return view('frontend.page.termsconditions');
+        return view('pages.frontend.page.termsconditions');
     }
 
     public function pageContact()
     {
-        return view('frontend.page.contact');
+        return view('pages.frontend.page.contact');
     }
 
     public function pageLanding($page_number)
     {
-        return view("frontend.page.landing_{$page_number}");
+        return view("pages.frontend.page.landing_{$page_number}");
     }
 
     public function searchListing(Request $request)
@@ -248,7 +248,7 @@ class ViewController extends Controller
 
         $places = $places->paginate(20);
 
-        return view('frontend.search.search', [
+        return view('pages.frontend.search.search', [
             'places' => $places,
             'keyword' => $keyword
         ]);
@@ -353,7 +353,7 @@ class ViewController extends Controller
 
 //        return $places;
 
-        return view("frontend.search.search_01", [
+        return view("pages.frontend.search.search_01", [
             'keyword' => $keyword,
             'places' => $places,
             'categories' => $categories,
@@ -371,7 +371,7 @@ class ViewController extends Controller
 
     public function sendAbout(Request $request)
     {
-        Mail::send('frontend.mail.contact_form', [
+        Mail::send('pages.frontend.mail.contact_form', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,
@@ -387,7 +387,7 @@ class ViewController extends Controller
 
     public function sendContact(Request $request)
     {
-        Mail::send('frontend.mail.contact_form', [
+        Mail::send('pages.frontend.mail.contact_form', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,

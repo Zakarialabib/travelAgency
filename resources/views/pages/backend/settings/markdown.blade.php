@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('page-title') Airline Markdown  @endsection
+@section('page-title') {{__('Airline Markdown')}}  @endsection
 
 @section('activeSettings') open hover  @endsection
 
@@ -9,29 +9,29 @@
         <div class="col-lg-4 col-md-12 col-12">
             <div class="card">
                 <div class="card-header" id="markdown_header">
-                    Add Markdown
+                {{__('Add Markdown')}} 
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Airline</label>
+                                <label>{{__('Airline')}}</label>
                                 <input class="form-control airline-type-ahead" id="airline" value=""/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Value</label>
+                                <label>{{__('Value')}}</label>
                                 <input class="form-control" id="value" type="number" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Type</label>
+                                <label>{{__('Type')}}</label>
                                 <select class="form-control" id="value_type">
-                                    <option value="">[SELECT]</option>
-                                    <option value="1"> Percentage </option>
-                                    <option value="2"> Naira </option>
+                                    <option value="">{{__('SELECT')}}</option>
+                                    <option value="1"> {{__('Percentage')}} </option>
+                                    <option value="2"> {{__('Dirham Marocain')}} </option>
                                 </select>
                             </div>
                         </div>
@@ -40,24 +40,24 @@
 
                 </div>
                 <div class="card-footer">
-                    <button id="add_markdown" class="btn btn-alt-primary pull-right">Add Markdown</button>
+                    <button id="add_markdown" class="btn btn-primary pull-right">{{__('Add Markdown')}}</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-8 col-md-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    Airlines Markdown
+                {{__('Airlines Markdown')}}
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Airline Code</th>
-                            <th>Airline Name</th>
-                            <th>Type</th>
-                            <th>Value</th>
+                            <th>{{__('Airline Code')}}</th>
+                            <th>{{__('Airline Name')}}</th>
+                            <th>{{__('Type')}}</th>
+                            <th>{{__('Value')}}</th>
                             <th>Action</th>
                         </tr>
                         </thead>

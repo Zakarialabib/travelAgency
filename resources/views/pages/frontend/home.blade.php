@@ -574,7 +574,7 @@
                 </div>
             </div>
         </div><!-- .news -->
-
+<!--
 <div class="banner-apps" style="background-image:url(images/banner-apps.jpg)">
     <div class="container">
         <div class="banner-apps__content">
@@ -589,6 +589,7 @@
         </div>
     </div>
 </div>
+-->
 
 @endsection
 

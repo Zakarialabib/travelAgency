@@ -1,27 +1,27 @@
 @extends('layouts.backend')
 
-@section('page-title') Bank Details  @endsection
+@section('page-title') {{__('Bank Detail')}}  @endsection
 
 @section('activeSettings') open hover  @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12 col-lg-4" id="enter_bank_details_card_body">
+  
+        <div class="col-md-12 col-lg-12" id="enter_bank_details_card_body">
             <div class="card">
                 <div class="card-header">
-                    <h3 id="save_header">Add Bank Account Details</h3>
+                    <h3 id="save_header">{{__('Add Bank Account Details')}}</h3>
                 </div>
                 <div class="card-body" >
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Account Name</label>
+                                <label>{{__('Account Name')}}</label>
                                 <input type="text" value="" class="form-control" id="account_name"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Account Number</label>
+                                <label>{{__('Account Number')}}</label>
                                 <input type="number" value="" class="form-control" id="account_number"/>
                             </div>
                         </div>
@@ -29,9 +29,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Bank</label>
+                                <label>{{__('Bank')}}</label>
                                 <select class="form-control" id="bank_id">
-                                    <option value="">[SELECT BANK]</option>
+                                    <option value="">{{__('SELECT BANK')}}</option>
                                     @foreach(\App\Bank::getAllBanks() as $i => $bank)
                                         <option value="{{$bank->id}}">{{$bank->name}}</option>
                                     @endforeach
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Bank Branch</label>
+                                <label>{{__('Branch')}}</label>
                                 <input type="text" value="" class="form-control" id="bank_branch"/>
                             </div>
                         </div>
@@ -48,13 +48,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Bank Ifsc Code</label>
+                                <label>{{__('Ifsc Code')}}</label>
                                 <input type="text" value="" class="form-control" id="bank_ifsc_code"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Bank Pan Code</label>
+                                <label>{{__('iBAN Code')}}</label>
                                 <input type="text" value="" class="form-control" id="bank_pan_code"/>
                             </div>
                         </div>
@@ -63,26 +63,26 @@
                 <div class="card-footer">
                     <input type="hidden" name="editOrSave" id="editOrSave" value="1"/>
                     <input type="hidden" name="id" id="bank_details_id" value=""/>
-                    <button class="btn btn-alt-primary upload-bank pull-right" id="bank_upload_button">{{__('Save')}}</button>
+                    <button class="btn btn-primary upload-bank pull-right" id="bank_upload_button">{{__('Save')}}</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-lg-8">
+        <div class="col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Bank Details</h3>
+                    <h3>{{__('Bank Details')}}</h3>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Account Name</th>
-                            <th>Account Number</th>
-                            <th>Bank Name</th>
-                            <th>Bank Branch</th>
-                            <th>IFSC Code</th>
-                            <th>Pan Code</th>
-                            <th>Status</th>
+                            <th>{{__('Account Name')}}</th>
+                            <th>{{__('Account Number')}}</th>
+                            <th>{{__('Bank Name')}}</th>
+                            <th>{{__('Branch')}}</th>
+                            <th>{{__('IFSC Code')}}</th>
+                            <th>{{__('iBAN Code')}}</th>
+                            <th>{{__('Status')}}</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -113,9 +113,8 @@
                     </table>
                 </div>
             </div>
-
         </div>
-    </div>
+
 @endsection
 
 @section('javascript')

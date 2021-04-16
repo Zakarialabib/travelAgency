@@ -82,4 +82,6 @@ class NotificationController extends Controller
           }
         }       
         return view('partials.backend.notification.booking',compact('datas'));           
-    } }
+    }
+   
+  }
