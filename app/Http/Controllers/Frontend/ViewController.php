@@ -16,6 +16,7 @@ use App\Amenities;
 use App\Category;
 use App\City;
 use App\Country;
+use App\Faq;
 use App\Place;
 use App\PlaceType;
 use App\Post;
@@ -172,7 +173,8 @@ class ViewController extends Controller
     }
         public function termsConditions()
     {
-        return view('frontend.page.termsconditions');
+        $faqs = Faq::where('status', 1)->get();
+        return view('frontend.page.termsconditions', compact('faqs'));
     }
 
     public function pageContact()
