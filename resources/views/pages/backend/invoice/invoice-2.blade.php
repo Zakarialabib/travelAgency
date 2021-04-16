@@ -1,129 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="{{asset('backend/app-assets/images/logo/logo.png')}}" />
-    <title>{{setting('app_name')}}</title>
-    <meta name="description" content="">
-    <meta name="robots" content="all,follow">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+	<meta charset="UTF-8">
+	<title>Rentacs Tours</title>
+  <link rel="stylesheet" href="{{asset('backend/app-assets/css/bootstrap2.css')}}">
 </head>
 <body>
-    <div class="container">
-    <div class="toolbar hidden-print">
-        <div class="text-right">
-        <a  href="{{ url()->previous() }}" class="btn btn-info">
-        <i class="fa fa-arrow-circle-o-left"></i>
-        <span>Back</span>
-    </a>            
-    <button class="btn btn-info"  onclick="auto_print()">{{__('Print')}}</button>
-        </div>
-        <hr>
-    </div>
-            <div class="card-header">
-                Invoice
-                <strong>{{$sales->created_at->toDateString()}}</strong>
-                <span class="float-right"> <strong>{{__('reference')}} :</strong>{{$sales->reference_no}}</span>
 
-            </div>
-            <div class="card-body">
-                <div class="row mb-4">
-                    <div class="col-sm-6">
-                        <h6 class="mb-3">From:</h6>
-                        <h3 class="name">
-                            Rentacs Tours
-                        </h3>
-                        <div>13, Rue El Kassar, 1er Etage Maarif </div>
-                        <div>20100 Casablanca, Maroc</div>
-                        <div>{{__('Phone Number')}}: {{setting('home_phone')}}</div>
-                        <div>{{__('Email')}}: {{setting('home_email')}}</div>
-                    </div>
+	<div class="container" style='margin-right:10px;'>
 
-                    <div class="col-sm-6">
-                        <h6 class="mb-3">To:</h6>
-                        <h5 class="to"> {{$customers->name}}</h5>
-                        <div class="address">{{$customers->company_name}}</div>
-                        <div class="address"> {{$customers->address}}</div>
-                        <div class="address"> {{$customers->city}}, {{$customers->postal_code}}</div>
-                        <div class="email">{{__('Phone Number')}}: {{$customers->phone_number}}</div>
-                    </div>
-                </div>
+		<div class="row">
+			<div class="col-xs-5">
+			  <h1>
+				<img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
 
-                <div class="table-responsive-sm">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="center">#</th>
-                                <th>Item</th>
-                                <th>Description</th>
+			  </h1>
+			</div>
+			<div class="col-xs-5 text-right">
+			  <h1>INVOICE</h1>
+			  <h1><small>Invoice {{__('reference')}} : {{$entity->reference_no}}</small></h1>
+			  <h5>Date d’émission: {{$entity->created_at->toDateString()}}</h5>
+			</div>
+		</div>
 
-                                <th class="right">Unit Cost</th>
-                                <th class="center">Qty</th>
-                                <th class="right">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php  $total_product_tax = 0; $i=1; ?>
-                         @foreach($saledetails as $saledetail)
-                            <tr>
-                                <td class="center">0{{$i++}}</td>
-                                <td class="left strong">{{$saledetail->name}}</td>
-                                <td class="left">{{number_format((float) ($saledetail->total / $saledetail->qty), 2, '.', '')}}</td>
+		  <div class="row">
+		    <div class="col-xs-4">
+		      <div class="panel panel-default">
+		              <div class="panel-heading">
+		                <h4>From: <a href="#">Rentacs Tours</a></h4>
+										</div>
+		              <div class="panel-body">
+		                <p>
+                        13, Rue El Kassar, 1er Etage Maarif </br>
+                        20100 Casablanca, Maroc</br>
+                        {{__('Phone Number')}}: {{setting('home_phone')}}</br>
+                        {{__('Email')}}: {{setting('home_email')}}</br>
+		                </p>
+		              </div>
+		            </div>
+		    </div>
+		    <div class="col-xs-4 col-xs-offset-2 text-right">
+		      <div class="panel panel-default">
+						@if ($type == App\Invoice::PURCHASE_TYPE)
+						<div class="panel-heading">
+							<h4>To : <a href="#"> {{$beneficiary->name}}</a></h4>
+						</div>
+						<div class="panel-body">
+							<p>
+								{{$beneficiary->company_name}} <br>
+								{{$beneficiary->address}} <br>
+								{{$beneficiary->city}}, {{$beneficiary->postal_code}} <br>
+								{{__('Phone Number')}}: {{$beneficiary->phone_number}} <br>
+								<br>
+							</p>
+						</div>
+						@else
+						<div class="panel-heading">
+							<h4>To : <a href="#"> {{$beneficiary->profile->sur_name}}</a></h4>
+						</div>
+						<div class="panel-body">
+							<p>
+								{{$beneficiary->profile->first_name}} <br>
+								{{$beneficiary->profile->address}} <br>
+								{{$beneficiary->profile->city}}, {{$beneficiary->profile->postal_code}} <br>
+								{{__('Phone Number')}}: {{$beneficiary->profile->phone_number}} <br>
+								<br>
+							</p>
+						</div>
+						@endif
+		      </div>
+		    </div>
+		  </div> <!-- / end client details section -->
 
-                                <td class="right">{{$saledetail->qty}}</td>
-                                <td class="center">{{number_format((float)$sales->tax, 2, '.', '')}}</td>
-                                <td class="right">{{number_format((float)$saledetail->total, 2, '.', '')}}</td>
-                            </tr>
-                         @endforeach         
-                        </tbody>
-                    </table>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-5">
+		         <table class="table table-bordered" style='width:83%'>
+        <thead>
+          <tr>
+            <th><h4>Service</h4></th>
+            <th><h4>Description</h4></th>
+            <th><h4>Hrs/Qty</h4></th>
+            <th><h4>Rate/Price</h4></th>
+            <th><h4>Sub Total</h4></th>
+          </tr>
+        </thead>
+        <tbody>
+		<?php $total_product_tax = 0; $i=1;?>
+		  @foreach($entity->details as $detail)
+			<tr>
+				<td>Article</td>
+				<td>{{$detail->name}}</td>
+				<td class="text-right">{{$detail->qty}}</td>
+				<td class="text-right">{{number_format((float)$entity->tax, 2, '.', '')}}</td>
+				<td class="text-right">{{number_format((float)$detail->total, 2, '.', '')}}</td>
+			</tr>
+		  @endforeach
+        </tbody>
+      </table>
 
-                    </div>
+		<div class="row text-right">
+			<div class="col-xs-2 col-xs-offset-6">
+				<p>
+					<strong>
+						Total HT : <br>
+						TVA : <br>
+						Total : <br>
+					</strong>
+				</p>
+			</div>
+			<div class="col-xs-2">
+				<strong>
+				{{number_format((float)$entity->tax, 2, '.', '')}} <br>
+				{{number_format((float)$entity->tax, 2, '.', '')}} <br>
+			    {{number_format((float)$entity->grand_total, 2, '.', '')}} <br>
+				</strong>
+			</div>
+		</div>
 
-                    <div class="col-lg-4 col-sm-5 ml-auto">
-                        <table class="table table-clear">
-                            <tbody>
-                                <tr>
-                                    <td class="left">
-                                        <strong>Subtotal</strong>
-                                    </td>
-                                    <td class="right">{{number_format((float)$sales->tax, 2, '.', '')}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="left">
-                                        <strong>Discount (20%)</strong>
-                                    </td>
-                                    <td class="right">{{number_format((float)$sales->tax, 2, '.', '')}}</td>
-                                </tr>
- 
-                                <tr>
-                                    <td class="left">
-                                        <strong>Total TTC</strong>
-                                    </td>
-                                    <td class="right">
-                                        <strong>{{number_format((float)$sales->grand_total, 2, '.', '')}}</strong>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-<script type="text/javascript">
-    function auto_print() {     
-        window.print()
-    }
-    setTimeout(auto_print, 1000);
 
-</script>
+		<div class="row">
+		  <div class="col-xs-3">
+		    <div class="panel panel-info">
+			  <div class="panel-heading">
+			    <h4>Notions légales</h4>
+			  </div>
+			  <div class="panel-body">
+			    <p></p>
+			  </div>
+			</div>
+		  </div>
+		  <div class="col-xs-7">
+		   <div class="span7">
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4>Contact Details</h4>
+			    </div>
+			     <div class="panel-body" >
+                                 <p>RENTACS TOURS - Capital:  300.000DH
+								 Adresse: 13, Rue El Kassar, 1er Etage Maarif 20100 Casablanca, Maroc    
+								 Code Postal:  20100 - Tél:+212 522 252 386 - Email: info@rentacstours.com </p>
+			     </div>
+			    </div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+	</div>
+
 </body>
 </html>

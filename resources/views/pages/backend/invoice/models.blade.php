@@ -11,7 +11,7 @@ $id= request()->route('id');
             <div class="card-group col-md-12 col-sm-12 col-xs-12 bg-white" style='padding:10px;'>
                 @foreach ($templates as $key => $template)
                 <div class="card">
-                  <img class="card-img-top" src="{{$template->image}}" alt="Card image cap">
+                  <img class="card-img-top" src="{{asset($template->image)}}" alt="Card image cap">
                   <div class="card-block">
                     <h4 class="card-title" style="text-align:center;">{{$template->name}}</h4>
                     <button type="button" class="btn btn-success" ><a href="{{route('invoice_action', ['action' => \App\Invoice::PREVIEW_ACTION,'type' => $type, 'id' => $id, 'template' => $template->id])}}" style='text-decoration:none;color:white;'>Preview</a></button>
@@ -20,47 +20,6 @@ $id= request()->route('id');
                   </div>
                 </div>
                 @endforeach
-                {{--
-                <div class="card">
-                  <img class="card-img-top" src="https://templates.invoicehome.com/invoice-template-us-neat-750px.png" alt="Card image cap">
-                  <div class="card-block">
-                    <h4 class="card-title" style="text-align:center;">template1</h4>
-                    <button type="button" class="btn btn-success" ><a href="{{route('invoice_sale1', $id)}}" style='text-decoration:none;color:white;'>Preview</a></button>
-                    <button type="button" class="btn btn-dark js-send-download" data-invoice="5">  <a href="{{route('download_pdf', $id)}}" style='text-decoration:none;color:white;'>Download</a></button>
-                    <button type="button" class="btn btn-warning js-send-invoice" data-toggle="modal" data-target="#invoice-modal" data-invoice="1" data-whatever="@mdo"  id='ok'>Envoyer</button>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <img class="card-img-top" src="https://trulysmall.com/wp-content/uploads/2020/12/green-invoice-template.png" alt="Card image cap">
-                  <div class="card-block">
-                    <h4 class="card-title" style="text-align:center; padding-top:40px;">template2</h4>
-                    <button type="button" class="btn btn-success" ><a href="{{route('invoice_sale2', $id)}}" style='text-decoration:none;color:white;'>Preview</a></button>
-                    <button type="button" class="btn btn-dark js-send-download" data-invoice="6" ><a href="{{route('download_pdf2', $id)}}" style='text-decoration:none;color:white;' > Download</a></button>
-                    <button type="button" class="btn btn-warning js-send-invoice" data-toggle="modal" data-target="#invoice-modal" data-invoice="2" data-whatever="@mdo"  id='ok'>Envoyer</button>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <img class="card-img-top" src="https://wcpdfinvoices.com/wp-content/themes/zerif-lite-child/images/new-invoice.png" alt="Card image cap">
-                  <div class="card-block">
-                    <h4 class="card-title" style="text-align:center;">template3</h4>
-                    <button type="button" class="btn btn-success" ><a href="{{route('invoice_sale3', $id)}}" style='text-decoration:none;color:white;'>Preview</a></button>
-                    <button type="button" class="btn btn-dark js-send-download" data-invoice="7"><a href="{{route('download_pdf3', $id)}}" style='text-decoration:none;color:white;' > Download </a></button>
-                    <button type="button" class="btn btn-warning js-send-invoice" data-toggle="modal" data-target="#invoice-modal" data-invoice="3" data-whatever="@mdo"  id='ok'>Envoyer</button>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <img class="card-img-top" src="https://wcpdfinvoices.com/wp-content/themes/zerif-lite-child/images/new-invoice.png" alt="Card image cap">
-                  <div class="card-block">
-                    <h4 class="card-title" style="text-align:center;">template4</h4>
-                    <button type="button" class="btn btn-success" ><a href="{{route('invoice_sale3', $id)}}" style='text-decoration:none;color:white;'>Preview</a></button>
-                    <button type="button" class="btn btn-dark js-send-download" data-invoice="8"><a href="{{route('download_pdf4', $id)}}" style='text-decoration:none;color:white;' >Download</a></button>
-                    <button type="button" class="btn btn-warning js-send-invoice" data-toggle="modal" data-target="#invoice-modal" data-invoice="4" data-whatever="@mdo"  id='ok'>Envoyer</button>
-                  </div>
-                </div>
-                --}}
               </div>
         
 

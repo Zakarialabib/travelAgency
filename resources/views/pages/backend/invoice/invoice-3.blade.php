@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Responsive Bootstrap Invoice Template</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -10,128 +9,320 @@
     <title>{{setting('app_name')}}</title>
     <meta name="description" content="">
     <meta name="robots" content="all,follow">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'><link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!-- Override some Bootstrap CDN styles - normally you should apply these through your Bootstrap variables / sass -->
     <style>
-        body { font-family: "Roboto", serif; font-size: 0.8rem; font-weight: 400; line-height: 1.4; color: #000000; }
-        h1, h2, h4, h5 { font-weight: 700; color: #000000; }
-        h1 { font-size: 2rem; }
-        h2 { font-size: 1.6rem; }
-        h4 { font-size: 1.2rem; }
-        h5 { font-size: 1rem; }
-        .table { color: #000; }
-        .table td, .table th { border-top: 1px solid #000; }
-        .table thead th { vertical-align: bottom; border-bottom: 2px solid #000; }
+        #invoice{
+    padding: 30px;
+}
 
-        @page {
-            margin-top: 2.5cm;
-            margin-bottom: 2.5cm;
-        }
+.invoice {
+    max-width:600px;
+    background-color: #FFF;
+    min-height: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        @page :first {
-            margin-top: 0;
-            margin-bottom: 2.5cm;
+.invoice header {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3989c6
+}
+
+.invoice .company-details {
+    text-align: right
+}
+
+.invoice .company-details .name {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.invoice .contacts {
+    margin-bottom: 20px
+}
+
+.invoice .invoice-to {
+    text-align: left
+}
+
+.invoice .invoice-to .to {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.invoice .invoice-details {
+    text-align: right
+}
+
+.invoice .invoice-details .invoice-id {
+    margin-top: 0;
+    color: #e5511e;
+    font-size: 16px;
+}
+
+.invoice main {
+    padding-bottom: 50px
+}
+
+.invoice main .thanks {
+    margin-top: -100px;
+    font-size: 2em;
+    margin-bottom: 50px
+}
+
+.invoice main .notices {
+    padding-left: 6px;
+    border-left: 6px solid #3989c6
+}
+
+.invoice main .notices .notice {
+    font-size: 1.2em
+}
+
+.invoice table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px
+}
+
+.invoice table td,.invoice table th {
+    padding: 15px;
+    background: #eee;
+    border-bottom: 1px solid #fff
+}
+
+.invoice table th {
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 16px
+}
+
+.invoice table td h3 {
+    margin: 0;
+    font-weight: 400;
+    color: #3989c6;
+    font-size: 1.2em
+}
+
+.invoice table .qty,.invoice table .total,.invoice table .unit {
+    text-align: right;
+    font-size: 1.2em
+}
+
+.invoice table .no {
+    color: #fff;
+    font-size: 1.6em;
+    background: #e5511e
+}
+
+.invoice table .unit {
+    background: #ddd
+}
+
+.invoice table .total {
+    background: #e5511e;
+    color: #fff
+}
+
+.invoice table tbody tr:last-child td {
+    border: none
+}
+
+.invoice table tfoot td {
+    background: 0 0;
+    border-bottom: none;
+    white-space: nowrap;
+    text-align: right;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-top: 1px solid #aaa
+}
+.g
+{
+    color:white;
+}
+
+.invoice table tfoot tr:first-child td {
+    border-top: none
+}
+
+.invoice table tfoot tr:last-child td {
+    color: #3989c6;
+    font-size: 1.4em;
+    border-top: 1px solid #3989c6
+}
+
+.invoice table tfoot tr td:first-child {
+    border: none
+}
+
+.invoice footer {
+    text-align: center;
+    color: #777;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media print {
+    .invoice {
+        font-size: 11px!important;
+        overflow: hidden!important
+    }
+
+    .invoice footer {
+        position: absolute;
+        bottom: 10px;
+        page-break-after: always
+    }
+
+    .invoice>div:last-child {
+        page-break-before: always
+    }
+}
+@media print {
+    #button-container{
+      display: none;
+   }
+            * {
+                font-size:12px;
+                line-height: 20px;
+            }
+            td,th {padding: 5px 0;}
+            .hidden-print {
+                display: none !important;
+            }
+            @page { margin: 0; } body { margin: 0.5cm; margin-bottom:1.6cm; } 
         }
+            viewer-pdf-toolbar {
+                display: none !important;
+             }
     </style>
-
 </head>
 <body>
-<div style='height:20px;'></div>
-<div class="toolbar hidden-print">
-        <div class="text-right">
-    <a  href="{{ url()->previous() }}" class="btn btn-info">
-    <i class="fa fa-arrow-circle-o-left"></i>
-    <span>Back</span>
-    </a>            
-    <button class="btn btn-info"  onclick="auto_print()">{{__('Print')}}</button>
-        </div>
-        <hr>
-    </div>
-<div class="container-fluid pt-2 pt-md-4 px-md-5">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    <!-- Invoice heading -->
-
-    <table class="table table-borderless">
-        <tbody>
-        <tr>
-            <td class="border-0">
-                <div class="row">
-                    <div class="col-md text-center text-md-left mb-3 mb-md-0">
-                    <img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
-                        <br>
-                        <h3 class="name">
-                            Rentacs Tours
-                        </h3>
-                        <div>13, Rue El Kassar, 1er Etage Maarif </div>
-                        <div>20100 Casablanca, Maroc</div>
-                        <div>{{__('Phone Number')}}: {{setting('home_phone')}}</div>
-                        <div>{{__('Email')}}: {{setting('home_email')}}</div>
+<!--Author      : @arboshiki-->
+    
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px; margin-top:300px;">
+             <header>
+                <div class="row contacts">
+                    <div class="col">
+                        @if($type == App\Invoice::PURCHASE_TYPE)
+                        <div class="col invoice-to"> 
+                            <h4 class="to"> {{$beneficiary->company_name}}</h4>
+                            <div class="address">{{$beneficiary->name}}</div>
+                            <div class="address"> {{$beneficiary->address}}</div>
+                            <div class="address"> {{$beneficiary->city}}, {{$beneficiary->postal_code}}</div>
+                            <div class="email">{{__('Phone Number')}}: {{$beneficiary->phone_number}}</div>
+                        </div>
+                        @else
+                        <div class="col invoice-to"> 
+                            <h4 class="to"> {{$beneficiary->profile->sur_name}}</h4>
+                            <div class="address">{{$beneficiary->profile->first_name}}</div>
+                            <div class="address"> {{$beneficiary->profile->address}}</div>
+                            <div class="address"> {{$beneficiary->profile->city}}, {{$beneficiary->profile->postal_code}}</div>
+                            <div class="email">{{__('Phone Number')}}: {{$beneficiary->profile->phone_number}}</div>
+                        </div>
+                        @endif
                     </div>
-
-                    <div class="col text-center text-md-right">
-
-                        <!-- Dont' display Bill To on mobile -->
-                        <span class="d-none d-md-block">
-                            <h1>Billed To</h1>
-                        </span>
-
-                        <h4 class="to"> {{$customers->name}}</h4>
-                        <div class="address">{{$customers->company_name}}</div>
-                        <div class="address"> {{$customers->address}}</div>
-                        <div class="address"> {{$customers->city}}, {{$customers->postal_code}}</div>
-                        <div class="email">{{__('Phone Number')}}: {{$customers->phone_number}}</div>
-                    
-                        <div class="date">{{$sales->created_at->toDateString()}}</div>
+                    <div class="col invoice-details" style='margin-top:20px;'>
+        
+                        <div class="col invoice-details">
+                            <h1 class="invoice-id">{{__('reference')}} : {{$entity->reference_no}}</h1>
+                            <div class="date">Date d’émission: {{$entity->created_at->toDateString()}}</div>
+                        </div>
                     </div>
                 </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+             </header>
+            <main>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-left">Destination</th>
+                            <th class="text-right">{{__('Unit Price')}}</th>
+                            <th class="text-right">Qté.</th>
+                            <th class="text-right">{{__('Order Tax')}}</th>
+                            <th class="text-right">Total HT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php $total_product_tax = 0; $i=1;?>
+                    @foreach($entity->details as $detail)
+                        <tr>
+                            <td class="no">0{{$i++}}</td>
+                            <td class="text-left">
+                            <h3>
+                            {{$detail->name}}
+                                </h3>
+                            </td>
+                            <td class="total">{{number_format((float) ($detail->total / $detail->qty), 2, '.', '')}}</td>
+                            <td class="total">{{$detail->qty}}</td>
+                            <td class="total">{{number_format((float)$entity->tax, 2, '.', '')}}</td>
+                            <td class="total">{{number_format((float)$detail->total, 2, '.', '')}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">Total HT :</td>
+                            <td>{{number_format((float)$entity->tax, 2, '.', '')}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">TVA</td>
+                            <td>{{number_format((float)$entity->tax, 2, '.', '')}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="2">TOTAL TTC</td>
+                            <td>{{number_format((float)$entity->grand_total, 2, '.', '')}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
 
-    <!-- Invoice items table -->
+            </main>
+        
+            <!-- <footer style='width:600px; text-align:left; border-left:tomato 2px solid; padding:10px;'>
+                                 <p><font color="#E5511E;">RENTACS TOURS </font> - <b>Capital: </b> 300.000DH</p>
+                                 <p> <b>Adresse:</b> 13, Rue El Kassar, 1er Etage Maarif 20100 Casablanca, Maroc </p>   
+                                <p><b>Code Postal: </b>  20100 - <b>Tél:</b> +212 522 252 386 - <b>Email:</b> info@rentacstours.com</p>
+                                 <p><i class="la la-map-marker la-24" ></i> <b>RC: </b> 382573 <b>CNSS:</b> 4284098 <b>Patente:</b> 35781728 <b>IF:</b> 15220706 <b>ICE:</b> 001565693000053 </p>
+                                <p><i class="la la-envelope la-24" style="color: black;"></i> Attijariwafabank Agence centre d'affaire YACOUP EL MANSOUR</a> </p>
+                                <p><i class="la la-phone la-24" ></i>  <b>Code IBAN:</b> 007 780 000 339 400 000 25 46 93 - <b>Code SWIFT:</b> BCMAMAMC </a></p>
+            </footer> -->
+        </div>
+    </div>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Summary</th>
-            <th class="text-right">Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php  $total_product_tax = 0; $i=1; ?>
-             @foreach($saledetails as $saledetail)
-        <tr>
-            <td>
-                <h5 class="mb-1">{{$detail->name}}</h5>
-                quantité: {{$saledetail->qty}}
-            </td>
-            <td class="font-weight-bold align-middle text-right text-nowrap">{{number_format((float)$saledetail->total, 2, '.', '')}}</td>
-        </tr>
-        @endforeach
-
-       
-        <tr>
-            <td colspan="2" class="text-right border-0 pt-4"><h5>Total TTC: {{number_format((float)$sales->grand_total, 2, '.', '')}}</h5></td>
-        </tr>
-    </table>
-
-    <!-- Thank you note -->
-
-    <h5 class="text-center pt-2">
-        Rentacs Tours
-    </h5>
-
-</div>
 <script type="text/javascript">
     function auto_print() {     
         window.print()
     }
     setTimeout(auto_print, 1000);
+    $(".send_invoice").click(function(){
+    $("#invoice").toggleClass('display-none');
+});
+// var button = document.getElementById('ok');
 
+// button.onclick = function() {
+//     var div = document.getElementById('hidden');
+//     if (div.style.display !== 'none') {
+//         div.style.display = 'none';
+//     }
+//     else {
+//         div.style.display = 'block';
+//     }
+// };
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
+</html>

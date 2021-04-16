@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 use App\Returns;
 use App\ReturnDetails;
 use App\Sale;
@@ -116,7 +117,7 @@ class ReturnController extends Controller
                 return redirect(route('return_list'))->with('success', 'Return created successfully');
             }
 
-        } catch (\QueryException $e) {
+        } catch (QueryException $e) {
             Toastr::error("Unable to update new Return");
             return back()->with('error', 'Unable to create new Return');
         }
@@ -231,7 +232,7 @@ class ReturnController extends Controller
 
             return redirect(route('return_list'))->with('success', 'Update Return success!');
 
-        } catch (\QueryException $e) {
+        } catch (QueryException $e) {
             Toastr::error("Unable to update new Return");
             return back()->with('error', 'Unable to update new Return');;
         }
