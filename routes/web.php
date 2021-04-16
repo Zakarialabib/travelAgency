@@ -78,9 +78,9 @@ Route::group([
               'namespace' => 'Frontend', 
               'middleware' => []], function(){
                   
-                Route::get('/', 'ViewController@home');
-                Route::get('/home', 'ViewController@home')->name('home');                
-                Route::get('/language/{locale}', 'ViewController@changeLanguage')->name('change_language');
+        Route::get('/', 'ViewController@home');
+        Route::get('/home', 'ViewController@home')->name('home');                
+        Route::get('/language/{locale}', 'ViewController@changeLanguage')->name('change_language');
         Route::get('/itinerary-booking','ViewController@itineraryBooking')->middleware('flight.search.param','flight.selected','flight.pricing.info');
         Route::get('/available-itineraries','ViewController@availableItineraries')->middleware('flight');
         Route::get('/flight-booking-payment-page','ViewController@flightBookingPayment')->middleware('flight.search.param','flight.selected','flight.pricing.info','pnr');
@@ -179,6 +179,14 @@ Route::group([
         Route::delete('/{id}', 'SupplierController@destroy')->name('supplier_delete');
       });
               
+         // FAQ Route
+         Route::get('/faq', 'FaqController@faq')->name('faq');
+         Route::get('/faq/add', 'FaqController@add')->name('faq.add');
+         Route::post('/faq/store', 'FaqController@store')->name('faq.store');
+         Route::post('/faq/delete/{id}/', 'FaqController@delete')->name('faq.delete');
+         Route::get('/faq/edit/{id}/', 'FaqController@edit')->name('faq.edit');
+         Route::post('/faq/update/{id}/', 'FaqController@update')->name('faq.update');
+
 
         Route::get('/category/{type}', 'CategoryController@list')->name('category_list');
         Route::post('/category', 'CategoryController@create')->name('category_create');
