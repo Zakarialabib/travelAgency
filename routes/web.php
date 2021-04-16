@@ -78,9 +78,9 @@ Route::group([
               'namespace' => 'Frontend', 
               'middleware' => []], function(){
                   
-                Route::get('/', 'ViewController@home');
-                Route::get('/home', 'ViewController@home')->name('home');                
-                Route::get('/language/{locale}', 'ViewController@changeLanguage')->name('change_language');
+        Route::get('/', 'ViewController@home');
+        Route::get('/home', 'ViewController@home')->name('home');                
+        Route::get('/language/{locale}', 'ViewController@changeLanguage')->name('change_language');
         Route::get('/itinerary-booking','ViewController@itineraryBooking')->middleware('flight.search.param','flight.selected','flight.pricing.info');
         Route::get('/available-itineraries','ViewController@availableItineraries')->middleware('flight');
         Route::get('/flight-booking-payment-page','ViewController@flightBookingPayment')->middleware('flight.search.param','flight.selected','flight.pricing.info','pnr');
@@ -179,6 +179,14 @@ Route::group([
         Route::delete('/{id}', 'SupplierController@destroy')->name('supplier_delete');
       });
               
+         // FAQ Route
+         Route::get('/faq', 'FaqController@faq')->name('faq');
+         Route::get('/faq/add', 'FaqController@add')->name('faq.add');
+         Route::post('/faq/store', 'FaqController@store')->name('faq.store');
+         Route::post('/faq/delete/{id}/', 'FaqController@delete')->name('faq.delete');
+         Route::get('/faq/edit/{id}/', 'FaqController@edit')->name('faq.edit');
+         Route::post('/faq/update/{id}/', 'FaqController@update')->name('faq.update');
+
 
         Route::get('/category/{type}', 'CategoryController@list')->name('category_list');
         Route::post('/category', 'CategoryController@create')->name('category_create');
@@ -252,39 +260,30 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/edit/{id}', 'PurchaseController@edit')->name('purchase_edit');
     Route::put('/update/{id}', 'PurchaseController@update')->name('purchase_update');
     Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
-    Route::get('template/{id}', 'PurchaseController@genInvoice')->name('purchase_invoice');
-    Route::get('invoice/template1/{id}', 'PurchaseController@Invoice')->name('invoice_sale1');
-    Route::get('invoice/template2/{id}', 'PurchaseController@Invoiceun')->name('invoice_sale2');
-    Route::get('invoice/template3/{id}', 'PurchaseController@Invoicedeux')->name('invoice_sale3');
-
 
     Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
     Route::get('/status', 'PurchaseController@updateStatus');
 
 });
 
-Route::group(['prefix' => 'sales'],function(){
-    Route::get('/', 'SaleController@list')->name('sale_list');
-    Route::get('/ajax-delete-file', 'SaleController@deleteSaleFile');
-    Route::get('/add', 'SaleController@createView')->name('sale_create_view');
-    Route::post('/add', 'SaleController@createView')->name('sale_create_view');
-    Route::post('/', 'SaleController@create')->name('sale_create');
-    Route::get('/edit/{id}', 'SaleController@edit')->name('sale_edit');
-    Route::put('/update/{id}', 'SaleController@update')->name('sale_update');
-    Route::delete('/{id}', 'SaleController@destroy')->name('sale_delete');
-	Route::get('gen_invoice/{id}', 'SaleController@genInvoice')->name('sale_invoice');
-    Route::get('gen_devis/{id}', 'SaleController@genQuotation')->name('sale_quotation');
-    Route::get('/status', 'SaleController@updateStatus');
-    Route::get('template/{id}', 'SaleController@genInvoice')->name('purchase_invoice');
-    Route::get('invoice/template1/{id}', 'SaleController@Invoice')->name('invoice_sale1');
-    Route::get('invoice/template2/{id}', 'SaleController@Invoiceun')->name('invoice_sale2');
-    Route::get('invoice/template3/{id}', 'SaleController@Invoicedeux')->name('invoice_sale3');
-    Route::get('download/{id}', 'SaleController@printToPDF')->name('download_pdf');
-    Route::get('download2/{id}', 'SaleController@printToPDF2')->name('download_pdf2');
-    Route::get('download3/{id}', 'SaleController@printToPDF3')->name('download_pdf3');
-    Route::get('download4/{id}', 'SaleController@printToPDF4')->name('download_pdf4');
-    Route::post('/send-invoice/sendmail/{id}', 'SaleController@invoiceSend')->name('invoice_send_mail'); 
-    });
+Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
+	Route::get('create/{type}/{id}', 'InvoiceController@create')->name('invoice_create');
+	Route::get('action/{action}/{type}/{id}/{template}', 'InvoiceController@action')->name('invoice_action');
+	Route::post('send/{id}', 'InvoiceController@sendEmail')->name('invoice_send');
+});
+
+    Route::group(['prefix' => 'sales'],function(){
+        Route::get('/', 'SaleController@list')->name('sale_list');
+        Route::get('/ajax-delete-file', 'SaleController@deleteSaleFile');
+        Route::get('/add', 'SaleController@createView')->name('sale_create_view');
+        Route::post('/add', 'SaleController@createView')->name('sale_create_view');
+        Route::post('/', 'SaleController@create')->name('sale_create');
+        Route::get('/edit/{id}', 'SaleController@edit')->name('sale_edit');
+        Route::put('/update/{id}', 'SaleController@update')->name('sale_update');
+        Route::delete('/{id}', 'SaleController@destroy')->name('sale_delete');
+        Route::get('gen_devis/{id}', 'SaleController@genQuotation')->name('sale_quotation');
+        Route::get('/status', 'SaleController@updateStatus');
+        });
     
 
     Route::group(['prefix' => 'return'],function(){
@@ -297,7 +296,6 @@ Route::group(['prefix' => 'sales'],function(){
         Route::get('/edit/{id}', 'ReturnController@edit')->name('return_edit');
         Route::put('/update/{id}', 'ReturnController@update')->name('return_update');
         Route::delete('/{id}', 'ReturnController@destroy')->name('return_delete');
-        Route::get('gen_invoice/{id}', 'ReturnController@genInvoice')->name('return_invoice');
         Route::get('gen_devis/{id}', 'ReturnController@genQuotation')->name('return_quotation');
         Route::get('/status', 'ReturnController@updateStatus');
         });
