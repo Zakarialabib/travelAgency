@@ -295,7 +295,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
 @endsection
@@ -305,7 +304,3 @@
     <script src="{{asset('backend/js/pages/users-management.js')}}"></script>
 
 @endsection
-
-<style>
-
-</style>

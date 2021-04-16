@@ -155,7 +155,7 @@
                     <div class="card-body">
                         <div class="avatar bg-rgba-primary  m-0 mb-1">
                             <div class="avatar-content">
-                                <i class="fa fa-pencil text-primary font-medium-5"></i>
+                                <i class="fa fa-envelope text-secondary font-medium-5"></i>
                             </div>
                         </div>
                         <h2 class="text-bold-700">{{$count_suscribers}}</h2>
@@ -170,7 +170,7 @@
                     <div class="card-body">
                         <div class="avatar bg-rgba-warning  m-0 mb-1">
                             <div class="avatar-content">
-                                <i class="feather icon-message-square text-warning font-medium-5"></i>
+                                <i class="fa fa-pencil text-primary font-medium-5"></i>
                             </div>
                         </div>
                         <h2 class="text-bold-700">{{$count_posts}}</h2>

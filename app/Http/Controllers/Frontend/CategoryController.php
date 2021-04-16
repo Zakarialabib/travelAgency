@@ -106,7 +106,7 @@ class CategoryController extends Controller
 
         $places = $places->paginate();
 
-        return view('frontend.category.category_list', [
+        return view('pages.frontend.category.category_list', [
             'places' => $places,
             'category' => $category,
             'categories' => $categories,

@@ -72,6 +72,7 @@ class BookingController extends Controller
     {
         return view('frontend.user.user_cart');
     }
+    
     public function addToCart($id)
     {
         $place = Place::find($id);

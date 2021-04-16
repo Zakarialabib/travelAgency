@@ -339,13 +339,6 @@ Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
             Route::post('/update-user','UserController@updateUser');
         });
 
-        Route::group(['prefix' => 'wallets'],function(){
-
-            Route::get('','BackEndViewController@walletsManagement');
-            Route::post('/update-wallet','WalletController@updateWallet');
-            Route::get('/user-wallet','BackEndViewController@userWallet');
-        });
-
         Route::group(['prefix' => 'language'],function(){
 
         Route::get('/', 'LanguageController@pageLanguage')->name('language');

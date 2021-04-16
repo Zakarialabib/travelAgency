@@ -52,7 +52,7 @@ class PlaceController extends Controller
 //        return $places;
 
 
-        return view('frontend.place.place_list', [
+        return view('pages.frontend.place.place_list', [
             'places' => $places,
             'countries' => $countries,
             'status' => (int)$param_status,
@@ -164,7 +164,7 @@ class PlaceController extends Controller
 
         $amenities = $this->amenities->getListAll();
 
-        return view('frontend.place.place_addnew', [
+        return view('pages.frontend.place.place_addnew', [
             'place' => $place,
             'countries' => $countries,
             'cities' => $cities,

@@ -40,7 +40,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <button id="save_vat" class="btn btn-alt-primary btn-sm pull-right" type="button">{{__('Save')}}</button>
+                            <button id="save_vat" class="btn btn-primary btn-sm pull-right" type="button">{{__('Save')}}</button>
                         </div>
                     </div>
 

@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                     <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title mt-1">{{ __('Edit faq') }}</h3>
+                                <h3 class="card-title mt-1">{{ __('Edit Terms and Conditions') }}</h3>
                                 <div class="card-tools pull-right">
                                     <a href="{{ route('faq')}}" class="btn btn-primary btn-sm">
                                         {{ __('Back') }}
