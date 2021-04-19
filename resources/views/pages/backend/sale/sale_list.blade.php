@@ -170,7 +170,6 @@
                                         @csrf
                                         <button type="button" class="dropdown-item user_delete">{{__('Delete')}}</button>
                                     </form>
-                                   
                                   </div>
                                  </div>
                                 </td>

@@ -127,6 +127,8 @@ Route::group([
         Route::get('{slug}-{id}', 'PostController@detail')
         ->where('slug', '[a-zA-Z0-9-_]+')
         ->where('id', '[0-9]+')->name('post_detail');
+        
+        Route::get('/ville-a-visiter', 'CityController@list')->name('city_list');
         Route::get('/city/{slug}', 'CityController@detail')->name('city_detail');
         Route::get('/city/{slug}/{cat_slug}', 'CityController@detail')->name('city_category_detail');
     

@@ -126,6 +126,7 @@ class ViewController extends Controller
 
     }
 
+
     public function changeLanguage($locale)
     {
         Session::put('language_code', $locale);

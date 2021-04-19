@@ -7,7 +7,7 @@
         </div>
         <div class="title_right">
             <div class="pull-right">
-                <a class="btn btn-primary" href="">{{ __('Add New Slider') }}</a>
+                <a class="btn btn-primary" href="{{route('slides.create')}}">{{ __('Add New Slider') }}</a>
             </div>
         </div>
     </div>
@@ -29,8 +29,14 @@
                             @foreach ($sliders as $slider)
                                 <tr>
                                     <td>{{ $slider->id }}</td>
-                                    <td>{{ $slider->photo }}</td>
+                                    <td><img src="{{url('images')}}/{{$slider->photo}}" alt="image"></td>
                                     <td>{{ $slider->title }}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{route('slides.edit', $slider->id)}}">{{__('Edit')}}</a>
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['slides.destroy', $slider->id] ]) !!}
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                      {!! Form::close() !!}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

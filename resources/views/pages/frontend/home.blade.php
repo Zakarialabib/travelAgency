@@ -377,7 +377,7 @@
 <!-- END: WHO WE ARE -->
 
 <!-- BEGIN: BEST OFFERS -->
-<div class="best_offers" style="background-image: url({{asset('public/images/home-path.svg')}});">
+<div class="best_offers" style="background-image: url({{asset('images/home-path.svg')}});">
     <div class="container">
         <div class="section-title text-center">
             <h2><a href="{{route('best_offers')}}" style="color: #fff;">{{__('BEST OFFERS')}}</a></h2>

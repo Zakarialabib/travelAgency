@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Slider;
+use Storage;
 
 class SliderController extends Controller
 {
@@ -96,8 +97,8 @@ class SliderController extends Controller
     
         $slider = Slider::find($id);
         $this->validate($request, array(
-          'title'=>'required|max:225',
-          'photo'=>'required|image'
+          'title'=>'',
+          'photo'=>''
        ));
  
         $slider = Slider::where('id',$id)->first();
@@ -119,7 +120,7 @@ class SliderController extends Controller
  
        $slider->save();
  
-       return redirect()->route('pages.backend.slides.index',
+       return redirect()->route('slides.index',
            $slider->id)->with('success',
            'Slider, '. $slider->title.' updated');
 
@@ -138,7 +139,7 @@ class SliderController extends Controller
         Storage::delete($slider->photo);
         $slider->delete();
       
-        return redirect()->route('pages.backend.slides.index')
+        return redirect()->route('slides.index')
                 ->with('success',
                  'Slide successfully deleted');
     }

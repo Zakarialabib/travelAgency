@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
 
 class CityController extends Controller
 {
@@ -25,6 +26,11 @@ class CityController extends Controller
 
     public function list()
     {
+        
+        $cities = City::with(['places' => function(Builder $query) {
+            $query->where('id', 10);;
+        }])->get();
+        dd($cities);
 
     }
 
