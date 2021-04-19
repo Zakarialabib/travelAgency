@@ -592,6 +592,8 @@
 @endsection
 
 @push('scripts')
+<script src="{{asset('frontend/assets/js/pages/flight/flight_search_management.js')}}" defer></script>
+<script src="{{asset('frontend/assets/js/pages/hotel/hotel_search_management.js')}}" defer></script>
     <script type="text/javascript" async>
         /* SLIDER SETTINGS */
         jQuery(function($){
@@ -623,14 +625,12 @@
                 slide_counter           :   1,		//Display slide numbers
                 slide_captions          :   1,		//Slide caption (Pull from "title" in slides array)
                 slides 					:  	[		//Slideshow Images
-                    {image : 'frontend/assets/images/1.jpg', title : 'Slide 1'},
-                    {image : 'frontend/assets/images/2.jpg', title : 'Slide 2'},
-                    {image : 'frontend/assets/images/3.jpg', title : 'Slide 3'},
+                @foreach ($sliders as $slider)
+                {image : '{{asset("images/" . $slider->photo)}}', title : '{{$slider->title}}' },
+                @endforeach
                 ]
             });
         });
     
     </script>
-    <script src="{{asset('frontend/assets/js/pages/flight/flight_search_management.js')}}" defer></script>
-    <script src="{{asset('frontend/assets/js/pages/hotel/hotel_search_management.js')}}" defer></script>
 @endpush

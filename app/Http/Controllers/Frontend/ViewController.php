@@ -9,6 +9,7 @@ use App\Profile;
 use App\Services\AmadeusConfig;
 use App\Services\AmadeusHelper;
 use App\Markup;
+use App\Slider;
 use App\Title;
 use App\Vat;
 use App\TravelPackage;
@@ -75,6 +76,7 @@ class ViewController extends Controller
         ->where('status', Place::STATUS_ACTIVE)
         ->get();
 
+        $sliders = Slider::all();
         
         $countryList = Country::all();
 
@@ -120,7 +122,7 @@ class ViewController extends Controller
             ->where('status', Testimonial::STATUS_ACTIVE)
             ->get();
         
-        return view('pages.frontend.home',compact('deals','testimonials','trending_places','countryList','places' ,'blog_posts','popular_cities','categories'));
+        return view('pages.frontend.home',compact('deals','testimonials','trending_places','sliders','countryList','places' ,'blog_posts','popular_cities','categories'));
 
     }
 
@@ -682,7 +684,6 @@ class ViewController extends Controller
             ->paginate(8);
         return view('pages.frontend.deal.attraction',compact('hotDeals'));
     }
-
 
     public function dealDetails($slug){
         

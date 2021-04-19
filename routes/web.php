@@ -300,6 +300,8 @@ Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
         Route::get('/status', 'ReturnController@updateStatus');
         });
 
+        Route::resource('slides', 'SliderController');
+
     Route::group(['prefix' => 'settings'],function(){
 
         Route::get('menu','MenuController@index')->name('menu.get');
