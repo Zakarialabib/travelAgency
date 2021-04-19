@@ -107,7 +107,7 @@ class InvoiceController extends Controller
                     'beneficiary' => $beneficiary,
                     'type' => $type,
                 ]);
-                return $pdf->stream();
+                return $pdf->download('facture.pdf');
             
             default:
                 return view('pages.backend.invoice.invoice-' . $template, compact('entity', 'beneficiary', 'type'));

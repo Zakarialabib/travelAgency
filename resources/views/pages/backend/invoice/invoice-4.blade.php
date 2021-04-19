@@ -1,16 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Rentacs Tours</title>
-	<link rel="stylesheet" href="bootstrap2.css">
     <link rel="stylesheet" href="{{asset('backend/app-assets/css/bootstrap2.css')}}">
-	<style>	
-	@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
-	body, h1, h2, h3, h4, h5, h6{
-		font-family: 'Bree Serif', serif;
-	}
-	</style>
 </head>
 <body>
 

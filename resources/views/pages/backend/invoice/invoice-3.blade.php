@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{asset('backend/app-assets/images/logo/logo.png')}}" />
     <title>{{setting('app_name')}}</title>
-    <meta name="description" content="">
-    <meta name="robots" content="all,follow">
     <style>
         #invoice{
     padding: 30px;
@@ -205,8 +201,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-<!--Author      : @arboshiki-->
     
     <div class="invoice overflow-auto">
         <div style="min-width: 600px; margin-top:300px;">
@@ -241,7 +235,7 @@
                 </div>
              </header>
             <main>
-                <table border="0" cellspacing="0" cellpadding="0">
+                <table cellspacing="0" cellpadding="0">
                     <thead>
                         <tr>
                             <th>#</th>

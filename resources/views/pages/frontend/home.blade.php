@@ -574,8 +574,8 @@
                 </div>
             </div>
         </div><!-- .news -->
-<!--
-<div class="banner-apps" style="background-image:url(images/banner-apps.jpg)">
+
+{{-- <div class="banner-apps" style="background-image:url(images/banner-apps.jpg)">
     <div class="container">
         <div class="banner-apps__content">
             <h2 class="banner-apps__title">{{__("Obtenir l'application")}}</h2>
@@ -588,12 +588,10 @@
             </div>
         </div>
     </div>
-</div>
--->
-
+</div> --}}
 @endsection
 
-@section('javascript')
+@push('scripts')
     <script type="text/javascript" async>
         /* SLIDER SETTINGS */
         jQuery(function($){
@@ -635,9 +633,4 @@
     </script>
     <script src="{{asset('frontend/assets/js/pages/flight/flight_search_management.js')}}" defer></script>
     <script src="{{asset('frontend/assets/js/pages/hotel/hotel_search_management.js')}}" defer></script>
-
-@endsection
-
-@section('css')
-
-@endsection
+@endpush

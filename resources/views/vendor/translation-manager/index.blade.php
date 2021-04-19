@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('layouts.app')
 @section('page-title')  {{__('Translation Dashboard')}}  @endsection
 @section('content')
 

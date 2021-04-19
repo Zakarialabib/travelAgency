@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{asset('backend/app-assets/images/logo/logo.png')}}" />
     <title>{{setting('app_name')}}</title>
-    <meta name="description" content="">
-    <meta name="robots" content="all,follow">
     <style>
+        .page-break {
+    page-break-after: always;
+}
         #invoice{
     padding: 30px;
 }
@@ -200,24 +199,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<!--Author      : @arboshiki-->
 <div id="invoice">
-    <div class="toolbar hidden-print">
-        <div class="text-right">
-    <a  href="{{ url()->previous() }}" class="btn btn-info">
-    <i class="fa fa-arrow-circle-o-left"></i>
-    <span>Back</span>
-    </a>            
-    <button class="btn btn-info"  onclick="auto_print()">{{__('Print')}}</button>
-        </div>
-        <hr>
-    </div>
     <div class="invoice overflow-auto">
         <div style="min-width: 600px">
             <header>
                 <div class="row">
                     <div class="col">
-                        <a target="_blank" href="https://lobianijs.com">
+                        <a target="_blank">
                             <img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
                         </a>
                     </div>
@@ -253,7 +241,7 @@
                         <div class="date">Date d’émission: {{$entity->created_at->toDateString()}}</div>
                     </div>
                 </div>
-                <table border="0" cellspacing="0" cellpadding="0">
+                <table cellspacing="0" cellpadding="0">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -311,12 +299,12 @@
             </footer>
         </div>
     </div>
+    <div class="page-break"></div>
 <script type="text/javascript">
     function auto_print() {     
         window.print()
     }
     setTimeout(auto_print, 1000);
-
 </script>
 </body>
 </html>

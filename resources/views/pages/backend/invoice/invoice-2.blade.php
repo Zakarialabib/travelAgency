@@ -1,19 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Rentacs Tours</title>
   <link rel="stylesheet" href="{{asset('backend/app-assets/css/bootstrap2.css')}}">
 </head>
 <body>
-
 	<div class="container" style='margin-right:10px;'>
-
 		<div class="row">
 			<div class="col-xs-5">
 			  <h1>
 				<img src="{{asset('backend/app-assets/images/logo/logo.png')}}" width="120px" height="100px" style="margin:10px 0">
-
 			  </h1>
 			</div>
 			<div class="col-xs-5 text-right">
@@ -22,7 +20,6 @@
 			  <h5>Date d’émission: {{$entity->created_at->toDateString()}}</h5>
 			</div>
 		</div>
-
 		  <div class="row">
 		    <div class="col-xs-4">
 		      <div class="panel panel-default">
@@ -31,10 +28,10 @@
 										</div>
 		              <div class="panel-body">
 		                <p>
-                        13, Rue El Kassar, 1er Etage Maarif </br>
-                        20100 Casablanca, Maroc</br>
-                        {{__('Phone Number')}}: {{setting('home_phone')}}</br>
-                        {{__('Email')}}: {{setting('home_email')}}</br>
+                        13, Rue El Kassar, 1er Etage Maarif <br>
+                        20100 Casablanca, Maroc<br>
+                        {{__('Phone Number')}}: {{setting('home_phone')}}<br>
+                        {{__('Email')}}: {{setting('home_email')}}<br>
 		                </p>
 		              </div>
 		            </div>
@@ -120,7 +117,7 @@
 		  <div class="col-xs-3">
 		    <div class="panel panel-info">
 			  <div class="panel-heading">
-			    <h4>Notions légales</h4>
+			    <h4>Bon pour Accord</h4>
 			  </div>
 			  <div class="panel-body">
 			    <p></p>
@@ -143,8 +140,7 @@
 			</div>
 		  </div>
 		</div>
-
 	</div>
-
+	<div class="page-break"></div>
 </body>
 </html>
