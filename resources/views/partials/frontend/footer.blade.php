@@ -1,4 +1,4 @@
-<section >
+<section>
     <footer id="footer" class="footer">
             <div class="container-fluid">
                 <div class="footer__top row">
@@ -6,9 +6,6 @@
                             <div class="footer__top__info">
                                 <a title="Logo" href="#" class="footer__top__info__logo"><img src="{{asset('backend/app-assets/images/logo/logo.png')}}" alt="logo"></a>
                                 <p class="footer__top__info__desc">{{setting('footer_description')}}</p>
-                                <div class="footer__top__info__app">
-                                    <a title="Google Play" href="#" class="banner-apps__download__android"><img src="{{asset('images/google-play.png')}}" alt="Google Play"></a>
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-4">

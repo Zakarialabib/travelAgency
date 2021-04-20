@@ -1,4 +1,5 @@
 @extends('layouts.backend')
+@section('page-title')  {{__('Activity Type List')}}  @endsection
 
 @section('content')
 

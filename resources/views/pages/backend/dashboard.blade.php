@@ -709,9 +709,6 @@
 @endsection
 
 
-
-
-
 @section('javascript')
     <script src="{{asset('backend/app-assets/js/scripts/pages/dashboard-sales.min.js')}}" type="text/javascript"></script>
     <script>

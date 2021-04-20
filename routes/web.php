@@ -16,7 +16,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 Route::get('clear-translations', 'ClearCacheController@clear_translations')
       ->name('clear-translations');
-Route::get('clear-cache', 'ClearCacheController@clear_cache')
+Route::get('clean', 'ClearCacheController@clear_cache')
       ->name('clear-cache');
       
   // User Notification
@@ -30,7 +30,6 @@ Route::get('clear-cache', 'ClearCacheController@clear_cache')
   Route::get('/booking/notf/count','NotificationController@booking_notf_count')->name('booking-notf-count');
   Route::get('/booking/notf/clear','NotificationController@booking_notf_clear')->name('booking-notf-clear');
   // booking Notification Ends
-
 
 Route::get('typeaheadJs', 'AirportController@typeAhead')->name('typeaheadJs');
 Route::get('airlineTypeAheadJs', 'AirlineController@typeAhead')->name('airlineTypeAheadJs');
@@ -79,7 +78,7 @@ Route::group([
               'middleware' => []], function(){
                   
         Route::get('/', 'ViewController@home');
-        Route::get('/home', 'ViewController@home')->name('home');                
+        Route::get('/accueil', 'ViewController@home')->name('home');                
         Route::get('/language/{locale}', 'ViewController@changeLanguage')->name('change_language');
         Route::get('/itinerary-booking','ViewController@itineraryBooking')->middleware('flight.search.param','flight.selected','flight.pricing.info');
         Route::get('/available-itineraries','ViewController@availableItineraries')->middleware('flight');
@@ -88,7 +87,7 @@ Route::group([
         Route::get('/available-hotels','ViewController@availableHotels')->middleware('hotel','hotel.search.param');
         Route::get('/hotel-information','ViewController@hotelInformation')->middleware('hotel.information');
         Route::get('/hotel-room-booking/{id}','ViewController@hotelRoomBooking')->middleware('hotel.search.param');
-        Route::get('/search', 'ViewController@search')->name('search');
+        Route::get('/recherche', 'ViewController@search')->name('search');
         Route::get('/termes-et-conditions', 'ViewController@termsConditions')->name('page_terms_conditions');
         Route::get('/contact', 'ViewController@pageContact')->name('page_contact');
         Route::get('/about', 'ViewController@pageAbout')->name('page_about');
@@ -113,13 +112,9 @@ Route::group([
         Route::get('/hotel-booking-payment-page','ViewController@hotelBookingPaymentPage')->middleware('hotel.search.param','hotel.room.selected');
         Route::get('/hotel-booking-completion','ViewCOntroller@hotelBookingCompletion')->middleware('hotel.search.param','hotel.room.selected','payment.info');
 
-        Route::get('/Meilleures-offres', 'PlaceController@list')->name('best_offers');
+        Route::get('/meilleures-offres', 'PlaceController@list')->name('best_offers');
         Route::get('/offres/{slug}', 'PlaceController@detail')->name('place_detail');
         Route::get('/offres/filter', 'PlaceController@getListFilter')->name('place_get_list_filter');
-        Route::get('/new-place', 'PlaceController@pageAddNew')->name('place_addnew');
-        Route::get('/edit-place/{id}', 'PlaceController@pageAddNew')->name('place_edit')->middleware('auth');
-        Route::post('/place', 'PlaceController@create')->name('place_create')->middleware('auth');
-        Route::put('/place', 'PlaceController@update')->name('place_update')->middleware('auth');
         
         Route::get('/blog/all', 'PostController@list')->name('post_list_all');
         Route::post('/post', 'PostController@send')->name('send');
@@ -143,8 +138,8 @@ Route::group([
         Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart')->middleware('auth');
         Route::post('/bookings', 'BookingController@booking')->name('booking_submit');
         Route::get('/places/map', 'PlaceController@getListMap')->name('place_get_list_map');
-        Route::get('/cities/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
-        Route::get('/cities', 'CityController@search')->name('city_search');
+        Route::get('/villes/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
+        Route::get('/villes', 'CityController@search')->name('city_search');
 
 });
 

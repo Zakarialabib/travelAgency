@@ -1,4 +1,5 @@
 @extends('layouts.backend')
+@section('page-title')  {{__('Places List')}}  @endsection
 
 @section('content')
 

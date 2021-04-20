@@ -1,4 +1,5 @@
 @extends('layouts.backend')
+@section('page-title')  {{__('Purchases List')}}  @endsection
 @section('content')
     <div class="page-title">
         <div class="title_left">

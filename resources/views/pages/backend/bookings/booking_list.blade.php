@@ -1,4 +1,7 @@
 @extends('layouts.backend')
+
+@section('page-title')  {{__('Bookings List')}}  @endsection
+
 @section('content')
     <div class="page-title">
         <div class="title_left">

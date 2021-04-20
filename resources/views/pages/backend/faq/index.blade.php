@@ -1,13 +1,13 @@
 @extends('layouts.backend')
+@section('page-title')  {{__('Terms and Conditions List')}}  @endsection
 
 @section('content')
 
-<div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title title_left mt-1">{{ __('Terms and Conditions') }}</h3>
+                        <h3 class="card-title title_left mt-1">{{ __('Terms and Conditions List') }}</h3>
                         <div class="card-tools pull-right d-flex">
                             <a href="{{ route('faq.add')}}" class="btn btn-primary btn-sm">
                                 {{ __('Add') }}
@@ -61,6 +61,5 @@
                 </div>
             </div>
         </div>
-    </div>
     <!-- /.row -->
 @endsection

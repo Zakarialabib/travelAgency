@@ -1,10 +1,12 @@
 @extends('layouts.backend')
 
+@section('page-title')  {{__('Countries List')}}  @endsection
+
 @section('content')
 
     <div class="page-title">
         <div class="title_left">
-            <h3>{{__('Countries')}}</h3>
+            <h3>{{__('Countries List')}}</h3>
         </div>
         <div class="title_right">
             <div class="pull-right">
