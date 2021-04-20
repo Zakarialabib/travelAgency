@@ -1,4 +1,6 @@
 @extends('layouts.backend')
+@section('page-title')  {{__('Returns List')}}  @endsection
+
 @section('content')
 <div>
     <div class="page-title">

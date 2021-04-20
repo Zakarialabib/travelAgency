@@ -1,9 +1,10 @@
 @extends('layouts.backend')
+@section('page-title')  {{__('Sliders List')}}  @endsection
 
 @section('content')
     <div class="page-title">
         <div class="title_left">
-            <h3>{{ __('Slider') }}</h3>
+            <h3>{{ __('Slider List') }}</h3>
         </div>
         <div class="title_right">
             <div class="pull-right">
@@ -29,8 +30,8 @@
                             @foreach ($sliders as $slider)
                                 <tr>
                                     <td>{{ $slider->id }}</td>
-                                    <td><img src="{{url('images')}}/{{$slider->photo}}" alt="image"></td>
                                     <td>{{ $slider->title }}</td>
+                                    <td><img src="{{url('images')}}/{{$slider->photo}}" alt="image"></td>
                                     <td>
                                         <a class="btn btn-primary" href="{{route('slides.edit', $slider->id)}}">{{__('Edit')}}</a>
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['slides.destroy', $slider->id] ]) !!}

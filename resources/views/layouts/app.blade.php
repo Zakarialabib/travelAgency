@@ -34,10 +34,6 @@
 </div>
 <!-- END: PRELOADER -->
 
-<!-- BEGIN: COLOR SWITCHER -->
-
-<!-- END: COLOR SWITCHER -->
-
 <!-- BEGIN: SITE-WRAPPER -->
 <div class="site-wrapper">
     <!-- BEGIN: NAV SECTION -->

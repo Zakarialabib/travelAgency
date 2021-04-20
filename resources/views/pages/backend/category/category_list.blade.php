@@ -1,5 +1,7 @@
 @extends('layouts.backend')
 
+@section('page-title')  {{__('Activity List')}}  @endsection
+
 @section('content')
 
     <div class="page-title">
