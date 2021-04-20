@@ -54,7 +54,7 @@ class Place extends Model  implements TranslatableContract
 
     public function city()
     {
-        return $this->hasOne(City::class, 'id', 'city_id');
+        return $this->belongsTo(City::class);
     }
 
     public function categories()

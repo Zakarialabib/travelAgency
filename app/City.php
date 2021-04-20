@@ -40,7 +40,7 @@ class City extends Model implements TranslatableContract
 
     public function places()
     {
-        return $this->hasMany(Place::class, 'city_id');
+        return $this->hasMany(Place::class);
     }
 
     public function getListByCountry($country_id)
