@@ -23,7 +23,7 @@
                         <div class="card-title text-center">
                             <div class="p-1"><img style="width: 120px;" src="{{asset('backend/app-assets/images/logo/logo.png')}}" alt="{{config('app.name')}}"></div>
                         </div>
-                        <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>{{__('Login with')}} {{config('app.name')}}</span></h6>
+                        <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><p>{{__('Login with')}} {{config('app.name')}}</p></h6>
                     </div>
                     <div class="card-content">
                         <div class="card-body">

@@ -155,12 +155,12 @@
                                             @if($key < 4)
                                                 <div class="place__amenities">
                                                     <img src="{{getImageUrl($item->icon)}}" alt="{{$item->name}}">
-                                                    <span>{{$item->name}}</span>
+                                                    <p>{{$item->name}}</p>
                                                 </div>
                                             @endif
                                         @endforeach
                                         @if(count($amenities) > 4)
-                                            <a class="open-popup" href="#show-amenities"><span class="hightlight-count">+({{count($amenities) - 4}})</span></a>
+                                            <a class="open-popup" href="#show-amenities"><p class="hightlight-count">+({{count($amenities) - 4}})</p></a>
                                         @endif
                                         <div class="popup-wrap" id="show-amenities">
                                             <div class="popup-bg popupbg-close"></div>
@@ -174,7 +174,7 @@
                                                         @foreach($amenities as $key => $item)
                                                             <div class="place__amenities">
                                                                 <img src="{{getImageUrl($item->icon)}}" alt="{{$item->name}}">
-                                                                <span>{{$item->name}}</span>
+                                                                <p>{{$item->name}}</p>
                                                             </div>
                                                         @endforeach
                                                     </div><!-- .hightlight-flex -->
@@ -259,7 +259,7 @@
                                                             <ul>
                                                                 @foreach($place->opening_hour as $opening)
                                                                     @if($opening['title'] && $opening['value'])
-                                                                        <li><span>{{$opening['title']}}</span> : {{$opening['value']}}</li>
+                                                                        <li><p>{{$opening['title']}}</p> : {{$opening['value']}}</li>
                                                                     @endif
                                                                 @endforeach
                                                             </ul>
@@ -365,7 +365,7 @@
                                 @guest
                                     <div class="login-for-review account logged-out">
                                         <a href="#" class="btn-login open-login">{{__('Login')}}</a>
-                                        <span>{{__('to review')}}</span>
+                                        <p>{{__('to review')}}</p>
                                     </div>
                                 @else
                                     <div class="review-form">
@@ -373,7 +373,7 @@
                                         <form id="submit_review">
                                             @csrf
                                             <div class="rate">
-                                                <span>{{__('Rate This Place')}}</span>
+                                                <p>{{__('Rate This Place')}}</p>
                                                 <div class="stars">
                                                     <a href="#" class="star-item" data-value="1" title="star-1">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
@@ -451,15 +451,15 @@
                                         <div class="field-sub">
                                             <ul>
                                                 <li>
-                                                    <span>{{__('Person')}}</span>
+                                                    <p>{{__('Person')}}</p>
                                                     <div class="shop-details__quantity">
-                                                    <span class="minus">
+                                                    <p class="minus">
                                                         <i class="la la-minus"></i>
-                                                    </span>
+                                                    </p>
                                                         <input type="number" name="person" value="0" class="qty person">
-                                                        <span class="plus">
+                                                        <p class="plus">
                                                         <i class="la la-plus"></i>
-                                                    </span>
+                                                    </p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -481,27 +481,27 @@
                                             <div class="field-sub">
                                                 <ul>
                                                     <li>
-                                                        <span>{{__('Adults')}}</span>
+                                                        <p>{{__('Adults')}}</p>
                                                         <div class="shop-details__quantity">
-                                                        <span class="minus">
+                                                        <p class="minus">
                                                             <i class="la la-minus"></i>
-                                                        </span>
+                                                        </p>
                                                             <input type="number" name="numbber_of_adult" value="0" class="qty number_adults">
-                                                            <span class="plus">
+                                                            <p class="plus">
                                                             <i class="la la-plus"></i>
-                                                        </span>
+                                                        </p>
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <span>{{__('Childrens')}}</span>
+                                                        <p>{{__('Childrens')}}</p>
                                                         <div class="shop-details__quantity">
-                                                        <span class="minus">
+                                                        <p class="minus">
                                                             <i class="la la-minus"></i>
-                                                        </span>
+                                                        </p>
                                                             <input type="number" name="numbber_of_children" value="0" class="qty number_childrens">
-                                                            <span class="plus">
+                                                            <p class="plus">
                                                             <i class="la la-plus"></i>
-                                                        </span>
+                                                        </p>
                                                         </div>
                                                     </li>
                                                 </ul>

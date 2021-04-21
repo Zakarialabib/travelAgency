@@ -244,7 +244,7 @@
                                     <div class="cities__item hover__box">
                                         <div class="cities__thumb hover__box__thumb">
                                             <a href="{{route('city_detail', $city->slug)}}" title="{{$city->name}}">
-                                                <img src="{{getImageUrl($city->thumb)}}" alt="newyork">
+                                                <img src="{{getImageUrl($city->thumb)}}" alt="{{$city->name}}">
                                             </a>
                                         </div>
                                         <h4 class="cities__name">{{$city['country']['name']}}</h4>

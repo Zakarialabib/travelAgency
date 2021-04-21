@@ -86,7 +86,7 @@
                 <br/>
                 <div class="row">
                     <div class="col-md-12">
-                        <h3><strong> {{__('Edit Your Profile Image</strong></h3>
+                        <h3><strong> {{__('Edit Your Profile Image')}}</strong></h3>
                     </div>
                     <div class="col-md-12">
                         <form method="post" id="profile_image_form" enctype="multipart/form-data" action="{{route('update-profile-image')}}">
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label>{{__('Enter New Image</label>
+                                        <label>{{__('Enter New Image')}}</label>
                                         <input class="form-control" type="file" id="customer_profile_photo" name="customer_profile_photo" required/>
                                     </div>
                                 </div>

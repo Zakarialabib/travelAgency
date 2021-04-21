@@ -12,6 +12,8 @@
     display: flex;
     width: 100%;
     margin: 2rem 0;
+    border-radius: 15px;
+    padding: 10px;
     transition: .2s ease-out all;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
@@ -30,6 +32,7 @@
   .city .city__title {
     font-size: 3rem;
     font-weight: bold;
+    color: #ee5000;
     margin: 0;
   }
   .city .city__description {
@@ -118,12 +121,16 @@
         <div class="city">
           <div class="city__image">
             <div class="wrapper">
+              <a href="{{route('city_detail', ['slug' => $city->slug])}}">
               <img src="{{asset('uploads/' . $city->thumb)}}" alt="{{$city->slug}}">
+              </a>
             </div>
           </div>
           <div class="city__body">
             <div class="head">
+              <a href="{{route('city_detail', ['slug' => $city->slug])}}">
               <h5 class="city__title">{{$city->name}}</h5>
+              </a>
               <p class="city__description">{{$city->seo_description}}</p>
             </div>
             <div class="foot">

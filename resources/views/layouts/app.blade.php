@@ -26,10 +26,10 @@
 <!-- BEGIN: PRELOADER -->
 <div id="loader" class="hidden load-full-screen">
     <div class="loading-animation">
-        <span> <i class="fa fa-plane"></i>    </span>
-        <span> <i class="fa fa-bed"></i>      </span>
-        <span> <i class="fa fa-ship"></i>     </span>
-        <span> <i class="fa fa-suitcase"></i> </span>
+        <p> <i class="fa fa-plane"></i>    </p>
+        <p> <i class="fa fa-bed"></i>      </p>
+        <p> <i class="fa fa-ship"></i>     </p>
+        <p> <i class="fa fa-suitcase"></i> </p>
     </div>
 </div>
 <!-- END: PRELOADER -->

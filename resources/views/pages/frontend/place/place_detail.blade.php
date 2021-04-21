@@ -223,6 +223,7 @@
                     </p>
                      <h4 class="tab-heading"> {{__('Included')}}
                      </h4>
+                     <div class="container">
                       @foreach($amenities as $key => $item)
                       <div class="col-md-6 col-sm-6">
                         <p>
@@ -231,6 +232,7 @@
                       </div>
                       @endforeach
                       </div>
+                    </div>
                    
              
                   @if(isset($place['video']))

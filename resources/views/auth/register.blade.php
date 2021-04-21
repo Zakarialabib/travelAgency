@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span>{{__('Using Email')}}</span></p>
+                        <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><p>{{__('Using Email')}}</p></p>
                         <div class="card-body pt-0">
                             <form class="form-horizontal" method="post" action="{{ route('register') }}">
                                 @csrf
