@@ -339,6 +339,6 @@
     </main><!-- .site-main -->
 @stop
 
-@push('scripts')
+@push('javascript')
     <script src="{{asset('assets/js/page_place_new.js')}}"></script>
 @endpush

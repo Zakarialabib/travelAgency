@@ -594,7 +594,7 @@
 
 @endsection
 
-@push('scripts')
+@push('javascript')
     <script src="{{ asset('frontend/assets/js/pages/flight/flight_search_management.js') }}" defer></script>
     <script src="{{ asset('frontend/assets/js/pages/hotel/hotel_search_management.js') }}" defer></script>
     <script type="text/javascript" async>
