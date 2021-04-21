@@ -15,12 +15,12 @@ mix.styles([
    'public/frontend/assets/css/styler.css',
    'public/frontend/assets/css/materialize.css',
    'public/frontend/assets/css/responsive.css',
-   'public/frontend/assets/css/bootstrap.min.css',
    'public/frontend/assets/css/animate.min.css',
    'public/frontend/assets/css/owl.carousel.css',
    'public/frontend/assets/css/owl-carousel-theme.css',
    'public/frontend/assets/css/flexslider.css',
    'public/frontend/assets/css/toastr.min.css',
+   'public/frontend/assets/css/bootstrap.min.css',
 ], 'public/frontend/assets/css/all.css');
  
 
@@ -32,10 +32,10 @@ mix.scripts([
    'public/frontend/assets/js/custom.js',
    'public/frontend/assets/js/main.js', 
    'public/frontend/assets/js/materialize.js',
-   'public/frontend/assets/js/bootstrap.min.js',
    'public/frontend/assets/js/toastr.min.js',
    'public/frontend/assets/js/bootbox.min.js',
    'public/frontend/assets/js/owl.carousel.min.js',
+   'public/frontend/assets/js/bootstrap.min.js',
    'public/frontend/assets/js/jquery-ui.min.js',
 ], 'public/frontend/assets/js/all.js');
 
