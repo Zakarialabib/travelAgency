@@ -20,9 +20,7 @@
 </head>
 
 <body>
-    @if(preg_match('~[0-9]~', url()->previous()))
     @php $url = url()->previous(); @endphp
-@endif
 <section>
     <table>
         <tr>

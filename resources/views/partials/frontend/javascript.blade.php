@@ -12,5 +12,4 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript"  src="{{asset('frontend/assets/js/all.js')}}"></script>
 <script type="text/javascript"  src="{{asset('admin/vendors/select2/select2.full.min.js')}}"></script>
-
 @stack('scripts')
