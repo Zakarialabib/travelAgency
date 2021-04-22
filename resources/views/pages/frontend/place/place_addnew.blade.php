@@ -86,7 +86,7 @@
                     </div>
                     <div class="field-group field-select">
                         <label for="lis_category">{{__('Category')}} *</label>
-                        <select class="form-control myselect" id="lis_category" name="category[]" data-placeholder="{{__('Select Category')}}" multiple required>
+                        <select class="form-control" id="lis_category" name="category[]" data-placeholder="{{__('Select Category')}}" multiple required>
                             @foreach($categories as $cat)
                                 <option value="{{$cat['id']}}" {{isSelected($cat['id'], $place ? $place['category']: $place)}}>{{$cat['name']}}</option>
                             @endforeach
@@ -95,7 +95,7 @@
                     </div>
                     <div class="field-group field-select">
                         <label for="lis_place_type">{{__('Place Type')}} *</label>
-                        <select class="form-control myselect" id="lis_place_type" name="place_type[]" data-placeholder="{{__('Select Place Type')}}" multiple required>
+                        <select class="form-control" id="lis_place_type" name="place_type[]" data-placeholder="{{__('Select Place Type')}}" multiple required>
                             @foreach($place_types as $cat)
                                 <optgroup label="{{$cat['name']}}">
                                     @foreach($cat['place_type'] as $type)

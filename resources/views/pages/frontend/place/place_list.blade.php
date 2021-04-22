@@ -17,7 +17,7 @@
             <form class="row">
                 <div class="col-md-4 form-group">
                     <label>{{ __('Select country') }}:</label>
-                    <select class="form-control myselect" id="select_category_id" name="country_id"
+                    <select class="form-control" id="select_category_id" name="country_id"
                         onchange="this.form.submit()">
                         <option value="">{{ __('All Country') }}</option>
                         @foreach($countries as $country)
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-md-4 form-group">
                     <label>{{ __('Select city') }}:</label>
-                    <select class="form-control myselect" id="select_city_id" name="city_id" onchange="this.form.submit()">
+                    <select class="form-control" id="select_city_id" name="city_id" onchange="this.form.submit()">
                         <option value="">{{ __('All City') }}</option>
                         @foreach($cities as $city)
                             @if($city_id)
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-md-4 form-group">
                     <label>{{ __('Select Categories') }}:</label>
-                    <select class="form-control myselect" id="select_category_id" name="category_id"
+                    <select class="form-control" id="select_category_id" name="category_id"
                         onchange="this.form.submit()">
                         <option value="">{{ __('All categories') }}</option>
                         @foreach($categories as $cat)
