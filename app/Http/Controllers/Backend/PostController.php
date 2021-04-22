@@ -7,6 +7,7 @@ use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Post;
+use App\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ class PostController extends Controller
 
     public function list(Request $request)
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $filter = [
             'category_id' => $request->category_id
         ];
@@ -58,6 +61,7 @@ class PostController extends Controller
             'post_type' => $post_type,
             'categories' => $categories,
             'filter' => $filter,
+            'user' => $user
         ]);
     }
 

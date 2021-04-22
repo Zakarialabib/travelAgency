@@ -117,11 +117,13 @@
                                         <i>{{__('Place deleted')}}</i>
                                     @endif
                                     <a class="dropdown-item" href="{{route('booking_edit', $booking->id)}}">{{__('Edit')}}</a>
+                                    @if($user->is_admin === 1)
                                     <form action="{{route('booking_delete',$booking->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="dropdown-item booking_delete">{{__('Delete')}}</button>
                                     </form>
+                                    @endif
                                     </div>
                                 </div>
                                 </td>

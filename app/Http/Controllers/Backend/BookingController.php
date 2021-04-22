@@ -17,6 +17,9 @@ class BookingController extends Controller
 {
     public function list()
     {
+
+        $user = User::where('is_admin','=',1)->first();
+
         $bookings = Booking::query()
       //      ->where('id', Auth::user()->id)
             ->with('user')
@@ -27,7 +30,8 @@ class BookingController extends Controller
 //        return $bookings;
 
         return view('pages.backend.bookings.booking_list', [
-            'bookings' => $bookings
+            'bookings' => $bookings,
+            'user' => $user
         ]);
     }
 

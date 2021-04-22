@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Slider;
 use Storage;
+use App\User;
 
 class SliderController extends Controller
 {
@@ -15,8 +16,9 @@ class SliderController extends Controller
      */
     public function index()
     {
+        $user = User::where('is_admin','=',1)->first();
         $sliders = Slider::orderby('id', 'desc')->paginate(10);
-        return view('pages.backend.slides.index', compact('sliders'));
+        return view('pages.backend.slides.index', compact('sliders','user'));
     }
 
     /**

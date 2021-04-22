@@ -13,12 +13,15 @@ class SupplierController extends Controller
 {
     public function list()
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $suppliers = Supplier::query()
             ->orderBy('created_at', 'desc')
             ->get();
 
         return view('pages.backend.supplier.supplier_list', [
-            'suppliers' => $suppliers
+            'suppliers' => $suppliers,
+            'user' => $user
         ]);
     }
 

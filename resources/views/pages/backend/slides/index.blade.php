@@ -34,9 +34,11 @@
                                     <td><img src="{{url('images')}}/{{$slider->photo}}" alt="image"></td>
                                     <td>
                                         <a class="btn btn-primary" href="{{route('slides.edit', $slider->id)}}">{{__('Edit')}}</a>
+                                        @if($user->is_admin === 1)
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['slides.destroy', $slider->id] ]) !!}
                                         <button class="btn btn-danger" type="submit">Delete</button>
-                                      {!! Form::close() !!}
+                                        {!! Form::close() !!}
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
