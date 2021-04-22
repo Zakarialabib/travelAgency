@@ -100,11 +100,13 @@
                                 <td class="golo-flex">
                                 <div class="btn-group row">
                                  <a class="btn-sm btn-warning place_edit" href="{{route('place_edit', $place->id)}}">{{__('Edit')}}</a>
+                                   @if($user->is_admin === 1)
                                     <form action="{{route('place_delete',$place->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="btn-sm btn-danger place_delete">{{__('Delete')}}</button>
                                     </form>
+                                    @endif
                                     @if($place->status === \App\Place::STATUS_PENDING)
                                         <button type="button" class="btn-sm btn-success place_approve" data-id="{{$place->id}}">{{__('Approve')}}</button>
                                     @endif

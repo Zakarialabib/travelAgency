@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Country;
+use App\User;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -23,10 +24,13 @@ class CountryController extends Controller
      */
     public function list()
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $countries = $this->country->getFullList();
 
         return view('pages.backend.country.country_list', [
-            'countries' => $countries
+            'countries' => $countries,
+            'user' => $user
         ]);
     }
 

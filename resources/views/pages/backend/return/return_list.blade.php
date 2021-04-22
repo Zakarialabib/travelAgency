@@ -164,11 +164,13 @@
                                     <a class="dropdown-item" href="{{route('return_edit', $return->id)}}">{{__('Edit')}}</a>
                                     <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Invoice::RETURN_TYPE, 'id' => $return->id])}}">{{__('Invoice')}}</a>
                                     <a class="dropdown-item" href="{{route('return_quotation', $return->id)}}">{{__('Bon de Commande')}}</a>
+                                    @if($user->is_admin === 1)
                                     <form action="{{route('return_delete',$return->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="dropdown-item user_delete">{{__('Delete')}}</button>
                                     </form>
+                                    @endif
                                   </div>    
                                 </div>
                                 </td>

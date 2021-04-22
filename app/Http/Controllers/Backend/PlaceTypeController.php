@@ -7,6 +7,7 @@ use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\PlaceType;
+use App\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,8 @@ class PlaceTypeController extends Controller
 
     public function list(Request $request)
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $param_category_id = $request->category_id;
         $categories = $this->category->getListAll(Category::TYPE_PLACE);
         $place_types = $this->place_type->getListByCat($param_category_id);
@@ -34,7 +37,8 @@ class PlaceTypeController extends Controller
         return view('pages.backend.place_type.place_type_list', [
             'categories' => $categories,
             'place_types' => $place_types,
-            'category_id' => (int)$param_category_id
+            'category_id' => (int)$param_category_id,
+            'user' => $user
         ]);
     }
 

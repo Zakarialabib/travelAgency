@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Backend;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Review;
+use App\User;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -24,6 +25,8 @@ class ReviewController extends Controller
 
     public function list()
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $reviews = Review::query()
             ->with('user')
             ->with('place')

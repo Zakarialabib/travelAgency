@@ -205,7 +205,7 @@ Route::group([
         Route::get('/places/create', 'PlaceController@create')->name('place_create');
         Route::post('/place/store', 'PlaceController@store')->name('place_store');
         Route::get('/place/edit/{id}', 'PlaceController@edit')->name('place_edit');
-        Route::put('/place/update', 'PlaceController@update')->name('place_update');
+        Route::put('/place/update/{id}', 'PlaceController@update')->name('place_update');
         Route::delete('/place/{id}', 'PlaceController@destroy')->name('place_delete');
     
         Route::get('/blog', 'PostController@list')->name('post_list_blog');

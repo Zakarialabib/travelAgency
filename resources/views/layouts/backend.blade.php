@@ -18,7 +18,7 @@
 @yield('css')
 <!-- END Custom CSS-->
 </head>
-<body class="vertical-layout vertical-content-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-content-menu" data-col="2-columns">
+<body class="vertical-layout vertical-overlay-menu 2-columns fixed-navbar pace-done" data-open="click" data-menu="vertical-overlay-menu" data-col="2-columns">
 
 <!-- fixed-top-->
 @include('partials.backend.header')
@@ -46,6 +46,7 @@
 <!-- BEGIN VENDOR JS-->
 @include('partials.backend.js')
 @yield('javascript')
+
 {!! Toastr::render() !!}
 <!-- END PAGE LEVEL JS-->
 </body>

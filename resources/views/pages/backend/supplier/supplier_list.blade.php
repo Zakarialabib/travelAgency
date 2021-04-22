@@ -51,11 +51,13 @@
                                 <td>{{formatDate($supplier->created_at, 'H:i d/m/Y')}}</td>
                                 <td>
                                 <a class="btn-sm btn-warning" href="{{route('supplier_edit', $supplier->id)}}">{{__('Edit')}}</a>
+                                @if($user->is_admin === 1)
                                     <form action="{{route('supplier_delete',$supplier->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="btn-sm btn-danger user_delete">{{__('Delete')}}</button>
                                     </form>
+                                @endif
                                 </td>
                             </tr>
                         @endforeach

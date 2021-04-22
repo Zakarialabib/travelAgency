@@ -9,6 +9,7 @@ use App\City;
 use App\Country;
 use App\Amenities;
 use App\Place;
+use App\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,8 @@ class PlaceController extends Controller
 
     public function list(Request $request)
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $param_country_id = $request->country_id;
         $param_city_id = $request->city_id;
         $param_cat_id = $request->category_id;
@@ -63,6 +66,8 @@ class PlaceController extends Controller
             'city_id' => (int)$param_city_id,
             'categories' => $categories,
             'cat_id' => (int)$param_cat_id,
+            'user' => $user
+
         ]);
     }
 
@@ -87,7 +92,8 @@ class PlaceController extends Controller
     public function store(Request $request)
     {
         $request['slug'] = getSlug($request, 'name');
-        $rule_factory = RuleFactory::make([
+
+        $data = $this->validate($request, [
             'user_id' => '',
             'country_id' => '',
             'city_id' => '',
@@ -103,11 +109,6 @@ class PlaceController extends Controller
             'address' => '',
             'lat' => '',
             'lng' => '',
-            'email' => '',
-            'phone_number' => '',
-            'website' => '',
-            'social' => '',
-            'opening_hour' => '',
             'gallery' => '',
             'video' => '',
             'booking_type' => '',
@@ -117,7 +118,6 @@ class PlaceController extends Controller
             'seo_description' => '',
             'itinerary' => '',
         ]);
-        $data = $this->validate($request, $rule_factory);
 
         
         if (!isset($data['social'])) {
@@ -143,11 +143,11 @@ class PlaceController extends Controller
             $data['reference'] = $latest->reference;
         }
 
-        $model = new Place();
-        $model->fill($data);
-        $model->save();
+        $place = new Place();
+        $place->fill($data);
+        $place->save();
 
-        if($model){
+        if($place){
             Toastr::success('Destination ajoutée avec succès');
         }
         else{
@@ -177,17 +177,23 @@ class PlaceController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
+        
+        $place = Place::find($id);
+
+        dd($place);
+
         $request['slug'] = getSlug($request, 'name');
-        $rule_factory = RuleFactory::make([
+        
+        $request->validate([
             'country_id' => '',
             'city_id' => '',
             'category' => '',
             'place_type' => '',
             '%name%' => '',
-            'slug' => '',
             '%description%' => '',
+            'slug' => '',
             'price_range' => '',
             'price' => '',
             'date' => '',
@@ -195,11 +201,6 @@ class PlaceController extends Controller
             'address' => '',
             'lat' => '',
             'lng' => '',
-            'email' => '',
-            'phone_number' => '',
-            'website' => '',
-            'social' => '',
-            'opening_hour' => '',
             'gallery' => '',
             'video' => '',
             'booking_type' => '',
@@ -209,8 +210,8 @@ class PlaceController extends Controller
             'seo_description' => '',
             'itinerary' => '',
         ]);
-        $data = $this->validate($request, $rule_factory);
-     
+
+
         if (!isset($data['social'])) {
             $data['social'] = null;
         }
@@ -224,13 +225,12 @@ class PlaceController extends Controller
             $thumb_file = $this->uploadImage($thumb, '');
             $data['thumb'] = $thumb_file;
         }
-    
-        $model = Place::find($request->place_id);
-        $model->fill($data);
 
-        if ($model->save()) {
+        $input = $request->all();
+        $place->update($input);
+    
             return redirect(route('place_list'))->with('success', 'Destination à jour!');
-        }
+    
     }
 
     public function updateStatus(Request $request)
