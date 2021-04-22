@@ -62,11 +62,13 @@
                                             data-seodescription="{{$category->seo_description}}"
                                     >{{__('Edit')}}
                                     </button>
+                                    @if($user->is_admin === 1)
                                     <form class="d-inline" action="{{route('category_delete',$category->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="btn-sm btn-danger category_delete">{{__('Delete')}}</button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

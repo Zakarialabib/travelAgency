@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Backend;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\City;
+use App\User;
 use App\Country;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
@@ -25,6 +26,8 @@ class CityController extends Controller
 
     public function list(Request $request)
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $param_country_id = $request->country_id;
         $countries = $this->country->getFullList();
         $cities = $this->city->getListByCountry($param_country_id);
@@ -34,7 +37,8 @@ class CityController extends Controller
         return view('pages.backend.city.city_list', [
             'countries' => $countries,
             'cities' => $cities,
-            'country_id' => (int)$param_country_id
+            'country_id' => (int)$param_country_id,
+            'user' => $user
         ]);
     }
 

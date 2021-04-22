@@ -63,11 +63,13 @@
                                 <td><input type="checkbox" class="js-switch post_status" data-id="{{$post->id}}" {{isChecked($post->status, \App\Post::STATUS_ACTIVE)}}/></td>
                                 <td>
                                     <a class="btn btn-warning btn-xs place_edit" href="{{route('post_edit', $post->id)}}">{{__('Edit')}}</a>
+                                    @if($user->is_admin === 1)
                                     <form class="d-inline" action="{{route('post_delete', $post->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="btn btn-danger btn-xs post_delete">{{__('Delete')}}</button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

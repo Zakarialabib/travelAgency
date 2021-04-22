@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Amenities;
+use App\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,11 @@ class AmenitiesController extends Controller
     {
         $amenities = $this->amenities->getListAll();
 
+        $user = User::where('is_admin','=',1)->first();
+
         return view('pages.backend.amenities.amenities_list', [
-            'amenities' => $amenities
+            'amenities' => $amenities,
+            'user' => $user
         ]);
     }
 

@@ -86,11 +86,13 @@
                                             data-seodescription="{{$city->seo_description}}"
                                     >{{__('Edit')}}
                                     </button>
+                                    @if($user->is_admin === 1)
                                     <form class="d-inline" action="{{route('city_delete',$city->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="btn-sm btn-danger city_delete">{{__('Delete')}}</button>
                                     </form>
+                                    @endif
                                     </div>
                                 </td>
                             </tr>

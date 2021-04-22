@@ -44,13 +44,16 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('faq.edit', $faq->id) }}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>{{ __('Edit') }}</a>
+                                    @if($user->is_admin === 1)
                                     <form  id="deleteform" class="d-inline-block" action="{{ route('faq.delete', $faq->id ) }}" method="post">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $faq->id }}">
+                                      
                                         <button type="submit" class="btn btn-danger btn-sm" id="delete">
                                         {{ __('Delete') }}
                                         </button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Faq;
 use Session;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,10 +13,13 @@ class FaqController extends Controller
 
 
     public function faq(Request $request){     
+
+        $user = User::where('is_admin','=',1)->first();
+
         $faqs = Faq::query()
         ->orderBy('id', 'DESC')->get();
         
-        return view('pages.backend.faq.index', compact('faqs'));
+        return view('pages.backend.faq.index', compact('faqs','user'));
     }
 
     // Add Faq

@@ -41,7 +41,7 @@ class Place extends Model  implements TranslatableContract
 
     protected $fillable = [
         'user_id', 'country_id', 'city_id', 'category', 'place_type', 'slug', 'price_range',  'price',
-        'amenities', 'address', 'lat', 'lng', 'email', 'phone_number', 'website', 'social', 'date', 'opening_hour',
+        'amenities', 'address', 'lat', 'lng', 'date',
         'thumb', 'gallery', 'video', 'booking_type', 'link_bookingcom', 'status', 'seo_title', 'seo_description','menu', 'itinerary'
     ];
 

@@ -6,6 +6,7 @@ use App\Profile;
 use App\Services\PortalCustomNotificationHandler;
 use App\User;
 use App\Booking;
+use App\Wallet;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -110,6 +111,10 @@ class RegisterController extends Controller
             $booking->update(['user_id' => $user->id]);
             PortalCustomNotificationHandler::bookingAttachedToUser($booking);
         }
+
+        $userWallet = $user->wallet()->create([
+            'balance' => 0,
+        ]);
 
         PortalCustomNotificationHandler::registrationSuccessful($user);
 
