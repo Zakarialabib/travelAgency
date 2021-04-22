@@ -272,84 +272,10 @@
                       </i>
                     </h3>
                   </div>
-                  <div class="toggle-list">
-                    <ul class="place__contact">
-                      @if($place->phone_number)
-                      <li>
-                        <i class="la la-phone">
-                        </i>
-                        <a href="tel:{{$place->phone_number}}" rel="nofollow">{{$place->phone_number}}
-                        </a>
-                      </li>
-                      @endif
-                      @if($place->website)
-                      <li>
-                        <i class="la la-globe">
-                        </i>
-                        <a href="//{{$place->website}}" target="_blank" rel="nofollow">{{$place->website}}
-                        </a>
-                      </li>
-                      @endif
-                      @if($place->email)
-                      <li>
-                        <i class="la la-envelope">
-                        </i>
-                        <a href="mailto:{{$place->email}}" rel="nofollow">{{$place->email}}
-                        </a>
-                      </li>
-                      @endif
-                      @foreach($place->social as $social)
-                      @if($social['name'] && $social['url'])
-                      <li>
-                        <i class="{{SOCIAL_LIST[$social['name']]['icon']}}">
-                        </i>
-                        <a href="{{SOCIAL_LIST[$social['name']]['base_url'] . $social['url']}}" title="{{$social['url']}}" rel="nofollow" target="_blank">{{$social['url']}}
-                        </a>
-                      </li>
-                      @endif
-                      @endforeach
-                    </ul>
-                  </div>
+                 
                 </div>
                 <!-- .place__box -->
-                @php
-                $have_opening_hour = false;
-                foreach ($place->opening_hour as $opening):
-                if ($opening['title'] && $opening['value']):
-                $have_opening_hour = true;
-                endif;
-                endforeach
-                @endphp
-                @if($have_opening_hour)
-                <div class="place__box place__box-open">
-                  <div class="store-detail">
-                    {{--
-                    <span class="open">Open Now
-                    </span>--}}
-                    <div class="toggle-select">
-                      <div class="toggle-show">
-                        <h3 class="tab-heading"> {{__('Opening Hours')}}   
-                          <i class="las la-angle-down">
-                          </i>
-                        </h3>
-                      </div>
-                      <div class="toggle-list">
-                        <ul>
-                          @foreach($place->opening_hour as $opening)
-                          @if($opening['title'] && $opening['value'])
-                          <li>
-                            <span>{{$opening['title']}}
-                            </span> : {{$opening['value']}}
-                          </li>
-                          @endif
-                          @endforeach
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- .place__box -->
-                @endif
+               
                 <div class="place__box place__box--reviews">
                   <h3 class="place__title--reviews">
                     {{__('Review')}} ({{count($reviews)}})
@@ -733,18 +659,7 @@
   <!-- .site-main -->
 @endsection
 
-@push('scripts')
+@push('javascrp')
     <script src="{{asset('frontend/assets/js/page_place_detail.js')}}"></script>
-  <!-- 
- <script src="{{asset('frontend/assets/js/intlTelInput.min.js')}}"></script>
-<script>
-  var input = document.querySelector("#phone_number");
-  window.intlTelInput(input, {
-    initialCountry: "MA",
-    autoHideDialCode: true,
-    autoPlaceholder: true,
-    nationalMode: false,
-  });
-</script>
- --> 
+
 @endpush
