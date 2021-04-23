@@ -59,9 +59,7 @@ h5 {
 	margin: 10px 0
 }
 
-.section-title {
-	padding-top: 30px
-}
+
 
 .site-wrapper {
 	margin: auto
@@ -1144,21 +1142,7 @@ h5 {
 	}
 }
 
-.section-title h2 {
-	padding-bottom: 30px;
-	font-weight: 800;
-	letter-spacing: 2px;
-	color: #fff
-}
 
-.section-title h4 {
-	font-weight: bold;
-	position: relative
-}
-
-.section-title p {
-	line-height: 2
-}
 
 .icon-desc h4 {
 	margin-top: 30px;

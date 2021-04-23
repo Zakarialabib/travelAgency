@@ -24,4 +24,5 @@
     t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
     document.head.appendChild(t);
   });
+  </script>
 @stack('scripts')

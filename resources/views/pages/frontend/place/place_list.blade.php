@@ -66,6 +66,7 @@
             <div class="mw-grid golo-grid grid-4 ">
                 @foreach($places as $place)
                     <div class="grid-item">
+                    <div>
                         <div class="places-item hover__box">
                             <div class="places-item__thumb hover__box__thumb">
                                 <a title="{{ $place->name }}"
@@ -77,14 +78,6 @@
                                 data-id="{{ $place->id }}" title="Add Wishlist">
                                 <i class="la la-bookmark la-24"></i>
                             </a>
-                            {{--   
-                            @guest()
-                                <a class="place-item__cart open-login"><i class="las la-shopping-cart la-24"></i> </a>
-                            @else
-                                <a href="{{ url('add-to-cart/'.$place->id) }}" class="place-item__cart"> <i
-                                                            class="las la-shopping-cart la-24"></i> </a>
-                             @endguest
-                             --}}
                         <div class="places-item__info">
                             <div class="places-item__category">
                                 @foreach($place['place_types'] as $type)
@@ -95,14 +88,14 @@
                                     title="{{ $place->name }}">{{ $place->name }}</a></h3>
                             <div class="place-list__currency">
                                 {{ $place->price }}DH
-
                             </div>
                         </div>
                     </div>
+                  </div>
                 </div>
                 @endforeach
             </div>
         </div><!-- .mw-box -->
     </div>
 </main><!-- .site-main -->
-@stop
+@endsection

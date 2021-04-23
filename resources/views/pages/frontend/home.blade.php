@@ -30,7 +30,7 @@
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#EagleRider" style="text-transform: uppercase;" aria-controls="EagleRider"
+                                    <a href="https://www.eaglerider.com/casablanca-morocco" style="text-transform: uppercase;" aria-controls="EagleRider"
                                         role="tab" data-toggle="tab">
                                         <img class="" style="text-transform: uppercase;width:30px;height:15px;"
                                             src="{{ asset('frontend/assets/images/eagle-rider.png') }}">EagleRider
@@ -377,7 +377,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-6">
-                        <img src="{{ asset('images/img_about_1.jpg') }}" style="width: 100%;padding: 50px 0;">
+                        <img src="{{ asset('images/img_about_1.jpg') }}" style="width: 100%;height:100%;padding: 50px 0;">
                     </div>
                 </div>
             </div>
@@ -386,7 +386,7 @@
     <!-- END: WHO WE ARE -->
 
     <!-- BEGIN: BEST OFFERS -->
-    <section class="best_offers" style="background-image: url({{ asset('images/home-path.svg') }});">
+    <section class="best_offers" style="background-image: url({{ asset('public/images/home-path.svg') }});">
         <div class="container">
             <div class="section-title text-center">
                 <h2><a href="{{ route('best_offers') }}" style="color: #fff;">{{ __('BEST OFFERS') }}</a></h2>
@@ -594,7 +594,7 @@
 
 @endsection
 
-@push('javascript')
+@push('scripts')
     <script src="{{ asset('frontend/assets/js/pages/flight/flight_search_management.js') }}" defer></script>
     <script src="{{ asset('frontend/assets/js/pages/hotel/hotel_search_management.js') }}" defer></script>
     <script type="text/javascript" async>

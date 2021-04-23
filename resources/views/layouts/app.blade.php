@@ -66,4 +66,4 @@
 @include('partials.frontend.javascript')
 @yield('javascript')
 </body>
-</html>
+</html> 

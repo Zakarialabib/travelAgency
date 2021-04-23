@@ -21,15 +21,15 @@
                     <table class="table table-striped table-bordered col-5-datatable">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
-                            <th width="10%">{{__('User')}}</th>
-                            <th width="10%">{{__('Customer')}}</th>
-                            <th width="10%">{{__('Grand total')}}</th>
-                            <th width="5%">{{__('Payment status')}}</th>
-                            <th width="5%">{{__('Created at')}}</th>
-                            <th width="5%">{{__('View details')}}</th>
-                            <th width="5%">{{__('Status')}}</th>
-                            <th width="10%">Action</th>
+                            <th>ID</th>
+                            <th>{{__('User')}}</th>
+                            <th>{{__('Customer')}}</th>
+                            <th>{{__('Grand total')}}</th>
+                            <t>{{__('Payment status')}}</th>
+                            <t>{{__('Created at')}}</th>
+                            <t>{{__('View details')}}</th>
+                            <t>{{__('Status')}}</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>

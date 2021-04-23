@@ -1,3 +1,4 @@
+<div>
 <div class="places-item hover__box">
     <div class="places-item__thumb hover__box__thumb">
         <a title="{{$place->name}}" href="{{route('place_detail', $place->slug)}}"><img src="{{getImageUrl($place->thumb)}}" alt="{{$place->name}}"></a>
@@ -5,11 +6,6 @@
     <a href="#" class="place-item__addwishlist @if($place->wish_list_count) remove_wishlist active @else @guest open-login @else add_wishlist @endguest @endif" data-id="{{$place->id}}" title="Add Wishlist">
         <i class="la la-bookmark la-24"></i>
     </a>
-  {{--   @guest()
-       <a class="place-item__cart open-login"><i class="las la-shopping-cart la-24"></i> </a>
-    @else 
-       <a href="{{ url('add-to-cart/'.$place->id) }}" class="place-item__cart">  <i class="las la-shopping-cart la-24"></i>   </a>
-    @endguest   --}}
     <div class="places-item__info">
         <div class="places-item__category">
             @foreach($place['place_types'] as $type)
@@ -27,9 +23,7 @@
                     <span class="places-item__count">({{$place->reviews_count}} {{__('reviews')}})</span>
                 </span>
             </div>
-            <div class="places-item__currency">
-                {{PRICE_RANGE[$place['price_range']]}}
-            </div>
         </div>
     </div>
+</div>
 </div>
