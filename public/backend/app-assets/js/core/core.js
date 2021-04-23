@@ -74,7 +74,17 @@ $(document).ready(function(){
                         $("#user-notf-count").html(data);
                       }
               });
-    }, 5000);
+    }, 1000 * 60 * 10);
+
+    setInterval(function(){
+        $.ajax({
+                type: "GET",
+                url:$("#booking-notf-count").data('href'),
+                success:function(data){
+                    $("#booking-notf-count").html(data);
+                  }
+          });
+    },  1000 * 60 * 10);
 });
 
 $(document).on('click','#notf_user',function(){
@@ -91,17 +101,6 @@ $(document).on('click','#user-notf-clear',function(){
 
 // booking NOTIFICATION
 
-$(document).ready(function(){
-    setInterval(function(){
-            $.ajax({
-                    type: "GET",
-                    url:$("#booking-notf-count").data('href'),
-                    success:function(data){
-                        $("#booking-notf-count").html(data);
-                      }
-              });
-    }, 5000);
-});
 
 $(document).on('click','#notf_booking',function(){
   $("#booking-notf-count").html('0');
