@@ -134,7 +134,7 @@
               <p class="city__description">{{$city->seo_description}}</p>
             </div>
             <div class="foot">
-              <p class="card-text"><small class="text-muted">{{$city->places->count()}}</small></p>
+              <p class="card-text"><small class="text-muted">{{$city->places->count()}}</small>{{__('Place')}}</p>
               <a href="{{route('city_detail', ['slug' => $city->slug])}}" class="btn mybtn1">{{__('More')}}</a>
             </div>
           </div>

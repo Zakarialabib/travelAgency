@@ -178,7 +178,7 @@
 <br/>
 @endsection
 
-@section('javascript')
+@push('scripts')
     <script type="text/javascript">
         let minPrice = '{{$minimumPrice}}';
         let maxPrice = '{{$maximumPrice}}';
@@ -187,4 +187,4 @@
     </script>
     <script type="text/javascript" src="{{asset('frontend/assets/js/pages/hotel/hotel_search_management.js')}}"></script>
     <script type="text/javascript" src="{{asset('frontend/assets/js/pages/hotel/search_result.js')}}"></script>
-@endsection
+@endpush

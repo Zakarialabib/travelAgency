@@ -92,9 +92,6 @@
     <div class="row">
        <div class="col-12 col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title text-center">{{__('Booking Size')}}</h4>
-                </div>
                 <div class="card-content collapse show">
                     <div class="card-body pt-0">
                         <div class="row">
@@ -709,8 +706,7 @@
 @endsection
 
 
-@section('javascript')
-    <script src="{{asset('backend/app-assets/js/scripts/pages/dashboard-sales.min.js')}}" type="text/javascript"></script>
+@push('scripts')
     <script>
         document.querySelectorAll('.js-date').forEach(el => {
             el.addEventListener('click', event => {
@@ -733,4 +729,4 @@
             });
         };
     </script>
-@endsection
+@endpush

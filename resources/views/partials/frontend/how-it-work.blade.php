@@ -46,7 +46,7 @@
     </div>
 </section>
 
-@section('javascript')
+@push('javascript')
     <script type="text/javascript">
         /* SLIDER SETTINGS */
         jQuery(function($){
@@ -92,4 +92,4 @@
     <script src="{{asset('frontend/assets/js/pages/flight/flight_search_management.js')}}"></script>
     <script src="{{asset('frontend/assets/js/pages/hotel/hotel_search_management.js')}}"></script>
 
-@endsection
+@endpush

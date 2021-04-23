@@ -95,20 +95,38 @@
                         </a>
                     </div>
                     <!--.right-header__destinations -->
+                    <div class="right-header__languages">
+                        <a href="#" style="color: white;font-size: 17px;text-transform: capitalize;">
+                          {{ (app()->getLocale()) }}
+                             @if(count($languages) > 1)
+                            <i class="las la-angle-down la-12"></i>
+                            @endif
+                        </a>
+                        @if(count($languages) > 1)
+                        <ul>
+                            @foreach($languages as $language)
+                            @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
+                            <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}"><img
+                                        src="{{flagImageUrl($language->code)}}"></a></li>
+                            @endif
+                            @endforeach
+                        </ul>
+                        @endif
+                    </div>
                     @if(auth()->guest())
                      <div class="account">
                        <a style="color: white;font-size: 17px;">
                           |&nbsp;&nbsp;{{__('account')}}
                              <i class="la la-angle-down la-12"></i>
-                                </a>
+                         </a>
                       <div class="account-sub">
-                            <ul><li class="">
-                        <a href="{{url('/login')}}" >
-                            {{__('Sign in')}}
-                        </a></li>
-                        <li>
-                        <a title="Sign Up"  href="{{url('/register')}}">{{__('Sign Up')}}</a>
-                        </li>
+                       <ul>
+                            <li>
+                                <a href="{{url('/login')}}" >{{__('Sign in')}} </a>
+                            </li>
+                            <li>
+                                <a title="Sign Up"  href="{{url('/register')}}">{{__('Sign Up')}}</a>
+                            </li>
                         </ul>
                        </div> 
                     </div><!-- .account -->
@@ -139,28 +157,8 @@
                         </div>
                     </div><!-- .account -->
                     @endif
-                    <div class="right-header__languages">
-                        <a href="#" style="color: white;font-size: 17px;text-transform: capitalize;">
-                          {{ (app()->getLocale()) }}
-                             @if(count($languages) > 1)
-                            <i class="las la-angle-down la-12"></i>
-                            @endif
-                        </a>
-                        @if(count($languages) > 1)
-                        <ul>
-                            @foreach($languages as $language)
-                            @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
-                            <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}"><img
-                                        src="{{flagImageUrl($language->code)}}"></a></li>
-                            @endif
-                            @endforeach
-                        </ul>
-                        @endif
-                    </div>
                 </div><!-- .right-header -->
             </div><!-- .col-md-6 -->
         </div><!-- .row -->
-
-
     </div><!-- .container-fluid -->
 </header><!-- .site-header -->

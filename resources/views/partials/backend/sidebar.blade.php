@@ -42,7 +42,7 @@
                         <ul class="menu-content">
                             <li><a class="menu-item" href="{{url('/bookings/flight/user')}}">{{__('My Bookings')}}</a>
                             </li>
-                            @role('admin')
+                             @role('admin')
                             <li><a class="menu-item" href="{{url('/bookings/flight/agent')}}">{{__('Agent')}}</a>
                             </li>
                             <li><a class="menu-item" href="{{url('/bookings/flight/customer')}}">{{__('Customer')}}</a>
@@ -56,12 +56,13 @@
                         <ul class="menu-content">
                             <li><a class="menu-item" href="{{url('/bookings/hotel/user')}}">{{__('My Bookings')}}</a>
                             </li>
+                            {{-- 
                             @role('admin')
                             <li><a class="menu-item" href="{{url('/bookings/hotel/agent')}}">{{__('Agent')}}</a>
                             </li>
                             <li><a class="menu-item" href="{{url('/bookings/hotel/customer')}}">{{__('Customer')}}</a>
                             </li>
-                            @endrole
+                            @endrole --}}
                         </ul>
                     </li>
 

@@ -41,7 +41,7 @@
                         @endif
                     </li>
                     @role('admin')
-                    <li class="dropdown nav-item">
+                 {{--    <li class="dropdown nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:;" id="notf_user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user"></i>
                             <span data-href="{{ route('user-notf-count') }}" id="user-notf-count">{{ App\Notification::countRegistration() }}</span>
@@ -49,7 +49,7 @@
                             <ul class="dropdown-menu" style="width:300px;">
                             <div class="dropdownmenu-wrapper" data-href="{{ route('user-notf-show') }}" id="user-notf-show">
                         </ul>
-                    </li>
+                    </li >--}}
                     <li class="dropdown nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:;" id="notf_booking" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
