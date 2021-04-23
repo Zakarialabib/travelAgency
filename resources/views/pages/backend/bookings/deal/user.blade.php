@@ -12,7 +12,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="info">{{number_format(count($userBookings))}}</h3>
-                                <h6>Attempted Bookings</h6>
+                                <h6>{{__('Attempted Bookings')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-briefcase info font-large-2 float-right"></i>
@@ -32,7 +32,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="success">{{number_format($paidBookings)}}</h3>
-                                <h6>Paid Bookings</h6>
+                                <h6>{{__('Paid Bookings')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-check success font-large-2 float-right"></i>
@@ -52,7 +52,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="warning">{{number_format($pendingBookings)}}</h3>
-                                <h6>Pending/Failed Bookings</h6>
+                                <h6>{{__('Pending/Failed Bookings')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-close warning font-large-2 float-right"></i>
@@ -71,7 +71,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Deal Bookings</h4>
+                    <h4 class="card-title">{{__('Deal Bookings')}}</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -85,16 +85,16 @@
                         <table class="table table-striped table-responsive table-bordered file-export">
                             <thead>
                             <tr>
-                                <th>(S/N)</th>
+                                <th>{{__('(S/N)')}}</th>
                                 <th>{{__('Reference')}}</th>
-                                <th>Deal Name</th>
+                                <th>{{__('Deal Name')}}</th>
                                 <th>{{__('Adults')}}</th>
                                 <th>{{__('Children')}}</th>
                                 <th>{{__('Infants')}}</th>
-                                <th>Amount Paid</th>
+                                <th>{{__('Amount Paid')}}</th>
                                 <th>{{__('Payment Status')}}</th>
-                                <th>Date Booked</th>
-                                <th>Actions</th>
+                                <th>{{__('Date Booked')}}</th>
+                                <th>{{__('Actions')}}</th>
                             </tr>
                             </thead>
                             <tbody>

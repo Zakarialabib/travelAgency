@@ -20,7 +20,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="info">{{count($bookings)}}</h3>
-                                <h6>Reservations Attempts</h6>
+                                <h6>{{__('Reservations Attempts')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-home info font-large-2 float-right"></i>
@@ -40,7 +40,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="primary">{{number_format($paidSuccessfulBookings)}}</h3>
-                                <h6>Payed Successful Reservations</h6>
+                                <h6>{{__('Payed Successful Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-check primary font-large-2 float-right"></i>
@@ -60,7 +60,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="warning">{{number_format($paidUnsuccessfulBookings)}}</h3>
-                                <h6>Payed Unsuccessful Reservations</h6>
+                                <h6>{{__('Payed Unsuccessful Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-fire warning font-large-2 float-right"></i>
@@ -80,7 +80,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="danger">{{number_format($failedBookings)}}</h3>
-                                <h6>Failed Reservations</h6>
+                                <h6>{{__('Failed Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-shield danger font-large-2 float-right"></i>
@@ -100,7 +100,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="danger">{{number_format($cancelledBookings)}}</h3>
-                                <h6>Cancelled Reservations</h6>
+                                <h6>{{__('Cancelled Reservations')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-close danger font-large-2 float-right"></i>
@@ -120,7 +120,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">My Hotel Reservations</h4>
+                    <h4 class="card-title">{{__('My Hotel Reservations')}}</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">

@@ -14,7 +14,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="info">{{$customerReservations}}</h3>
-                                <h6>Reservations Created</h6>
+                                <h6>{{__('Reservations Created')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-check info font-large-2 float-right"></i>
@@ -34,7 +34,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="success">{{$issuedTickets}}</h3>
-                                <h6>Issued Ticket</h6>
+                                <h6>{{__('Issued Ticket')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-plane success font-large-2 float-right"></i>
@@ -54,7 +54,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="warning">{{number_format($canceledReservations)}}</h3>
-                                <h6>Cancelled Reservation</h6>
+                                <h6>{{__('Cancelled Reservation')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-close warning font-large-2 float-right"></i>
@@ -74,7 +74,7 @@
                         <div class="media d-flex">
                             <div class="media-body text-left">
                                 <h3 class="danger">{{$voidTickets}}</h3>
-                                <h6>Void Tickets</h6>
+                                <h6>{{__('Void Tickets')}}</h6>
                             </div>
                             <div>
                                 <i class="icon-shield danger font-large-2 float-right"></i>
@@ -93,7 +93,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Customer Flight Reservations</h4>
+                    <h4 class="card-title">{{__('Customer Flight Reservations')}}</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -108,15 +108,15 @@
                             <thead>
                             <tr>
                                 <th>{{__('Reference')}}</th>
-                                <th>PNR</th>
+                                <th>{{__('PNR')}}</th>
                                 <th>{{__('Customer Name')}}</th>
-                                <th>Amount</th>
-                                <th>Ticket Time Limit</th>
+                                <th>{{__('Amount')}}</th>
+                                <th>{{__('Ticket Time Limit')}}</th>
                                 <th>{{__('Payment Status')}}</th>
                                 <th>{{__('Reservation Status')}}</th>
-                                <th>Ticket Status</th>
-                                <th>Created Date</th>
-                                <th>Actions</th>
+                                <th>{{__('Ticket Status')}}</th>
+                                <th>{{__('Created Date')}}</th>
+                                <th>{{__('Actions')}}</th>
                             </tr>
                             </thead>
                             <tbody>
