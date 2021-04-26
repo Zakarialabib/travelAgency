@@ -14,6 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use nilsenj\Toastr\Facades\Toastr;
 
 class NewsletterController extends Controller
 {
@@ -39,9 +40,7 @@ class NewsletterController extends Controller
         ]);
 
         Newsletter::create($request->all());
-
-        Toastr::succes("Email Ajoutée avec succès !");
-
+ 
         return redirect()->back();
     }
 

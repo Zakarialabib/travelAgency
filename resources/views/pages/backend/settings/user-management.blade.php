@@ -283,7 +283,6 @@
                                           </button>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <button class="dropdown-item btn edit_user" data-toggle="modal" data-target=".edit_user_{{$user->user_id}}" value="{{$user->user_id}}"><i class="la la-edit"></i> {{__('Edit')}}</button>
-                                            <button class="dropdown-item btn delete_user" value="{{$user->user_id}}"><i class="la la-trash"></i> {{__('Delete')}}</button>
                                               </div>
 				                           </div>
                                          </td>

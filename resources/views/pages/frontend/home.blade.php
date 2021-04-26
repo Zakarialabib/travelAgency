@@ -30,8 +30,7 @@
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="https://www.eaglerider.com/casablanca-morocco" style="text-transform: uppercase;" aria-controls="EagleRider"
-                                        role="tab" data-toggle="tab">
+                                    <a href="https://www.eaglerider.com/casablanca-morocco"  target="_blank" style="text-transform: uppercase;" aria-controls="EagleRider">
                                         <img class="" style="text-transform: uppercase;width:30px;height:15px;"
                                             src="{{ asset('frontend/assets/images/eagle-rider.png') }}">EagleRider
                                     </a>
