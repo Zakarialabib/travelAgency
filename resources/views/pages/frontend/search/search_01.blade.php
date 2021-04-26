@@ -184,7 +184,7 @@
     </main><!-- .site-main -->
 @endsection
 
-@push('javascript')
+@push('scripts')
     <script src="{{asset('frontend/assets/js/page_business_category.js')}}"></script>
     <script>
     $( '.close-filter' ).on( 'click', function() {

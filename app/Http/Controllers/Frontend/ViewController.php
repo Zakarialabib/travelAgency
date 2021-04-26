@@ -174,10 +174,10 @@ class ViewController extends Controller
             'keyword' => $keyword
         ]);
     }
-        public function termsConditions()
-    {
+    public function termsConditions() {
+
         $faqs = Faq::where('status', 1)->get();
-        return view('frontend.page.termsconditions', compact('faqs'));
+        return view('pages.frontend.page.termsconditions', compact('faqs'));
     }
 
     public function pageContact()

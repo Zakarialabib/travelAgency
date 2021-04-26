@@ -267,6 +267,6 @@
     </main><!-- .site-main -->
 @stop
 
-@push('javascript')
+@push('scripts')
     <script type="text/javascript" src="{{asset('frontend/assets/js/page_city_detail.js')}}"></script>
 @endpush

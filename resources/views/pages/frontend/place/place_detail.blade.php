@@ -223,7 +223,7 @@
                     </p>
                      <h4 class="tab-heading"> {{__('Included')}}
                      </h4>
-                     <div class="container">
+                     <div class="container my-1">
                       @foreach($amenities as $key => $item)
                       <div class="col-md-6 col-sm-6">
                         <p>
@@ -233,7 +233,6 @@
                       @endforeach
                       </div>
                     </div>
-                   
              
                   @if(isset($place['video']))
                   <div class="place__box">
@@ -262,20 +261,7 @@
                   <a href="https://maps.google.com/?q={{$place->address}}" title="Direction" target="_blank" rel="nofollow">({{__('Direction')}})
                   </a>
                 </div>
-              </div>
-              <!-- .place__box -->
-              <div class="place__box">
-                <div class="toggle-select">
-                  <div class="toggle-show">
-                    <h3 class="tab-heading">{{__('Contact Info')}}  
-                      <i class="las la-angle-down">
-                      </i>
-                    </h3>
-                  </div>
-                 
-                </div>
-                <!-- .place__box -->
-               
+              </div>               
                 <div class="place__box place__box--reviews">
                   <h3 class="place__title--reviews">
                     {{__('Review')}} ({{count($reviews)}})
@@ -659,7 +645,6 @@
   <!-- .site-main -->
 @endsection
 
-@push('javascrp')
+@push('scripts')
     <script src="{{asset('frontend/assets/js/page_place_detail.js')}}"></script>
-
 @endpush

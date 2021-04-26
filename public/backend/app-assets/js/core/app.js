@@ -262,10 +262,10 @@
         if (screenfull.enabled) {
             $(document).on(screenfull.raw.fullscreenchange, function(){
                 if(screenfull.isFullscreen){
-                    $('.nav-link-expand').find('i').toggleClass('ft-minimize ft-maximize');
+                    $('.nav-link-expand').find('i').toggleClass('la la-expand');
                 }
                 else{
-                    $('.nav-link-expand').find('i').toggleClass('ft-maximize ft-minimize');
+                    $('.nav-link-expand').find('i').toggleClass('la la-expand');
                 }
             });
         }

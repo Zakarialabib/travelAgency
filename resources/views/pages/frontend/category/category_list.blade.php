@@ -17,6 +17,7 @@
          <div class="mw-grid golo-grid grid-4 ">
            @foreach($categories as $category)
             <div class="grid-item">
+            <div>
                 <div class="places-item hover__box">
                     <div class="places-item__thumb hover__box__thumb">
                       <a title="{{$category->name}}" href="{{route('category_detail', $category->slug)}}"><img src="{{getImageUrl($category->image)}}" alt="{{$category->name}}">
@@ -25,6 +26,7 @@
                       </a>
                     </div>
                   </div>
+                </div>
                 </div>
              @endforeach
             </div>

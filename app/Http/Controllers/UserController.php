@@ -309,7 +309,7 @@ class UserController extends Controller
         $profile->address = $r->customer_address;
         $update = $profile->update();
 
-        return view('frontend.user.user_profile');
+        return view('pages.backend.user.user_profile');
     }
 
 
@@ -329,7 +329,7 @@ class UserController extends Controller
             ->whereIn('id', $wishlists)
             ->paginate();
 
-        return view('frontend.user.user_wishlist', [
+        return view('pages.backend.user.user_wishlist', [
             'places' => $places
         ]);
     }
