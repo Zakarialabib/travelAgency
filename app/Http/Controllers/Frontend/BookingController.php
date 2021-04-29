@@ -61,8 +61,8 @@ class BookingController extends Controller
                 'email' => $data['email'],
                 'phone_number' => $data['phone_number'],
                 'type' => $data['type'],
-            ]);            
-    
+            ]);
+                
     
             if ($booking) {
                 PortalCustomNotificationHandler::bookingCreated($booking);
@@ -88,7 +88,7 @@ class BookingController extends Controller
          
         $cart_booking = new CartBooking(
             $booking->place->name,
-            $booking->place->gallery,
+            $booking->place->thumb,
             $booking->place->price,
             Carbon::parse($booking->start_date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
             $booking->numbber_of_adult,     // number of persons
@@ -98,7 +98,7 @@ class BookingController extends Controller
 
         $cart[$booking->id] = [
             "name" => $booking->place->name,
-            "gallery" => $booking->place->gallery,
+            "thumb" => $booking->place->thumb,
             "quantity" => $booking->numbber_of_adult,
             "days" => Carbon::parse($booking->start_date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
             "price" => $booking->place->price,
@@ -167,7 +167,7 @@ class BookingController extends Controller
 class CartBooking 
 {
     public $name;
-    public $gallery;
+    public $thumb;
     public $price;
     public $days;
     public $persons;

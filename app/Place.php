@@ -135,4 +135,9 @@ class Place extends Model  implements TranslatableContract
             ->first();
         return $place;
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'place_id', 'id');
+    }
 }

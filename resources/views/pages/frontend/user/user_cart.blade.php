@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="page-title__content">
                     <h1 class="page-title__name">
-                            {{__('Checkout')}}
+                            {{__('Cart')}}
                     </h1>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         <tr id="booking-{{$id}}">
                             <td>
                                 <div class="row">
-                                <div class="col-sm-3 hidden-xs"><img  width="100" height="100" class="img-responsive"/></div>
+                                <div class="col-sm-3 hidden-xs"><img src="{{asset('uploads/' .  $details['thumb'])}}" width="100" height="100" class="img-responsive"/></div>
                                     <div class="col-sm-9">
                                         <h4 class="nomargin">{{ $details['name'] }}</h4>
                                     </div>
