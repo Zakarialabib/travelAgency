@@ -25,7 +25,7 @@ class Offer extends Model  implements TranslatableContract
         'status' => 'integer'
     ];
 
-    protected $table = 'places';
+    protected $table = 'offers';
 
     protected $fillable = [
         'user_id', 'category', 'slug',  'price',

@@ -35,7 +35,9 @@ class OfferController extends Controller
     {
         $user = User::where('is_admin','=',1)->first();
 
-        $offers = Offer::all();
+        $offers = Offer::query()
+        ->with('categories')
+        ->get();
 
         $categories = $this->category->getListAll(Category::TYPE_OFFER);
 
