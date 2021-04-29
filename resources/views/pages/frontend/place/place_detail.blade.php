@@ -535,6 +535,11 @@
                     <i class="la la-angle-down">
                     </i>
                   </div>
+                  <div class="field-select field-date">
+                    <input type="text" name="end_date" placeholder="End Date *" class="datepicker" autocomplete="off">
+                    <i class="la la-angle-down">
+                    </i>
+                  </div>
                   <input type="hidden" name="type" value="{{\App\Booking::TYPE_BOOKING_FORM}}">
                   <input type="hidden" name="place_id" value="{{$place->id}}">
                   <button class="btn booking_submit_btn">{{__('Send')}}

@@ -26,15 +26,13 @@ class BookingController extends Controller
 
     public function booking(Request $request)
     {
-        if ($request->date) {
-            $request['date'] = Carbon::parse($request->date);
-        }
 
         $data = $this->validate($request, [
             'place_id' => '',
             'numbber_of_adult' => '',
             'numbber_of_children' => '',
             'date' => '',
+            'end_date' => '',
             'name' => '',
             'email' => '',
             'phone_number' => '',
@@ -42,79 +40,74 @@ class BookingController extends Controller
             'type' => ''
         ]);
 
-        $data['user_id'] = Auth::user() ? Auth::user()->id : NULL; 
-
-        // generate refenrce number
-        $latest = Booking::latest()->first();
         $place = Place::find($data['place_id']);
-        if($latest) {
-            $data['reference'] = $place->reference . $data['user_id'] . $latest->id . Carbon::now()->format('dmy');
-        } else {
-            $data['reference'] = $place->reference . $data['user_id'] . '1' . Carbon::now()->format('dmy');
-        }
+
+        if($place) {
+
+            // generate refenrce number
+            $reference = Booking::latest()->first() ? 
+                $place->reference . Booking::latest()->first()->id . Carbon::now()->format('dmy') : 
+                $place->reference . '1' . Carbon::now()->format('dmy');
+            
+
+            $booking = $place->bookings()->create([
+                'user_id' => Auth::id() ?? NULL,
+                'reference' => $reference,
+                'numbber_of_adult' => $data['numbber_of_adult'],
+                'numbber_of_children' => $data['numbber_of_children'],
+                'date' => Carbon::parse($data['date']),
+                'end_date' => Carbon::parse($data['end_date']),
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'phone_number' => $data['phone_number'],
+                'type' => $data['type'],
+            ]);            
+    
+    
+            if ($booking) {
+                PortalCustomNotificationHandler::bookingCreated($booking);
+
+                $this->addToCart($booking);
+            
+                Toastr::success('Vous avez créé votre réservation avec succès','Success');
         
-
-        $booking = new Booking();
-        $booking->fill($data);
-
-        if ($booking->save()) {
-            PortalCustomNotificationHandler::bookingCreated($booking);
-            $place = Place::find($request['place_id']);
-
+                return $this->response->formatResponse(200, $booking, 'Vous avez créé votre réservation avec succès!');
+            }
         }
-        
-        Toastr::success('Vous avez créé votre réservation avec succès','Success');
 
-        return $this->response->formatResponse(200, $booking, 'Vous avez créé votre réservation avec succès!');
     }
 
     public function cart()
     {
-        return view('frontend.user.user_cart');
+        return view('pages.frontend.user.user_cart');
     }
     
-    public function addToCart($id)
+    public function addToCart($booking)
     {
-        $place = Place::find($id);
-        if(!$place) {
-            abort(404);
-        }
         $cart = session()->get('cart');
-        // if cart is empty then this the first place
-        if(!$cart) {
-            $cart = [
-                    $id => [
-                        "name" => $place->name,
-                        "gallery" => $place->gallery,
-                        "quantity" => 1,
-                        "price" => $place->price,
-                        'person' => 1,                        
-                    ]
-            ];
-            
-            session()->put('cart', $cart);
-            return back()->with('success', 'Offer added to cart successfully!');      
-        }
-        // if cart not empty then check if this place exist then increment quantity
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-            session()->put('cart', $cart);
-            
-            return back()->with('success', 'Offer added to cart successfully!');      
-        }
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
-            "name" => $place->name,
-            "gallery" => $place->gallery,
-            "quantity" => 1,
-            "price" => $place->price,
-            'person' => 1,
-            
+         
+        $cart_booking = new CartBooking(
+            $booking->place->name,
+            $booking->place->gallery,
+            $booking->place->price,
+            Carbon::parse($booking->start_date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
+            $booking->numbber_of_adult,     // number of persons
+            $booking->numbber_of_adult,
+            $booking->numbber_of_children,
+        );
+
+        $cart[$booking->id] = [
+            "name" => $booking->place->name,
+            "gallery" => $booking->place->gallery,
+            "quantity" => $booking->numbber_of_adult,
+            "days" => Carbon::parse($booking->start_date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
+            "price" => $booking->place->price,
+            'adults' => $booking->numbber_of_adult,
+            'children' => $booking->numbber_of_children,                        
         ];
-        
-        session()->put('cart', $cart);
-        
-        return with('success', 'Offer added to cart successfully!');      
+
+        // add element to cart 
+        session()->put('cart', $cart);      
     }
 
     public function update(Request $request)
@@ -168,7 +161,26 @@ class BookingController extends Controller
 
         return number_format($total, 2);
     }
-    
 
+}
 
+class CartBooking 
+{
+    public $name;
+    public $gallery;
+    public $price;
+    public $days;
+    public $persons;
+    public $adults;
+    public $children;
+
+    function __construct($name, $gallery, $price, $days, $persons, $adults, $children) {
+        $this->name = $name;
+        $this->gallery = $gallery;
+        $this->price = $price;
+        $this->days = $days;
+        $this->persons = $persons;
+        $this->adults = $adults;
+        $this->children = $children;
+    }
 }

@@ -132,14 +132,16 @@ Route::group([
         Route::get('/categorie/type/{slug}', 'CategoryController@typeDetail')->name('category_type_detail');
         Route::get('/categories', 'CategoryController@search')->name('category_search');
         Route::post('/review', 'ReviewController@create')->name('review_create')->middleware('auth');
-        Route::get('/cart', 'BookingController@cart')->middleware('auth');
-        Route::get('/add-to-cart/{id}', 'BookingController@addToCart')->name('add-to-cart')->middleware('auth');
-        Route::put('/update-cart', 'BookingController@update')->middleware('auth');
-        Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart')->middleware('auth');
+       
         Route::post('/bookings', 'BookingController@booking')->name('booking_submit');
         Route::get('/places/map', 'PlaceController@getListMap')->name('place_get_list_map');
         Route::get('/villes/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
         Route::get('/villes', 'CityController@search')->name('city_search');
+
+        Route::get('/cart', 'BookingController@cart');
+        Route::get('/add-to-cart/{id}', 'BookingController@addToCart')->name('add-to-cart');
+        Route::put('/update-cart', 'BookingController@update');
+        Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart');
 
 });
 
