@@ -57,7 +57,7 @@ class SaleController extends Controller
         //dd(['users' => $users, 'customers' => $customers]);
           
         return view('pages.backend.sale.sale_create', [
-            'reference_no' => $lastSale->reference_no,
+            'reference_no' => $reference,
             'users' => $users,
             'customers' => $customers,
             'booking' => $booking,
