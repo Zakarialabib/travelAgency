@@ -48,7 +48,7 @@
                                                         </div>
                         
                                                         <div class="form-group">
-                                                            <label for="place_description">Description
+                                                            <label for="place_description">{{__('Description')}}
                                                                 <small>({{$language->code}})</small>
                                                                 : *</label>
                                                             <textarea type="text" class="form-control tinymce_editor" id="place_description" required name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}></textarea>
