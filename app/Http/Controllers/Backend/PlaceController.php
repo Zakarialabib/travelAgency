@@ -119,11 +119,6 @@ class PlaceController extends Controller
             'itinerary' => '',
         ]);
 
-        
-        if (!isset($data['social'])) {
-            $data['social'] = null;
-        }
-        
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;
         }
@@ -212,10 +207,6 @@ class PlaceController extends Controller
         ]);
 
 
-        if (!isset($data['social'])) {
-            $data['social'] = null;
-        }
-        
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;
         }

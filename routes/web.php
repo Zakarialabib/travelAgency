@@ -209,7 +209,15 @@ Route::group([
         Route::get('/place/edit/{id}', 'PlaceController@edit')->name('place_edit');
         Route::put('/place/update/{id}', 'PlaceController@update')->name('place_update');
         Route::delete('/place/{id}', 'PlaceController@destroy')->name('place_delete');
-    
+   
+        Route::resource('/offer', 'OfferController');
+        Route::get('/offer', 'OfferController@list')->name('offer_list');
+        Route::get('/offer/create', 'OfferController@create')->name('offer_create');
+        Route::post('/offer/store', 'OfferController@store')->name('offer_store');
+        Route::get('/offer/edit/{id}', 'OfferController@edit')->name('offer_edit');
+        Route::put('/offer/update/{id}', 'OfferController@update')->name('offer_update');
+        Route::delete('/offer/{id}', 'OfferController@destroy')->name('offer_delete');
+
         Route::get('/blog', 'PostController@list')->name('post_list_blog');
         Route::get('/pages', 'PostController@list')->name('post_list_page');
     

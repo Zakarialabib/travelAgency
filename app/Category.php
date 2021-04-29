@@ -33,6 +33,7 @@ class Category extends Model implements TranslatableContract
     const IS_FEATURE = 1;
 
     const TYPE_PLACE = "place";
+    const TYPE_OFFER = "offer";
     const TYPE_POST = "post";
 
     public function place_type()

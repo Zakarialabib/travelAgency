@@ -58,6 +58,12 @@ class ViewController extends Controller
         $this->response = $response;
     }
 
+    public function comingsoon(){
+        
+        return view('errors.comingsoon');
+
+    }
+
     public function home(){
 
         $deals = TravelPackage::where('status', 1)

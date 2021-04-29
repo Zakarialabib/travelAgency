@@ -1,0 +1,77 @@
+@extends('layouts.backend')
+@section('page-title')  {{__('Offer List')}}  @endsection
+
+@section('content')
+
+    <div class="page-title">
+        <div class="title_left">
+            <h3>{{__('Offer')}}</h3>
+        </div>
+        <div class="title_right">
+            <div class="pull-right">
+                <a class="btn btn-primary" href="">{{__('Add Offer')}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
+            <div class="x_panel">
+                <div class="x_content">
+                    <table class="table table-striped table-bordered golo-datatable">
+                        <thead>
+                        <tr>
+                            <th >ID</th>
+                            <th >Image</th>
+                            <th>{{__('Offer name')}}</th>
+                            <th>{{__('Activity')}}</th>
+                            <th>{{__('Status')}}</th>
+                            <th width="15%">{{__('Action')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($offers as $offer)
+                            <tr>
+                                <td>{{$offer->id}}</td>
+                                <td><img class="offer_list_thumb" src="{{getImageUrl($offer->thumb)}}" alt="page thumb"></td>
+                                <td>{{$offer->name}}</td>
+                                <td>
+                                    @foreach($offer->categories as $cat)
+                                        <span class="category_name">{{$cat->name}}</span>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @if($offer->status === \App\Offer::STATUS_PENDING)
+                                        {{STATUS[$offer->status]}}
+                                    @else
+                                        <input type="checkbox" class="js-switch offer_status" name="status" data-id="{{$offer->id}}" {{isChecked(1, $offer->status)}} />
+                                    @endif
+                                </td>
+                                <td class="golo-flex">
+                                <div class="btn-group row">
+                                 <a class="btn-sm btn-warning offer_edit" href="{{route('offer_edit', $offer->id)}}">{{__('Edit')}}</a>
+                                   @if($user->is_admin === 1)
+                                    <form action="{{route('offer_delete',$offer->id)}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="button" class="btn-sm btn-danger offer_delete">{{__('Delete')}}</button>
+                                    </form>
+                                    @endif
+                                    @if($offer->status === \App\Offer::STATUS_PENDING)
+                                        <button type="button" class="btn-sm btn-success offer_approve" data-id="{{$offer->id}}">{{__('Approve')}}</button>
+                                    @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @endsection
+@push('scripts')
+    <script src="{{asset('admin/js/page_offer.js')}}"></script>
+@endpush

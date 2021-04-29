@@ -29,11 +29,6 @@ class CreatePlacesTable extends Migration {
 			$table->string('address')->nullable();
 			$table->float('lat', 10, 0)->nullable();
 			$table->float('lng', 10, 0)->nullable();
-			$table->string('email')->nullable();
-			$table->string('phone_number')->nullable();
-			$table->string('website')->nullable();
-			$table->string('social', 500)->nullable()->default('')->comment('array');
-			$table->string('opening_hour', 500)->nullable();
 			$table->date('date')->nullable();
 			$table->string('thumb')->nullable();
 			$table->text('gallery')->nullable();
