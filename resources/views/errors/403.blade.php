@@ -1,19 +1,5 @@
-@extends('layouts.error')
+@extends('errors::illustrated-layout')
 
-@section('page-title') 403 @endsection
-
-@section('content')
-
-    <section class="flexbox-container">
-        <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="col-md-4 col-10 p-0">
-                <div class="card-header bg-transparent border-0">
-                    <h2 class="error-code text-center mb-2">403</h2>
-                    <h3 class="text-uppercase text-center">Access Denied/Forbidden !</h3>
-                    <a href="{{url('/')}}" class="btn btn-primary btn-block"><i class="ft-arrow-left"></i> GO BACK</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-@endsection
+@section('title', __('Access Denied/Forbidden !'))
+@section('code', '403')
+@section('message', __($exception->getMessage() ?: 'Access Denied/Forbidden !'))

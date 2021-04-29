@@ -1,5 +1,5 @@
 @php
-    $table_style = "style='width:100%;margin-left:auto;marrgin-right:auto;'";
+    $table_style = "style='width:100%;margin-left:auto;marrgin-right:auto;background-color:#ee5000;color:#fff'";
     $font_size_14 = "style='font-size:14px'";
     $w100 = "style='width:100%'";
 @endphp

@@ -7,6 +7,7 @@ use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Language;
+use App\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -24,12 +25,15 @@ class CategoryController extends Controller
 
     public function list($type)
     {
+        $user = User::where('is_admin','=',1)->first();
+
         $categories = $this->category->getListAll($type);
 
 //        return $categories;
 
         return view('pages.backend.category.category_list', [
             'categories' => $categories,
+            'user' => $user,
             'type' => $type
         ]);
     }
