@@ -66,12 +66,12 @@ class OfferController extends Controller
 
         $data = $this->validate($request, [
             'user_id' => '',
-            'category' => '',
-            '%name%' => '',
+            '%name%' => 'required',
+            '%description%' => 'required',
             'slug' => '',
-            '%description%' => '',
-            'price' => '',
-            'address' => '',
+            'price' => 'required|numeric',
+            'category' => '',
+            'address' => 'max:255',
             'gallery' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'seo_title' => '',
@@ -99,15 +99,7 @@ class OfferController extends Controller
         }
 
         $offer = new Offer();
-        $offer->fill($data);
-        $offer->save();
-
-        if($offer){
-            Toastr::success('Destination ajoutée avec succès');
-        }
-        else{
-            Toastr::error("Impossible d'ajouter la destination");
-        }
+        $offer->fill($data)->save();
 
         return redirect()->route('offer_list');
 
@@ -132,17 +124,18 @@ class OfferController extends Controller
         $request['slug'] = getSlug($request, 'name');
         
         $request->validate([
-            '%name%' => '',
-            '%description%' => '',
+            'user_id' => '',
+            '%name%' => 'required',
+            '%description%' => 'required',
             'slug' => '',
+            'price' => 'required|numeric',
             'category' => '',
-            'price' => '',
-            'itinerary' => '',
-            'address' => '',
+            'address' => 'max:255',
             'gallery' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'seo_title' => '',
             'seo_description' => '',
+            'itinerary' => '',
         ]);
 
 
@@ -159,7 +152,7 @@ class OfferController extends Controller
         $input = $request->all();
         $offer->update($input);
     
-            return redirect(route('offer_list'))->with('success', 'Destination à jour!');
+         return redirect(route('offer_list'))->with('success', 'Destination à jour!');
     
     }
 

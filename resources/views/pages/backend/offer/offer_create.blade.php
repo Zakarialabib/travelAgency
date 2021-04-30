@@ -52,9 +52,18 @@
                 </div>
             </div>
             <div class="form-group">
-                {{ Form::label('price', 'Price') }}
-                {{ Form::text('price', null, array('class' => 'form-control')) }}
+                <label for="category">{{ __('Category') }}: *</label>
+                <select class="form-control chosen-select" id="category" name="category[]" multiple
+                    data-live-search="true" required>
+                    @foreach($categories as $cat)
+                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                    @endforeach
+                </select>
             </div>
+            <div class="form-group">
+            <label for="price">{{__('Price')}}: *</label>
+             <input type="text" class="form-control" id="price" name="price" placeholder="{{__('Price')}}" autocomplete="off" required>        
+             </div>
             <div class="form-group">
                 <p class="lead">{{ __('itinerary') }}</p>
                 <div id="itinerary_list">
