@@ -29,7 +29,6 @@ class Place extends Model  implements TranslatableContract
         'user_id' => 'integer',
         'country_id' => 'integer',
         'city_id' => 'integer',
-        'price_range' => 'integer',
         'price' => 'double',
         'lat' => 'double',
         'lng' => 'double',
@@ -40,9 +39,9 @@ class Place extends Model  implements TranslatableContract
     protected $table = 'places';
 
     protected $fillable = [
-        'user_id', 'country_id', 'city_id', 'category', 'place_type', 'slug', 'price_range',  'price',
-        'amenities', 'address', 'lat', 'lng', 'date',
-        'thumb', 'gallery', 'video', 'booking_type', 'link_bookingcom', 'status', 'seo_title', 'seo_description','menu', 'itinerary'
+        'user_id', 'country_id', 'city_id', 'category', 'place_type', 'slug',  'price',
+        'amenities', 'address', 'lat', 'lng', 'thumb', 'gallery', 'video', 'booking_type',
+        'link_bookingcom', 'status', 'seo_title', 'seo_description','menu', 'itinerary'
     ];
 
     protected $hidden = [];
@@ -97,7 +96,6 @@ class Place extends Model  implements TranslatableContract
     {
         return $this->hasMany(Wishlist::class, 'place_id', 'id')->where('user_id', Auth::id());
     }
-
 
     public function getAll()
     {

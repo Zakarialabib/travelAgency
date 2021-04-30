@@ -111,16 +111,13 @@ class OfferController extends Controller
 
         $categories = $this->category->getListAll(Category::TYPE_OFFER);
 
-
         return view('pages.backend.offer.offer_edit',compact('categories', 'offer'));
     }
 
 
     public function update($id, Request $request)
     {
-        
         $offer = Offer::find($id);
-
         $request['slug'] = getSlug($request, 'name');
         
         $request->validate([
