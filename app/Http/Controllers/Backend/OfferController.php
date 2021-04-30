@@ -64,7 +64,7 @@ class OfferController extends Controller
     {
         $request['slug'] = getSlug($request, 'name');
 
-        $data = $this->validate($request, [
+        $data = $this->validate($request, array(
             'user_id' => '',
             '%name%' => 'required',
             '%description%' => 'required',
@@ -77,7 +77,7 @@ class OfferController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ]);
+        ));
 
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;
