@@ -75,10 +75,6 @@
                                         <label for="price">{{__('Price')}}: *</label>
                                         <input type="text" class="form-control" id="price" name="price" value="{{$place->price}}"  autocomplete="off">
                                         </div>
-                                        <div class="form-group col-md-12">
-                                        <label for="date">{{__('Offre Date')}}: *</label>
-                                        <input type="date" class="form-control" id="date" name="date"  value="{{$place->date}}" autocomplete="off">
-                                        </div>
                                     </div>
                         
                         

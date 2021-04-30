@@ -39,8 +39,6 @@ class Offer extends Model  implements TranslatableContract
     const STATUS_PENDING = 2;
     const STATUS_DELETE = 4;
 
-
-
     public function categories()
     {
         return $this->belongsToJson(Category::class, 'category');

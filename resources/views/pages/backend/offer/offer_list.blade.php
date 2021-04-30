@@ -9,7 +9,7 @@
         </div>
         <div class="title_right">
             <div class="pull-right">
-                <a class="btn btn-primary" href="">{{__('Add Offer')}}</a>
+                <a class="btn btn-primary" href="{{route('offer_create')}}">{{__('Add Offer')}}</a>
             </div>
         </div>
     </div>
