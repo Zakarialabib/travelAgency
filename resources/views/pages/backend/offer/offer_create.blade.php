@@ -53,16 +53,15 @@
             </div>
             <div class="form-group">
                 <label for="category">{{ __('Category') }}: *</label>
-                <select class="form-control chosen-select" id="category" name="category[]" multiple
-                    data-live-search="true" required>
+                <select class="form-control myselect" id="category" name="category[]" multiple>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-            <label for="price">{{__('Price')}}: *</label>
-             <input type="text" class="form-control" id="price" name="price" placeholder="{{__('Price')}}" autocomplete="off" required>        
+                <label for="price">{{__('Price')}}: *</label>
+                 <input type="text" class="form-control" id="price" name="price" placeholder="{{__('Price')}}" autocomplete="off" required>        
              </div>
             <div class="form-group">
                 <p class="lead">{{ __('itinerary') }}</p>
@@ -71,11 +70,11 @@
                         <div class="col-md-11">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="itinerary[0][question]"
-                                    placeholder="{{ __('Enter Day') }}">
+                                    placeholder="{{ __('Title') }}">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control tinymce_editor" name="itinerary[0][answer]"
-                                    rows="3" placeholder="Enter Description">
+                                    rows="3" placeholder="{{ __('Description') }}">
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -106,11 +105,6 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="offer_address">{{ __('Offer Address') }}: *</label>
-                <input type="text" class="form-control" id="offer_address" name="address" value="Maroc"
-                    placeholder="{{ __('Offer Address') }}" autocomplete="off">
-            </div>
             <div id="map"></div>
             <div id="golo_seo">
                 <p class="lead">{{ __('SEO') }}</p>
@@ -140,5 +134,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('admin/js/page_place_create.js') }}"></script>
+    <script src="{{ asset('admin/js/page_offer.js') }}"></script>
 @endpush

@@ -54,12 +54,8 @@ Route::get('/issue-ticket/{pnr}','FlightController@issueTicket');
 Route::get('/void-ticket/{pnr}','FlightController@voidTicket');
 Route::post('/custom-sign-in','UserController@signIn');
 Route::post('/custom-sign-up','UserController@signUp');
-Route::get('/user/my-place', 'UserController@pageMyPlace')->name('user_my_place')->middleware('auth');
-Route::delete('/user/my-place', 'UserController@deleteMyPlace')->name('user_my_place_delete')->middleware('auth');
 Route::post('/wishlist', 'UserController@addWishlist')->name('add_wishlist')->middleware('auth');
 Route::delete('/wishlist', 'UserController@removeWishlist')->name('remove_wishlist')->middleware('auth');
-Route::get('/user/profile', 'UserController@pageProfile')->name('user_profile')->middleware('auth');
-Route::put('/user/profile', 'UserController@updateProfile')->name('user_profile_update')->middleware('auth');     
 Route::get('/user/wishlist', 'UserController@pageWishList')->name('user_wishlist')->middleware('auth');
 
 
@@ -71,15 +67,13 @@ Route::get('/get-logged-in-user',function(){
 });
 
 
-
-
 Route::group([
               'namespace' => 'Frontend', 
               'middleware' => []], function(){
                   
         Route::get('/', 'ViewController@home');
         Route::get('/accueil', 'ViewController@home')->name('home');                
-        Route::get('/language/{locale}', 'ViewController@changeLanguage')->name('change_language');
+        Route::get('/langue/{locale}', 'ViewController@changeLanguage')->name('change_language');
         Route::get('/itinerary-booking','ViewController@itineraryBooking')->middleware('flight.search.param','flight.selected','flight.pricing.info');
         Route::get('/available-itineraries','ViewController@availableItineraries')->middleware('flight');
         Route::get('/flight-booking-payment-page','ViewController@flightBookingPayment')->middleware('flight.search.param','flight.selected','flight.pricing.info','pnr');
@@ -90,8 +84,6 @@ Route::group([
         Route::get('/recherche', 'ViewController@search')->name('search');
         Route::get('/termes-et-conditions', 'ViewController@termsConditions')->name('page_terms_conditions');
         Route::get('/contact', 'ViewController@pageContact')->name('page_contact');
-        Route::get('/about', 'ViewController@pageAbout')->name('page_about');
-        Route::post('/about', 'ViewController@sendAbout')->name('page_about_send');
         Route::post('/contact', 'ViewController@sendContact')->name('page_contact_send');
         Route::get('/ajax-search', 'ViewController@ajaxSearch');
         Route::get('/ajax-search-listing', 'ViewController@searchListing');
@@ -212,7 +204,6 @@ Route::group([
         Route::put('/place/update/{id}', 'PlaceController@update')->name('place_update');
         Route::delete('/place/{id}', 'PlaceController@destroy')->name('place_delete');
    
-        Route::resource('/offer', 'OfferController');
         Route::get('/offer', 'OfferController@list')->name('offer_list');
         Route::get('/offer/create', 'OfferController@create')->name('offer_create');
         Route::post('/offer/store', 'OfferController@store')->name('offer_store');
