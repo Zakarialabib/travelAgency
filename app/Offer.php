@@ -78,4 +78,9 @@ class Offer extends Model  implements TranslatableContract
             ->first();
         return $place;
     }
+
+    public function bookings()
+    {
+        return $this->morphMany(Booking::class, ' bookable');
+    }
 }

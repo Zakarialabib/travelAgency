@@ -116,7 +116,7 @@ Route::group([
         Route::get('/offres/{slug}', 'PlaceController@detail')->name('place_detail');
         Route::get('/offres/filter', 'PlaceController@getListFilter')->name('place_get_list_filter');
 
-        Route::get('/offer/{slug}', 'OfferController@show')->name('frontend.offer.show');
+        Route::get('/offers/{slug}', 'OfferController@show')->name('frontend.offer.show');
         
         Route::get('/blog/all', 'PostController@list')->name('post_list_all');
         Route::post('/post', 'PostController@send')->name('send');

@@ -646,6 +646,13 @@ $('#stoggle').on('click', function(){
                 let formData = getFormData($form);
                 GL_BOOKING.ajaxBooking(formData)
             });
+
+            $('#booking_offer_form').submit(function (event) {
+                event.preventDefault();
+                let $form = $(this);
+                let formData = getFormData($form);
+                GL_BOOKING.ajaxOfferBooking(formData)
+            });
         },
 
         ajaxBooking: function (formData) {
@@ -687,6 +694,36 @@ $('#stoggle').on('click', function(){
                 }
             });
 
+        },
+
+        ajaxOfferBooking: function(formData) {
+            // call api
+            $.ajax({
+                dataType: 'json',
+                url: `${app_url}/bookings`,
+                method: "post",
+                data: formData,
+                beforeSend: function () {
+                    $('.booking_submit_btn').html('Sending...').prop('disabled', true);
+                },
+                success: function (data) {
+                    $('.booking_submit_btn').html('Send').prop('disabled', false);
+                    if (data.code === 200) {
+                        $('.booking_success').show();
+                        $('.booking_error').hide();
+                        
+                    } else {
+                        $('.booking_success').hide();
+                        $('.booking_error').show();
+                    }
+                },
+                error: function (e) {
+                    $('.booking_submit_btn').html('Send').prop('disabled', false);
+                    $('.booking_success').hide();
+                    $('.booking_error').show();
+                    console.log(e);
+                }
+            });
         }
     };
 

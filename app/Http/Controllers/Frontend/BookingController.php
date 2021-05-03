@@ -6,6 +6,7 @@ use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Booking;
 use App\Place;
+use App\Offer;
 use App\User;
 use Carbon\Carbon;
 use nilsenj\Toastr\Facades\Toastr;
@@ -28,7 +29,6 @@ class BookingController extends Controller
     {
 
         $data = $this->validate($request, [
-            'place_id' => '',
             'numbber_of_adult' => '',
             'numbber_of_children' => '',
             'date' => '',
@@ -40,7 +40,10 @@ class BookingController extends Controller
             'type' => ''
         ]);
 
-        $place = Place::find($data['place_id']);
+        if($request->has('place_id'))
+            $place = Place::find($request->place_id);
+        else if($request->has('offer_id'))
+            $place = Offer::find($request->offer_id);
 
         if($place) {
 
@@ -48,9 +51,9 @@ class BookingController extends Controller
             $reference = Booking::latest()->first() ? 
                 $place->reference . Booking::latest()->first()->id . Carbon::now()->format('dmy') : 
                 $place->reference . '1' . Carbon::now()->format('dmy');
-            
 
-            $booking = $place->bookings()->create([
+            $booking = new Booking();
+            $booking->fill([
                 'user_id' => Auth::id() ?? NULL,
                 'reference' => $reference,
                 'numbber_of_adult' => $data['numbber_of_adult'],
@@ -62,12 +65,17 @@ class BookingController extends Controller
                 'phone_number' => $data['phone_number'],
                 'type' => $data['type'],
             ]);
-                
-    
+
+            $booking->bookable()->associate($place);
+            $booking->save();
+
             if ($booking) {
+                
+        
                 PortalCustomNotificationHandler::bookingCreated($booking);
 
-                $this->addToCart($booking);
+                if($request->has('offer_id'))
+                    $this->addToCart($booking);
             
                 Toastr::success('Vous avez créé votre réservation avec succès','Success');
         
@@ -87,21 +95,21 @@ class BookingController extends Controller
         $cart = session()->get('cart');
          
         $cart_booking = new CartBooking(
-            $booking->place->name,
-            $booking->place->thumb,
-            $booking->place->price,
-            Carbon::parse($booking->start_date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
+            $booking->bookable->name,
+            $booking->bookable->thumb,
+            $booking->bookable->price,
+            Carbon::parse($booking->date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
             $booking->numbber_of_adult,     // number of persons
             $booking->numbber_of_adult,
             $booking->numbber_of_children,
         );
 
         $cart[$booking->id] = [
-            "name" => $booking->place->name,
-            "thumb" => $booking->place->thumb,
+            "name" => $booking->bookable->name,
+            "thumb" => $booking->bookable->thumb,
             "quantity" => $booking->numbber_of_adult,
-            "days" => Carbon::parse($booking->start_date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
-            "price" => $booking->place->price,
+            "days" => Carbon::parse($booking->date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
+            "price" => $booking->bookable->price,
             'adults' => $booking->numbber_of_adult,
             'children' => $booking->numbber_of_children,                        
         ];

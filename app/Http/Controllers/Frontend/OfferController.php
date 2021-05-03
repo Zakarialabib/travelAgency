@@ -21,8 +21,7 @@ class OfferController extends Controller
 {
     public function show($slug) 
     {
-        dd($slug);
-        $offer = Offer::where('slug', $slug);
+        $offer = Offer::where('slug', $slug)->first();
         return view('pages.frontend.offer.show', compact('offer'));
     }
 }

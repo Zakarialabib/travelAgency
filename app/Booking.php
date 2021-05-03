@@ -8,10 +8,7 @@ class Booking extends Model
 {
     protected $table = 'bookings';
 
-    protected $fillable = [
-        'user_id', 'place_id', 'numbber_of_adult', 'numbber_of_children', 'date',
-        'name', 'email', 'phone_number', 'message', 'type', 'status', 'reference'
-    ];
+    protected $guarded = [];
 
     protected $hidden = [];
 
@@ -44,5 +41,9 @@ class Booking extends Model
         return $this->belongsTo(Place::class);
     }
 
+    public function bookable()
+    {
+        return $this->morphTo();
+    }
 
 }
