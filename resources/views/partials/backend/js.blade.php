@@ -1,7 +1,7 @@
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"  type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('vendor/jquery/jquery-ui.min.js')}}"></script>
+<script src="{{asset('backend/app-assets/js/core/libraries/jquery_ui/jquery-ui.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('/admin/vendors/DateJS/build/date.js')}}" type="text/javascript"></script>
 <script src="{{asset('/admin/vendors/laravel-filemanager/js/stand-alone-button.js')}}" type="text/javascript"></script>

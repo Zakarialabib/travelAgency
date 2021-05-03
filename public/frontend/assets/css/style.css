@@ -1599,7 +1599,7 @@ a.place__comments__reply i {
     stroke: #ee5000;
 }
 .page-title--small {
-    height: 170px;
+    height: auto;
     background-color: #ee5000;
     margin-bottom: 30px;
     background-repeat: no-repeat;
@@ -8180,6 +8180,7 @@ a.place__comments__reply i {
     margin-bottom: 10px;
     color: #ee5000;
     text-transform: uppercase;
+    text-align: left;
 }
 .footer__top__nav li {
     list-style: none;
@@ -8236,6 +8237,9 @@ a.place__comments__reply i {
     width: 40px;
     border-radius: 7px;
 }
+.social-media:hover{
+    color:#f9f9f9
+}
 .footer-nav {
     border: 0;
     font-size: 100%;
@@ -8243,6 +8247,7 @@ a.place__comments__reply i {
     outline: 0;
     padding: 0;
     vertical-align: baseline;
+    text-align: left;
 }
 .business-category {
     background-color: #f8f8f8;
@@ -8472,6 +8477,7 @@ a.place__comments__reply i {
     width: 100%;
     height: 270px;
     object-fit: cover;
+    color:white;
 }
 .la-24 {
     font-size: 24px !important;
