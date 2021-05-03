@@ -145,7 +145,7 @@
                                                     <div class="place-rating">
                                                         @if($place->reviews_count)
                                                             <span>{{number_format($place->avgReview, 1)}}</span>
-                                                            <i class="la la-star"></i>
+                                                            <i class="fa fa-star"></i>
                                                         @endif
                                                     </div>
                                                     <span class="count-reviews">({{$place->reviews_count}} {{__('reviews')}})</span>

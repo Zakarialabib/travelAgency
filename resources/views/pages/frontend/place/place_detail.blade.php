@@ -155,7 +155,7 @@
             <h1 style="font-weight: 800;">{{$place->name}}</h1>
              <h5>{{__('Starting From')}}</h5>
             <h4 style="color: #ee5000;">{{$place->price}}DH/{{PRICE_RANGE[$place['price_range']]}}</h4>
-            <span class="place__reviews__number reviews__number"> {{$review_score_avg}}<i class="la la-star"> </i>  </span>
+            <span class="place__reviews__number reviews__number"> {{$review_score_avg}}<i class="fa fa-star"> </i>  </span>
             <span class="place__places-item__count reviews_count">({{count($reviews)}} {{__('reviews')}})
             </span>
             <div class="place__box place__box-overview">
@@ -267,7 +267,7 @@
                     {{__('Review')}} ({{count($reviews)}})
                     @if(isset($reviews))
                     <span class="place__reviews__number"> {{$review_score_avg}}
-                      <i class="la la-star">
+                      <i class="fa fa-star">
                       </i>
                     </span>
                     @endif

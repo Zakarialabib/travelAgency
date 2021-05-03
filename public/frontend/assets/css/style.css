@@ -7444,8 +7444,6 @@ a.place__comments__reply i {
     color: #fff;
     font-size: 14px;
     position: relative;
-    width: 130px;
-    line-height: 2;
 }
 .business-about .business-about-info a.btn:hover {
     color: #000;
@@ -7471,6 +7469,13 @@ a.place__comments__reply i {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+.best-offers-title{
+    color: white;
+}
+.best-offers-title:hover{
+    color: #ee5000;
+}
+
 .site__search {
     line-height: 40px;
     display: inline-block;

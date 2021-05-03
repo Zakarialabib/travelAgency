@@ -16,6 +16,8 @@ class Offer extends Model  implements TranslatableContract
 
     public $translatedAttributes = ['name', 'description'];
 
+    protected $table = 'offers';
+
     protected $casts = [
         'category' => 'json',
         'gallery' => 'json',
@@ -25,11 +27,9 @@ class Offer extends Model  implements TranslatableContract
         'status' => 'integer'
     ];
 
-    protected $table = 'offers';
-
     protected $fillable = [
-        'user_id', 'category', 'slug',  'price',
-        'address', 'thumb', 'gallery', 'status', 'seo_title', 'seo_description', 'itinerary'
+        'user_id', 'category', 'slug',  'price', 'reference',
+        'thumb', 'gallery', 'status', 'seo_title', 'seo_description', 'itinerary'
     ];
 
     protected $hidden = [];

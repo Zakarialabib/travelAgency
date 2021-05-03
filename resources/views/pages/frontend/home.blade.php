@@ -30,7 +30,8 @@
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="https://www.eaglerider.com/casablanca-morocco"  target="_blank" style="text-transform: uppercase;" aria-controls="EagleRider">
+                                    <a href="https://www.eaglerider.com/casablanca-morocco" target="_blank"
+                                        style="text-transform: uppercase;" aria-controls="EagleRider">
                                         <img class="" style="text-transform: uppercase;width:30px;height:15px;"
                                             src="{{ asset('frontend/assets/images/eagle-rider.png') }}">EagleRider
                                     </a>
@@ -55,6 +56,8 @@
                                                     id="input_search" type="text" name="keyword"
                                                     placeholder="{{ __('Where are you going?') }}" autocomplete="off">
                                                 <input type="hidden" name="category[]" id="category_id">
+                                                <input type="hidden" id="city_id">
+
                                                 <div class="search-suggestions category-suggestion">
                                                     <ul>
                                                         <li><a href="#"><span>{{ __('Loading...') }}</span></a></li>
@@ -66,7 +69,6 @@
                                                     style="background-color: #00000036;text-align: center;"
                                                     id="location_search" type="text" name="city_name"
                                                     placeholder="{{ __('City') }}" autocomplete="off">
-                                                <input type="hidden" id="city_id">
                                                 <div class="search-suggestions location-suggestion">
                                                     <ul>
                                                         <li><a href="#"><span>{{ __('Loading...') }}</span></a></li>
@@ -347,7 +349,6 @@
                                             <div class="clearfix"></div>
                                         </form>
                                     </div>
-
                                     <div class="clearfix"></div>
                                 </div>
                                 <!-- END: HOTEL SEARCH -->
@@ -360,7 +361,6 @@
             </div>
         </div>
     </section>
-
     <!-- END: SEARCH SECTION -->
 
     <!-- BEGIN: WHO WE ARE -->
@@ -376,7 +376,8 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-6">
-                        <img src="{{ asset('images/img_about_1.jpg') }}" style="width: 100%;height:100%;padding: 50px 0;">
+                        <img src="{{ asset('images/img_about_1.jpg') }}"
+                            style="width: 100%;height:100%;padding: 50px 0;">
                     </div>
                 </div>
             </div>
@@ -388,7 +389,7 @@
     <section class="best_offers" style="background-image: url({{ asset('public/images/home-path.svg') }});">
         <div class="container">
             <div class="section-title text-center">
-                <h2><a href="{{ route('best_offers') }}" style="color: #fff;">{{ __('BEST OFFERS') }}</a></h2>
+                <h2><a href="{{ route('best_offers') }}" class="best-offers-title">{{ __('BEST OFFERS') }}</a></h2>
             </div>
             <div class="content">
                 <div class="row">
@@ -417,12 +418,10 @@
             </div>
         </div>
     </section>
-
     <!-- END : BEST OFFERS -->
-    <!-- BEGIN: HOW IT WORK -->
-    {{-- @include('partials.frontend.how-it-work') --}}
 
-    <!--END: HOW IT WORK -->
+
+    <!--Cities -->
 
     <section class="cities cities-img">
         <div class="" style="position: absolute;width:100%">
@@ -545,7 +544,7 @@
         </div>
     </section><!-- .cities -->
 
-    <!--END: Business Category -->
+    <!-- News -->
 
     <section class="news bg-white">
         <div class="container">
@@ -584,11 +583,10 @@
                             </article>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>
-    </section   ><!-- .news -->
+    </section>
 
 
 @endsection

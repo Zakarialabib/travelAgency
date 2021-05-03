@@ -1,6 +1,7 @@
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"  type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/jquery/jquery-ui.min.js')}}"></script>
 <script src="{{asset('admin/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('/admin/vendors/DateJS/build/date.js')}}" type="text/javascript"></script>
 <script src="{{asset('/admin/vendors/laravel-filemanager/js/stand-alone-button.js')}}" type="text/javascript"></script>
@@ -15,7 +16,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/r-2.2.7/sl-1.3.3/datatables.min.js" async></script>
-<script src="{{asset('backend/app-assets/js/scripts/tables/datatables/datatable-advanced.min.js')}}"></script>
 <!-- FastClick 
 <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>-->
 <!-- NProgress -->
@@ -33,7 +33,6 @@
 <script src="{{asset('/admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}" type="text/javascript" defer></script>
 <script src="{{asset('/admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}" type="text/javascript" defer></script>
 <script src="{{asset('/admin/vendors/morris.js/morris.min.js')}}" type="text/javascript" defer></script>
-
 <!-- Custom Theme Scripts -->
 <script src="{{asset('/admin/build/js/custom.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('/admin/js/commons.js')}}" type="text/javascript"></script>

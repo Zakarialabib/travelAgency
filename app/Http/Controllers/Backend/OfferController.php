@@ -71,9 +71,8 @@ class OfferController extends Controller
             'slug' => '',
             'price' => 'required|numeric',
             'category' => '',
-            'address' => 'max:255',
-            'gallery' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'gallery' => '',
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
@@ -94,12 +93,22 @@ class OfferController extends Controller
         if(!$latest) {
             $data['reference'] = '0000000001';
         }else{
-            $latest->reference++;
-            $data['reference'] = $latest->reference;
+            $data['reference'] = $latest->reference + 1;
         }
-
-        $offer = new Offer();
-        $offer->fill($data)->save();
+        $offer = Offer::create([
+            'user_id' => $data['user_id'],
+            '%name%' => $data['%name%'],
+            '%description%' => $data['%description%'],
+            'slug' => $data['slug'],
+            'price' => $data['price'],
+            'category' => $data['category'],
+            'thumb' => $data['thumb'],
+            'gallery' => $data['gallery'],
+            'seo_title' => $data['seo_title'],
+            'seo_description' => $data['seo_description'],
+            'itinerary' => $data['itinerary']
+            ]);
+           
 
         return redirect()->route('offer_list');
 
@@ -127,14 +136,12 @@ class OfferController extends Controller
             'slug' => '',
             'price' => 'required|numeric',
             'category' => '',
-            'address' => 'max:255',
             'gallery' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
         ]);
-
 
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;

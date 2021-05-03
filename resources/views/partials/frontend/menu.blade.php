@@ -114,9 +114,9 @@
                         @endif
                     </div>
                     @if(auth()->guest())
-                     <div class="account">
-                       <a style="color: white;font-size: 17px;">
-                          |&nbsp;&nbsp;{{__('account')}}
+                     <div class="">
+                       <a style="color: white;font-size: 17px;cursor: pointer;">
+                          {{__('account')}}
                              <i class="la la-angle-down la-12"></i>
                          </a>
                       <div class="account-sub">

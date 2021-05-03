@@ -55,7 +55,6 @@
                                                             <label for="name">{{__('Description')}}  <small>({{$language->code}})</small>: *</label>
                                                             <textarea type="text" class="form-control tinymce_editor" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
                                                         </div>
-                        
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -159,7 +158,6 @@
                                                             <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}" placeholder="Enter Day">
                                                         </div>
                                                         <div class="form-group">
-
                                                             <input type="text" class="form-control tinymce_editor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="Enter Description">
                                                         </div>
                                                     </div>

@@ -3,13 +3,14 @@
 @section('content')
 <div class="page-title">
     <div class="title_left">
-        <h3>{{ __('Add Offer') }}</h3>
+        <h3>{{ __('Edit Offer') }}</h3>
     </div>
 </div>
 <div class="clearfix"></div>
 
 <div class="col-12 col-lg-12 offer_create">
-    <form action="{{ route('offer_store') }}" enctype="multipart/form-data" method="post">
+    <form action="{{ route('offer_update' , $offer->id) }}" enctype="multipart/form-data" method="post">
+        @method('put')
         @csrf
         <div class="">
             <ul class="nav nav-tabs bar_tabs" role="tablist">
@@ -45,66 +46,84 @@
             </div>
             <div class="form-group">
                 <label for="category">{{ __('Category') }}: *</label>
-                <select class="form-control chosen-select" id="category" name="category[]" multiple
-                    data-live-search="true" required>
+                <select class="form-control myselect" id="" name="category[]" multiple data-live-search="true" required>
                     @foreach($categories as $cat)
-                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                        <option value="{{$cat->id}}" {{isSelected($cat->id, $offer->category)}}>{{$cat->name}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-            <label for="price">{{__('Price')}}: *</label>
-             <input type="text" class="form-control" id="price" name="price" value="{{$offer->price}}"  placeholder="{{__('Price')}}" autocomplete="off" required>        
+                <label for="price">{{__('Price')}}: *</label>
+                <input type="text" class="form-control" id="price" name="price" value="{{$offer->price}}"  placeholder="{{__('Price')}}" autocomplete="off" required>        
              </div>
             <div class="form-group">
                 <p class="lead">{{ __('itinerary') }}</p>
                 <div id="itinerary_list">
-                    <div class="row form-group itinerary_item" id="itinerary_item_0">
-                        <div class="col-md-11">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="itinerary[0][question]"
-                                    placeholder="{{ __('Enter Day') }}">
+                    @if($offer->itinerary)
+                        @foreach($offer->itinerary as $key => $menu)
+                            <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}" placeholder="{{ __('Title') }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control tinymce_editor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="{{ __('Description') }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-danger itinerary_item_remove" id="{{$key}}">X</button>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control tinymce_editor" name="itinerary[0][answer]"
-                                    rows="3" placeholder="Enter Description">
-                            </div>
-                        </div>
-                        <div class="col-md-1">
-                            <button type="button" class="btn btn-danger itinerary_item_remove" id="0">X</button>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
                 <button type="button" class="btn btn-round btn-primary"
                     id="itinerary_addmore">+{{ __('Add more') }}</button>
             </div>
 
             <div class="form-group">
-                <p class="lead">{{ __('Media') }}</p>
+                <p class="lead">{{__('Media')}}</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>{{ __('Thumbnail image') }}:</strong></p>
-                        <img id="preview_thumb" src="https://via.placeholder.com/120x150?text=thumbnail">
+                        <p><strong>{{__('Thumbnail image')}}:</strong></p>
+                        <img id="preview_thumb" src="{{getImageUrl($offer->thumb)}}" alt="">
                         <input type="file" class="form-control" id="thumb" name="thumb" accept="image/*">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 gallery">
-                        <p><strong>{{ __('Gallery images') }}:</strong></p>
-                        <div id="offer_gallery_thumbs"></div>
+                        <p><strong>{{__('Gallery images')}}:</strong></p>
+                        <div id="place_gallery_thumbs">
+                            @if($offer->gallery)
+                                @foreach($offer->gallery as $image)
+                                    <div class="col-sm-2 media-thumb-wrap">
+                                        <figure class="media-thumb">
+                                            <img src="{{getImageUrl($image)}}">
+                                            <div class="media-item-actions">
+                                                <a class="icon icon-delete" href="#">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16">
+                                                        <g fill="#5D5D5D" fill-rule="nonzero">
+                                                            <path d="M14.964 2.32h-4.036V0H4.105v2.32H.07v1.387h1.37l.924 12.25H12.67l.925-12.25h1.369V2.319zm-9.471-.933H9.54v.932H5.493v-.932zm5.89 13.183H3.65L2.83 3.707h9.374l-.82 10.863z"></path>
+                                                            <path d="M6.961 6.076h1.11v6.126h-1.11zM4.834 6.076h1.11v6.126h-1.11zM9.089 6.076h1.11v6.126h-1.11z"></path>
+                                                        </g>
+                                                    </svg>
+                                                </a>
+                                                <input type="hidden" name="gallery[]" value="{{$image}}">
+                                                <span class="icon icon-loader d-none"><i class="fa fa-spinner fa-spin"></i></span>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <input type="file" class="form-control" id="gallery" accept="image/*">
+                        <input type="file" class="form-control" id="gallery" name="banner" accept="image/*">
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="offer_address">{{ __('Offer Address') }}: *</label>
-                <input type="text" class="form-control" id="offer_address" name="address" value="Maroc"
-                    placeholder="{{ __('Offer Address') }}" autocomplete="off">
-            </div>
             <div id="map"></div>
-            <div id="golo_seo">
+            <div class="form-group">
                 <p class="lead">{{ __('SEO') }}</p>
                 <div class="form-group">
                     <label for="seo_title">{{ __('SEO title') }} -
@@ -132,5 +151,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('admin/js/page_place_create.js') }}"></script>
+    <script src="{{ asset('admin/js/page_offer.js') }}"></script>
 @endpush
