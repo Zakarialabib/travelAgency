@@ -8,14 +8,14 @@ function packageCreateComplete(){
     var attraction = $('.attraction').val();
     if(flight == 0 && hotel == 0 && attraction == 0){
         toastr.info("Travel package creation complete. Redirecting to travel package menu");
-        window.location.href = baseUrl+'/backend/travel-packages';
+        window.location.href = baseUrl+'/backoffice/travel-packages';
     }
 }
 
 function activate(id) {
     $.ajax({
         type: "GET",
-        url: baseUrl + '/backend/travel-packages/activate/' + id,
+        url: baseUrl + '/backoffice/travel-packages/activate/' + id,
         success: function (response) {
             console.log(response.status);
 
@@ -37,7 +37,7 @@ function activate(id) {
 function deactivate(id) {
     $.ajax({
         type: "GET",
-        url: baseUrl + '/backend/travel-packages/deactivate/' + id,
+        url: baseUrl + '/backoffice/travel-packages/deactivate/' + id,
         success: function (response) {
             console.log(response.status);
 
@@ -105,7 +105,7 @@ $('.create_new_package').on('click',function(){
 
 
         $('.base_package').LoadingOverlay('show');
-        axios.post(baseUrl+'/backend/travel-packages/createPackage',{
+        axios.post(baseUrl+'/backoffice/travel-packages/createPackage',{
         options        : options,
         name           : name,
         category       : category,
@@ -170,7 +170,7 @@ $('.submit_flight_deal').on('click',function(){
     var information = $('.flight_deal_information').val();
     var package_id  = $('.package_id').val();
     $('.flight_deal').LoadingOverlay("show");
-    axios.post(baseUrl+'/backend/travel-packages/createFlightDeal',{
+    axios.post(baseUrl+'/backoffice/travel-packages/createFlightDeal',{
         origin      : origin,
         destination : destination,
         date        : date,
@@ -216,7 +216,7 @@ $('.submit_hotel_deal').on('click',function(){
     var package_id    = $('.package_id').val();
 
       $('.hotel_deal').LoadingOverlay("show");
-      axios.post(baseUrl+'/backend/travel-packages/createHotelDeal',{
+      axios.post(baseUrl+'/backoffice/travel-packages/createHotelDeal',{
           hotel_name      : hotel_name,
           hotel_city      : hotel_city,
           hotel_rating    : hotel_rating,
@@ -271,7 +271,7 @@ $('.submit_attraction').on('click',function(){
     var attraction_descriptions = $('.attraction_sight_seeing_description').map(function() {return this.value;}).get().join(',');
     $('.attraction_deals').LoadingOverlay("show");
 
-     axios.post(baseUrl+'/backend/travel-packages/createAttraction',{
+     axios.post(baseUrl+'/backoffice/travel-packages/createAttraction',{
          package_id                : package_id,
          name                      : name,
          address                   : location_description,
@@ -308,7 +308,7 @@ $('.attraction_images_complete').on('click',function(){
 $('.delete_image').on('click', function(){
     var id = $(this).val();
     $('#image_'+id).LoadingOverlay("show");
-    axios.post(baseUrl+'/backend/travel-packages/delete-image',{id:id})
+    axios.post(baseUrl+'/backoffice/travel-packages/delete-image',{id:id})
         .then(function(){
             $('#image_'+id).LoadingOverlay("hide");
             $('#image_'+id).addClass('hidden');

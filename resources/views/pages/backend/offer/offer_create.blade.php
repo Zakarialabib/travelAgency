@@ -42,7 +42,7 @@
                                     <label for="offer_description">Description
                                         <small>({{ $language->code }})</small>
                                         : *</label>
-                                    <textarea type="text" class="form-control tinymce_editor" id="offer_description"
+                                    <textarea type="text" class="form-control ckeditor" id="offer_description"
                                         required name="{{ $language->code }}[description]" rows="6"
                                         {{ $index !== 0 ?: "required" }}></textarea>
                                 </div>
@@ -73,7 +73,7 @@
                                     placeholder="{{ __('Title') }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control tinymce_editor" name="itinerary[0][answer]"
+                                <input type="text" class="form-control ckeditor" name="itinerary[0][answer]"
                                     rows="3" placeholder="{{ __('Description') }}">
                             </div>
                         </div>

@@ -34,7 +34,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <table class="table table-striped table-bordered golo-datatable post_list">
+                    <table class="table table-striped table-bordered col-4-datatable post_list">
                         <thead>
                         <tr>
                             <th >ID</th>

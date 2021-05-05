@@ -26,17 +26,17 @@
 
                 <div class="x_content">
 
-                    <table class="table table-striped table-bordered golo-datatable">
+                    <table class="table table-striped table-bordered col-4-datatable">
                         <thead>
                         <tr>
                             <th >ID</th>
-                            <th width="15%">{{__('Name')}}</th>
-                            <th width="15%">{{__('Email')}}</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Email')}}</th>
                             <th >Role</th>
                             <th >{{__('Status')}}</th>
                             <th >{{__('Is Admin')}}</th>
                             <th >{{__('Created at')}}</th>
-                            <th width="10">Action</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>

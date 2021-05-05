@@ -337,7 +337,7 @@
                             <h4 class="card-title"><i class="fa fa-info"></i>Add more Hotel Images Gallery</h4>
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['url'=>'backend/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                            {!! Form::open(['url'=>'backoffice/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
                             <input type="hidden" value="{{$package->id}}" name="package_id" class="package_id"/>
                             <input type="hidden" value="" name="parent_id" class="hotel_images_parent_id"/>
                             {{ Form::hidden('image_type_id', '1', ['class'=>'image_type_id']) }}
@@ -469,7 +469,7 @@
                     <h4 class="card-title"><i class="fa fa-info"></i>Add more Hotel Images Gallery</h4>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['url'=>'backend/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                    {!! Form::open(['url'=>'backoffice/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
                     <input type="hidden" value="{{$package->id}}" name="package_id" class="package_id"/>
                     <input type="hidden" value="{{$hotelDeal->id}}" name="parent_id" class="hotel_images_parent_id"/>
                     {{ Form::hidden('image_type_id', '1', ['class'=>'image_type_id']) }}
@@ -581,7 +581,7 @@
                             <h4 class="card-title"><i class="fa fa-info"></i>{{__('Attraction Gallery')}}</h4>
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['url'=>'backend/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                            {!! Form::open(['url'=>'backoffice/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
                             <input type="hidden" value="{{$package->id}}" name="package_id" class="package_id"/>
                             <input type="hidden" value="" name="parent_id" class="attraction_images_parent_id"/>
                             {{ Form::hidden('image_type_id', '2', ['class'=>'image_type_id']) }}
@@ -715,7 +715,7 @@
                             <h4 class="card-title"><i class="fa fa-info"></i>{{__('Attraction Gallery')}}</h4>
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['url'=>'backend/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                            {!! Form::open(['url'=>'backoffice/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
                             <input type="hidden" value="{{$package->id}}" name="package_id" class="package_id"/>
                             <input type="hidden" value="{{$attraction->id}}" name="parent_id" class="attraction_images_parent_id"/>
                             {{ Form::hidden('image_type_id', '2', ['class'=>'image_type_id']) }}

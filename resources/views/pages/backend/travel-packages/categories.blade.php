@@ -57,7 +57,7 @@
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                           <h4 class="modal-title" id="mySmallModalLabel">{{__('Edit package category')}} </h4>
                         </div>
-                        <form method="post" action="{{url('backend/travel-packages/categoryCreateOrUpdate')}}">
+                        <form method="post" action="{{url('backoffice/travel-packages/categoryCreateOrUpdate')}}">
                           {{csrf_field()}}
                           <input type="hidden" name="category_id" value="{{$package_category->id}}" />
                           <div class="modal-body">
@@ -97,7 +97,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="mySmallModalLabel">Add package category</h4>
         </div>
-        <form method="post" action="{{url('backend/travel-packages/categoryCreateOrUpdate')}}">
+        <form method="post" action="{{url('backoffice/travel-packages/categoryCreateOrUpdate')}}">
           {{csrf_field()}}
           <input type="hidden" name="category_id" value="" />
         <div class="modal-body">

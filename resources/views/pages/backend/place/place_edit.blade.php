@@ -53,7 +53,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="name">{{__('Description')}}  <small>({{$language->code}})</small>: *</label>
-                                                            <textarea type="text" class="form-control tinymce_editor" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
+                                                            <textarea type="text" class="form-control ckeditor" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -80,7 +80,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="name">{{__('Category')}}: *</label>
-                                            <select class="form-control chosen-select" id="" name="category[]" multiple data-live-search="true" required>
+                                            <select class="form-control myselect" id="" name="category[]" multiple data-live-search="true" required>
                                                 @foreach($categories as $cat)
                                                     <option value="{{$cat->id}}" {{isSelected($cat->id, $place->category)}}>{{$cat->name}}</option>
                                                 @endforeach
@@ -89,7 +89,7 @@
                         
                                         <div class="col-md-6">
                                             <label for="name">{{__('Place type')}}: *</label>
-                                            <select class="form-control chosen-select" id="" name="place_type[]" multiple data-live-search="true" required>
+                                            <select class="form-control myselect" id="" name="place_type[]" multiple data-live-search="true" required>
                                                 @foreach($place_types as $cat)
                                                     <optgroup label="{{$cat->name}}">
                                                         @foreach($cat['place_type'] as $type)
@@ -158,7 +158,7 @@
                                                             <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}" placeholder="Enter Day">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control tinymce_editor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="Enter Description">
+                                                            <input type="text" class="form-control ckeditor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="Enter Description">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">

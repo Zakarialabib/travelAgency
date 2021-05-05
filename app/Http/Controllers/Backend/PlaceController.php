@@ -56,8 +56,6 @@ class PlaceController extends Controller
         $cities = $this->city->getListByCountry($param_country_id);
         $categories = $this->category->getListAll(Category::TYPE_PLACE);
 
-//        return $places;
-
         return view('pages.backend.place.place_list', [
             'places' => $places,
             'countries' => $countries,
@@ -174,8 +172,6 @@ class PlaceController extends Controller
     {
         
         $place = Place::find($id);
-
-        dd($place);
 
         $request['slug'] = getSlug($request, 'name');
         

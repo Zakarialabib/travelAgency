@@ -15,14 +15,16 @@
                                     <div class="lg:w-2/3 pr-4 pl-4">
                                         <div class="mb-4">
                                             <label for="">{{ __('Subject') }} <span class="text-red-600">*</span></label>
-                                            <input type="text" class="form-control" name="subject" value="" placeholder="{{ __('Enter subject of E-mail') }}">
+                                            <input type="text" class="form-control" name="subject" value="" 
+                                            placeholder="{{ __('Enter subject of E-mail') }}">
                                             @if ($errors->has('subject'))
                                               <p class="text-red-600 mb-0">{{$errors->first('subject')}}</p>
                                             @endif
                                           </div>
                                           <div class="mb-4">
                                             <label for="">{{ __('Message') }} <span class="text-red-600">*</span></label>
-                                            <textarea type="text" class="form-control tinymce_editor" id="place_description" name="content_message" rows="6"></textarea>
+                                            <textarea type="text" class="form-control ckeditor" 
+                                            id="place_description" name="content_message" rows="6"></textarea>
 
                                             @if ($errors->has('message'))
                                               <p class="text-red-600 mb-0">{{$errors->first('message')}}</p>

@@ -27,6 +27,28 @@ class Controller extends BaseController
         return $filename;
     }
 
+    public function uploadImages(Request $request)
+    {
+        if($request->hasFile('upload')) {
+            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $filenametostore = $filename.'_image_'.time().'.'.$extension;
+            
+            //Upload the file
+            $request->file('upload')->storeAs('public/images', $filenametostore);
+ 
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('storage/images/'.$memberNameFolder.'/images/'.$filenametostore);
+            
+            $msg = 'Image added successfully';
+            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+             
+            @header('Content-type: text/html; charset=utf-8');
+            echo $re;
+        }
+    }
+
     public function deleteImage($path)
     {
         return File::delete($path);

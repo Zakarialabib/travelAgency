@@ -1,11 +1,12 @@
 @extends('layouts.backend')
+
 @section('page-title')  {{__('Offer List')}}  @endsection
 
 @section('content')
 
     <div class="page-title">
         <div class="title_left">
-            <h3>{{__('Offer')}}</h3>
+            <h3>{{__('Offer List')}}</h3>
         </div>
         <div class="title_right">
             <div class="pull-right">
@@ -18,7 +19,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
             <div class="x_panel">
                 <div class="x_content">
-                    <table class="table table-striped table-bordered golo-datatable">
+                    <table class="table table-striped table-bordered col-4-datatable">
                         <thead>
                         <tr>
                             <th >ID</th>
@@ -26,7 +27,7 @@
                             <th>{{__('Offer name')}}</th>
                             <th>{{__('Activity')}}</th>
                             <th>{{__('Status')}}</th>
-                            <th width="15%">{{__('Action')}}</th>
+                             <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>

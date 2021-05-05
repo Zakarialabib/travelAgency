@@ -9,11 +9,11 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"/>
 <link href="https://cdn.jsdelivr.net/npm/chosen-jquery@0.1.1/lib/chosen.min.css" rel="stylesheet" type="text/css"/>
-<!-- LIGHT -->
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/plugins/ion.rangeSlider-2.2.0/css/normalize.css')}}"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/ion-rangeslider@2.3.1/css/ion.rangeSlider.min.css"/>
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/plugins/ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinHTML5.css')}}"/>
-<link  rel="stylesheet" type="text/css" href="{{asset('/admin/vendors/select2/select2.min.css')}}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 <!-- FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
 <meta name="csrf-token" content="{{ csrf_token() }}">

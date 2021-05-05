@@ -95,7 +95,7 @@ class TravelPackage extends Model
         $delete_gallery = Gallery::where('package_id', $package_id)->delete();
 
         flash('Package deleted successfully')->success();
-        return redirect(url('backend/travel-packages/'));
+        return redirect(url('backoffice/travel-packages/'));
 
     }
 

@@ -22,7 +22,7 @@
             </li>
 
             <li class="@yield('activeDashboard') nav-item">
-                <a href="{{url('/dashboard')}}">
+                <a href="{{route('dashboard')}}">
                     <i class="la la-dashboard"></i>
                     <span class="menu-title" >{{__('Dashboard')}}</span>
                 </a>
@@ -180,11 +180,11 @@
            {{--  @role('admin')
             <li class="@yield('activeTravelPackage') nav-item"><a href="#"><i class="la la-suitcase"></i><span class="menu-title" >{{__('Manage Packages')}}</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="{{url('backend/travel-packages')}}" >{{__('Packages List')}}</a>
+                    <li><a class="menu-item" href="{{url('backoffice/travel-packages')}}" >{{__('Packages List')}}</a>
                     </li>
-                    <li><a class="menu-item" href="{{url('backend/travel-packages/create')}}" >{{__('Create New')}}</a>
+                    <li><a class="menu-item" href="{{url('backoffice/travel-packages/create')}}" >{{__('Create New')}}</a>
                     </li>
-                    <li><a class="menu-item" href="{{url('backend/travel-packages/categories')}}" >{{__('Manage Categories')}}</a>
+                    <li><a class="menu-item" href="{{url('backoffice/travel-packages/categories')}}" >{{__('Manage Categories')}}</a>
                     </li>
                 </ul>
             </li>

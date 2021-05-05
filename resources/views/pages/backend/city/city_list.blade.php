@@ -40,16 +40,16 @@
                 </div>
 
                 <div class="x_content">
-                    <table class="table table-striped table-bordered golo-datatable">
+                    <table class="table table-striped table-bordered col-4-datatable">
                         <thead>
                         <tr>
                             <th >ID</th>
                             <th >Image</th>
-                            <th width="15%">{{__('City Name')}}</th>
+                             <th>{{__('City Name')}}</th>
                             <th>{{__('Description')}}</th>
                             <th>{{__('Priority')}}</th>
                             <th >{{__('Status')}}</th>
-                            <th width="15%">Action</th>
+                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
