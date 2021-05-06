@@ -154,16 +154,16 @@ class TravelPackageController extends Controller
 
     }
 
-    public function deleteImage(Request $r){
-        $gallery = Gallery::find($r->id);
-        $deleteImage = unlink($gallery->image_path);
-        $deleteRecord = $gallery->delete();
-        if($deleteImage && $deleteRecord){
-            return 1;
-        }else{
-            return 2;
-        }
-    }
+//    public function deleteImage(Request $r){
+  //      $gallery = Gallery::find($r->id);
+    //    $deleteImage = unlink($gallery->image_path);
+//        $deleteRecord = $gallery->delete();
+  //      if($deleteImage && $deleteRecord){
+    //        return 1;
+      //  }else{
+        //    return 2;
+      //  }
+//    }
 
     public function categories(){
         $package_categories = PackageCategory::orderBy('id','desc')->get();
@@ -193,7 +193,7 @@ class TravelPackageController extends Controller
     public function categoryCreateOrUpdate(Request $r){
         PackageCategory::store($r);
         Toastr::success('Package information updated in database');
-        return redirect(url('backend/travel-packages/categories'));
+        return redirect(url('backoffice/travel-packages/categories'));
     }
 
     public function storeGalleryImages(Request $r){

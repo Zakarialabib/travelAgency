@@ -161,11 +161,19 @@
             <div class="place__box place__box-overview">
               <div class="place__desc">{!! $place->description !!} </div>
               <!-- .place__desc -->
-              <a href="#" class="show-more" title="{{__('Show more')}}">{{__('Show more')}}  </a>
+              <div class="place__box place__box-hightlight">
+                              <div class="hightlight-grid">
+                      @foreach($amenities as $key => $item)
+                      <div class="place__amenities">
+                          <img src="{{getImageUrl($item->icon)}}" alt="{{$item->name}}"> {{$item->name}}
+                      </div>
+                      @endforeach
+                      </div>
+                    </div>
               @guest()
-              <button class="btn btn-block btn-login open-login">{{__('Book now')}}  </button>
+              <button class="btn btn-block mybtn1"><a href="#booking" style="color: white;">{{__('Book now')}}</a></button>
               @else
-              <button class="btn btn-block booking_submit_btn"><a href="#booking" style="color: white;">{{__('Book now')}}</a></button>
+              <button class="btn btn-block mybtn1"><a href="#booking" style="color: white;">{{__('Book now')}}</a></button>
               @endguest
             </div>
           </div>
@@ -176,19 +184,19 @@
           <div class="col-lg-6 col-md-6">
             <div class="package-complete-detail">
               <ul class="nav nav-tabs">
+              <li class="nav-item">
+                  <a data-toggle="tab" class="nav-link active" href="#overview">
+                    <i class="fa fa-suitcase">
+                    </i> 
+                    <span>{{__('Detail')}}
+                    </span>
+                  </a>
+                </li>
                 <li class="nav-item">
                   <a data-toggle="tab" class="nav-link" href="#itinerary">
                     <i class="fa fa-street-view">
                     </i> 
                     <span>{{__('Itinerary')}}
-                    </span>
-                  </a>
-                </li>
-                  <li class="nav-item">
-                  <a data-toggle="tab" class="nav-link active" href="#overview">
-                    <i class="fa fa-suitcase">
-                    </i> 
-                    <span>{{__('Detail')}}
                     </span>
                   </a>
                 </li>
@@ -215,25 +223,11 @@
                   @endif
                 </div>
                 <div class="tab-pane active" id="overview" >
-                  <h4 class="tab-heading">{{__('Description')}}
-                  </h4>
                   <div class="daily-schedule-body">
                     <p>
                       {!! $place->description !!}
                     </p>
-                     <h4 class="tab-heading"> {{__('Included')}}
-                     </h4>
-                     <div class="container my-1">
-                      @foreach($amenities as $key => $item)
-                      <div class="col-md-6 col-sm-6">
-                        <p>
-                          <img src="{{getImageUrl($item->icon)}}" alt="{{$item->name}}"> {{$item->name}}
-                        </p>
-                      </div>
-                      @endforeach
-                      </div>
                     </div>
-             
                   @if(isset($place['video']))
                   <div class="place__box">
                     <h3 class="tab-heading">Videos
@@ -407,8 +401,7 @@
             </div>
           </div>
        </div>
-    </div>
-          <div class="col-lg-6 col-md-6">
+       <div class="col-lg-6 col-md-6">
             <div class="sidebar sidebar--border">
               <div class="widget-reservation-mini">
                 @if($place->booking_type === \App\Booking::TYPE_BOOKING_NOW)
@@ -622,8 +615,9 @@
                 @endif
               </aside>
               @endif
-            </div>
+              </div>
             <!-- .sidebar -->
+            </div>
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="post_content_{{$language->code}}">{{__('Content')}}<small>({{$language->code}})</small>:</label>
-                                        <textarea type="text" class="form-control tinymce_editor" id="post_content_{{$language->code}}" name="{{$language->code}}[content]" rows="10">{{$trans ? $trans->content :''}}</textarea>
+                                        <textarea type="text" class="form-control ckeditor" id="post_content_{{$language->code}}" name="{{$language->code}}[content]" rows="10">{{$trans ? $trans->content :''}}</textarea>
                                    
                                     </div>
                                 </div>

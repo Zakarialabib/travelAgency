@@ -92,12 +92,3 @@ $user['profile'] = $profile;
     </div>
 
 @endsection
-
-@push('scripts')
-    <script>
-    jQuery('.timepicker').datetimepicker({
-        datepicker:false,
-        format:'H:i'
-      });
-    </script>
-@endpush

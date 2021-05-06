@@ -380,7 +380,7 @@
                     <h4 class="card-title"><i class="fa fa-info"></i>Attraction Gallery</h4>
                 </div>
                 <div class="card-body">
-                    {!!Form::open(['url'=>'backend/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                    {!!Form::open(['url'=>'backoffice/travel-packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
                     {{ Form::hidden('package_id', '', ['class'=>'package_id']) }}
                     {{ Form::hidden('parent_id', '', ['class'=>'attraction_images_parent_id']) }}
                     {{ Form::hidden('image_type_id', '2', ['class'=>'image_type_id']) }}

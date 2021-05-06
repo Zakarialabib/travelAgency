@@ -4,50 +4,41 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 (function ($) {
     'use strict';
 
-    var editor_config = {
-        path_absolute: "/",
-        selector: ".tinymce_editor",
-        plugins: [
-            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-            "searchreplace wordcount visualblocks visualchars code fullscreen",
-            "insertdatetime media nonbreaking save table contextmenu directionality",
-            "emoticons template paste textcolor colorpicker textpattern"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-        relative_urls: false,
-        file_browser_callback: function (field_name, url, type, win) {
-            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-            var y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
-
-            var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
-            if (type == 'image') {
-                cmsURL = cmsURL + "&type=Images";
-            } else {
-                cmsURL = cmsURL + "&type=Files";
-            }
-
-            tinyMCE.activeEditor.windowManager.open({
-                file: cmsURL,
-                title: 'Filemanager',
-                width: x * 0.8,
-                height: y * 0.8,
-                resizable: "yes",
-                close_previous: "no"
-            });
-        }
-    };
-
-    tinymce.init(editor_config);
-
-
     $(document).ready(function () {
         $('.golo-datatable').DataTable({
             language: {
                 url: '/admin/vendors/datatables.net/js/french.json'
             },
-            "responsive": true,
-            "pageLength": 10,
-            "order": [0, "desc"]
+            dom: 'Bfrtip',
+            responsive: true,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            order: [0, "desc"],
+            buttons: [
+                {
+                    extend: 'pdf',
+                    text: '<i class="la la-file-export" data-toggle="popover" data-content="Enregistrer la liste en PDF." data-trigger="hover" data-original-title="PDF" />',
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="la la-file-excel" data-toggle="popover" data-content="Enregistrer la liste sur Excel." data-trigger="hover" data-original-title="Excel" />',
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="la la-print" data-toggle="popover" data-content="Imprimer la liste sur papier." data-trigger="hover" data-original-title="Print" />',
+                    footer:true,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+            ],
         });
 
         $('.right_col').css('min-height', 'auto');

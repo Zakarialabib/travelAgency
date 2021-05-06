@@ -5,7 +5,7 @@
 @section('content')
     <div class="page-title">
         <div class="title_left">
-            <h3>{{__('Sales')}}</h3>
+            <h3>{{__('Sales List')}}</h3>
         </div>
         <div class="title_right">
             <div class="pull-right">

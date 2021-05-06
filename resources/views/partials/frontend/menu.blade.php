@@ -114,7 +114,7 @@
                         @endif
                     </div>
                     @if(auth()->guest())
-                     <div class="">
+                     <div class="account">
                        <a style="color: white;font-size: 17px;cursor: pointer;">
                           {{__('account')}}
                              <i class="la la-angle-down la-12"></i>
@@ -147,7 +147,7 @@
                         </a>
                         <div class="account-sub">
                             <ul>
-                                <li class=""><a href="{{url('/dashboard')}}" target="_blank"
+                                <li class=""><a href="{{route('dashboard')}}" target="_blank"
                                         rel="nofollow">{{__('Dashboard')}}</a></li>
                                 <li class=""><a href="{{route('user_wishlist')}}"
                                         rel="nofollow">{{__('Wishlist')}}</a></li>

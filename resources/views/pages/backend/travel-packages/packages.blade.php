@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="title_right">
-    <a class="btn btn-primary" href="{{url('backend/travel-packages/create')}}">{{__('Create New Package')}}</a>
+    <a class="btn btn-primary" href="{{url('backoffice/travel-packages/create')}}">{{__('Create New Package')}}</a>
     </div>
     <div class="row">
      
@@ -61,7 +61,7 @@
                                         <td>
                                             <a class="btn btn-success btn-sm" data-toggle="title" title="Activate Package" onclick="activate({{$package->id}})"><i class="la la-check"></i></a>
                                             <a class="btn btn-warning btn-sm" data-toggle="title" title="Deactivate Package" onclick="deactivate({{$package->id}})"><i class="la la-times"></i></a>
-                                            <a class="btn btn-info btn-sm" data-toggle="title" title="Edit Package" href="{{url('backend/travel-packages/edit')}}/{{$package->id}}"><i class="la la-edit"></i></a>
+                                            <a class="btn btn-info btn-sm" data-toggle="title" title="Edit Package" href="{{url('backoffice/travel-packages/edit')}}/{{$package->id}}"><i class="la la-edit"></i></a>
                                             {{--<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_{{$package->id}}"><i class="fa fa-trash"></i></a>--}}
                                         </td>
                                     </tr>
@@ -110,7 +110,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Close')}}</button>
-                                                    <a type="button" class="btn btn-danger" href="{{url('backend/travel-packages/delete')}}/{{$package->id}}">{{__('Delete')}}</a>
+                                                    <a type="button" class="btn btn-danger" href="{{url('backoffice/travel-packages/delete')}}/{{$package->id}}">{{__('Delete')}}</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -26,7 +26,7 @@
                             <th >{{__('Phone Number')}}</th>
                             <th >{{__('Email')}}</th>
                             <th >{{__('Created at')}}</th>
-                            <th width="10">{{__('Action')}}</th>
+                            <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>

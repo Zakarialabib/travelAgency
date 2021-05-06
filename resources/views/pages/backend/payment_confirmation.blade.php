@@ -17,7 +17,7 @@
                             <h4 class="card-title warning"><i class="la la-warning la-3x"></i><br/>{{$paymentInfo['message']}}</h4>
                             <p class="card-text">Your payment could not be verified, please check your email for more information.</p>
                         @endif
-                        <a href="{{url('/dashboard')}}" class="btn btn-outline-dark">Dashboard</a>
+                        <a href="{{route('dashboard')}}" class="btn btn-outline-dark">Dashboard</a>
                     </div>
                 </div>
             </div>

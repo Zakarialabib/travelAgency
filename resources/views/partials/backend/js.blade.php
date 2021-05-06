@@ -8,7 +8,7 @@
 <script src="{{asset('backend/app-assets/vendors/js/charts/raphael-min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/js/scripts/extensions/toastr.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/js/switchery.min.js')}}" type="text/javascript"></script>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=e8cgxme8kbsc3u65sf2y8iixj1z0mzqlejahfw9hp9yoi1to"></script>
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chosen-jquery@0.1.1/lib/chosen.jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dropzone@5.7.6/dist/dropzone.min.js"></script>
@@ -48,7 +48,7 @@
 <script src="{{asset('frontend/assets/js/materialize.js')}}" type="text/javascript"></script>
 <script src="{{asset('frontend/assets/js/bootstrap3-typeahead.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/js/required.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/select2/select2.full.min.js')}}" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" type="text/javascript"></script>
 <!-- END TOOLS FROM FRONTEND-->
 @stack('scripts')
 

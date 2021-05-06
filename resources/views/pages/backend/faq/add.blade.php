@@ -33,7 +33,7 @@
                                     class="text-danger">*</span></label>
 
                             <div class="col-sm-10">
-                                <textarea name="content" class="form-control tinymce_editor" rows="3"
+                                <textarea name="content" class="form-control" id="ckeditor" rows="3"
                                     placeholder="{{ __('Content') }}">{{ old('content') }}</textarea>
                                 @if ($errors->has('content'))
                                     <p class="text-danger"> {{ $errors->first('content') }} </p>

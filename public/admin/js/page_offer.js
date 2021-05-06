@@ -78,7 +78,7 @@ $('#gallery').change(function () {
                                     </figure>
                                 </div>
                             `;
-                    $('#place_gallery_thumbs').append(html);
+                    $('#offer_gallery_thumbs').append(html);
                 }
             }
         },

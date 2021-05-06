@@ -16,15 +16,15 @@
         <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
             <div class="x_panel">
                 <div class="x_content">
-                    <table class="table table-striped table-bordered golo-datatable">
+                    <table class="table table-striped table-bordered col-4-datatable">
                         <thead>
                         <tr>
                             <th >ID</th>
-                            <th width="15%">{{__('Name')}}</th>
-                            <th width="15%">{{__('Email')}}</th>
-                            <th width="15%">{{__('Company name')}}</th>
-                            <th width="15%">{{__('Phone')}}</th>
-                            <th width="15%">{{__('Created at')}}</th>
+                             <th>{{__('Name')}}</th>
+                             <th>{{__('Email')}}</th>
+                             <th>{{__('Company name')}}</th>
+                             <th>{{__('Phone')}}</th>
+                             <th>{{__('Created at')}}</th>
                             <th >Action</th>
                         </tr>
                         </thead>

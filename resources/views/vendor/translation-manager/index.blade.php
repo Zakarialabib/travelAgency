@@ -127,7 +127,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th width="15%">Key</th>
+                 <th>Key</th>
                 <?php foreach ($locales as $locale): ?>
                     <th><?= $locale ?></th>
                 <?php endforeach; ?>

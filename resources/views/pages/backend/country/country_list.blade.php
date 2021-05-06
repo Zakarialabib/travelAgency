@@ -20,7 +20,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
             <div class="x_panel">
                 <div class="x_content">
-                    <table class="table table-striped table-bordered golo-datatable">
+                    <table class="table table-striped table-bordered col-4-datatable">
                         <thead>
                         <tr>
                             <th>ID</th>

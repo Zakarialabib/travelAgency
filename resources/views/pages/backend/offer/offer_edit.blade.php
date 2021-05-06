@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">{{__('Description')}}  <small>({{$language->code}})</small>: *</label>
-                                <textarea type="text" class="form-control tinymce_editor" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
+                                <textarea type="text" class="form-control ckeditor" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
                             </div>
                         </div>
                     @endforeach
@@ -64,10 +64,13 @@
                             <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}">
                                 <div class="col-md-11">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}" placeholder="{{ __('Title') }}">
+                                        <input type="text" class="form-control" name="itinerary[{{$key}}][question]" 
+                                        value="{{$menu['question']}}" placeholder="{{ __('Title') }}">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control tinymce_editor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="{{ __('Description') }}">
+                                        <input type="text" class="form-control ckeditor" 
+                                        name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" 
+                                        placeholder="{{ __('Description') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-1">
@@ -93,7 +96,7 @@
                 <div class="row">
                     <div class="col-md-12 gallery">
                         <p><strong>{{__('Gallery images')}}:</strong></p>
-                        <div id="place_gallery_thumbs">
+                        <div id="offer_gallery_thumbs">
                             @if($offer->gallery)
                                 @foreach($offer->gallery as $image)
                                     <div class="col-sm-2 media-thumb-wrap">
@@ -126,18 +129,16 @@
             <div class="form-group">
                 <p class="lead">{{ __('SEO') }}</p>
                 <div class="form-group">
-                    <label for="seo_title">{{ __('SEO title') }} -
-                        <small>{{ __('60 characters or less') }}</small>:</label>
-                    <input type="text" class="form-control" id="seo_title" name="seo_title">
+                    <label for="seo_title">{{ __('SEO title') }} - <small>{{ __('60 characters or less') }}</small>:</label>
+                    <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{$offer['seo_title']}}">
                     <div id="count">
                         <span id="current_count">0</span>
                         <span id="maximum_count">/ 60</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="seo_description">{{ __('Meta Description') }} -
-                        <small>{{ __('160 characters or less') }}</small>:</label>
-                    <textarea class="form-control" id="seo_description" name="seo_description"></textarea>
+                    <label for="seo_description">{{ __('Meta Description') }} - <small>{{ __('160 characters or less') }}</small>:</label>
+                    <textarea class="form-control" id="seo_description" name="seo_description">{{$offer['seo_description']}}</textarea>
                     <div id="counter">
                         <span id="count_current">0</span>
                         <span id="count_maximum">/ 160</span>

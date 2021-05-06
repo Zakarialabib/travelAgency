@@ -98,7 +98,6 @@ Route::group([
         Route::post('/hold-customer-hotel-booking-information','HotelController@holdCustomerHotelBookingInfo');
         Route::get('/hotel-booking-confirmation','HotelController@hotelPaymentConfirmation');
 
-        Route::get('/page/landing/{page_number}', 'ViewController@pageLanding')->name('page_landing');
         Route::get('/search-listing-input', 'ViewController@searchListing')->name('search_listing');
         Route::get('/search-listing', 'ViewController@pageSearchListing')->name('page_search_listing');
         Route::get('/hotel-booking-payment-page','ViewController@hotelBookingPaymentPage')->middleware('hotel.search.param','hotel.room.selected');
@@ -110,7 +109,7 @@ Route::group([
 
         Route::get('/offers/{slug}', 'OfferController@show')->name('frontend.offer.show');
         
-        Route::get('/blog/all', 'PostController@list')->name('post_list_all');
+        Route::get('/blog/tout', 'PostController@list')->name('post_list_all');
         Route::post('/post', 'PostController@send')->name('send');
         Route::get('/blog/{cat_slug}', 'PostController@list')->where('cat_slug', '[a-zA-Z0-9-_]+')->name('post_list');
         Route::get('{slug}-{id}', 'PostController@detail')
@@ -118,17 +117,17 @@ Route::group([
         ->where('id', '[0-9]+')->name('post_detail');
         
         Route::get('/ville-a-visiter', 'CityController@list')->name('city_list');
-        Route::get('/city/{slug}', 'CityController@detail')->name('city_detail');
-        Route::get('/city/{slug}/{cat_slug}', 'CityController@detail')->name('city_category_detail');
+        Route::get('/ville/{slug}', 'CityController@detail')->name('city_detail');
+        Route::get('/ville/{slug}/{cat_slug}', 'CityController@detail')->name('city_category_detail');
     
-        Route::get('/categorie', 'CategoryController@listPlace')->name('category_list');
+        Route::get('/categories', 'CategoryController@listPlace')->name('category_list');
         Route::get('/categorie/{slug}', 'CategoryController@detail')->name('category_detail');
         Route::get('/categorie/type/{slug}', 'CategoryController@typeDetail')->name('category_type_detail');
         Route::get('/categories', 'CategoryController@search')->name('category_search');
-        Route::post('/review', 'ReviewController@create')->name('review_create')->middleware('auth');
+        Route::post('/avis', 'ReviewController@create')->name('review_create')->middleware('auth');
        
         Route::post('/bookings', 'BookingController@booking')->name('booking_submit');
-        Route::get('/places/map', 'PlaceController@getListMap')->name('place_get_list_map');
+        Route::get('/offres/map', 'PlaceController@getListMap')->name('place_get_list_map');
         Route::get('/villes/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
         Route::get('/villes', 'CityController@search')->name('city_search');
 
@@ -139,9 +138,10 @@ Route::group([
         Route::put('/update-cart', 'BookingController@update');
         Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart');
 
-});
+     });
 
 Route::group([
+    'prefix' => 'backoffice',
     'namespace' => 'Backend', 
     'middleware' => ['auth']], function(){
         
@@ -149,6 +149,7 @@ Route::group([
         Route::post('/country', 'CountryController@create')->name('country_create');
         Route::put('/country', 'CountryController@update')->name('country_update');
         Route::delete('/country/{id}', 'CountryController@destroy')->name('country_delete');
+
         Route::get('/city', 'CityController@list')->name('city_list');
         Route::post('/city', 'CityController@create')->name('city_create');
         Route::put('/city', 'CityController@update')->name('city_update');
@@ -165,7 +166,7 @@ Route::group([
     
         });
 
-        Route::group(['prefix' => 'suppliers'],function(){
+        Route::group(['prefix' => 'fournisseur'],function(){
         Route::get('/', 'SupplierController@list')->name('supplier_list');
         Route::get('/add', 'SupplierController@create')->name('supplier_create_view');
         Route::post('/', 'SupplierController@store')->name('supplier_create');
@@ -173,7 +174,14 @@ Route::group([
         Route::put('/update/{id}', 'SupplierController@update')->name('supplier_update');
         Route::delete('/{id}', 'SupplierController@destroy')->name('supplier_delete');
       });
-              
+        
+      
+        Route::group(['prefix' => 'facture'], function() {
+        Route::get('create/{type}/{id}', 'InvoiceController@create')->name('invoice_create');
+        Route::get('action/{action}/{type}/{id}/{template}', 'InvoiceController@action')->name('invoice_action');
+        Route::post('send/{id}', 'InvoiceController@sendEmail')->name('invoice_send');
+        });
+
          // FAQ Route
          Route::get('/faq', 'FaqController@faq')->name('faq');
          Route::get('/faq/add', 'FaqController@add')->name('faq.add');
@@ -181,7 +189,6 @@ Route::group([
          Route::post('/faq/delete/{id}/', 'FaqController@delete')->name('faq.delete');
          Route::get('/faq/edit/{id}/', 'FaqController@edit')->name('faq.edit');
          Route::post('/faq/update/{id}/', 'FaqController@update')->name('faq.update');
-
 
         Route::get('/category/{type}', 'CategoryController@list')->name('category_list');
         Route::post('/category', 'CategoryController@create')->name('category_create');
@@ -225,15 +232,58 @@ Route::group([
         Route::get('/review', 'ReviewController@list')->name('review_list');
         Route::delete('/review', 'ReviewController@destroy')->name('review_delete');
 
-        Route::get('/bookings', 'BookingController@list')->name('booking_list');
-        Route::get('/bookings/add', 'BookingController@create')->name('booking_create');
-        Route::post('/booking/store', 'BookingController@store')->name('booking_store');
-        Route::get('/bookings/edit/{id}', 'BookingController@edit')->name('booking_edit');
-        Route::put('/booking/update', 'BookingController@update')->name('booking_update');
-        Route::put('/bookings', 'BookingController@updateStatus')->name('booking_update_status');
-        Route::delete('/bookings/{id}', 'BookingController@destroy')->name('booking_delete');
-      
-        Route::get('/testimonials', 'TestimonialController@list')->name('testimonial_list');
+        Route::group(['prefix' => 'reservations'],function(){
+
+        Route::get('/', 'BookingController@list')->name('booking_list');
+        Route::get('/add', 'BookingController@create')->name('booking_create');
+        Route::post('/store', 'BookingController@store')->name('booking_store');
+        Route::get('/edit/{id}', 'BookingController@edit')->name('booking_edit');
+        Route::put('/update', 'BookingController@update')->name('booking_update');
+        Route::put('/', 'BookingController@updateStatus')->name('booking_update_status');
+        Route::delete('/{id}', 'BookingController@destroy')->name('booking_delete');
+          });
+          
+        Route::group(['prefix' => 'achats'],function(){
+        Route::get('/', 'PurchaseController@list')->name('purchase_list');
+        Route::get('/ajax-delete-file', 'PurchaseController@deletePurchaseFile');
+        Route::get('/add', 'PurchaseController@createView')->name('purchase_create_view');
+        Route::post('/', 'PurchaseController@create')->name('purchase_create');
+        Route::get('/edit/{id}', 'PurchaseController@edit')->name('purchase_edit');
+        Route::put('/update/{id}', 'PurchaseController@update')->name('purchase_update');
+        Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
+        Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
+        Route::get('/status', 'PurchaseController@updateStatus');
+        });
+
+        Route::group(['prefix' => 'ventes'],function(){
+            Route::get('/', 'SaleController@list')->name('sale_list');
+            Route::get('/ajax-delete-file', 'SaleController@deleteSaleFile');
+            Route::get('/add', 'SaleController@createView')->name('sale_create_view');
+            Route::post('/add', 'SaleController@createView')->name('sale_create_view');
+            Route::post('/', 'SaleController@create')->name('sale_create');
+            Route::get('/edit/{id}', 'SaleController@edit')->name('sale_edit');
+            Route::put('/update/{id}', 'SaleController@update')->name('sale_update');
+            Route::delete('/{id}', 'SaleController@destroy')->name('sale_delete');
+            Route::get('gen_devis/{id}', 'SaleController@genQuotation')->name('sale_quotation');
+            Route::get('/status', 'SaleController@updateStatus');
+            });
+        
+    
+        Route::group(['prefix' => 'avoirs'],function(){
+    
+            Route::get('/', 'ReturnController@list')->name('return_list');
+            Route::get('/ajax-delete-file', 'ReturnController@deleteSaleFile');
+            Route::get('/add', 'ReturnController@createView')->name('return_create_view');
+            Route::post('/add', 'ReturnController@createView')->name('return_create_view');
+            Route::post('/', 'ReturnController@create')->name('return_create');
+            Route::get('/edit/{id}', 'ReturnController@edit')->name('return_edit');
+            Route::put('/update/{id}', 'ReturnController@update')->name('return_update');
+            Route::delete('/{id}', 'ReturnController@destroy')->name('return_delete');
+            Route::get('gen_devis/{id}', 'ReturnController@genQuotation')->name('return_quotation');
+            Route::get('/status', 'ReturnController@updateStatus');
+            });
+
+        Route::get('/avis', 'TestimonialController@list')->name('testimonial_list');
         Route::get('/testimonials/add', 'TestimonialController@pageCreate')->name('testimonial_page_add');
         Route::get('/testimonials/edit/{id}', 'TestimonialController@pageCreate')->name('testimonial_page_edit');
         Route::post('/testimonials', 'TestimonialController@create')->name('testimonial_action');
@@ -245,67 +295,50 @@ Route::group([
         Route::get('/settings/language', 'SettingController@pageLanguage')->name('settings_language');
         Route::get('/settings/translation', 'SettingController@pageTranslation')->name('settings_translation');
 
+        
+        Route::get('/travel-package', 'TravelPackageController@travelPackages');
+        Route::get('/travel-package/create', 'TravelPackageController@packageCreate');
+        Route::post('/travel-package/createPackage','TravelPackageController@create');
+        Route::post('/travel-package/createFlightDeal','TravelPackageController@createFlightDeal');
+        Route::post('/travel-package/createHotelDeal','TravelPackageController@createHotelDeal');
+        Route::post('/travel-package/createAttraction','TravelPackageController@createAttraction');
+        Route::get('/travel-package/delete-sight-seeing/{id}','TravelPackageController@deleteSightSeeing');
+        Route::get('/travel-package/activate/{id}', 'TravelPackageController@activate')->name('activate');
+        Route::get('/travel-package/deactivate/{id}', 'TravelPackageController@deactivate')->name('deactivate');
+        Route::get('/travel-package/delete/{id}', 'TravelPackageController@deletePackage');
+        Route::get('/travel-package/edit/{id}', 'TravelPackageController@editPackage');
+        Route::post('/travel-package/delete-image','TravelPackageController@deleteImage');
+        Route::get('/travel-package/categories','TravelPackageController@categories');
+        Route::post('/travel-package/activate/category','TravelPackageController@activateCategory');
+        Route::post('/travel-package/deActivate/category','TravelPackageController@deActivateCategory');
+        Route::post('/travel-package/categoryCreateOrUpdate','TravelPackageController@categoryCreateOrUpdate');
+        Route::post('/travel-package/storeGalleryInfo','TravelPackageController@storeGalleryImages');
+
+
+        // Newsletter Route
+        Route::get('/subscriber', 'NewsletterController@newsletter')->name('admin.newsletter');
+        Route::get('/mailsubscriber', 'NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
+        Route::post('/subscribers/sendmail', 'NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
+        Route::get('/subscriber/add', 'NewsletterController@add')->name('admin.newsletter.add');
+        Route::post('/subscriber/store', 'NewsletterController@store')->name('admin.newsletter.store');
+        Route::post('/subscriber/delete/{id}/', 'NewsletterController@delete')->name('admin.newsletter.delete');
+        Route::get('/subscriber/edit/{id}/', 'NewsletterController@edit')->name('admin.newsletter.edit');
+        Route::post('/subscriber/update/{id}/', 'NewsletterController@update')->name('admin.newsletter.update');
+
+        Route::resource('slides', 'SliderController');
+
+        Route::get('/ajax-search-places', 'BackEndViewController@searchPlaces');
+        Route::post('/search-portal','BackEndViewController@searchPortal');
+        Route::get('backend/payment-confirmation','BackEndViewController@paymentConfirmation');
+    
+
     });
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('/ajax-search-places', 'BackEndViewController@searchPlaces');
-    Route::post('/search-portal','BackEndViewController@searchPortal');
-    Route::get('backend/payment-confirmation','BackEndViewController@paymentConfirmation');
     Route::get('/dashboard','BackEndViewController@dashboard')->name('dashboard');
 
-    Route::group(['prefix' => 'purchases'],function(){
-    Route::get('/', 'PurchaseController@list')->name('purchase_list');
-    Route::get('/ajax-delete-file', 'PurchaseController@deletePurchaseFile');
-    Route::get('/add', 'PurchaseController@createView')->name('purchase_create_view');
-    Route::post('/', 'PurchaseController@create')->name('purchase_create');
-    Route::get('/edit/{id}', 'PurchaseController@edit')->name('purchase_edit');
-    Route::put('/update/{id}', 'PurchaseController@update')->name('purchase_update');
-    Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
-
-    Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
-    Route::get('/status', 'PurchaseController@updateStatus');
-
-});
-
-Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
-	Route::get('create/{type}/{id}', 'InvoiceController@create')->name('invoice_create');
-	Route::get('action/{action}/{type}/{id}/{template}', 'InvoiceController@action')->name('invoice_action');
-	Route::post('send/{id}', 'InvoiceController@sendEmail')->name('invoice_send');
-});
-
-    Route::group(['prefix' => 'sales'],function(){
-        Route::get('/', 'SaleController@list')->name('sale_list');
-        Route::get('/ajax-delete-file', 'SaleController@deleteSaleFile');
-        Route::get('/add', 'SaleController@createView')->name('sale_create_view');
-        Route::post('/add', 'SaleController@createView')->name('sale_create_view');
-        Route::post('/', 'SaleController@create')->name('sale_create');
-        Route::get('/edit/{id}', 'SaleController@edit')->name('sale_edit');
-        Route::put('/update/{id}', 'SaleController@update')->name('sale_update');
-        Route::delete('/{id}', 'SaleController@destroy')->name('sale_delete');
-        Route::get('gen_devis/{id}', 'SaleController@genQuotation')->name('sale_quotation');
-        Route::get('/status', 'SaleController@updateStatus');
-        });
-    
-
-    Route::group(['prefix' => 'return'],function(){
-
-        Route::get('/', 'ReturnController@list')->name('return_list');
-        Route::get('/ajax-delete-file', 'ReturnController@deleteSaleFile');
-        Route::get('/add', 'ReturnController@createView')->name('return_create_view');
-        Route::post('/add', 'ReturnController@createView')->name('return_create_view');
-        Route::post('/', 'ReturnController@create')->name('return_create');
-        Route::get('/edit/{id}', 'ReturnController@edit')->name('return_edit');
-        Route::put('/update/{id}', 'ReturnController@update')->name('return_update');
-        Route::delete('/{id}', 'ReturnController@destroy')->name('return_delete');
-        Route::get('gen_devis/{id}', 'ReturnController@genQuotation')->name('return_quotation');
-        Route::get('/status', 'ReturnController@updateStatus');
-        });
-
-        Route::resource('slides', 'SliderController');
-
     Route::group(['prefix' => 'settings'],function(){
-
         Route::get('menu','MenuController@index')->name('menu.get');
         Route::get('vats','BackEndViewController@vat')->name('vats');
         Route::post('vat', 'VatController@saveVat')->name('backend-save-vat');
@@ -330,7 +363,6 @@ Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
         });
 
         Route::get('/profile', 'BackEndViewController@profile')->name('profile');
-
         Route::post('/updateProfile','ProfileController@updateProfileImageJs');
         Route::post('/update/user/profile','ProfileController@updateUserProfile')->name('update-profile');
         Route::post('/update/user/image','ProfileController@updateUserProfileImage')->name('update-profile-image');
@@ -344,7 +376,6 @@ Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
         });
 
         Route::group(['prefix' => 'language'],function(){
-
         Route::get('/', 'LanguageController@pageLanguage')->name('language');
         Route::put('/status/{code}', 'LanguageController@updateStatus')->name('language_status');
         Route::put('/default', 'LanguageController@updateStatus')->name('language_default');
@@ -356,6 +387,10 @@ Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
         Route::get('visa-application-requests','BackEndViewController@visaApplicationRequests');
 
     });
+
+});
+
+      
 
     Route::group(['prefix' => 'bookings'],function(){
 
@@ -386,34 +421,14 @@ Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
     Route::group(['prefix' => 'transactions'],function(){
         Route::get('/online-payment','BackEndViewController@onlinePayment');
         Route::get('/bank-payment','BackEndViewController@bankPayment');
-
         Route::get('/user/online-payment','BackEndViewController@userOnlinePayment');
         Route::get('/user/bank-payment','BackEndViewController@userBankPayment');
-
         Route::post('/update-payment-proof','BankPaymentController@updatePaymentProof');
         Route::get('/update-payment-status/{id}/{type}','BankPaymentController@updatePaymentStatus');
         Route::get('/requery/{id}','OnlinePaymentController@requery');
     });
 
-    Route::group(['prefix' => 'backend/travel-packages', 'middleware' => ['auth','role:admin'] ], function(){
-
-        Route::get('', 'TravelPackageController@travelPackages');
-        Route::get('create', 'TravelPackageController@packageCreate');
-        Route::post('createPackage','TravelPackageController@create');
-        Route::post('createFlightDeal','TravelPackageController@createFlightDeal');
-        Route::post('createHotelDeal','TravelPackageController@createHotelDeal');
-        Route::post('createAttraction','TravelPackageController@createAttraction');
-        Route::get('delete-sight-seeing/{id}','TravelPackageController@deleteSightSeeing');
-        Route::get('activate/{id}', 'TravelPackageController@activate')->name('activate');
-        Route::get('deactivate/{id}', 'TravelPackageController@deactivate')->name('deactivate');
-        Route::get('delete/{id}', 'TravelPackageController@deletePackage');
-        Route::get('edit/{id}', 'TravelPackageController@editPackage');
-        Route::post('delete-image','TravelPackageController@deleteImage');
-        Route::get('categories','TravelPackageController@categories');
-        Route::post('activate/category','TravelPackageController@activateCategory');
-        Route::post('deActivate/category','TravelPackageController@deActivateCategory');
-        Route::post('categoryCreateOrUpdate','TravelPackageController@categoryCreateOrUpdate');
-        Route::post('storeGalleryInfo','TravelPackageController@storeGalleryImages');
+    Route::group(['prefix' => 'backoffice/travel-packages', 'middleware' => ['auth','role:admin'] ], function(){
 
         // Newsletter Route
         Route::get('/subscriber', 'NewsletterController@newsletter')->name('admin.newsletter');
@@ -423,29 +438,10 @@ Route::group(['prefix' => 'invoice', 'namespace' => 'Backend'], function() {
         Route::post('/subscriber/store', 'NewsletterController@store')->name('admin.newsletter.store');
         Route::post('/subscriber/delete/{id}/', 'NewsletterController@delete')->name('admin.newsletter.delete');
         Route::get('/subscriber/edit/{id}/', 'NewsletterController@edit')->name('admin.newsletter.edit');
-        Route::post('/subscriber/update/{id}/', 'NewsletterController@update')->name('admin.newsletter.update');
-
-
+        Route::post('/subscriber/update/{id}/', 'NewsletterController@update')->name('admin.newsletter.update');    
+     
     });
 
-});
-
-Route::group(['prefix' => '/deals'],function(){
-
-    Route::get('','ViewController@hotDeals');
-    Route::get('flight','ViewController@flightDeals');
-    Route::get('hotel','ViewController@hotelDeals');
-    Route::get('attraction','ViewController@attractionDeals');
-    Route::get('details/{id}','ViewController@dealDetails');
-    Route::get('booking/{id}','ViewController@dealBooking');
-    Route::post('booking','TravelPackageController@bookDeal');
-    Route::get('payment-options','ViewController@dealPaymentOptions')->middleware('deals.booking.id');
-    Route::get('booking-confirmation','ViewController@dealBookingConfirmation')->middleware('payment.info','deals.booking.id');
-    Route::post('calculateBookingAmount','TravelPackageController@calculateBookingAmount');
-    Route::post('wallet-payment','WalletController@dealWalletPayment');
-    Route::post('bank-payment','BankPaymentController@dealBankPayment');
-
-});
 
 Auth::routes();
 

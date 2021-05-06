@@ -1,7 +1,7 @@
 
 $('.activate').on('click',function(){
     var id = $(this).val();
-    axios.post(baseUrl+'/backend/travel-packages/activate/category',{
+    axios.post(baseUrl+'/backoffice/travel-packages/activate/category',{
         id : id
     })
         .then(function(response){
@@ -20,7 +20,7 @@ $('.activate').on('click',function(){
 
 $('.deActivate').on('click',function(){
     var id = $(this).val();
-    axios.post(baseUrl+'/backend/travel-packages/deActivate/category',{
+    axios.post(baseUrl+'/backoffice/travel-packages/deActivate/category',{
         id : id
     })
         .then(function(response){

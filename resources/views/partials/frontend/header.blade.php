@@ -35,7 +35,7 @@
                 </div>
                     @elseif(auth()->user())
                     <div class="col-md-7 col-xs-7 clear-padding user-logged">
-                        <a href="{{url('/dashboard')}}" class="transition-effect">
+                        <a href="{{route('dashboard')}}" class="transition-effect">
                             @if(!empty(\App\Profile::getUserInfo(auth()->user()->id)->photo))
                             <img src="{{asset(\App\Profile::getUserInfo(auth()->user()->id)->photo)}}" alt="{{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}">
                             @else
@@ -43,7 +43,7 @@
                             @endif
                             {{__('Hi')}}, {{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}
                         </a>
-                        <a class="btn btn-primary btn-sm" href="{{url('/dashboard')}}">
+                        <a class="btn btn-primary btn-sm" href="{{route('dashboard')}}">
                             {{__('Bookings')}}  
                         </a>
                         <a href="{{url('/logout')}}" class="transition-effect">

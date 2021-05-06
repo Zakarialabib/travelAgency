@@ -21,12 +21,12 @@
 
                 <div class="x_content">
 
-                    <table class="table table-striped table-bordered golo-datatable">
+                    <table class="table table-striped table-bordered col-4-datatable">
                         <thead>
                         <tr>
                             <th >ID</th>
-                            <th width="15%">{{__('Reviewer')}}</th>
-                            <th width="15%">{{__('Place name')}}</th>
+                             <th>{{__('Reviewer')}}</th>
+                             <th>{{__('Place name')}}</th>
                             <th>{{__('Comment')}}</th>
                             <th >{{__('Star')}}</th>
                             <th >{{__('Status')}}</th>

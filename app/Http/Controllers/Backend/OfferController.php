@@ -63,8 +63,11 @@ class OfferController extends Controller
     public function store(Request $request)
     {
         $request['slug'] = getSlug($request, 'name');
+        $request['user_id'] = Auth::id();
 
-        $data = $this->validate($request, array(
+      //  dd($request);
+
+        $rules = [
             'user_id' => '',
             '%name%' => 'required',
             '%description%' => 'required',
@@ -76,7 +79,12 @@ class OfferController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ));
+        ];
+
+        $rule_factory = RuleFactory::make($rules);
+
+        $data = $this->validate($request, $rule_factory);
+
 
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;
@@ -95,22 +103,12 @@ class OfferController extends Controller
         }else{
             $data['reference'] = $latest->reference + 1;
         }
-        $offer = Offer::create([
-            'user_id' => $data['user_id'],
-            '%name%' => $data['%name%'],
-            '%description%' => $data['%description%'],
-            'slug' => $data['slug'],
-            'price' => $data['price'],
-            'category' => $data['category'],
-            'thumb' => $data['thumb'],
-            'gallery' => $data['gallery'],
-            'seo_title' => $data['seo_title'],
-            'seo_description' => $data['seo_description'],
-            'itinerary' => $data['itinerary']
-            ]);
-           
 
-        return redirect()->route('offer_list');
+        $offer = new Offer();
+        $offer->fill($data);
+        $offer->save();
+
+        return redirect()->route('offer_list')->with('success', 'Offre creer avec succes!');
 
     }
 
@@ -126,10 +124,9 @@ class OfferController extends Controller
 
     public function update($id, Request $request)
     {
-        $offer = Offer::find($id);
         $request['slug'] = getSlug($request, 'name');
         
-        $request->validate([
+        $rules = [
             'user_id' => '',
             '%name%' => 'required',
             '%description%' => 'required',
@@ -141,7 +138,11 @@ class OfferController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ]);
+        ];
+
+        $rule_factory = RuleFactory::make($rules);
+
+        $data = $this->validate($request, $rule_factory);
 
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;
@@ -153,10 +154,12 @@ class OfferController extends Controller
             $data['thumb'] = $thumb_file;
         }
 
-        $input = $request->all();
-        $offer->update($input);
-    
-         return redirect(route('offer_list'))->with('success', 'Destination à jour!');
+        $offer = Offer::find($request->id);
+
+        $offer->fill($data)->save();
+
+        return redirect()->route('offer_list')->with('success', 'Destination à jour!');
+
     
     }
 

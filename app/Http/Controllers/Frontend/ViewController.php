@@ -191,12 +191,7 @@ class ViewController extends Controller
         return view('pages.frontend.page.contact');
     }
 
-    public function pageLanding($page_number)
-    {
-        return view("pages.frontend.page.landing_{$page_number}");
-    }
-
-    public function searchListing(Request $request)
+     public function searchListing(Request $request)
     {
         $keyword = $request->keyword;
         
