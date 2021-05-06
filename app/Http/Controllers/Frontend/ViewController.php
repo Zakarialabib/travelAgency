@@ -687,50 +687,7 @@ class ViewController extends Controller
         return view('pages.frontend.deal.attraction',compact('hotDeals'));
     }
 
-    public function dealDetails($slug){
-        
-        $place = $this->place->getBySlug($slug);
-        if (!$place) abort(404);
-
-        $city = City::query()
-        ->with('country')
-        ->where('id', $place->city_id)
-        ->first();
-
-    $amenities = Amenities::query()
-        ->whereIn('id', $place->amenities ? $place->amenities : [])
-        ->get(['id', 'name', 'icon']);
-
-    $categories = Category::query()
-        ->whereIn('id', $place->category ? $place->category : [])
-        ->get(['id', 'name', 'slug', 'icon_map_marker']);
-
-    $place_types = PlaceType::query()
-        ->whereIn('id', $place->place_type ? $place->place_type : [])
-        ->get(['id', 'name']);
-
-    $reviews = Review::query()
-        ->with('user')
-        ->where('place_id', $place->id)
-        ->where('status', Review::STATUS_ACTIVE)
-        ->get();
-    $review_score_avg = Review::query()
-        ->where('place_id', $place->id)
-        ->where('status', Review::STATUS_ACTIVE)
-        ->avg('score');
-
-    $similar_places = Place::query()
-        ->with('place_types')
-        ->with('avgReview')
-        ->withCount('reviews')
-        ->withCount('wishList')
-        ->where('city_id', $city->id)
-        ->where('id', '<>', $place->id);
-
-    foreach ($place->category as $cat_id):
-        $similar_places->where('category', 'like', "%{$cat_id}%");
-    endforeach;
-    $similar_places = $similar_places->limit(4)->get();
+    public function dealDetails($id){
 
         $deal = TravelPackage::where('id',$id)
             ->with('hotelDeal')
@@ -745,16 +702,7 @@ class ViewController extends Controller
             return back();
         }
 
-        return view('pages.frontend.deal.details',compact('deal','place'), [
-            'place' => $place,
-            'city' => $city,
-            'amenities' => $amenities,
-            'categories' => $categories,
-            'place_types' => $place_types,
-            'reviews' => $reviews,
-            'review_score_avg' => $review_score_avg,
-            'similar_places' => $similar_places
-        ]);
+        return view('pages.frontend.deal.details',compact('deal'));
     }
 
     public function dealBooking($id){

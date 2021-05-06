@@ -8,43 +8,6 @@
     });
 
     /**
-     * Event click add more social
-     */
-    $('#social_addmore').click(function (event) {
-        event.preventDefault();
-        let social_list = $('.social_list');
-        let social_item = $('.social_item').length;
-        if (social_item < 6) {
-            social_list.append(`
-                    <div class="field-inline field-3col social_item">
-                        <div class="field-group field-select">
-                            <select name="social[${social_item}][name]" id="place_socials">
-                                <option value="">Select network</option>
-                                <option value="Facebook">Facebook</option>
-                                <option value="Instagram">Instagram</option>
-                                <option value="Youtube">Youtube</option>
-                                <option value="Twitter">Twitter</option>
-                                <option value="Pinterest">Pinterest</option>
-                                <option value="Snapchat">Snapchat</option>
-                            </select>
-                            <i class="la la-angle-down"></i>
-                        </div>
-                        <div class="field-group field-input">
-                            <input type="text" name="social[${social_item}][url]" placeholder="Enter URL include http or www">
-                        </div>
-                        <a href="#" class="social_item_remove pt-2">
-                            <i class="la la-trash-alt"></i>
-                        </a>
-                    </div>
-                `);
-        }
-    });
-    $(document).on("click", ".social_item_remove", function (event) {
-        event.preventDefault();
-        $(this).parents('.field-3col').remove();
-    });
-
-    /**
      * Event select country => show list city
      */
     $('#select_country').change(function () {
@@ -126,34 +89,6 @@
         previewUploadImage(this, 'thumb_preview')
     });
 
-    // Add more opening hour
-    $('#openinghour_addmore').click(function () {
-        event.preventDefault();
-        let openinghour_list = $('#time-opening');
-        let openinghour_item = $('.openinghour_item').length;
-        openinghour_list.append(`
-                <div class="field-inline field-3col social_item">
-                    <div class="field-group field-input">
-                        <input type="text" class="form-control valid" name="opening_hour[${openinghour_item}][title]" placeholder="Enter day open">
-                    </div>
-                    <div class="field-group field-input">
-                        <input type="text" class="form-control" name="opening_hour[${openinghour_item}][value]" placeholder="Enter time open">
-                    </div>
-                    <a href="#" class="openinghour_item_remove pt-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16">
-                            <g fill="#5D5D5D" fill-rule="nonzero">
-                                <path d="M14.964 2.32h-4.036V0H4.105v2.32H.07v1.387h1.37l.924 12.25H12.67l.925-12.25h1.369V2.319zm-9.471-.933H9.54v.932H5.493v-.932zm5.89 13.183H3.65L2.83 3.707h9.374l-.82 10.863z"/>
-                                <path d="M6.961 6.076h1.11v6.126h-1.11zM4.834 6.076h1.11v6.126h-1.11zM9.089 6.076h1.11v6.126h-1.11z"/>
-                            </g>
-                        </svg>
-                    </a>
-                </div>
-            `);
-    });
-    $(document).on("click", ".openinghour_item_remove", function (event) {
-        event.preventDefault();
-        $(this).parents('.field-3col').remove();
-    });
 
 })(jQuery);
 

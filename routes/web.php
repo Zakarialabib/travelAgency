@@ -89,6 +89,24 @@ Route::group([
         Route::get('/ajax-search-listing', 'ViewController@searchListing');
         Route::get('/search', 'ViewController@search')->name('search');
 
+
+        Route::group(['prefix' => '/deals'],function(){
+
+            Route::get('','ViewController@hotDeals');
+            Route::get('flight','ViewController@flightDeals');
+            Route::get('hotel','ViewController@hotelDeals');
+            Route::get('attraction','ViewController@attractionDeals');
+            Route::get('details/{id}','ViewController@dealDetails');
+            Route::get('booking/{id}','ViewController@dealBooking');
+            Route::post('booking','TravelPackageController@bookDeal');
+            Route::get('payment-options','ViewController@dealPaymentOptions')->middleware('deals.booking.id');
+            Route::get('booking-confirmation','ViewController@dealBookingConfirmation')->middleware('payment.info','deals.booking.id');
+            Route::post('calculateBookingAmount','TravelPackageController@calculateBookingAmount');
+            Route::post('wallet-payment','WalletController@dealWalletPayment');
+            Route::post('bank-payment','BankPaymentController@dealBankPayment');
+        
+        });
+
         Route::post('/searchHotel','HotelController@searchHotel');
         Route::get('/get-selected-hotel-information/{id}','HotelController@getSelectedHotelInformation');
         Route::get('/get-selected-hotel-rooms-information/{id}','HotelController@getSelectHotelRoomsInformation');

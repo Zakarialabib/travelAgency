@@ -60,13 +60,6 @@
                 </i>
                 {{__('Gallery')}}
               </a>
-              @if($place->video)
-              <a title="Video" href="{{$place->video}}" data-lity class="lity-btn">
-                <i class="la la-youtube la-24">
-                </i>
-                {{__('Video')}}
-              </a>
-              @endif
             </div>
             <!-- .place-item__photo -->
             <div class="place-breadcrumbs">
@@ -154,7 +147,7 @@
           <div class="widget widget-shadows widget-reservation">
             <h1 style="font-weight: 800;">{{$place->name}}</h1>
              <h5>{{__('Starting From')}}</h5>
-            <h4 style="color: #ee5000;">{{$place->price}}DH/{{PRICE_RANGE[$place['price_range']]}}</h4>
+            <h4 style="color: #ee5000;">{{$place->price}}DH</h4>
             <span class="place__reviews__number reviews__number"> {{$review_score_avg}}<i class="fa fa-star"> </i>  </span>
             <span class="place__places-item__count reviews_count">({{count($reviews)}} {{__('reviews')}})
             </span>
@@ -210,12 +203,12 @@
                     @foreach($place['itinerary'] as $itinerary)
                     <div class="title">
                       <p>
-                        <span>{{$itinerary['question']}}
+                        <span>{{$itinerary['title']}}
                         </span>
                       </p>
                     </div>
                     <div class="daily-schedule-body">
-                      <p>{!! $itinerary['answer'] !!}
+                      <p>{!! $itinerary['description'] !!}
                       </p>                                               
                     </div>
                     @endforeach
@@ -228,16 +221,6 @@
                       {!! $place->description !!}
                     </p>
                     </div>
-                  @if(isset($place['video']))
-                  <div class="place__box">
-                    <h3 class="tab-heading">Videos
-                    </h3>
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{getYoutubeId($place['video'])}}" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>
-                  </div>
-                  <!-- .place__box -->
-                  @endif
               <div class="place__box place__box-map">
                 <h3 class="place__title--additional tab-heading">
                   {{__('Location & Maps')}}

@@ -185,11 +185,6 @@
                                             <input type="file" class="form-control" id="gallery" accept="image/*">
                                         </div>
                                     </div>
-                                    <div class="form-group video">
-                                        <label for="place_video">{{ __('Video') }}:</label>
-                                        <input type="text" class="form-control" id="place_video" name="video"
-                                            placeholder="Youtube, Vimeo video url">
-                                    </div>
                                 </div>
                                 <div id="link_affiliate">
                                     <div id="booking-type">

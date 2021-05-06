@@ -18,20 +18,20 @@
   
     // itinerary event
     $('#itinerary_addmore').click(function () {
-        let social_list = $('#itinerary_list');
-        let social_item = $('.itinerary_item').length;
-        social_list.append(`
-            <div class="row form-group itinerary_item" id="itinerary_item_${social_item}">
+        let itinerary_list = $('#itinerary_list');
+        let itinerary_item = $('.itinerary_item').length;
+        itinerary_list.append(`
+            <div class="row form-group itinerary_item" id="itinerary_item_${itinerary_item}">
                 <div class="col-md-11">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="itinerary[${social_item}][question]" value="" placeholder="Titre">
+                        <input type="text" class="form-control" name="itinerary[${itinerary_item}][title]" value="" placeholder="Titre">
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control tinymce_editor" name="itinerary[${social_item}][answer]" placeholder="Description"></textarea>
+                        <textarea type="text" class="form-control tinymce_editor" name="itinerary[${itinerary_item}][description]" placeholder="Description"></textarea>
                     </div>
                 </div>
                 <div class="col-md-1">
-                    <button type="button" class="btn btn-danger itinerary_item_remove" id="${social_item}">X</button>
+                    <button type="button" class="btn btn-danger itinerary_item_remove" id="${itinerary_item}">X</button>
                 </div>
             </div>
         `);

@@ -13,6 +13,7 @@ use App\SightSeeing;
 use App\TravelPackage;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
+use App\Http\Controllers\Controller;
 
 class TravelPackageController extends Controller
 {
@@ -154,16 +155,7 @@ class TravelPackageController extends Controller
 
     }
 
-    public function deleteImage(Request $r){
-        $gallery = Gallery::find($r->id);
-        $deleteImage = unlink($gallery->image_path);
-        $deleteRecord = $gallery->delete();
-        if($deleteImage && $deleteRecord){
-            return 1;
-        }else{
-            return 2;
-        }
-    }
+
 
     public function categories(){
         $package_categories = PackageCategory::orderBy('id','desc')->get();

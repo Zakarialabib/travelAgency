@@ -9,5 +9,5 @@ class PlaceTranslation extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['name', 'description', 'menu'];
+    protected $fillable = ['name', 'description'];
 }

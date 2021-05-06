@@ -22,20 +22,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="radius-mask tour-block hover-aqua">
 
-                            <div class="clip">
-                                @if($hotDeal->flight == 1 && $hotDeal->hotel == 0 && $hotDeal->attraction == 0)
-                                    <div class="bg bg-bg-chrome act" style="background-image:url({{\App\Services\AmadeusConfig::cityImage(\App\Services\AmadeusConfig::iataCode($hotDeal->flightDeal->destination))}})"></div>
-                                @else
-                                    @if(isset($hotDeal->images[0]['image_path']))
-                                        <div class="bg bg-bg-chrome act" style="background-image:url({{asset($hotDeal->images[0]->image_path)}})"></div>
-                                    @else
-                                        @if(isset($hotDeal->hotelDeal['city']))
-                                           <div class="bg bg-bg-chrome act" style="background-image:url({{ \App\Services\AmadeusConfig::cityImage(\App\Services\AmadeusConfig::iataCode($hotDeal->hotelDeal->city)) }} )"></div>
-                                        @else
-                                            <div class="bg bg-bg-chrome act" style="background-image:url({{ \App\Services\AmadeusConfig::cityImage(\App\Services\AmadeusConfig::iataCode($hotDeal->attractionDeal->city)) }} )"></div>
-                                        @endif
-                                    @endif
-                                @endif
+                            
                             </div>
                             <div class="tour-layer delay-1"></div>
                             <div class="tour-caption">

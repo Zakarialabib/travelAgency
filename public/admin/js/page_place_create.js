@@ -17,93 +17,23 @@ $('.cb_openday').change(function (event) {
     console.log("checkbox_day:", event.currentTarget);
 });
 
-$('#social_addmore').click(function () {
-    let social_list = $('#social_list');
-    let social_item = $('.social_item').length;
-    social_list.append(`
-                <div class="row form-group social_item" id="social_item_${social_item}">
-                    <div class="col-md-5">
-                        <select class="form-control" name="social[${social_item}][name]">
-                            <option value="Facebook">Facebook</option>
-                            <option value="Instagram">Instagram</option>
-                            <option value="Youtube">Youtube</option>
-                            <option value="Twitter">Twitter</option>
-                            <option value="Pinterest">Pinterest</option>
-                            <option value="Snapchat">Snapchat</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" name="social[${social_item}][url]" placeholder="Enter URL include http or www">
-                    </div>
-                    <div class="col-md-1">
-                        <button type="button" class="btn btn-danger social_item_remove" id="${social_item}">X</button>
-                    </div>
-                </div>
-            `);
-});
 
-$(document).on("click", ".social_item_remove", function (event) {
-    let id = event.currentTarget.getAttribute('id');
-    $(`#social_item_${id}`).remove();
-});
-// Menu event
-$('#menu_addmore').click(function () {
-    let social_list = $('#menu_list');
-    let social_item = $('.menu_item').length;
-    social_list.append(`
-        <div class="row form-group menu_item" id="menu_item_${social_item}">
-            <div class="col-md-2">
-                <div class="lfm" data-input="thumbnail_${social_item}" data-preview="holder_${social_item}">
-                    <div class="menu_thumb_preview" id="holder_${social_item}">
-                        <img src="https://via.placeholder.com/105x87?text=select" alt="" style="width: 100%;height: 87px;object-fit: cover">
-                    </div>
-                    <input id="thumbnail_${social_item}" class="form-control" type="hidden" name="menu[${social_item}][thumb]">
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="menu[${social_item}][name]" value="" placeholder="Menu name">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="menu[${social_item}][price]" value="" placeholder="Menu price">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="menu[${social_item}][description]" value="" placeholder="Menu description">
-                </div>
-            </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-danger menu_item_remove" id="${social_item}">X</button>
-            </div>
-        </div>
-    `);
-});
-
-$(document).on("click", ".menu_item_remove", function (event) {
-    let id = event.currentTarget.getAttribute('id');
-    $(`#menu_item_${id}`).remove();
-});
 // itinerary event
 $('#itinerary_addmore').click(function () {
-    let social_list = $('#itinerary_list');
-    let social_item = $('.itinerary_item').length;
-    social_list.append(`
-        <div class="row form-group itinerary_item" id="itinerary_item_${social_item}">
+    let itinerary_list = $('#itinerary_list');
+    let itinerary_item = $('.itinerary_item').length;
+    itinerary_list.append(`
+        <div class="row form-group itinerary_item" id="itinerary_item_${itinerary_item}">
             <div class="col-md-11">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="itinerary[${social_item}][question]" value="" placeholder="Enter Da">
+                    <input type="text" class="form-control" name="itinerary[${itinerary_item}][question]" value="" placeholder="Enter Da">
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control tinymce_editor" name="itinerary[${social_item}][answer]" placeholder="Enter Description"></textarea>
+                    <textarea type="text" class="form-control tinymce_editor" name="itinerary[${itinerary_item}][answer]" placeholder="Enter Description"></textarea>
                 </div>
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-danger itinerary_item_remove" id="${social_item}">X</button>
+                <button type="button" class="btn btn-danger itinerary_item_remove" id="${itinerary_item}">X</button>
             </div>
         </div>
     `);
@@ -115,28 +45,7 @@ $(document).on("click", ".itinerary_item_remove", function (event) {
 });
 
 
-$('#openinghour_addmore').click(function () {
-    let openinghour_list = $('#openinghour_list');
-    let openinghour_item = $('.openinghour_item').length;
-    openinghour_list.append(`
-                <div class="row form-group social_item" id="openinghour_item_${openinghour_item}">
-                    <div class="col-md-5">
-                        <input type="text" class="form-control" id="" name="opening_hour[${openinghour_item}][title]" placeholder="Enter valute: Exp: Monday" ">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" name="opening_hour[${openinghour_item}][value]" placeholder="enter value. Exp: 9:00 - 21:00">
-                    </div>
-                    <div class="col-md-1">
-                        <button type="button" class="btn btn-danger openinghour_item_remove" data-id="${openinghour_item}">X</button>
-                    </div>
-                </div>
-            `);
-});
 
-$(document).on("click", ".openinghour_item_remove", function (event) {
-    let id = event.currentTarget.getAttribute('data-id');
-    $(`#openinghour_item_${id}`).remove();
-});
 
 $('#thumb').change(function () {
     previewUploadImage(this, 'preview_thumb')

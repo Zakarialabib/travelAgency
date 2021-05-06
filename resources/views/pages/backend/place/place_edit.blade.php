@@ -63,14 +63,6 @@
                         
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="name">{{__('Price range')}}: *</label>
-                                            <select class="form-control" id="price_range" name="price_range" required>
-                                                @foreach(PRICE_RANGE as $key => $value)
-                                                    <option value="{{$key}}" {{isSelected($key, $place->price_range)}}>{{$value}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
                                         <label for="price">{{__('Price')}}: *</label>
                                         <input type="text" class="form-control" id="price" name="price" value="{{$place->price}}"  autocomplete="off">
                                         </div>
@@ -155,10 +147,10 @@
                                                 <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}">
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}" placeholder="Enter Day">
+                                                            <input type="text" class="form-control" name="itinerary[{{$key}}][title]" value="{{$menu['title']}}" placeholder="{{__('Title')}}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control ckeditor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="Enter Description">
+                                                            <input type="text" class="form-control ckeditor" name="itinerary[{{$key}}][description]" value="{{$menu['description']}}" rows="3" placeholder="{{__('Description')}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -209,10 +201,6 @@
                                         <div class="col-md-6">
                                             <input type="file" class="form-control" id="gallery" name="banner" accept="image/*">
                                         </div>
-                                    </div>
-                                    <div class="form-group video">
-                                        <label for="place_video">{{__('Video')}}:</label>
-                                        <input type="text" class="form-control" id="place_video" name="video" placeholder="Youtube, Vimeo video url">
                                     </div>
                                 </div>
                                 <div id="link_affiliate">

@@ -4,16 +4,6 @@ var GL_FILTER = GL_FILTER || {};
 var GL_BOOKING = GL_BOOKING || {};
 var GL_BUSINESS_SEARCH = GL_BUSINESS_SEARCH || {};
 
-const PRICE_RANGE = {
-    null: "None",
-    0: "Free",
-    1: "$",
-    2: "$$",
-    3: "$$$",
-    4: "$$$$",
-};
-
-
 
 /**********************************************************
 		BEGIN: PRELOADER

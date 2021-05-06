@@ -51,7 +51,6 @@ var GL_BC = GL_BC || {};
                                                 <span class="places-item__count">(${value.reviews_count} reviews)</span>
                                             </span>
                                         </div>
-                                        <div class="places-item__currency">${PRICE_RANGE[value.price_range]}</div>
                                     </div>
                                 </div>
                             </div>

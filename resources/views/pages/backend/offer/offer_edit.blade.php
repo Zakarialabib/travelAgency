@@ -64,12 +64,12 @@
                             <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}">
                                 <div class="col-md-11">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="itinerary[{{$key}}][question]" 
-                                        value="{{$menu['question']}}" placeholder="{{ __('Title') }}">
+                                        <input type="text" class="form-control" name="itinerary[{{$key}}][title]" 
+                                        value="{{$menu['title']}}" placeholder="{{ __('Title') }}">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control ckeditor" 
-                                        name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" 
+                                        name="itinerary[{{$key}}][description]" value="{{$menu['description']}}" rows="3" 
                                         placeholder="{{ __('Description') }}">
                                     </div>
                                 </div>

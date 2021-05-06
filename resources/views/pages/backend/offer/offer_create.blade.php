@@ -69,11 +69,11 @@
                     <div class="row form-group itinerary_item" id="itinerary_item_0">
                         <div class="col-md-11">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="itinerary[0][question]"
+                                <input type="text" class="form-control" name="itinerary[0][title]"
                                     placeholder="{{ __('Title') }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control ckeditor" name="itinerary[0][answer]"
+                                <input type="text" class="form-control ckeditor" name="itinerary[0][description]"
                                     rows="3" placeholder="{{ __('Description') }}">
                             </div>
                         </div>

@@ -20,11 +20,8 @@ class Place extends Model  implements TranslatableContract
     protected $casts = [
         'category' => 'json',
         'place_type' => 'json',
-        'social' => 'json',
         'amenities' => 'json',
-        'opening_hour' => 'json',
         'gallery' => 'json',
-        'menu' => 'json',
         'itinerary' => 'json',
         'user_id' => 'integer',
         'country_id' => 'integer',
@@ -40,8 +37,8 @@ class Place extends Model  implements TranslatableContract
 
     protected $fillable = [
         'user_id', 'country_id', 'city_id', 'category', 'place_type', 'slug',  'price',
-        'amenities', 'address', 'lat', 'lng', 'thumb', 'gallery', 'video', 'booking_type',
-        'link_bookingcom', 'status', 'seo_title', 'seo_description','menu', 'itinerary'
+        'amenities', 'address', 'lat', 'lng', 'thumb', 'gallery', 'booking_type',
+        'link_bookingcom', 'status', 'seo_title', 'seo_description', 'itinerary'
     ];
 
     protected $hidden = [];

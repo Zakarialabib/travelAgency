@@ -108,26 +108,6 @@ class PlaceController extends Controller
         endforeach;
         $similar_places = $similar_places->limit(4)->get();
 
-//        return $categories;
-
-
-//        date_default_timezone_set('Asia/Ho_Chi_Minh');
-//        $date = getdate();
-//
-//        print_r(strtotime('05 PM'));
-//
-//
-//        $time_open = "12:00:00";
-//        $time_close = "17:00:00";
-//
-//
-//        if ((time() > strtotime($time_open)) && (time() < strtotime($time_close))) {
-//            echo "Open";
-//        } else {
-//            echo "Close";
-//        }
-
-
         // SEO Meta
         $title = $place->seo_title ? $place->seo_title : $place->name;
         $description = $place->seo_description ? $place->seo_description : Str::limit($place->description, 165);
@@ -173,7 +153,6 @@ class PlaceController extends Controller
         $category_id = $request->category_id;
 
         $sort_by = $request->sort_by;
-        $price_range = $request->price;
         $place_types = $request->place_types;
         $amenities = $request->amenities;
 
@@ -186,9 +165,7 @@ class PlaceController extends Controller
             ->where('category', 'like', "%$category_id%")
             ->where('status', Place::STATUS_ACTIVE);
 
-        if ($price_range) {
-            $places->where('price_range', $price_range);
-        }
+       
         if ($place_types) {
             foreach ($place_types as $place_type) {
                 $places->where('place_type', 'like', "%$place_type%");
@@ -200,18 +177,12 @@ class PlaceController extends Controller
             }
         }
 
-        if ($sort_by) {
-            if ($sort_by === 'price_asc') $places->orderBy('price_range', 'asc');
-            if ($sort_by === 'price_desc') $places->orderBy('price_range', 'desc');
-        }
-
         $places = $places->get();
 
         $html = "";
         if (count($places)) :
             foreach ($places as $place) :
                 $place_detail_url = route('place_detail', $place->slug);
-                $place_price_range = PRICE_RANGE[$place->price_range];
                 $place_thumb = getImageUrl($place->thumb);
 
                 $html_place_type = "";
@@ -248,9 +219,6 @@ class PlaceController extends Controller
                                         {$html_review}
                                         <span class='places-item__count'>({$place->reviews_count} reviews)</span>
                                     </span>
-                                </div>
-                                <div class='places-item__currency'>
-                                    {$place_price_range}
                                 </div>
                             </div>
                         </div>

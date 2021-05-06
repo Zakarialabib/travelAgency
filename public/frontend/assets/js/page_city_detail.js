@@ -73,7 +73,6 @@ var map_refresh = true;
                                                 <span class="places-item__count">(${value.reviews_count} reviews)</span>
                                             </span>
                                         </div>
-                                        <div class="places-item__currency">${PRICE_RANGE[value.price_range]}</div>
                                     </div>
                                 </div>
                             </div>

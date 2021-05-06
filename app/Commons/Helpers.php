@@ -4,48 +4,6 @@ use Illuminate\Support\Facades\Request;
 use Carbon\Carbon;
 
 
-const SOCIAL_LIST = [
-    'Facebook' => [
-        'icon' => 'la la-facebook-f',
-        'name' => 'Facebook',
-        'base_url' => 'https://www.facebook.com/'
-    ],
-    'Instagram' => [
-        'icon' => 'la la-instagram',
-        'name' => 'Instagram',
-        'base_url' => 'https://www.instagram.com/'
-    ],
-    'Twitter' => [
-        'icon' => 'la la-twitter',
-        'name' => 'Twitter',
-        'base_url' => 'https://twitter.com/'
-    ],
-    'Youtube' => [
-        'icon' => 'la la-youtube',
-        'name' => 'Youtube',
-        'base_url' => 'https://www.youtube.com/'
-    ],
-    'Pinterest' => [
-        'icon' => 'la la-pinterest',
-        'name' => 'Pinterest',
-        'base_url' => 'https://www.pinterest.com/'
-    ],
-    'Snapchat' => [
-        'icon' => 'la la-snapchat',
-        'name' => 'Snapchat',
-        'base_url' => 'https://www.snapchat.com/'
-    ]
-];
-
-
-const PRICE_RANGE = [
-    "" => "Free",
-    "0" => "Chambre",
-    "1" => "Nuit",
-    "2" => "Pack",
-    "3" => "Personne",
-];
-
 function formatDate($date, $format)
 {
     return Carbon::parse($date)->format($format);
@@ -195,8 +153,8 @@ function isRoute($name = '')
 }
 
 const STATUS = [
-    0 => "Deactive",
+    0 => "Desative",
     1 => "Active",
-    2 => "Pending",
-    4 => "Deleted",
+    2 => "En Cours",
+    4 => "Supprime",
 ];
