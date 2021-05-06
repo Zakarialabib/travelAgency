@@ -24,7 +24,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/css/core/colors/palette-callout.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/extensions/sweetalert.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/extensions/toastr.css')}}">
-<link rel="stylesheet" href="{{asset('frontend/assets/css/intlTelInput.min.css')}}">
 <!-- END Page Level CSS-->
 
 <!-- BEGIN MODERN CSS-->

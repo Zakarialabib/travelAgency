@@ -30,7 +30,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php $total = 0 ?>
                 @if(session('cart'))
                     @foreach(session('cart') as $id => $details)
                         <tr id="booking-{{$id}}">
@@ -53,7 +52,6 @@
                                 <input type="number"  class="subtotal form-control" value="{{ $details['price'] * $details['quantity'] * $details['days'] }}" readonly>
                             </td>
                             <td class="actions" data-th="">
-                                <button class="btn-block update-cart" data-id="{{ $id }}"><i class="las la-sync"></i></button>
                                 <button class="btn-block remove-from-cart" data-id="{{ $id }}"><i class="las la-trash"></i></button>
                             </td>
                         </tr>
@@ -64,6 +62,9 @@
                 <tr>
                     <td><a href="{{ url('/') }}" class="btn"><i class="fa fa-angle-left"></i> {{__('Continue Shopping')}}</a></td>
                     <td colspan="3" class="hidden-xs text-center"><strong id="total"></strong></td>
+                    @if (session('cart') && count(session('cart')) > 0)    
+                    <td><a href="{{ route('checkout_show') }}" class="btn">{{__('Checkout')}} <i class="fa fa-angle-right"></i></a></td>
+                    @endif
                 </tr>
                 </tfoot>
             </table>
@@ -78,9 +79,7 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
-
-        let total = calcTotal();
-        $('#total').text(`Total ${total} DH`);
+        $('#total').text(`Total ${calcTotal()} DH`);
     });
 
     $(".update-cart").click(function (e) {
@@ -156,9 +155,9 @@ function deleteBooking(id) {
                 $('#booking-'+id).remove();
                 swal({
                     title: "Order deleted successfully",
-                    icon: "sucess",
+                    icon: "success",
                 });
-                calcTotal();
+                $('#total').text(`Total ${calcTotal()} DH`);
             } else {
                 swal({
                     title: "Order deleted failed",
@@ -174,7 +173,6 @@ function calcTotal() {
     $('.subtotal').each(function(){
         total+= parseInt($(this).val());
     });
-
     return total;
 }
 </script>

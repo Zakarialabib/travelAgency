@@ -2,6 +2,10 @@
 
 @section('page-title')  Register @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{asset('frontend/assets/css/intlTelInput.min.css')}}">
+@endsection
+
 @section('content')
 
     <section class="flexbox-container">
@@ -66,9 +70,9 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6">
-                                    <fieldset class="form-group position-relative iti iti--allow-dropdown">
+                                        <fieldset class="form-group position-relative iti iti--allow-dropdown">
                                             <input type="tel" name="phone" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" required>
-                                   </fieldset>
+                                        </fieldset>
                                     </div>
                                 </div>
                                 <div class="row">

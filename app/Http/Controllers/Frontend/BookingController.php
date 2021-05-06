@@ -89,7 +89,7 @@ class BookingController extends Controller
     {
         return view('pages.frontend.user.user_cart');
     }
-    
+
     public function addToCart($booking)
     {
         $cart = session()->get('cart');

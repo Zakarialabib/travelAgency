@@ -132,7 +132,9 @@ Route::group([
         Route::get('/villes/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
         Route::get('/villes', 'CityController@search')->name('city_search');
 
-        Route::get('/cart', 'BookingController@cart');
+        Route::get('/cart', 'BookingController@cart')->name('booking_cart');
+        Route::get('/checkout', 'CheckoutController@show')->name('checkout_show');
+        Route::post('/checkout', 'CheckoutController@store')->name('checkout_store');
         Route::get('/add-to-cart/{id}', 'BookingController@addToCart')->name('add-to-cart');
         Route::put('/update-cart', 'BookingController@update');
         Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart');
