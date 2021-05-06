@@ -238,6 +238,9 @@ Route::group([
         Route::put('/offer/update/{id}', 'OfferController@update')->name('offer_update');
         Route::delete('/offer/{id}', 'OfferController@destroy')->name('offer_delete');
 
+        Route::get('/packages', 'PackageController@index')->name('package_index');
+        Route::get('/packages/create', 'PackageController@create')->name('package_create');
+
         Route::get('/blog', 'PostController@list')->name('post_list_blog');
         Route::get('/pages', 'PostController@list')->name('post_list_page');
     
