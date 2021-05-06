@@ -41,6 +41,11 @@ class Category extends Model implements TranslatableContract
         return $this->hasMany(PlaceType::class, 'category_id', 'id');
     }
 
+    public function category_type()
+    {
+        return $this->hasMany(CategoryType::class, 'category_id', 'id');
+    }
+
     public function offers()
     {
         return $this->hasMany(Offer::class);

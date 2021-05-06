@@ -222,7 +222,12 @@ Route::group([
         Route::post('/place-type', 'PlaceTypeController@create')->name('place_type_create');
         Route::put('/place-type', 'PlaceTypeController@update')->name('place_type_update');
         Route::delete('/place-type/{id}', 'PlaceTypeController@destroy')->name('place_type_delete');
-       
+     
+        Route::get('/category-type', 'CategoryTypeController@list')->name('category_type_list');
+        Route::post('/category-type', 'CategoryTypeController@create')->name('category_type_create');
+        Route::put('/category-type', 'CategoryTypeController@update')->name('category_type_update');
+        Route::delete('/category-type/{id}', 'CategoryTypeController@destroy')->name('category_type_delete');
+
         Route::resource('/place', 'PlaceController');
         Route::get('/place', 'PlaceController@list')->name('place_list');
         Route::get('/places/create', 'PlaceController@create')->name('place_create');

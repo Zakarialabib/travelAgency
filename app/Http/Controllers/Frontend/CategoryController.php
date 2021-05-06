@@ -53,7 +53,7 @@ class CategoryController extends Controller
    
         $categories = Category::query()
             ->where('type', Category::TYPE_OFFER)
-            ->paginate();
+            ->get();
 
         $cities = City::query()
             ->get();
