@@ -53,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label for="category">{{ __('Category') }}: *</label>
-                <select class="form-control myselect" id="category" name="category[]" multiple>
+                <select class="form-control myselect" id="category_id" name="category_id" required>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @endforeach

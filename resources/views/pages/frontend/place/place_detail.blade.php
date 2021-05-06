@@ -185,18 +185,15 @@
                     </span>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a data-toggle="tab" class="nav-link" href="#itinerary">
-                    <i class="fa fa-street-view">
-                    </i> 
-                    <span>{{__('Itinerary')}}
-                    </span>
-                  </a>
-                </li>
               </ul>
               <div class="tab-content">
-               <div  class="tab-pane fade"  id="itinerary">
-                  @if(isset($place['itinerary']))
+                <div class="tab-pane active" id="overview" >
+                  <div class="daily-schedule-body">
+                    <p>
+                      {!! $place->description !!}
+                    </p>
+                    </div>
+                    @if(isset($place['itinerary']))
                   <h4 class="tab-heading">{{__('Package Itinerary')}}
                   </h4>
                   <div class="daily-schedule">
@@ -214,13 +211,6 @@
                     @endforeach
                   </div>
                   @endif
-                </div>
-                <div class="tab-pane active" id="overview" >
-                  <div class="daily-schedule-body">
-                    <p>
-                      {!! $place->description !!}
-                    </p>
-                    </div>
               <div class="place__box place__box-map">
                 <h3 class="place__title--additional tab-heading">
                   {{__('Location & Maps')}}

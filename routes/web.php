@@ -125,7 +125,7 @@ Route::group([
         Route::get('/offres/{slug}', 'PlaceController@detail')->name('place_detail');
         Route::get('/offres/filter', 'PlaceController@getListFilter')->name('place_get_list_filter');
 
-        Route::get('/offers/{slug}', 'OfferController@show')->name('frontend.offer.show');
+        Route::get('/offers/{slug}', 'OfferController@show')->name('offer.show');
         
         Route::get('/blog/tout', 'PostController@list')->name('post_list_all');
         Route::post('/post', 'PostController@send')->name('send');
@@ -137,8 +137,8 @@ Route::group([
         Route::get('/ville-a-visiter', 'CityController@list')->name('city_list');
         Route::get('/ville/{slug}', 'CityController@detail')->name('city_detail');
         Route::get('/ville/{slug}/{cat_slug}', 'CityController@detail')->name('city_category_detail');
-    
-        Route::get('/categories', 'CategoryController@listPlace')->name('category_list');
+
+        Route::get('/categorie', 'CategoryController@listPlace')->name('category_list');
         Route::get('/categorie/{slug}', 'CategoryController@detail')->name('category_detail');
         Route::get('/categorie/type/{slug}', 'CategoryController@typeDetail')->name('category_type_detail');
         Route::get('/categories', 'CategoryController@search')->name('category_search');
@@ -222,7 +222,12 @@ Route::group([
         Route::post('/place-type', 'PlaceTypeController@create')->name('place_type_create');
         Route::put('/place-type', 'PlaceTypeController@update')->name('place_type_update');
         Route::delete('/place-type/{id}', 'PlaceTypeController@destroy')->name('place_type_delete');
-       
+     
+        Route::get('/category-type', 'CategoryTypeController@list')->name('category_type_list');
+        Route::post('/category-type', 'CategoryTypeController@create')->name('category_type_create');
+        Route::put('/category-type', 'CategoryTypeController@update')->name('category_type_update');
+        Route::delete('/category-type/{id}', 'CategoryTypeController@destroy')->name('category_type_delete');
+
         Route::resource('/place', 'PlaceController');
         Route::get('/place', 'PlaceController@list')->name('place_list');
         Route::get('/places/create', 'PlaceController@create')->name('place_create');

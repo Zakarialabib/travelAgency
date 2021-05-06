@@ -39,7 +39,8 @@ class OfferController extends Controller
         ->with('categories')
         ->get();
 
-        $categories = $this->category->getListAll(Category::TYPE_OFFER);
+        $categories = Category::where('type', Category::TYPE_OFFER)
+        ->get();
 
 //        return $offers;
 
@@ -55,7 +56,9 @@ class OfferController extends Controller
     {
         $offer = Offer::find($request->id);
       
-        $categories = $this->category->getListAll(Category::TYPE_OFFER);
+        $categories = Category::query()
+        ->where('categories.type', Category::TYPE_OFFER)
+        ->get();
 
         return view('pages.backend.offer.offer_create', compact('categories', 'offer'));
     }
@@ -65,15 +68,13 @@ class OfferController extends Controller
         $request['slug'] = getSlug($request, 'name');
         $request['user_id'] = Auth::id();
 
-      //  dd($request);
-
         $rules = [
             'user_id' => '',
             '%name%' => 'required',
             '%description%' => 'required',
             'slug' => '',
             'price' => 'required|numeric',
-            'category' => '',
+            'category_id' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'gallery' => '',
             'seo_title' => '',
@@ -84,6 +85,8 @@ class OfferController extends Controller
         $rule_factory = RuleFactory::make($rules);
 
         $data = $this->validate($request, $rule_factory);
+
+        //dd($data);
 
 
         if (!isset($data['itinerary'])) {
@@ -116,7 +119,9 @@ class OfferController extends Controller
     {
         $offer = Offer::find($id);
 
-        $categories = $this->category->getListAll(Category::TYPE_OFFER);
+        $categories = Category::query()
+        ->where('categories.type', Category::TYPE_OFFER)
+        ->get();
 
         return view('pages.backend.offer.offer_edit',compact('categories', 'offer'));
     }
@@ -132,7 +137,7 @@ class OfferController extends Controller
             '%description%' => 'required',
             'slug' => '',
             'price' => 'required|numeric',
-            'category' => '',
+            'category_id' => '',
             'gallery' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'seo_title' => '',

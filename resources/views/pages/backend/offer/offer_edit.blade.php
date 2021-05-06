@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label for="category">{{ __('Category') }}: *</label>
-                <select class="form-control myselect" id="" name="category[]" multiple data-live-search="true" required>
+                <select class="form-control myselect" id="" name="category_id" required>
                     @foreach($categories as $cat)
                         <option value="{{$cat->id}}" {{isSelected($cat->id, $offer->category)}}>{{$cat->name}}</option>
                     @endforeach

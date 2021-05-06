@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCategoryTranslationsTable extends Migration {
+class CreateCategoryTypeTranslationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,14 @@ class CreateCategoryTranslationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('category_translations', function(Blueprint $table)
+		Schema::create('category_type_translations', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('category_id')->unsigned();
+			$table->integer('category_type_id')->unsigned();
 			$table->string('locale')->index();
 			$table->string('name')->nullable();
-			$table->string('feature_title')->nullable();
-			$table->unique(['category_id','locale']);
+            $table->string('description')->nullable();
+			$table->unique(['category_type_id','locale']);
 		});
 	}
 
@@ -31,7 +31,7 @@ class CreateCategoryTranslationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('category_translations');
+		Schema::drop('category_type_translations');
 	}
 
 }

@@ -37,9 +37,7 @@
                                 <td><img class="offer_list_thumb" src="{{getImageUrl($offer->thumb)}}" alt="page thumb"></td>
                                 <td>{{$offer->name}}</td>
                                 <td>
-                                    @foreach($offer->categories as $cat)
-                                        <span class="category_name">{{$cat->name}}</span>
-                                    @endforeach
+                                {{$offer->category_id}}
                                 </td>
                                 <td>
                                     @if($offer->status === \App\Offer::STATUS_PENDING)
