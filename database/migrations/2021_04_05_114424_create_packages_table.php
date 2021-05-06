@@ -15,21 +15,14 @@ class CreatePackagesTable extends Migration {
 		Schema::create('packages', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('package_category_id')->nullable();
-			$table->string('package_name', 191)->nullable();
-			$table->smallInteger('flight')->nullable();
-			$table->smallInteger('hotel')->nullable();
-			$table->smallInteger('attraction')->nullable();
-			$table->string('location', 191)->nullable();
-			$table->string('phone_number', 191)->nullable();
-			$table->string('time_length', 191)->nullable();
-			$table->text('info')->nullable();
-			$table->string('duration_type', 191)->nullable();
-			$table->string('transports', 191)->nullable();
-			$table->string('language_spoken', 191)->nullable();
-			$table->string('adult_price', 191)->nullable();
-			$table->string('kids_price', 191)->nullable();
+			$table->unsignedInteger('offer_id');
+			$table->string('title');
+			$table->integer('period');
+			$table->date('start_date');
+			$table->date('end_date');
 			$table->timestamps();
+			
+			$table->foreign('offer_id')->references('id')->on('offers')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 
