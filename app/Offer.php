@@ -83,4 +83,9 @@ class Offer extends Model  implements TranslatableContract
     {
         return $this->morphMany(Booking::class, ' bookable');
     }
+
+    public function packages()
+    {
+        return $this->hasMany(Package::class, 'offer_id', 'id');
+    }
 }
