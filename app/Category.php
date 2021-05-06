@@ -16,7 +16,7 @@ class Category extends Model implements TranslatableContract
     protected $table = 'categories';
 
     protected $fillable = [
-        'slug', 'priority', 'is_feature', 'feature_title', 'icon_map_marker', 'color_code', 'type', 'status', 'seo_title', 'seo_description'
+        'slug', 'priority', 'is_feature', 'feature_title', 'image', 'icon_map_marker', 'color_code', 'type', 'status', 'seo_title', 'seo_description'
     ];
 
     protected $hidden = [];
@@ -41,6 +41,11 @@ class Category extends Model implements TranslatableContract
         return $this->hasMany(PlaceType::class, 'category_id', 'id');
     }
 
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
+    
     public function getListAll($type)
     {
         $categories = self::query()

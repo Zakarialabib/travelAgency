@@ -9,8 +9,8 @@ use App\Category;
 use App\City;
 use App\Place;
 use App\PlaceType;
+use App\Offer;
 use Illuminate\Http\Request;
-use DB;
 
 
 class CategoryController extends Controller
@@ -22,101 +22,45 @@ class CategoryController extends Controller
         $this->response = $response;
     }
 
-    public function listPlace(Request $request, $slug)
+    public function list(Request $request)
     {
-        $keyword = $request->keyword;
-        $filter_category = $request->category;
-        $filter_amenities = $request->amenities;
-        $filter_place_type = $request->place_type;
-        $filter_city = $request->city;
+        $categories = Category::query();
 
+        return view('pages.frontend.category.category_detail', [
+            'categories' => $categories, 
+        ]);
 
+    }
+
+    public function detail(Request $request, $slug)
+    {
+       
+        $category = Category::where('slug', $slug)
+        ->first();
+
+         $offers = Offer::where('category_id', $category->id)
+         ->get();
+
+        return view('pages.frontend.category.category_detail', [
+            'category' => $category, 
+            'offers' => $offers,
+        ]);
+
+    }
+
+    public function listPlace(Request $request)
+    {
+   
         $categories = Category::query()
-            ->where('type', Category::TYPE_PLACE)
-            ->get();
-
-        $place_types = PlaceType::query()
-            ->get();
-
-        $amenities = Amenities::query()
-            ->get();
+            ->where('type', Category::TYPE_OFFER)
+            ->paginate();
 
         $cities = City::query()
             ->get();
 
-
-        $category = Category::query()
-            ->where('slug', $slug)
-            ->first();
-
-        $places = Place::query()
-            ->with(['city' => function ($query) {
-                return $query->select('id', 'name', 'slug');
-            }])
-            ->with('categories')
-            ->with('place_types')
-            ->withCount('reviews')
-            ->with('avgReview')
-            ->withCount('wishList')
-            ->orWhere('address', 'like', "%{$keyword}%")
-            ->whereTranslationLike('name', "%{$keyword}%")
-            ->where('category', 'like', "%$category->id%")
-            ->where('status', Place::STATUS_ACTIVE);
-
-
-        if (isset($filter_category)) {
-            foreach ($filter_category as $item) {
-                $places->where('category', 'like', "%$item%");
-            }
-        }
-
-        if (isset($filter_amenities)) {
-            foreach ($filter_amenities as $item) {
-                $places->where('amenities', 'like', "%$item%");
-            }
-        }
-
-        if (isset($filter_place_type)) {
-            foreach ($filter_place_type as $item) {
-                $places->where('place_type', 'like', "%$item%");
-            }
-        }
-
-        if (isset($filter_city)) {
-            $places->whereIn('city_id', $filter_city);
-        }
-
-        if ($request->ajax()) {
-            $places = $places->get();
-
-            $city = [];
-            if (isset($filter_city)) {
-                $city = City::query()
-                    ->whereIn('id', $filter_city)
-                    ->first();
-            }
-
-            $data = [
-                'city' => $city,
-                'places' => $places
-            ];
-
-            return $this->response->formatResponse(200, $data, 'success');
-        }
-
-        $places = $places->paginate();
-
         return view('pages.frontend.category.category_list', [
-            'places' => $places,
-            'category' => $category,
-            'categories' => $categories,
-            'place_types' => $place_types,
-            'amenities' => $amenities,
             'cities' => $cities,
-            'filter_category' => $filter_category,
-            'filter_amenities' => $filter_amenities,
-            'filter_place_type' => $filter_place_type,
-            'filter_city' => $request->city,
+            'categories' => $categories,
         ]);
     }
 
