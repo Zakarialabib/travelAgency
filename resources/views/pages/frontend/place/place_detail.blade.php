@@ -203,12 +203,12 @@
                     @foreach($place['itinerary'] as $itinerary)
                     <div class="title">
                       <p>
-                        <span>{{$itinerary['title']}}
+                        <span>{{$itinerary['question']}}
                         </span>
                       </p>
                     </div>
                     <div class="daily-schedule-body">
-                      <p>{!! $itinerary['description'] !!}
+                      <p>{!! $itinerary['answer'] !!}
                       </p>                                               
                     </div>
                     @endforeach
