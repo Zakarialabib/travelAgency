@@ -1,17 +1,7 @@
 @extends('layouts.app')
-@section('page-title') 
-Welcome 
-@endsection
-@push('styles')
-<style>
-.page_speed_367604607{ line-height: 1; } 
-.page_speed_1921284120{ color: white; } 
-.page_speed_1143262048{ color: white;font-size: 17px;text-transform: capitalize; } 
-.page_speed_479917111{ text-transform: uppercase; } 
-.page_speed_344496290{ text-transform: uppercase;width:30px;height:15px; } 
-.page_speed_295738705{ background-color: #00000036;text-align: center; } .page_speed_484246203{ padding:20px 0;background-color:#f8f8f8; } .page_speed_1374584951{ width: 100%;padding: 50px 0; } .page_speed_343110703{ background-image: url(//rentacs-main.test/public/images/home-path.svg); } .page_speed_1128041314{ color: #fff; } .page_speed_393085973{ position: absolute;width:100% } .page_speed_129783026{ height: 700px;width:100% } .page_speed_975100297{ fill:#ee5000 } .page_speed_254472712{ background-image:url(images/banner-apps.jpg) } .page_speed_2124147836{ width: 10em; } .page_speed_69279672{ color: #ee5000; }</style>
-</style>
-@endpush
+
+@section('page-title')  {{__('Rentacs Tours - Travel Agency')}}  @endsection
+
 @section('content')
 <section class="">
  <div class="vertical-search" >
@@ -374,16 +364,9 @@ Welcome
 <!-- END: WHO WE ARE -->
 
 
-
-<!-- END : BEST OFFERS -->
-<!-- BEGIN: HOW IT WORK -->
-{{-- @include('partials.frontend.how-it-work') --}}
-
-<!--END: HOW IT WORK -->
-
 <div class="cities cities-img">
     <div class="" style="position: absolute;width:100%">
-        <svg style="height: 700px;width:100%" x="0px" y="0px" viewBox="0 0 100 101.64249999999998"
+        <!-- <svg style="height: 700px;width:100%" x="0px" y="0px" viewBox="0 0 100 101.64249999999998"
             enable-background="new 0 0 100 81.314" xml:space="preserve" id="svg2" inkscape:version="0.91 r13725">
             <g display="none" id="g4">
                 <path display="inline" fill="#010101"
@@ -475,7 +458,7 @@ Welcome
             <path
                 d="m 46.035,38.767 c -0.732,-0.723 -1.521,-1.408 -2.367,-1.996 -1.143,-0.794 -2.004,-0.865 -3.372,-0.865 -0.654,0 -1.321,-0.045 -1.973,0.008 -0.281,0.023 -0.172,0.337 -0.253,0.545 -0.491,1.256 -2.532,2.765 -3.531,3.764 1.382,0 2.153,2.867 2.677,3.915 0.315,0.629 0.202,1.283 0.202,1.986 0,1.029 -0.089,1.207 0.622,1.918 0.706,0.706 0.646,0.989 1.343,0.292 0.701,-0.701 1.401,-1.401 2.101,-2.101 0.46,-0.462 0.251,-1.21 0.251,-1.836 0,-0.924 -0.328,-1.295 0.607,-1.295 0.718,0 1.392,0.064 1.97,-0.432 0.438,-0.378 0.779,-0.854 1.381,-0.973 0.668,-0.132 2.08,-0.371 1.798,-1.474 -0.114,-0.447 -1.114,-1.118 -1.456,-1.456 z"
                 id="path64" inkscape:connector-curvature="0" style="fill:#ee5000" />
-        </svg>
+        </svg> -->
     </div>
     <div id="discover-cities" class="container">
         <h2 class="cities__title title">{{__('Categories')}}</h2>
@@ -490,10 +473,10 @@ Welcome
                                 <img src="{{getImageUrl($category->image)}}" alt="{{$category->name}}">
                             </a>
                         </div>
-                        <h4 class="cities__name">{{$category->slug}}</h4>
+                        <h4 class="cities__name">{{$category->name}}</h4>
                         <div class="cities__info">
-                            <h3 class="cities__capital">{{$category->name}}</h3>
-                            <p class="cities__number">{{$category->type}} </p>
+                            <h3 class="cities__capital">{{$category->type}}</h3>
+                            <p class="cities__number"></p>
                         </div>
                     </div><!-- .cities__item -->
                 </div>
@@ -539,21 +522,6 @@ Welcome
                 </div>
             </div>
         </div><!-- .news -->
-
-<div class="banner-apps" style="background-image:url(images/banner-apps.jpg)">
-    <div class="container">
-        <div class="banner-apps__content">
-            <h2 class="banner-apps__title">{{__("Obtenir l'application")}}</h2>
-            <p class="banner-apps__desc">{{__("Téléchargez l'application et partez parcourir le monde.")}}</p>
-            <div class="banner-apps__download">
-                <a title="App Store" href="#" class="banner-apps__download__iphone"><img style="width: 10em;"
-                        src="{{asset('/images/app-store.png')}}" alt="App Store"></a>
-                <a title="Google Play" href="#" class="banner-apps__download__android"><img style="width: 10em;"
-                        src="{{asset('/images/google-play.png')}}" alt="Google Play"></a>
-            </div>
-        </div>
-    </div>
-</div>
 
 @endsection
 

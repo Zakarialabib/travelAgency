@@ -17155,7 +17155,7 @@ CREATE TABLE IF NOT EXISTS `attractions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.attractions : ~1 rows (environ)
+-- Listage des données de la table rentacs.attractions : ~0 rows (environ)
 /*!40000 ALTER TABLE `attractions` DISABLE KEYS */;
 INSERT INTO `attractions` (`id`, `package_id`, `name`, `city`, `address`, `date`, `information`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'ok', 'ok', 'ok', '11/11/11', 'jhfd', NULL, NULL);
@@ -17323,7 +17323,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`id`, `name`, `slug`, `priority`, `is_feature`, `feature_title`, `image`, `icon_map_marker`, `color_code`, `type`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
 	(11, 'See & Do', 'trekking', 100, 1, 'Must See & Do', '5ffd6efb72501_1610444539.jpg', '5ddba7be9c049_1574676414.svg', '#58cc70', 'offer', 1, NULL, NULL, '2019-10-25 11:11:08', '2021-02-10 12:53:04'),
 	(12, 'Eat & Drink', 'motorcycle', 20, 1, 'Where to Eat', '5ffd6e5aaa5c7_1610444378.jpg', '5fedbf56327d4_1609416534.png', '#5493f9', 'offer', 1, NULL, NULL, '2019-10-25 11:11:19', '2021-01-12 09:39:38'),
-	(13, 'Stay', 'golf-tours', 10, 1, 'Place to stay', '5ffd6f30032a6_1610444592.jpg', '5fedc00a907e5_1609416714.png', '#f99a54', 'place', 1, 'Golf Tours', 'Golf Tours', '2019-10-25 11:11:45', '2021-01-12 09:43:12'),
+	(13, 'Stay', 'golf-tours', 10, 1, 'Place to stay', '5ffd6f30032a6_1610444592.jpg', '5fedc00a907e5_1609416714.png', '#f99a54', 'offer', 1, 'Golf Tours', 'Golf Tours', '2019-10-25 11:11:45', '2021-01-12 09:43:12'),
 	(20, NULL, 'bivouacs', 50, 1, NULL, '5ffd6d7dead88_1610444157.png', '5fedbe9543e56_1609416341.png', NULL, 'place', 1, NULL, NULL, '2020-12-19 23:26:49', '2021-02-10 12:52:08'),
 	(21, NULL, 'surf', 40, 1, NULL, '5ffd6d295b1bb_1610444073.png', '5fedbec891fc5_1609416392.png', '#846fcd', 'place', 1, NULL, NULL, '2020-12-19 23:27:26', '2021-01-12 09:34:33'),
 	(22, NULL, 'circuits-et-sejours-organises', 10, 1, NULL, NULL, NULL, NULL, 'place', 1, NULL, NULL, '2021-01-25 09:14:19', '2021-02-10 12:53:27'),
@@ -17366,6 +17366,44 @@ INSERT INTO `category_translations` (`id`, `category_id`, `locale`, `name`, `fea
 	(38, 11, 'en', 'Trekking', 'Trekking'),
 	(39, 11, 'fr', 'Trekking', 'Trekking');
 /*!40000 ALTER TABLE `category_translations` ENABLE KEYS */;
+
+-- Listage de la structure de la table rentacs. category_types
+CREATE TABLE IF NOT EXISTS `category_types` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table rentacs.category_types : ~1 rows (environ)
+/*!40000 ALTER TABLE `category_types` DISABLE KEYS */;
+INSERT INTO `category_types` (`id`, `category_id`, `name`, `description`, `slug`, `image`, `created_at`, `updated_at`) VALUES
+	(1, 13, NULL, NULL, NULL, NULL, '2021-05-07 11:16:59', '2021-05-07 11:16:59');
+/*!40000 ALTER TABLE `category_types` ENABLE KEYS */;
+
+-- Listage de la structure de la table rentacs. category_type_translations
+CREATE TABLE IF NOT EXISTS `category_type_translations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_type_id` int(10) unsigned NOT NULL,
+  `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `category_type_translations_category_type_id_locale_unique` (`category_type_id`,`locale`),
+  KEY `category_type_translations_locale_index` (`locale`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table rentacs.category_type_translations : ~2 rows (environ)
+/*!40000 ALTER TABLE `category_type_translations` DISABLE KEYS */;
+INSERT INTO `category_type_translations` (`id`, `category_type_id`, `locale`, `name`, `description`) VALUES
+	(1, 1, 'en', 'Hotel', NULL),
+	(2, 1, 'fr', 'Hotel', NULL);
+/*!40000 ALTER TABLE `category_type_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. cities
 CREATE TABLE IF NOT EXISTS `cities` (
@@ -19361,7 +19399,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.migrations : ~99 rows (environ)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
@@ -19469,7 +19507,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(151, '2021_04_16_025627_create_faqs_table', 3),
 	(152, '2021_04_19_104131_create_sliders_table', 3),
 	(153, '2021_04_20_104131_create_offers_table', 4),
-	(154, '2021_04_20_114424_create_offer_translations_table', 5);
+	(154, '2021_04_20_114424_create_offer_translations_table', 5),
+	(155, '2021_04_05_114424_create_category_type_translations_table', 6),
+	(156, '2021_05_06_114424_create_category_types_table', 7);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. newsletters
@@ -19514,7 +19554,7 @@ INSERT INTO `notifications` (`id`, `booking_id`, `user_id`, `is_read`, `created_
 CREATE TABLE IF NOT EXISTS `offers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `category` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_id` int(10) unsigned DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
@@ -19529,13 +19569,15 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `seo_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `foreing_offer_category_id` (`category_id`),
+  CONSTRAINT `foreing_offer_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=' x';
 
--- Listage des données de la table rentacs.offers : ~0 rows (environ)
+-- Listage des données de la table rentacs.offers : ~1 rows (environ)
 /*!40000 ALTER TABLE `offers` DISABLE KEYS */;
-INSERT INTO `offers` (`id`, `user_id`, `category`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
-	(2, 1, '["12"]', NULL, 'slug', NULL, '556', 999, NULL, '609155ed20296_1620137453.jpeg', '["60916ef7d7cad_1620143863.jpg","60916eff79326_1620143871.jpg"]', '[{"question":"hgf","answer":"<p>hgd<\\/p>"},{"question":"kjgh","answer":"jhfg"}]', 1, 'hfgd', 'hgdf', '2021-05-04 11:49:02', '2021-05-04 15:58:10');
+INSERT INTO `offers` (`id`, `user_id`, `category_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
+	(4, 1, 13, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-06 15:02:57');
 /*!40000 ALTER TABLE `offers` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. offer_translations
@@ -19548,13 +19590,13 @@ CREATE TABLE IF NOT EXISTS `offer_translations` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `offer_translations_offer_id_locale_unique` (`offer_id`,`locale`),
   KEY `offer_translations_locale_index` (`locale`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.offer_translations : ~2 rows (environ)
 /*!40000 ALTER TABLE `offer_translations` DISABLE KEYS */;
 INSERT INTO `offer_translations` (`id`, `offer_id`, `locale`, `name`, `description`) VALUES
-	(1, 2, 'en', 'gfdsgfds', '<p>hgfdjhfg</p>'),
-	(2, 2, 'fr', 'hfdhfgdh', '<p>,nhgf</p>');
+	(3, 4, 'en', 'Rotana', '<p><br />\r\nRotana</p>'),
+	(4, 4, 'fr', 'Rotana', '<p>Rotana</p>');
 /*!40000 ALTER TABLE `offer_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. online_payments

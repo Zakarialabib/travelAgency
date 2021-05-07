@@ -15,7 +15,7 @@ class CategoryType extends Model implements TranslatableContract
     protected $table = 'category_types';
 
     protected $fillable = [
-        'category_id', 'status', 'image'
+        'category_id', 'status', 'image','slug'
     ];
 
     protected $hidden = [];
@@ -28,7 +28,12 @@ class CategoryType extends Model implements TranslatableContract
     const STATUS_DEACTIVE = 0;
 
     public function category(){
-        return $this->hasOne(Category::class, 'id', 'category_id');
+        return $this->hasMany(Category::class);
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
     }
 
     public function getListAll()

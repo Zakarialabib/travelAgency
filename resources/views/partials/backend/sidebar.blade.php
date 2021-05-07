@@ -86,10 +86,12 @@
             @role('admin')
             <li class="@yield('activePlace') nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title" >{{__('Places')}}</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="{{route('place_list')}}" >{{__('Place List')}}</a></li>
-                    <li><a class="menu-item" href="{{route('offer_list')}}" >{{__('Offer List')}}</a></li>
+                    <li><a class="menu-item" href="{{route('place_list')}}" >{{__('Special Offers')}}</a></li>
+                    <li><a class="menu-item" href="{{route('offer_list')}}" >{{__('Offers List')}}</a></li>
                     <li><a class="menu-item" href="{{route('place_type_list')}}">{{__('Activity Type')}}</a></li>
                     <li><a class="menu-item" href="{{route('category_list', \App\Category::TYPE_PLACE)}}">{{__('Activity List')}}</a></li>
+                    <li><a class="menu-item" href="{{route('category_list', \App\Category::TYPE_OFFER)}}">{{__('Offers List')}}</a></li>
+                    <li><a class="menu-item" href="{{route('category_type_list')}}">{{__('Category Type List')}}</a></li>
                     <li><a class="menu-item" href="{{route('amenities_list')}}" >{{__('Amenities List')}}</a></li>
                     <li><a class="menu-item" href="{{route('city_list')}}" >{{__('Cities List')}}</a></li>
                     <li><a class="menu-item" href="{{route('country_list')}}" >{{__('Countries List')}}</a></li>
@@ -116,7 +118,7 @@
             </li>
            <li><a class="menu-item" href="#">{{__('Users')}}</a>
                 <ul class="menu-content">
-                <li><a class="menu-item" href="{{url('settings/users')}}" >{{__('Users List')}}</a></li>
+                <li><a class="menu-item" href="{{route('users.management')}}" >{{__('Users List')}}</a></li>
                </ul>
            </li>
                   <li><a class="menu-item" href="#">{{__('Sales')}}</a>
@@ -210,7 +212,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="{{url('/logout')}}">
+                <a href="{{route('user.logout')}}">
                     <i class="la la-sign-out"></i>
                     <span class="menu-title" >{{__('Log Out')}}</span>
                 </a>

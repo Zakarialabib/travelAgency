@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Category;

@@ -16,6 +16,7 @@
         </div><!-- .page-title -->
         <div class="mw-box">
             <div class="mw-grid golo-grid grid-4 ">
+            @if(count($offers))
                 @foreach($offers as $offer)
                     <div class="grid-item">
                     <div>
@@ -33,6 +34,11 @@
                   </div>
                 </div>
                 @endforeach
+                @else
+                <div class="col-md-12 text-center">
+                    {{__('No offers')}}
+                </div>
+                @endif
             </div>
         </div><!-- .mw-box -->
     </main><!-- .site-main -->

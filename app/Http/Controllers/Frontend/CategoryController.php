@@ -10,8 +10,8 @@ use App\City;
 use App\Place;
 use App\PlaceType;
 use App\Offer;
+use App\CategoryType;
 use Illuminate\Http\Request;
-
 
 class CategoryController extends Controller
 {
@@ -47,6 +47,22 @@ class CategoryController extends Controller
         ]);
 
     }
+
+    public function typeDetail(Request $request, $slug)
+    {
+       
+        $categorytype = CategoryType::where('slug', $slug)
+        ->first();
+        
+        $category = Category::query();
+
+        return view('pages.frontend.category.cat_type_detail', [
+            'categorytype' => $categorytype,   
+        ]);
+
+    }
+
+    
 
     public function listPlace(Request $request)
     {

@@ -127,15 +127,10 @@
                         <h4 class="card-title">{{__('All Users')}}</h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                         <div class="title_right">
-                        <div class="pull-right">
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create-user">Create New User</button>
-                        <ul class="list-inline mb-0">
-                                <li><a data-action="collapse"><i class="la la-minus"></i></a></li>
-                                <li><a data-action="expand"><i class="la la-expand"></i></a></li>
-                            </ul>  
-                    </div>
+                              <div class="pull-right">
+                                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#create-user">Create New User</button>
+                             </div>
                         </div>
-                      
                     </div>
                 <div class="card-content">
                     <div class="table-responsive">

@@ -16,7 +16,8 @@ class Category extends Model implements TranslatableContract
     protected $table = 'categories';
 
     protected $fillable = [
-        'slug', 'priority', 'is_feature', 'feature_title', 'image', 'icon_map_marker', 'color_code', 'type', 'status', 'seo_title', 'seo_description'
+        'slug', 'priority', 'is_feature', 'feature_title', 'image', 'icon_map_marker', 
+        'color_code', 'type', 'status', 'seo_title', 'seo_description'
     ];
 
     protected $hidden = [];
