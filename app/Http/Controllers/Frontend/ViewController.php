@@ -74,6 +74,7 @@ class ViewController extends Controller
 
             $categories = Category::query()
             ->where('categories.type', Category::TYPE_OFFER)
+            ->orWhere('categories.type', Category::TYPE_PLACE)
             ->limit(5)
             ->get();
 
