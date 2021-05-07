@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\City;
 use App\Offer;
 use App\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
@@ -37,6 +38,7 @@ class OfferController extends Controller
 
         $offers = Offer::query()
         ->with('categories')
+        ->with('cities')
         ->get();
 
         $categories = Category::where('type', Category::TYPE_OFFER)
@@ -60,7 +62,11 @@ class OfferController extends Controller
         ->where('categories.type', Category::TYPE_OFFER)
         ->get();
 
-        return view('pages.backend.offer.offer_create', compact('categories', 'offer'));
+        $cities = City::query()
+        ->where('cities.status', City::STATUS_ACTIVE)
+        ->get();
+
+        return view('pages.backend.offer.offer_create', compact('categories', 'cities', 'offer'));
     }
 
     public function store(Request $request)
@@ -75,6 +81,7 @@ class OfferController extends Controller
             'slug' => '',
             'price' => 'required|numeric',
             'category_id' => '',
+            'city_id' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'gallery' => '',
             'seo_title' => '',
@@ -87,7 +94,6 @@ class OfferController extends Controller
         $data = $this->validate($request, $rule_factory);
 
         //dd($data);
-
 
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;
@@ -123,7 +129,11 @@ class OfferController extends Controller
         ->where('categories.type', Category::TYPE_OFFER)
         ->get();
 
-        return view('pages.backend.offer.offer_edit',compact('categories', 'offer'));
+        $cities = City::query()
+        ->where('cities.status', City::STATUS_ACTIVE)
+        ->get();
+
+        return view('pages.backend.offer.offer_edit',compact('categories','cities', 'offer'));
     }
 
 
@@ -138,6 +148,7 @@ class OfferController extends Controller
             'slug' => '',
             'price' => 'required|numeric',
             'category_id' => '',
+            'city_id' => '',
             'gallery' => '',
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'seo_title' => '',
@@ -185,4 +196,5 @@ class OfferController extends Controller
         Offer::destroy($id);
         return back()->with('success', 'Destination supprimée avec succes!');
     }
+
 }

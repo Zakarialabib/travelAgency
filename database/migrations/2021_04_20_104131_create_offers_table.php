@@ -17,7 +17,8 @@ class CreateOffersTable extends Migration
             $table->increments('id');
 			$table->integer('user_id')->nullable();
             $table->string('reference')->nullable();
-			$table->string('category')->nullable();
+			$table->integer('category_id')->unsigned()->nullable();
+            $table->integer('city_id')->unsigned()->nullable();
 			$table->string('name')->nullable();
 			$table->string('slug')->nullable();
 			$table->text('description')->nullable();

@@ -27,7 +27,7 @@ class Offer extends Model  implements TranslatableContract
     ];
 
     protected $fillable = [
-        'user_id', 'category_id', 'slug',  'price', 'reference',
+        'user_id', 'category_id', 'city_id', 'slug',  'price', 'reference',
         'thumb', 'gallery', 'status', 'seo_title', 'seo_description', 'itinerary'
     ];
 
@@ -41,6 +41,11 @@ class Offer extends Model  implements TranslatableContract
     public function categories()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function cities()
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
 
     public function reviews()

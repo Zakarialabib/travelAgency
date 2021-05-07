@@ -24,7 +24,9 @@ class CategoryController extends Controller
 
     public function list(Request $request)
     {
-        $categories = Category::query();
+        $categories = Category::query()
+        ->with('cities')
+        ->get();
 
         return view('pages.frontend.category.category_detail', [
             'categories' => $categories, 

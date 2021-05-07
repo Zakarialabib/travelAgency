@@ -105,7 +105,6 @@ $page_title_bg = "style=background-image:url({$banner_img});";
             </div><!-- .city-content__tabtitle -->
             <div class="city-content__panels">
                 <div class="container">
-
                     @if (isRoute('city_detail'))
                         <div class="city-content__panel" id="inspire">
                             @foreach ($features as $feature)
