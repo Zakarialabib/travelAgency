@@ -37,9 +37,7 @@
                                 <td><img class="offer_list_thumb" src="{{getImageUrl($offer->thumb)}}" alt="page thumb"></td>
                                 <td>{{$offer->name}}</td>
                                 <td>
-                                    @foreach($offer->categories as $cat)
-                                        <span class="category_name">{{$cat->name}}</span>
-                                    @endforeach
+                                {{$offer->category_id}}
                                 </td>
                                 <td>
                                     @if($offer->status === \App\Offer::STATUS_PENDING)
@@ -51,7 +49,7 @@
                                 <td class="golo-flex">
                                 <div class="btn-group row">
                                  <a class="btn-sm btn-warning offer_edit" href="{{route('offer_edit', $offer->id)}}">{{__('Edit')}}</a>
-                                   @if($user->is_admin === 1)
+                                    @if($user->is_admin === 1)
                                     <form action="{{route('offer_delete',$offer->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
@@ -61,6 +59,7 @@
                                     @if($offer->status === \App\Offer::STATUS_PENDING)
                                         <button type="button" class="btn-sm btn-success offer_approve" data-id="{{$offer->id}}">{{__('Approve')}}</button>
                                     @endif
+                                        <a class="btn-sm btn-success" href="{{ route('package_index', ['offer' => $offer->id]) }}">{{__('Packages')}}</a>
                                     </div>
                                 </td>
                             </tr>

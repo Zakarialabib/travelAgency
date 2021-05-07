@@ -10,43 +10,30 @@ $page_title_bg = "style=background-image:url({$banner_img});";
         <div class="page-title" {!! $page_title_bg !!}>
             <div class="container">
                 <div class="category-title__content">
-                    <h3 class="page-title__capita">{{ $category->feature_title }}</h3>
                     <h1 class="page-title__name">{{ $category->name }}</h1>
                 </div>
-                <div class="place-cat_grp">
-                    @foreach ($place_types['category'] as $place_type)
-                        <div class="place-cat-grp">
-                            <div class="place-cat">
-                                <a title="{{ $place_type->name }}"
-                                    href="{{ route('category_type_detail', $place_type->id) }}">{{ $place_type->name }}</a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+     </div>
         </div><!-- .page-title -->
-        <div class="intro">
-            <div class="container">
-                <div class="city-grid">
-                    <div class="row" id="list_places">
-                        @if (count($places_by_category['places']))
-                            @foreach ($places_by_category['places'] as $place)
-                                <div class="col-xl-3 col-lg-4 col-6">
-                                    @include('frontend.common.place_item')
-                                </div>
-                            @endforeach
-                        @else
-                            <div class="col-md-12 text-center">
-                                {{ __('No places') }}
+        <div class="mw-box">
+            <div class="mw-grid golo-grid grid-4 ">
+                @foreach($offers as $offer)
+                    <div class="grid-item">
+                    <div>
+                        <div class="places-item hover__box">
+                            <div class="places-item__thumb hover__box__thumb">
+                                <a title="{{ $offer->name }}"
+                                    href="{{ route('offer.show', $offer->slug) }}"><img
+                                        src="{{ getImageUrl($offer->image) }}" alt="{{ $offer->name }}"></a>
                             </div>
-                        @endif
+                        <div class="places-item__info">
+                            <h3><a href="{{ route('place_detail', $offer->slug) }}"
+                                    title="{{ $offer->name }}">{{ $offer->name }}</a></h3>
+                        </div>
                     </div>
-                    <div class="pagination">
-                        {{ $places_by_category['places']->render('frontend.common.pagination') }}
-                    </div><!-- .pagination -->
-                </div><!-- .city__grid -->
-            </div><!-- .city-content__panel -->
-        </div>
-        </div><!-- .intro -->
+                  </div>
+                </div>
+                @endforeach
+            </div>
+        </div><!-- .mw-box -->
     </main><!-- .site-main -->
 @stop

@@ -19,7 +19,6 @@ class Offer extends Model  implements TranslatableContract
     protected $table = 'offers';
 
     protected $casts = [
-        'category' => 'json',
         'gallery' => 'json',
         'itinerary' => 'json',
         'user_id' => 'integer',
@@ -28,7 +27,7 @@ class Offer extends Model  implements TranslatableContract
     ];
 
     protected $fillable = [
-        'user_id', 'category', 'slug',  'price', 'reference',
+        'user_id', 'category_id', 'slug',  'price', 'reference',
         'thumb', 'gallery', 'status', 'seo_title', 'seo_description', 'itinerary'
     ];
 
@@ -41,7 +40,7 @@ class Offer extends Model  implements TranslatableContract
 
     public function categories()
     {
-        return $this->belongsToJson(Category::class, 'category');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function reviews()
@@ -82,5 +81,10 @@ class Offer extends Model  implements TranslatableContract
     public function bookings()
     {
         return $this->morphMany(Booking::class, ' bookable');
+    }
+
+    public function packages()
+    {
+        return $this->hasMany(Package::class, 'offer_id', 'id');
     }
 }
