@@ -43,7 +43,7 @@ class Offer extends Model  implements TranslatableContract
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function cities()
+    public function city()
     {
         return $this->belongsTo(City::class, 'city_id');
     }

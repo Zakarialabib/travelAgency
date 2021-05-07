@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @php
 $banner_img = getImageUrl($category->image);
 $page_title_bg = "style=background-image:url({$banner_img});";
@@ -16,8 +15,11 @@ $page_title_bg = "style=background-image:url({$banner_img});";
         </div><!-- .page-title -->
         <div class="mw-box">
             <div class="mw-grid golo-grid grid-4 ">
-            @if(count($offers))
-                @foreach($offers as $offer)
+            @if(count($category->offers))
+                @foreach($category->offers as $offer)
+                    @if($loop->first)
+                    {{ $offer->city }}
+                    @endif
                     <div class="grid-item">
                     <div>
                         <div class="places-item hover__box">
@@ -28,7 +30,7 @@ $page_title_bg = "style=background-image:url({$banner_img});";
                             </div>
                         <div class="places-item__info">
                             <h3><a href="{{ route('place_detail', $offer->slug) }}"
-                                    title="{{ $offer->name }}">{{ $offer->name }}</a></h3>
+                                    title="{{ $offer->name }}">{{ $offer->name }} {{ $offer->city }}</a></h3>
                         </div>
                     </div>
                   </div>

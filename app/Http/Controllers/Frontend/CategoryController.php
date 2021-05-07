@@ -24,9 +24,7 @@ class CategoryController extends Controller
 
     public function list(Request $request)
     {
-        $categories = Category::query()
-        ->with('cities')
-        ->get();
+        $categories = Category::query();
 
         return view('pages.frontend.category.category_detail', [
             'categories' => $categories, 
@@ -40,12 +38,8 @@ class CategoryController extends Controller
         $category = Category::where('slug', $slug)
         ->first();
 
-         $offers = Offer::where('category_id', $category->id)
-         ->get();
-
         return view('pages.frontend.category.category_detail', [
             'category' => $category, 
-            'offers' => $offers,
         ]);
 
     }
