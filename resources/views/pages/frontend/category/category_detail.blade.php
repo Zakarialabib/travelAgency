@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @php
-    $banner_img = getImageUrl($category->image);
-    $page_title_bg = "style=background-image:url({$banner_img});";
+$banner_img = getImageUrl($category->image);
+$page_title_bg = "style=background-image:url({$banner_img});";
 @endphp
 
 @section('content')
- <main class="site-main normal_view">
-   <div class="page-title" {!! $page_title_bg !!}>
-     <div class="container">
+    <main class="site-main normal_view">
+        <div class="page-title" {!! $page_title_bg !!}>
+            <div class="container">
                 <div class="category-title__content">
                     <h1 class="page-title__name">{{ $category->name }}</h1>
                 </div>
@@ -43,4 +43,3 @@
         </div><!-- .mw-box -->
     </main><!-- .site-main -->
 @stop
-
