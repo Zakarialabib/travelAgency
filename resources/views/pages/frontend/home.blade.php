@@ -461,22 +461,20 @@
         </svg> -->
     </div>
     <div id="discover-cities" class="container">
-        <h2 class="cities__title title">{{__('Categories')}}</h2>
+        <h2 class="cities__title title">{{__('Best Offers')}}</h2>
         <div class="cities__content">
             <div class="row">
                 @foreach($categories as $category)
                 <div class="col-lg-3 col-xs-6">
                     <div class="cities__item hover__box">
-
                         <div class="cities__thumb hover__box__thumb">
                             <a title="London" href="{{route('category_detail', $category->slug)}}">
                                 <img src="{{getImageUrl($category->image)}}" alt="{{$category->name}}">
                             </a>
                         </div>
-                        <h4 class="cities__name">{{$category->name}}</h4>
+                        <h4 class="cities__name">{{__('Offer')}} {{$category->name}}</h4>
                         <div class="cities__info">
-                            <h3 class="cities__capital">{{$category->type}}</h3>
-                            <p class="cities__number"></p>
+                            <a class="btn mybtn" href="{{route('category_detail', $category->slug)}}">{{__('Read More')}}</a>
                         </div>
                     </div><!-- .cities__item -->
                 </div>

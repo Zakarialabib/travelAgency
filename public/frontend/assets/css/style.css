@@ -544,13 +544,13 @@
 }
 .cities__item .cities__name {
     position: absolute;
-    top: 25px;
-    left: 25px;
+    top: 150px;
+    left: 10px;
     opacity: 0.9;
     text-transform: uppercase;
     color: #fff;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 30px;
     text-shadow: 1px 1px 1px #00000080;
 }
 .cities__item .cities__thumb a:after {
@@ -564,7 +564,7 @@
 }
 .cities__item .cities__info {
     position: absolute;
-    left: 25px;
+    left: 60px;
     bottom: 25px;
 }
 .cities-img {

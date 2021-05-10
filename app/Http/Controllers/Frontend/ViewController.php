@@ -58,7 +58,6 @@ class ViewController extends Controller
 
     public function home(){
 
-
           $blog_posts = Post::query()
             ->with(['categories' => function ($query) {
                 $query->where('status', Category::STATUS_ACTIVE)
@@ -70,15 +69,12 @@ class ViewController extends Controller
             ->orderBy('created_at', 'desc')
             ->get(['id', 'category', 'slug', 'thumb']);
 
-
-
             $categories = Category::query()
             ->where('categories.type', Category::TYPE_OFFER)
-            ->orWhere('categories.type', Category::TYPE_PLACE)
+            //->orWhere('categories.type', Category::TYPE_PLACE)
             ->limit(5)
             ->get();
 
-        
         return view('pages.frontend.home',compact('blog_posts','categories'));
 
     }

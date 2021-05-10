@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @php
+
 $banner_img = getImageUrl($category->image);
 $page_title_bg = "style=background-image:url({$banner_img});";
 @endphp
@@ -14,34 +15,44 @@ $page_title_bg = "style=background-image:url({$banner_img});";
      </div>
         </div><!-- .page-title -->
         <div class="mw-box">
-            <div class="mw-grid golo-grid grid-4 ">
-            @if(count($category->offers))
-                @foreach($category->offers as $offer)
-                    @if($loop->first)
-                    {{ $offer->city }}
+            <div class="city-content__panel" id="inspire">
+            @if(count($offers))
+                @php
+                $currentCityId = $offers->first()->city_id
+                @endphp
+                @foreach($offers as $offer)
+             <div class="city-content__item">
+                  <h2 class="title title--more">
+                    @if($currentCityId !== $offer->city_id || $loop->first)
+                    {{ $offer->city->name }}
                     @endif
-                    <div class="grid-item">
-                    <div>
-                        <div class="places-item hover__box">
-                            <div class="places-item__thumb hover__box__thumb">
-                                <a title="{{ $offer->name }}"
-                                    href="{{ route('offer.show', $offer->slug) }}"><img
-                                        src="{{ getImageUrl($offer->image) }}" alt="{{ $offer->name }}"></a>
+                    @php
+                    $currentCityId = $offer->city_id
+                    @endphp                                
+                </h2>
+             <div class="">
+                    <div class="city-slider__grid row">
+                        <div>
+                            <div class="places-item hover__box">
+                                <div class="places-item__thumb hover__box__thumb">
+                                    <a title="{{ $offer->name }}"
+                                        href="{{ route('offer.show', $offer->slug) }}"><img
+                                            src="{{ getImageUrl($offer->image) }}" alt="{{ $offer->name }}"></a>
+                                </div>
+                                <div class="places-item__info">
+                                    <h3>
+                                        <a href="{{ route('place_detail', $offer->slug) }}"
+                                            title="{{ $offer->name }}">{{ $offer->name }}</a>
+                                    </h3>
+                                </div>
                             </div>
-                        <div class="places-item__info">
-                            <h3><a href="{{ route('place_detail', $offer->slug) }}"
-                                    title="{{ $offer->name }}">{{ $offer->name }} {{ $offer->city }}</a></h3>
                         </div>
-                    </div>
-                  </div>
-                </div>
-                @endforeach
-                @else
-                <div class="col-md-12 text-center">
-                    {{__('No offers')}}
-                </div>
-                @endif
-            </div>
+                    </div><!-- .city-slider__grid -->
+                 </div><!-- .city-slider -->
+               </div><!-- .city-content__item -->
+               @endforeach
+            @endif
+          </div><!-- .city-content__panel -->
         </div><!-- .mw-box -->
     </main><!-- .site-main -->
 @stop

@@ -19555,6 +19555,7 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `category_id` int(10) unsigned DEFAULT NULL,
+  `city_id` int(10) unsigned DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
@@ -19571,13 +19572,18 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `foreing_offer_category_id` (`category_id`),
+  KEY `foreign_offer_city_id` (`city_id`),
+  CONSTRAINT `foreign_offer_city_id` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `foreing_offer_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=' x';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=' x';
 
--- Listage des données de la table rentacs.offers : ~1 rows (environ)
+-- Listage des données de la table rentacs.offers : ~4 rows (environ)
 /*!40000 ALTER TABLE `offers` DISABLE KEYS */;
-INSERT INTO `offers` (`id`, `user_id`, `category_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
-	(4, 1, 13, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-06 15:02:57');
+INSERT INTO `offers` (`id`, `user_id`, `category_id`, `city_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
+	(4, 1, 11, 31, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-07 15:20:10'),
+	(5, 1, 11, 23, NULL, 'rotana', NULL, '2', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-07 15:25:38', '2021-05-07 15:25:38'),
+	(6, 1, 11, 33, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-07 15:20:10'),
+	(7, 1, 11, 23, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-07 15:20:10');
 /*!40000 ALTER TABLE `offers` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. offer_translations
@@ -19590,13 +19596,15 @@ CREATE TABLE IF NOT EXISTS `offer_translations` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `offer_translations_offer_id_locale_unique` (`offer_id`,`locale`),
   KEY `offer_translations_locale_index` (`locale`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.offer_translations : ~2 rows (environ)
+-- Listage des données de la table rentacs.offer_translations : ~4 rows (environ)
 /*!40000 ALTER TABLE `offer_translations` DISABLE KEYS */;
 INSERT INTO `offer_translations` (`id`, `offer_id`, `locale`, `name`, `description`) VALUES
 	(3, 4, 'en', 'Rotana', '<p><br />\r\nRotana</p>'),
-	(4, 4, 'fr', 'Rotana', '<p>Rotana</p>');
+	(4, 4, 'fr', 'Rotana', '<p>Rotana</p>'),
+	(5, 5, 'en', 'Rotana', '<p>Rotana</p>'),
+	(6, 5, 'fr', 'Rotana', '<p>Rotana</p>');
 /*!40000 ALTER TABLE `offer_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. online_payments

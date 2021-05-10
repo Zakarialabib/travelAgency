@@ -34,12 +34,14 @@ class CategoryController extends Controller
 
     public function detail(Request $request, $slug)
     {
-       
         $category = Category::where('slug', $slug)
         ->first();
 
+        $offers = $category->offers->sortBy('city_id');
+
         return view('pages.frontend.category.category_detail', [
-            'category' => $category, 
+            'category' => $category,
+            'offers' => $offers, 
         ]);
 
     }
