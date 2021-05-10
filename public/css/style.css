@@ -8493,22 +8493,6 @@ h5 {
 	background: #00ADEF;
 }
 
-.view-switcher {
-	margin-top: 40px;
-}
-
-.view-switcher a {
-	cursor: pointer;
-	display: inline-block;
-	font-size: 20px;
-	padding: 5px;
-	color: #00adef;
-}
-
-.view-switcher a:hover {
-	color: #ee5000;
-}
-
 .product-grid-view .car-item .rating-box {
 	display: none;
 }

@@ -221,6 +221,7 @@ class ViewController extends Controller
 
         $categories = Category::query()
             ->where('type', Category::TYPE_PLACE)
+            ->orWhere('type', Category::TYPE_OFFER)
             ->get();
 
         $place_types = PlaceType::query()

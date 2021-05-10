@@ -56,6 +56,7 @@
                                             type="text" name="keyword" placeholder="{{__('Where are you going?')}}"
                                             autocomplete="on">
                                         <input type="hidden" name="category[]" id="category_id">
+                                        <input type="hidden" name="cities[]" id="city_id">
                                         <div class="search-suggestions category-suggestion">
                                             <ul>
                                                 <li><a href="#"><span>{{__('Loading...')}}</span></a></li>

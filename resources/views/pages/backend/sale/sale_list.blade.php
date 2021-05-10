@@ -25,10 +25,10 @@
                             <th>{{__('User')}}</th>
                             <th>{{__('Customer')}}</th>
                             <th>{{__('Grand total')}}</th>
-                            <t>{{__('Payment status')}}</th>
-                            <t>{{__('Created at')}}</th>
-                            <t>{{__('View details')}}</th>
-                            <t>{{__('Status')}}</th>
+                            <th>{{__('Payment status')}}</th>
+                            <th>{{__('Created at')}}</th>
+                            <th>{{__('View details')}}</th>
+                            <th>{{__('Status')}}</th>
                             <th>Action</th>
                         </tr>
                         </thead>

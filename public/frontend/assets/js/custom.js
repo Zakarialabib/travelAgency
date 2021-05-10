@@ -230,39 +230,6 @@ $(function() {
 		});
 });
 
-/**********************************************************************
-		BEGIN: VIEW SWITCHER 
-***********************************************************************/
-$(document).ready(function () {  
-	"use strict";     
-	$('.view-switcher a').on('click',function(e) {
-		if ($(this).hasClass('switchgrid')) {
-			$('.switchable > div').removeClass('hotel-list-view').addClass('product-grid-view');     
-		}
-		else if($(this).hasClass('switchlist')) {
-			$('.switchable > div').removeClass('product-grid-view').addClass('hotel-list-view');       
-		}
-	});
-});
-/**********************************************************************
-		BEGIN: STYLESHEET SWITCHER 
-***********************************************************************/
-$('#color-switcher ul li').on('click', function(){
-	"use strict";	
-    var path = $(this).data('path');
-    $('#select-style').attr('href', path);
-});
-
-$('#stoggle').on('click', function(){
-	"use strict";	
-	var effect;
-	var direction;
-	var duration;
-	effect = 'slide';
-	duration = 400;
-    $('#color-switcher').toggle(effect, duration);
-});
-
 (function ($) {
     "use strict";
 
