@@ -150,11 +150,10 @@ class ViewController extends Controller
                 return $query->select('id', 'name', 'slug');
             }])
             ->whereTranslationLike('name', "%{$keyword}%")
-            ->orWhere('date', 'like', "%{$keyword}%")
             ->orWhere('address', 'like', "%{$keyword}%")
             ->where('status', Place::STATUS_ACTIVE);
 
-        $places = $places->get(['id', 'city_id', 'date','name', 'slug', 'address']);
+        $places = $places->get(['id', 'city_id','name', 'slug', 'address']);
 
         $html = '<ul class="listing_items">';
         foreach ($places as $place):
