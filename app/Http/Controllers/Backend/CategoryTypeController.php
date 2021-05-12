@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Category;
@@ -28,16 +27,18 @@ class CategoryTypeController extends Controller
     {
         $user = User::where('is_admin','=',1)->first();
 
-        $param_category_id = $request->category_id;
-        $categories = $this->category->getListAll(Category::TYPE_OFFER);
-        $category_types = $this->category_type->getListByCat($param_category_id);
 
-//        return $category_types;
+        $categories = Category::query()
+        ->where('type', Category::TYPE_OFFER)
+        ->where('status', Category::STATUS_ACTIVE)
+        ->get();
+
+        $category_types = CategoryType::query()
+        ->get();
 
         return view('pages.backend.category_type.category_type_list', [
-            'categories' => $categories,
             'category_types' => $category_types,
-            'category_id' => (int)$param_category_id,
+            'categories' => $categories,
             'user' => $user
         ]);
     }
@@ -45,7 +46,7 @@ class CategoryTypeController extends Controller
     public function store(Request $request)
     {
         $categories = Category::query()
-        ->where('type', Category::TYPE_POST)
+        ->where('type', Category::TYPE_OFFER)
         ->where('status', Category::STATUS_ACTIVE)
         ->get();
 

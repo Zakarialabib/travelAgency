@@ -51,13 +51,23 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="category">{{ __('City') }}: *</label>
+                <select class="form-control myselect" id="city_id" name="city_id" required>
+                    @foreach($cities as $city)
+                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-lg-6">
                 <label for="category">{{ __('Category') }}: *</label>
                 <select class="form-control myselect" id="category_id" name="category_id" required>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @endforeach
                 </select>
+            </div>
             </div>
             <div class="form-group">
                 <label for="price">{{__('Price')}}: *</label>

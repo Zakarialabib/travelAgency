@@ -10,8 +10,8 @@ use App\City;
 use App\Place;
 use App\PlaceType;
 use App\Offer;
+use App\CategoryType;
 use Illuminate\Http\Request;
-
 
 class CategoryController extends Controller
 {
@@ -34,19 +34,47 @@ class CategoryController extends Controller
 
     public function detail(Request $request, $slug)
     {
-       
         $category = Category::where('slug', $slug)
         ->first();
 
-         $offers = Offer::where('category_id', $category->id)
-         ->get();
-
+        $categorytype = CategoryType::query()
+        ->where('category_id', $category->id)
+        ->get();
+       
+        $offers = $category->offers->sortBy('city_id');
+        $array = array();
+        if($offers->count() > 0){ 
+            $city = $offers->first()->city;
+            foreach ($offers as $key => $offer) {
+                if($city->id !== $offer->city->id)
+                    $city = $offer->city;
+                $array[$city->name][] = $offer;
+            }
+        }
+      
         return view('pages.frontend.category.category_detail', [
-            'category' => $category, 
-            'offers' => $offers,
+            'category' => $category,
+            'offers' => $array,
+            'categorytype' => $categorytype
         ]);
 
     }
+
+    public function typeDetail(Request $request, $slug)
+    {
+       
+        $categorytype = CategoryType::where('slug', $slug)
+        ->first();
+        
+        $category = Category::query();
+
+        return view('pages.frontend.category.cat_type_detail', [
+            'categorytype' => $categorytype,   
+        ]);
+
+    }
+
+    
 
     public function listPlace(Request $request)
     {

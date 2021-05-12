@@ -16,7 +16,8 @@ class City extends Model implements TranslatableContract
 
     protected $fillable = [
         'country_id', 'slug',
-        'thumb', 'banner', 'best_time_to_visit', 'currency', 'language', 'lat', 'lng', 'seo_title', 'seo_description',
+        'thumb', 'banner', 'best_time_to_visit', 'currency', 'language', 
+        'lat', 'lng', 'seo_title', 'seo_description',
         'priority', 'status'
     ];
 
@@ -41,6 +42,11 @@ class City extends Model implements TranslatableContract
     public function places()
     {
         return $this->hasMany(Place::class);
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
     }
 
     public function getListByCountry($country_id)

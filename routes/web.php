@@ -46,7 +46,7 @@ Route::post('/flight-wallet-payment','WalletController@itineraryWalletPayment');
 Route::post('/hotel-wallet-payment','WalletController@hotelWalletPayment');
 
 
-Route::get('/logout','Auth\LoginController@logout');
+Route::get('/logout','Auth\LoginController@logout')->name('user.logout');
 
 
 Route::get('/cancel-pnr/{pnr}','FlightController@cancelPNR');
@@ -399,7 +399,7 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/update/user/password','ProfileController@updateUserProfilePassword')->name('update-profile-password');
 
         Route::group(['prefix' => 'users'],function(){
-            Route::get('/', 'BackEndViewController@usersManagement');
+            Route::get('/', 'BackEndViewController@usersManagement')->name('users.management');
             Route::post('/add-new','UserController@addNew');
             Route::get('/delete-user/{id}','UserController@deleteUser');
             Route::post('/update-user','UserController@updateUser');

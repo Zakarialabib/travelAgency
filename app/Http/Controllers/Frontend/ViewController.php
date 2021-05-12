@@ -9,7 +9,6 @@ use App\Profile;
 use App\Services\AmadeusConfig;
 use App\Services\AmadeusHelper;
 use App\Markup;
-use App\Slider;
 use App\Title;
 use App\Vat;
 use App\TravelPackage;
@@ -17,13 +16,13 @@ use App\Amenities;
 use App\Category;
 use App\City;
 use App\Country;
-use App\Faq;
 use App\Place;
 use App\PlaceType;
 use App\Post;
 use App\Page;
 use App\Review;
 use App\Testimonial;
+use App\Offer;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -58,33 +57,7 @@ class ViewController extends Controller
         $this->response = $response;
     }
 
-    public function comingsoon(){
-        
-        return view('errors.comingsoon');
-
-    }
-
     public function home(){
-
-        $deals = TravelPackage::where('status', 1)
-            ->with('images')
-            ->with('flightDeal')
-            ->with('hotelDeal')
-            ->with('attractionDeal')
-            ->limit(15)
-            ->get();
-
-        $places = Place::query()
-        ->with('place_types')
-        ->withCount('reviews')
-        ->with('avgReview')
-        ->withCount('wishList')
-        ->where('status', Place::STATUS_ACTIVE)
-        ->get();
-
-        $sliders = Slider::all();
-        
-        $countryList = Country::all();
 
           $blog_posts = Post::query()
             ->with(['categories' => function ($query) {
@@ -97,41 +70,15 @@ class ViewController extends Controller
             ->orderBy('created_at', 'desc')
             ->get(['id', 'category', 'slug', 'thumb']);
 
-            $popular_cities = City::query()
-            ->with('country')
-            ->withCount(['places' => function ($query) {
-                $query->where('status', Place::STATUS_ACTIVE);
-            }])
-            ->where('status', Country::STATUS_ACTIVE)
-            ->limit(12)
-            ->get();
-
             $categories = Category::query()
-            ->where('categories.status', Category::STATUS_ACTIVE)
-            ->where('categories.type', Category::TYPE_PLACE)
-            ->join('places', 'places.category', 'like', DB::raw("CONCAT('%', categories.id, '%')"))
-            ->limit(10)
+            ->where('categories.type', Category::TYPE_OFFER)
+            //->orWhere('categories.type', Category::TYPE_PLACE)
+            ->limit(5)
             ->get();
 
-            $trending_places = Place::query()
-            ->with('categories')
-            ->with('city')
-            ->with('place_types')
-            ->withCount('reviews')
-            ->with('avgReview')
-            ->withCount('wishList')
-            ->where('status', Place::STATUS_ACTIVE)
-            ->limit(10)
-            ->get();
-
-        $testimonials = Testimonial::query()
-            ->where('status', Testimonial::STATUS_ACTIVE)
-            ->get();
-        
-        return view('pages.frontend.home',compact('deals','testimonials','trending_places','sliders','countryList','places' ,'blog_posts','popular_cities','categories'));
+        return view('pages.frontend.home',compact('blog_posts','categories'));
 
     }
-
 
     public function changeLanguage($locale)
     {
@@ -143,7 +90,7 @@ class ViewController extends Controller
 
     public function pageFaqs()
     {
-        return view('pages.frontend.page.faqs');
+        return view('frontend.page.faqs');
     }
     
 
@@ -175,53 +122,71 @@ class ViewController extends Controller
 
     $places = $places->paginate(4);
 
-        return view('pages.frontend.page.about',[
+        return view('frontend.page.about',[
             'places' => $places,
             'keyword' => $keyword
         ]);
     }
-    public function termsConditions() {
-
-        $faqs = Faq::where('status', 1)->get();
-        return view('pages.frontend.page.termsconditions', compact('faqs'));
+    public function termsConditions()
+    {
+        return view('frontend.page.termsconditions');
     }
 
     public function pageContact()
     {
-        return view('pages.frontend.page.contact');
+        return view('frontend.page.contact');
     }
 
-     public function searchListing(Request $request)
+    public function pageLanding($page_number)
+    {
+        return view("frontend.page.landing_{$page_number}");
+    }
+
+    public function searchListing(Request $request)
     {
         $keyword = $request->keyword;
-        
-        $places = Place::query()
+        $category_id = $request->category_id;
+        $city_id = $request->city_id;
+
+        $offers = Offer::query()
             ->with(['city' => function ($query) {
                 return $query->select('id', 'name', 'slug');
             }])
             ->whereTranslationLike('name', "%{$keyword}%")
-            ->orWhere('date', 'like', "%{$keyword}%")
-            ->orWhere('address', 'like', "%{$keyword}%")
-            ->where('status', Place::STATUS_ACTIVE);
+            ->where('status', Offer::STATUS_ACTIVE)
+            ->limit(3);
 
-        $places = $places->get(['id', 'city_id', 'date','name', 'slug', 'address']);
+        if ($category_id) {
+            $offers->where('category_id', $category_id);
+        }
 
-        $html = '<ul class="listing_items">';
-        foreach ($places as $place):
-            if (isset($place['city'])):
-                $place_url = route('place_detail', $place->slug);
+        if ($city_id) {
+            $offers->where('city_id', $city_id);
+        }
+
+        $offers = $offers->get(['id', 'city_id', 'name', 'slug']);
+
+
+        $html = '<ul class="custom-scrollbar">';
+        foreach ($offers as $offer):
+            if (isset($offer['city'])):
+                $offer_url = route('offer_detail', $offer->slug);
+                $city_url = route('city_detail', $offer['city']['slug']);
                 $html .= "
                 <li>
-                    <a href=\"{$place_url}\">{$place->name}</a>
+                    <a href=\"{$offer_url}\"><i class=\"la la-globe-africa\"></i>{$offer->name}</a>  
+                </li>
+                <li>
+                    <a href=\"{$city_url}\"><i class=\"la la-city\"></i>{$offer['city']['name']}</a>
                 </li>
                 ";
             endif;
-        endforeach;
+            endforeach;
         $html .= '</ul>';
 
-        $html_notfound = "<ul><li><a href='#'><span>No listing found!</span></a></li></ul>";
+        $html_notfound = "<div class=\"golo-ajax-result\">No place found</div>";
 
-        count($places) ?: $html = $html_notfound;
+        count($offers) ?: $html = $html_notfound;
 
         return response($html, 200);
     }
@@ -254,7 +219,7 @@ class ViewController extends Controller
 
         $places = $places->paginate(20);
 
-        return view('pages.frontend.search.search', [
+        return view('frontend.search.search', [
             'places' => $places,
             'keyword' => $keyword
         ]);
@@ -271,6 +236,7 @@ class ViewController extends Controller
 
         $categories = Category::query()
             ->where('type', Category::TYPE_PLACE)
+            ->orWhere('type', Category::TYPE_OFFER)
             ->get();
 
         $place_types = PlaceType::query()
@@ -359,7 +325,7 @@ class ViewController extends Controller
 
 //        return $places;
 
-        return view("pages.frontend.search.search_01", [
+        return view("frontend.search.search_01", [
             'keyword' => $keyword,
             'places' => $places,
             'categories' => $categories,
@@ -377,33 +343,33 @@ class ViewController extends Controller
 
     public function sendAbout(Request $request)
     {
-        Mail::send('pages.frontend.mail.contact_form', [
+        Mail::send('frontend.mail.contact_form', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,
             'email' => $request->email,
             'note' => $request->note
         ], function ($message) use ($request) {
-            $message->to(setting('email_system'), "{$request->first_name}")->subject('Formulaire de Contact ' . $request->first_name);
+            $message->to(config('default_email_address'), "{$request->first_name}")->subject('Contact from ' . $request->first_name);
         });
 
 
-        return back()->with('success', 'Formulaire de contact envoyé avec succès!');
+        return back()->with('success', 'Contact has been send!');
     }
 
     public function sendContact(Request $request)
     {
-        Mail::send('pages.frontend.mail.contact_form', [
+        Mail::send('frontend.mail.contact_form', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,
             'email' => $request->email,
             'note' => $request->note
         ], function ($message) use ($request) {
-            $message->to(setting('email_system'), "{$request->first_name}")->subject('Formulaire de Contact ' . $request->first_name);
+            $message->to(setting('email_system'), "{$request->first_name}")->subject('Contact from ' . $request->first_name);
         });
 
-        return back()->with('success', 'Formulaire de contact envoyé avec succès!');
+        return back()->with('success', 'Contact has been send!');
     }
 
     public function ajaxSearch(Request $request)
@@ -687,7 +653,53 @@ class ViewController extends Controller
         return view('pages.frontend.deal.attraction',compact('hotDeals'));
     }
 
-    public function dealDetails($id){
+
+    public function dealDetails($slug){
+        
+        $place = $this->place->getBySlug($slug);
+        if (!$place) abort(404);
+
+        $city = City::query()
+        ->with('country')
+        ->where('id', $place->city_id)
+        ->first();
+
+    $amenities = Amenities::query()
+        ->whereIn('id', $place->amenities ? $place->amenities : [])
+        ->get(['id', 'name', 'icon']);
+
+    $categories = Category::query()
+        ->whereIn('id', $place->category ? $place->category : [])
+        ->get(['id', 'name', 'slug', 'icon_map_marker']);
+
+    $place_types = PlaceType::query()
+        ->whereIn('id', $place->place_type ? $place->place_type : [])
+        ->get(['id', 'name']);
+
+    $reviews = Review::query()
+        ->with('user')
+        ->where('place_id', $place->id)
+        ->where('status', Review::STATUS_ACTIVE)
+        ->get();
+
+    $review_score_avg = Review::query()
+        ->where('place_id', $place->id)
+        ->where('status', Review::STATUS_ACTIVE)
+        ->avg('score');
+
+    $similar_places = Place::query()
+        ->with('place_types')
+        ->with('avgReview')
+        ->withCount('reviews')
+        ->withCount('wishList')
+        ->where('city_id', $city->id)
+        ->where('id', '<>', $place->id);
+
+    foreach ($place->category as $cat_id):
+        $similar_places->where('category', 'like', "%{$cat_id}%");
+    endforeach;
+    
+    $similar_places = $similar_places->limit(4)->get();
 
         $deal = TravelPackage::where('id',$id)
             ->with('hotelDeal')
@@ -702,7 +714,16 @@ class ViewController extends Controller
             return back();
         }
 
-        return view('pages.frontend.deal.details',compact('deal'));
+        return view('pages.frontend.deal.details',compact('deal','place'), [
+            'place' => $place,
+            'city' => $city,
+            'amenities' => $amenities,
+            'categories' => $categories,
+            'place_types' => $place_types,
+            'reviews' => $reviews,
+            'review_score_avg' => $review_score_avg,
+            'similar_places' => $similar_places
+        ]);
     }
 
     public function dealBooking($id){

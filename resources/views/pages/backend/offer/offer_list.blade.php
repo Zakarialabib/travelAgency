@@ -25,6 +25,7 @@
                             <th >ID</th>
                             <th >Image</th>
                             <th>{{__('Offer name')}}</th>
+                            <th>{{__('City')}}</th>
                             <th>{{__('Activity')}}</th>
                             <th>{{__('Status')}}</th>
                              <th>{{__('Action')}}</th>
@@ -36,6 +37,9 @@
                                 <td>{{$offer->id}}</td>
                                 <td><img class="offer_list_thumb" src="{{getImageUrl($offer->thumb)}}" alt="page thumb"></td>
                                 <td>{{$offer->name}}</td>
+                                <td>
+                                {{$offer->city_id}}
+                                </td>
                                 <td>
                                 {{$offer->category_id}}
                                 </td>

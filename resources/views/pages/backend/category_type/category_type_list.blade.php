@@ -20,23 +20,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
             <div class="x_panel">
                 <div class="x_title">
-                    <div class="row">
-                        <div class="col-md-3 form-group">
-                            <label>{{__('Select Category')}}:</label>
-                            <form>
-                                <select class="form-control" id="select_category_id" name="category_id" onchange="this.form.submit()">
-                                    <option value="">{{__('Select Category')}}</option>
-                                    @foreach($categories as $cat)
-                                        @if($category_id)
-                                            <option value="{{$cat->id}}" {{isSelected($cat->id, $category_id)}}>{{$cat->name}}</option>
-                                        @else
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </form>
-                        </div>
-                    </div>
+                    
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -44,7 +28,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>{{__('Place type name')}}</th>
+                            <th>{{__('Category type Name')}}</th>
                             <th>Action</th>
                         </tr>
                         </thead>

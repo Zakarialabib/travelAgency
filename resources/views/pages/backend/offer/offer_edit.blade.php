@@ -44,13 +44,23 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="category">{{ __('City') }}: *</label>
+                <select class="form-control myselect" id="" name="city_id" required>
+                    @foreach($cities as $city)
+                        <option value="{{$city->id}}" {{isSelected($city->id, $offer->city_id)}}>{{$city->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-lg-6">
                 <label for="category">{{ __('Category') }}: *</label>
                 <select class="form-control myselect" id="" name="category_id" required>
                     @foreach($categories as $cat)
-                        <option value="{{$cat->id}}" {{isSelected($cat->id, $offer->category)}}>{{$cat->name}}</option>
+                        <option value="{{$cat->id}}" {{isSelected($cat->id, $offer->categor_idy)}}>{{$cat->name}}</option>
                     @endforeach
                 </select>
+            </div>
             </div>
             <div class="form-group">
                 <label for="price">{{__('Price')}}: *</label>
