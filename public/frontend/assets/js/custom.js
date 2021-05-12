@@ -697,7 +697,7 @@ $(function() {
         },
 
         globalJS: function () {
-            $('.open-suggestion').on('focus', function (e) {
+            $('.open-suggestion').on('keyup', function (e) {
                 e.preventDefault();
                 $(this).parent().find('.search-suggestions').fadeIn();
             });

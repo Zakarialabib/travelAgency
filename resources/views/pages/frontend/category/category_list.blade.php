@@ -23,7 +23,6 @@
                     <div class="places-item__thumb hover__box__thumb">
                       <a title="{{$category->name}}" href="{{route('category_detail', $category->slug)}}"><img src="{{getImageUrl($category->image)}}" alt="{{$category->name}}">
                         <span class="title">{{$category->name}}</span>
-                        <span class="place">{{$category->place_count}} {{__('Places')}}</span>
                       </a>
                     </div>
                   </div>

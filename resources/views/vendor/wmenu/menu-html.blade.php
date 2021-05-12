@@ -1,6 +1,4 @@
-@extends('layouts.backend')
 
-@section('content')
 
 <?php
 $currentUrl = url()->current();
@@ -250,4 +248,4 @@ $currentUrl = url()->current();
 		</div>
 	</div>
 </div>
-@endsection
+

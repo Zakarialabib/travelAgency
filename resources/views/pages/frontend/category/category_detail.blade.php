@@ -9,19 +9,25 @@ $page_title_bg = "style=background-image:url({$banner_img});";
 
 @section('content')
     <main class="site-main normal_view">
-        <div class="page-title" {!! $page_title_bg !!}>
-            <div class="container">
-                <div class="category-title__content">
-                    <h1 class="page-title__name">{{ $category->name }}</h1>
+        <section class="breadcrumbs-custom bg-image context-dark" {!! $page_title_bg !!}>
+            <div class="breadcrumbs-custom-inner">
+                <div class="container breadcrumbs-custom-container">
+                    <div class="breadcrumbs-custom-main" >
+                        <h1 class="breadcrumbs-custom-title">{{ $category->name }}</h1>
+                    </div>
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{{ route('home' }}">{{__('Home')}}</a></li>
+                        <li><a href="{{ route('category_list' }}">{{__('Category')}}</a></li>
+                        <li class="active">{{ $category->name }}</li>
+                    </ul>
                 </div>
-     </div>
-        </div><!-- .page-title -->
+             </div>
+        </section><!-- .page-title -->
         <div class="mw">
-            <div class="">
+            <div class="row">
         @foreach($categorytype as $cat)
-            <div class="place-item place-hover layout-02">
-                <div class="places-item hover__box">
-                    <div class="places-item hover__box">
+            <div class="col-sm-6 col-lg-4 layout-02">
+                <div class="">
                         <a class="entry-thumb">
                             <img title="{{ $cat->name }}" src="{{ getImageUrl($cat->image) }}" alt="{{ $cat->name }}">
                         </a>
@@ -30,7 +36,6 @@ $page_title_bg = "style=background-image:url({$banner_img});";
                             {{ $cat->name }}
                             </h3>
                         </div>
-                    </div>
                 </div>
             </div>
         @endforeach

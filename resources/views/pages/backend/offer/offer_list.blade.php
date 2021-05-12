@@ -38,10 +38,10 @@
                                 <td><img class="offer_list_thumb" src="{{getImageUrl($offer->thumb)}}" alt="page thumb"></td>
                                 <td>{{$offer->name}}</td>
                                 <td>
-                                {{$offer->city_id}}
+                                {{$offer->city->name}}
                                 </td>
                                 <td>
-                                {{$offer->category_id}}
+                                {{$offer->categories->name}}
                                 </td>
                                 <td>
                                     @if($offer->status === \App\Offer::STATUS_PENDING)

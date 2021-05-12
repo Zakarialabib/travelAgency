@@ -17378,12 +17378,14 @@ CREATE TABLE IF NOT EXISTS `category_types` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.category_types : ~1 rows (environ)
+-- Listage des données de la table rentacs.category_types : ~3 rows (environ)
 /*!40000 ALTER TABLE `category_types` DISABLE KEYS */;
 INSERT INTO `category_types` (`id`, `category_id`, `name`, `description`, `slug`, `image`, `created_at`, `updated_at`) VALUES
-	(1, 13, NULL, NULL, NULL, NULL, '2021-05-07 11:16:59', '2021-05-07 11:16:59');
+	(1, 12, NULL, NULL, NULL, NULL, '2021-05-07 11:16:59', '2021-05-11 15:04:36'),
+	(2, 13, NULL, NULL, NULL, NULL, '2021-05-11 15:01:00', '2021-05-11 15:04:27'),
+	(3, 11, NULL, NULL, NULL, NULL, '2021-05-11 15:04:51', '2021-05-11 15:59:36');
 /*!40000 ALTER TABLE `category_types` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. category_type_translations
@@ -17396,13 +17398,17 @@ CREATE TABLE IF NOT EXISTS `category_type_translations` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `category_type_translations_category_type_id_locale_unique` (`category_type_id`,`locale`),
   KEY `category_type_translations_locale_index` (`locale`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.category_type_translations : ~2 rows (environ)
+-- Listage des données de la table rentacs.category_type_translations : ~6 rows (environ)
 /*!40000 ALTER TABLE `category_type_translations` DISABLE KEYS */;
 INSERT INTO `category_type_translations` (`id`, `category_type_id`, `locale`, `name`, `description`) VALUES
 	(1, 1, 'en', 'Hotel', NULL),
-	(2, 1, 'fr', 'Hotel', NULL);
+	(2, 1, 'fr', 'Hotel', NULL),
+	(3, 2, 'en', 'Hotel', NULL),
+	(4, 2, 'fr', 'Hotel', NULL),
+	(5, 3, 'en', 'Hotel', NULL),
+	(6, 3, 'fr', 'Astuces et Conseils', NULL);
 /*!40000 ALTER TABLE `category_type_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. cities
@@ -19399,9 +19405,9 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.migrations : ~99 rows (environ)
+-- Listage des données de la table rentacs.migrations : ~103 rows (environ)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(51, '2020_02_26_041322_create_post_translations_table', 1),
@@ -19450,7 +19456,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(94, '2021_04_05_114424_create_package_flights_table', 0),
 	(95, '2021_04_05_114424_create_package_hotels_table', 0),
 	(96, '2021_04_05_114424_create_package_types_table', 0),
-	(97, '2021_04_05_114424_create_packages_table', 0),
 	(98, '2021_04_05_114424_create_page_translations_table', 0),
 	(99, '2021_04_05_114424_create_password_resets_table', 0),
 	(100, '2021_04_05_114424_create_pay_laters_table', 0),
@@ -19503,13 +19508,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(147, '2021_04_05_114428_add_foreign_keys_to_sale_details_table', 0),
 	(148, '2021_04_05_114428_add_foreign_keys_to_sales_table', 0),
 	(149, '2021_04_05_114428_add_foreign_keys_to_users_table', 0),
-	(150, '2021_04_13_094214_create_newsletters_table', 2),
-	(151, '2021_04_16_025627_create_faqs_table', 3),
-	(152, '2021_04_19_104131_create_sliders_table', 3),
-	(153, '2021_04_20_104131_create_offers_table', 4),
-	(154, '2021_04_20_114424_create_offer_translations_table', 5),
-	(155, '2021_04_05_114424_create_category_type_translations_table', 6),
-	(156, '2021_05_06_114424_create_category_types_table', 7);
+	(150, '2021_04_13_094214_create_newsletters_table', 0),
+	(151, '2021_04_16_025627_create_faqs_table', 0),
+	(152, '2021_04_19_104131_create_sliders_table', 0),
+	(153, '2021_04_20_104131_create_offers_table', 0),
+	(154, '2021_04_20_114424_create_offer_translations_table', 0),
+	(155, '2021_04_05_114424_create_category_type_translations_table', 0),
+	(156, '2021_04_06_114424_create_category_types_table', 0),
+	(157, '2021_04_06_114424_create_category_translations_table', 0),
+	(158, '2021_05_06_130604_create_package_features_table', 2),
+	(159, '2021_05_06_130644_create_package_conditions_table', 2),
+	(160, '2021_05_06_134208_create_package_rates_table', 2),
+	(161, '2021_04_05_114424_create_packages_table', 3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. newsletters
@@ -19575,15 +19585,12 @@ CREATE TABLE IF NOT EXISTS `offers` (
   KEY `foreign_offer_city_id` (`city_id`),
   CONSTRAINT `foreign_offer_city_id` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `foreing_offer_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=' x';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=' x';
 
 -- Listage des données de la table rentacs.offers : ~4 rows (environ)
 /*!40000 ALTER TABLE `offers` DISABLE KEYS */;
 INSERT INTO `offers` (`id`, `user_id`, `category_id`, `city_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
-	(4, 1, 11, 31, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-07 15:20:10'),
-	(5, 1, 11, 23, NULL, 'rotana', NULL, '2', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-07 15:25:38', '2021-05-07 15:25:38'),
-	(6, 1, 11, 33, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-07 15:20:10'),
-	(7, 1, 11, 23, NULL, 'rotana', NULL, '0000000001', 55, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-06 14:56:02', '2021-05-07 15:20:10');
+	(8, 1, 13, 31, NULL, 'hotel-du-golf-rotana-golf-club-rotana', NULL, '0000000001', 0, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-12 11:33:16', '2021-05-12 11:33:16');
 /*!40000 ALTER TABLE `offers` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. offer_translations
@@ -19596,7 +19603,7 @@ CREATE TABLE IF NOT EXISTS `offer_translations` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `offer_translations_offer_id_locale_unique` (`offer_id`,`locale`),
   KEY `offer_translations_locale_index` (`locale`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.offer_translations : ~4 rows (environ)
 /*!40000 ALTER TABLE `offer_translations` DISABLE KEYS */;
@@ -19604,7 +19611,9 @@ INSERT INTO `offer_translations` (`id`, `offer_id`, `locale`, `name`, `descripti
 	(3, 4, 'en', 'Rotana', '<p><br />\r\nRotana</p>'),
 	(4, 4, 'fr', 'Rotana', '<p>Rotana</p>'),
 	(5, 5, 'en', 'Rotana', '<p>Rotana</p>'),
-	(6, 5, 'fr', 'Rotana', '<p>Rotana</p>');
+	(6, 5, 'fr', 'Rotana', '<p>Rotana</p>'),
+	(7, 8, 'en', 'Hotel du Golf Rotana / Golf Club Rotana', '<p>With an outstanding location overlooking one of the most sought-after golf courses in Marrakech, <strong>H&ocirc;tel du Golf Rotana</strong> is the place to relax and enjoy 5 star luxury and world-class facilities. Nestled at the heart of the stunning <strong>Palmeraie Rotana Resort </strong>is&nbsp;situated in the north of the Marrakech.&nbsp;This design-led property blends modern Moroccan architecture with art deco style and a warm inviting colour scheme to create a cosy and laid-back ambiance. Magnificent views of the fairways at the <strong>Golf Club Rotana</strong> and the stunning Atlas Mountains backdrop are part of this exceptional lifestyle experience.</p>\r\n\r\n<p><strong>All 315 hotel rooms</strong> and suites are modern, spacious and ideal for both leisure and business stays in Marrakech. Expansive floor-to-ceiling windows are a design highlight, flooding each room with glorious Moroccan sunshine and offering guests breath-taking views of the gardens, pool and/or the golf course.</p>\r\n\r\n<p>Guests can choose from the resort&rsquo;s <strong>12 unique dining experiences</strong>, from specialty restaurants serving authentic Moroccan, Italian, Mediterranean and Asian flavours, to casual pool bars and beach lounges, including Nikki Beach Club where inventive fusion cuisine and a party atmosphere await. For convenience, three of these venues - an international restaurant, poolside snack bar and a bar lounge - are located at the <strong>H&ocirc;tel du Golf Rotana</strong> Palmeraie.</p>\r\n\r\n<p>In addition to the 18-hole championship golf course, a wide range of resort facilities are on the hotel&rsquo;s doorstep, including the purpose-built Conference Centre, which caters to all corporate and social occasions in Marrakech. For some well-deserved me time, work out or relax in the fully equipped <strong>Bodylines Fitness &amp; Wellness Club</strong> with indoor swimming pool, Jacuzzi, sauna and steam rooms, or be pampered at <strong>Zen the spa at Rotana</strong>. For a bit of fun guests can also enjoy the resort&#39;s offers bowling, tennis, basketball and a vast entertainment programme designed for all ages and our kids&rsquo; club keeps young guests busy with activities galore.</p>'),
+	(8, 8, 'fr', 'Hotel du Golf Rotana / Golf Club Rotana', '<p>With an outstanding location overlooking one of the most sought-after golf courses in Marrakech, <strong>H&ocirc;tel du Golf Rotana</strong> is the place to relax and enjoy 5 star luxury and world-class facilities. Nestled at the heart of the stunning <strong>Palmeraie Rotana Resort </strong>is&nbsp;situated in the north of the Marrakech.&nbsp;This design-led property blends modern Moroccan architecture with art deco style and a warm inviting colour scheme to create a cosy and laid-back ambiance. Magnificent views of the fairways at the <strong>Golf Club Rotana</strong> and the stunning Atlas Mountains backdrop are part of this exceptional lifestyle experience.</p>\r\n\r\n<p><strong>All 315 hotel rooms</strong> and suites are modern, spacious and ideal for both leisure and business stays in Marrakech. Expansive floor-to-ceiling windows are a design highlight, flooding each room with glorious Moroccan sunshine and offering guests breath-taking views of the gardens, pool and/or the golf course.</p>\r\n\r\n<p>Guests can choose from the resort&rsquo;s <strong>12 unique dining experiences</strong>, from specialty restaurants serving authentic Moroccan, Italian, Mediterranean and Asian flavours, to casual pool bars and beach lounges, including Nikki Beach Club where inventive fusion cuisine and a party atmosphere await. For convenience, three of these venues - an international restaurant, poolside snack bar and a bar lounge - are located at the <strong>H&ocirc;tel du Golf Rotana</strong> Palmeraie.</p>\r\n\r\n<p>In addition to the 18-hole championship golf course, a wide range of resort facilities are on the hotel&rsquo;s doorstep, including the purpose-built Conference Centre, which caters to all corporate and social occasions in Marrakech. For some well-deserved me time, work out or relax in the fully equipped <strong>Bodylines Fitness &amp; Wellness Club</strong> with indoor swimming pool, Jacuzzi, sauna and steam rooms, or be pampered at <strong>Zen the spa at Rotana</strong>. For a bit of fun guests can also enjoy the resort&#39;s offers bowling, tennis, basketball and a vast entertainment programme designed for all ages and our kids&rsquo; club keeps young guests busy with activities galore.</p>');
 /*!40000 ALTER TABLE `offer_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. online_payments
@@ -19627,34 +19636,6 @@ CREATE TABLE IF NOT EXISTS `online_payments` (
 -- Listage des données de la table rentacs.online_payments : ~0 rows (environ)
 /*!40000 ALTER TABLE `online_payments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `online_payments` ENABLE KEYS */;
-
--- Listage de la structure de la table rentacs. packages
-CREATE TABLE IF NOT EXISTS `packages` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `package_category_id` int(11) DEFAULT NULL,
-  `package_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `flight` smallint(6) DEFAULT NULL,
-  `hotel` smallint(6) DEFAULT NULL,
-  `attraction` smallint(6) DEFAULT NULL,
-  `location` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `time_length` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `info` longtext COLLATE utf8mb4_unicode_ci,
-  `duration_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `transports` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `language_spoken` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adult_price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `kids_price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Listage des données de la table rentacs.packages : ~0 rows (environ)
-/*!40000 ALTER TABLE `packages` DISABLE KEYS */;
-INSERT INTO `packages` (`id`, `package_category_id`, `package_name`, `flight`, `hotel`, `attraction`, `location`, `phone_number`, `time_length`, `info`, `duration_type`, `transports`, `language_spoken`, `adult_price`, `kids_price`, `created_at`, `updated_at`) VALUES
-	(1, 1, 'kiki', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-/*!40000 ALTER TABLE `packages` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. package_attractions
 CREATE TABLE IF NOT EXISTS `package_attractions` (
@@ -19722,6 +19703,44 @@ INSERT INTO `package_categories` (`id`, `category`, `status`, `created_at`, `upd
 	(7, 'Health & Beauty', 1, '2021-01-28 10:16:31', '2021-01-28 10:16:31');
 /*!40000 ALTER TABLE `package_categories` ENABLE KEYS */;
 
+-- Listage de la structure de la table rentacs. package_conditions
+CREATE TABLE IF NOT EXISTS `package_conditions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `package_id` int(10) unsigned NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `package_conditions_package_id_foreign` (`package_id`),
+  CONSTRAINT `package_conditions_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table rentacs.package_conditions : ~0 rows (environ)
+/*!40000 ALTER TABLE `package_conditions` DISABLE KEYS */;
+INSERT INTO `package_conditions` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'city taxes not included', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
+	(3, 1, 'upon availability', '2021-05-12 11:39:50', '2021-05-12 11:39:50');
+/*!40000 ALTER TABLE `package_conditions` ENABLE KEYS */;
+
+-- Listage de la structure de la table rentacs. package_features
+CREATE TABLE IF NOT EXISTS `package_features` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `package_id` int(10) unsigned NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `package_features_package_id_foreign` (`package_id`),
+  CONSTRAINT `package_features_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table rentacs.package_features : ~0 rows (environ)
+/*!40000 ALTER TABLE `package_features` DISABLE KEYS */;
+INSERT INTO `package_features` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'transfert airoport', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
+	(3, 1, 'accommondation', '2021-05-12 11:39:50', '2021-05-12 11:39:50');
+/*!40000 ALTER TABLE `package_features` ENABLE KEYS */;
+
 -- Listage de la structure de la table rentacs. package_flights
 CREATE TABLE IF NOT EXISTS `package_flights` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -19758,6 +19777,29 @@ CREATE TABLE IF NOT EXISTS `package_hotels` (
 -- Listage des données de la table rentacs.package_hotels : ~0 rows (environ)
 /*!40000 ALTER TABLE `package_hotels` DISABLE KEYS */;
 /*!40000 ALTER TABLE `package_hotels` ENABLE KEYS */;
+
+-- Listage de la structure de la table rentacs. package_rates
+CREATE TABLE IF NOT EXISTS `package_rates` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `package_id` int(10) unsigned NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `package_rates_package_id_foreign` (`package_id`),
+  CONSTRAINT `package_rates_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table rentacs.package_rates : ~0 rows (environ)
+/*!40000 ALTER TABLE `package_rates` DISABLE KEYS */;
+INSERT INTO `package_rates` (`id`, `package_id`, `title`, `start_date`, `end_date`, `price`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'Single Room', '2021-04-15', '2021-10-31', 4126.00, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
+	(2, 1, 'Single Room', '2020-11-01', '2021-04-14', 4616.00, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
+	(3, 1, 'Double Room', '2021-04-15', '2021-10-31', 5552.00, '2021-05-12 11:39:50', '2021-05-12 11:39:50');
+/*!40000 ALTER TABLE `package_rates` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. package_types
 CREATE TABLE IF NOT EXISTS `package_types` (

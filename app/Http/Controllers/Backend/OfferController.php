@@ -38,7 +38,7 @@ class OfferController extends Controller
 
         $offers = Offer::query()
         ->with('categories')
-        ->with('cities')
+        ->with('city')
         ->get();
 
         $categories = Category::where('type', Category::TYPE_OFFER)
