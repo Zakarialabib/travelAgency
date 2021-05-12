@@ -51,8 +51,8 @@
                                     <i class="la la-times"></i>
                                 </a><!-- .search__close -->
                                 <form action="{{route('page_search_listing')}}" class="site-banner__search layout-02">
-                                        <input class="site-banner__search__input open-suggestion"
-                                            style="background-color: #00000036;text-align: center;" id="input_search"
+                                        <input class="form-control open-suggestion"
+                                            style="background-color: #00000036;text-align:center" id="input_search"
                                             type="text" name="keyword" placeholder="{{__('Where are you going?')}}"
                                             autocomplete="on">
                                         <input type="hidden" name="category[]" id="category_id">
@@ -65,7 +65,6 @@
                                     <div class="field-submit">
                                         <button><i class="las la-search la-24-black"></i></button>
                                     </div>
- 
                                 </form><!-- .site-banner__search -->
                                    <p class="site-banner__meta">
                         <span>{{__('Popular:')}}</span>
@@ -475,7 +474,7 @@
                         </div>
                         <h4 class="cities__name">{{__('Offer')}} {{$category->name}}</h4>
                         <div class="cities__info">
-                            <a class="btn mybtn" href="{{route('category_detail', $category->slug)}}">{{__('Read More')}}</a>
+                            <a class="btn" href="{{route('category_detail', $category->slug)}}">{{__('Read More')}}</a>
                         </div>
                     </div><!-- .cities__item -->
                 </div>

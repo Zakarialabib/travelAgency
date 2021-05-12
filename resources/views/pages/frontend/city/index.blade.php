@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('page-title')  {{__('City')}}  @endsection
 
 @section('content')
     <main class="site-main normal_view">

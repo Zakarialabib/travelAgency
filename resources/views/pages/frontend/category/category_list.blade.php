@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title')  {{__('Category detail')}}  @endsection
+
 @section('content')
 
 <main class="site-main normal_view">

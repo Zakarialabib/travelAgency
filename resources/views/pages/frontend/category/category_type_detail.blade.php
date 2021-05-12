@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title')  {{__('Category Type detail')}}  @endsection
+
 @php
     $banner_img = getImageUrl($category->image);
     $page_title_bg = "style=background-image:url({$banner_img});";

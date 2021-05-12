@@ -22,6 +22,7 @@ use App\Post;
 use App\Page;
 use App\Review;
 use App\Testimonial;
+use App\Offer;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -144,33 +145,48 @@ class ViewController extends Controller
     public function searchListing(Request $request)
     {
         $keyword = $request->keyword;
-        
-        $places = Place::query()
+        $category_id = $request->category_id;
+        $city_id = $request->city_id;
+
+        $offers = Offer::query()
             ->with(['city' => function ($query) {
                 return $query->select('id', 'name', 'slug');
             }])
             ->whereTranslationLike('name', "%{$keyword}%")
-            ->orWhere('address', 'like', "%{$keyword}%")
-            ->where('status', Place::STATUS_ACTIVE);
+            ->where('status', Offer::STATUS_ACTIVE)
+            ->limit(3);
 
-        $places = $places->get(['id', 'city_id','name', 'slug', 'address']);
+        if ($category_id) {
+            $offers->where('category_id', $category_id);
+        }
 
-        $html = '<ul class="listing_items">';
-        foreach ($places as $place):
-            if (isset($place['city'])):
-                $place_url = route('place_detail', $place->slug);
+        if ($city_id) {
+            $offers->where('city_id', $city_id);
+        }
+
+        $offers = $offers->get(['id', 'city_id', 'name', 'slug']);
+
+
+        $html = '<ul class="custom-scrollbar">';
+        foreach ($offers as $offer):
+            if (isset($offer['city'])):
+                $offer_url = route('offer_detail', $offer->slug);
+                $city_url = route('city_detail', $offer['city']['slug']);
                 $html .= "
                 <li>
-                    <a href=\"{$place_url}\">{$place->name}</a>
+                    <a href=\"{$offer_url}\"><i class=\"la la-globe-africa\"></i>{$offer->name}</a>  
+                </li>
+                <li>
+                    <a href=\"{$city_url}\"><i class=\"la la-city\"></i>{$offer['city']['name']}</a>
                 </li>
                 ";
             endif;
-        endforeach;
+            endforeach;
         $html .= '</ul>';
 
-        $html_notfound = "<ul><li><a href='#'><span>No listing found!</span></a></li></ul>";
+        $html_notfound = "<div class=\"golo-ajax-result\">No place found</div>";
 
-        count($places) ?: $html = $html_notfound;
+        count($offers) ?: $html = $html_notfound;
 
         return response($html, 200);
     }

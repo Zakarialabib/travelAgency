@@ -37,11 +37,25 @@ class CategoryController extends Controller
         $category = Category::where('slug', $slug)
         ->first();
 
+        $categorytype = CategoryType::query()
+        ->where('category_id', $category->id)
+        ->get();
+       
         $offers = $category->offers->sortBy('city_id');
-
+        $array = array();
+        if($offers->count() > 0){ 
+            $city = $offers->first()->city;
+            foreach ($offers as $key => $offer) {
+                if($city->id !== $offer->city->id)
+                    $city = $offer->city;
+                $array[$city->name][] = $offer;
+            }
+        }
+      
         return view('pages.frontend.category.category_detail', [
             'category' => $category,
-            'offers' => $offers, 
+            'offers' => $array,
+            'categorytype' => $categorytype
         ]);
 
     }

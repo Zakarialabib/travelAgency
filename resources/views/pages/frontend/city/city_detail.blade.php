@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title')  {{__('City detail')}}  @endsection
+
 @php
 $banner_img = getImageUrl($city->banner);
 $page_title_bg = "style=background-image:url({$banner_img});";
