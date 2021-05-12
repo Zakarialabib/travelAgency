@@ -245,6 +245,10 @@ Route::group([
 
         Route::get('/packages', 'PackageController@index')->name('package_index');
         Route::get('/packages/create', 'PackageController@create')->name('package_create');
+        Route::post('/packages', 'PackageController@store')->name('package_store');
+        Route::get('/packages/{id}/edit', 'PackageController@edit')->name('package_edit');
+        Route::put('/packages/{id}', 'PackageController@update')->name('package_update');
+        Route::delete('/packages/{id}', 'PackageController@delete')->name('package_delete');
 
         Route::get('/blog', 'PostController@list')->name('post_list_blog');
         Route::get('/pages', 'PostController@list')->name('post_list_page');

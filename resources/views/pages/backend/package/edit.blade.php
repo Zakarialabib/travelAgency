@@ -9,30 +9,31 @@
 <div class="clearfix"></div>
 
 <div class="col-12">
-  <form action="{{ route('package_store') }}" method="post">
+  <form action="{{ route('package_update', ['id' => $package->id]) }}" method="post">
     @csrf
-    <input type="hidden" name="offer_id" value="{{$offer->id}}">
+    @method('put')
+    <input type="hidden" name="offer_id" value="{{$package->offer->id}}">
     <div class="row">
         <div class="col-6">
           <div class="form-group">
             <label>{{__('Title')}}</label>
-            <input type="text" name="title" placeholder="{{__('Title')}}" class="form-control">
+            <input type="text" name="title" placeholder="{{__('Title')}}" class="form-control" value="{{$package->title}}">
           </div>
           <div class="form-group">
             <label>{{__('Period')}}</label>
-            <input type="number" name="period" placeholder="{{__('Period')}}" class="form-control">
+            <input type="number" name="period" placeholder="{{__('Period')}}" class="form-control" value="{{$package->period}}">
           </div>
           <div class="row">
             <div class="col-6">
               <div class="form-group">
                 <label>{{__('Start Date')}}</label>
-                <input type="date" name="start_date" placeholder="{{__('Start Date')}}" class="form-control">
+                <input type="date" name="start_date" placeholder="{{__('Start Date')}}" class="form-control" value="{{$package->start_date}}">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label>{{__('End Date')}}</label>
-                <input type="date" name="end_date" placeholder="{{__('End Date')}}" class="form-control">
+                <input type="date" name="end_date" placeholder="{{__('End Date')}}" class="form-control" value="{{$package->end_date}}">
               </div>
             </div>
           </div>
@@ -49,14 +50,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($package->features as $feature)    
                     <tr>
                       <td>
-                        <textarea style="width: 100%;" name="features[]" class="form-control" rows="1"></textarea>
+                        <input type="hidden" name="featuresId[]" value="{{$feature->id}}">
+                        <textarea style="width: 100%;" name="features[]" class="form-control" rows="1">{{$feature->title}}</textarea>
                       </td>
                       <td>
                         <a class="delete-row">X</a>
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -76,14 +80,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($package->conditions as $condition)   
                     <tr>
                       <td>
-                        <textarea style="width: 100%;" class="form-control" name="conditions[]" rows="1"></textarea>
+                        <input type="hidden" name="conditionsId[]" value="{{$condition->id}}">
+                        <textarea style="width: 100%;" class="form-control" name="conditions[]" rows="1">{{$condition->title}}</textarea>
                       </td>
                       <td>
                         <a class="delete-row">X</a>
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -108,23 +115,26 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($package->rates as $rate)                    
                 <tr>
+                  <input type="hidden" name="rate_id[]" value="{{$rate->id}}">
                   <td>
-                    <input type="text" name="rate_title[]" placeholder="{{__('Title')}}" class="form-control">
+                    <input type="text" name="rate_title[]" placeholder="{{__('Title')}}" class="form-control" value="{{$rate->title}}">
                   </td>
                   <td>
-                    <input type="date" name="rate_start[]" placeholder="{{__('Start Date')}}" class="form-control">
+                    <input type="date" name="rate_start[]" placeholder="{{__('Start Date')}}" class="form-control" value="{{$rate->start_date}}">
                   </td>
                   <td>
-                    <input type="date" name="rate_end[]" placeholder="{{__('End Date')}}" class="form-control">
+                    <input type="date" name="rate_end[]" placeholder="{{__('End Date')}}" class="form-control" value="{{$rate->end_date}}">
                   </td>
                   <td>
-                    <input type="number" name="rate_price[]" placeholder="{{__('Price')}}" class="form-control">
+                    <input type="number" name="rate_price[]" placeholder="{{__('Price')}}" class="form-control" value="{{$rate->price}}">
                   </td>
                   <td>
                     <a class="delete-row">X</a>
                   </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -139,7 +149,7 @@
       </div>
     </div>
     <div class="row justify-content-end">
-      <button type="submit" class="btn btn-primary text-white pull-left">{{ __('Create') }}</button>
+      <button type="submit" class="btn btn-primary text-white pull-left">{{ __('Update') }}</button>
     </div>
   </form>
 </div>

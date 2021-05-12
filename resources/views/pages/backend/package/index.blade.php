@@ -1,12 +1,12 @@
 @extends('layouts.backend')
 
-@section('page-title')  {{__('Offer List')}}  @endsection
+@section('page-title')  {{__('Package List')}}  @endsection
 
 @section('content')
 
   <div class="page-title">
       <div class="title_left">
-          <h3>{{__('Offer List')}}</h3>
+          <h3>{{__('Package List')}}</h3>
       </div>
       <div class="title_right">
           <div class="pull-right">
@@ -21,27 +21,32 @@
               <div class="x_content">
                   <table class="table table-striped table-bordered col-4-datatable">
                       <thead>
-                      <tr>
-                          <th >#</th>
-                          <th>{{__('Name')}}</th>
-                          <th>{{__('Min Stay')}}</th>
-                          <th>{{__('Available On')}}</th>
+                        <tr>
+                            <th >#</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Min Stay')}}</th>
+                            <th>{{__('Available On')}}</th>
                             <th>{{__('Action')}}</th>
-                      </tr>
+                        </tr>
                       </thead>
                       <tbody>
                       @foreach($offer->packages as $key => $package)
-                          <tr>
-                              <td>{{$key + 1}}</td>
-                              <td>{{$package->title}}</td>
-                              <td>{{$package->period}}</td>
-                              <td>{{$package->start_date}} - {{$package->end_date}}</td>
-                              <td class="golo-flex">
+                        <tr>
+                            <td>{{$key + 1}}</td>
+                            <td>{{$package->title}}</td>
+                            <td>{{$package->period}}</td>
+                            <td>{{$package->start_date}} - {{$package->end_date}}</td>
+                            <td class="golo-flex">
                                 <div class="btn-group row">
-                                  
+                                    <a class="btn-sm btn-warning" href="{{route('package_edit', $package->id)}}">{{__('Edit')}}</a>
+                                    <form action="{{route('package_delete', $package->id)}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn-sm btn-danger">{{__('Delete')}}</button>
+                                    </form>                            
                                 </div>
-                              </td>
-                          </tr>
+                            </td>
+                        </tr>
                       @endforeach
                       </tbody>
                   </table>

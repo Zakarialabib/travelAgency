@@ -15,11 +15,11 @@ class CreatePackageConditionsTable extends Migration
     {
         Schema::create('package_conditions', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('offer_id');
+            $table->unsignedInteger('package_id');
             $table->string('title');
             $table->timestamps();
             
-            $table->foreign('offer_id')->references('id')->on('offers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('package_id')->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
