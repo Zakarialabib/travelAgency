@@ -23,6 +23,7 @@ use App\Page;
 use App\Review;
 use App\Testimonial;
 use App\Offer;
+use App\Faq;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -88,12 +89,6 @@ class ViewController extends Controller
         return redirect()->back();
     }
 
-    public function pageFaqs()
-    {
-        return view('frontend.page.faqs');
-    }
-    
-
     public function pageAbout(Request $request)
     {
         $keyword = $request->keyword;
@@ -122,24 +117,28 @@ class ViewController extends Controller
 
     $places = $places->paginate(4);
 
-        return view('frontend.page.about',[
+        return view('pages.frontend.page.about',[
             'places' => $places,
             'keyword' => $keyword
         ]);
     }
     public function termsConditions()
     {
-        return view('frontend.page.termsconditions');
+        
+        $faqs = Faq::query()
+        ->orderBy('id', 'DESC')->get();
+
+        return view('pages.frontend.page.termsconditions', compact('faqs'));
     }
 
     public function pageContact()
     {
-        return view('frontend.page.contact');
+        return view('pages.frontend.page.contact');
     }
 
     public function pageLanding($page_number)
     {
-        return view("frontend.page.landing_{$page_number}");
+        return view("pages.frontend.page.landing_{$page_number}");
     }
 
     public function searchListing(Request $request)
@@ -167,7 +166,7 @@ class ViewController extends Controller
         $offers = $offers->get(['id', 'city_id', 'name', 'slug']);
 
 
-        $html = '<ul class="custom-scrollbar">';
+        $html = '<ul class="listing_items">';
         foreach ($offers as $offer):
             if (isset($offer['city'])):
                 $offer_url = route('offer_detail', $offer->slug);
@@ -184,7 +183,7 @@ class ViewController extends Controller
             endforeach;
         $html .= '</ul>';
 
-        $html_notfound = "<div class=\"golo-ajax-result\">No place found</div>";
+        $html_notfound = "<ul><li><a href='#'><span>No listing found!</span></a></li></ul>";
 
         count($offers) ?: $html = $html_notfound;
 
@@ -219,7 +218,7 @@ class ViewController extends Controller
 
         $places = $places->paginate(20);
 
-        return view('frontend.search.search', [
+        return view('pages.frontend.search.search', [
             'places' => $places,
             'keyword' => $keyword
         ]);
@@ -325,7 +324,7 @@ class ViewController extends Controller
 
 //        return $places;
 
-        return view("frontend.search.search_01", [
+        return view("pages.frontend.search.search_01", [
             'keyword' => $keyword,
             'places' => $places,
             'categories' => $categories,
@@ -343,7 +342,7 @@ class ViewController extends Controller
 
     public function sendAbout(Request $request)
     {
-        Mail::send('frontend.mail.contact_form', [
+        Mail::send('pages.frontend.mail.contact_form', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,
@@ -359,7 +358,7 @@ class ViewController extends Controller
 
     public function sendContact(Request $request)
     {
-        Mail::send('frontend.mail.contact_form', [
+        Mail::send('pages.frontend.mail.contact_form', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,

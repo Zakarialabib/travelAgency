@@ -1,9 +1,22 @@
 @extends('layouts.app')
 
-@section('page-title')  {{__('City')}}  @endsection
+@section('page-title')  {{__('Cities to visit')}}  @endsection
 
 @section('content')
     <main class="site-main normal_view">
+        <section class="breadcrumbs-custom bg-image context-dark">
+                <div class="breadcrumbs-custom-inner">
+                    <div class="container breadcrumbs-custom-container">
+                        <div class="breadcrumbs-custom-main" >
+                            <h1 class="breadcrumbs-custom-title"> {{__('Cities to visit')}}</h1>
+                        </div>
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                            <li><a href="{{ route('city_list')}}">{{__('Cities to visit')}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section> 
         <div class="city__container">
             @foreach ($cities as $city)
                 <div class="city">

@@ -53,7 +53,7 @@ class PostController extends Controller
         }
         SEOMeta($title, $description);
 
-        return view('frontend.post.blog_list', [
+        return view('pages.frontend.post.blog_list', [
             'categories' => $categories,
             'category' => $category,
             'posts' => $posts,
@@ -64,7 +64,7 @@ class PostController extends Controller
     
      public function send(Request $request)
     {
-        Mail::send('frontend.mail.contact_form', [
+        Mail::send('pages.frontend.mail.contact_form', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,
@@ -94,7 +94,7 @@ class PostController extends Controller
             ->limit(3)
             ->get();
 
-        ($post->type === Post::TYPE_BLOG) ? $view_name = "frontend.post.blog_detail" : $view_name = "frontend.post.page_detail";
+        ($post->type === Post::TYPE_BLOG) ? $view_name = "pages.frontend.post.blog_detail" : $view_name = "pages.frontend.post.page_detail";
 
         // SEO Meta
         $title = $post->seo_title ? $post->seo_title : $post->title;

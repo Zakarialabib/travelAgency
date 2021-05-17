@@ -19407,7 +19407,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.migrations : ~103 rows (environ)
+-- Listage des données de la table rentacs.migrations : ~99 rows (environ)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(51, '2020_02_26_041322_create_post_translations_table', 1),
@@ -19587,7 +19587,7 @@ CREATE TABLE IF NOT EXISTS `offers` (
   CONSTRAINT `foreing_offer_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=' x';
 
--- Listage des données de la table rentacs.offers : ~4 rows (environ)
+-- Listage des données de la table rentacs.offers : ~0 rows (environ)
 /*!40000 ALTER TABLE `offers` DISABLE KEYS */;
 INSERT INTO `offers` (`id`, `user_id`, `category_id`, `city_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
 	(8, 1, 13, 31, NULL, 'hotel-du-golf-rotana-golf-club-rotana', NULL, '0000000001', 0, NULL, NULL, NULL, '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-12 11:33:16', '2021-05-12 11:33:16');
@@ -19605,7 +19605,7 @@ CREATE TABLE IF NOT EXISTS `offer_translations` (
   KEY `offer_translations_locale_index` (`locale`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.offer_translations : ~4 rows (environ)
+-- Listage des données de la table rentacs.offer_translations : ~6 rows (environ)
 /*!40000 ALTER TABLE `offer_translations` DISABLE KEYS */;
 INSERT INTO `offer_translations` (`id`, `offer_id`, `locale`, `name`, `description`) VALUES
 	(3, 4, 'en', 'Rotana', '<p><br />\r\nRotana</p>'),
@@ -19636,6 +19636,27 @@ CREATE TABLE IF NOT EXISTS `online_payments` (
 -- Listage des données de la table rentacs.online_payments : ~0 rows (environ)
 /*!40000 ALTER TABLE `online_payments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `online_payments` ENABLE KEYS */;
+
+-- Listage de la structure de la table rentacs. packages
+CREATE TABLE IF NOT EXISTS `packages` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `offer_id` int(10) unsigned NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `period` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `packages_offer_id_foreign` (`offer_id`),
+  CONSTRAINT `packages_offer_id_foreign` FOREIGN KEY (`offer_id`) REFERENCES `offers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table rentacs.packages : ~0 rows (environ)
+/*!40000 ALTER TABLE `packages` DISABLE KEYS */;
+INSERT INTO `packages` (`id`, `offer_id`, `title`, `period`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+	(1, 8, 'GOLF PACKAGE HOLE IN ONE 3 nights', 3, '2020-11-01', '2021-10-31', '2021-05-12 11:38:01', '2021-05-12 11:38:01');
+/*!40000 ALTER TABLE `packages` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. package_attractions
 CREATE TABLE IF NOT EXISTS `package_attractions` (
@@ -19715,7 +19736,7 @@ CREATE TABLE IF NOT EXISTS `package_conditions` (
   CONSTRAINT `package_conditions_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_conditions : ~0 rows (environ)
+-- Listage des données de la table rentacs.package_conditions : ~2 rows (environ)
 /*!40000 ALTER TABLE `package_conditions` DISABLE KEYS */;
 INSERT INTO `package_conditions` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'city taxes not included', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19734,7 +19755,7 @@ CREATE TABLE IF NOT EXISTS `package_features` (
   CONSTRAINT `package_features_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_features : ~0 rows (environ)
+-- Listage des données de la table rentacs.package_features : ~2 rows (environ)
 /*!40000 ALTER TABLE `package_features` DISABLE KEYS */;
 INSERT INTO `package_features` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'transfert airoport', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19793,7 +19814,7 @@ CREATE TABLE IF NOT EXISTS `package_rates` (
   CONSTRAINT `package_rates_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_rates : ~0 rows (environ)
+-- Listage des données de la table rentacs.package_rates : ~2 rows (environ)
 /*!40000 ALTER TABLE `package_rates` DISABLE KEYS */;
 INSERT INTO `package_rates` (`id`, `package_id`, `title`, `start_date`, `end_date`, `price`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'Single Room', '2021-04-15', '2021-10-31', 4126.00, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),

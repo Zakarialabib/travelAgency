@@ -16,17 +16,16 @@ $page_title_bg = "style=background-image:url({$banner_img});";
                         <h1 class="breadcrumbs-custom-title">{{ $category->name }}</h1>
                     </div>
                     <ul class="breadcrumbs-custom-path">
-                        <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                        <li><a href="{{ route('category_list', ['type' => $category->type]) }}">{{__('Category')}}</a></li>
-                        <li class="active">{{ $category->name }}</li>
+                        <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                        <li><a href="{{ route('category_list' , $category->slug)}}">{{__('Category')}}</a></li>
+                        <li class="active" style="color: #ee5000;">{{ $category->name }}</li>
                     </ul>
                 </div>
              </div>
         </section><!-- .page-title -->
-        <div class="mw">
-            <div class="row">
+        <div class="mw-grid golo-grid grid-4 ">
         @foreach($categorytype as $cat)
-            <div class="col-sm-6 col-lg-4 layout-02">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                 <div class="">
                         <a class="entry-thumb">
                             <img title="{{ $cat->name }}" src="{{ getImageUrl($cat->image) }}" alt="{{ $cat->name }}">
@@ -39,7 +38,6 @@ $page_title_bg = "style=background-image:url({$banner_img});";
                 </div>
             </div>
         @endforeach
-        </div>
     </div>
         <div class="mw-box">
             <div class="city-content__panel" id="inspire">

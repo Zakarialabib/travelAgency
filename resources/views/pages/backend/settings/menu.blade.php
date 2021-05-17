@@ -10,6 +10,6 @@
 
 @push('scripts')
 
-    {!! Menu::scripts() !!}
+{!! Menu::scripts() !!}
 
 @endpush

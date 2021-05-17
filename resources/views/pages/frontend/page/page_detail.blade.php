@@ -2,14 +2,24 @@
 
 @section('content')
     <main id="main" class="site-main">
-        <div class="page-title page-title--small align-left">
-            <div class="container">
-                <div class="page-title__content">
-                    <h1 class="page-title__name">{{$page->title}}</h1>
+    <section class="breadcrumbs-custom bg-image context-dark" {!! $page_title_bg !!}>
+            <div class="breadcrumbs-custom-inner">
+                <div class="container breadcrumbs-custom-container">
+                    <div class="breadcrumbs-custom-main" >
+                        <h1 class="breadcrumbs-custom-title">{{ $category->name }}</h1>
+                    </div>
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                        <li><a href="{{ url('/blog')}}">{{__('Blog')}}</a></li>
+                        <li class="active"><a href=""></a>{{$page->title}}</li>
+                    </ul>
                 </div>
-            </div>
-        </div><!-- .page-title -->
+             </div>
+        </section><!-- .page-title -->
+     
         <div class="site-content">
+        <h1 class="">{{$page->title}}</h1>
+
             <div class="container page-content">
 
                 {!! $page->content !!}

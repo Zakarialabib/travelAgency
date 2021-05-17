@@ -4,19 +4,29 @@
 @endphp
 @section('content')
     <main id="main" class="site-main">
-        <div class="page-title page-title--small page-title--blog align-left" {!! $blog_title_bg !!}>
-            <div class="container">
-                <div class="page-title__content">
-                    <h1 class="page-title__name">
+    <section class="breadcrumbs-custom bg-image context-dark">
+            <div class="breadcrumbs-custom-inner">
+                <div class="container breadcrumbs-custom-container">
+                    <div class="breadcrumbs-custom-main" >
+                        <h1 class="breadcrumbs-custom-title"> 
                         @if($category)
                             {{$category->name}}
                         @else
                             {{__('Blog')}}
                         @endif
-                    </h1>
+                        </h1>
+                    </div>
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                        @if($category)
+                        <li>{{$category->name}}</li>
+                        @else
+                        <li><a href="{{ route('post_list_all')}}">{{__('Blog')}}</a></li>
+                        @endif
+                    </ul>
                 </div>
-            </div>
-        </div><!-- .page-title -->
+             </div>
+        </section>
         <div class="page-content isotope">
             <div class="container">
                 <div class="isotope__nav">

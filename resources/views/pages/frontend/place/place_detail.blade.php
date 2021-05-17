@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
    <main id="main" class="site-main place-04">
-  <div class="place">
+    <div class="place">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 clear-padding">
