@@ -30,8 +30,6 @@
         <div class="col-md-6 clear-padding">
           <div class="widget widget-shadows widget-reservation">
             <h1 style="font-weight: 800;">{{$offer->name}}</h1>
-             <h5>{{__('Starting From')}}</h5>
-            <h4 style="color: #ee5000;">{{$offer->price}}DH</h4>
             <div class="place__box place__box-overview">
               <div class="place__desc">{!! $offer->description !!} </div>
               <!-- .place__desc -->

@@ -23,20 +23,16 @@
                 <!-- START: HOLIDAY GALLERY -->
                 <div id="gallery" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#gallery" data-slide-to="0" class="active"></li>
-                        <li data-target="#gallery" data-slide-to="1"></li>
-                        <li data-target="#gallery" data-slide-to="2"></li>
+                      @foreach ($offer->gallery as $key => $gallery)
+                      <li data-target="#gallery" data-slide-to="{{$key}}" {{($loop->first) ? 'class="active"' : ''}}></li>
+                      @endforeach
                     </ol>
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="{{asset('frontend/assets/images/holiday-slide3.jpg')}}" alt="Cruise">
-                        </div>
-                        <div class="item">
-                            <img src="{{asset('frontend/assets/images/holiday-slide4.jpg')}}" alt="Cruise">
-                        </div>
-                        <div class="item">
-                            <img src="{{asset('frontend/assets/images/slide15.jpg')}}" alt="Cruise">
-                        </div>
+                      @foreach ($offer->gallery as $key => $gallery)
+                      <div class="item {{($loop->first) ? 'active' : ''}}">
+                        <img src="{{asset('uploads/' . $gallery)}}" alt="">
+                      </div>
+                      @endforeach
                     </div>
                     <a class="left carousel-control" href="#gallery" role="button" data-slide="prev">
                         <span class="fa fa-chevron-left" aria-hidden="true"></span>
@@ -51,10 +47,11 @@
 
                 <div class="package-complete-detail">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#overview"><i class="fa fa-suitcase"></i> <span>Detail</span></a></li>
-                        <li><a data-toggle="tab" href="#inclusion"><i class="fa fa-check-square"></i> <span>{{__('Inclusion')}}</span></a></li>
-                        <li><a data-toggle="tab" href="#itinerary"><i class="fa fa-street-view"></i> <span>Itinerary</span></a></li>
-                        <li><a data-toggle="tab" href="#add-info"><i class="fa fa-info-circle"></i> <span>Additional Info</span></a></li>
+                        @foreach ($offer->packages as $key => $package)
+                        <li class="{{$loop->first ? 'active' : ''}}">
+                            <a data-toggle="tab" href="#pack-{{$key + 1}}"><i class="fa fa-suitcase"></i> <span>{{__('Package')}}-{{$key + 1}}</span></a>
+                        </li>    
+                        @endforeach
                     </ul>
                     <div class="tab-content">
                         <div id="overview" class="tab-pane fade">
