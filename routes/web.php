@@ -298,7 +298,6 @@ Route::group([
             Route::get('/status', 'SaleController@updateStatus');
             });
         
-    
         Route::group(['prefix' => 'avoirs'],function(){
     
             Route::get('/', 'ReturnController@list')->name('return_list');
@@ -324,7 +323,6 @@ Route::group([
     
         Route::get('/settings/language', 'SettingController@pageLanguage')->name('settings_language');
         Route::get('/settings/translation', 'SettingController@pageTranslation')->name('settings_translation');
-
         
         Route::get('/travel-package', 'TravelPackageController@travelPackages');
         Route::get('/travel-package/create', 'TravelPackageController@packageCreate');
@@ -344,7 +342,6 @@ Route::group([
         Route::post('/travel-package/categoryCreateOrUpdate','TravelPackageController@categoryCreateOrUpdate');
         Route::post('/travel-package/storeGalleryInfo','TravelPackageController@storeGalleryImages');
 
-
         // Newsletter Route
         Route::get('/subscriber', 'NewsletterController@newsletter')->name('admin.newsletter');
         Route::get('/mailsubscriber', 'NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
@@ -360,7 +357,15 @@ Route::group([
         Route::get('/ajax-search-places', 'BackEndViewController@searchPlaces');
         Route::post('/search-portal','BackEndViewController@searchPortal');
         Route::get('backend/payment-confirmation','BackEndViewController@paymentConfirmation');
-    
+
+        Route::get('/subscriber', 'NewsletterController@newsletter')->name('admin.newsletter');
+        Route::get('/mailsubscriber', 'NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
+        Route::post('/subscribers/sendmail', 'NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
+        Route::get('/subscriber/add', 'NewsletterController@add')->name('admin.newsletter.add');
+        Route::post('/subscriber/store', 'NewsletterController@store')->name('admin.newsletter.store');
+        Route::post('/subscriber/delete/{id}/', 'NewsletterController@delete')->name('admin.newsletter.delete');
+        Route::get('/subscriber/edit/{id}/', 'NewsletterController@edit')->name('admin.newsletter.edit');
+        Route::post('/subscriber/update/{id}/', 'NewsletterController@update')->name('admin.newsletter.update');
 
     });
 
@@ -379,24 +384,25 @@ Route::middleware(['auth'])->group(function(){
         Route::get('markdown', 'BackEndViewController@index');
         Route::post('createOrUpdateMarkdown','MarkdownController@createOrUpdate');
         Route::get('getMarkdown/{id}','MarkdownController@getMarkdownById');
-
-  ///      Route::get('/', 'SettingController@index')->name('settings');
-     ///   Route::post('/update', 'SettingController@update')->name('settings.update');
-
-        Route::group(['prefix' => 'bank-details'],function(){
-            Route::get('/fetch/{id}', 'BankDetailController@getBankDetail')->name('backend-bank-details');
-            Route::view('','pages.backend.settings.banks')->name('banks');
-            Route::post('/saveOrUpdate','BankDetailController@saveOrUpdateBankDetails');
-            Route::post('/activate','BankDetailController@activateBankDetails');
-            Route::post('/deActivate','BankDetailController@deActivateBankDetails');
-            Route::post('/delete','BankDetailController@deleteBankDetails');
-        });
-
         Route::get('/profile', 'BackEndViewController@profile')->name('profile');
         Route::post('/updateProfile','ProfileController@updateProfileImageJs');
         Route::post('/update/user/profile','ProfileController@updateUserProfile')->name('update-profile');
         Route::post('/update/user/image','ProfileController@updateUserProfileImage')->name('update-profile-image');
         Route::post('/update/user/password','ProfileController@updateUserProfilePassword')->name('update-profile-password');
+        Route::get('visa-application-requests','BackEndViewController@visaApplicationRequests');
+
+    //    Route::get('subscribers','BackEndViewController@emailSubscriptions');
+  ///   Route::get('/', 'SettingController@index')->name('settings');
+  ///   Route::post('/update', 'SettingController@update')->name('settings.update');
+
+        Route::group(['prefix' => 'bank-details'],function(){
+            Route::get('/fetch/{id}', 'BankDetailController@getBankDetail')->name('backend-bank-details');
+            Route::view('','pages.backend.settings.banks')->name('banks');            
+            Route::post('/saveOrUpdate','BankDetailController@saveOrUpdateBankDetails');
+            Route::post('/activate','BankDetailController@activateBankDetails');
+            Route::post('/deActivate','BankDetailController@deActivateBankDetails');
+            Route::post('/delete','BankDetailController@deleteBankDetails');
+        });
 
         Route::group(['prefix' => 'users'],function(){
             Route::get('/', 'BackEndViewController@usersManagement')->name('users.management');
@@ -406,22 +412,14 @@ Route::middleware(['auth'])->group(function(){
         });
 
         Route::group(['prefix' => 'language'],function(){
-        Route::get('/', 'LanguageController@pageLanguage')->name('language');
-        Route::put('/status/{code}', 'LanguageController@updateStatus')->name('language_status');
-        Route::put('/default', 'LanguageController@updateStatus')->name('language_default');
-      
+            Route::get('/', 'LanguageController@pageLanguage')->name('language');
+            Route::put('/status/{code}', 'LanguageController@updateStatus')->name('language_status');
+            Route::put('/default', 'LanguageController@updateStatus')->name('language_default');      
         });
-        
-    //    Route::get('subscribers','BackEndViewController@emailSubscriptions');
-
-        Route::get('visa-application-requests','BackEndViewController@visaApplicationRequests');
-
     });
-
 });
 
       
-
     Route::group(['prefix' => 'bookings'],function(){
 
         Route::group(['prefix' => 'flight'],function(){
@@ -456,20 +454,6 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/update-payment-proof','BankPaymentController@updatePaymentProof');
         Route::get('/update-payment-status/{id}/{type}','BankPaymentController@updatePaymentStatus');
         Route::get('/requery/{id}','OnlinePaymentController@requery');
-    });
-
-    Route::group(['prefix' => 'backoffice/travel-packages', 'middleware' => ['auth','role:admin'] ], function(){
-
-        // Newsletter Route
-        Route::get('/subscriber', 'NewsletterController@newsletter')->name('admin.newsletter');
-        Route::get('/mailsubscriber', 'NewsletterController@mailsubscriber')->name('admin.mailsubscriber');
-        Route::post('/subscribers/sendmail', 'NewsletterController@subscsendmail')->name('admin.subscribers.sendmail');
-        Route::get('/subscriber/add', 'NewsletterController@add')->name('admin.newsletter.add');
-        Route::post('/subscriber/store', 'NewsletterController@store')->name('admin.newsletter.store');
-        Route::post('/subscriber/delete/{id}/', 'NewsletterController@delete')->name('admin.newsletter.delete');
-        Route::get('/subscriber/edit/{id}/', 'NewsletterController@edit')->name('admin.newsletter.edit');
-        Route::post('/subscriber/update/{id}/', 'NewsletterController@update')->name('admin.newsletter.update');    
-     
     });
 
 

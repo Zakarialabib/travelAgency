@@ -2,20 +2,24 @@
 
 @section('content')
     <main id="main" class="site-main">
-        <div class="page-title page-title-small align-left">
-            <div class="container">
-                <div class="page-title__content">
-                    <h1 class="page-title__name">
-                        {{ __('Places') }}
-                    </h1>
+        <section class="breadcrumbs-custom bg-image context-dark">
+                <div class="breadcrumbs-custom-inner">
+                    <div class="container breadcrumbs-custom-container">
+                        <div class="breadcrumbs-custom-main" >
+                            <h1 class="breadcrumbs-custom-title">  {{ __('Places') }}</h1>
+                        </div>
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                            <li><a href="">{{ __('Places') }}</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </div><!-- .page-title -->
+            </section> 
         <div class="container">
             <div class="place_list">
                 <h3 class="place_list-title">{{ __('Choose between hundred places') }}</h3>
                 <form class="row">
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 col-sm-4 form-group">
                         <label>{{ __('Select country') }}:</label>
                         <select class="form-control" id="select_category_id" name="country_id"
                             onchange="this.form.submit()">
@@ -31,7 +35,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 col-sm-4 form-group">
                         <label>{{ __('Select city') }}:</label>
                         <select class="form-control" id="select_city_id" name="city_id" onchange="this.form.submit()">
                             <option value="">{{ __('All City') }}</option>
@@ -45,7 +49,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 col-sm-4 form-group">
                         <label>{{ __('Select Categories') }}:</label>
                         <select class="form-control" id="select_category_id" name="category_id"
                             onchange="this.form.submit()">

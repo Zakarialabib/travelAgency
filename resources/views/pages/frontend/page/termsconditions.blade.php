@@ -5,13 +5,19 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
 
 @section('content')
 <main id="main" class="site-main" >
-    <div class="page-title page-title--small align-left" {!! $about_title_bg !!}>
-        <div class="container">
-            <div class="page-title__content">
-                <h1 class="page-title__name">{{__('Terms and Conditions')}}</h1>
-            </div>
-        </div>
-    </div><!-- .page-title -->
+    <section class="breadcrumbs-custom bg-image context-dark">
+            <div class="breadcrumbs-custom-inner">
+                <div class="container breadcrumbs-custom-container">
+                    <div class="breadcrumbs-custom-main" >
+                        <h1 class="breadcrumbs-custom-title">{{__('Terms and Conditions')}}</h1>
+                    </div>
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                        <li class="active"><a href=""></a>{{__('Terms and Conditions')}}</li>
+                    </ul>
+                </div>
+             </div>
+        </section>
     
     <!-- Faq Area Start -->
  <section id="faq" class="faq">
