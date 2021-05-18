@@ -473,8 +473,8 @@
                             </a>
                         </div>
                         <h4 class="cities__name">{{__('Offer')}} {{$category->name}}</h4>
-                        <div class="cities__info">
-                            <a class="btn" href="{{route('category_detail', $category->slug)}}">{{__('Read More')}}</a>
+                        <div class="entry-category ">
+                            <a class="" href="{{route('category_detail', $category->slug)}}">{{__('Read More')}}</a>
                         </div>
                     </div><!-- .cities__item -->
                 </div>

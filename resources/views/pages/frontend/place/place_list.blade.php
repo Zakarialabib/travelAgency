@@ -15,8 +15,8 @@
                     </div>
                 </div>
             </section> 
-        <div class="container">
-            <div class="place_list">
+        <div class="container place_list">
+            <div class="">
                 <h3 class="place_list-title">{{ __('Choose between hundred places') }}</h3>
                 <form class="row">
                     <div class="col-md-4 col-sm-4 form-group">

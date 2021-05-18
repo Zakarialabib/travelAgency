@@ -1,7 +1,7 @@
 <header id="header" class="site-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-5 col-xs-6 col-sm-6 clear-padding">
+            <div class="col-md-3 col-xs-6 col-sm-6 clear-padding">
                 <div class="site">
                     <div class="site__menu">
                         <a title="Menu Icon" href="#" class="site__menu__icon">
@@ -43,15 +43,9 @@
                                 @endguest
 
                                 <div class="popup__menu popup__box">
-                                        @if($menuitems)
-                                        <ul class="menu-arrow">
-                                            @foreach($menuitems as $menu)
-                                            <li class="">
-                                                <a href="{{ $menu['link'] }}" title="">{{ __($menu['label']) }}</a>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                        @endif
+                                    
+                                        {!! $sidebar !!}
+
                                 </div><!-- .popup__menu -->
                             </div><!-- .popup__content -->
                             <div class="menu-border">
@@ -78,7 +72,7 @@
             </div><!-- .col-md-6 -->
 
 
-            <div class="col-md-7 col-xs-6 col-sm-6 clear-padding user-logged">
+            <div class="col-md-9 col-xs-6 col-sm-6 clear-padding user-logged">
                 <div class="right-header text-right">
                    <div class="right-header social_md" style="line-height: 1;">
                         <a title="Facebook" target="_blank" rel="noopener noreferrer" href="{{setting('social_facebook')}}">
@@ -113,6 +107,7 @@
                         </ul>
                         @endif
                     </div>
+                        
                     @if(auth()->guest())
                      <div class="account">
                        <a style="color: white;font-size: 17px;cursor: pointer;">

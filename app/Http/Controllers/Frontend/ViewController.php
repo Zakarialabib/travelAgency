@@ -131,10 +131,7 @@ class ViewController extends Controller
         return view('pages.frontend.page.termsconditions', compact('faqs'));
     }
 
-    public function pageContact()
-    {
-        return view('pages.frontend.page.contact');
-    }
+
 
     public function pageLanding($page_number)
     {
@@ -169,7 +166,7 @@ class ViewController extends Controller
         $html = '<ul class="listing_items">';
         foreach ($offers as $offer):
             if (isset($offer['city'])):
-                $offer_url = route('offer_detail', $offer->slug);
+                $offer_url = route('offer.show', $offer->slug);
                 $city_url = route('city_detail', $offer['city']['slug']);
                 $html .= "
                 <li>
@@ -183,7 +180,7 @@ class ViewController extends Controller
             endforeach;
         $html .= '</ul>';
 
-        $html_notfound = "<ul><li><a href='#'><span>No listing found!</span></a></li></ul>";
+        $html_notfound = "<ul><li><a href='#'><span>No Results!</span></a></li></ul>";
 
         count($offers) ?: $html = $html_notfound;
 
@@ -201,7 +198,6 @@ class ViewController extends Controller
                 return $query->select('id', 'name', 'slug');
             }])
             ->with('place_types')
-            ->withCount('reviews')
             ->with('avgReview')
             ->withCount('wishList')
             ->orWhere('address', 'like', "%{$keyword}%")
@@ -228,82 +224,42 @@ class ViewController extends Controller
     {
         $keyword = $request->keyword;
         $filter_category = $request->category;
-        $filter_amenities = $request->amenities;
-        $filter_place_type = $request->place_type;
         $filter_city = $request->city;
-        $filter_date = $request->date;
 
         $categories = Category::query()
             ->where('type', Category::TYPE_PLACE)
             ->orWhere('type', Category::TYPE_OFFER)
             ->get();
 
-        $place_types = PlaceType::query()
-            ->get();
-
-        $amenities = Amenities::query()
-            ->get();
-
         $cities = City::query()
             ->get();
 
-        $dates = Place::query()
-        ->get();
-
-        $places = Place::query()
+        $offers = Offer::query()
             ->with(['city' => function ($query) {
                 return $query->select('id', 'name', 'slug');
             }])
             ->with('categories')
-            ->with('place_types')
-            ->withCount('reviews')
-            ->with('avgReview')
-            ->withCount('wishList')
-            ->orWhere('address', 'like', "%{$keyword}%")
             ->whereTranslationLike('name', "%{$keyword}%")
-            ->where('status', Place::STATUS_ACTIVE);
+            ->where('status', Offer::STATUS_ACTIVE);
 
         if ($filter_category) {
             foreach ($filter_category as $key => $item) {
                 if ($key === 0) {
-                    $places->where('category', 'like', "%$item%");
+                    $offers->where('category_id', 'like', "%$item%");
                 } else {
-                    $places->orWhere('category', 'like', "%$item%");
-                }
-            }
-        }
-
-        if ($filter_amenities) {
-            foreach ($filter_amenities as $key => $item) {
-                if ($key === 0) {
-                    $places->where('amenities', 'like', "%$item%");
-                } else {
-                    $places->orWhere('amenities', 'like', "%$item%");
-                }
-            }
-        }
-
-        if ($filter_place_type) {
-            foreach ($filter_place_type as $key => $item) {
-                if ($key === 0) {
-                    $places->where('place_type', 'like', "%$item%");
-                } else {
-                    $places->orWhere('place_type', 'like', "%$item%");
+                    $offers->orWhere('category_id', 'like', "%$item%");
                 }
             }
         }
 
         if ($filter_city) {
-            $places->whereIn('city_id', $filter_city);
+            $offers->whereIn('city_id', $filter_city);
         }
 
-        if ($filter_date) {
-            $dates->whereIn('date', $filter_date);
-        }
-
+   
 
         if ($request->ajax == '1') {
-            $places = $places->get();
+            $offers = $offers->get();
 
             $city = null;
             if (isset($filter_city)) {
@@ -314,29 +270,23 @@ class ViewController extends Controller
 
             $data = [
                 'city' => $city,
-                'places' => $places
+                'offers' => $offers
             ];
 
             return $this->response->formatResponse(200, $data, 'success');
         }
 
-        $places = $places->paginate();
+        $offers = $offers->paginate();
 
 //        return $places;
 
         return view("pages.frontend.search.search_01", [
             'keyword' => $keyword,
-            'places' => $places,
             'categories' => $categories,
-            'place_types' => $place_types,
-            'amenities' => $amenities,
+            'offers' => $offers,
             'cities' => $cities,
-            'dates' => $dates,
             'filter_category' => $filter_category,
-            'filter_amenities' => $filter_amenities,
-            'filter_place_type' => $filter_place_type,
             'filter_city' => $request->city,
-            'filter_date' => $filter_date,
         ]);
     }
 
@@ -356,20 +306,7 @@ class ViewController extends Controller
         return back()->with('success', 'Contact has been send!');
     }
 
-    public function sendContact(Request $request)
-    {
-        Mail::send('pages.frontend.mail.contact_form', [
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone_number' => $request->phone_number,
-            'email' => $request->email,
-            'note' => $request->note
-        ], function ($message) use ($request) {
-            $message->to(setting('email_system'), "{$request->first_name}")->subject('Contact from ' . $request->first_name);
-        });
 
-        return back()->with('success', 'Contact has been send!');
-    }
 
     public function ajaxSearch(Request $request)
     {

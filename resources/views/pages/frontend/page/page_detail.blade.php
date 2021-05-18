@@ -2,7 +2,7 @@
 
 @section('content')
     <main id="main" class="site-main">
-    <section class="breadcrumbs-custom bg-image context-dark" {!! $page_title_bg !!}>
+    <section class="breadcrumbs-custom bg-image context-dark" >
             <div class="breadcrumbs-custom-inner">
                 <div class="container breadcrumbs-custom-container">
                     <div class="breadcrumbs-custom-main" >
@@ -28,4 +28,4 @@
             
         </div><!-- .site-content -->
     </main><!-- .site-main -->
-@stop
+@endsection

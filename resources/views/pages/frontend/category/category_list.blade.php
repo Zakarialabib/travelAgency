@@ -33,6 +33,7 @@
                           <a title="{{$category->name}}" href="{{route('category_detail', $category->slug)}}">
                               <h3>{{$category->name}}</h3>
                           </a>
+                          <p style="color:white">({{ $category->offers->count() }})</p>
                           </div>
                       </div>
                   </div>

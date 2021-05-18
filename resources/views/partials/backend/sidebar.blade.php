@@ -199,12 +199,12 @@
                  @role('admin') 
                     <li><a class="menu-item" href="{{ route('clear-cache') }}">{{__('Clear Cache')}} </a></li>   
                     <li><a class="menu-item" href="{{route('settings')}}"> {{__('Home Settings')}}</a></li>
-                    <li><a class="menu-item" href="{{url('settings/menu')}}" >{{__('Menu Settings')}}</a></li>
                     <li><a class="menu-item" href="{{url('settings/vats')}}" >{{__('Vats')}}</a></li>
+                    {{--   
                     <li><a class="menu-item" href="{{url('settings/markups')}}" >{{__('Markups')}}</a></li>
                     <li><a class="menu-item" href="{{url('settings/markdown')}}" >{{__('Markdowns')}}</a></li>
                     <li><a class="menu-item" href="{{route('banks')}}" >{{__('Banks')}}</a></li>
-                    {{--   <li><a class="menu-item" href="{{url('/settings/visa-application-requests')}}" >{{__('Visa Applications')}}</a></li> --}}
+                    <li><a class="menu-item" href="{{url('/settings/visa-application-requests')}}" >{{__('Visa Applications')}}</a></li> --}}
                     <li><a href="{{url('settings/language')}}"> {{__('Language')}}</a></li>
                     {{--<li ><a href="{{ route('clear-translations') }}">{{__('Clear translations')}}</a></li>--}}
                    <li><a href="{{url('translations')}}"> {{__('Translations')}}</a></li>

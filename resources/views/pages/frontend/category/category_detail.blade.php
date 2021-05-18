@@ -17,8 +17,8 @@ $page_title_bg = "style=background-image:url({$banner_img});";
                     </div>
                     <ul class="breadcrumbs-custom-path">
                         <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
-                        <li><a href="{{ route('category_list' , $category->slug)}}">{{__('Category')}}</a></li>
-                        <li class="active" style="color: #ee5000;">{{ $category->name }}</li>
+                        <li><a href="{{ url('/categorie')}}">{{__('Category')}}</a></li>
+                        <li class="active"><a href="{{ route('category_detail' , $category->slug)}}"  style="color: #ee5000;">{{ $category->name }}</li>
                     </ul>
                 </div>
              </div>

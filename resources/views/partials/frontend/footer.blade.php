@@ -11,15 +11,7 @@
                         <div class="col-lg-4 col-sm-4">
                             <aside class="footer__top__nav">
                              <h3>{{__('Quick Links')}}</h3>
-                                <ul class="footer-nav">
-                                    @if($menuitems)
-                                        @foreach($menuitems as $menu)
-                                        <li class="">
-                                                <a href="{{ $menu['link'] }}" title="">{{ __($menu['label']) }}</a>
-                                        </li>
-                                        @endforeach
-                                    @endif
-                                </ul>
+                               {!! $footer_menu !!}
                             </aside>
                         </div>
                         <div class="col-lg-4 col-sm-4">

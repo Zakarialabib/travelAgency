@@ -146,10 +146,7 @@
         <div class="col-md-6 clear-padding">
           <div class="widget widget-shadows widget-reservation">
             <h1 style="font-weight: 800;">{{$place->name}}</h1>
-             <h5>{{__('Starting From')}}</h5>
             <h4 style="color: #ee5000;">{{$place->price}}DH</h4>
-            <span class="place__reviews__number reviews__number"> {{$review_score_avg}}<i class="fa fa-star"> </i>  </span>
-            <span class="place__places-item__count reviews_count">({{count($reviews)}} {{__('reviews')}})
             </span>
             <div class="place__box place__box-overview">
               <div class="place__desc">{!! $place->description !!} </div>
