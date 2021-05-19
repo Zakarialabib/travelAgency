@@ -16,10 +16,10 @@ class InvoiceController extends Controller
     public function create($type, $id)
     {
         $templates = [
-            new InvoiceTemplate(1, 'Template 1', 'images/invoice/template1.png', 'invoice-1'),
-            new InvoiceTemplate(2, 'Template 2', 'images/invoice/template2.png', 'invoice-2'),
-            new InvoiceTemplate(3, 'Template 3', 'images/invoice/template1.png', 'invoice-3'),
-            new InvoiceTemplate(4, 'Template 4', 'images/invoice/template2.png', 'invoice-4'),
+            new InvoiceTemplate(1, 'avec en tete', 'images/invoice/template1.png', 'invoice-1'),
+            new InvoiceTemplate(2, 'avec en tete', 'images/invoice/template2.png', 'invoice-2'),
+            new InvoiceTemplate(3, 'sans en tete', 'images/invoice/template1.png', 'invoice-3'),
+            new InvoiceTemplate(4, 'sans en tete', 'images/invoice/template2.png', 'invoice-4'),
         ];
         return view('pages.backend.invoice.models', compact('type', 'id', 'templates'));
     }

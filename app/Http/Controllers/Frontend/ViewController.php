@@ -126,7 +126,7 @@ class ViewController extends Controller
     {
         
         $faqs = Faq::query()
-        ->orderBy('id', 'DESC')->get();
+        ->orderBy('id', 'ASC')->get();
 
         return view('pages.frontend.page.termsconditions', compact('faqs'));
     }

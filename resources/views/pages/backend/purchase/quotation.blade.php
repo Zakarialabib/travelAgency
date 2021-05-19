@@ -206,7 +206,7 @@
         <div class="text-right">
     <a  href="{{ url()->previous() }}" class="btn btn-info">
     <i class="fa fa-arrow-circle-o-left"></i>
-    <span>Back</span>
+    <span>{{__('Back')}}</span>
     </a>            
     <button class="btn btn-info"  onclick="auto_print()">{{__('Print')}}</button>
         </div>
@@ -270,7 +270,7 @@
                             </td>
                             <td class="total">{{number_format((float) ($purchasedetail->total / $purchasedetail->qty), 2, '.', '')}}</td>
                             <td class="total">{{$purchasedetail->qty}}</td>
-                            <td class="total">{{number_format((float)$purchases->tax, 2, '.', '')}}</td>
+                            <td class="total">{{$purchases->tax}}%</td>
                             <td class="total">{{number_format((float)$purchasedetail->total, 2, '.', '')}}</td>
                         </tr>
                         @endforeach
@@ -279,12 +279,12 @@
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">Total HT :</td>
-                            <td>{{number_format((float)$purchases->tax, 2, '.', '')}}</td>
+                            <td>{{number_format((float)$purchasedetail->total, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">TVA</td>
-                            <td>{{number_format((float)$purchases->tax, 2, '.', '')}}</td>
+                            <td>{{number_format((float)$purchases->total_tax, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>

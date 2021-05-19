@@ -23,22 +23,17 @@ $page_title_bg = "style=background-image:url({$banner_img});";
                 </div>
              </div>
         </section><!-- .page-title -->
-        <div class="mw-grid golo-grid grid-4 ">
+        <div class="container">
+        <div class="radio-tile-group">
         @foreach($categorytype as $cat)
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <div class="">
-                        <a class="entry-thumb">
-                            <img title="{{ $cat->name }}" src="{{ getImageUrl($cat->image) }}" alt="{{ $cat->name }}">
-                        </a>
-                        <div class="entry-detail">
-                            <h3 class="place-title">
-                            {{ $cat->name }}
-                            </h3>
-                        </div>
+            <div class="input-container">
+                <div class="radio-tile" style="border-color: {{ $cat->color }}">
+                    <label class="radio-tile-label">{{ $cat->name }}</label>
                 </div>
             </div>
-        @endforeach
-    </div>
+          @endforeach
+           </div>
+        </div>
         <div class="mw-box">
             <div class="city-content__panel" id="inspire">
             @if(count($offers))

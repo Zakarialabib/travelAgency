@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('page-title')  Register @endsection
+@section('page-title')  {{__('Register')}} @endsection
 
 @section('css')
 <link rel="stylesheet" href="{{asset('frontend/assets/css/intlTelInput.min.css')}}">

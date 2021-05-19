@@ -18,7 +18,6 @@
                             <li class="nav-item"><a href="#hightlight">{{__('Hightlight')}}</a></li>
                             <li class="nav-item"><a href="#location">{{__('Location')}}</a></li>
                             <li class="nav-item"><a href="#media">{{__('Media')}}</a></li>
-                            <li class="nav-item"><a href="#link_affiliate">{{__('BOOKING TYPE')}}</a></li>
                             <li class="nav-item"><a href="#seo">{{__('SEO')}}</a></li>
                         </ul>
                     </div>
@@ -27,7 +26,6 @@
                         <form action="{{ route('place_update' , $place->id) }}" enctype="multipart/form-data" method="post">
                             @method('put')
                             @csrf
-                        
                             <div class="tab-content">
                                 <ul class="nav nav-tabs bar_tabs" role="tablist">
                                     @foreach($languages as $index => $language)
@@ -63,11 +61,18 @@
                         
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                        <label for="price">{{__('Price')}}: *</label>
-                                        <input type="text" class="form-control" id="price" name="price" value="{{$place->price}}"  autocomplete="off">
+                                            <label for="price">{{__('Price')}}: *</label>
+                                            <input type="text" class="form-control" id="price" name="price" value="{{$place->price}}"  autocomplete="off">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="booking_type">{{__('Booking type')}}</label>
+                                                <select class="form-control" name="booking_type" required>
+                                                    <option  value="{{\App\Booking::TYPE_BOOKING_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BOOKING_FORM)}}>{{__('Booking form')}}</option>
+                                                    <option  value="{{\App\Booking::TYPE_CONTACT_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_CONTACT_FORM)}}>{{__('Contact form')}}</option>
+                                                    <option  value="{{\App\Booking::TYPE_BANNER}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BANNER)}}>{{__('Banner Ads')}}</option>
+                                                </select>
                                         </div>
                                     </div>
-                        
                         
                                     <div class="form-group row">
                                         <div class="col-md-6">
@@ -147,10 +152,10 @@
                                                 <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}">
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="itinerary[{{$key}}][title]" value="{{$menu['title']}}" placeholder="{{__('Title')}}">
+                                                            <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}" placeholder="{{__('Title')}}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control ckeditor" name="itinerary[{{$key}}][description]" value="{{$menu['description']}}" rows="3" placeholder="{{__('Description')}}">
+                                                            <textarea type="text" class="form-control" id="ckeditor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="{{__('Description')}}"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -202,14 +207,6 @@
                                             <input type="file" class="form-control" id="gallery" name="banner" accept="image/*">
                                         </div>
                                     </div>
-                                </div>
-                                <div id="link_affiliate">
-                                  <label class="lead">{{__('Booking type')}}</label>
-                                     <select class="form-control" name="booking_type" required>
-                                           <option  value="{{\App\Booking::TYPE_BOOKING_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BOOKING_FORM)}}>{{__('Booking form')}}</option>
-                                           <option  value="{{\App\Booking::TYPE_CONTACT_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_CONTACT_FORM)}}>{{__('Contact form')}}</option>
-                                           <option  value="{{\App\Booking::TYPE_BANNER}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BANNER)}}>{{__('Banner Ads')}}</option>
-                                     </select>
                                 </div>
                                 <div class="ln_solid"></div>
                                 <div id="seo">

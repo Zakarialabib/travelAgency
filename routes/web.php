@@ -133,7 +133,7 @@ Route::group([
         
    
         
-        Route::get('/ville-a-visiter', 'CityController@list')->name('city_list');
+        Route::get('/ville-a-visiter', 'CityController@list')->name('cities_list');
         Route::get('/ville/{slug}', 'CityController@detail')->name('city_detail');
         Route::get('/ville/{slug}/{cat_slug}', 'CityController@detail')->name('city_category_detail');
 

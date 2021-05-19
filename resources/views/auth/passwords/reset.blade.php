@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('page-title') Reset Password @endsection
+@section('page-title') {{__('Reset Password')}} @endsection
 
 @section('content')
 

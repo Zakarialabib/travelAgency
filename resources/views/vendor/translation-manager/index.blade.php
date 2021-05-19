@@ -22,11 +22,16 @@
 <body>
     @php $url = url()->previous(); @endphp
 <section>
-    <table>
-        <tr>
-            <td><a href="{{$url}}" class="btn btn-info"><i class="fa fa-arrow-left"></i> {{__('Back')}}</a> </td>
-        </tr>
-    </table>
+        <div class="col-sm-12">
+            <div class="text-right">
+                <a href="{{ url()->previous() }}" class="btn btn-info">
+                    <i class="fa fa-arrow-circle-o-left"></i>
+                    <span>{{ __('Back') }}</span>
+                </a>
+                <a class="btn btn-info" href="{{route('dashboard')}}">{{ __('Dashboard') }}</a>
+            </div>
+            <hr>
+        </div>
     
     <div class="container">
         <p>{{ __('Warning, translations are not visible until they are exported back to the app/lang file') }}</p>

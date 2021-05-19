@@ -115,7 +115,7 @@
                                 <th>{{__('Payment Status')}}</th>
                                 <th>{{__('Reservation Status')}}</th>
                                 <th>{{__('Ticket Status')}}</th>
-                                <th>{{__('Created Date<')}}/th>
+                                <th>{{__('Created Date')}}</th>
                                 <th>{{__('Actions')}}</th>
                             </tr>
                             </thead>
