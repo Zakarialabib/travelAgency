@@ -106,6 +106,7 @@
                   <th class="text-center">{{__('Start Date')}}</th>
                   <th class="text-center">{{__('End Date')}}</th>
                   <th class="text-center">{{__('Price')}}</th>
+                  <th class="text-center">{{__('Capacity')}}</th>
                   <th class="text-center"></th>
                 </tr>
               </thead>
@@ -122,6 +123,9 @@
                   </td>
                   <td>
                     <input type="number" name="rate_price[]" placeholder="{{__('Price')}}" class="form-control">
+                  </td>
+                  <td>
+                    <input type="number" name="rate_capacity[]" placeholder="{{__('Capacity')}}" class="form-control">
                   </td>
                   <td>
                     <a class="delete-row">X</a>

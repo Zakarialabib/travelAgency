@@ -146,14 +146,7 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <label>{{__('Person')}}</label>
-                                        <select class="form-control" name="numbber_of_adult">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                        </select>
+                                        <input class="form-control" id="persons" name="numbber_of_adult" type="number">
                                     </div>
                                     <div class="tab-content">
                                         @foreach ($offer->packages as $key => $package)
@@ -161,10 +154,18 @@
                                             @foreach ($package->rates as $rate)    
                                             <div class="room-price" data-start-date="{{$rate->start_date}}" data-end-date="{{$rate->end_date}}">
                                                 <div class="col-md-8 col-sm-8 col-xs-8">
-                                                    <label><input type="checkbox" class="rate" name="rate[]" value="{{$rate->id}}" data-price="{{$rate->price}}"><span>{{$rate->title}}</span></label>
+                                                    <label>
+                                                        <input type="checkbox" class="rate" name="rate[]" value="{{$rate->id}}" data-capacity="{{$rate->capacity}}" data-price="{{$rate->price}}">
+                                                        <span>{{$rate->title}}</span>
+                                                        <span>
+                                                        @for ($i = 0; $i < $rate->capacity; $i++)
+                                                        <i class="fa fa-user"></i>
+                                                        @endfor
+                                                        </span>
+                                                    </label>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <h5>{{$rate->price}}</h5>
+                                                    <h5>{{$rate->price}}</h5><span data-capacity="{{$rate->capacity}}" class="price-factor"></span>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
@@ -229,7 +230,16 @@ $(document).ready(function() {
     });
 
     $('.rate').on('change', function() {
-        $('#total').text(calculateTotal());
+        $('#total').text(calculateTotal($('#persons').val()));
+    });
+
+    $('#persons').on('change', function() {
+        let numberOfPersons = $(this).val();
+        $('.price-factor').each(function(index) {
+            let factor = calculateFactor(numberOfPersons, parseInt($(this).data('capacity')));
+            $(this).text('x ' + factor);
+        });
+        $('#total').text(calculateTotal(numberOfPersons));
     });
 
     $('.package-tab').on('click', function() {
@@ -244,11 +254,17 @@ $(document).ready(function() {
     });
 });
 
-function calculateTotal() {
+function calculateFactor(numberOfPersons, capacity) {
+    return Math.ceil(numberOfPersons / capacity);
+}
+
+function calculateTotal(numberOfPersons) {
     let total = 0;
     $('.rate').each(function(index) {
-        if($(this).is(':checked'))
-            total += parseFloat($(this).data('price'));
+        if($(this).is(':checked')) {
+            let factor = calculateFactor(numberOfPersons, parseInt($(this).data('capacity')));
+            total += parseFloat($(this).data('price')) * factor;
+        }
     });
     return total;
 }

@@ -38,6 +38,7 @@ class PackageController extends Controller
             'rate_start' => '',
             'rate_end' => '',
             'rate_price' => '',
+            'rate_capacity' => '',
         ]);
 
         $offer = Offer::find($data['offer_id']);
@@ -72,6 +73,7 @@ class PackageController extends Controller
                         'start_date' => $data['rate_start'][$key],
                         'end_date' => $data['rate_end'][$key],
                         'price' => $data['rate_price'][$key],
+                        'capacity' => $data['rate_capacity'][$key],
                     ]);
             }
 
@@ -106,6 +108,7 @@ class PackageController extends Controller
             'rate_start' => '',
             'rate_end' => '',
             'rate_price' => '',
+            'rate_capacity' => '',
         ]);
 
         $package = Package::find($id);        
@@ -145,6 +148,7 @@ class PackageController extends Controller
                         'start_date' => $data['rate_start'][$key],
                         'end_date' => $data['rate_end'][$key],
                         'price' => $data['rate_price'][$key],
+                        'capacity' => $data['rate_capacity'][$key],
                     ]);
                 else
                     $package->rates()->create([
@@ -152,6 +156,7 @@ class PackageController extends Controller
                         'start_date' => $data['rate_start'][$key],
                         'end_date' => $data['rate_end'][$key],
                         'price' => $data['rate_price'][$key],
+                        'capacity' => $data['rate_capacity'][$key],
                     ]);
             }
 

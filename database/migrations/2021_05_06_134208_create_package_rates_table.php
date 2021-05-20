@@ -20,6 +20,7 @@ class CreatePackageRatesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->decimal('price', 10, 2);
+            $table->integer('capacity');
             $table->timestamps();
             
             $table->foreign('package_id')->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');
