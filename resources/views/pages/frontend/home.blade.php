@@ -363,6 +363,30 @@
 </section>
 <!-- END: WHO WE ARE -->
 
+<!-- BEGIN: BEST OFFERS -->
+<div class="best_offers" style="background-image: url({{asset('images/home-path.svg')}});">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>{{__('BEST OFFERS')}}</h2>
+        </div>
+        <div class="content">
+            <div class="row">
+                @foreach($categories as $category)
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="offer_item">
+                        <div class="hover_box">
+                            <a title="" href="{{route('category_detail', $category->slug)}}">
+                                <img src="{{getImageUrl($category->image)}}" alt="{{$category->name}}" class="offer-img">
+                                <h4 class="offer_name">{{__('Offer')}} {{$category->name}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="cities cities-img">
     <div class="" style="position: absolute;width:100%">
@@ -461,20 +485,20 @@
         </svg> -->
     </div>
     <div id="discover-cities" class="container">
-        <h2 class="cities__title title">{{__('Best Offers')}}</h2>
+        <h2 class="cities__title title">{{__('Special Offers')}}</h2>
         <div class="cities__content">
             <div class="row">
-                @foreach($categories as $category)
+                @foreach($places as $place)
                 <div class="col-lg-3 col-xs-6">
                     <div class="cities__item hover__box">
                         <div class="cities__thumb hover__box__thumb">
-                            <a title="London" href="{{route('category_detail', $category->slug)}}">
-                                <img src="{{getImageUrl($category->image)}}" alt="{{$category->name}}">
+                            <a title="{{$place->name}}" href="{{route('place_detail', $place->slug)}}">
+                                <img src="{{getImageUrl($place->thumb)}}" alt="{{$place->name}}">
                             </a>
                         </div>
-                        <h4 class="cities__name">{{__('Offer')}} {{$category->name}}</h4>
+                        <h4 class="cities__name">{{$place->name}}</h4>
                         <div class="entry-category ">
-                            <a class="" href="{{route('category_detail', $category->slug)}}">{{__('Read More')}}</a>
+                            <a class="" href="{{route('place_detail', $place->slug)}}">{{__('Read More')}}</a>
                         </div>
                     </div><!-- .cities__item -->
                 </div>
