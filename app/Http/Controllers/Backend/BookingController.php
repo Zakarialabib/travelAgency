@@ -24,6 +24,7 @@ class BookingController extends Controller
       //      ->where('id', Auth::user()->id)
             ->with('user')
             ->with('place')
+            ->with('offer')
             ->orderBy('created_at', 'desc')
             ->get();
 

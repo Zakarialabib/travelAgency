@@ -28,7 +28,6 @@ class BookingController extends Controller
 
     public function booking(Request $request)
     {
-        dd($request);
         
         $data = $this->validate($request, [
             'numbber_of_adult' => '',

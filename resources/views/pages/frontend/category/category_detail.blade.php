@@ -2,14 +2,9 @@
 
 @section('page-title')  {{__('Category detail')}}  @endsection
 
-@php
-$banner_img = getImageUrl($category->image);
-$page_title_bg = "style=background-image:url({$banner_img});";
-@endphp
-
 @section('content')
     <main class="site-main normal_view">
-        <section class="breadcrumbs-custom bg-image context-dark" {!! $page_title_bg !!}>
+        <section class="breadcrumbs-custom bg-image context-dark">
             <div class="breadcrumbs-custom-inner">
                 <div class="container breadcrumbs-custom-container">
                     <div class="breadcrumbs-custom-main" >

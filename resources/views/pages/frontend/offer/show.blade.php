@@ -2,22 +2,23 @@
 
 @section('page-title') Details @endsection
 
-@section('activeDeals') active @endsection
-
 @section('content')
 
-    {{--
+<section class="breadcrumbs-custom bg-image context-dark">
+                <div class="breadcrumbs-custom-inner">
+                    <div class="container breadcrumbs-custom-container">
+                        <div class="breadcrumbs-custom-main" >
+                            <h1 class="breadcrumbs-custom-title"> {{ $offer->name }}</h1>
+                        </div>
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                            <li><a href="">{{__('Offers')}}</a></li>
+                            <li><a href="">{{ $offer->name }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section> 
 
-    <!-- START: PAGE TITLE -->
-    <div class="row page-title">
-        <div class="container clear-padding text-center">
-            <h3>Golf Club Rotana</h3>
-            <h4>6 Nights/7 Days</h4>
-            <span>Paris (2)<i class="fa fa-long-arrow-right"></i>London (2)<i class="fa fa-long-arrow-right"></i>Amesterdam (2)</span>
-        </div>
-    </div>
-    <!-- END: PAGE TITLE -->
-    --}}
 
     <div class="row package-detail">
         <div class="container clear-padding">
@@ -47,7 +48,41 @@
                     </a>
                 </div>
                 <!-- END: HOLIDAY GALLRY -->
-
+                <ul class="nav nav-tabs">
+              <li class="nav-item">
+                  <a data-toggle="tab" class="nav-link active" href="#overview">
+                    <i class="fa fa-suitcase">
+                    </i> 
+                    <span>{{__('Detail')}}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="overview" >
+                <div class="daily-schedule-body">
+                    <p>
+                      {!! $offer->description !!}
+                    </p>
+                </div>
+                    @if(isset($offer['itinerary']))
+                  <div class="daily-schedule">
+                    @foreach($offer['itinerary'] as $itinerary)
+                    <div class="title">
+                      <p>
+                        <span>{{$itinerary['title']}}
+                        </span>
+                      </p>
+                    </div>
+                    <div class="daily-schedule-body">
+                      <p>{!! $itinerary['description'] !!}
+                      </p>                                               
+                    </div>
+                    @endforeach
+                  </div>
+                  @endif
+                </div>
+                </div>
                 <div class="package-complete-detail">
                     <ul class="nav nav-tabs">
                         @foreach ($offer->packages as $key => $package)
@@ -80,7 +115,7 @@
             <div class="col-md-4 package-detail-sidebar">
                 <div class="col-md-12 sidebar-wrapper clear-padding">
                     <div class="package-summary sidebar-item">
-                        <h4><i class="fa fa-bookmark"></i> Package Summary</h4>
+                        <h4><i class="fa fa-bookmark"></i>{{__('Package Summary')}}</h4>
                         <div class="package-summary-body">
                             <h5><i class="fa fa-heart"></i>{{__('Offer')}}</h5>
                             <p>{{$offer->name}}</p>
@@ -93,7 +128,7 @@
                         </div>
                     </div>
                     <div class="sidebar-booking-box">
-                        <h3 class="text-center">MAKE A BOOKING</h3>
+                        <h3 class="text-center">{{__('Make a Booking')}}</h3>
                         <div class="booking-box-body">
                             <form action="{{route('booking_submit')}}" method="POST">
                                 @csrf
@@ -153,72 +188,28 @@
                                 <div class="row">
                                     <div class="grand-total text-center">
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h4>Total <span id="total">0</span> DH</h4>
+                                            <h4>{{__('Total')}} <span id="total">0</span> DH</h4>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <button type="submit">BOOK</button>
+                                            <button type="submit">{{__('BOOK')}}</button>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <!--
+                    
                     <div class="assistance-box sidebar-item">
-                        <h4><i class="fa fa-phone"></i> Need Assistance</h4>
+                        <h4><i class="fa fa-phone"></i> {{__('Need Assistance')}}</h4>
                         <div class="assitance-body text-center">
-                            <h5>Need Help? Call us or drop a message. Our agents will be in touch shortly.</h5>
+                            <h5>{{__('Need Help? Call us or drop a message. Our agents will be in touch shortly.')}}</h5>
                             <h2>+91 1234567890</h2>
-                            <h3>Or</h3>
-                            <a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i> Email Us</a>
+                            <h3>{{__('Or')}}</h3>
+                            <a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i> {{__('Email Us')}}</a>
                         </div>
                     </div>
-                    <div class="review sidebar-item">
-                        <h4><i class="fa fa-comments"></i> Package Reviews</h4>
-                        <div class="sidebar-item-body text-center">
-                            <div class="rating-box">
-                                <div class="col-md-6 col-sm-6 col-xs-6 clear-padding tripadvisor">
-                                    <img src="assets/images/tripadvisor.png" alt="cruise"><br>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <h5>4.0/5.0 Based on 12 Reviews</h5>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6 clear-padding">
-                                    <i class="fa fa-users"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <h5>Based on 128 Guest Reviews</h5>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="guest-say rating-box">
-                                <h2><i class="fa fa-check-circle"></i> Perfect</h2>
-                                <div>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                </div>
-                                <div class="col-md-5 col-sm-5 col-xs-5 clear-padding user-img">
-                                    <img src="assets/images/user1.jpg" alt="cruise">
-                                </div>
-                                <div class="col-md-7 col-sm-7 col-xs-7 clear-padding user-name">
-                                    <span>Lenore, USA</span>
-                                    <span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-o"></i>
-										<i class="fa fa-star-o"></i>
-									</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
+                    
+                   
                 </div>
             </div>
         </div>

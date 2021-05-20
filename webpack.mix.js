@@ -28,6 +28,8 @@ mix.styles([
 mix.scripts([  
    'public/frontend/assets/js/bootstrap.min.js',
    'public/frontend/assets/js/bootstrap-select.min.js',
+   'public/frontend/assets/js/jquery-ui.min.js',
+
    'public/frontend/assets/js/loadingoverlay.js',
    'public/frontend/assets/plugins/wow.min.js',
    'public/frontend/assets/js/respond.js',

@@ -12,6 +12,9 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript" src="{{asset('backend/app-assets/vendors/js/extensions/sweetalert.min.js')}}"></script>
 <script type="text/javascript"  src="{{asset('frontend/assets/js/all.js')}}"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.fr-fr.js" type="text/javascript"></script>
+
 <script>
   window.watsonAssistantChatOptions = {
       integrationID: "a7f1d074-995a-4687-9781-ed9cc54b966a", 

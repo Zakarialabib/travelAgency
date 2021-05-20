@@ -3,25 +3,30 @@
 @section('content')
 <div class="page-title">
     <div class="title_left">
-        <h3>{{ __('Add Package') }}</h3>
+        <h3>{{ __('Edit Package') }}</h3>
     </div>
 </div>
 <div class="clearfix"></div>
 
-<div class="col-12">
+<div class="col-12 bg-white">
+<div class="x_panel">
   <form action="{{ route('package_update', ['id' => $package->id]) }}" method="post">
     @csrf
     @method('put')
     <input type="hidden" name="offer_id" value="{{$package->offer->id}}">
     <div class="row">
         <div class="col-6">
-          <div class="form-group">
-            <label>{{__('Title')}}</label>
-            <input type="text" name="title" placeholder="{{__('Title')}}" class="form-control" value="{{$package->title}}">
+            <div class="form-group">
+              <label>{{__('Title')}}</label>
+              <input type="text" name="title" placeholder="{{__('Title')}}" class="form-control" value="{{$package->title}}">
+            </div>
           </div>
-          <div class="form-group">
-            <label>{{__('Period')}}</label>
-            <input type="number" name="period" placeholder="{{__('Period')}}" class="form-control" value="{{$package->period}}">
+          <div class="col-6">
+            <div class="form-group">
+              <label>{{__('Period')}}</label>
+              <input type="number" name="period" placeholder="{{__('Period')}}" class="form-control" value="{{$package->period}}">
+            </div>
+          </div>
           </div>
           <div class="row">
             <div class="col-6">
@@ -37,10 +42,9 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-6">
+        <div class="col-12">
           <div class="row">
-            <div class="col-12">
+            <div class="col-6">
               <div class="row">
                 <table id="features" class="table table-bordered table-hover">
                   <thead>
@@ -68,9 +72,7 @@
                 <a id="add_feature" class="btn btn-primary text-white pull-left">{{__('Add')}}</a>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
+            <div class="col-6">
               <div class="row">
                 <table id="conditions" class="table table-bordered table-hover">
                   <thead>
@@ -152,6 +154,7 @@
       <button type="submit" class="btn btn-primary text-white pull-left">{{ __('Update') }}</button>
     </div>
   </form>
+</div>
 </div>
 @endsection
 

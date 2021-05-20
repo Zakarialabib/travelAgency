@@ -186,7 +186,6 @@
                     </p>
                     </div>
                     @if(isset($place['itinerary']))
-            
                   <div class="daily-schedule">
                     @foreach($place['itinerary'] as $itinerary)
                     <div class="title">
@@ -559,8 +558,5 @@
 @endsection
 
 @push('scripts')
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-<script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.fr-fr.js" type="text/javascript"></script>
 <script src="{{asset('frontend/assets/js/page_place_detail.js')}}"></script>
 @endpush

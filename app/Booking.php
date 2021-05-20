@@ -41,6 +41,11 @@ class Booking extends Model
         return $this->belongsTo(Place::class);
     }
 
+    public function offer()
+    {
+        return $this->belongsTo(Offer::class);
+    }
+
     public function bookable()
     {
         return $this->morphTo();
