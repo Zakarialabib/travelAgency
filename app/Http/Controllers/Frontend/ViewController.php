@@ -71,13 +71,22 @@ class ViewController extends Controller
             ->orderBy('created_at', 'desc')
             ->get(['id', 'category', 'slug', 'thumb']);
 
+            $places = Place::query()
+            ->with(['categories' => function ($query) {
+                $query->where('type', Category::TYPE_OFFER)
+                    ->select('id', 'name', 'slug');
+            }])
+             ->orWhere('status', Place::STATUS_ACTIVE)
+            ->limit(5)
+            ->get();
+
             $categories = Category::query()
             ->where('categories.type', Category::TYPE_OFFER)
             //->orWhere('categories.type', Category::TYPE_PLACE)
             ->limit(5)
             ->get();
 
-        return view('pages.frontend.home',compact('blog_posts','categories'));
+        return view('pages.frontend.home',compact('blog_posts','places','categories'));
 
     }
 

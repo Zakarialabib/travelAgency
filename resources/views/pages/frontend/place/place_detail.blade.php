@@ -160,11 +160,6 @@
                       @endforeach
                       </div>
                     </div>
-              @guest()
-              <button class="btn btn-block mybtn1"><a href="#booking" style="color: white;">{{__('Book now')}}</a></button>
-              @else
-              <button class="btn btn-block mybtn1"><a href="#booking" style="color: white;">{{__('Book now')}}</a></button>
-              @endguest
             </div>
           </div>
         </div>
@@ -371,90 +366,31 @@
           </div>
        </div>
        <div class="col-lg-6 col-md-6">
-            <div class="sidebar sidebar--border">
-              <div class="widget-reservation-mini">
-                @if($place->booking_type === \App\Booking::TYPE_BOOKING_NOW)
-                <h3>{{__('Booking online')}}
+       <div class="sidebar-booking-box">
+                @if($place->booking_type === \App\Booking::TYPE_BOOKING_FORM)
+              <aside  id="booking"  class="booking-box-body">
+                <h3 class="text-center">{{__('Make a reservation')}}
                 </h3>
-                <a href="#" class="open-wg btn">{{__('Book now')}}
-                </a>
-                @elseif($place->booking_type === \App\Booking::TYPE_BOOKING_FORM)
-                <h3>{{__('Make a reservation')}}
-                </h3>
-                <a href="#" class="open-wg btn">{{__('Book now')}}
-                </a>
-                @elseif($place->booking_type === \App\Booking::TYPE_CONTACT_FORM)
-                <h3>{{__('Send me a message')}}
-                </h3>
-                <a href="#" class="open-wg btn">{{__('Send')}}
-                </a>
-                @else
-                <h3>{{__('Banner Ads')}}
-                </h3>
-                <a href="#" class="open-wg btn">{{__('View')}}
-                </a>
-                @endif
-              </div>
-              @if($place->booking_type === \App\Booking::TYPE_BOOKING_NOW)
-              <aside  id="booking"  class="widget widget-shadow widget-booking">
-                <h3>{{__('Booking online')}}
-                </h3>
-                <div class="form-underline" >
-                  <form action="{{ route('add-to-cart', $place->id) }}" method="GET">
-                    @csrf
-                    <div class="field-select has-sub field-guest">
-                      <span class="sl-icon">
-                        <i class="la la-user-friends">
-                        </i>
-                      </span>
-                      <input type="text" placeholder="{{__('Guest')}} *" readonly>
-                      <i class="la la-angle-down">
-                      </i>
-                      <div class="field-sub">
-                        <ul>
-                          <li>
-                            <span>{{__('Person')}}
-                            </span>
-                            <div class="shop-details__quantity">
-                              <span class="minus">
-                                <i class="la la-minus">
-                                </i>
-                              </span>
-                              <input type="number" name="person" value="0" class="qty person">
-                              <span class="plus">
-                                <i class="la la-plus">
-                                </i>
-                              </span>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    </div>
-                  <input type="hidden" name="type" value="{{\App\Models\Booking::TYPE_BOOKING_NOW}}">
-                  <input type="hidden" name="place_id" value="{{$place->id}}">
-                  <button  type="submit" class="btn">{{__('Book now')}}
-                  </button>
-                  </form>
-              </aside>
-              <!-- .widget -->
-              @elseif($place->booking_type === \App\Booking::TYPE_BOOKING_FORM)
-              <aside  id="booking"  class="widget widget-shadow widget-reservation">
-                <h3>{{__('Make a reservation')}}
-                </h3>
-                <form action="#" method="POST" class="form-underline" id="booking_form">
+                <form action="#" method="POST" id="booking_form">
                   @csrf
-                  <div class="field-select field-input">
-                    <input type="text" id="name" name="name" placeholder="{{__('Enter your name')}} *" required>
+                  <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                      <input type="text" id="name" name="name" class="form-control" placeholder="{{__('Enter your name')}} *" required>
+                    </div>
                   </div>
-                  <div class="field-select field-input">
-                    <input type="text" id="email" name="email" placeholder="{{__('Enter your email')}} *" required>
+                  <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" id="email" name="email" class="form-control" placeholder="{{__('Enter your email')}} *" required>
                   </div>
-                  <div class="field-select field-input">
-                    <input type="text" id="phone_number" name="phone_number" placeholder="{{__('Enter your phone')}}">
                   </div>
+                  <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="{{__('Enter your phone')}}">
+                  </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12">
                   <div class="field-select has-sub field-guest">
-                    <input type="text" placeholder="{{__('Guest')}} *" readonly>
+                    <input type="text" class="form-control" placeholder="{{__('Guest')}} *" readonly>
                     <i class="la la-angle-down">
                     </i>
                     <div class="field-sub">
@@ -491,23 +427,26 @@
                         </li>
                       </ul>
                     </div>
+                    </div>
                   </div>
-                  <div class="field-select field-date">
-                    <input type="text" name="date" placeholder="Date *" class="datepicker" autocomplete="off">
-                    <i class="la la-angle-down">
-                    </i>
+                  <div class="row">
+                  <div class="col-lg-6 col-md-6">
+                  <div class="form-group field-date">
+                    <input type="text" name="date" placeholder="{{__('Start Date')}}*" class="pickdate" autocomplete="off">
                   </div>
-                  <div class="field-select field-date">
-                    <input type="text" name="end_date" placeholder="End Date *" class="datepicker" autocomplete="off">
-                    <i class="la la-angle-down">
-                    </i>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                  <div class="form-group field-date">
+                    <input type="text" name="end_date" placeholder="{{__('End Date')}}*"   class="pickdate" autocomplete="off">
+                    </div>
+                  </div>
                   </div>
                   <input type="hidden" name="type" value="{{\App\Booking::TYPE_BOOKING_FORM}}">
                   <input type="hidden" name="place_id" value="{{$place->id}}">
-                  <button class="btn booking_submit_btn">{{__('Send')}}
+                 
+                  <button class="btn btn-block booking_submit_btn">{{__('Send')}}
                   </button>
-                  <p class="note">{{__("You won't be charged yet")}}
-                  </p>
+               
                   <div class="alert alert-success alert_booking booking_success">
                     <p>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
@@ -532,26 +471,34 @@
               <!-- .widget-reservation -->
               @elseif($place->booking_type === \App\Booking::TYPE_CONTACT_FORM)
               <aside  id="booking"  class="widget widget-shadow widget-booking-form">
-                <h3>{{__('Send me a message')}}
+                <h3 class="text-center">{{__('Send me a message')}}
                 </h3>
-                <form class="form-underline" id="booking_submit_form" action="" method="post">
+                <form id="booking_submit_form" action="" method="post">
                   @csrf
-                  <div class="field-input">
-                    <input type="text" id="name" name="name" placeholder="{{__('Enter your name')}} *" required>
+                 <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="{{__('Enter your name')}} *" class="form-control" required>
                   </div>
-                  <div class="field-input">
-                    <input type="text" id="email" name="email" placeholder="{{__('Enter your email')}} *" required>
                   </div>
-                  <div class="field-input">
-                    <input type="text" id="phone_number" name="phone_number" placeholder="{{__('Enter your phone')}}">
+                 <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" id="email" name="email" placeholder="{{__('Enter your email')}} *" class="form-control" required>
                   </div>
-                  <div class="field-input">
-                    <textarea type="text" id="message" name="message" placeholder="{{__('Enter your message')}}">
+                  </div>
+                 <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="{{__('Enter your phone')}}">
+                  </div>
+                  </div>
+                 <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <textarea type="text" id="message" name="message" class="form-control" placeholder="{{__('Enter your message')}}">
                     </textarea>
+                  </div>
                   </div>
                   <input type="hidden" name="type" value="{{\App\Booking::TYPE_CONTACT_FORM}}">
                   <input type="hidden" name="place_id" value="{{$place->id}}">
-                  <button class="btn booking_submit_btn">{{__('Send')}}
+                  <button class="btn btn-block booking_submit_btn">{{__('Send')}}
                   </button>
                   <div class="alert alert-success alert_booking booking_success">
                     <p>
@@ -583,9 +530,7 @@
                 </a>
                 @endif
               </aside>
-              @endif
-              </div>
-            <!-- .sidebar -->
+              @endif      
             </div>
           </div>
         </div>
@@ -614,5 +559,8 @@
 @endsection
 
 @push('scripts')
-    <script src="{{asset('frontend/assets/js/page_place_detail.js')}}"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.fr-fr.js" type="text/javascript"></script>
+<script src="{{asset('frontend/assets/js/page_place_detail.js')}}"></script>
 @endpush

@@ -844,10 +844,6 @@ h5 {
 	width: 100%
 }
 
-.btn:hover {
-	color: #00adef
-}
-
 .page_btn {
 	display: flex;
 	justify-content: center
@@ -3941,154 +3937,7 @@ h5 {
 	}
 }
 
-.sidebar-booking-box {
-	position: relative
-}
 
-.sidebar-booking-box h3 {
-	background: #ee5000 none repeat scroll 0 0;
-	color: #fff;
-	padding: 22px 0;
-	font-weight: bold;
-	letter-spacing: 1px;
-	position: relative;
-	margin: 0
-}
-
-.sidebar-booking-box h3:after {
-	background: #ee5000 none repeat scroll 0 0;
-	border-radius: 50%;
-	color: #fff;
-	content: "\f044";
-	font-family: "FontAwesome";
-	left: 45%;
-	padding: 10px 17px;
-	position: absolute;
-	top: 63%
-}
-
-.sidebar-assistance-box {
-	position: relative;
-	margin-top: 30px;
-	margin-bottom: 30px
-}
-
-.sidebar-assistance-box h3 {
-	background: #ee5000 none repeat scroll 0 0;
-	color: #fff;
-	padding: 22px 0;
-	font-weight: bold;
-	letter-spacing: 1px;
-	position: relative;
-	margin: 0
-}
-
-.sidebar-assistance-box h3:after {
-	background: #ee5000 none repeat scroll 0 0;
-	border-radius: 50%;
-	color: #fff;
-	content: "\f095";
-	font-family: "FontAwesome";
-	left: 45%;
-	padding: 10px 17px;
-	position: absolute;
-	top: 63%
-}
-
-.assistance-box h3 {
-	margin-top: 10px
-}
-
-.assistance-box-body {
-	background: #e6e6e6;
-	padding: 35px 20px 20px;
-	box-shadow: 0 0 5px #e6e6e6
-}
-
-.assistance-box-body h5 {
-	font-size: 18px
-}
-
-.assistance-box-body h4 {
-	font-size: 24px;
-	font-weight: bold;
-	padding: 0
-}
-
-.booking-box-body .custom-select-button {
-	background: #fff
-}
-
-.booking-box-body {
-	background: #e6e6e6 none repeat scroll 0 0;
-	box-shadow: 0 0 5px #e6e6e6;
-	padding: 15px 5px 0
-}
-
-.booking-box-body .room-price h5 {
-	margin-top: 30px;
-	margin-bottom: 0;
-	font-weight: bold;
-	color: #ee5000
-}
-
-.booking-box-body .room-price label {
-	margin-bottom: 0
-}
-
-.booking-box-body .grand-total {
-	margin-top: 25px;
-	margin-left: -5px;
-	margin-right: -5px;
-	overflow: hidden;
-	background: #07253f;
-	padding: 20px 0
-}
-
-.booking-box-body .grand-total button {
-	color: #fff;
-	border: 0;
-	background: transparent;
-	border: 2px solid #fff;
-	padding: 8px 40px;
-	font-weight: bold
-}
-
-.booking-box-body .grand-total button:hover {
-	background: #ee5000
-}
-
-.booking-box-body .grand-total h4 {
-	background: rgba(0,0,0,0) none repeat scroll 0 0;
-	color: #fff;
-	margin: 10px 0;
-	padding: 0;
-	text-transform: capitalize
-}
-
-.booking-box-body span {
-	margin-left: 10px
-}
-
-.booking-box-body label {
-	margin-top: 25px;
-	font-weight: normal;
-	font-size: 14px
-}
-
-.booking-box-body .form-control {
-	border: 0;
-	box-shadow: none;
-	border-radius: 0;
-	height: 40px
-}
-
-.booking-box-body .input-group-addon {
-	background-color: #ee5000;
-	border: medium none;
-	border-radius: 0;
-	color: #fff
-}
 
 .room-ammenties {
 	margin-top: 30px;
@@ -5802,32 +5651,6 @@ h5 {
 	height: 30px
 }
 
-.card-entry {
-	padding: 15px;
-	margin-bottom: 40px
-}
-
-.card-entry .pull-right a {
-	margin: 0 5px;
-	color: #07253f;
-	font-size: 20px
-}
-
-.card-entry .pull-right a:hover {
-	color: #ee5000
-}
-
-.card-entry .card-type {
-	overflow: hidden
-}
-
-.card-entry .card-type h3 {
-	margin-top: 0
-}
-
-.card-entry .card-type p {
-	margin: 20px 0 0
-}
 
 .primary-card span {
 	color: #fff;
@@ -7965,68 +7788,7 @@ h5 {
 	margin-bottom: 0
 }
 
-.btn1 {
-	margin: 30px 0
-}
 
-.btn1 button {
-	margin: 10px 5px
-}
-
-.cbtn {
-	background: #ee5000 none repeat scroll 0 0;
-	border: medium none;
-	border-radius: 0;
-	color: #fff;
-	font-weight: bold;
-	transition: all .3s ease;
-	-o-transition: all .3s ease;
-	-ms-transition: all .3s ease;
-	-moz-transition: all .3s ease;
-	-webkit-transition: all .3s ease
-}
-
-.cbtn:hover {
-	background: #00adef
-}
-
-.lg-btn {
-	font-size: 20px;
-	padding: 10px 30px
-}
-
-.md-btn {
-	font-size: 18px;
-	padding: 8px 30px
-}
-
-.sm-btn {
-	font-size: 16px;
-	padding: 6px 30px
-}
-
-.xs-btn {
-	font-size: 14px;
-	padding: 4px 30px
-}
-
-.gbtn {
-	background: transparent;
-	border: 2px solid #ee5000;
-	border-radius: 0;
-	color: #ee5000;
-	font-weight: bold;
-	transition: all .3s ease;
-	-o-transition: all .3s ease;
-	-ms-transition: all .3s ease;
-	-moz-transition: all .3s ease;
-	-webkit-transition: all .3s ease
-}
-
-.gbtn:hover {
-	background: #ee5000;
-	color: #fff
-}
 
 .element-accordian .panel-default>.panel-heading {
 	padding: 15px

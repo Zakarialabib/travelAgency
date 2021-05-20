@@ -954,12 +954,17 @@
             }
         });
 
-        // Datepicker
-        $('.datepicker').each(function () {
-            $(this).datepicker({
-                uiLibrary: 'bootstrap4'
+        $(document).ready(function() {
+       
+            // Datepicker
+            $('.pickdate').each(function () {
+                $(this).datepicker({
+                    locale: 'fr-fr',
+                    format: 'dd-mm-yyyy'
+                });
             });
-        });
+    
+           });
 
         var date_width = $('.datepicker').outerWidth();
         $('.gj-picker-bootstrap').css('width', date_width);
