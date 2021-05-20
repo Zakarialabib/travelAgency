@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Booking;
 use App\Place;
 use App\Offer;
+use App\Package;
 use App\User;
 use Carbon\Carbon;
 use nilsenj\Toastr\Facades\Toastr;
@@ -27,12 +28,14 @@ class BookingController extends Controller
 
     public function booking(Request $request)
     {
-
+        dd($request);
+        
         $data = $this->validate($request, [
             'numbber_of_adult' => '',
-            'numbber_of_children' => '',
+            'numbber_of_children' => 'sometimes',
             'date' => '',
-            'end_date' => '',
+            'end_date' => 'sometimes',
+            'rate' => 'sometimes',
             'name' => '',
             'email' => '',
             'phone_number' => '',
@@ -40,10 +43,14 @@ class BookingController extends Controller
             'type' => ''
         ]);
 
-        if($request->has('place_id'))
+        if($request->has('place_id')) {
             $place = Place::find($request->place_id);
-        else if($request->has('offer_id'))
-            $place = Offer::find($request->offer_id);
+            $endDate = Carbon::parse($data['end_date']);
+        }
+        else if($request->has('package_id')) {
+            $place = Package::find($request->package_id);
+            $endDate = Carbon::parse($data['date'])->addDays($place->period);
+        }
 
         if($place) {
 
@@ -57,9 +64,9 @@ class BookingController extends Controller
                 'user_id' => Auth::id() ?? NULL,
                 'reference' => $reference,
                 'numbber_of_adult' => $data['numbber_of_adult'],
-                'numbber_of_children' => $data['numbber_of_children'],
+                'numbber_of_children' => $data['numbber_of_children'] ?? 0,
                 'date' => Carbon::parse($data['date']),
-                'end_date' => Carbon::parse($data['end_date']),
+                'end_date' => $endDate,
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'phone_number' => $data['phone_number'],
@@ -74,12 +81,13 @@ class BookingController extends Controller
         
                 PortalCustomNotificationHandler::bookingCreated($booking);
 
-                if($request->has('offer_id'))
-                    $this->addToCart($booking);
+                if($request->has('package_id')) {
+                    $booking->rates()->sync($request->rate);
+                }
             
                 Toastr::success('Vous avez créé votre réservation avec succès','Success');
         
-                return $this->response->formatResponse(200, $booking, 'Vous avez créé votre réservation avec succès!');
+                return view('pages.frontend.user.user_checkout', compact('booking'));
             }
         }
 
@@ -93,20 +101,9 @@ class BookingController extends Controller
     public function addToCart($booking)
     {
         $cart = session()->get('cart');
-         
-        $cart_booking = new CartBooking(
-            $booking->bookable->name,
-            $booking->bookable->thumb,
-            $booking->bookable->price,
-            Carbon::parse($booking->date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
-            $booking->numbber_of_adult,     // number of persons
-            $booking->numbber_of_adult,
-            $booking->numbber_of_children,
-        );
 
         $cart[$booking->id] = [
             "name" => $booking->bookable->name,
-            "thumb" => $booking->bookable->thumb,
             "quantity" => $booking->numbber_of_adult,
             "days" => Carbon::parse($booking->date)->diffInDays(Carbon::parse($booking->end_date)) + 1,
             "price" => $booking->bookable->price,
@@ -170,25 +167,4 @@ class BookingController extends Controller
         return number_format($total, 2);
     }
 
-}
-
-class CartBooking 
-{
-    public $name;
-    public $thumb;
-    public $price;
-    public $days;
-    public $persons;
-    public $adults;
-    public $children;
-
-    function __construct($name, $gallery, $price, $days, $persons, $adults, $children) {
-        $this->name = $name;
-        $this->gallery = $gallery;
-        $this->price = $price;
-        $this->days = $days;
-        $this->persons = $persons;
-        $this->adults = $adults;
-        $this->children = $children;
-    }
 }

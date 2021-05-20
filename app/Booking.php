@@ -46,4 +46,9 @@ class Booking extends Model
         return $this->morphTo();
     }
 
+    public function rates()
+    {
+        return $this->belongsToMany(PackageRate::class, 'rate_booking', 'booking_id', 'rate_id');
+    }
+
 }

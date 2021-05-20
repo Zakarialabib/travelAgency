@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Booking;
 use App\Profile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,8 @@ use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
     public function show() {
-        return view('pages.frontend.user.user_checkout');
+        $booking = Booking::find(134);
+        return view('pages.frontend.user.user_checkout', compact('booking'));
     }
 
     public function store(Request $request) {

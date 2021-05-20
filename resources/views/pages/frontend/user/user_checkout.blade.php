@@ -29,18 +29,12 @@
             <thead>
               <th>{{ __('Name') }}</th>
               <th>{{ __('Price') }}</th>
-              <th>{{ __('Days') }}</th>
-              <th>{{ __('Persons') }}</th>
-              <th>{{ __('subtotal') }}</th>
             </thead>
             <tbody>
-            @foreach(session('cart') as $key => $details)
+            @foreach($booking->rates as $key => $rate)
               <tr>
-                  <td>{{ $details['name'] }}</td>
-                  <td>{{ $details['price'] }}</td>
-                  <td>{{ $details['days'] }}</td>
-                  <td>{{ $details['quantity'] }}</td>
-                  <td>{{ $details['price'] * $details['quantity'] * $details['days'] }}</td>
+                  <td>{{ $rate->title }}</td>
+                  <td>{{ $rate->price }}</td>
               </tr>
             @endforeach
             </tbody>

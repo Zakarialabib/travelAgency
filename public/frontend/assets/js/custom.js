@@ -208,7 +208,7 @@ $(function() {
 		$( "#departure_date" ).datepicker({ minDate: -0, maxDate: "+3M" });
 		$( "#return_date" ).datepicker({ minDate: -0, maxDate: "+3M" });
 		$( "#check_out" ).datepicker({ minDate: -0, maxDate: "+3M" });
-		$( "#check_in" ).datepicker({ minDate: -0, maxDate: "+3M" });
+		//$( "#check_in" ).datepicker({ minDate: -0, maxDate: "+3M" });
 		$( "#package_start" ).datepicker({ minDate: -0, maxDate: "+3M" });
 		$( "#car_start" ).datepicker({ minDate: -0, maxDate: "+3M" });
 		$( "#car_end" ).datepicker({ minDate: -0, maxDate: "+3M" });
@@ -678,7 +678,6 @@ $(function() {
                     $('.booking_submit_btn').html('Send').prop('disabled', false);
                     $('.booking_success').hide();
                     $('.booking_error').show();
-                    console.log(e);
                 }
             });
         }
@@ -879,11 +878,14 @@ function callAPI(data) {
  */
 function getFormData($form) {
     var unindexed_array = $form.serializeArray();
+    return unindexed_array;
+    /*
     var indexed_array = {};
     $.map(unindexed_array, function (n, i) {
         indexed_array[n['name']] = n['value'];
     });
     return indexed_array;
+    */
 }
 
 /**

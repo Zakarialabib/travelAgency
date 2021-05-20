@@ -27,4 +27,9 @@ class Package extends Model
     {
         return $this->hasMany(PackageFeature::class, 'package_id', 'id');
     }
+
+    public function bookings()
+    {
+        return $this->morphMany(Booking::class, ' bookable');
+    }
 }

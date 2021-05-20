@@ -27,7 +27,6 @@ mix.styles([
 
 mix.scripts([  
    'public/frontend/assets/js/bootstrap.min.js',
-   'public/frontend/assets/js/jquery-ui.min.js',
    'public/frontend/assets/js/bootstrap-select.min.js',
    'public/frontend/assets/js/loadingoverlay.js',
    'public/frontend/assets/plugins/wow.min.js',
@@ -43,8 +42,9 @@ mix.scripts([
    'public/frontend/assets/js/owl.carousel.min.js',
    'public/backend/app-assets/vendors/js/extensions/sweetalert.min.js', 
 ], 'public/frontend/assets/js/all.js');
-
+/*
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
+   */
 
 
