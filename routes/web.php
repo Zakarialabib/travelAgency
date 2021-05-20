@@ -83,8 +83,12 @@ Route::group([
         Route::get('/hotel-room-booking/{id}','ViewController@hotelRoomBooking')->middleware('hotel.search.param');
         Route::get('/recherche', 'ViewController@search')->name('search');
         Route::get('/termes-et-conditions', 'ViewController@termsConditions')->name('page_terms_conditions');
-        Route::get('/contact', 'ViewController@pageContact')->name('page_contact');
-        Route::post('/contact', 'ViewController@sendContact')->name('page_contact_send');
+        Route::get('/blog/tout', 'PostController@list')->name('post_list_all');
+        Route::post('/post', 'PostController@send')->name('send');
+        Route::get('/blog/{cat_slug}', 'PostController@list')->where('cat_slug', '[a-zA-Z0-9-_]+')->name('post_list');
+        Route::get('{slug}-{id}', 'PostController@detail')
+        ->where('slug', '[a-zA-Z0-9-_]+')
+        ->where('id', '[0-9]+')->name('post_detail');
         Route::get('/ajax-search', 'ViewController@ajaxSearch');
         Route::get('/ajax-search-listing', 'ViewController@searchListing');
         Route::get('/search', 'ViewController@search')->name('search');
@@ -122,19 +126,14 @@ Route::group([
         Route::get('/hotel-booking-completion','ViewCOntroller@hotelBookingCompletion')->middleware('hotel.search.param','hotel.room.selected','payment.info');
 
         Route::get('/meilleures-offres', 'PlaceController@list')->name('best_offers');
-        Route::get('/offres/{slug}', 'PlaceController@detail')->name('place_detail');
+        Route::get('/offre-special/{slug}', 'PlaceController@detail')->name('place_detail');
         Route::get('/offres/filter', 'PlaceController@getListFilter')->name('place_get_list_filter');
 
         Route::get('/offers/{slug}', 'OfferController@show')->name('offer.show');
         
-        Route::get('/blog/tout', 'PostController@list')->name('post_list_all');
-        Route::post('/post', 'PostController@send')->name('send');
-        Route::get('/blog/{cat_slug}', 'PostController@list')->where('cat_slug', '[a-zA-Z0-9-_]+')->name('post_list');
-        Route::get('{slug}-{id}', 'PostController@detail')
-        ->where('slug', '[a-zA-Z0-9-_]+')
-        ->where('id', '[0-9]+')->name('post_detail');
+   
         
-        Route::get('/ville-a-visiter', 'CityController@list')->name('city_list');
+        Route::get('/ville-a-visiter', 'CityController@list')->name('cities_list');
         Route::get('/ville/{slug}', 'CityController@detail')->name('city_detail');
         Route::get('/ville/{slug}/{cat_slug}', 'CityController@detail')->name('city_category_detail');
 
@@ -374,7 +373,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard','BackEndViewController@dashboard')->name('dashboard');
 
     Route::group(['prefix' => 'settings'],function(){
-        Route::get('menu','MenuController@index')->name('menu.get');
         Route::get('vats','BackEndViewController@vat')->name('vats');
         Route::post('vat', 'VatController@saveVat')->name('backend-save-vat');
         Route::get('getVat/{type}','VatController@getVat');

@@ -10,7 +10,7 @@
         </div>
         <div class="title_right">
             <div class="pull-right">
-                <button class="btn btn-primary" id="btn_add_place_type">{{__('Add Category Type')}}</button>
+                <button class="btn btn-primary" id="btn_add_category_type">{{__('Add Category Type')}}</button>
             </div>
         </div>
     </div>
@@ -39,17 +39,20 @@
                                 <td>{{$category_type->name}}</td>
                                 <td class="golo-flex">
                                 <div class="btn-group row">
-                                    <button type="button" class="btn-sm  btn-warning place_type_edit"
+                                    <button type="button" class="btn-sm btn-warning category_type_edit"
                                             data-id="{{$category_type->id}}"
                                             data-catid="{{$category_type->category_id}}"
                                             data-name="{{$category_type->name}}"
                                             data-translations="{{$category_type->translations}}"
+                                            data-image="{{$category_type->image}}"
+                                            data-icon="{{$category_type->icon}}"
+                                            data-color="{{$category_type->color}}"
                                     >{{__('Edit')}}
                                     </button>
-                                    <form class="d-inline" action="{{route('place_type_delete',$category_type->id)}}" method="POST">
+                                    <form class="d-inline" action="{{route('category_type_delete',$category_type->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="button" class="btn-sm  btn-danger place_type_delete">{{__('Delete')}}</button>
+                                        <button type="button" class="btn-sm btn-danger category_type_delete">{{__('Delete')}}</button>
                                     </form>
                                     </div>
                                 </td>
@@ -61,9 +64,9 @@
             </div>
         </div>
     </div>
-    @include('pages.backend.category_type.modal_add_place_type')
+    @include('pages.backend.category_type.modal_add_category_type')
 @endsection
 
 @push('scripts')
-    <script src="{{asset('admin/js/page_place_type.js')}}"></script>
+    <script src="{{asset('admin/js/page_category_type.js')}}"></script>
 @endpush

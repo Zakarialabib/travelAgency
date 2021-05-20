@@ -6,9 +6,11 @@
 <!-- BEGIN VENDOR CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/ui/jquery-ui.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/css/vendors.min.css')}}">
+<link rel="stylesheet"  src="{{asset('admin/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/vendors/css/weather-icons/climacons.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/app-assets/fonts/meteocons/style.min.css')}}">
-<link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/r-2.2.7/sl-1.3.3/datatables.min.css"/><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/switchery@0.0.2/switchery.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/r-2.2.7/sl-1.3.3/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/switchery@0.0.2/switchery.css">
 <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/chosen-jquery@0.1.1/lib/chosen.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">

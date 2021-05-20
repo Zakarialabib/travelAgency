@@ -17,7 +17,6 @@
                             <li class="nav-item"><a href="#hightlight">{{ __('Hightlight') }}</a></li>
                             <li class="nav-item"><a href="#location">{{ __('Location') }}</a></li>
                             <li class="nav-item"><a href="#media">{{ __('Media') }}</a></li>
-                            <li class="nav-item"><a href="#link_affiliate">{{ __('Booking type') }}</a></li>
                             <li class="nav-item"><a href="#golo_seo">{{ __('SEO') }}</a></li>
                         </ul>
                     </div>
@@ -71,12 +70,22 @@
                                             <input type="text" class="form-control" id="price" name="price"
                                                 placeholder="{{ __('Price') }}" autocomplete="off" required>
                                         </div>
+                                        <div class="col-md-6">
+                                            <label for="booking_type">{{ __('Booking type') }}</label>
+                                            <select class="form-control" name="booking_type" required>
+                                                <option value=""></option>
+                                                <option value="{{ \App\Booking::TYPE_BOOKING_FORM }}">{{ __('Booking form') }}
+                                                </option>
+                                                <option value="{{ \App\Booking::TYPE_BANNER }}">{{ __('Banner Ads') }}
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="place_category">{{ __('Category') }}: *</label>
                                             <select class="form-control myselect" id="place_category" name="category[]"
-                                                multiple data-live-search="true" required>
+                                                multiple required>
                                                 @foreach ($categories as $cat)
                                                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                                                 @endforeach
@@ -84,13 +93,12 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="place_type">{{ __('Place type') }}: *</label>
-                                            <select class="form-control myselect++" id="place_type" name="place_type[]"
-                                                multiple data-live-search="true" required>
+                                            <select class="form-control myselect" id="place_type" name="place_type[]"
+                                                multiple required>
                                                 @foreach ($place_types as $cat)
                                                     <optgroup label="{{ $cat->name }}">
                                                         @foreach ($cat['place_type'] as $type)
-                                                            <option value="{{ $type->id }}">{{ $type->name }}
-                                                            </option>
+                                                            <option value="{{ $type->id }}">{{ $type->name }}</option>
                                                         @endforeach
                                                     </optgroup>
                                                 @endforeach
@@ -151,9 +159,9 @@
                                                         placeholder="{{ __('Enter Day') }}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control ckeditor"
+                                                    <textarea type="text" class="form-control" id="ckeditor"
                                                         name="itinerary[0][answer]" rows="3"
-                                                        placeholder="Enter Description">
+                                                        placeholder="Enter Description"> </textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
@@ -186,20 +194,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="link_affiliate">
-                                    <div id="booking-type">
-                                        <p class="lead">{{ __('Booking type') }}</p>
-                                        <select class="form-control" name="booking_type" required>
-                                            <option value="">{{ __('Booking type') }}</option>
-                                            <option value="{{ \App\Booking::TYPE_BOOKING_FORM }}">{{ __('Booking form') }}
-                                            </option>
-                                            <option value="{{ \App\Booking::TYPE_CONTACT_FORM }}">{{ __('Contact form') }}
-                                            </option>
-                                            <option value="{{ \App\Booking::TYPE_BANNER }}">{{ __('Banner Ads') }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
+                                
                                 <div class="ln_solid"></div>
                                 <div id="golo_seo">
                                     <p class="lead">{{ __('SEO') }}</p>

@@ -40,6 +40,7 @@
 <script src="{{asset('backend/app-assets/js/core/app-menu.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/js/core/app.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/js/scripts/customizer.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('backend/app-assets/js/scripts/customizer.min.js')}}" type="text/javascript"></script>
 
 <!-- BEGIN TOOLS FROM FRONTEND-->
 <script src="{{asset('frontend/assets/js/axios.min.js')}}" type="text/javascript"></script>

@@ -12,7 +12,7 @@
                         </div>
                         <ul class="breadcrumbs-custom-path">
                             <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
-                            <li><a href="{{ route('city_list')}}">{{__('Cities to visit')}}</a></li>
+                            <li><a href="{{ route('cities_list')}}">{{__('Cities to visit')}}</a></li>
                         </ul>
                     </div>
                 </div>

@@ -4,6 +4,26 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 (function ($) {
     'use strict';
 
+       // $(".lfm").filemanager('image');
+
+       $(document).on('click', function () {
+        $(".lfm").filemanager('image')
+    })
+
+    $(document).ready(function() {
+        $('.myselect').select2({
+            theme: 'bootstrap4',
+        });
+    });
+    
+    $(function() {
+        $('[data-toggle="popover"]').popover();
+    });
+    
+    
+    $('.colorpicker').colorpicker({});
+    
+
     $(document).ready(function () {
 
         $('.col-5-datatable').DataTable({
@@ -85,16 +105,7 @@ var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
       
     });
 
-    $(document).ready(function() {
-        $('.myselect').select2({
-            theme: 'bootstrap4',
-        });
-    });
-
-    $(function() {
-        $('[data-toggle="popover"]').popover();
-    });
-
+ 
 
 })(jQuery);
 

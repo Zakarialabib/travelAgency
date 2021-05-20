@@ -345,7 +345,7 @@ class SaleController extends Controller
         $sales = Sale::find($id);
         $saledetails = SaleDetails::where('sale_id', $id)->get();
         $users = User::all();
-        $customers = Customer::find($sales->customer_id);
+        $customers = User::find($sales->customer_id);
 
         return view('pages.backend.sale.quotation', compact('sales', 'users', 'customers','saledetails'));
     }

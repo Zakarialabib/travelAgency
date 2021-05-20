@@ -15,9 +15,8 @@
                     </div>
                 </div>
             </section> 
-        <div class="container">
-            <div class="place_list">
-                <h3 class="place_list-title">{{ __('Choose between hundred places') }}</h3>
+        <div class="container ">
+            <div class="">
                 <form class="row">
                     <div class="col-md-4 col-sm-4 form-group">
                         <label>{{ __('Select country') }}:</label>

@@ -16,7 +16,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 <!-- FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
 <script async>
     var app_url = window.location.origin;
 </script>

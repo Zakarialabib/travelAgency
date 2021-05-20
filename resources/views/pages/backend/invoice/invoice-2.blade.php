@@ -15,16 +15,16 @@
 			  </h1>
 			</div>
 			<div class="col-xs-5 text-right">
-			  <h1>INVOICE</h1>
-			  <h1><small>Invoice {{__('reference')}} : {{$entity->reference_no}}</small></h1>
-			  <h5>Date d’émission: {{$entity->created_at->toDateString()}}</h5>
+			  <h1>{{__('Invoice')}}</h1>
+			  <h1><small>{{__('Invoice')}} {{__('reference')}} : {{$entity->reference_no}}</small></h1>
+			  <h5>{{__('Date d’émission')}}: {{$entity->created_at->toDateString()}}</h5>
 			</div>
 		</div>
 		  <div class="row">
 		    <div class="col-xs-4">
 		      <div class="panel panel-default">
 		              <div class="panel-heading">
-		                <h4>From: <a href="#">Rentacs Tours</a></h4>
+		                <h4>{{__('From')}}: <a href="#">Rentacs Tours</a></h4>
 										</div>
 		              <div class="panel-body">
 		                <p>
@@ -40,7 +40,7 @@
 		      <div class="panel panel-default">
 						@if ($type == App\Invoice::PURCHASE_TYPE)
 						<div class="panel-heading">
-							<h4>To : <a href="#"> {{$beneficiary->name}}</a></h4>
+							<h4>{{__('To')}} : <a href="#"> {{$beneficiary->name}}</a></h4>
 						</div>
 						<div class="panel-body">
 							<p>
@@ -53,7 +53,7 @@
 						</div>
 						@else
 						<div class="panel-heading">
-							<h4>To : <a href="#"> {{$beneficiary->profile->sur_name}}</a></h4>
+							<h4>{{__('To')}} : <a href="#"> {{$beneficiary->profile->sur_name}}</a></h4>
 						</div>
 						<div class="panel-body">
 							<p>
@@ -72,18 +72,18 @@
 		         <table class="table table-bordered" style='width:83%'>
         <thead>
           <tr>
-            <th><h4>Service</h4></th>
-            <th><h4>Description</h4></th>
-            <th><h4>Hrs/Qty</h4></th>
-            <th><h4>Rate/Price</h4></th>
-            <th><h4>Sub Total</h4></th>
+            <th><h4>{{__('Service')}}</h4></th>
+            <th><h4>{{__('Description')}}</h4></th>
+            <th><h4>{{__('Qty')}}</h4></th>
+            <th><h4>{{__('Price')}}</h4></th>
+            <th><h4>{{__('Sub Total')}}</h4></th>
           </tr>
         </thead>
         <tbody>
 		<?php $total_product_tax = 0; $i=1;?>
 		  @foreach($entity->details as $detail)
 			<tr>
-				<td>Article</td>
+				<td> </td>
 				<td>{{$detail->name}}</td>
 				<td class="text-right">{{$detail->qty}}</td>
 				<td class="text-right">{{number_format((float)$entity->tax, 2, '.', '')}}</td>
@@ -105,8 +105,8 @@
 			</div>
 			<div class="col-xs-2">
 				<strong>
-				{{number_format((float)$entity->tax, 2, '.', '')}} <br>
-				{{number_format((float)$entity->tax, 2, '.', '')}} <br>
+				{{number_format((float)$entity->total, 2, '.', '')}} <br>
+				{{number_format((float)$entity->total_tax, 2, '.', '')}} <br>
 			    {{number_format((float)$entity->grand_total, 2, '.', '')}} <br>
 				</strong>
 			</div>
@@ -117,7 +117,10 @@
 		  <div class="col-xs-3">
 		    <div class="panel panel-info">
 			  <div class="panel-heading">
-			    <h4>Bon pour Accord</h4>
+			    <h4>{{__('Bon pour Accord')}}</h4>
+				<br>
+				<br>
+				<br>
 			  </div>
 			  <div class="panel-body">
 			    <p></p>
@@ -128,7 +131,7 @@
 		   <div class="span7">
 			  <div class="panel panel-info">
 			    <div class="panel-heading">
-			      <h4>Contact Details</h4>
+			      <h4>{{__('Contact Details')}}</h4>
 			    </div>
 			     <div class="panel-body" >
                                  <p>RENTACS TOURS - Capital:  300.000DH

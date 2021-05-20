@@ -201,13 +201,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<!--Author      : @arboshiki-->
 <div id="invoice">
     <div class="toolbar hidden-print">
         <div class="text-right">
     <a  href="{{ url()->previous() }}" class="btn btn-info">
     <i class="fa fa-arrow-circle-o-left"></i>
-    <span>Back</span>
+    <span>{{__('Back')}}</span>
     </a>            
     <button class="btn btn-info"  onclick="auto_print()">{{__('Print')}}</button>
         </div>
@@ -235,8 +234,7 @@
             </header>
             <main>
                 <div class="row contacts">
-                    <div class="col invoice-to">
-                        
+                    <div class="col invoice-to">    
                         <h4 class="to"> {{$customers->name}}</h4>
                         <div class="address">{{$customers->company_name}}</div>
                         <div class="address"> {{$customers->address}}</div>
@@ -253,9 +251,9 @@
                         <tr>
                             <th>#</th>
                             <th class="text-left">Destination</th>
-                            <th class="text-right">{{__('Unit Price')}}</th>
+                            <th class="text-right">{{__('Price')}}</th>
                             <th class="text-right">Qté.</th>
-                            <th class="text-right">{{__('Order Tax')}}</th>
+                            <th class="text-right">{{__('Tax')}}</th>
                             <th class="text-right">Total HT</th>
                         </tr>
                     </thead>
@@ -271,7 +269,7 @@
                             </td>
                             <td class="total">{{number_format((float) ($saledetail->total / $saledetail->qty), 2, '.', '')}}</td>
                             <td class="total">{{$saledetail->qty}}</td>
-                            <td class="total">{{number_format((float)$sales->tax, 2, '.', '')}}</td>
+                            <td class="total">{{$sales->tax}}%</td>
                             <td class="total">{{number_format((float)$saledetail->total, 2, '.', '')}}</td>
                         </tr>
                         @endforeach
@@ -280,12 +278,12 @@
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">Total HT :</td>
-                            <td>{{number_format((float)$sales->tax, 2, '.', '')}}</td>
+                            <td>{{number_format((float)$saledetail->total, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">TVA</td>
-                            <td>{{number_format((float)$sales->tax, 2, '.', '')}}</td>
+                            <td>{{number_format((float)$sales->total_tax, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>

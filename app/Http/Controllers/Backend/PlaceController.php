@@ -91,7 +91,7 @@ class PlaceController extends Controller
     {
         $request['slug'] = getSlug($request, 'name');
 
-        $data = $this->validate($request, [
+        $rules = [
             'user_id' => '',
             'country_id' => '',
             'city_id' => '',
@@ -113,7 +113,11 @@ class PlaceController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ]);
+        ];
+
+        $rule_factory = RuleFactory::make($rules);
+
+        $data = $this->validate($request, $rule_factory);
 
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;
@@ -175,7 +179,8 @@ class PlaceController extends Controller
 
         $request['slug'] = getSlug($request, 'name');
         
-        $request->validate([
+        $rules = [
+
             'country_id' => '',
             'city_id' => '',
             'category' => '',
@@ -196,7 +201,11 @@ class PlaceController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ]);
+        ];
+
+        $rule_factory = RuleFactory::make($rules);
+
+        $data = $this->validate($request, $rule_factory);
 
 
         if (!isset($data['itinerary'])) {
@@ -209,8 +218,10 @@ class PlaceController extends Controller
             $data['thumb'] = $thumb_file;
         }
 
-        $input = $request->all();
-        $place->update($input);
+        $place = Place::find($request->id);
+
+        $place->fill($data)->save();
+
     
             return redirect(route('place_list'))->with('success', 'Destination à jour!');
     

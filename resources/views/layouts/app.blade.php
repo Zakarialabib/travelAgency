@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html class="load-full-screen">
 <head>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
+
     {!! SEO::generate() !!}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="{{config('app.name')}}">
     <title>{{config('app.name')}} - @yield('page-title')</title>
     
-  
+     @include('partials.frontend.css')
+     @yield('css')
 
-    <script type="text/javascript">
+     <script type="text/javascript">
         var baseUrl = "{{url("/")}}";
         var path = "{{ route('typeaheadJs') }}";
         var airline_path = "{{route('airlineTypeAheadJs')}}";
     </script>
-         @yield('css')
-     @include('partials.frontend.css')
 
 </head>
 <body>

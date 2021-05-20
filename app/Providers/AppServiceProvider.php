@@ -6,10 +6,8 @@ namespace App\Providers;
 use App\Category;
 use App\City;
 use App\Language;
-use App\Place;
-use App\Menu;
-use Harimayco\Menu\Models\Menus;
-use Harimayco\Menu\Models\MenuItems;
+use Spatie\Menu\Laravel\Link;
+use Spatie\Menu\Laravel\Menu;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -39,24 +37,28 @@ class AppServiceProvider extends ServiceProvider
                 ->get();
         });
 
-        $city_count = City::query()
-            ->where('status', City::STATUS_ACTIVE)
-            ->count();
+        $footer_menu = Menu::new()
+        ->addClass('footer-nav')
+        ->add(Link::to('/', __('Home')))
+        ->add(Link::to('/meilleures-offres', __('BEST OFFERS')))
+        ->add(Link::to('/ville-a-visiter', __('Cities to visit')))
+        ->add(Link::to('/blog/tout', __('Blog')))
+        ->add(Link::to('/a-propos-21', __('About Us')))
+        ->add(Link::to('/termes-et-conditions', __('Terms and Conditions')));
 
-        $category_count = Category::query()
-            ->where('status', Category::STATUS_ACTIVE)
-            ->where('type', Category::TYPE_PLACE)
-            ->count();
 
-        $place_count = Place::query()
-            ->where('status', Place::STATUS_ACTIVE)
-            ->count();
-
-        $menu = Menus::where('name','Header')->first();
-        $menuitems = $menu->items;
-
-        $menus = Menus::where('name','FOOTER')->first();
-        $menuitems = $menus->items;
+        $sidebar = Menu::new()
+        ->addClass('menu-arrow')
+        ->add(Link::to('/', __('Home')))
+        ->add(Link::to('/categorie/golf-tours', __('Golf Tours')))
+        ->add(Link::to('/categorie/trekking', __('Trekking')))
+        ->add(Link::to('/categorie/motorcycle', __('Motorcycle')))
+        ->add(Link::to('/categorie/surf', __('Surf')))
+        ->add(Link::to('/categorie/bivouacs', __('Bivouacs')))
+        ->add(Link::to('/meilleures-offres', __('BEST OFFERS')))
+        ->add(Link::to('/ville-a-visiter', __('Cities to visit')))
+        ->add(Link::to('/a-propos-21', __('About Us')))
+        ->add(Link::to('/termes-et-conditions', __('Terms and Conditions')));
 
         if (Schema::hasTable('languages')) {
             $languages = Language::query()
@@ -71,16 +73,12 @@ class AppServiceProvider extends ServiceProvider
             $languages = [];
         }
         View::share([
-            'menu' => $menu,
-            'menus' => $menus,
-            'menuitems' => $menuitems,
+            'footer_menu' => $footer_menu,
+            'sidebar' => $sidebar,
             'languages' => $languages,
             'language_default' => $language_default,
             'destinations' => $destinations,
             'popular_search_cities' => $popular_search_cities,
-            'city_count' => $city_count,
-            'category_count' => $category_count,
-            'place_count' => $place_count,
         ]);
     }
 
@@ -91,10 +89,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
-            //$this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
-            //$this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
-        }
         //
     }
 }

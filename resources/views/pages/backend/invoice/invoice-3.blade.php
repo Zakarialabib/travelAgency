@@ -266,13 +266,13 @@
                     <tfoot>
                         <tr>
                             <td colspan="3"></td>
-                            <td colspan="2">Total HT :</td>
-                            <td>{{number_format((float)$entity->tax, 2, '.', '')}}</td>
+                            <td colspan="2">TOTAL HT :</td>
+                            <td>{{number_format((float)$entity->total, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
-                            <td colspan="2">TVA</td>
-                            <td>{{number_format((float)$entity->tax, 2, '.', '')}}</td>
+                            <td colspan="2">TOTAL TVA</td>
+                            <td>{{number_format((float)$entity->total_tax, 2, '.', '')}}</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>

@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -154,6 +154,7 @@ return [
         /*
          * Package Service Providers...
          */
+        
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
@@ -161,10 +162,9 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
-        Harimayco\Menu\MenuServiceProvider::class,
-        //Way\Generators\GeneratorsServiceProvider::class,
-        //Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Spatie\Menu\Laravel\MenuServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -232,8 +232,8 @@ return [
         'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Menu' => Harimayco\Menu\Facades\Menu::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Menu' => Spatie\Menu\Laravel\MenuFacade::class,
     ],
 
 ];

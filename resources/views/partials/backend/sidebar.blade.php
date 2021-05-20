@@ -86,13 +86,21 @@
             @role('admin')
             <li class="@yield('activePlace') nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title" >{{__('Places')}}</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="{{route('place_list')}}" >{{__('Special Offers')}}</a></li>
+                <li><a class="menu-item" href="#">{{__('Special Offers')}}</a>
+                     <ul class="menu-content">
+                        <li><a class="menu-item" href="{{route('place_list')}}" >{{__('Special Offers List')}}</a></li>
+                        <li><a class="menu-item" href="{{route('place_type_list')}}">{{__('Special Offers Type')}}</a></li>
+                        <li><a class="menu-item" href="{{route('category_list', \App\Category::TYPE_PLACE)}}">{{__('Activity List')}}</a></li>
+                        <li><a class="menu-item" href="{{route('amenities_list')}}" >{{__('Amenities List')}}</a></li>
+                     </ul>
+                </li>
+                <li><a class="menu-item" href="#">{{__('Offers')}}</a>
+                     <ul class="menu-content">
                     <li><a class="menu-item" href="{{route('offer_list')}}" >{{__('Offers List')}}</a></li>
-                    <li><a class="menu-item" href="{{route('place_type_list')}}">{{__('Activity Type')}}</a></li>
-                    <li><a class="menu-item" href="{{route('category_list', \App\Category::TYPE_PLACE)}}">{{__('Activity List')}}</a></li>
-                    <li><a class="menu-item" href="{{route('category_list', \App\Category::TYPE_OFFER)}}">{{__('Offers List')}}</a></li>
-                    <li><a class="menu-item" href="{{route('category_type_list')}}">{{__('Category Type List')}}</a></li>
-                    <li><a class="menu-item" href="{{route('amenities_list')}}" >{{__('Amenities List')}}</a></li>
+                    <li><a class="menu-item" href="{{route('category_list', \App\Category::TYPE_OFFER)}}">{{__('Offers Category List')}}</a></li>
+                    <li><a class="menu-item" href="{{route('category_type_list')}}">{{__('Offers Category Type List')}}</a></li>
+                    </ul>
+                </li>
                     <li><a class="menu-item" href="{{route('city_list')}}" >{{__('Cities List')}}</a></li>
                     <li><a class="menu-item" href="{{route('country_list')}}" >{{__('Countries List')}}</a></li>
                 </ul>
@@ -199,12 +207,12 @@
                  @role('admin') 
                     <li><a class="menu-item" href="{{ route('clear-cache') }}">{{__('Clear Cache')}} </a></li>   
                     <li><a class="menu-item" href="{{route('settings')}}"> {{__('Home Settings')}}</a></li>
-                    <li><a class="menu-item" href="{{url('settings/menu')}}" >{{__('Menu Settings')}}</a></li>
                     <li><a class="menu-item" href="{{url('settings/vats')}}" >{{__('Vats')}}</a></li>
+                    {{--   
                     <li><a class="menu-item" href="{{url('settings/markups')}}" >{{__('Markups')}}</a></li>
                     <li><a class="menu-item" href="{{url('settings/markdown')}}" >{{__('Markdowns')}}</a></li>
                     <li><a class="menu-item" href="{{route('banks')}}" >{{__('Banks')}}</a></li>
-                    {{--   <li><a class="menu-item" href="{{url('/settings/visa-application-requests')}}" >{{__('Visa Applications')}}</a></li> --}}
+                    <li><a class="menu-item" href="{{url('/settings/visa-application-requests')}}" >{{__('Visa Applications')}}</a></li> --}}
                     <li><a href="{{url('settings/language')}}"> {{__('Language')}}</a></li>
                     {{--<li ><a href="{{ route('clear-translations') }}">{{__('Clear translations')}}</a></li>--}}
                    <li><a href="{{url('translations')}}"> {{__('Translations')}}</a></li>

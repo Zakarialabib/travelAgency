@@ -13,7 +13,7 @@ $(document).on("change", ".toggle-class", function () {
         success : function(data){
             swal({
                 title: "ACTIVATED",
-                text: "YOUR INPUT IS NOW DEATIVATED!",
+                text: "Changement de status reussie!",
                 icon: "warning",
                 buttons: false,
                 dangerMode: true,
@@ -35,7 +35,7 @@ $(document).on("change", ".toggle-class", function () {
         success : function(data){
             swal({
                 title: "ACTIVATED",
-                text: "YOUR INPUT IS NOW DEATIVATED!",
+                text: "Changement de status reussie!",
                 icon: "warning",
                 buttons: false,
                 dangerMode: true,

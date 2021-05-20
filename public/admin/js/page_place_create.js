@@ -26,10 +26,10 @@ $('#itinerary_addmore').click(function () {
         <div class="row form-group itinerary_item" id="itinerary_item_${itinerary_item}">
             <div class="col-md-11">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="itinerary[${itinerary_item}][question]" value="" placeholder="Enter Da">
+                    <input type="text" class="form-control" name="itinerary[${itinerary_item}][question]" value="" placeholder="Titre">
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control tinymce_editor" name="itinerary[${itinerary_item}][answer]" placeholder="Enter Description"></textarea>
+                    <textarea type="text" class="form-control" id="ckeditor" name="itinerary[${itinerary_item}][answer]" placeholder="Description"></textarea>
                 </div>
             </div>
             <div class="col-md-1">

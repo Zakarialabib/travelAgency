@@ -55,11 +55,11 @@
 		         <table class="table table-bordered" style='width:83%'>
         <thead>
           <tr>
-            <th><h4>Service</h4></th>
-            <th><h4>Description</h4></th>
-            <th><h4>Hrs/Qty</h4></th>
-            <th><h4>Rate/Price</h4></th>
-            <th><h4>Sub Total</h4></th>
+		  <th><h4>{{__('Service')}}</h4></th>
+            <th><h4>{{__('Description')}}</h4></th>
+            <th><h4>{{__('Qty')}}</h4></th>
+            <th><h4>{{__('Price')}}</h4></th>
+            <th><h4>{{__('Sub Total')}}</h4></th>
           </tr>
         </thead>
         <tbody>
@@ -88,8 +88,8 @@
 			</div>
 			<div class="col-xs-2">
 				<strong>
-				{{number_format((float)$entity->tax, 2, '.', '')}} <br>
-				{{number_format((float)$entity->tax, 2, '.', '')}} <br>
+				{{number_format((float)$entity->tatal, 2, '.', '')}} <br>
+				{{number_format((float)$entity->total_tax, 2, '.', '')}} <br>
 			    {{number_format((float)$entity->grand_total, 2, '.', '')}} <br>
 				</strong>
 			</div>

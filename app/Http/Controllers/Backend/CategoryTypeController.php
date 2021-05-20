@@ -60,21 +60,29 @@ class CategoryTypeController extends Controller
     }
     public function create(Request $request)
     {
-        $rules = [
+        $request['slug'] = getSlug($request, 'name');
+
+        $rule_factory = RuleFactory::make([
             'category_id' => 'required',
             '%name%' => '',
-            '%description%' => '',
-            'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
-        ];
-        $rule_factory = RuleFactory::make($rules);
+ /*            'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'icon' => 'mimes:jpeg,jpg,png,gif,svg|max:10000', */
+            'color' => '',
+        ]);
         $data = $this->validate($request, $rule_factory);
-
-        if ($request->hasFile('image')) {
+    
+    /*     if ($request->hasFile('image')) {
             $icon = $request->file('image');
             $file_name = $this->uploadImage($icon, '');
             $data['image'] = $file_name;
         }
 
+        if ($request->hasFile('icon')) {
+            $icon = $request->file('icon');
+            $file_name = $this->uploadImage($icon, '');
+            $data['icon'] = $file_name;
+        } */
+        
         $model = new CategoryType();
         $model->fill($data)->save();
 
@@ -83,23 +91,26 @@ class CategoryTypeController extends Controller
 
     public function update(Request $request)
     {
-        $rules = [
+        $request['slug'] = getSlug($request, 'name');
+
+        $rule_factory = RuleFactory::make([
             'category_id' => 'required',
             '%name%' => '',
-            '%description%' => '',
-            'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
+/*             'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'icon' => 'mimes:jpeg,jpg,png,gif,svg|max:10000', */
+            'color' => '',
 
-        ];
-        $rule_factory = RuleFactory::make($rules);
+        ]);
         $data = $this->validate($request, $rule_factory);
+    
 
-        if ($request->hasFile('image')) {
+/*         if ($request->hasFile('image')) {
             $icon = $request->file('image');
             $file_name = $this->uploadImage($icon, '');
             $data['image'] = $file_name;
-        }
+        } */
 
-        $model = CategoryType::find($request->place_type_id);
+        $model = CategoryType::find($request->category_type_id);
         $model->fill($data);
 
         if ($model->save()) {

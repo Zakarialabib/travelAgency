@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('page-title') User Profile  @endsection
+@section('page-title') {{__('User Profile')}}  @endsection
 
 @section('activeSettings') open hover  @endsection
 

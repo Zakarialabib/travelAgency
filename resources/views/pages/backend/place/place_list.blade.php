@@ -84,7 +84,7 @@
                             <tr>
                                 <td>{{$place->id}}</td>
                                 <td><img class="place_list_thumb" src="{{getImageUrl($place->thumb)}}" alt="page thumb"></td>
-                                <td>{{$place->name}}</td>
+                                <td><a href="{{route('place_detail', $place->slug)}}">{{$place->name}}</a></td>
                                 <td>{{$place['city']['name']}}</td>
                                 <td>
                                     @foreach($place->categories as $cat)
