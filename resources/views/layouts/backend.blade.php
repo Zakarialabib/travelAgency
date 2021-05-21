@@ -39,6 +39,7 @@
     </div>
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
+{!! Toastr::render() !!}
 
 
 @include('partials.backend.footer')
@@ -47,6 +48,5 @@
 @include('partials.backend.js')
 @yield('javascript')
 
-{!! Toastr::render() !!}
 <!-- END PAGE LEVEL JS-->
 </body>

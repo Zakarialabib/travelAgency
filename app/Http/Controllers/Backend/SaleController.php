@@ -163,7 +163,7 @@ class SaleController extends Controller
                 Toastr::error("Unable to create new Sale");
             }
 
-            return redirect()->route('sale_list')->with('success', 'Sale Updated success');
+            return redirect()->route('sale_list');
     
         } catch (QueryException $e) {
             Log::info($e);
@@ -311,7 +311,7 @@ class SaleController extends Controller
                 Toastr::error("Unable to update Sale");
             }
         
-            return redirect()->route('sale_list')->with('success', 'Sale Updated success!');
+            return redirect()->route('sale_list');
         
         } catch (QueryException $e) {
             Toastr::error("Unable to update Purchase");

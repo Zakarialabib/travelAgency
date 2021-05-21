@@ -51,7 +51,7 @@
                                     </div>
                                                 <div class="row clearfix">
                                                   <div class="col-md-12">
-                                                    <table class="table table-bordered table-hover" id="tab_logic" data-items-number="{{$sale->details->count()}}">
+                                                    <table class="table table-bordered table-hover" id="sale_details" data-items-number="{{$sale->details->count()}}">
                                                       <thead>
                                                         <tr>
                                                           <th class="text-center"> # </th>
@@ -59,6 +59,7 @@
                                                           <th class="text-center"> {{__('Qty')}} </th>
                                                           <th class="text-center"> {{__('Price')}} </th>
                                                           <th class="text-center"> {{__('Total')}} </th>
+                                                          <th class="text-center">  </th>
                                                         </tr>
                                                       </thead>
                                                       <tbody>
@@ -69,10 +70,10 @@
                                                         @php
                                                             $counter = $key;
                                                         @endphp                                                      
-                                                        <tr id='addr{{$counter}}'>
-                                                          <td>{{$counter + 1}}</td>
+                                                        <tr>
+                                                          <td> </td>
                                                           <td>
-                                                            <input id="name-{{$counter}}" value="{{$detail->name}}" type="text" name='name[]'  placeholder="{{__('Enter Product Name')}}" class="form-control" autocomplete="off" readonly />
+                                                            <input id="name-{{$counter}}" value="{{$detail->name}}" type="text" name='name[]'  placeholder="{{__('Enter Product Name')}}" class="form-control" autocomplete="off" />
                                                             <div class="search-suggestions place-suggestion" id="place-suggestion-{{$counter}}" style="display: none;">
                                                               <ul class="list-group">
                                                                   <li class="list-group-item">{{__('Loading...')}}</li>
@@ -81,18 +82,19 @@
                                                           </td>
                                                           <td><input value="{{$detail->qty}}" type="number" name='qty[]' placeholder="{{__('Enter Qty')}}" class="form-control qty" step="0" min="0"/></td>
                                                           <td><input value="{{$detail->price}}" type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control price"  step="0.00" min="0"/></td>
-                                                          <td><input value="{{$detail->total}}" type="number" name='total[]' placeholder='0.00' class="form-control total" readonly/></td></tr>
+                                                          <td><input value="{{$detail->total}}" type="number" name='total[]' placeholder='0.00' class="form-control total" readonly/></td>
+                                                          <td>
+                                                            <a class="delete-row">X</a>
+                                                          </td>
                                                         </tr>
                                                         @endforeach
-                                                        <tr id='addr{{$counter + 1}}'></tr>
-                                                      </tbody>
+                                                    </tbody>
                                                     </table>
                                                   </div>
                                                 </div>
                                                 <div class="row clearfix">
                                                   <div class="col-md-12">
-                                                <a id="add_row" class="btn btn-primary text-white pull-left">{{__('Add Row')}}</a>
-                                                <a id='delete_row' class="pull-right text-white btn btn-primary">{{__('Delete Row')}}</a>
+                                                    <a id="add_sale_details" class="btn btn-primary text-white pull-left">{{__('Add')}}</a>
                                                   </div>
                                                 </div>
                                                 <div class="row clearfix" style="margin-top:20px">
@@ -241,28 +243,4 @@
 
 @push('scripts')
 <script src="{{asset('admin/js/page_sale_edit.js')}}"></script>
-<script>
-$('#js-validate-btn').click(function(event){
-    event.preventDefault();
-    $('input[name="is_locked"]').val(1);
-    swal({
-        title: "Validation success",
-        text: "sale validated successfully",
-        icon: "success",
-    });
-});
-
-$( "#js-save" ).click(function(event) {
-    event.preventDefault();
-    if($('input[name="is_locked"]').val() == 0) {
-        swal({
-            title: "Validation",
-            text: "Sale need validation",
-            icon: "error",
-        });
-    } else {
-        $( "#form" ).submit();
-    }
-});
-</script>
 @endpush

@@ -6,9 +6,9 @@
 <script src="{{asset('/admin/vendors/DateJS/build/date.js')}}" type="text/javascript"></script>
 <script src="{{asset('/admin/vendors/laravel-filemanager/js/stand-alone-button.js')}}" type="text/javascript"></script>
 <script src="{{asset('backend/app-assets/vendors/js/charts/raphael-min.js')}}" type="text/javascript"></script>
-<script src="{{asset('backend/app-assets/js/scripts/extensions/toastr.min.js')}}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>
 <script src="{{asset('backend/js/switchery.min.js')}}" type="text/javascript"></script>
-<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chosen-jquery@0.1.1/lib/chosen.jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dropzone@5.7.6/dist/dropzone.min.js"></script>
