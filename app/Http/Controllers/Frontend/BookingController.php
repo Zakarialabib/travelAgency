@@ -81,7 +81,11 @@ class BookingController extends Controller
                 PortalCustomNotificationHandler::bookingCreated($booking);
 
                 if($request->has('package_id')) {
-                    $booking->rates()->sync($request->rate);
+                    
+                    foreach ($request->rate as $key => $rate) {
+                        $split = explode(':', $rate);
+                        $booking->rates()->attach($split[0], ['quantity' => $split[1]]);
+                    }
                 }
             
                 Toastr::success('Vous avez créé votre réservation avec succès','Success');
