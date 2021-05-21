@@ -155,7 +155,7 @@
                                             <div class="room-price" data-start-date="{{$rate->start_date}}" data-end-date="{{$rate->end_date}}">
                                                 <div class="col-md-8 col-sm-8 col-xs-8">
                                                     <label>
-                                                        <input type="checkbox" class="rate" name="rate[]" value="{{$rate->id}}" data-capacity="{{$rate->capacity}}" data-price="{{$rate->price}}">
+                                                        <input type="checkbox" class="rate" name="rate[]" value="{{$rate->id}}:1" data-id="{{$rate->id}}" data-capacity="{{$rate->capacity}}" data-price="{{$rate->price}}">
                                                         <span>{{$rate->title}}</span>
                                                         <span>
                                                         @for ($i = 0; $i < $rate->capacity; $i++)
@@ -165,7 +165,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <h5>{{$rate->price}}</h5><span data-capacity="{{$rate->capacity}}" class="price-factor"></span>
+                                                    <h5>{{$rate->price}}</h5>
+                                                    <span data-capacity="{{$rate->capacity}}" class="price-factor"></span>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
@@ -208,9 +209,7 @@
                             <h3>{{__('Or')}}</h3>
                             <a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i> {{__('Email Us')}}</a>
                         </div>
-                    </div>
-                    
-                   
+                    </div>  
                 </div>
             </div>
         </div>
@@ -235,10 +234,17 @@ $(document).ready(function() {
 
     $('#persons').on('change', function() {
         let numberOfPersons = $(this).val();
+
         $('.price-factor').each(function(index) {
             let factor = calculateFactor(numberOfPersons, parseInt($(this).data('capacity')));
             $(this).text('x ' + factor);
         });
+
+        $('.rate').each(function() {
+            let factor = calculateFactor(numberOfPersons, parseInt($(this).data('capacity')));
+            $(this).val(`${$(this).data('id')}:${factor}`)
+        });
+
         $('#total').text(calculateTotal(numberOfPersons));
     });
 

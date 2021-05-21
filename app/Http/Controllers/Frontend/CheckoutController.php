@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
     public function show() {
-        $booking = Booking::find(134);
+        $booking = Booking::find(141);
         return view('pages.frontend.user.user_checkout', compact('booking'));
     }
 

@@ -15,6 +15,6 @@ class PackageRate extends Model
 
     public function bookings()
     {
-        return $this->belongsToMany(Booking::class, 'rate_booking', 'rate_id', 'booking_id');
+        return $this->belongsToMany(Booking::class, 'rate_booking', 'rate_id', 'booking_id')->withPivot('quantity');
     }
 }

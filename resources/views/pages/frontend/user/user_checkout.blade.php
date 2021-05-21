@@ -24,23 +24,36 @@
     <form action="{{route('checkout_store')}}" method="POST">
       @csrf
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <table class="table">
             <thead>
               <th>{{ __('Name') }}</th>
               <th>{{ __('Price') }}</th>
+              <th>{{ __('Quantity') }}</th>
+              <th>{{ __('Total') }}</th>
             </thead>
             <tbody>
+            @php $total = 0; @endphp
             @foreach($booking->rates as $key => $rate)
               <tr>
                   <td>{{ $rate->title }}</td>
                   <td>{{ $rate->price }}</td>
+                  <td>x {{$rate->pivot->quantity }}</td>
+                  <td>{{ $rate->price * $rate->pivot->quantity }}</td>
+                  @php $total += $rate->price * $rate->pivot->quantity; @endphp
               </tr>
             @endforeach
+              <tr>
+                <td><strong>TOTAL</strong></td>
+                <td></td>
+                <td></td>
+                <td><strong>{{ $total }}</strong></td>
+              </tr>
             </tbody>
           </table>
+
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="row">
             <div class="form-group col-md-6">
               <label for="first_name">{{ __('First name') }}</label>
@@ -100,9 +113,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          cmi method
         </div>
       </div>
       <div class="row">

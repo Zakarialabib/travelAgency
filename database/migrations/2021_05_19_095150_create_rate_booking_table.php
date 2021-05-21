@@ -17,6 +17,7 @@ class CreateRateBookingTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('booking_id');
             $table->unsignedInteger('rate_id');
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('booking_id')->references('id')->on('bookings')->onUpdate('cascade')->onDelete('cascade');
