@@ -7,11 +7,6 @@
         <div class="title_left">
             <h3>{{__('Bookings')}}</h3>
         </div>
-        <div class="title_right">
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{route('booking_create')}}">{{__('Add New Booking')}}</a>
-            </div>
-        </div>
     </div>
     <div class="clearfix"></div>
     <div class="row">
@@ -88,7 +83,25 @@
                                                 data-type="{{$booking->type}}"
                                         >{{__('Detail')}}
                                         </button>
-                                        @if($booking->status === \App\Booking::STATUS_PENDING || $booking->status === \App\Booking::STATUS_DEACTIVE)
+                                        @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Package'))
+                                                <button type="button" data-target="modal_booking_detail"  class="dropdown-item booking_detail"
+                                                data-id="{{$booking->bookable->offer->id}}"
+                                                data-name="{{$booking_name}}"
+                                                data-email="{{$booking_email}}"
+                                                data-phone="{{$booking_phone}}"
+                                                data-place="{{$booking->name}}"
+                                                data-bookingdatetime="{{$booking->bookable->offer->time}} {{formatDate($booking->bookable->offer->date, 'd/m/Y')}}"
+                                                data-bookingat="{{formatDate($booking->bookable->offer->created_at, 'H:i d/m/Y')}}"
+                                                data-status="{{STATUS[$booking->bookable->offer->status]}}"
+                                                data-price="{{$booking->bookable->offer->price}}"
+                                                data-message="{{$booking->bookable->offer->message}}"
+                                                data-adult="{{$booking->bookable->offer->numbber_of_adult}}"
+                                                data-children="{{$booking->bookable->offer->numbber_of_children}}"
+                                                data-type="{{$booking->bookable->offer->type}}"
+                                        >{{__('Detail')}}
+                                        </button>
+                                    @endif
+                                    @if($booking->status === \App\Booking::STATUS_PENDING || $booking->status === \App\Booking::STATUS_DEACTIVE)
                                             <form class="d-inline" action="{{route('booking_update_status')}}" method="POST">
                                                 @method('PUT')
                                                 @csrf
@@ -113,10 +126,6 @@
                                                 <button type="submit" class="dropdown-item">{{__('Sales')}}</button>
                                             </form>
                                         @endif
-                                    @else
-                                        <i>{{__('Place deleted')}}</i>
-                                    @endif
-                                    <a class="dropdown-item" href="{{route('booking_edit', $booking->id)}}">{{__('Edit')}}</a>
                                     @if($user->is_admin === 1)
                                     <form action="{{route('booking_delete',$booking->id)}}" method="POST">
                                         @method('DELETE')
