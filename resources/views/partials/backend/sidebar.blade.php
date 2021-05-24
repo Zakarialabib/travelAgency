@@ -110,8 +110,8 @@
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{route('post_list_blog')}}">{{__('All Posts')}}</a></li>
                     <li><a class="menu-item" href="{{route('category_list', \App\Category::TYPE_POST)}}" >{{__('Categories List')}}</a></li>
-                    <li><a class="menu-item" href="{{route('post_list_page')}}" >{{__('Pages')}}</a></li>
-                    <li><a class="menu-item" href="{{ route('faq')}}" >{{__('Terms and Conditions')}}</a></li>
+                    <li><a class="menu-item" href="{{route('post_list_page')}}" >{{__('Pages Management')}}</a></li>
+                    <li><a class="menu-item" href="{{ route('faq')}}" >{{__('Termes et Conditions')}}</a></li>
                     <li><a class="menu-item" href="{{ route('slides.index')}}" >{{__('Slides')}}</a></li>
                 </ul>
             </li>

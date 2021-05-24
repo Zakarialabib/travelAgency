@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">{{__('Description')}}  <small>({{$language->code}})</small>: *</label>
-                                <textarea type="text" class="form-control ckeditor" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
+                                <textarea type="text" class="form-control" id="ckeditor"  name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
                             </div>
                         </div>
                     @endforeach
@@ -78,7 +78,7 @@
                                         value="{{$menu['title']}}" placeholder="{{ __('Title') }}">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control ckeditor" 
+                                        <input type="text" class="form-control" id="ckeditor"  
                                         name="itinerary[{{$key}}][description]" value="{{$menu['description']}}" rows="3" 
                                         placeholder="{{ __('Description') }}">
                                     </div>

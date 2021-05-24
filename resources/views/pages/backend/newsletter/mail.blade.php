@@ -23,8 +23,8 @@
                                           </div>
                                           <div class="mb-4">
                                             <label for="">{{ __('Message') }} <span class="text-red-600">*</span></label>
-                                            <textarea type="text" class="form-control ckeditor" 
-                                            id="place_description" name="content_message" rows="6"></textarea>
+                                            <textarea type="text" class="form-control" id="ckeditor" 
+                                            name="content_message" rows="6"></textarea>
 
                                             @if ($errors->has('message'))
                                               <p class="text-red-600 mb-0">{{$errors->first('message')}}</p>
