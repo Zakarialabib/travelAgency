@@ -205,9 +205,9 @@
                         <h4><i class="fa fa-phone"></i> {{__('Need Assistance')}}</h4>
                         <div class="assitance-body text-center">
                             <h5>{{__('Need Help? Call us or drop a message. Our agents will be in touch shortly.')}}</h5>
-                            <h2>+91 1234567890</h2>
+                            <h2><a href="tel:{{setting('home_phone')}}"></a>{{setting('home_phone')}}</h2>
                             <h3>{{__('Or')}}</h3>
-                            <a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i> {{__('Email Us')}}</a>
+                            <a href="mailto:{{setting('home_email')}}"><i class="fa fa-envelope-o"></i> {{__('Email Us')}}</a>
                         </div>
                     </div>  
                 </div>
