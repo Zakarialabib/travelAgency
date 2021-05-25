@@ -17230,7 +17230,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   PRIMARY KEY (`id`),
   KEY `user_id_booking_id` (`user_id`),
   CONSTRAINT `user_id_booking_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table rentacs.bookings : ~15 rows (environ)
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
@@ -17249,8 +17249,8 @@ INSERT INTO `bookings` (`id`, `reference`, `place_id`, `user_id`, `numbber_of_ad
 	(128, '4', 36, NULL, 1, 0, NULL, '2021-04-16', NULL, 'ok go', 'zlag@g.c', '111', NULL, NULL, 1, 2, '2021-04-08 14:16:59', '2021-04-08 14:16:59'),
 	(129, '1128120421', 36, 1, 1, 0, NULL, '2021-04-30', NULL, 'okok', 'zakarialabib@gmail.com', '0666666', NULL, NULL, 1, 2, '2021-04-12 17:22:24', '2021-04-12 17:22:24'),
 	(130, '129290421', 35, NULL, 1, 1, NULL, '2021-04-01', NULL, 'hdf', 'zakarialabib@gmail.com', '06060606', NULL, NULL, 1, 2, '2021-04-29 14:08:15', '2021-04-29 14:08:15'),
-	(131, '555130030521', NULL, NULL, 1, 0, 1, '2021-05-24', '2021-05-31', 'zakaria', 'zakarialabib@gmail.com', '06666666', NULL, 'App\\Offer', 2, 2, '2021-05-03 13:47:35', '2021-05-03 13:47:35'),
-	(132, '131200521', NULL, 1, 1, 0, 2, '2021-05-20', '2021-05-27', 'zakaria labib', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-20 10:23:41', '2021-05-20 10:23:41');
+	(132, '131200521', NULL, 10, 1, 0, 2, '2021-05-20', '2021-05-27', 'zakaria labib', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-20 10:23:41', '2021-05-20 10:23:41'),
+	(133, '132210521', NULL, NULL, 10, 0, 1, '2021-05-21', '2021-05-24', 'zakaria', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-21 11:44:26', '2021-05-21 11:44:26');
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. cabin_types
@@ -17825,7 +17825,7 @@ CREATE TABLE IF NOT EXISTS `ltm_translations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1642 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1644 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Listage des données de la table rentacs.ltm_translations : ~1 496 rows (environ)
 /*!40000 ALTER TABLE `ltm_translations` DISABLE KEYS */;
@@ -19410,7 +19410,9 @@ INSERT INTO `ltm_translations` (`id`, `status`, `locale`, `group`, `key`, `value
 	(1638, 0, 'fr', '_json', 'Special Offers Type', NULL, '2021-05-19 10:09:21', '2021-05-19 10:09:21'),
 	(1639, 0, 'fr', '_json', 'Offers', 'Offres', '2021-05-19 10:09:21', '2021-05-19 10:14:06'),
 	(1640, 0, 'fr', '_json', 'Offers Category List', 'Activité des Offres', '2021-05-19 10:09:21', '2021-05-19 10:14:06'),
-	(1641, 0, 'fr', '_json', 'Offers Category Type List', 'Type d\'activité des Offres', '2021-05-19 10:09:21', '2021-05-19 10:14:06');
+	(1641, 0, 'fr', '_json', 'Offers Category Type List', 'Type d\'activité des Offres', '2021-05-19 10:09:21', '2021-05-19 10:14:06'),
+	(1642, 0, 'fr', '_json', 'Edit Package', NULL, '2021-05-20 12:29:17', '2021-05-20 12:29:17'),
+	(1643, 0, 'fr', '_json', 'nights', NULL, '2021-05-20 12:29:18', '2021-05-20 12:29:18');
 /*!40000 ALTER TABLE `ltm_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. markdowns
@@ -19503,7 +19505,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.migrations : ~100 rows (environ)
+-- Listage des données de la table rentacs.migrations : ~99 rows (environ)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(51, '2020_02_26_041322_create_post_translations_table', 1),
@@ -19644,13 +19646,14 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table rentacs.notifications : ~2 rows (environ)
+-- Listage des données de la table rentacs.notifications : ~1 rows (environ)
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 INSERT INTO `notifications` (`id`, `booking_id`, `user_id`, `is_read`, `created_at`, `updated_at`) VALUES
 	(2, NULL, 14, 1, '2021-04-08 14:00:51', '2021-04-08 14:01:45'),
-	(3, 132, NULL, 0, '2021-05-20 10:23:42', '2021-05-20 10:23:42');
+	(3, 132, NULL, 0, '2021-05-20 10:23:42', '2021-05-20 10:23:42'),
+	(4, 133, NULL, 0, '2021-05-21 11:44:26', '2021-05-21 11:44:26');
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. offers
@@ -19683,7 +19686,7 @@ CREATE TABLE IF NOT EXISTS `offers` (
 -- Listage des données de la table rentacs.offers : ~0 rows (environ)
 /*!40000 ALTER TABLE `offers` DISABLE KEYS */;
 INSERT INTO `offers` (`id`, `user_id`, `category_id`, `city_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
-	(8, 1, 13, 31, NULL, 'hotel-du-golf-rotana-golf-club-rotana', NULL, '0000000001', 0, NULL, NULL, '["6024f7be7fade_1613035454.jpg","6024f7c0743c1_1613035456.jpg","6024f85689f32_1613035606.jpg"]', '[{"title":null,"description":null}]', 1, NULL, NULL, '2021-05-12 11:33:16', '2021-05-12 11:33:16');
+	(8, 1, 11, 31, NULL, 'hotel-du-golf-rotana-golf-club-rotana', NULL, '0000000001', 0, NULL, NULL, '["60a64a03b9ff4_1621510659.jpg"]', '[{"title":"Day 1","description":"DAY 1"}]', 1, NULL, NULL, '2021-05-12 11:33:16', '2021-05-20 12:51:31');
 /*!40000 ALTER TABLE `offers` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. offer_translations
@@ -19745,7 +19748,7 @@ CREATE TABLE IF NOT EXISTS `packages` (
   CONSTRAINT `packages_offer_id_foreign` FOREIGN KEY (`offer_id`) REFERENCES `offers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.packages : ~1 rows (environ)
+-- Listage des données de la table rentacs.packages : ~0 rows (environ)
 /*!40000 ALTER TABLE `packages` DISABLE KEYS */;
 INSERT INTO `packages` (`id`, `offer_id`, `title`, `period`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
 	(1, 8, 'GOLF PACKAGE HOLE IN ONE 3 nights', 3, '2020-11-01', '2021-10-31', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19830,7 +19833,7 @@ CREATE TABLE IF NOT EXISTS `package_conditions` (
   CONSTRAINT `package_conditions_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_conditions : ~3 rows (environ)
+-- Listage des données de la table rentacs.package_conditions : ~2 rows (environ)
 /*!40000 ALTER TABLE `package_conditions` DISABLE KEYS */;
 INSERT INTO `package_conditions` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'city taxes not included', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19850,7 +19853,7 @@ CREATE TABLE IF NOT EXISTS `package_features` (
   CONSTRAINT `package_features_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_features : ~3 rows (environ)
+-- Listage des données de la table rentacs.package_features : ~2 rows (environ)
 /*!40000 ALTER TABLE `package_features` DISABLE KEYS */;
 INSERT INTO `package_features` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'transfert airoport', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19903,6 +19906,7 @@ CREATE TABLE IF NOT EXISTS `package_rates` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `price` decimal(10,2) NOT NULL,
+  `capacity` int(10) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -19912,12 +19916,12 @@ CREATE TABLE IF NOT EXISTS `package_rates` (
 
 -- Listage des données de la table rentacs.package_rates : ~5 rows (environ)
 /*!40000 ALTER TABLE `package_rates` DISABLE KEYS */;
-INSERT INTO `package_rates` (`id`, `package_id`, `title`, `start_date`, `end_date`, `price`, `created_at`, `updated_at`) VALUES
-	(1, 1, 'Single Room', '2021-04-15', '2021-10-31', 4126.00, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
-	(2, 1, 'Single Room', '2020-11-01', '2021-04-14', 4616.00, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
-	(3, 1, 'Double Room', '2021-04-15', '2021-10-31', 5552.00, '2021-05-12 11:39:50', '2021-05-12 11:39:50'),
-	(4, 2, 'Single Room', '2021-04-15', '2021-10-30', 9538.00, '2021-05-20 10:20:18', '2021-05-20 10:20:18'),
-	(5, 2, 'Supplement', '2020-11-01', '2021-10-31', 500.00, '2021-05-20 10:21:37', '2021-05-20 10:21:37');
+INSERT INTO `package_rates` (`id`, `package_id`, `title`, `start_date`, `end_date`, `price`, `capacity`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'Single Room', '2021-04-15', '2021-10-31', 4126.00, 1, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
+	(2, 1, 'Single Room', '2020-11-01', '2021-04-14', 4616.00, 1, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
+	(3, 1, 'Double Room', '2021-04-15', '2021-10-31', 5552.00, 2, '2021-05-12 11:39:50', '2021-05-12 11:39:50'),
+	(4, 2, 'Single Room', '2021-04-15', '2021-10-30', 9538.00, 1, '2021-05-20 10:20:18', '2021-05-20 10:20:18'),
+	(5, 2, 'Supplement', '2020-11-01', '2021-10-31', 500.00, 1, '2021-05-20 10:21:37', '2021-05-20 10:21:37');
 /*!40000 ALTER TABLE `package_rates` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. package_types
@@ -20279,6 +20283,7 @@ CREATE TABLE IF NOT EXISTS `rate_booking` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` int(10) unsigned NOT NULL,
   `rate_id` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -20286,13 +20291,14 @@ CREATE TABLE IF NOT EXISTS `rate_booking` (
   KEY `rate_booking_rate_id_foreign` (`rate_id`),
   CONSTRAINT `rate_booking_booking_id_foreign` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rate_booking_rate_id_foreign` FOREIGN KEY (`rate_id`) REFERENCES `package_rates` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.rate_booking : ~2 rows (environ)
 /*!40000 ALTER TABLE `rate_booking` DISABLE KEYS */;
-INSERT INTO `rate_booking` (`id`, `booking_id`, `rate_id`, `created_at`, `updated_at`) VALUES
-	(1, 132, 4, NULL, NULL),
-	(2, 132, 5, NULL, NULL);
+INSERT INTO `rate_booking` (`id`, `booking_id`, `rate_id`, `quantity`, `created_at`, `updated_at`) VALUES
+	(1, 132, 4, 0, NULL, NULL),
+	(2, 132, 5, 0, NULL, NULL),
+	(3, 133, 3, 5, NULL, NULL);
 /*!40000 ALTER TABLE `rate_booking` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. returns
@@ -20690,7 +20696,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Listage des données de la table rentacs.users : ~8 rows (environ)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `password`, `delete_status`, `profile_complete_status`, `api_token`, `remember_token`, `customer_id`, `is_admin`, `created_at`, `updated_at`) VALUES
-	(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'MpXaFDmWTmHGiLpmHFpHWjGsRT5CwvJjUe72fxxFKbwo1VmrYXmxFVxMKgyQ', NULL, 1, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
+	(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'WIo1wDOiLsWMiQVObLc5kL7Km2rl9aYtqg6Y46mRZo3QFoDPSHk0XBPlrGUA', NULL, 1, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
 	(2, 'agent@agent.com', '$2y$10$1.KCk1DJuYp4ZaPgLgDE0.t9Ob0zGegdWu11uKR8uT3cFJfT/6oRe', 0, 0, '', '0R82vHJuH2EMedA0yZOMPp53Nify6JwM4Xv6N16YNIHkSenT2GcH3kEj2H57', NULL, 0, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
 	(3, 'customer@customer.com', '$2y$10$liBmx5acvAXNb3O6e9tFBOU3bmNwwLlMXpRnM8UyutR9IkH1Cqcr2', 0, 0, '', NULL, NULL, 0, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
 	(4, 'first_agency@firstagency.com', '$2y$10$eyiO28RvYh.NIpwpmKuHY.V2imHUlRVvN92WY3NYs4zIQuTpDn8Cm', 1, 0, '', NULL, NULL, 0, '2021-01-28 10:14:55', '2021-03-02 22:37:57'),
@@ -20779,7 +20785,7 @@ CREATE TABLE IF NOT EXISTS `wallets` (
 INSERT INTO `wallets` (`id`, `user_id`, `balance`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1000000000, '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
 	(2, 2, 499950000, '2021-01-28 10:16:31', '2021-01-28 10:40:30'),
-	(3, 4, 0, '2021-02-12 16:50:12', '2021-02-12 16:50:12'),
+	(3, 10, 0, '2021-02-12 16:50:12', '2021-02-12 16:50:12'),
 	(4, 3, 1499, '2021-04-02 14:59:14', '2021-04-14 12:04:32');
 /*!40000 ALTER TABLE `wallets` ENABLE KEYS */;
 

@@ -54,8 +54,8 @@
                                                             <label for="place_description">{{ __('Description') }}
                                                                 <small>({{ $language->code }})</small>
                                                                 : *</label>
-                                                            <textarea type="text" class="form-control ckeditor"
-                                                                id="place_description" required
+                                                            <textarea type="text" class="form-control" id="ckeditor" 
+                                                                required
                                                                 name="{{ $language->code }}[description]" rows="6"
                                                                 {{ $index !== 0 ?: 'required' }}></textarea>
                                                         </div>
@@ -231,5 +231,6 @@
 
 
 @push('scripts')
-    <script src="{{ asset('admin/js/page_place_create.js') }}"></script>
+<script src="{{ asset('admin/js/page_place_create.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-2mhVoLX7oIOgRQ-6bxlJt4TF5k0xhWc&libraries=places&callback=placeMap"></script>
 @endpush

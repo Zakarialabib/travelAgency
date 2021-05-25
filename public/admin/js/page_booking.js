@@ -24,6 +24,7 @@
 
     $(document).on("click", ".booking_detail", function (e) {
         let booking_name = e.currentTarget.getAttribute('data-name'),
+            booking_reference = e.currentTarget.getAttribute('data-reference'),
             booking_email = e.currentTarget.getAttribute('data-email'),
             booking_phone = e.currentTarget.getAttribute('data-phone'),
             booking_place = e.currentTarget.getAttribute('data-place'),
@@ -37,6 +38,7 @@
         ;
 
         $('#booking_name').text(booking_name);
+        $('#booking_reference').text(booking_reference);
         $('#booking_email').text(booking_email);
         $('#booking_phone').text(booking_phone);
         $('#booking_place').text(booking_place);

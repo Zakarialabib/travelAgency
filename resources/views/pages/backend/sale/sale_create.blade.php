@@ -51,7 +51,7 @@
                                   
                                             <div class="row clearfix">
                                               <div class="col-md-12">
-                                                <table class="table table-bordered table-hover" id="tab_logic" data-items-number="1">
+                                                <table class="table table-bordered table-hover" id="sale_details" data-items-number="1">
                                                   <thead>
                                                     <tr>
                                                       <th class="text-center"> # </th>
@@ -59,13 +59,14 @@
                                                       <th class="text-center"> {{__('Qty')}} </th>
                                                       <th class="text-center"> {{__('Price')}} </th>
                                                       <th class="text-center"> {{__('Total')}} </th>
+                                                      <th class="text-center"> </th>
                                                     </tr>
                                                   </thead>
                                                   <tbody>
-                                                    <tr id='addr0'>
+                                                    <tr>
                                                       <td>1</td>
                                                       <td>
-                                                          <input id="name-0" value="{{$booking ? $booking->place->name : null}}" type="text" name='name[]'  placeholder="{{__('Enter Product Name')}}" class="form-control" autocomplete="off" readonly/>
+                                                        <input id="name-0" value="{{$booking ? $booking->place->name : null}}" type="text" name='name[]'  placeholder="{{__('Enter Product Name')}}" class="form-control" autocomplete="off"/>
                                                           <div class="search-suggestions place-suggestion" style="display: none;">
                                                             <ul class="list-group">
                                                                 <li class="list-group-item">{{__('Loading...')}}</li>
@@ -73,19 +74,20 @@
                                                           </div>
                                                       </td>
                                                       <td><input value="{{$booking ? $booking->numbber_of_adult : null}}" type="number" name='qty[]' placeholder="{{__('Enter Qty')}}" class="form-control qty" step="0" min="0"/></td>
-                                                      <td><input value="{{$booking ? $booking->place->price : null}}" type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control price"  step="0.00" min="0"/></td>
-                                                      <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly/></td></tr>
+                                                         <td><input value="{{$booking ? $booking->place->price : null}}" type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control price"  step="0.00" min="0"/></td>
+                                                      <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly/></td>
+                                                      <td>
+                                                        <a class="delete-row">X</a>
+                                                      </td>
                                                     </tr>
-                                                    <tr id='addr1'></tr>
                                                   </tbody>
                                                 </table>
                                               </div>
                                             </div>
                                             <div class="row clearfix">
                                               <div class="col-md-12">
-                                                <a id="add_row" class="btn btn-primary text-white pull-left">{{__('Add Row')}}</a>
-                                                <a id='delete_row' class="pull-right text-white btn btn-primary">{{__('Delete Row')}}</a>
-                                              </div>
+                                                <a id="add_sale_details" class="btn btn-primary text-white pull-left">{{__('Add')}}</a>
+                                            </div>
                                             </div>
                                             <div class="row clearfix" style="margin-top:20px">
                                               <div class="pull-right col-md-12">
@@ -215,35 +217,9 @@
             </form>
         </div>
     </div>
-
-@stop
+@endsection
 
 
 @push('scripts')
 <script src="{{asset('admin/js/page_sale_create.js')}}"></script>
-<script>
-$('#js-validate-btn').click(function(event){
-    event.preventDefault();
-    $('input[name="is_locked"]').val(1);
-    swal({
-        title: "Accompli",
-        text: "Vente Validée avec Succes",
-        icon: "success",
-    });
-});
-
-$( "#js-save" ).click(function(event) {
-    event.preventDefault();
-    if($('input[name="is_locked"]').val() == 0) {
-        swal({
-            title: "Alert",
-            text: "Valider la vente pour enregistrer",
-            icon: "error",
-        });
-    } else {
-        $( "#form" ).submit();
-    }
-});
-
-</script>
 @endpush

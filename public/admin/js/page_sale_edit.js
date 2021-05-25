@@ -1,30 +1,33 @@
 $(document).ready(function(){
-    var i = handleExistingDetails()
-    calc();
 
     $("#delete-file").click(function(event) {
         event.preventDefault();
         handleDocumentDelete();
     });
     
-    $("#add_row").click(function(){b=i-1;
-      	$('#addr'+i).html($('#addr'+b).html()).find('td:first-child').html(i+1);
-        
-        handleAddRow(i);
-      	
-        $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
-      	i++; 
-  	});
-
-    $("#delete_row").click(function(){
-    	if(i>1){
-		$("#addr"+(i-1)).html('');
-		i--;
-		}
-		calc();
-	});
+    $(document).ready(function(){
+        $('#add_sale_details').click(function(){
+          duplicateTableRow('sale_details');
+        });
+      
+      
+        $(document).on('click', '.delete-row', function(event){
+          removeTableRow(event.target);
+        });
+      
+      });
+      
+      function duplicateTableRow(target) {
+        let tr = $(`#${target}`).find('tr:last').clone();
+        tr.find('input').val(' ');
+        $(`#${target}`).append(tr);
+      }
+      
+      function removeTableRow(element) {
+        $(element).closest("tr").remove();;
+      }
 	
-	$('#tab_logic tbody').on('keyup change',function(){
+	$('#sale_details tbody').on('keyup change',function(){
 		calc();
 	});
 
@@ -38,104 +41,6 @@ $(document).ready(function(){
 	
 
 });
-
-function handleExistingDetails() {
-    var itemsNumber = $('#tab_logic').data('items-number');
-    for(var i = 0; i < itemsNumber; i++) {
-        setElementInputsId($('#addr'+i), i);
-        setNameInputReadOnly(i);
-        setInputMenuDisplay(i);
-    }
-    
-    return itemsNumber;
-}
-
-function setInputMenuDisplay(inputNumber) {
-    $('#name-'+inputNumber).on('keyup', function(){
-        $(this).parent().children('.place-suggestion').css("display", "block");
-        setPlacesList($(this), extractId($(this).attr("id")));
-    });
-}
-
-function handleAddRow(number) {
-    setElementInputsId($('#addr'+number), number);
-    setNameInputReadOnly(number);
-    clearElementInputsValue($('#addr'+number));
-    $('#name-'+number).on('keyup', function(){
-        $(this).parent().children('.place-suggestion').css("display", "block");
-        setPlacesList($(this), extractId($(this).attr("id")));
-    });
-}
-
-function extractId(id) {
-    // id need to be like this string-id
-    var res = id.split('-');
-    return res[1];
-}
-
-function setPlacesList(element, id) {
-    $.ajax({
-        url: `/ajax-search-places`,
-        data: {
-            'keyword': $(element).val()
-        },
-        beforeSend: function () {
-        },
-        success: function (data) {
-            $('#place-suggestion-'+id).html(data);
-            $('#place-suggestion-'+id).children('ul').find('li').each(function(){
-                $(this).one("click", function(){
-                    $('#place-suggestion-'+id).css("display", "none");
-                    $('#place-'+id).attr("value", $(this).data("id"));
-                    $('#name-'+id).attr("value", $(this).data("name"));
-                    $('#name-'+id).val($(this).data("name"));
-                    $('#qty-'+id).attr("value", "1");
-                    $('#price-'+id).attr("value", $(this).data("price"));
-                    calc();
-                });
-            });
-
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    });
-}
-
-function setElementInputsId(element, number) 
-{
-    var inputs = element.find(':input');
-    inputs.each(function(){
-        if($(this).attr("name") === 'place[]')
-            $(this).attr("id", "place-"+number);
-
-        if($(this).attr("name") === 'name[]') {
-            $(this).attr("id", "name-"+number);
-            $(this).attr("readonly", false); 
-        }
-
-        if($(this).attr("name") === 'qty[]')
-            $(this).attr("id", "qty-"+number);
-        
-        if($(this).attr("name") === 'price[]')
-            $(this).attr("id", "price-"+number);
-    });
-
-    var placeSuggestion = element.find('.place-suggestion');
-    $(placeSuggestion[0]).attr("id", "place-suggestion-"+number);
-}
-
-function setNameInputReadOnly(number) {
-    $('#name-'+number).attr("readonly", false);
-}
-
-function clearElementInputsValue(element)
-{
-    var inputs = element.find(':input');
-    inputs.each(function() {
-        $(this).attr('value', null);
-    });
-}
 
 function handleDocumentDelete() {
     var returnId = $('#update-form').data('return');
@@ -176,7 +81,7 @@ function handleDocumentDelete() {
 
 function calc()
 {
-	$('#tab_logic tbody tr').each(function(i, element) {
+	$('#sale_details tbody tr').each(function(i, element) {
 		var html = $(this).html();
 		if(html!='')
 		{
@@ -203,3 +108,26 @@ function calc_total()
     if(parseInt($('#paid_amount').val()) > 0)
 	    $('#change').val((tax_sum+total) - parseInt($('#paid_amount').val()).toFixed(2));
 }
+
+$('#js-validate-btn').click(function(event){
+    event.preventDefault();
+    $('input[name="is_locked"]').val(1);
+    swal({
+        title: "Validation success",
+        text: "sale validated successfully",
+        icon: "success",
+    });
+});
+
+$( "#js-save" ).click(function(event) {
+    event.preventDefault();
+    if($('input[name="is_locked"]').val() == 0) {
+        swal({
+            title: "Validation",
+            text: "Sale need validation",
+            icon: "error",
+        });
+    } else {
+        $( "#form" ).submit();
+    }
+});

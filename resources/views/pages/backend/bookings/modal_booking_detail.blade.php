@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: max-content;">
             <div class="modal-header">
-                <h4 class="modal-title">{{__('Booking detail')}}</h4>
+                <h4 class="modal-title">{{__('Booking detail')}} </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
 
@@ -11,8 +11,8 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th width="30%"></th>
-                        <th width="70%"></th>
+                        <th scope="row">Reference</th>
+                        <th id="booking_reference"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -80,7 +80,6 @@
                 </table>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

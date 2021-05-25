@@ -69,6 +69,7 @@
                                     @if(isset($booking['place']))
                                         <button type="button" data-target="modal_booking_detail"  class="dropdown-item booking_detail"
                                                 data-id="{{$booking->id}}"
+                                                data-reference="{{$booking->reference}}"
                                                 data-name="{{$booking_name}}"
                                                 data-email="{{$booking_email}}"
                                                 data-phone="{{$booking_phone}}"
@@ -86,6 +87,7 @@
                                         @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Package'))
                                                 <button type="button" data-target="modal_booking_detail"  class="dropdown-item booking_detail"
                                                 data-id="{{$booking->bookable->offer->id}}"
+                                                data-reference="{{$booking->reference}}"
                                                 data-name="{{$booking_name}}"
                                                 data-email="{{$booking_email}}"
                                                 data-phone="{{$booking_phone}}"
