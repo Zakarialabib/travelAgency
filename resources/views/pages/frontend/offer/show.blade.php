@@ -226,7 +226,7 @@ $(document).ready(function() {
         $('#total').text(calculateTotal($('#persons').val()));
     });
 
-    $('#persons').on('change', function() {
+    $('#persons').on('change keyup', function() {
         let numberOfPersons = $(this).val();
 
         $('.price-factor').each(function(index) {
