@@ -48,41 +48,6 @@
                     </a>
                 </div>
                 <!-- END: HOLIDAY GALLRY -->
-                <ul class="nav nav-tabs">
-              <li class="nav-item">
-                  <a data-toggle="tab" class="nav-link active" href="#overview">
-                    <i class="fa fa-suitcase">
-                    </i> 
-                    <span>{{__('Detail')}}
-                    </span>
-                  </a>
-                </li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane active" id="overview" >
-                <div class="daily-schedule-body">
-                    <p>
-                      {!! $offer->description !!}
-                    </p>
-                </div>
-                    @if(isset($offer['itinerary']))
-                  <div class="daily-schedule">
-                    @foreach($offer['itinerary'] as $itinerary)
-                    <div class="title">
-                      <p>
-                        <span>{{$itinerary['title']}}
-                        </span>
-                      </p>
-                    </div>
-                    <div class="daily-schedule-body">
-                      <p>{!! $itinerary['description'] !!}
-                      </p>                                               
-                    </div>
-                    @endforeach
-                  </div>
-                  @endif
-                </div>
-                </div>
                 <div class="package-complete-detail">
                     <ul class="nav nav-tabs">
                         @foreach ($offer->packages as $key => $package)
@@ -111,6 +76,35 @@
                     </div>
                     
                 </div>
+              <div class="inclusion-wrapper">
+                
+                    <h3 class="text-center">{{__('Detail')}}</h3>
+            
+                <div class="daily-schedule-body">
+                    <p>
+                      {!! $offer->description !!}
+                    </p>
+                </div>
+                    @if(isset($offer['itinerary']))
+                  <div class="daily-schedule">
+                    @foreach($offer['itinerary'] as $itinerary)
+                    <div class="title">
+                      <p>
+                        <span>{{$itinerary['title']}}
+                        </span>
+                      </p>
+                    </div>
+                    <div class="daily-schedule-body">
+                      <p>{!! $itinerary['description'] !!}
+                      </p>                                               
+                    </div>
+                    @endforeach
+                  </div>
+                  @endif
+                </div>
+              
+                
+              
             </div>
             <div class="col-md-4 package-detail-sidebar">
                 <div class="col-md-12 sidebar-wrapper clear-padding">
