@@ -1,30 +1,26 @@
 <html>
 <head>
-<title>Generic Hash Request Handler</title>
+<title>HASH RESULT</title>
 <meta http-equiv="Content-Language" content="tr">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="now">
 </head>
 
-<body onload="javascript:moveWindow()">
-
-	<form name="pay_form" method="post" action="https://testpayment.cmi.co.ma/fim/est3Dgate">
+<body>
+	<table>
 		<?php
-		
-			$storeKey = "Rentacs0";
-
 			$postParams = array();
 			foreach ($cmi as $key => $value){
-				array_push($postParams, $key);
-				echo "<input type=\"hidden\" name=\"" .$key ."\" value=\"" .trim($value)."\" /><br />";
+				array_push($postParams, $key);				
+				echo "<tr><td>" . $key ."</td><td>" . $value . "</td></tr>";
 			}
 			
 			natcasesort($postParams);		
 			
 			$hashval = "";					
 			foreach ($postParams as $param){				
-				$paramValue = trim($cmi[$param]);
+				$paramValue = trim(html_entity_decode($_POST[$param], ENT_QUOTES, 'UTF-8')); 
 				$escapedParamValue = str_replace("|", "\\|", str_replace("\\", "\\\\", $paramValue));	
 					
 				$lowerParam = strtolower($param);
@@ -33,23 +29,21 @@
 				}
 			}
 			
-			
+			$storeKey = "Rentacs0";
 			$escapedStoreKey = str_replace("|", "\\|", str_replace("\\", "\\\\", $storeKey));	
 			$hashval = $hashval . $escapedStoreKey;
 			
 			$calculatedHashValue = hash('sha512', $hashval);  
-			$hash = base64_encode (pack('H*',$calculatedHashValue));
+			$actualHash = base64_encode (pack('H*',$calculatedHashValue));
 			
-			echo "<input type=\"hidden\" name=\"HASH\" value=\"" .$hash."\" /><br />";			
-		
+			$retrievedHash = $_POST["HASH"];
+			if($retrievedHash == $actualHash )	{
+				echo "<h4>HASH is successfull</h4>"  . " <br />\r\n";	
+			}else {
+				echo "<h4>Security Alert. The digital signature is not valid.</h4>"  . " <br />\r\n";
+			}		
 		?>
-	</form>
-	
-	  <script type="text/javascript" language="javascript">
-        function moveWindow() {
-           document.pay_form.submit();
-        }
-    </script>
+	</table>
 
 </body>
 

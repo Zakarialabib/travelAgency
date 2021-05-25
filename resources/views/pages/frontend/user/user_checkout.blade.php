@@ -8,6 +8,14 @@
 
 @php
     $checkout_title_bg = "style='background-image:url(/assets/images/img-bg-blog.png)'";
+		$orgClientId  = '600002306';
+    $orgOkUrl =  route('cmi_ok_fail');
+    $orgFailUrl = route('cmi_ok_fail');
+    $shopurl = route('home');
+    $orgTransactionType = "PreAuth";
+    $orgRnd =  microtime();
+    $orgCallbackUrl = route('cmi_callback');
+    $orgCurrency = "504";
 @endphp
 @section('content')
 <main id="main" class="site-main">
@@ -21,10 +29,26 @@
     </div>
   </div><!-- .page-title -->
   <div class="container-fluid my-5">
-    <form action="{{route('checkout_store')}}" method="POST">
+    <form action="{{route('checkout_store')}}" method="POST" style="margin: 3rem 2rem;">
       @csrf
+      <input type="hidden" name="booking_id" value="{{$booking->id}}">
+      <input type="hidden" name="BillToCountry" value="504">
+      <input type="hidden" name="clientid" value="<?php echo $orgClientId ?>"> 
+      <input type="hidden" name="okUrl" value="<?php echo $orgOkUrl ?>">
+      <input type="hidden" name="failUrl" value="<?php echo $orgFailUrl ?>">
+      <input type="hidden" name="TranType" value="<?php echo $orgTransactionType ?>">
+      <input type="hidden" name="callbackUrl" value="<?php echo $orgCallbackUrl ?>">
+      <input type="hidden" name="shopurl" value="<?php echo $shopurl ?>">
+      <input type="hidden" name="currency" value="<?php echo $orgCurrency ?>">
+      <input type="hidden" name="rnd" value="<?php echo $orgRnd ?>">
+      <input type="hidden" name="storetype" value="3D_PAY_HOSTING">
+      <input type="hidden" name="hashAlgorithm" value="ver3">
+      <input type="hidden" name="lang" value="fr">
+      <input type="hidden" name="refreshtime" value="5">
+      <input type="hidden" name="encoding" value="UTF-8">
+			<input type="hidden" name="oid" value="{{$booking->reference}}"> <!-- La valeur du paramètre oid doit être unique par transaction -->
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 mx-auto">
           <table class="table">
             <thead>
               <th>{{ __('Name') }}</th>
@@ -47,13 +71,14 @@
                 <td><strong>TOTAL</strong></td>
                 <td></td>
                 <td></td>
-                <td><strong>{{ $total }}</strong></td>
+                <td><strong>{{ number_format($total, 2, '.', '') }}</strong></td>
+                <input type="hidden" name="amount" value="{{ number_format($total, 2, '.', '') }}">
               </tr>
             </tbody>
           </table>
-
         </div>
         <div class="col-md-6">
+          @if (! Auth::user())   
           <div class="row">
             <div class="form-group col-md-6">
               <label for="first_name">{{ __('First name') }}</label>
@@ -64,6 +89,47 @@
               <input type="text" class="form-control" name="last_name" placeholder="Last name">
             </div>
           </div>
+          @endif
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="BillToName">{{ __('Bill To Name') }}</label>
+              <input type="text" class="form-control" name="BillToName" placeholder="Bill To Name" value="{{$booking->name}}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="BillToCompany">{{ __('Bill To Company') }}</label>
+              <input type="text" class="form-control" name="BillToCompany" placeholder="Bill To Company">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="BillToStreet1">{{ __('Bill To Address') }}</label>
+              <input type="text" class="form-control" name="BillToStreet1" placeholder="Bill To Address">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="BillToCity">{{ __('Bill To City') }}</label>
+              <select type="text" class="form-control" name="BillToCity">
+                <option selected>Casablanca</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="BillToStateProv">{{ __('Bill To State') }}</label>
+              <input type="text" class="form-control" name="BillToStateProv" placeholder="Bill To State">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="tel">Phone</label>
+              <input type="tel" name="tel" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" value="{{$booking->phone_number}}" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="BillToPostalCode">Zip</label>
+              <input type="text" class="form-control" name="BillToPostalCode">
+            </div>
+          </div>
+          @if (! Auth::user())    
           <div class="row">
             <div class="form-group col-md-6">
               <label for="email">Email</label>
@@ -74,35 +140,7 @@
               <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
           </div>
-          <div class="row">
-            <div class="form-group col-md-12">
-              <label for="address">Address</label>
-              <input type="text" class="form-control" name="address1" placeholder="1234 Main St">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-8">
-              <label for="phone">Phone</label>
-              <input type="tel" name="phone" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" required>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="zip">Zip</label>
-              <input type="text" class="form-control" name="zip">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="city">City</label>
-              <input type="text" class="form-control" name="city">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="state">State</label>
-              <select name="state" class="form-control">
-                <option selected>Casablanca</option>
-                <option>...</option>
-              </select>
-            </div>
-          </div>
+          @endif
           <div class="row">
             <div class="form-group col-md-12">
               <div class="form-check">
