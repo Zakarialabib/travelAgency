@@ -347,11 +347,15 @@ class SaleController extends Controller
 
     public function deleteSaleFile(Request $request)
     {
+
+        
         $sale_id = $request->sale;
         
         $sale = Sale::find($sale_id);
 
         $status =  Storage::disk('public_upload')->delete('sales/documents/'.$sale->document);
+
+
 
         if($status)
             $sale->update(['document' => null]);

@@ -126,7 +126,7 @@ function removeTableRow(element) {
 }
 
 function handleDocumentDelete() {
-    var id = $('#update-form').data('sale');
+    var id = $('#form').data('sale');
 
     swal({
         title: "Are you sure?",
@@ -137,9 +137,9 @@ function handleDocumentDelete() {
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: `/ventes/ajax-delete-file`,
+                url: `/backoffice/ventes/ajax-delete-file`,
                 data: {
-                    'return': id
+                    'sale': id
                 },
                 beforeSend: function () {
                 },

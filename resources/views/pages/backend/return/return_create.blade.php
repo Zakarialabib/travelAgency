@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-md-12">
-                                      <table class="table table-bordered table-hover" id="tab_logic">
+                                      <table class="table table-bordered table-hover" id="return_details">
                                         <thead>
                                           <tr>
                                             <th class="text-center"> # </th>
@@ -43,25 +43,27 @@
                                             <th class="text-center"> {{__('Qty')}} </th>
                                             <th class="text-center"> {{__('Prix')}} </th>
                                             <th class="text-center"> {{__('Total')}} </th>
+                                            <th>  </th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr id='addr0'>
+                                          <tr>
                                             <td>1</td>
                                             <td><input type="text" name='name[]'  placeholder="{{__('Enter Product Name')}}" class="form-control"/></td>
                                             <td><input type="number" name='qty[]' placeholder="{{__('Enter Qty')}}" class="form-control qty" step="0" min="0"/></td>
-                                            <td><input type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control prix"  step="0.00" min="0"/></td>
+                                            <td><input type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control price"  step="0.00" min="0"/></td>
                                             <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly/></td>
+                                            <td>
+                                                <a class="delete-row">X</a>
+                                            </td>
                                           </tr>
-                                          <tr id='addr1'></tr>
                                         </tbody>
                                       </table>
                                     </div>
                                   </div>
                                   <div class="row clearfix">
                                     <div class="col-md-12">
-                                      <a id="add_row" class="btn btn-primary text-white pull-left">{{__('Add Row')}}</a>
-                                      <a id='delete_row' class="pull-right text-white btn btn-primary">{{__('Delete Row')}}</a>
+                                    <a id="add_return_details" class="btn btn-primary text-white pull-left">{{__('Add')}}</a>
                                     </div>
                                   </div>
                                   <div class="row clearfix" style="margin-top:20px">
@@ -190,5 +192,5 @@
 
 
 @push('scripts')
-<script src="{{asset('admin/js/page_return_create.js')}}"></script>
+<script src="{{asset('admin/js/page_return.js')}}"></script>
 @endpush
