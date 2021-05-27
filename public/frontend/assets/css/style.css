@@ -9623,6 +9623,14 @@ color: gray;
    .breadcrumbs-custom-subtitle + .breadcrumbs-custom-title {
 	margin-top: 15px;
    }
+   @media (min-width: 375px) {
+    .breadcrumbs-custom-inner {
+        padding: 30px 0 15px;
+    }
+    .breadcrumbs-custom-title{
+        font-size: 1.5em;
+    }
+    }
    @media (min-width: 576px) {
 	.breadcrumbs-custom-path {
 	 margin-left: -30px;
@@ -9635,6 +9643,12 @@ color: gray;
 	* + .breadcrumbs-custom-path {
 	 margin-top: 30px;
 	}
+    .breadcrumbs-custom-inner {
+        padding: 40px 0 20px;
+    }
+    .breadcrumbs-custom-title{
+        font-size: 1.5em;
+    }
    }
    @media (min-width: 768px) {
 	.breadcrumbs-custom {
