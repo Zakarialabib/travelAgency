@@ -1,52 +1,135 @@
 @extends('layouts.app')
-
-@section('page-title') Details @endsection
-
 @section('content')
 
 <section class="breadcrumbs-custom bg-image context-dark">
-                <div class="breadcrumbs-custom-inner">
-                    <div class="container breadcrumbs-custom-container">
-                        <div class="breadcrumbs-custom-main" >
-                            <h1 class="breadcrumbs-custom-title"> {{ $offer->name }}</h1>
-                        </div>
-                        <ul class="breadcrumbs-custom-path">
-                            <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
-                            <li><a href="">{{__('Offers')}}</a></li>
-                            <li><a href="">{{ $offer->name }}</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section> 
+    <div class="breadcrumbs-custom-inner">
+        <div class="container breadcrumbs-custom-container">
+            <div class="breadcrumbs-custom-main" >
+                <h1 class="breadcrumbs-custom-title"> {{ $offer->name }}</h1>
+            </div>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                <li><a href="">{{__('Offers')}}</a></li>
+                <li><a href="">{{ $offer->name }}</a></li>
+            </ul>
+        </div>
+    </div>
+</section>  
 
-
-    <div class="row package-detail">
-        <div class="container clear-padding">
+    <div class="row package-detail place-04">
+        <div class="container-fluid clear-padding">
             <div class="main-content col-md-8">
-
-                <!-- START: HOLIDAY GALLERY -->
-                <div id="gallery" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      @foreach ($offer->gallery as $key => $gallery)
-                      <li data-target="#gallery" data-slide-to="{{$key}}" {{($loop->first) ? 'class="active"' : ''}}></li>
-                      @endforeach
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                      @foreach ($offer->gallery as $key => $gallery)
-                      <div class="item {{($loop->first) ? 'active' : ''}}">
-                        <img src="{{asset('uploads/' . $gallery)}}" alt="">
-                      </div>
-                      @endforeach
-                    </div>
-                    <a class="left carousel-control" href="#gallery" role="button" data-slide="prev">
-                        <span class="fa fa-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#gallery" role="button" data-slide="next">
-                        <span class="fa fa-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+     <!-- START: HOLIDAY GALLERY -->
+        <div class="slick-sliders">
+            <div class="slick-slider photoswipe" data-item="1" data-arrows="true" data-itemscroll="1" data-dots="true" data-infinite="true" data-centermode="true" data-centerPadding="0">
+              @if(isset($offer->gallery))
+              @foreach($offer->gallery as $gallery)
+              <div class="place-slider__item photoswipe-item">
+                <a href="{{getImageUrl($gallery)}}" data-height="900" data-width="1200" data-caption="{{$gallery}}">
+                  <img src="{{getImageUrl($gallery)}}" alt="{{$gallery}}">
+                </a>
+              </div>
+              @endforeach
+              @else
+              <div class="place-slider__item">
+                <a href="#">
+                  <img src="https://via.placeholder.com/1280x500?text=Rentacstours" alt="slider no image">
+                </a>
+              </div>
+              @endif
+            </div>
+            <div class="place-share">
+              <a title="Share" href="#" class="share">
+                <i class="la la-share-square la-24">
+                </i>
+              </a>
+              <div class="social-share">
+                <div class="list-social-icon">
+                  <a class="facebook" href="#" onclick="window.open('https://www.facebook.com/sharer.php?u=' + window.location.href,'popUpWindow','height=550,width=600,left=200,top=100,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes');">
+                    <i class="la la-facebook">
+                    </i>
+                  </a>
+                  <a class="twitter" href="#" onclick="window.open('https://twitter.com/share?url=' + window.location.href,'popUpWindow','height=500,width=550,left=200,top=100,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes');">
+                    <i class="la la-twitter">
+                    </i>
+                  </a>
+                  <a class="linkedin" href="#" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href,'popUpWindow','height=550,width=600,left=200,top=100,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes');">
+                    <i class="la la-linkedin">
+                    </i>
+                  </a>
+                  <a class="pinterest" href="#" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + window.location.href,'popUpWindow','height=500,width=550,left=200,top=100,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes');">
+                    <i class="la la-pinterest">
+                    </i>
+                  </a>
                 </div>
+              </div>
+            </div>
+            <!-- .place-share -->
+            <div class="place-gallery">
+              <a class="show-gallery" title="Gallery" href="#">
+                <i class="la la-images la-24">
+                </i>
+                {{__('Gallery')}}
+              </a>
+            </div>
+            <!-- .place-item__photo -->
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+              <!-- Background of PhotoSwipe.It's a separate element as animating opacity is faster than rgba(). -->
+              <div class="pswp__bg">
+              </div>
+              <!-- Slides wrapper with overflow:hidden. -->
+              <div class="pswp__scroll-wrap">
+                <!-- Container that holds slides.PhotoSwipe keeps only 3 of them in the DOM to save memory.Don't modify these 3 pswp__item elements, data is added later on. -->
+                <div class="pswp__container">
+                  <div class="pswp__item">
+                  </div>
+                  <div class="pswp__item">
+                  </div>
+                  <div class="pswp__item">
+                  </div>
+                </div>
+                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                <div class="pswp__ui pswp__ui--hidden">
+                  <div class="pswp__top-bar">
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+                    <div class="pswp__counter">
+                    </div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)">
+                    </button>
+                    <button class="pswp__button pswp__button--share" title="Share">
+                    </button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen">
+                    </button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out">
+                    </button>
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                      <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                          <div class="pswp__preloader__donut">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip">
+                    </div>
+                  </div>
+                  <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                  </button>
+                  <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                  </button>
+                  <div class="pswp__caption">
+                    <div class="pswp__caption__center">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- .pswp -->
+          </div>
+          <!-- .place-slider -->
                 <!-- END: HOLIDAY GALLRY -->
                 <div class="package-complete-detail">
                     <ul class="nav nav-tabs">
@@ -130,7 +213,7 @@
                                 <input type="hidden" name="type" value="{{\App\Booking::TYPE_BOOKING_FORM}}">
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <label>Start</label>
+                                        <label>{{__('Start')}}</label>
                                         <input 
                                         type="date" 
                                         id="check_in" 
@@ -140,7 +223,7 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <label>{{__('Person')}}</label>
-                                        <input class="form-control" id="persons" name="numbber_of_adult" type="number">
+                                        <input class="form-control" id="persons" name="numbber_of_adult" min="1" type="number">
                                     </div>
                                     <div class="tab-content">
                                         @foreach ($offer->packages as $key => $package)

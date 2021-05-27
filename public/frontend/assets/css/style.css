@@ -4549,7 +4549,7 @@ a.place__comments__reply i {
 	background: #ee5000 none repeat scroll 0 0;
 	color: #fff;
 	padding: 15px 0;
-    margin-bottom: 20px;	
+    margin: -12px 0 10px 0;
     font-weight: bold;
 	letter-spacing: 1px;
 	position: relative;

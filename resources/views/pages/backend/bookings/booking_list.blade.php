@@ -50,7 +50,7 @@
                                     <td><a href="{{route('offer.show', $booking->bookable->offer->slug)}}" target="_blank">{{$booking->bookable->offer->name}}</a></td>
                                     @endif
                                     <td>{{$booking->date}}</td>
-                                <td>{{formatDate($booking->created_at, 'H:i d/m/Y')}}</td>
+                                <td>{{formatDate($booking->created_at, 'd/m/Y H:i')}}</td>
                                 <td>
                                     @if($booking->status === \App\Booking::STATUS_PENDING)
                                         <span class="status-pending">{{__('PENDING')}}</span>
