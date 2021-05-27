@@ -22,7 +22,7 @@
                   <table class="table table-striped table-bordered col-4-datatable">
                       <thead>
                         <tr>
-                            <th >#</th>
+                            <th>#</th>
                             <th>{{__('Name')}}</th>
                             <th>{{__('Min Stay')}}</th>
                             <th>{{__('Available On')}}</th>

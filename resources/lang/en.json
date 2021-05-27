@@ -28,7 +28,7 @@
     "Customers": "CUSTOMERS",
     "Add New Customer": "ADD NEW CUSTOMER",
     "Company name": "COMPANY NAME",
-    "Phone": "PHONE",
+    "Phone": "Phone",
     "Created at": "CREATED AT",
     "Edit": "EDIT",
     "Delete": "DELETE",
@@ -578,5 +578,7 @@
     "Other name": "Username",
     "Prix": "Price",
     "Ville": "City",
-    "Nuit": "Night"
+    "Nuit": "Night",
+    "Personne": "Person",
+    "Pays": "Country"
 }
