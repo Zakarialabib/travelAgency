@@ -85,7 +85,7 @@
                         <table class="table table-striped table-responsive table-bordered file-export">
                             <thead>
                             <tr>
-                                <th>{{__('(S/N)')}}</th>
+                                <th>(S/N)</th>
                                 <th>{{__('Reference')}}</th>
                                 <th>{{__('Deal Name')}}</th>
                                 <th>{{__('Adults')}}</th>

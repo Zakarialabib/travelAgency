@@ -116,7 +116,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <strong>{{__('Oh snap!')}}</strong> {{$error}}
+                        <strong>{{__('Oops!')}}</strong> {{$error}}
                     </div>
                 @endforeach
             @endif
