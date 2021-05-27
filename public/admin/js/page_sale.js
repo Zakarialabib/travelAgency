@@ -53,6 +53,11 @@ $(function() {
         }
     });
 
+    $("#delete-file").on('click', function(event) {
+        event.preventDefault();
+        handleDocumentDelete();
+    });
+
     $(document).on("change", ".toggle-class", function () {
         let is_locked = $(this).prop('checked') == true ? 1 : 0 ;
         let sale_id = $(this).data('id');
@@ -107,15 +112,51 @@ function setItemTotal(element, total) {
 }
 
 function duplicateTableRow() {
-  let tr = $(`#sale_details`).find('tr:last').clone();
-  tr.children('td').first('td').text(parseInt(tr.first('td').text()) + 1);
-  tr.find('input[name="name[]"]').val('');
-  tr.find('input[name="qty[]"]').val('');
-  tr.find('input[name="price[]"]').val('');
-  tr.find('input[name="total[]"]').val('');
-  $(`#sale_details`).append(tr);
+    let tr = $(`#sale_details`).find('tr:last').clone();
+    tr.children('td').first('td').text(parseInt(tr.first('td').text()) + 1);
+    tr.find('input[name="name[]"]').val('');
+    tr.find('input[name="qty[]"]').val('');
+    tr.find('input[name="price[]"]').val('');
+    tr.find('input[name="total[]"]').val('');
+    $(`#sale_details`).append(tr);
 }
 
 function removeTableRow(element) {
-  element.closest("tr").remove();
+    element.closest("tr").remove();
+}
+
+function handleDocumentDelete() {
+    var id = $('#update-form').data('sale');
+
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this document",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: `/ventes/ajax-delete-file`,
+                data: {
+                    'return': id
+                },
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if(data.status === true) {
+                        $('#document').data('document', '0');
+                        $('#document-yes').css('display', 'none');
+                        $('#document-no').css('display', 'block');
+                        swal("Document has been deleted!", {
+                            icon: "success",
+                        });
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+    });
 }
