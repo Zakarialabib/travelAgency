@@ -54,9 +54,7 @@ class BookingController extends Controller
         if($place) {
 
             // generate refenrce number
-            $reference = Booking::latest()->first() ? 
-                $place->reference . Booking::latest()->first()->id . Carbon::now()->format('dmy') : 
-                $place->reference . '1' . Carbon::now()->format('dmy');
+            $reference = Carbon::now()->format('ymd') . mt_rand(1000000, 9999999);
 
             $booking = new Booking();
             $booking->fill([

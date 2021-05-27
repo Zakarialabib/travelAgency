@@ -51,7 +51,7 @@
                                     </div>
                                                 <div class="row clearfix">
                                                   <div class="col-md-12">
-                                                    <table class="table table-bordered table-hover" id="sale_details" data-items-number="{{$sale->details->count()}}">
+                                                    <table class="table table-bordered table-hover" id="sale_details">
                                                       <thead>
                                                         <tr>
                                                           <th class="text-center"> # </th>
@@ -63,22 +63,12 @@
                                                         </tr>
                                                       </thead>
                                                       <tbody>
-                                                        @php
-                                                            $counter = 0;
-                                                        @endphp
-                                                        @foreach ($sale->details as $key => $detail)
-                                                        @php
-                                                            $counter = $key;
-                                                        @endphp                                                      
+                                                        @foreach ($sale->details as $key => $detail)                                                 
                                                         <tr>
-                                                          <td> </td>
+                                                            <input type="hidden" name="detail_id" value="{{$detail->id}}">
+                                                          <td>{{$key + 1}}</td>
                                                           <td>
-                                                            <input id="name-{{$counter}}" value="{{$detail->name}}" type="text" name='name[]'  placeholder="{{__('Enter Product Name')}}" class="form-control" autocomplete="off" />
-                                                            <div class="search-suggestions place-suggestion" id="place-suggestion-{{$counter}}" style="display: none;">
-                                                              <ul class="list-group">
-                                                                  <li class="list-group-item">{{__('Loading...')}}</li>
-                                                              </ul>
-                                                            </div>
+                                                            <input type="text" name='name[]' value="{{$detail->name}}" placeholder="{{__('Enter Product Name')}}" class="form-control" autocomplete="off" />
                                                           </td>
                                                           <td><input value="{{$detail->qty}}" type="number" name='qty[]' placeholder="{{__('Enter Qty')}}" class="form-control qty" step="0" min="0"/></td>
                                                           <td><input value="{{$detail->price}}" type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control price"  step="0.00" min="0"/></td>
@@ -242,5 +232,5 @@
 
 
 @push('scripts')
-<script src="{{asset('admin/js/page_sale_edit.js')}}"></script>
+<script src="{{asset('admin/js/page_sale.js')}}"></script>
 @endpush
