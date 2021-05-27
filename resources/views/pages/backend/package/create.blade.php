@@ -167,8 +167,8 @@ $(document).ready(function(){
     duplicateTableRow('rates');
   });
 
-  $(document).on('click', '.delete-row', function(event){
-    removeTableRow(event.target);
+  $(document).on('click', '.delete-row', function(){
+    removeTableRow($(this));
   });
 
 });
@@ -181,7 +181,8 @@ function duplicateTableRow(target) {
 }
 
 function removeTableRow(element) {
-  $(element).closest("tr").remove();;
+  element.closest("tr").remove();;
 }
+
 </script>
 @endpush

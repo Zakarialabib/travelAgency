@@ -9,7 +9,7 @@ use App\Sale;
 use App\SaleDetails;
 use App\User;
 use App\Supplier;
-use App\Customer;
+use Carbon\Carbon;
 use App\Booking;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
@@ -38,18 +38,42 @@ class SaleController extends Controller
     public function createView(Request $request)
     {
         $booking = null;
-        if ($request->isMethod('post')) {
+        $booking_items = [];
+        if ($request->has('id')) {
             $booking = Booking::where('id', $request->input('id'))->with(['user', 'place'])->first();
-            //dd($booking);
+
+            // check if a sale is already created for this booking
+            if(Sale::where('booking_reference', $booking->reference)->count() > 0)
+                return $this->edit(Sale::where('booking_reference', $booking->reference)->first()->id);
+
+            if($booking->place_id){
+                array_push($booking_items, new BookingItem(
+                    $booking->place->id,
+                    $booking->place->name,
+                    $booking->numbber_of_adult,
+                    $booking->place->price
+                ));
+            } else if(get_class($booking->bookable) === 'App\Package') {
+                foreach ($booking->rates as $key => $rate) {
+                    array_push($booking_items, new BookingItem(
+                        $rate->id,
+                        $rate->title,
+                        $rate->pivot->quantity,
+                        $rate->price
+                    ));
+                }
+            } else if(get_class($booking->bookable) === 'App\Offer') {
+                array_push($booking_items, new BookingItem(
+                    $booking->bookable->id,
+                    $booking->bookable->name,
+                    1,
+                    $booking->bookable->price
+                ));
+            }
         }
 
 
-        $lastSale = Sale::latest()->first();
-        if($lastSale) {
-            $reference = $lastSale->reference_no++;
-        } else {
-            $reference = '000000001';
-        }
+        $reference = Carbon::now()->format('ymd') . mt_rand(1000000, 9999999);
 
         $users = User::all();
         $customers = User::customers()->get();
@@ -61,6 +85,7 @@ class SaleController extends Controller
             'users' => $users,
             'customers' => $customers,
             'booking' => $booking,
+            'booking_items' => $booking_items,
         ]);
     }
 
@@ -191,8 +216,8 @@ class SaleController extends Controller
 
         try {
             Mail::send('emails.SaleDetails', ['data' => $emailData], function ($message) use ($customer) {
-                $message->to('4795e93229-fb5ac0@inbox.mailtrap.io')->subject(__('Sale Status'));
-                //$message->to($customer->email)->subject(__('Sale Status'));
+                //$message->to('4795e93229-fb5ac0@inbox.mailtrap.io')->subject(__('Sale Status'));
+                $message->to($customer->email)->subject(__('Sale Status'));
             });
         } catch (\Exception $e) {
             //throw $th;
@@ -223,7 +248,8 @@ class SaleController extends Controller
                 "reference_no" => "",
                 "booking_reference" => "",
                 "user_id" => "",
-                "customer_id" =>"",
+                "customer_id" => "",
+                "detail_id" => "",
                 "name" => "",
                 "qty" => "",
                 "price" => "",
@@ -352,6 +378,21 @@ class SaleController extends Controller
 
 }
 
+class BookingItem {
+    var $id;
+    var $name;
+    var $qty;
+    var $price;
+
+    public function __construct($id, $name, $qty, $price)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->qty = $qty;
+        $this->price = $price;
+    }
+
+}
 
 class SaleEmailData {
     var $reference_no;

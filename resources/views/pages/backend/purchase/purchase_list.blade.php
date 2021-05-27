@@ -182,7 +182,7 @@
 
 @push('scripts')
     <script src="{{asset('admin/js/page_user.js')}}"></script>
-    <script src="{{asset('admin/js/page_sale.js')}}"></script>
+    <script src="{{asset('admin/js/page_purchase.js')}}"></script>
 @endpush
 
 @section('css')

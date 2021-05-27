@@ -192,9 +192,9 @@
 @endpush
 
 @section('css')
-    <style>
-        .modal-backdrop {
-            display: none;
-        }
-    </style>
+<style>
+    .modal-backdrop {
+        display: none;
+    }
+</style>
 @endsection
