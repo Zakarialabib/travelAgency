@@ -44,7 +44,8 @@ class AppServiceProvider extends ServiceProvider
         ->add(Link::to('/ville-a-visiter', __('Cities to visit')))
         ->add(Link::to('/blog/tout', __('Blog')))
         ->add(Link::to('/a-propos-21', __('About Us')))
-        ->add(Link::to('/termes-et-conditions', __('Terms and Conditions')));
+        ->add(Link::to('/termes-et-conditions', __('Termes et Conditions')))
+        ->add(Link::to('/cgv', __('Terms and Conditions')));
 
 
         $sidebar = Menu::new()
@@ -58,7 +59,8 @@ class AppServiceProvider extends ServiceProvider
         ->add(Link::to('/meilleures-offres', __('BEST OFFERS')))
         ->add(Link::to('/ville-a-visiter', __('Cities to visit')))
         ->add(Link::to('/a-propos-21', __('About Us')))
-        ->add(Link::to('/termes-et-conditions', __('Terms and Conditions')));
+        ->add(Link::to('/termes-et-conditions', __('Termes et Conditions')))
+        ->add(Link::to('/cgv', __('Terms and Conditions')));
 
         if (Schema::hasTable('languages')) {
             $languages = Language::query()

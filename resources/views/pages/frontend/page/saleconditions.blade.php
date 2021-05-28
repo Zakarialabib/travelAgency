@@ -23,7 +23,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
  <section id="faq" class="faq">
     <div class="container">
     <div class="row justify-content-center">
-      <div>
+      <div class="col-md-4 col-lg-4">
       <ol>
             <li>
             Préambule
@@ -60,7 +60,6 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
             </li>
             <li>
             Droit de rétractation
-
             </li>
             <li>
             Garantie 
@@ -78,12 +77,12 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
 
             </p>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-8 col-md-8">
             <div class="panel-group accordion" id="accordion-1">
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id1" aria-controls="id1" class="panel-title">
-                        Préambule
+                       1.Préambule
                         </h4>
                     </div>
                     <div id="id1" class="panel-collapse collapse show" aria-labelledby="id1" data-parent="#accordion-1">
@@ -96,7 +95,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id2" aria-controls="id2" class="panel-title">
-                        Objet
+                       2.Objet
                         </h4>
                     </div>
                     <div id="id2" class="panel-collapse collapse show" aria-labelledby="id2" data-parent="#accordion-1">
@@ -109,7 +108,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id3" aria-controls="id3" class="panel-title">
-                        Définitions
+                        3.Définitions
                         </h4>
                     </div>
                     <div id="id3" class="panel-collapse collapse show" aria-labelledby="id3" data-parent="#accordion-1">
@@ -122,7 +121,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id4" aria-controls="id4" class="panel-title">
-                        Produit
+                        4.Produit
                         </h4>
                     </div>
                     <div id="id4" class="panel-collapse collapse show" aria-labelledby="id4" data-parent="#accordion-1">
@@ -135,7 +134,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id5" aria-controls="id5" class="panel-title">
-                        Passer une commande
+                        5.Passer une commande
                         </h4>
                     </div>
                     <div id="id5" class="panel-collapse collapse show" aria-labelledby="id5" data-parent="#accordion-1">
@@ -148,7 +147,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id6" aria-controls="id6" class="panel-title">
-                        Prix
+                        6.Prix
                         </h4>
                     </div>
                     <div id="id6" class="panel-collapse collapse show" aria-labelledby="id6" data-parent="#accordion-1">
@@ -161,7 +160,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id7" aria-controls="id7" class="panel-title">
-                        Exécution de la commande
+                        7.Exécution de la commande
                         </h4>
                     </div>
                     <div id="id7" class="panel-collapse collapse show" aria-labelledby="id7" data-parent="#accordion-1">
@@ -174,7 +173,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id8" aria-controls="id8" class="panel-title">
-                        Livraison
+                        8.Livraison
                         </h4>
                     </div>
                     <div id="id8" class="panel-collapse collapse show" aria-labelledby="id8" data-parent="#accordion-1">
@@ -187,7 +186,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id9" aria-controls="id9" class="panel-title">
-                        Mode de paiement 
+                        9.Mode de paiement 
                         </h4>
                     </div>
                     <div id="id9" class="panel-collapse collapse show" aria-labelledby="id9" data-parent="#accordion-1">
@@ -200,7 +199,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id10" aria-controls="id10" class="panel-title">
-                        Confidentialité des données   
+                        10.Confidentialité des données   
                         </h4>
                     </div>
                     <div id="id10" class="panel-collapse collapse show" aria-labelledby="id10" data-parent="#accordion-1">
@@ -213,7 +212,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id11" aria-controls="id11" class="panel-title">
-                        Annuler une commande payée par carte bancaire  
+                       11.Annuler une commande payée par carte bancaire  
                         </h4>
                     </div>
                     <div id="id11" class="panel-collapse collapse show" aria-labelledby="id11" data-parent="#accordion-1">
@@ -226,7 +225,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id12" aria-controls="id12" class="panel-title">
-                        Droit de rétractation
+                        12.Droit de rétractation
                         </h4>
                     </div>
                     <div id="id12" class="panel-collapse collapse show" aria-labelledby="id12" data-parent="#accordion-1">
@@ -239,7 +238,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id13" aria-controls="id13" class="panel-title">
-                        Garantie 
+                        13.Garantie 
                         </h4>
                     </div>
                     <div id="id13" class="panel-collapse collapse show" aria-labelledby="id13" data-parent="#accordion-1">
@@ -252,7 +251,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id14" aria-controls="id14" class="panel-title">
-                        Preuve des transactions payés par carte bancaire
+                        14.Preuve des transactions payés par carte bancaire
                         </h4>
                     </div>
                     <div id="id14" class="panel-collapse collapse show" aria-labelledby="id14" data-parent="#accordion-1">
@@ -265,7 +264,7 @@ $about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 data-toggle="collapse" aria-expanded="true" data-target="#id15" aria-controls="id15" class="panel-title">
-                        Force majeure       
+                        15.Force majeure       
                         </h4>
                     </div>
                     <div id="id15" class="panel-collapse collapse show" aria-labelledby="id15" data-parent="#accordion-1">

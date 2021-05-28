@@ -87,7 +87,7 @@
                 <label class="form-check-label" for="condition_check">
                 {{__('I Agree')}}
                 </label>
-                <p class="font-small-3">{{__('By clicking Register, you agree to the')}} <a href="{{route('page_terms_conditions')}}" >{{__('Terms and Conditions')}}</a></p>
+                <p class="font-small-3">{{__('By clicking Register, you agree to the')}} <a href="{{route('page_sale_conditions')}}" >{{__('Terms and Conditions')}}</a></p>
               </div>
             </div>
           </div>
