@@ -29,7 +29,7 @@
           @endforeach
            </div>
         </div>
-        <div class="mw-box">
+        <div class="mw-box container">
             <div class="city-content__panel" id="inspire">
             @if(count($offers))
                 @foreach($offers as $key => $city)

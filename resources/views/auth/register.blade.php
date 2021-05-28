@@ -37,7 +37,7 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-4 col-md-4">
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="text" name="sur_name" id="sur_name" class="form-control" required placeholder="{{__('Sur Name')}}" tabindex="1">
+                                            <input type="text" name="sur_name" id="sur_name" class="form-control" required placeholder="{{__('Last Name')}}" tabindex="1">
                                             <div class="form-control-position">
                                                 <i class="fas fa-user"></i>
                                             </div>
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-12 col-sm-4 col-md-4">
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="text" name="first_name" id="first_name" class="form-control" required placeholder="{{__('Name')}}" tabindex="1">
+                                            <input type="text" name="first_name" id="first_name" class="form-control" required placeholder="{{__('First Name')}}" tabindex="1">
                                             <div class="form-control-position">
                                                 <i class="fas fa-user"></i>
                                             </div>

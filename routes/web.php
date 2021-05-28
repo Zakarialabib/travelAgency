@@ -83,6 +83,7 @@ Route::group([
         Route::get('/hotel-room-booking/{id}','ViewController@hotelRoomBooking')->middleware('hotel.search.param');
         Route::get('/recherche', 'ViewController@search')->name('search');
         Route::get('/termes-et-conditions', 'ViewController@termsConditions')->name('page_terms_conditions');
+        Route::get('/cgv', 'ViewController@saleConditions')->name('page_sale_conditions');
         Route::get('/blog/tout', 'PostController@list')->name('post_list_all');
         Route::post('/post', 'PostController@send')->name('send');
         Route::get('/blog/{cat_slug}', 'PostController@list')->where('cat_slug', '[a-zA-Z0-9-_]+')->name('post_list');

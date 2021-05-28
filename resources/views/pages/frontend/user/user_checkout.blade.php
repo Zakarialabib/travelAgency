@@ -7,7 +7,6 @@
 @endsection
 
 @php
-    $checkout_title_bg = "style='background-image:url(/assets/images/img-bg-blog.png)'";
 		$orgClientId  = '600002306';
     $orgOkUrl =  route('cmi_ok_fail');
     $orgFailUrl = route('cmi_ok_fail');
@@ -19,7 +18,7 @@
 @endphp
 @section('content')
 <main id="main" class="site-main">
-  <div class="page-title page-title--small page-title--blog align-left" {!! $checkout_title_bg !!}>
+  <div class="page-title page-title--small page-title--blog align-left">
     <div class="container">
         <div class="page-title__content">
             <h1 class="page-title__name">
@@ -28,7 +27,7 @@
         </div>
     </div>
   </div><!-- .page-title -->
-  <div class="container-fluid my-5">
+  <div class="mw-box">
     <form action="{{route('checkout_store')}}" method="POST" style="margin: 3rem 2rem;">
       @csrf
       <input type="hidden" name="booking_id" value="{{$booking->id}}">
@@ -48,7 +47,8 @@
       <input type="hidden" name="encoding" value="UTF-8">
 			<input type="hidden" name="oid" value="{{$booking->reference}}"> <!-- La valeur du paramètre oid doit être unique par transaction -->
       <div class="row">
-        <div class="col-md-6 mx-auto">
+        <div class="col-sm-6 col-md-6 col-lg-6 mx-auto">
+        <h3>{{__('Your Order Summary')}}</h3>
           <table class="table">
             <thead>
               <th>{{ __('Name') }}</th>
@@ -61,14 +61,14 @@
             @foreach($booking->rates as $key => $rate)
               <tr>
                   <td>{{ $rate->title }}</td>
-                  <td>{{ $rate->price }}</td>
+                  <td>{{ number_format($rate->price, 2, '.', '') }}</td>
                   <td>x {{$rate->pivot->quantity }}</td>
-                  <td>{{ $rate->price * $rate->pivot->quantity }}</td>
+                  <td>{{ number_format($rate->price * $rate->pivot->quantity, 2, '.', '') }}</td>
                   @php $total += $rate->price * $rate->pivot->quantity; @endphp
               </tr>
             @endforeach
               <tr>
-                <td><strong>TOTAL</strong></td>
+                <td><strong>{{ __('TOTAL') }}</strong></td>
                 <td></td>
                 <td></td>
                 <td><strong>{{ number_format($total, 2, '.', '') }}</strong></td>
@@ -76,52 +76,58 @@
               </tr>
             </tbody>
           </table>
+          <div class="row">     
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary btn-block">{{ __('Payment') }} <i class="fa fa-angle-right"></i></button>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-6 col-md-6 col-lg-6 mx-auto">
+        <h3>{{__('Billing Details')}}</h3>
           <div class="row">
             <div class="form-group col-md-6">
-              <label for="BillToName">{{ __('Bill To Name') }}</label>
-              <input type="text" class="form-control" name="BillToName" placeholder="Bill To Name" value="{{$booking->name}}">
+              <label for="BillToName">{{ __('Full Name') }}</label>
+              <input type="text" class="form-control" name="BillToName" placeholder="{{ __('Full Name') }}" value="{{$booking->name}}">
             </div>
             <div class="form-group col-md-6">
-              <label for="BillToCompany">{{ __('Bill To Company') }}</label>
-              <input type="text" class="form-control" name="BillToCompany" placeholder="Bill To Company">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-12">
-              <label for="BillToStreet1">{{ __('Bill To Address') }}</label>
-              <input type="text" class="form-control" name="BillToStreet1" placeholder="Bill To Address">
+              <label for="BillToCompany">{{ __('Company') }}</label>
+              <input type="text" class="form-control" name="BillToCompany" placeholder="{{ __('Company') }}">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-md-6">
-              <label for="BillToCity">{{ __('Bill To City') }}</label>
-              <select type="text" class="form-control" name="BillToCity">
-                <option selected>Casablanca</option>
-                <option>...</option>
+              <label for="BillToStreet1">{{ __('Address') }}</label>
+              <input type="text" class="form-control" name="BillToStreet1" placeholder="{{ __('Address') }}">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="BillToCountry">{{ __('Country') }}</label>
+              <input type="text" class="form-control" name="BillToCountry" placeholder="{{ __('Country') }}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="BillToCity">{{ __('City') }}</label>
+              <input type="text" class="form-control" name="BillToCity" placeholder="{{ __('City') }}">
               </select>
             </div>
             <div class="form-group col-md-6">
-              <label for="BillToStateProv">{{ __('Bill To State') }}</label>
-              <input type="text" class="form-control" name="BillToStateProv" placeholder="Bill To State">
+              <label for="BillToStateProv">{{ __('State') }}</label>
+              <input type="text" class="form-control" name="BillToStateProv" placeholder="{{ __('State') }}">
             </div>
           </div>
           <div class="row">
             <div class="form-group col-md-6">
-              <label for="tel">Phone</label>
+              <label for="tel">{{ __('Phone') }}</label>
               <input type="tel" name="tel" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" value="{{$booking->phone_number}}" required>
             </div>
-            <div class="form-group col-md-4">
-              <label for="BillToPostalCode">Zip</label>
-              <input type="text" class="form-control" name="BillToPostalCode">
+            <div class="form-group col-md-6">
+              <label for="BillToPostalCode">{{ __('Zip') }}</label>
+              <input type="text" class="form-control" name="BillToPostalCode" placeholder="{{ __('Zip') }}">
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <button type="submit" class="btn btn-primary">Payment <i class="fa fa-angle-right"></i></button>
-      </div>
+     
     </form>
   </div>
 </main>

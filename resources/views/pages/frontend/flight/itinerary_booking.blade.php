@@ -80,7 +80,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="flight-list-footer">
-                                <div class="col-md-6 col-sm-6 col-xs-6 sm-invisible">
+                                <div class="col-sm-6 col-md-6 col-lg-6 sm-invisible">
                                     <span><i class="fa fa-plane"></i> {{$segment['cabin']}}</span>
                                 </div>
                             </div>

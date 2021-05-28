@@ -14,7 +14,7 @@
         </div>
     </div>
 </section> 
-   <main id="main" class="site-main place-04">
+   <main id="main" class="place-04">
     <div class="place">
     <div class="row package-detail">
         <div class="container-fluid clear-padding">
@@ -423,18 +423,18 @@
                     </div>
                     </div>
                   </div>
-                  <div class="row">
-                  <div class="col-lg-6 col-md-6">
-                  <div class="form-group field-date">
-                    <input type="text" name="date" placeholder="{{__('Start Date')}}*" class="pickdate" autocomplete="off">
-                  </div>
-                  </div>
-                  <div class="col-lg-6 col-md-6">
-                  <div class="form-group field-date">
-                    <input type="text" name="end_date" placeholder="{{__('End Date')}}*"   class="pickdate" autocomplete="off">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group field-date">
+                              <input type="text" name="date" placeholder="{{__('Start Date')}}*" id="pickdate" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group field-date">
+                                <input type="text" name="end_date" placeholder="{{__('End Date')}}*"   id="pickdate" autocomplete="off">
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  </div>
                   <input type="hidden" name="type" value="{{\App\Booking::TYPE_BOOKING_FORM}}">
                   <input type="hidden" name="place_id" value="{{$place->id}}">
                  

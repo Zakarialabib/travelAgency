@@ -957,7 +957,7 @@
         $(document).ready(function() {
        
             // Datepicker
-            $('.pickdate').each(function () {
+            $('#pickdate').each(function () {
                 $(this).datepicker({
                     locale: 'fr-fr',
                     format: 'dd-mm-yyyy'

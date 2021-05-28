@@ -310,11 +310,11 @@
                             <p>Paris (2), London (2), Amesterdam (2)</p>
                         </div>
                         <div class="package-summary-footer text-center">
-                            <div class="col-md-6 col-sm-6 col-xs-6 price">
+                            <div class="col-sm-6 col-md-6 col-lg-6 price">
                                 <h5>Starting From</h5>
                                 <h5>$999/Person</h5>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6 book">
+                            <div class="col-sm-6 col-md-6 col-lg-6 book">
                                 <a href="#">BOOK NOW</a>
                             </div>
                         </div>
@@ -341,7 +341,7 @@
                                         <option>15+ Days</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label>Adult</label>
                                     <select class="selectpicker" name="adult">
                                         <option>1</option>
@@ -352,7 +352,7 @@
                                         <option>6</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label>Child</label>
                                     <select class="selectpicker" name="child">
                                         <option>1</option>
@@ -391,10 +391,10 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="grand-total text-center">
-                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
                                         <h4>Total $599</h4>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
                                         <button type="submit">BOOK</button>
                                     </div>
                                 </div>
@@ -414,7 +414,7 @@
                         <h4><i class="fa fa-comments"></i> Package Reviews</h4>
                         <div class="sidebar-item-body text-center">
                             <div class="rating-box">
-                                <div class="col-md-6 col-sm-6 col-xs-6 clear-padding tripadvisor">
+                                <div class="col-sm-6 col-md-6 col-lg-6 clear-padding tripadvisor">
                                     <img src="assets/images/tripadvisor.png" alt="cruise"><br>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>

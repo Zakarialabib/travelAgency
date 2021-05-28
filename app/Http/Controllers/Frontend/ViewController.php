@@ -140,7 +140,10 @@ class ViewController extends Controller
         return view('pages.frontend.page.termsconditions', compact('faqs'));
     }
 
-
+    public function saleConditions()
+    {
+        return view('pages.frontend.page.saleconditions');
+    }
 
     public function pageLanding($page_number)
     {

@@ -47,7 +47,11 @@
              
              </p>
               <p class="footer__bottom__copyright">
-                    <a title="CMI"><img class="footer_icns" src="{{asset('images/cmi-4.png')}}" alt="CMI"></a>
+                    <a title="CMI">
+                    <img class="footer_icns" src="{{asset('images/cmi/cmi_logo_1.png')}}" alt="CMI">
+                    <img class="footer_icns" src="{{asset('images/cmi/cmi_logo_2.png')}}" alt="CMI">
+                    <img class="footer_icns" src="{{asset('images/cmi/cmi_logo_3.png')}}" alt="CMI">
+                    </a>
                 </p>
                 <p class="footer__bottom__copyright">{{now()->year}} &copy; {{setting('app_name')}}. {{__('All rights reserved.')}}</p>
                 </div><!-- .top-footer -->

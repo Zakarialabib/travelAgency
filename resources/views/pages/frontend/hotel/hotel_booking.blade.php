@@ -51,11 +51,11 @@
                                         <i class="fa fa-star-o"></i>
                                     @endfor
                                 </h4>
-                                <div class="col-md-6 col-sm-6 col-xs-6 clear-padding">
+                                <div class="col-sm-6 col-md-6 col-lg-6 clear-padding">
                                     <p>Check In</p>
                                     <p><i class="fa fa-calendar"></i> {{date('D, d M',strtotime($searchParam['check_in_date']))}}</p>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6 clear-padding">
+                                <div class="col-sm-6 col-md-6 col-lg-6 clear-padding">
                                     <p>Check Out</p>
                                     <p><i class="fa fa-calendar"></i> {{date('D, d M',strtotime($searchParam['check_out_date']))}}</p>
                                 </div>
