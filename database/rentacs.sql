@@ -11,37 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Listage de la structure de la table rentacs. admin_menus
-CREATE TABLE IF NOT EXISTS `admin_menus` (
-  `id` bigint(20) unsigned NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Listage des données de la table rentacs.admin_menus : ~0 rows (environ)
-/*!40000 ALTER TABLE `admin_menus` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admin_menus` ENABLE KEYS */;
-
--- Listage de la structure de la table rentacs. admin_menu_items
-CREATE TABLE IF NOT EXISTS `admin_menu_items` (
-  `id` bigint(20) unsigned NOT NULL,
-  `label` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  `class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `menu` bigint(20) unsigned NOT NULL,
-  `depth` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `role_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Listage des données de la table rentacs.admin_menu_items : ~0 rows (environ)
-/*!40000 ALTER TABLE `admin_menu_items` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admin_menu_items` ENABLE KEYS */;
-
 -- Listage de la structure de la table rentacs. agency_profiles
 CREATE TABLE IF NOT EXISTS `agency_profiles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -60,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `agency_profiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.agency_profiles : ~0 rows (environ)
+DELETE FROM `agency_profiles`;
 /*!40000 ALTER TABLE `agency_profiles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `agency_profiles` ENABLE KEYS */;
 
@@ -74,7 +44,8 @@ CREATE TABLE IF NOT EXISTS `airlines` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6392 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.airlines : ~6 484 rows (environ)
+-- Listage des données de la table rentacs.airlines : ~6 391 rows (environ)
+DELETE FROM `airlines`;
 /*!40000 ALTER TABLE `airlines` DISABLE KEYS */;
 INSERT INTO `airlines` (`id`, `code`, `icao_code`, `name`, `created_at`, `updated_at`) VALUES
 	(1, NULL, 'EVY', '34 Squadron, Royal Australian Air Force', '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
@@ -6480,7 +6451,8 @@ CREATE TABLE IF NOT EXISTS `airports` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10596 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.airports : ~10 642 rows (environ)
+-- Listage des données de la table rentacs.airports : ~10 595 rows (environ)
+DELETE FROM `airports`;
 /*!40000 ALTER TABLE `airports` DISABLE KEYS */;
 INSERT INTO `airports` (`id`, `code`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'CBQ', 'Calabar-Margaret Ekpo Intl, Nigeria', '2017-10-10 06:46:49', '2017-10-10 06:46:49'),
@@ -17092,6 +17064,7 @@ CREATE TABLE IF NOT EXISTS `amenities` (
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table rentacs.amenities : ~5 rows (environ)
+DELETE FROM `amenities`;
 /*!40000 ALTER TABLE `amenities` DISABLE KEYS */;
 INSERT INTO `amenities` (`id`, `name`, `icon`, `created_at`, `updated_at`) VALUES
 	(6, 'Free wifi', '602a4d4ec9bdf_1613385038.png', '2019-11-02 16:02:01', '2021-02-15 10:30:38'),
@@ -17114,6 +17087,7 @@ CREATE TABLE IF NOT EXISTS `amenities_translations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Listage des données de la table rentacs.amenities_translations : ~10 rows (environ)
+DELETE FROM `amenities_translations`;
 /*!40000 ALTER TABLE `amenities_translations` DISABLE KEYS */;
 INSERT INTO `amenities_translations` (`id`, `amenities_id`, `locale`, `name`) VALUES
 	(1, 6, 'en', 'Free wifi'),
@@ -17142,7 +17116,8 @@ CREATE TABLE IF NOT EXISTS `attractions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.attractions : ~0 rows (environ)
+-- Listage des données de la table rentacs.attractions : ~1 rows (environ)
+DELETE FROM `attractions`;
 /*!40000 ALTER TABLE `attractions` DISABLE KEYS */;
 INSERT INTO `attractions` (`id`, `package_id`, `name`, `city`, `address`, `date`, `information`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'ok', 'ok', 'ok', '11/11/11', 'jhfd', NULL, NULL);
@@ -17158,6 +17133,7 @@ CREATE TABLE IF NOT EXISTS `banks` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.banks : ~5 rows (environ)
+DELETE FROM `banks`;
 /*!40000 ALTER TABLE `banks` DISABLE KEYS */;
 INSERT INTO `banks` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'CIH', '2021-01-28 10:16:30', '2021-01-28 10:16:30'),
@@ -17182,7 +17158,8 @@ CREATE TABLE IF NOT EXISTS `bank_details` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.bank_details : ~2 rows (environ)
+-- Listage des données de la table rentacs.bank_details : ~1 rows (environ)
+DELETE FROM `bank_details`;
 /*!40000 ALTER TABLE `bank_details` DISABLE KEYS */;
 INSERT INTO `bank_details` (`id`, `account_name`, `account_number`, `bank_id`, `bank_branch`, `ifsc_code`, `pan`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 'Rentacs Tours', '300290190', '4', 'Ikeja', '44903', '44904533', 1, '2021-01-28 10:16:30', '2021-01-28 10:16:30');
@@ -17204,6 +17181,7 @@ CREATE TABLE IF NOT EXISTS `bank_payments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.bank_payments : ~0 rows (environ)
+DELETE FROM `bank_payments`;
 /*!40000 ALTER TABLE `bank_payments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bank_payments` ENABLE KEYS */;
 
@@ -17230,27 +17208,15 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   PRIMARY KEY (`id`),
   KEY `user_id_booking_id` (`user_id`),
   CONSTRAINT `user_id_booking_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table rentacs.bookings : ~15 rows (environ)
+-- Listage des données de la table rentacs.bookings : ~3 rows (environ)
+DELETE FROM `bookings`;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
 INSERT INTO `bookings` (`id`, `reference`, `place_id`, `user_id`, `numbber_of_adult`, `numbber_of_children`, `bookable_id`, `date`, `end_date`, `name`, `email`, `phone_number`, `message`, `bookable_type`, `type`, `status`, `created_at`, `updated_at`) VALUES
-	(1, NULL, 33, NULL, 1, 0, NULL, '2021-02-26', NULL, 'zak', 'connect@chrilia.com', '666', NULL, NULL, 1, 1, '2021-02-09 08:39:21', '2021-02-15 10:06:57'),
-	(115, NULL, 35, NULL, 1, 0, NULL, '2021-03-10', NULL, 'ggg ggg', 'gg@g.c', '66666', NULL, NULL, 1, 2, '2021-03-02 12:01:59', '2021-03-02 12:01:59'),
-	(116, NULL, 35, NULL, 1, 0, NULL, '2021-03-10', NULL, 'ggg ggg', 'gg@g.c', '66666', NULL, NULL, 1, 2, '2021-03-02 13:54:25', '2021-03-02 13:54:25'),
-	(119, NULL, 35, NULL, 1, 0, NULL, '2021-03-02', NULL, 'hhhhh', 'gg@g.ch', '66666', NULL, NULL, 1, 2, '2021-03-02 14:35:29', '2021-03-02 14:35:29'),
-	(120, NULL, 35, NULL, 1, 0, NULL, '2021-03-10', NULL, 'hhhhh', 'gg@g.ch', '66666', NULL, NULL, 1, 2, '2021-03-02 16:23:25', '2021-03-02 16:23:25'),
-	(121, NULL, 35, NULL, 1, 0, NULL, '2021-03-18', NULL, 'gfd gfd', 'admin@admin.com', '66666', NULL, NULL, 1, 2, '2021-03-02 16:24:53', '2021-03-02 16:24:53'),
-	(122, NULL, 35, NULL, 1, 0, NULL, '2021-04-30', NULL, 'Zakaria', 'zakarialabib@gmail.com', '06606', NULL, NULL, 1, 2, '2021-04-06 11:52:59', '2021-04-06 11:52:59'),
-	(123, NULL, 35, NULL, 1, 0, NULL, '2021-04-16', NULL, 'Zakaria labib', 'zakarialabib@gmail.com', '06606', NULL, NULL, 1, 2, '2021-04-06 11:54:25', '2021-04-06 11:54:25'),
-	(124, '1', 35, NULL, 1, 0, NULL, '2021-04-22', NULL, 'Zakaria labib', 'zakarialabib@gmail.com', '06606', NULL, NULL, 1, 2, '2021-04-06 14:13:08', '2021-04-06 14:13:08'),
-	(126, '2', 37, 14, 1, 0, NULL, '2021-04-29', NULL, 'okgo oki', 'ok@ok.ok', '66666666', NULL, NULL, 1, 2, '2021-04-08 14:02:50', '2021-04-08 14:02:50'),
-	(127, '3', 37, 1, 1, 0, NULL, '2021-04-21', NULL, 'okgo oki', 'ok@ok.ok', '66666666', NULL, NULL, 1, 2, '2021-04-08 14:16:00', '2021-04-08 14:16:00'),
-	(128, '4', 36, NULL, 1, 0, NULL, '2021-04-16', NULL, 'ok go', 'zlag@g.c', '111', NULL, NULL, 1, 2, '2021-04-08 14:16:59', '2021-04-08 14:16:59'),
-	(129, '1128120421', 36, 1, 1, 0, NULL, '2021-04-30', NULL, 'okok', 'zakarialabib@gmail.com', '0666666', NULL, NULL, 1, 2, '2021-04-12 17:22:24', '2021-04-12 17:22:24'),
-	(130, '129290421', 35, NULL, 1, 1, NULL, '2021-04-01', NULL, 'hdf', 'zakarialabib@gmail.com', '06060606', NULL, NULL, 1, 2, '2021-04-29 14:08:15', '2021-04-29 14:08:15'),
-	(132, '131200521', NULL, 10, 1, 0, 2, '2021-05-20', '2021-05-27', 'zakaria labib', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-20 10:23:41', '2021-05-20 10:23:41'),
-	(133, '132210521', NULL, NULL, 10, 0, 1, '2021-05-21', '2021-05-24', 'zakaria', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-21 11:44:26', '2021-05-21 11:44:26');
+	(1, '1128120421', 36, 1, 1, 0, NULL, '2021-04-30', NULL, 'okok', 'zakarialabib@gmail.com', '0666666', NULL, NULL, 1, 2, '2021-04-12 17:22:24', '2021-04-12 17:22:24'),
+	(2, '131200521', NULL, 10, 1, 0, 2, '2021-05-20', '2021-05-27', 'zakaria labib', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-20 10:23:41', '2021-05-20 10:23:41'),
+	(3, '132210521', NULL, NULL, 10, 0, 1, '2021-05-21', '2021-05-24', 'zakaria', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-21 11:44:26', '2021-05-21 11:44:26');
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. cabin_types
@@ -17264,6 +17230,7 @@ CREATE TABLE IF NOT EXISTS `cabin_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.cabin_types : ~6 rows (environ)
+DELETE FROM `cabin_types`;
 /*!40000 ALTER TABLE `cabin_types` DISABLE KEYS */;
 INSERT INTO `cabin_types` (`id`, `cabin_code`, `cabin_name`, `created_at`, `updated_at`) VALUES
 	(1, 'Y', 'Economy', '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -17283,6 +17250,7 @@ CREATE TABLE IF NOT EXISTS `car_bookings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.car_bookings : ~0 rows (environ)
+DELETE FROM `car_bookings`;
 /*!40000 ALTER TABLE `car_bookings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `car_bookings` ENABLE KEYS */;
 
@@ -17307,6 +17275,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table rentacs.categories : ~7 rows (environ)
+DELETE FROM `categories`;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT INTO `categories` (`id`, `name`, `slug`, `priority`, `is_feature`, `feature_title`, `image`, `icon_map_marker`, `color_code`, `type`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
 	(11, 'See & Do', 'trekking', 100, 1, 'Must See & Do', '5ffd6efb72501_1610444539.jpg', '5ddba7be9c049_1574676414.svg', '#58cc70', 'offer', 1, NULL, NULL, '2019-10-25 11:11:08', '2021-02-10 12:53:04'),
@@ -17330,7 +17299,8 @@ CREATE TABLE IF NOT EXISTS `category_translations` (
   KEY `category_translations_locale_index` (`locale`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Listage des données de la table rentacs.category_translations : ~17 rows (environ)
+-- Listage des données de la table rentacs.category_translations : ~15 rows (environ)
+DELETE FROM `category_translations`;
 /*!40000 ALTER TABLE `category_translations` DISABLE KEYS */;
 INSERT INTO `category_translations` (`id`, `category_id`, `locale`, `name`, `feature_title`) VALUES
 	(20, 23, 'en', 'Tips & Tricks', NULL),
@@ -17368,6 +17338,7 @@ CREATE TABLE IF NOT EXISTS `category_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.category_types : ~6 rows (environ)
+DELETE FROM `category_types`;
 /*!40000 ALTER TABLE `category_types` DISABLE KEYS */;
 INSERT INTO `category_types` (`id`, `category_id`, `name`, `description`, `slug`, `image`, `icon`, `color`, `created_at`, `updated_at`) VALUES
 	(1, 12, NULL, NULL, NULL, NULL, NULL, NULL, '2021-05-18 16:27:25', '2021-05-18 16:27:25'),
@@ -17390,7 +17361,8 @@ CREATE TABLE IF NOT EXISTS `category_type_translations` (
   KEY `category_type_translations_locale_index` (`locale`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.category_type_translations : ~11 rows (environ)
+-- Listage des données de la table rentacs.category_type_translations : ~12 rows (environ)
+DELETE FROM `category_type_translations`;
 /*!40000 ALTER TABLE `category_type_translations` DISABLE KEYS */;
 INSERT INTO `category_type_translations` (`id`, `category_type_id`, `locale`, `name`, `description`) VALUES
 	(7, 1, 'en', 'LOCATION DE MOTOS', NULL),
@@ -17432,6 +17404,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.cities : ~6 rows (environ)
+DELETE FROM `cities`;
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
 INSERT INTO `cities` (`id`, `country_id`, `name`, `slug`, `intro`, `description`, `thumb`, `banner`, `best_time_to_visit`, `currency`, `language`, `lat`, `lng`, `priority`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
 	(23, 13, 'Dakhla', 'dakhla', NULL, NULL, '602e8df9bb970_1613663737.jpg', '602e8df9bbbe0_1613663737.jpg', 'Anytime', 'Dirham DH', 'Arabe français', 27.8521664, -12.1632718, 0, 1, 'Ville de Dakhla', 'Située au sud du Maroc, Dakhla est une petite partie de paradis, perdue entre les eaux de l\'Atlantique et les sables du Sahara. Elle vous offre...', '2019-10-25 12:09:36', '2021-03-04 21:04:48'),
@@ -17457,6 +17430,7 @@ CREATE TABLE IF NOT EXISTS `city_translations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Listage des données de la table rentacs.city_translations : ~12 rows (environ)
+DELETE FROM `city_translations`;
 /*!40000 ALTER TABLE `city_translations` DISABLE KEYS */;
 INSERT INTO `city_translations` (`id`, `city_id`, `locale`, `name`, `intro`, `description`) VALUES
 	(1, 23, 'en', 'Dakhla', NULL, 'Dakhla'),
@@ -17486,6 +17460,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.comments : ~0 rows (environ)
+DELETE FROM `comments`;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
@@ -17507,6 +17482,7 @@ CREATE TABLE IF NOT EXISTS `cooperate_customer_profiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.cooperate_customer_profiles : ~0 rows (environ)
+DELETE FROM `cooperate_customer_profiles`;
 /*!40000 ALTER TABLE `cooperate_customer_profiles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cooperate_customer_profiles` ENABLE KEYS */;
 
@@ -17528,37 +17504,11 @@ CREATE TABLE IF NOT EXISTS `countries` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.countries : ~1 rows (environ)
+DELETE FROM `countries`;
 /*!40000 ALTER TABLE `countries` DISABLE KEYS */;
 INSERT INTO `countries` (`id`, `name`, `slug`, `priority`, `status`, `iata_description`, `description`, `seo_title`, `seo_description`, `seo_cover_image`, `created_at`, `updated_at`) VALUES
 	(13, 'Maroc', 'maroc', 0, 1, 'MAD', 'MAD', NULL, NULL, NULL, '2020-12-19 23:28:47', '2021-02-11 21:25:03');
 /*!40000 ALTER TABLE `countries` ENABLE KEYS */;
-
--- Listage de la structure de la table rentacs. customers
-CREATE TABLE IF NOT EXISTS `customers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned DEFAULT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `company_name` text COLLATE utf8mb4_unicode_ci,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tax_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `postal_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `customer_user_id` (`user_id`),
-  CONSTRAINT `customer_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Listage des données de la table rentacs.customers : ~2 rows (environ)
-/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` (`id`, `user_id`, `name`, `company_name`, `email`, `phone_number`, `tax_no`, `address`, `city`, `postal_code`, `country`, `created_at`, `updated_at`) VALUES
-	(1, NULL, 'Hicham', 'ok', 'zakarialabib@gmail.com', '06 00 0 00 00 0', '55454', 'Rue, avenue, quartier', 'Casablanca', '555', NULL, '2020-12-24 15:04:46', '2021-01-29 12:34:17'),
-	(2, NULL, 'mhmd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-02-01 12:24:52', '2021-02-01 12:24:52');
-/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. email_subscribers
 CREATE TABLE IF NOT EXISTS `email_subscribers` (
@@ -17571,6 +17521,7 @@ CREATE TABLE IF NOT EXISTS `email_subscribers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.email_subscribers : ~0 rows (environ)
+DELETE FROM `email_subscribers`;
 /*!40000 ALTER TABLE `email_subscribers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `email_subscribers` ENABLE KEYS */;
 
@@ -17586,6 +17537,7 @@ CREATE TABLE IF NOT EXISTS `faqs` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.faqs : ~13 rows (environ)
+DELETE FROM `faqs`;
 /*!40000 ALTER TABLE `faqs` DISABLE KEYS */;
 INSERT INTO `faqs` (`id`, `status`, `title`, `content`, `created_at`, `updated_at`) VALUES
 	(2, '1', 'CONDITIONS GÉNÉRALES', '<p><span style="font-weight: 400;">Les pr&eacute;sentes Conditions G&eacute;n&eacute;rales de Vente r&eacute;gissent les ventes de voyages propos&eacute;es, de s&eacute;jours ou de forfaits propos&eacute;es sur le Site RENTACS TOURS, au sens du Code de tourisme Marocain.</span></p>', '2021-04-16 15:17:40', '2021-04-23 14:04:08'),
@@ -17628,6 +17580,7 @@ CREATE TABLE IF NOT EXISTS `flight_bookings` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.flight_bookings : ~2 rows (environ)
+DELETE FROM `flight_bookings`;
 /*!40000 ALTER TABLE `flight_bookings` DISABLE KEYS */;
 INSERT INTO `flight_bookings` (`id`, `user_id`, `reference`, `pnr`, `itinerary_amount`, `markup`, `markdown`, `vat`, `voucher_id`, `voucher_amount`, `total_amount`, `ticket_time_limit`, `payment_status`, `issue_ticket_status`, `void_ticket_status`, `cancel_ticket_status`, `pnr_request_response`, `created_at`, `updated_at`) VALUES
 	(1, 4, 'AIR-KLAHGV', 'TVPR7W', 20525800, 205258, 0, 0, 0, 0, 20731058, '2018-04-24T23:59:00', 0, 0, 0, 0, '{"pnr":"TVPR7W","flights":[{"@attributes":{"Status":"HK","ItinSeqNumber":"2"},"Air":{"@attributes":{"DepartureDateTime":"2018-04-24T22:35:00","ArrivalDateTime":"2018-04-25T04:20:00","StopQuantity":"0","RPH":"1","FlightNumber":"780","ResBookDesigCode":"T","NumberInParty":"1","Status":"HK","E_TicketEligibility":"Eligible","DepartureDay":"Tue","OrginDestType":"First"},"DepartureAirport":"London-Heathrow, United Kingdom","ArrivalAirport":"Cairo-Cairo Intl, Egypt","OperatingAirline":"Egyptair","Equipment":"BOEING 737-800 JET","MarketingAirline":"Egyptair","MarriageGrp":"MIN1","TPA_Extensions":{"@attributes":{"ConfirmationNumber":"TVPR7W"}}}},{"@attributes":{"Status":"HK","ItinSeqNumber":"3"},"Air":{"@attributes":{"DepartureDateTime":"2018-04-25T05:25:00","ArrivalDateTime":"2018-04-25T10:55:00","StopQuantity":"0","RPH":"2","FlightNumber":"901","ResBookDesigCode":"T","NumberInParty":"1","Status":"HK","E_TicketEligibility":"Eligible","DepartureDay":"Wed","OrginDestType":"Intermediate"},"DepartureAirport":"Cairo-Cairo Intl, Egypt","ArrivalAirport":"Dubai-Dubai Intl, United Arab Emirates","OperatingAirline":"Egyptair","Equipment":"BOEING 737-800 JET","MarketingAirline":"Egyptair","MarriageGrp":"MIN1","TPA_Extensions":{"@attributes":{"ConfirmationNumber":"TVPR7W"}}}},{"@attributes":{"Status":"HK","ItinSeqNumber":"4"},"Air":{"@attributes":{"DepartureDateTime":"2018-04-28T05:20:00","ArrivalDateTime":"2018-04-28T07:00:00","StopQuantity":"0","RPH":"3","FlightNumber":"911","ResBookDesigCode":"T","NumberInParty":"1","Status":"HK","E_TicketEligibility":"Eligible","DepartureDay":"Sat","OrginDestType":"First"},"DepartureAirport":"Dubai-Dubai Intl, United Arab Emirates","ArrivalAirport":"Cairo-Cairo Intl, Egypt","OperatingAirline":"Egyptair","Equipment":"AIRBUS INDUSTRIE A330-300 JET","MarketingAirline":"Egyptair","MarriageGrp":"MIN2","TPA_Extensions":{"@attributes":{"ConfirmationNumber":"TVPR7W"}}}},{"@attributes":{"Status":"HK","ItinSeqNumber":"5"},"Air":{"@attributes":{"DepartureDateTime":"2018-04-28T09:10:00","ArrivalDateTime":"2018-04-28T13:35:00","StopQuantity":"0","RPH":"4","FlightNumber":"777","ResBookDesigCode":"T","NumberInParty":"1","Status":"HK","E_TicketEligibility":"Eligible","DepartureDay":"Sat","OrginDestType":"Intermediate"},"DepartureAirport":"Cairo-Cairo Intl, Egypt","ArrivalAirport":"London-Heathrow, United Kingdom","OperatingAirline":"Egyptair","Equipment":"BOEING 777-300 JET","MarketingAirline":"Egyptair","MarriageGrp":"MIN2","TPA_Extensions":{"@attributes":{"ConfirmationNumber":"TVPR7W"}}}}],"bagsAllowance":[{"@attributes":{"PricingSource":"Private","TravelerRefNumberRPHList":"1","FlightRefNumberRPHList":"2 3 4 5","RPH":"1"},"PassengerTypeQuantity":{"@attributes":{"Code":"ADT","Quantity":"1"}},"FareBasisCodes":{"FareBasisCode":["TLRIGB","TLRIGB","TLRIGB","TLRIGB"]},"PassengerFare":{"BaseFare":{"@attributes":{"Amount":"56247","CurrencyCode":"NGN","DecimalPlaces":"0"}},"EquivFare":{"@attributes":{"Amount":"11000","CurrencyCode":"GBP","DecimalPlaces":"2"}},"Taxes":{"Tax":[{"@attributes":{"Code":"YQ","Amount":"7200","DecimalPlaces":"0"}},{"@attributes":{"Code":"YQ","Amount":"3600","DecimalPlaces":"0"}},{"@attributes":{"Code":"YR","Amount":"62384","DecimalPlaces":"0"}},{"@attributes":{"Code":"GB","Amount":"39885","DecimalPlaces":"0"}},{"@attributes":{"Code":"UB","Amount":"22964","DecimalPlaces":"0"}},{"@attributes":{"Code":"EQ","Amount":"720","DecimalPlaces":"0"}},{"@attributes":{"Code":"AE","Amount":"7353","DecimalPlaces":"0"}},{"@attributes":{"Code":"F6","Amount":"3432","DecimalPlaces":"0"}},{"@attributes":{"Code":"TP","Amount":"491","DecimalPlaces":"0"}},{"@attributes":{"Code":"ZR","Amount":"982","DecimalPlaces":"0"}}]},"TotalFare":{"@attributes":{"Amount":"205258","CurrencyCode":"NGN","DecimalPlaces":"0"}}},"TPA_Extensions":{"FareCalculation":"LON MS X\\/CAI MS DXB M\\/IT TLRIGB\\/PV MS X\\/CAI MS LON M\\/IT TLRIGB\\/PV END","ValidatingAirlineCode":"*F*MS","BagAllowance":[{"@attributes":{"Quantity":"1","Type":"Piece","ItinSeqNumber":"2"}},{"@attributes":{"Quantity":"1","Type":"Piece","ItinSeqNumber":"3"}},{"@attributes":{"Quantity":"1","Type":"Piece","ItinSeqNumber":"4"}},{"@attributes":{"Quantity":"1","Type":"Piece","ItinSeqNumber":"5"}}]}}],"passengers":[{"@attributes":{"RPH":"1"},"Customer":{"PersonName":{"@attributes":{"NameType":"ADT"},"GivenName":"DAMILOLA OLAMIDE MR","Surname":"OGUNSAKIN"},"Telephone":{"@attributes":{"PhoneNumber":"LOS","PhoneUseType":"H"}},"Email":"OGUNSAKIN191@GMAIL.COM"}}]}', '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -17650,6 +17603,7 @@ CREATE TABLE IF NOT EXISTS `flight_deals` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.flight_deals : ~1 rows (environ)
+DELETE FROM `flight_deals`;
 /*!40000 ALTER TABLE `flight_deals` DISABLE KEYS */;
 INSERT INTO `flight_deals` (`id`, `package_id`, `origin`, `destination`, `date`, `airline`, `cabin`, `information`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'CMN - Casablanca-Mohammed V, Morocco', 'HKG - Hong Kong-Hong Kong Intl, Hong Kong', '04-07-2021', 'Emirates Airlines', 'Y', 'kkkkk', '2021-01-29 14:37:53', '2021-01-29 14:37:53');
@@ -17668,6 +17622,7 @@ CREATE TABLE IF NOT EXISTS `galleries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.galleries : ~0 rows (environ)
+DELETE FROM `galleries`;
 /*!40000 ALTER TABLE `galleries` DISABLE KEYS */;
 /*!40000 ALTER TABLE `galleries` ENABLE KEYS */;
 
@@ -17681,6 +17636,7 @@ CREATE TABLE IF NOT EXISTS `genders` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.genders : ~2 rows (environ)
+DELETE FROM `genders`;
 /*!40000 ALTER TABLE `genders` DISABLE KEYS */;
 INSERT INTO `genders` (`id`, `type`, `created_at`, `updated_at`) VALUES
 	(1, 'Male', '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -17704,6 +17660,7 @@ CREATE TABLE IF NOT EXISTS `good_to_knows` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.good_to_knows : ~0 rows (environ)
+DELETE FROM `good_to_knows`;
 /*!40000 ALTER TABLE `good_to_knows` DISABLE KEYS */;
 /*!40000 ALTER TABLE `good_to_knows` ENABLE KEYS */;
 
@@ -17718,6 +17675,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.hotels : ~0 rows (environ)
+DELETE FROM `hotels`;
 /*!40000 ALTER TABLE `hotels` DISABLE KEYS */;
 /*!40000 ALTER TABLE `hotels` ENABLE KEYS */;
 
@@ -17757,6 +17715,7 @@ CREATE TABLE IF NOT EXISTS `hotel_bookings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.hotel_bookings : ~0 rows (environ)
+DELETE FROM `hotel_bookings`;
 /*!40000 ALTER TABLE `hotel_bookings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `hotel_bookings` ENABLE KEYS */;
 
@@ -17778,6 +17737,7 @@ CREATE TABLE IF NOT EXISTS `hotel_deals` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.hotel_deals : ~0 rows (environ)
+DELETE FROM `hotel_deals`;
 /*!40000 ALTER TABLE `hotel_deals` DISABLE KEYS */;
 /*!40000 ALTER TABLE `hotel_deals` ENABLE KEYS */;
 
@@ -17792,9 +17752,10 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Listage des données de la table rentacs.languages : ~15 rows (environ)
+-- Listage des données de la table rentacs.languages : ~11 rows (environ)
+DELETE FROM `languages`;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
 INSERT INTO `languages` (`id`, `name`, `native_name`, `code`, `is_default`, `is_active`, `created_at`, `updated_at`) VALUES
 	(7, 'Arabic', 'العربية', 'ar', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
@@ -17802,16 +17763,12 @@ INSERT INTO `languages` (`id`, `name`, `native_name`, `code`, `is_default`, `is_
 	(40, 'English', 'English', 'en', 0, 1, '2020-04-02 01:20:54', '2021-01-06 15:37:39'),
 	(47, 'French', 'français, langue française', 'fr', 1, 1, '2020-04-02 01:20:54', '2021-01-06 15:37:39'),
 	(51, 'German', 'Deutsch', 'de', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
-	(52, 'Greek, Modern', 'Ελληνικά', 'el', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
 	(72, 'Japanese', '日本語 (にほんご／にっぽんご)', 'ja', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
 	(85, 'Korean', '한국어 (韓國語), 조선말 (朝鮮語)', 'ko', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
 	(126, 'Polish', 'polski', 'pl', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
-	(127, 'Pashto, Pushto', 'پښتو', 'ps', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
 	(128, 'Portuguese', 'Português', 'pt', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
 	(133, 'Russian', 'русский язык', 'ru', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
-	(163, 'Turkish', 'Türkçe', 'tr', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
-	(181, 'Yoruba', 'Yorùbá', 'yo', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54'),
-	(182, 'Zhuang, Chuang', 'Saɯ cueŋƅ, Saw cuengh', 'za', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54');
+	(163, 'Turkish', 'Türkçe', 'tr', 0, 0, '2020-04-02 01:20:54', '2020-04-02 01:20:54');
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. ltm_translations
@@ -17825,20 +17782,21 @@ CREATE TABLE IF NOT EXISTS `ltm_translations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1644 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1734 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table rentacs.ltm_translations : ~1 496 rows (environ)
+-- Listage des données de la table rentacs.ltm_translations : ~1 605 rows (environ)
+DELETE FROM `ltm_translations`;
 /*!40000 ALTER TABLE `ltm_translations` DISABLE KEYS */;
 INSERT INTO `ltm_translations` (`id`, `status`, `locale`, `group`, `key`, `value`, `created_at`, `updated_at`) VALUES
 	(1, 0, 'en', 'auth', 'failed', 'These credentials do not match our records.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
 	(2, 0, 'en', 'auth', 'throttle', 'Too many login attempts. Please try again in :seconds seconds.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
-	(3, 0, 'en', 'pagination', 'previous', '&laquo; Previous', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
-	(4, 0, 'en', 'pagination', 'next', 'Next &raquo;', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
-	(5, 0, 'en', 'passwords', 'password', 'Passwords must be at least six characters and match the confirmation.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
-	(6, 0, 'en', 'passwords', 'reset', 'Your password has been reset!', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
-	(7, 0, 'en', 'passwords', 'sent', 'We have e-mailed your password reset link!', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
-	(8, 0, 'en', 'passwords', 'token', 'This password reset token is invalid.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
-	(9, 0, 'en', 'passwords', 'user', 'We can\'t find a user with that e-mail address.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
+	(3, 0, 'en', 'pagination', 'previous', '&laquo; Previous', '2021-01-28 15:04:43', '2021-05-27 10:37:52'),
+	(4, 0, 'en', 'pagination', 'next', 'Next &raquo;', '2021-01-28 15:04:43', '2021-05-27 10:37:52'),
+	(5, 0, 'en', 'passwords', 'password', 'Passwords must be at least six characters and match the confirmation.', '2021-01-28 15:04:43', '2021-05-27 10:39:28'),
+	(6, 0, 'en', 'passwords', 'reset', 'Your password has been reset!', '2021-01-28 15:04:43', '2021-05-27 10:39:28'),
+	(7, 0, 'en', 'passwords', 'sent', 'We have e-mailed your password reset link!', '2021-01-28 15:04:43', '2021-05-27 10:39:28'),
+	(8, 0, 'en', 'passwords', 'token', 'This password reset token is invalid.', '2021-01-28 15:04:43', '2021-05-27 10:39:28'),
+	(9, 0, 'en', 'passwords', 'user', 'We can\'t find a user with that e-mail address.', '2021-01-28 15:04:43', '2021-05-27 10:39:28'),
 	(10, 0, 'en', 'validation', 'accepted', 'The :attribute must be accepted.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
 	(11, 0, 'en', 'validation', 'active_url', 'The :attribute is not a valid URL.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
 	(12, 0, 'en', 'validation', 'after', 'The :attribute must be a date after :date.', '2021-01-28 15:04:43', '2021-01-29 09:50:47'),
@@ -17907,1512 +17865,1534 @@ INSERT INTO `ltm_translations` (`id`, `status`, `locale`, `group`, `key`, `value
 	(75, 0, 'en', 'validation', 'uploaded', 'The :attribute failed to upload.', '2021-01-28 15:04:44', '2021-01-29 09:50:47'),
 	(76, 0, 'en', 'validation', 'url', 'The :attribute format is invalid.', '2021-01-28 15:04:44', '2021-01-29 09:50:47'),
 	(77, 0, 'en', 'validation', 'custom.attribute-name.rule-name', 'custom-message', '2021-01-28 15:04:44', '2021-01-29 09:50:47'),
-	(78, 0, 'en', '_json', 'Translations', 'TRANSLATIONS', '2021-01-28 15:18:08', '2021-05-19 10:14:06'),
-	(79, 0, 'en', '_json', 'Settings', 'SETTINGS', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(80, 0, 'en', '_json', 'Vats', 'VATS', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(81, 0, 'en', '_json', 'Markups', 'MARKUPS', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(82, 0, 'en', '_json', 'Markdowns', 'MARKDOWNS', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(83, 0, 'en', '_json', 'Banks', 'BANKS', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(84, 0, 'en', '_json', 'Users Management', 'USERS MANAGEMENT', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(85, 0, 'en', '_json', 'Email Subscribers', 'EMAIL SUBSCRIBERS', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(86, 0, 'en', '_json', 'Visa Applications', 'VISA APPLICATIONS', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(87, 0, 'en', '_json', 'Wallets Management', 'WALLETS MANAGEMENT', '2021-01-28 15:25:15', '2021-05-19 10:14:06'),
-	(88, 0, 'en', '_json', 'New Customer', 'NEW CUSTOMER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(89, 0, 'en', '_json', 'Create Customer', 'CREATE CUSTOMER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(90, 0, 'en', '_json', 'Name', 'NAME', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(91, 0, 'en', '_json', 'Company Name', 'COMPANY NAME', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(92, 0, 'en', '_json', 'Email', 'EMAIL', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(93, 0, 'en', '_json', 'Phone Number', 'PHONE NUMBER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(94, 0, 'en', '_json', 'Tax Number', 'TAX NUMBER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(95, 0, 'en', '_json', 'Address', 'ADDRESS', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(96, 0, 'en', '_json', 'Postal Code', 'POSTAL CODE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(97, 0, 'en', '_json', 'City', 'CITY', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(98, 0, 'en', '_json', 'Country', 'COUNTRY', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(99, 0, 'en', '_json', 'Save', 'SAVE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(100, 0, 'en', '_json', 'Back', 'BACK', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(101, 0, 'en', '_json', 'Edit Customer', 'EDIT CUSTOMER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(102, 0, 'en', '_json', 'Update', 'UPDATE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(103, 0, 'en', '_json', 'Customers List', 'CUSTOMERS LIST', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(104, 0, 'en', '_json', 'Customers', 'CUSTOMERS', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(105, 0, 'en', '_json', 'Add New Customer', 'ADD NEW CUSTOMER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(106, 0, 'en', '_json', 'Company name', 'COMPANY NAME', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(107, 0, 'en', '_json', 'Phone', 'PHONE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(108, 0, 'en', '_json', 'Created at', 'CREATED AT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(109, 0, 'en', '_json', 'Edit', 'EDIT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(110, 0, 'en', '_json', 'Delete', 'DELETE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(111, 0, 'en', '_json', 'New Purchase', 'NEW PURCHASE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(112, 0, 'en', '_json', 'Reference no', 'REFERENCE NO', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(113, 0, 'en', '_json', 'Supplier', 'SUPPLIER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(114, 0, 'en', '_json', 'User', 'USER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(115, 0, 'en', '_json', 'Select user', 'SELECT USER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(116, 0, 'en', '_json', 'Product', 'PRODUCT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(117, 0, 'en', '_json', 'Qty', 'QTY', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(118, 0, 'en', '_json', 'Price', 'PRICE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(119, 0, 'en', '_json', 'Total', 'TOTAL', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(120, 0, 'en', '_json', 'Enter Product Name', 'ENTER PRODUCT NAME', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(121, 0, 'en', '_json', 'Enter Qty', 'ENTER QTY', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(122, 0, 'en', '_json', 'Enter Unit Price', 'ENTER UNIT PRICE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(123, 0, 'en', '_json', 'Add Row', 'ADD ROW', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(124, 0, 'en', '_json', 'Delete Row', 'DELETE ROW', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(125, 0, 'en', '_json', 'Sub Total', 'SUB TOTAL', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(126, 0, 'en', '_json', 'Tax', 'TAX', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(127, 0, 'en', '_json', 'Tax Amount', 'TAX AMOUNT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(128, 0, 'en', '_json', 'Grand Total', 'GRAND TOTAL', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(129, 0, 'en', '_json', 'Sale Status', 'SALE STATUS', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(130, 0, 'en', '_json', 'Completed', 'COMPLETED', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(131, 0, 'en', '_json', 'Pending', 'PENDING', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(132, 0, 'en', '_json', 'Payment Status', 'PAYMENT STATUS', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(133, 0, 'en', '_json', 'Due', 'DUE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(134, 0, 'en', '_json', 'Partial', 'PARTIAL', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(135, 0, 'en', '_json', 'Paid', 'PAID', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(136, 0, 'en', '_json', 'Paid By', 'PAID BY', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(137, 0, 'en', '_json', 'Cash', 'CASH', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(138, 0, 'en', '_json', 'Cheque', 'CHEQUE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(139, 0, 'en', '_json', 'Deposit', 'DEPOSIT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(140, 0, 'en', '_json', 'Attach Document', 'ATTACH DOCUMENT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(141, 0, 'en', '_json', 'Total Amount', 'TOTAL AMOUNT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(142, 0, 'en', '_json', 'Paying Amount', 'PAYING AMOUNT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(143, 0, 'en', '_json', 'Change', 'CHANGE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(144, 0, 'en', '_json', 'Purchase Note', 'PURCHASE NOTE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(145, 0, 'en', '_json', 'Edit Purchase', 'EDIT PURCHASE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(146, 0, 'en', '_json', 'Total amount', 'TOTAL AMOUNT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(147, 0, 'en', '_json', 'Purchases', 'PURCHASES', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(148, 0, 'en', '_json', 'Add New Purchase', 'ADD NEW PURCHASE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(149, 0, 'en', '_json', 'Status', 'STATUS', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(150, 0, 'en', '_json', 'Grand total', 'GRAND TOTAL', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(151, 0, 'en', '_json', 'Payment status', 'PAYMENT STATUS', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(152, 0, 'en', '_json', 'Create Sale', 'CREATE SALE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(153, 0, 'en', '_json', 'Customer', 'CUSTOMER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(154, 0, 'en', '_json', 'Select Customer', 'SELECT CUSTOMER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(155, 0, 'en', '_json', 'Select Supplier', 'SELECT SUPPLIER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(156, 0, 'en', '_json', 'Recieved Amount', 'RECIEVED AMOUNT', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(157, 0, 'en', '_json', 'Payment Note', 'PAYMENT NOTE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(158, 0, 'en', '_json', 'Sale Note', 'SALE NOTE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(159, 0, 'en', '_json', 'Staff Note', 'STAFF NOTE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(160, 0, 'en', '_json', 'Edit Sale', 'EDIT SALE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(161, 0, 'en', '_json', 'Sales', 'SALES', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(162, 0, 'en', '_json', 'Add New Sale', 'ADD NEW SALE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(163, 0, 'en', '_json', 'Booking ID', 'BOOKING ID', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(164, 0, 'en', '_json', 'Booking Type', 'BOOKING TYPE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(165, 0, 'en', '_json', 'Create Supplier', 'CREATE SUPPLIER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(166, 0, 'en', '_json', 'Edit Supplier', 'EDIT SUPPLIER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(167, 0, 'en', '_json', 'Suppliers', 'SUPPLIERS', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(168, 0, 'en', '_json', 'Add New Supplier', 'ADD NEW SUPPLIER', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(169, 0, 'en', '_json', 'Supplier Name', 'SUPPLIER NAME', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(170, 0, 'en', '_json', 'Supplier Company', 'SUPPLIER COMPANY', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(171, 0, 'en', '_json', 'Language', 'LANGUAGE', '2021-01-29 11:43:26', '2021-05-19 10:14:06'),
-	(172, 0, 'en', '_json', 'Create New Purchase', 'CREATE NEW PURCHASE', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(173, 0, 'en', '_json', 'Create New Sale', 'CREATE NEW SALE', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(174, 0, 'en', '_json', 'Create User', 'CREATE USER', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(175, 0, 'en', '_json', 'Close', 'CLOSE', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(176, 0, 'en', '_json', 'Create New Supplier', 'CREATE NEW SUPPLIER', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(177, 0, 'en', '_json', 'Action', 'ACTION', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(178, 0, 'en', '_json', 'Travel Packages', 'TRAVEL PACKAGES', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(179, 0, 'en', '_json', 'Continue(Save Package)', 'CONTINUE(SAVE PACKAGE)', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(180, 0, 'en', '_json', 'Attraction', 'ATTRACTION', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(181, 0, 'en', '_json', 'Attraction Name', 'ATTRACTION NAME', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(182, 0, 'en', '_json', 'Attraction City', 'ATTRACTION CITY', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(183, 0, 'en', '_json', 'Attraction Date', 'ATTRACTION DATE', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(184, 0, 'en', '_json', 'Location Description', 'LOCATION DESCRIPTION', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(185, 0, 'en', '_json', 'Attraction Additional Information', 'ATTRACTION ADDITIONAL INFORMATION', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(186, 0, 'en', '_json', 'Sight Seeings', 'SIGHT SEEINGS', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(187, 0, 'en', '_json', 'Add More Sight Seeing', 'ADD MORE SIGHT SEEING', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(188, 0, 'en', '_json', 'Sight Seeing Title', 'SIGHT SEEING TITLE', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(189, 0, 'en', '_json', 'Sight Seeing Description', 'SIGHT SEEING DESCRIPTION', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(190, 0, 'en', '_json', 'Continue (Save Attraction)', 'CONTINUE (SAVE ATTRACTION)', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(191, 0, 'en', '_json', 'Attraction Gallery', 'ATTRACTION GALLERY', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(192, 0, 'en', '_json', 'Drag and Drop or Click On Box to Select Multiple Images', 'DRAG AND DROP OR CLICK ON BOX TO SELECT MULTIPLE IMAGES', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(193, 0, 'en', '_json', 'Continue', 'CONTINUE', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(194, 0, 'en', '_json', 'Create New Package', 'CREATE NEW PACKAGE', '2021-01-29 16:41:41', '2021-05-19 10:14:06'),
-	(195, 0, 'en', '_json', 'Package type', 'PACKAGE TYPE', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(196, 0, 'en', '_json', 'Package category', 'PACKAGE CATEGORY', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(197, 0, 'en', '_json', 'Package name', 'PACKAGE NAME', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(198, 0, 'en', '_json', 'Phone number', 'PHONE NUMBER', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(199, 0, 'en', '_json', 'Adult price', 'ADULT PRICE', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(200, 0, 'en', '_json', 'Children price', 'CHILDREN PRICE', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(201, 0, 'en', '_json', 'Infants price', 'INFANTS PRICE', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(202, 0, 'en', '_json', 'Flight', 'FLIGHT', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(203, 0, 'en', '_json', 'Hotel', 'HOTEL', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(204, 0, 'en', '_json', 'Deactivated', 'DEACTIVATED', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(205, 0, 'en', '_json', 'Activated', 'ACTIVATED', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(206, 0, 'en', '_json', 'Add sight seeing', 'ADD SIGHT SEEING', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(207, 0, 'en', '_json', 'Confirmation', 'CONFIRMATION', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(208, 0, 'en', '_json', 'Flight Information', 'FLIGHT INFORMATION', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(209, 0, 'en', '_json', 'Are you sure', 'ARE YOU SURE', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(210, 0, 'en', '_json', 'Booking Confirmation', 'BOOKING CONFIRMATION', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(211, 0, 'en', '_json', 'Inclusion', 'INCLUSION', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(212, 0, 'en', '_json', 'Exclusion', 'EXCLUSION', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(213, 0, 'en', '_json', 'KNOW MORE', 'KNOW MORE', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(214, 0, 'en', '_json', 'LAST MINUTE DEALS', 'LAST MINUTE DEALS', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(215, 0, 'en', '_json', 'SAVE MORE', 'SAVE MORE', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(216, 0, 'en', '_json', 'Starting From', 'STARTING FROM', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(217, 0, 'en', '_json', 'VIEW DETAIL', 'VIEW DETAIL', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(218, 0, 'en', '_json', 'Home Settings', 'HOME SETTINGS', '2021-01-29 16:41:42', '2021-05-19 10:14:06'),
-	(219, 0, 'en', '_json', 'Login', 'LOGIN', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(220, 0, 'en', '_json', 'Oh snap!', 'OH SNAP!', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(221, 0, 'en', '_json', 'Login with', 'LOGIN WITH', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(222, 0, 'en', '_json', 'Your Email', 'YOUR EMAIL', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(223, 0, 'en', '_json', 'Enter Password', 'ENTER PASSWORD', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(224, 0, 'en', '_json', 'Remember Me', 'REMEMBER ME', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(225, 0, 'en', '_json', 'Forgot Password?', 'FORGOT PASSWORD?', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(226, 0, 'en', '_json', 'Recover password', 'RECOVER PASSWORD', '2021-01-30 09:59:38', '2021-05-19 10:14:06'),
-	(227, 0, 'en', '_json', 'New to', 'NEW TO', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(228, 0, 'en', '_json', 'Sign Up', 'SIGN UP', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(229, 0, 'en', '_json', 'Recover Password', 'RECOVER PASSWORD', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(230, 0, 'en', '_json', 'Great !!!', 'GREAT !!!', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(231, 0, 'en', '_json', 'We will send you a link to reset password.', 'WE WILL SEND YOU A LINK TO RESET PASSWORD.', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(232, 0, 'en', '_json', 'Your Email Address', 'YOUR EMAIL ADDRESS', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(233, 0, 'en', '_json', 'Create Account', 'CREATE ACCOUNT', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(234, 0, 'en', '_json', 'Reset your password now', 'RESET YOUR PASSWORD NOW', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(235, 0, 'en', '_json', 'Your password', 'YOUR PASSWORD', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(236, 0, 'en', '_json', 'Confirm Password', 'CONFIRM PASSWORD', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(237, 0, 'en', '_json', 'I Agree', 'I AGREE', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(238, 0, 'en', '_json', 'By clicking Register, you agree to the', 'By clicking Register, you agree to the', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(239, 0, 'en', '_json', 'Terms and Conditions', 'Terms and Conditions', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(240, 0, 'en', '_json', 'set out by this site, including our Cookie Use.', 'set out by this site, including our Cookie Use.', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(241, 0, 'en', '_json', 'Register', 'REGISTER', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(242, 0, 'en', '_json', 'Dashboard', 'DASHBOARD', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(243, 0, 'en', '_json', 'Edit Profile', 'EDIT PROFILE', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(244, 0, 'en', '_json', 'Logout', 'LOGOUT', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(245, 0, 'en', '_json', 'Book Flight', 'BOOK FLIGHT', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(246, 0, 'en', '_json', 'Book Hotel', 'BOOK HOTEL', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(247, 0, 'en', '_json', 'Navigation', 'NAVIGATION', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(248, 0, 'en', '_json', 'Create New', 'CREATE NEW', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(249, 0, 'en', '_json', 'Commercial', 'COMMERCIAL', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(250, 0, 'en', '_json', 'Sale List', 'SALE LIST', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(251, 0, 'en', '_json', 'Purchase', 'PURCHASE', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(252, 0, 'en', '_json', 'Purchase List', 'PURCHASE LIST', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(253, 0, 'en', '_json', 'Suppliers List', 'SUPPLIERS LIST', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(254, 0, 'en', '_json', 'Manage Bookings', 'MANAGE BOOKINGS', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(255, 0, 'en', '_json', 'Manage Packages', 'MANAGE PACKAGES', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(256, 0, 'en', '_json', 'Packages List', 'PACKAGES LIST', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(257, 0, 'en', '_json', 'Manage Categories', 'MANAGE CATEGORIES', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(258, 0, 'en', '_json', 'My Wallet', 'MY WALLET', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(259, 0, 'en', '_json', 'Manage Profile', 'MANAGE PROFILE', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(260, 0, 'en', '_json', 'Log Out', 'LOG OUT', '2021-01-30 09:59:39', '2021-05-19 10:14:06'),
-	(261, 0, 'en', '_json', 'Sign in', 'SIGN IN', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(262, 0, 'en', '_json', 'Who we are', 'WHO WE ARE', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(263, 0, 'en', '_json', 'Read more', 'READ MORE', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(264, 0, 'en', '_json', 'Discover amazing things to do everywhere you go.', 'DISCOVER AMAZING THINGS TO DO EVERYWHERE YOU GO.', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(265, 0, 'en', '_json', 'Company', 'COMPANY', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(266, 0, 'en', '_json', 'About Us', 'ABOUT US', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(267, 0, 'en', '_json', 'Blog', 'BLOG', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(268, 0, 'en', '_json', 'Contact', 'CONTACT', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(269, 0, 'en', '_json', 'Contact Us', 'CONTACT US', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(270, 0, 'en', '_json', 'Adresse', 'ADRESSE', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(271, 0, 'en', '_json', 'Enter your email', 'ENTER YOUR EMAIL', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(272, 0, 'en', '_json', 'Sign-up to receive regular updates from us.', 'SIGN-UP TO RECEIVE REGULAR UPDATES FROM US.', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(273, 0, 'en', '_json', 'Rentacs Tours', 'RENTACS TOURS', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(274, 0, 'en', '_json', 'All rights reserved.', 'ALL RIGHTS RESERVED.', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(275, 0, 'en', '_json', 'Profile', 'PROFILE', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(276, 0, 'en', '_json', 'Wishlist', 'WISHLIST', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(277, 0, 'en', '_json', 'Flights', 'FLIGHTS', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(278, 0, 'en', '_json', 'Hotels', 'HOTELS', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(279, 0, 'en', '_json', 'Hot Deals', 'HOT DEALS', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(280, 0, 'en', '_json', 'Golf tours', 'GOLF TOURS', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(281, 0, 'en', '_json', 'Motorcycle', 'MOTORCYCLE', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(282, 0, 'en', '_json', 'Surf', 'SURF', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(283, 0, 'en', '_json', 'Trekking', 'TREKKING', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(284, 0, 'en', '_json', 'Bivouacs', 'BIVOUACS', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(285, 0, 'en', '_json', 'Best offers', 'BEST OFFERS', '2021-01-31 11:34:57', '2021-05-19 10:14:06'),
-	(286, 0, 'fr', '_json', 'Login', 'S\'identifier', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(287, 0, 'fr', '_json', 'Oh snap!', 'Oh snap!', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(288, 0, 'fr', '_json', 'Login with', 'Connectez-vous avec', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(289, 0, 'fr', '_json', 'Your Email', 'Votre e-mail', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(290, 0, 'fr', '_json', 'Enter Password', 'Entrer le mot de passe', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(291, 0, 'fr', '_json', 'Remember Me', 'Souviens-toi de moi', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(292, 0, 'fr', '_json', 'Forgot Password?', 'Mot de passe oublié?', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(293, 0, 'fr', '_json', 'Recover password', 'Récupérer mot de passe', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(294, 0, 'fr', '_json', 'New to', 'Nouveau sur', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(295, 0, 'fr', '_json', 'Sign Up', 'S\'inscrire', '2021-02-01 10:24:16', '2021-05-19 10:14:06'),
-	(296, 0, 'fr', '_json', 'Recover Password', 'Récupérer mot de passe', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(297, 0, 'fr', '_json', 'Great !!!', 'Génial !!!', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(298, 0, 'fr', '_json', 'We will send you a link to reset password.', 'Nous vous enverrons un lien pour réinitialiser le mot de passe.', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(299, 0, 'fr', '_json', 'Your Email Address', 'Votre adresse email', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(300, 0, 'fr', '_json', 'Create Account', 'Créer un compte', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(301, 0, 'fr', '_json', 'Reset your password now', 'Réinitialisez votre mot de passe maintenant', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(302, 0, 'fr', '_json', 'Your password', 'Votre mot de passe', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(303, 0, 'fr', '_json', 'Confirm Password', 'Confirmez le mot de passe', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(304, 0, 'fr', '_json', 'I Agree', 'Je suis d\'accord', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(305, 0, 'fr', '_json', 'By clicking Register, you agree to the', 'En cliquant sur S\'inscrire, vous acceptez les', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(306, 0, 'fr', '_json', 'Terms and Conditions', 'CONDITIONS GÉNÉRALES DE VENTE', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(307, 0, 'fr', '_json', 'set out by this site, including our Cookie Use.', 'défini par ce site, y compris notre utilisation des cookies.', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(308, 0, 'fr', '_json', 'Register', 'S\'inscrire', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(309, 0, 'fr', '_json', 'Dashboard', 'Tableau de bord', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(310, 0, 'fr', '_json', 'No places', 'Aucune destination', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(311, 0, 'fr', '_json', 'Category', 'Catégorie', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(312, 0, 'fr', '_json', 'Places', 'Destinations', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(313, 0, 'fr', '_json', 'Back to list', 'Retour à la liste', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(314, 0, 'fr', '_json', 'Show all', 'Afficher tout', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(315, 0, 'fr', '_json', 'Introducing', 'Présentation', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(316, 0, 'fr', '_json', 'Currency', 'Devise', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(317, 0, 'fr', '_json', 'Languages', 'LANGUES', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(318, 0, 'fr', '_json', 'Best time to visit', 'MEILLEUR MOMENT POUR VISITER', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(319, 0, 'fr', '_json', 'Maps view', 'Affichage des cartes', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(320, 0, 'fr', '_json', 'See all', 'Voir tout', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(321, 0, 'fr', '_json', 'results', 'résultats', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(322, 0, 'fr', '_json', 'Clear All', 'Tout effacer', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(323, 0, 'fr', '_json', 'Filter', 'Filtre', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(324, 0, 'fr', '_json', 'Sort By', 'Trier par', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(325, 0, 'fr', '_json', 'Newest', 'Le plus récent', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(326, 0, 'fr', '_json', 'Average rating', 'Note moyenne', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(327, 0, 'fr', '_json', 'Price: Low to high', 'Prix: Plus bas au plus haut', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(328, 0, 'fr', '_json', 'Price: High to low', 'Prix: plus haut au plus bas', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(329, 0, 'fr', '_json', 'Price Filter', 'Filtre de prix', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(330, 0, 'fr', '_json', 'Free', 'Gratuit', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(331, 0, 'fr', '_json', 'Low: $', 'Faible: $', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(332, 0, 'fr', '_json', 'Medium: $$', 'Moyen: $$', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(333, 0, 'fr', '_json', 'High: $$$', 'Élevé: $$$', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(334, 0, 'fr', '_json', 'Types', 'Les types', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(335, 0, 'fr', '_json', 'Amenities', 'Services', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(336, 0, 'fr', '_json', 'Explorer Other Cities', 'Explorer d\'autres villes', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(337, 0, 'fr', '_json', 'places', 'Destinations', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(338, 0, 'fr', '_json', 'No cities', 'Pas de villes', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(339, 0, 'fr', '_json', 'reviews', 'Avis', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(340, 0, 'fr', '_json', 'About Us', 'À propos', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(341, 0, 'fr', '_json', 'Our Offices', 'Horaires d\'ouvertures', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(342, 0, 'fr', '_json', 'Get Direction', 'Obtenir la direction', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(343, 0, 'fr', '_json', 'Get in touch with us', 'Prenez contact avec nous', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(344, 0, 'fr', '_json', 'First name', 'Nom', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(345, 0, 'fr', '_json', 'Last name', 'Nom', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(346, 0, 'fr', '_json', 'Email', 'Email', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(347, 0, 'fr', '_json', 'Phone number', 'Numéro de téléphone', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(348, 0, 'fr', '_json', 'Message', 'Message', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(349, 0, 'fr', '_json', 'Send Message', 'Envoyer le message', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(350, 0, 'fr', '_json', 'Contact Us', 'Nous contacter', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(351, 0, 'fr', '_json', 'We want to hear from you.', 'Nous voulons de vos nouvelles.', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(352, 0, 'fr', '_json', 'Adresse', 'Adresse', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(353, 0, 'fr', '_json', 'Genaral', 'Générale', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(354, 0, 'fr', '_json', 'Location', 'Emplacement', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(355, 0, 'fr', '_json', 'Contact info', 'Informations de contact', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(356, 0, 'fr', '_json', 'Social network', 'Réseau social', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(357, 0, 'fr', '_json', 'Open hours', 'Heures d\'ouverture', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(358, 0, 'fr', '_json', 'Media', 'Médias', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(359, 0, 'fr', '_json', 'Edit my place', 'Modifier ma place', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(360, 0, 'fr', '_json', 'Add new place', 'Ajouter une nouvelle destination', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(361, 0, 'fr', '_json', 'Place Name', 'Nom du lieu', '2021-02-01 10:24:17', '2021-05-19 10:14:06'),
-	(362, 0, 'fr', '_json', 'What the name of place', 'quel est le nom du lieu', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(363, 0, 'fr', '_json', 'Price Range', 'Intervalle des prix', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(364, 0, 'fr', '_json', 'Description', 'Description', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(365, 0, 'fr', '_json', 'Select Category', 'Choisir une catégorie', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(366, 0, 'fr', '_json', 'Place Type', 'Type de destination', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(367, 0, 'fr', '_json', 'Select Place Type', 'Sélectionnez le type de destination', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(368, 0, 'fr', '_json', 'Place Address', 'Adresse de la destination', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(369, 0, 'fr', '_json', 'Select country', 'Sélection de Pays', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(370, 0, 'fr', '_json', 'Select city', 'Sélection de ville', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(371, 0, 'fr', '_json', 'Full Address', 'Adresse complète', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(372, 0, 'fr', '_json', 'Place Location at Google Map', 'Placer la position sur Google Map', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(373, 0, 'fr', '_json', 'Your email address', 'Votre adresse email', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(374, 0, 'fr', '_json', 'Your phone number', 'Votre numéro de téléphone', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(375, 0, 'fr', '_json', 'Website', 'Site Internet', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(376, 0, 'fr', '_json', 'Your website url', 'L\'adresse URL de votre site', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(377, 0, 'fr', '_json', 'Social Networks', 'Réseau social', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(378, 0, 'fr', '_json', 'Select network', 'Sélectionnez réseau', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(379, 0, 'fr', '_json', 'Enter URL include http or www', 'Entrez l\'URL inclure http ou www', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(380, 0, 'fr', '_json', 'Add more', 'Ajouter plus de', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(382, 0, 'fr', '_json', 'Thumb image', 'Image du pouce', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(383, 0, 'fr', '_json', 'Maximum file size: 1 MB', 'Taille maximale du fichier: 1 Mo', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(384, 0, 'fr', '_json', 'Gallery Images', 'Galerie d\'images', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(385, 0, 'fr', '_json', 'Video', 'Vidéo', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(386, 0, 'fr', '_json', 'Youtube, Vimeo video url', 'Youtube, URL vidéo Vimeo', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(387, 0, 'fr', '_json', 'Login to submit', 'Login to submit', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(388, 0, 'fr', '_json', 'Update', 'Mise à jour', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(389, 0, 'fr', '_json', 'Submit', 'Envoyer', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(390, 0, 'fr', '_json', 'Gallery', 'Galerie', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(391, 0, 'fr', '_json', 'Show more', 'Montrer plus', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(392, 0, 'fr', '_json', 'Book now', 'Réserver maintenant', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(393, 0, 'fr', '_json', 'Location & Maps', 'Emplacement et cartes', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(394, 0, 'fr', '_json', 'Direction', 'Direction', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(395, 0, 'fr', '_json', 'Contact Info', 'Informations de contact', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(396, 0, 'fr', '_json', 'Review', 'Avis', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(397, 0, 'fr', '_json', 'to review', 'réviser', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(398, 0, 'fr', '_json', 'Write a review', 'Partagé votre Avis', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(399, 0, 'fr', '_json', 'Rate This Place', 'Évaluez cette destination', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(400, 0, 'fr', '_json', 'error!', 'erreur!', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(401, 0, 'fr', '_json', 'Booking online', 'Réservation en ligne', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(402, 0, 'fr', '_json', 'Make a reservation', 'Faire une réservation', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(403, 0, 'fr', '_json', 'Send me a message', 'Envoyez-moi un message', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(404, 0, 'fr', '_json', 'Send', 'Envoyer', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(405, 0, 'fr', '_json', 'Banner Ads', 'Bannière publicitaire', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(406, 0, 'fr', '_json', 'View', 'Vue', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(407, 0, 'fr', '_json', 'Person', 'Personne', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(408, 0, 'fr', '_json', 'Adults', 'Adultes', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(409, 0, 'fr', '_json', 'Childrens', 'Enfants', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(410, 0, 'fr', '_json', 'You won\'t be charged yet', 'Vous ne serez pas encore facturé', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(411, 0, 'fr', '_json', 'You successfully created your booking.', 'Vous avez créé votre réservation avec succès.', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(412, 0, 'fr', '_json', 'Your Booking is Pending, We Will Contact You as Soon as Possible.', 'Votre réservation est en attente, nous vous contacterons dès que possible.', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(413, 0, 'fr', '_json', 'An error occurred. Please try again.', 'Une erreur est survenue. Veuillez réessayer.', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(414, 0, 'fr', '_json', 'Similar places', 'Destinations similaires', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(415, 0, 'fr', '_json', 'Overview', 'Aperçu', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(416, 0, 'fr', '_json', 'By Booking.com', 'Par Booking.com', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(417, 0, 'fr', '_json', 'All Country', 'Tous les pays', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(418, 0, 'fr', '_json', 'All City', 'Toutes les villes', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(419, 0, 'fr', '_json', 'Select Categories', 'Sélection catégories', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(420, 0, 'fr', '_json', 'All categories', 'Toutes les catégories', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(421, 0, 'fr', '_json', 'by', 'par', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(422, 0, 'fr', '_json', 'Related Articles', 'Articles similaires', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(423, 0, 'fr', '_json', 'Blog', 'Blog', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(424, 0, 'fr', '_json', 'All', 'Tout', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(425, 0, 'fr', '_json', 'Search results', 'Résultats de recherche', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(426, 0, 'fr', '_json', 'results for', 'résultats pour', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(427, 0, 'fr', '_json', 'Date', 'Date', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(428, 0, 'fr', '_json', 'cities', 'Villes', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(429, 0, 'fr', '_json', 'Activity', 'Activité', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(430, 0, 'fr', '_json', 'More', 'Plus', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(431, 0, 'fr', '_json', 'Apply', 'Appliquer', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(432, 0, 'fr', '_json', 'Maps', 'Plans', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(433, 0, 'fr', '_json', 'Nothing found!', 'Rien n\'a été trouvé!', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(434, 0, 'fr', '_json', 'We\'re sorry but we do not have any listings matching your search, try to change you search settings', 'Nous sommes désolés, mais aucune resultat ne correspond à votre recherche, essayez de modifier les mots vos de recherche', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(435, 0, 'fr', '_json', 'Close', 'Fermer', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(436, 0, 'fr', '_json', 'New Customer', 'Nouveau Client', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(437, 0, 'fr', '_json', 'Create Customer', 'Ajouter un Client', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(438, 0, 'fr', '_json', 'Name', 'Nom', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(439, 0, 'fr', '_json', 'Company Name', 'Nom de Société', '2021-02-01 10:24:18', '2021-05-19 10:14:06'),
-	(440, 0, 'fr', '_json', 'Phone Number', 'Numéro de téléphone', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(441, 0, 'fr', '_json', 'Tax Number', 'N° ICE', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(442, 0, 'fr', '_json', 'Address', 'Adresse', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(443, 0, 'fr', '_json', 'Postal Code', 'Code Postal', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(444, 0, 'fr', '_json', 'City', 'Ville', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(445, 0, 'fr', '_json', 'Country', 'Pays', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(446, 0, 'fr', '_json', 'Save', 'sauvegarder', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(447, 0, 'fr', '_json', 'Back', 'Retour', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(448, 0, 'fr', '_json', 'Edit Customer', 'Modifier le Client', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(449, 0, 'fr', '_json', 'Customers List', 'Liste des clients', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(450, 0, 'fr', '_json', 'Customers', 'Clients', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(451, 0, 'fr', '_json', 'Add New Customer', 'Ajouter un nouveau client', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(452, 0, 'fr', '_json', 'Company name', 'Nom de l\'entreprise', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(453, 0, 'fr', '_json', 'Phone', 'Téléphone', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(454, 0, 'fr', '_json', 'Created at', 'Créé à', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(455, 0, 'fr', '_json', 'Edit', 'Modifier', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(456, 0, 'fr', '_json', 'Delete', 'Supprimer', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(457, 0, 'fr', '_json', 'Create New Purchase', 'Créer un nouvel achat', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(458, 0, 'fr', '_json', 'New Purchase', 'Nouvel Achat', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(459, 0, 'fr', '_json', 'Reference no', 'Numéro de référence', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(460, 0, 'fr', '_json', 'Supplier', 'Fournisseur', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(461, 0, 'fr', '_json', 'User', 'Utilisateur', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(462, 0, 'fr', '_json', 'Select user', 'Sélection Utilisateur', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(463, 0, 'fr', '_json', 'Product', 'Produit', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(464, 0, 'fr', '_json', 'Qty', 'Qty', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(465, 0, 'fr', '_json', 'Price', 'Prix', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(466, 0, 'fr', '_json', 'Total', 'Total', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(467, 0, 'fr', '_json', 'Enter Product Name', 'Entrez le nom', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(468, 0, 'fr', '_json', 'Enter Qty', 'Entrez la quantité', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(469, 0, 'fr', '_json', 'Enter Unit Price', 'Entrez le prix unitaire', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(470, 0, 'fr', '_json', 'Add Row', 'Ajouter une ligne', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(471, 0, 'fr', '_json', 'Delete Row', 'Supprimer une ligne', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(472, 0, 'fr', '_json', 'Sub Total', 'Sous Total', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(473, 0, 'fr', '_json', 'Tax', 'TVA', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(474, 0, 'fr', '_json', 'Tax Amount', 'Montant TVA', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(475, 0, 'fr', '_json', 'Grand Total', 'Total', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(476, 0, 'fr', '_json', 'Sale Status', 'Status de Vente', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(477, 0, 'fr', '_json', 'Completed', 'Complet', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(478, 0, 'fr', '_json', 'Pending', 'En attente', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(479, 0, 'fr', '_json', 'Payment Status', 'Statut de paiement', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(480, 0, 'fr', '_json', 'Due', 'Impayé', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(481, 0, 'fr', '_json', 'Partial', 'Partiel', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(482, 0, 'fr', '_json', 'Paid', 'Payé', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(483, 0, 'fr', '_json', 'Paid By', 'Payé par', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(484, 0, 'fr', '_json', 'Cash', 'Cash', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(485, 0, 'fr', '_json', 'Cheque', 'Chèque', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(486, 0, 'fr', '_json', 'Deposit', 'Dépôt', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(487, 0, 'fr', '_json', 'Attach Document', 'Joindre un document', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(488, 0, 'fr', '_json', 'Total Amount', 'Montant Total', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(489, 0, 'fr', '_json', 'Paying Amount', 'Montant de paiement', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(490, 0, 'fr', '_json', 'Change', 'Changer', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(491, 0, 'fr', '_json', 'Purchase Note', 'Note d\'Achat', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(492, 0, 'fr', '_json', 'Edit Purchase', 'Modifier l\'Achat', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(493, 0, 'fr', '_json', 'Select Supplier', 'Sélection fournisseur', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(494, 0, 'fr', '_json', 'Total amount', 'Montant total', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(495, 0, 'fr', '_json', 'Purchases', 'Achats', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(496, 0, 'fr', '_json', 'Add New Purchase', 'Ajouter un Achat', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(497, 0, 'fr', '_json', 'Status', 'Statut', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(498, 0, 'fr', '_json', 'Grand total', 'Somme finale', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(499, 0, 'fr', '_json', 'Payment status', 'Statut de paiement', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(500, 0, 'fr', '_json', 'Create New Sale', 'Créer une nouvelle vente', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(501, 0, 'fr', '_json', 'Create Sale', 'Ajouter une Vente', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(502, 0, 'fr', '_json', 'Customer', 'Client', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(503, 0, 'fr', '_json', 'Select Customer', 'Sélectionnez le client', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(504, 0, 'fr', '_json', 'Recieved Amount', 'Montant Reçu', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(505, 0, 'fr', '_json', 'Payment Note', 'Note de paiement', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(506, 0, 'fr', '_json', 'Sale Note', 'Note de Vente', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(507, 0, 'fr', '_json', 'Staff Note', 'Note Staff', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(508, 0, 'fr', '_json', 'Edit Sale', 'Modifier la vente', '2021-02-01 10:24:19', '2021-05-19 10:14:06'),
-	(509, 0, 'fr', '_json', 'Sales', 'Ventes', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(510, 0, 'fr', '_json', 'Add New Sale', 'Ajouter une vente', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(511, 0, 'fr', '_json', 'Booking ID', 'Réservation ID', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(512, 0, 'fr', '_json', 'Booking Type', 'Type de réservation', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(513, 0, 'fr', '_json', 'Settings', 'Réglage', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(514, 0, 'fr', '_json', 'Users Management', 'Gestion des utilisateurs', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(515, 0, 'fr', '_json', 'Create User', 'Ajouter un utilisateur', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(516, 0, 'fr', '_json', 'Create New Supplier', 'Créer un nouveau fournisseur', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(517, 0, 'fr', '_json', 'Create Supplier', 'Ajouter un fournisseur', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(518, 0, 'fr', '_json', 'Edit Supplier', 'Modifier le fournisseur', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(519, 0, 'fr', '_json', 'Suppliers', 'Fournisseurs', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(520, 0, 'fr', '_json', 'Add New Supplier', 'Ajouter un fournisseur', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(521, 0, 'fr', '_json', 'Supplier Name', 'Nom du fournisseur', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(522, 0, 'fr', '_json', 'Supplier Company', 'Entreprise fournisseur', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(523, 0, 'fr', '_json', 'Action', 'Action', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(524, 0, 'fr', '_json', 'Travel Packages', 'Forfaits de voyage', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(525, 0, 'fr', '_json', 'Continue(Save Package)', 'Continuer (Enregistrer le package)', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(526, 0, 'fr', '_json', 'Attraction', 'Attraction', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(527, 0, 'fr', '_json', 'Attraction Name', 'Nom de l\'attraction', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(528, 0, 'fr', '_json', 'Attraction City', 'Ville d\'attraction', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(529, 0, 'fr', '_json', 'Attraction Date', 'Date de l\'attraction', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(530, 0, 'fr', '_json', 'Location Description', 'Description de l\'emplacement', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(531, 0, 'fr', '_json', 'Attraction Additional Information', 'Informations supplémentaires sur l\'attraction', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(532, 0, 'fr', '_json', 'Sight Seeings', 'Visites touristiques', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(533, 0, 'fr', '_json', 'Add More Sight Seeing', 'Ajouter plus de vue', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(534, 0, 'fr', '_json', 'Sight Seeing Title', 'Titre voyant', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(535, 0, 'fr', '_json', 'Sight Seeing Description', 'Description de la vue', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(536, 0, 'fr', '_json', 'Continue (Save Attraction)', 'Continuer (Enregistrer l\'attraction)', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(537, 0, 'fr', '_json', 'Attraction Gallery', 'Galerie d\'attraction', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(538, 0, 'fr', '_json', 'Drag and Drop or Click On Box to Select Multiple Images', 'Faites glisser et déposez ou cliquez sur la zone pour sélectionner plusieurs images', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(539, 0, 'fr', '_json', 'Continue', 'Continuer', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(540, 0, 'fr', '_json', 'Create New Package', 'Créer un nouveau package', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(541, 0, 'fr', '_json', 'Package type', 'Type d\'emballage', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(542, 0, 'fr', '_json', 'Package category', 'Catégorie de package', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(543, 0, 'fr', '_json', 'Package name', 'Nom du paquet', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(544, 0, 'fr', '_json', 'Adult price', 'Prix ​​adulte', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(545, 0, 'fr', '_json', 'Children price', 'Prix ​​enfants', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(546, 0, 'fr', '_json', 'Infants price', 'Prix ​​nourrissons', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(547, 0, 'fr', '_json', 'Flight', 'Vol', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(548, 0, 'fr', '_json', 'Hotel', 'Hôtel', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(549, 0, 'fr', '_json', 'Deactivated', 'Désactivé', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(550, 0, 'fr', '_json', 'Activated', 'Activé', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(551, 0, 'fr', '_json', 'Add sight seeing', 'Ajouter des visites touristiques', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(552, 0, 'fr', '_json', 'Confirmation', 'Confirmation', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(553, 0, 'fr', '_json', 'Flight Information', 'Information de vol', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(554, 0, 'fr', '_json', 'Are you sure', 'Êtes-vous sûr?', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(555, 0, 'fr', '_json', 'Booking Confirmation', 'Confirmation de réservation', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(556, 0, 'fr', '_json', 'Inclusion', 'Inclusion', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(557, 0, 'fr', '_json', 'Exclusion', 'Exclusion', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(558, 0, 'fr', '_json', 'Sign in', 'Se connecter', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(559, 0, 'fr', '_json', 'KNOW MORE', 'SAVOIR PLUS', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(560, 0, 'fr', '_json', 'Who we are', 'Qui sommes nous', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(561, 0, 'fr', '_json', 'Read more', 'En Savoir plus', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(562, 0, 'fr', '_json', 'Starting From', 'A partir de', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(563, 0, 'fr', '_json', 'Edit Profile', 'Modifcation du profil', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(564, 0, 'fr', '_json', 'Logout', 'Se déconnecter', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(565, 0, 'fr', '_json', 'Book Flight', 'Réserver un vol', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(566, 0, 'fr', '_json', 'Book Hotel', 'Réserver un hôtel', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(567, 0, 'fr', '_json', 'Navigation', 'Navigation', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(568, 0, 'fr', '_json', 'Create New', 'Créer un nouveau', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(569, 0, 'fr', '_json', 'Commercial', 'Commercial', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(570, 0, 'fr', '_json', 'Sale List', 'Liste de vente', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(571, 0, 'fr', '_json', 'Purchase', 'Achat', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(572, 0, 'fr', '_json', 'Purchase List', 'Liste d\'achats', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(573, 0, 'fr', '_json', 'Suppliers List', 'Liste des fournisseurs', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(574, 0, 'fr', '_json', 'Manage Bookings', 'Gérer les réservations', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(575, 0, 'fr', '_json', 'Manage Packages', 'Gérer les packages', '2021-02-01 10:24:20', '2021-05-19 10:14:06'),
-	(576, 0, 'fr', '_json', 'Packages List', 'Liste des packages', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(577, 0, 'fr', '_json', 'Manage Categories', 'Gérer les catégories', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(578, 0, 'fr', '_json', 'My Wallet', 'Mon portefeuille', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(579, 0, 'fr', '_json', 'Manage Profile', 'Gérer le profil', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(580, 0, 'fr', '_json', 'Home Settings', 'Paramètres General', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(581, 0, 'fr', '_json', 'Vats', 'TAX', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(582, 0, 'fr', '_json', 'Markups', 'Marquages', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(583, 0, 'fr', '_json', 'Markdowns', 'Démarques', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(584, 0, 'fr', '_json', 'Banks', 'Banques', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(585, 0, 'fr', '_json', 'Email Subscribers', 'Abonnés aux courriels', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(586, 0, 'fr', '_json', 'Visa Applications', 'Demandes de visa', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(587, 0, 'fr', '_json', 'Language', 'Langue', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(588, 0, 'fr', '_json', 'Translations', 'Traductions', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(589, 0, 'fr', '_json', 'Wallets Management', 'Gestion des portefeuilles', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(590, 0, 'fr', '_json', 'Log Out', 'Se déconnecter', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(591, 0, 'fr', '_json', 'Discover amazing things to do everywhere you go.', 'Découvrez des choses incroyables à faire partout où vous allez.', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(592, 0, 'fr', '_json', 'Company', 'Société', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(593, 0, 'fr', '_json', 'Contact', 'Contact', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(594, 0, 'fr', '_json', 'Enter your email', 'Entrez votre email', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(595, 0, 'fr', '_json', 'Sign-up to receive regular updates from us.', 'Inscrivez-vous pour recevoir des mises à jour régulières de notre part.', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(596, 0, 'fr', '_json', 'Rentacs Tours', 'Visites à Rentacs', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(597, 0, 'fr', '_json', 'All rights reserved.', 'Tous droits réservés', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(598, 0, 'fr', '_json', 'LAST MINUTE DEALS', 'OFFRES DE LA DERNIÈRE MINUTE', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(599, 0, 'fr', '_json', 'SAVE MORE', 'ÉCONOMISEZ PLUS', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(600, 0, 'fr', '_json', 'VIEW DETAIL', 'VOIR LES DÉTAILS', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(601, 0, 'fr', '_json', 'Profile', 'Profil', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(602, 0, 'fr', '_json', 'Wishlist', 'Liste de souhaits', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(603, 0, 'fr', '_json', 'Flights', 'Vols', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(604, 0, 'fr', '_json', 'Hotels', 'Hôtels', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(605, 0, 'fr', '_json', 'Hot Deals', 'Bonnes affaires', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(606, 0, 'fr', '_json', 'Golf tours', 'Tours de golf', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(607, 0, 'fr', '_json', 'Motorcycle', 'Moto', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(608, 0, 'fr', '_json', 'Surf', 'Le surf', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(609, 0, 'fr', '_json', 'Trekking', 'Trekking', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(610, 0, 'fr', '_json', 'Bivouacs', 'Bivouacs', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(611, 0, 'fr', '_json', 'Best offers', 'Meilleures offres', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(612, 0, 'fr', '_json', 'Log out', 'Se déconnecter', '2021-02-01 10:24:21', '2021-05-19 10:14:06'),
-	(614, 0, 'en', '_json', 'Amenities', 'AMENITIES', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(615, 0, 'en', '_json', 'Add amenities', 'ADD AMENITIES', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(616, 0, 'en', '_json', 'Amenities Name', 'AMENITIES NAME', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(617, 0, 'en', '_json', 'Add', 'ADD', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(618, 0, 'en', '_json', 'Cancel', 'CANCEL', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(619, 0, 'en', '_json', 'Create Booking', 'CREATE BOOKING', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(620, 0, 'en', '_json', 'New Booking', 'NEW BOOKING', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(621, 0, 'en', '_json', 'User Name', 'USER NAME', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(622, 0, 'en', '_json', 'Place', 'PLACE', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(623, 0, 'en', '_json', 'Number of adult', 'NUMBER OF ADULT', '2021-02-01 16:27:22', '2021-05-19 10:14:06'),
-	(624, 0, 'en', '_json', 'Number of Children', 'NUMBER OF CHILDREN', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(625, 0, 'en', '_json', 'Date', 'DATE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(626, 0, 'en', '_json', 'time', 'TIME', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(627, 0, 'en', '_json', 'Time', 'TIME', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(628, 0, 'en', '_json', 'ACTIVE', 'ACTIVE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(629, 0, 'en', '_json', 'INACTIVE', 'INACTIVE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(630, 0, 'en', '_json', 'PENDING', 'PENDING', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(631, 0, 'en', '_json', 'Edit Booking', 'EDIT BOOKING', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(632, 0, 'en', '_json', 'Bookings', 'BOOKINGS', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(633, 0, 'en', '_json', 'Add New Booking', 'ADD NEW BOOKING', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(634, 0, 'en', '_json', 'Booking at', 'BOOKING AT', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(635, 0, 'en', '_json', 'Approved', 'APPROVED', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(636, 0, 'en', '_json', 'Detail', 'DETAIL', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(637, 0, 'en', '_json', 'Approve', 'APPROVE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(638, 0, 'en', '_json', 'Place deleted', 'PLACE DELETED', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(639, 0, 'en', '_json', 'Booking detail', 'BOOKING DETAIL', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(640, 0, 'en', '_json', 'Booking place', 'BOOKING PLACE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(641, 0, 'en', '_json', 'Booking datetime', 'BOOKING DATETIME', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(642, 0, 'en', '_json', 'Number of Adult', 'NUMBER OF ADULT', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(643, 0, 'en', '_json', 'Booking status', 'BOOKING STATUS', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(644, 0, 'en', '_json', 'Activity', 'ACTIVITY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(645, 0, 'en', '_json', 'Add Activity', 'ADD ACTIVITY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(646, 0, 'en', '_json', 'Category Name', 'CATEGORY NAME', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(647, 0, 'en', '_json', 'Priority', 'PRIORITY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(648, 0, 'en', '_json', 'Is feature', 'IS FEATURE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(649, 0, 'en', '_json', 'Add category', 'ADD CATEGORY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(650, 0, 'en', '_json', 'Category name', 'CATEGORY NAME', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(651, 0, 'en', '_json', 'Color', 'COLOR', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(652, 0, 'en', '_json', 'SEO title', 'SEO TITLE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(653, 0, 'en', '_json', 'Meta Description', 'META DESCRIPTION', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(654, 0, 'en', '_json', 'Add city', 'ADD CITY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(655, 0, 'en', '_json', 'Select country', 'SELECT COUNTRY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(656, 0, 'en', '_json', 'City Name', 'CITY NAME', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(657, 0, 'en', '_json', 'Description', 'DESCRIPTION', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(658, 0, 'en', '_json', 'Intro', 'INTRO', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(659, 0, 'en', '_json', 'Thumbnail image', 'THUMBNAIL IMAGE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(660, 0, 'en', '_json', 'Banner image', 'BANNER IMAGE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(661, 0, 'en', '_json', 'Time to visit', 'TIME TO VISIT', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(662, 0, 'en', '_json', 'Currency', 'CURRENCY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(663, 0, 'en', '_json', 'Location', 'LOCATION', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(664, 0, 'en', '_json', 'Search city location...', 'SEARCH CITY LOCATION...', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(665, 0, 'en', '_json', 'Countries', 'COUNTRIES', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(666, 0, 'en', '_json', 'Add country', 'ADD COUNTRY', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(667, 0, 'en', '_json', 'Country name', 'COUNTRY NAME', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(668, 0, 'en', '_json', 'All Places', 'ALL PLACES', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(669, 0, 'en', '_json', 'Activity Type', 'ACTIVITY TYPE', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(670, 0, 'en', '_json', 'Cities', 'Cities', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(671, 0, 'en', '_json', 'All Posts', 'ALL POSTS', '2021-02-01 16:27:23', '2021-05-19 10:14:06'),
-	(672, 0, 'en', '_json', 'Categories', 'CATEGORIES', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(673, 0, 'en', '_json', 'Pages', 'PAGES', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(674, 0, 'en', '_json', 'Reviews', 'REVIEWS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(675, 0, 'en', '_json', 'Account Management', 'ACCOUNT MANAGEMENT', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(676, 0, 'en', '_json', 'Users', 'USERS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(677, 0, 'en', '_json', 'Testimonials', 'TESTIMONIALS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(678, 0, 'en', '_json', 'General Settings', 'GENERAL SETTINGS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(679, 0, 'en', '_json', 'Languages', 'LANGUAGES', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(680, 0, 'en', '_json', 'Home Page', 'HOME PAGE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(681, 0, 'en', '_json', 'Add Page', 'ADD PAGE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(682, 0, 'en', '_json', 'Title', 'TITLE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(683, 0, 'en', '_json', 'Content', 'CONTENT', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(684, 0, 'en', '_json', 'SEO', 'SEO', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(685, 0, 'en', '_json', 'Publish', 'PUBLISH', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(686, 0, 'en', '_json', 'Edit Page', 'EDIT PAGE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(687, 0, 'en', '_json', 'Add new Page', 'ADD NEW PAGE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(688, 0, 'en', '_json', 'All categories', 'ALL CATEGORIES', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(689, 0, 'en', '_json', 'Genaral', 'GENARAL', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(690, 0, 'en', '_json', 'Place name', 'PLACE NAME', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(691, 0, 'en', '_json', 'What the name of place', 'WHAT THE NAME OF PLACE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(692, 0, 'en', '_json', 'Price range', 'PRICE RANGE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(693, 0, 'en', '_json', 'Offre Date', 'OFFRE DATE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(694, 0, 'en', '_json', 'Category', 'CATEGORY', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(695, 0, 'en', '_json', 'Place type', 'PLACE TYPE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(696, 0, 'en', '_json', 'Select Country', 'SELECT COUNTRY', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(697, 0, 'en', '_json', 'Please select country first', 'PLEASE SELECT COUNTRY FIRST', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(698, 0, 'en', '_json', 'Place Address', 'PLACE ADDRESS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(699, 0, 'en', '_json', 'Search address...', 'SEARCH ADDRESS...', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(700, 0, 'en', '_json', 'Contact info', 'CONTACT INFO', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(701, 0, 'en', '_json', 'Website', 'WEBSITE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(702, 0, 'en', '_json', 'Social Networks', 'SOCIAL NETWORKS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(703, 0, 'en', '_json', 'Enter URL include http or www', 'ENTER URL INCLUDE HTTP OR WWW', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(704, 0, 'en', '_json', 'Opening hours', 'OPENING HOURS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(705, 0, 'en', '_json', 'Media', 'MEDIA', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(706, 0, 'en', '_json', 'Gallery images', 'GALLERY IMAGES', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(707, 0, 'en', '_json', 'Video', 'VIDEO', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(708, 0, 'en', '_json', 'Booking type', 'BOOKING TYPE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(709, 0, 'en', '_json', 'Booking form', 'BOOKING FORM', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(710, 0, 'en', '_json', 'Enquiry Form', 'ENQUIRY FORM', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(711, 0, 'en', '_json', 'Booking Now', 'BOOKING NOW', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(712, 0, 'en', '_json', 'Affiliate Banner Ads', 'AFFILIATE BANNER ADS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(713, 0, 'en', '_json', 'Submit', 'SUBMIT', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(714, 0, 'en', '_json', 'Add more', 'ADD MORE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(715, 0, 'en', '_json', 'Contact form', 'CONTACT FORM', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(716, 0, 'en', '_json', 'Banner link', 'BANNER LINK', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(717, 0, 'en', '_json', 'Maps', 'MAPS', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(718, 0, 'en', '_json', 'Add place', 'ADD PLACE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(719, 0, 'en', '_json', 'Hightlight', 'HIGHTLIGHT', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(720, 0, 'en', '_json', 'Social network', 'SOCIAL NETWORK', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(722, 0, 'en', '_json', 'Booking link', 'BOOKING LINK', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(723, 0, 'en', '_json', 'Places', 'PLACES', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(724, 0, 'en', '_json', 'All Country', 'ALL COUNTRY', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(725, 0, 'en', '_json', 'Select city', 'SELECT CITY', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(726, 0, 'en', '_json', 'All City', 'ALL CITY', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(727, 0, 'en', '_json', 'Select Activity', 'SELECT ACTIVITY', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(728, 0, 'en', '_json', 'All Activities', 'ALL ACTIVITIES', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(729, 0, 'en', '_json', 'Add place type', 'ADD PLACE TYPE', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(730, 0, 'en', '_json', 'Place type name', 'PLACE TYPE NAME', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(731, 0, 'en', '_json', 'Select Category', 'SELECT CATEGORY', '2021-02-01 16:27:24', '2021-05-19 10:14:06'),
-	(732, 0, 'en', '_json', 'Reviewer', 'REVIEWER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(733, 0, 'en', '_json', 'Comment', 'COMMENT', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(734, 0, 'en', '_json', 'Star', 'STAR', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(735, 0, 'en', '_json', 'New Sale', 'NEW SALE', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(736, 0, 'en', '_json', 'New Supplier', 'NEW SUPPLIER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(737, 0, 'en', '_json', 'Edit testimonial', 'EDIT TESTIMONIAL', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(738, 0, 'en', '_json', 'Add testimonial', 'ADD TESTIMONIAL', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(739, 0, 'en', '_json', 'Add new Testimonial', 'ADD NEW TESTIMONIAL', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(740, 0, 'en', '_json', 'Avatar', 'AVATAR', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(741, 0, 'en', '_json', 'Job title', 'JOB TITLE', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(742, 0, 'en', '_json', 'New user', 'NEW USER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(743, 0, 'en', '_json', 'Password', 'PASSWORD', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(744, 0, 'en', '_json', 'Role', 'ROLE', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(745, 0, 'en', '_json', 'Visitor', 'VISITOR', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(746, 0, 'en', '_json', 'Wholeseller', 'WHOLESELLER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(747, 0, 'en', '_json', 'Agent', 'AGENT', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(748, 0, 'en', '_json', 'Edit User', 'EDIT USER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(749, 0, 'en', '_json', 'Add New User', 'ADD NEW USER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(750, 0, 'en', '_json', 'Is Admin', 'IS ADMIN', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(751, 0, 'en', '_json', 'No places', 'NO PLACES', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(752, 0, 'en', '_json', 'Back to list', 'BACK TO LIST', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(753, 0, 'en', '_json', 'Show all', 'SHOW ALL', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(754, 0, 'en', '_json', 'Introducing', 'INTRODUCING', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(755, 0, 'en', '_json', 'Best time to visit', 'BEST TIME TO VISIT', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(756, 0, 'en', '_json', 'Maps view', 'MAPS VIEW', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(757, 0, 'en', '_json', 'See all', 'SEE ALL', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(758, 0, 'en', '_json', 'results', 'RESULTS', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(759, 0, 'en', '_json', 'Clear All', 'CLEAR ALL', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(760, 0, 'en', '_json', 'Filter', 'FILTER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(761, 0, 'en', '_json', 'Sort By', 'SORT BY', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(762, 0, 'en', '_json', 'Newest', 'NEWEST', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(763, 0, 'en', '_json', 'Average rating', 'AVERAGE RATING', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(764, 0, 'en', '_json', 'Price: Low to high', 'PRICE: LOW TO HIGH', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(765, 0, 'en', '_json', 'Price: High to low', 'PRICE: HIGH TO LOW', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(766, 0, 'en', '_json', 'Price Filter', 'PRICE FILTER', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(767, 0, 'en', '_json', 'Free', 'FREE', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(768, 0, 'en', '_json', 'Low: $', 'LOW: $', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(769, 0, 'en', '_json', 'Medium: $$', 'MEDIUM: $$', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(770, 0, 'en', '_json', 'High: $$$', 'HIGH: $$$', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(771, 0, 'en', '_json', 'Types', 'TYPES', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(772, 0, 'en', '_json', 'Explorer Other Cities', 'EXPLORER OTHER CITIES', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(773, 0, 'en', '_json', 'places', 'PLACES', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(774, 0, 'en', '_json', 'No cities', 'NO CITIES', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(775, 0, 'en', '_json', 'reviews', 'REVIEWS', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(776, 0, 'en', '_json', 'Our Offices', 'OUR OFFICES', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(777, 0, 'en', '_json', 'Get Direction', 'GET DIRECTION', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(778, 0, 'en', '_json', 'Get in touch with us', 'GET IN TOUCH WITH US', '2021-02-01 16:27:25', '2021-05-19 10:14:06'),
-	(779, 0, 'en', '_json', 'First name', 'FIRST NAME', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(780, 0, 'en', '_json', 'Last name', 'LAST NAME', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(781, 0, 'en', '_json', 'Message', 'MESSAGE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(782, 0, 'en', '_json', 'Send Message', 'SEND MESSAGE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(783, 0, 'en', '_json', 'We want to hear from you.', 'WE WANT TO HEAR FROM YOU.', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(784, 0, 'en', '_json', 'Open hours', 'OPEN HOURS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(785, 0, 'en', '_json', 'Edit my place', 'EDIT MY PLACE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(786, 0, 'en', '_json', 'Add new place', 'ADD NEW PLACE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(787, 0, 'en', '_json', 'Place Name', 'PLACE NAME', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(788, 0, 'en', '_json', 'Price Range', 'PRICE RANGE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(789, 0, 'en', '_json', 'Place Type', 'PLACE TYPE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(790, 0, 'en', '_json', 'Select Place Type', 'SELECT PLACE TYPE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(791, 0, 'en', '_json', 'Full Address', 'FULL ADDRESS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(792, 0, 'en', '_json', 'Place Location at Google Map', 'PLACE LOCATION AT GOOGLE MAP', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(793, 0, 'en', '_json', 'Your email address', 'YOUR EMAIL ADDRESS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(794, 0, 'en', '_json', 'Your phone number', 'YOUR PHONE NUMBER', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(795, 0, 'en', '_json', 'Your website url', 'YOUR WEBSITE URL', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(796, 0, 'en', '_json', 'Select network', 'SELECT NETWORK', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(798, 0, 'en', '_json', 'Thumb image', 'THUMB IMAGE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(799, 0, 'en', '_json', 'Maximum file size: 1 MB', 'MAXIMUM FILE SIZE: 1 MB', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(800, 0, 'en', '_json', 'Gallery Images', 'GALLERY IMAGES', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(801, 0, 'en', '_json', 'Youtube, Vimeo video url', 'Youtube, Vimeo video url', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(802, 0, 'en', '_json', 'Login to submit', 'LOGIN TO SUBMIT', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(803, 0, 'en', '_json', 'Gallery', 'GALLERY', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(804, 0, 'en', '_json', 'Show more', 'SHOW MORE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(805, 0, 'en', '_json', 'Book now', 'BOOK NOW', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(806, 0, 'en', '_json', 'Location & Maps', 'LOCATION & MAPS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(807, 0, 'en', '_json', 'Direction', 'DIRECTION', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(808, 0, 'en', '_json', 'Contact Info', 'CONTACT INFO', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(809, 0, 'en', '_json', 'Review', 'REVIEW', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(810, 0, 'en', '_json', 'to review', 'TO REVIEW', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(811, 0, 'en', '_json', 'Write a review', 'WRITE A REVIEW', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(812, 0, 'en', '_json', 'Rate This Place', 'RATE THIS PLACE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(813, 0, 'en', '_json', 'error!', 'ERROR!', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(814, 0, 'en', '_json', 'Booking online', 'BOOKING ONLINE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(815, 0, 'en', '_json', 'Make a reservation', 'MAKE A RESERVATION', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(816, 0, 'en', '_json', 'Send me a message', 'SEND ME A MESSAGE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(817, 0, 'en', '_json', 'Send', 'SEND', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(818, 0, 'en', '_json', 'Banner Ads', 'BANNER ADS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(819, 0, 'en', '_json', 'View', 'VIEW', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(820, 0, 'en', '_json', 'Person', 'PERSON', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(821, 0, 'en', '_json', 'Adults', 'ADULTS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(822, 0, 'en', '_json', 'Childrens', 'CHILDRENS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(823, 0, 'en', '_json', 'You won\'t be charged yet', 'YOU WON\'T BE CHARGED YET', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(824, 0, 'en', '_json', 'You successfully created your booking.', 'YOU SUCCESSFULLY CREATED YOUR BOOKING.', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(825, 0, 'en', '_json', 'Your Booking is Pending, We Will Contact You as Soon as Possible.', 'Your Booking is Pending, We Will Contact You as Soon as Possible.', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(826, 0, 'en', '_json', 'An error occurred. Please try again.', 'AN ERROR OCCURRED. PLEASE TRY AGAIN.', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(827, 0, 'en', '_json', 'Similar places', 'SIMILAR PLACES', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(828, 0, 'en', '_json', 'Overview', 'OVERVIEW', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(829, 0, 'en', '_json', 'By Booking.com', 'BY BOOKING.COM', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(830, 0, 'en', '_json', 'Select Categories', 'SELECT CATEGORIES', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(831, 0, 'en', '_json', 'by', 'BY', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(832, 0, 'en', '_json', 'Related Articles', 'RELATED ARTICLES', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(833, 0, 'en', '_json', 'All', 'ALL', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(834, 0, 'en', '_json', 'Search results', 'SEARCH RESULTS', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(835, 0, 'en', '_json', 'results for', 'RESULTS FOR', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(836, 0, 'en', '_json', 'cities', 'CITIES', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(837, 0, 'en', '_json', 'More', 'MORE', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(838, 0, 'en', '_json', 'Apply', 'APPLY', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(839, 0, 'en', '_json', 'Nothing found!', 'NOTHING FOUND!', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(840, 0, 'en', '_json', 'We\'re sorry but we do not have any listings matching your search, try to change you search settings', 'We\'re sorry but we do not have any listings matching your search, try to change you search settings', '2021-02-01 16:27:26', '2021-05-19 10:14:06'),
-	(841, 0, 'en', '_json', 'Staticts', 'STATICTS', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(842, 0, 'en', '_json', 'Find', 'FIND', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(843, 0, 'en', '_json', 'Where are you going?', 'WHERE ARE YOU GOING?', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(844, 0, 'en', '_json', 'Where', 'WHERE', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(845, 0, 'en', '_json', 'City?', 'CITY?', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(846, 0, 'en', '_json', 'Place List', 'PLACE LIST', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(847, 0, 'en', '_json', 'Categories List', 'CATEGORIES LIST', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(848, 0, 'en', '_json', 'Log out', 'LOG OUT', '2021-02-01 16:27:27', '2021-05-19 10:14:06'),
-	(849, 0, 'en', '_json', 'Booking', 'BOOKING', '2021-02-03 17:09:36', '2021-05-19 10:14:06'),
-	(850, 0, 'en', '_json', 'Edit place', 'EDIT PLACE', '2021-02-03 17:09:36', '2021-05-19 10:14:06'),
-	(851, 0, 'en', '_json', 'Browse Businesses by Category', 'BROWSE BUSINESSES BY CATEGORY', '2021-02-03 17:09:37', '2021-05-19 10:14:06'),
-	(852, 0, 'en', '_json', 'Activity List', 'ACTIVITY LIST', '2021-02-03 17:09:37', '2021-05-19 10:14:06'),
-	(853, 0, 'en', '_json', 'Amenities List', 'AMENITIES LIST', '2021-02-03 17:09:37', '2021-05-19 10:14:06'),
-	(854, 0, 'en', '_json', 'Cities List', 'Cities List', '2021-02-03 17:09:37', '2021-05-19 10:14:06'),
-	(855, 0, 'en', '_json', 'Countries List', 'COUNTRIES LIST', '2021-02-03 17:09:37', '2021-05-19 10:14:06'),
-	(856, 0, 'en', '_json', 'My account', 'MY ACCOUNT', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(857, 0, 'en', '_json', 'Reset Password', 'RESET PASSWORD', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(858, 0, 'en', '_json', 'New password', 'NEW PASSWORD', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(859, 0, 'en', '_json', 'Enter new password', 'ENTER NEW PASSWORD', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(860, 0, 'en', '_json', 'Re-new password', 'RE-NEW PASSWORD', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(861, 0, 'en', '_json', 'All cities', 'ALL CITIES', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(862, 0, 'en', '_json', 'Search', 'SEARCH', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(863, 0, 'en', '_json', 'ID', 'ID', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(864, 0, 'en', '_json', 'Thumb', 'THUMB', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(865, 0, 'en', '_json', 'No item found', 'NO ITEM FOUND', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(866, 0, 'en', '_json', 'Children', 'CHILDREN', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(867, 0, 'en', '_json', 'Infants', 'INFANTS', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(868, 0, 'en', '_json', 'Latest Booking', 'LATEST BOOKING', '2021-02-05 22:34:43', '2021-05-19 10:14:06'),
-	(869, 0, 'en', '_json', 'Find Cheap Flights', 'FIND CHEAP FLIGHTS', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(870, 0, 'en', '_json', 'One Way', 'ONE WAY', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(871, 0, 'en', '_json', 'Round Trip', 'ROUND TRIP', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(872, 0, 'en', '_json', 'Multi Destination', 'MULTI DESTINATION', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(873, 0, 'en', '_json', 'Departure City', 'DEPARTURE CITY', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(874, 0, 'en', '_json', 'Destination City', 'DESTINATION CITY', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(875, 0, 'en', '_json', 'Departure Date', 'DEPARTURE DATE', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(876, 0, 'en', '_json', 'Return Date', 'RETURN DATE', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(877, 0, 'en', '_json', 'Book Flight Tickets', 'BOOK FLIGHT TICKETS', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(878, 0, 'en', '_json', 'Adult', 'ADULT', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(879, 0, 'en', '_json', 'Child', 'CHILD', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(880, 0, 'en', '_json', 'below 2yrs', 'BELOW 2YRS', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(881, 0, 'en', '_json', 'Search Flights', 'SEARCH FLIGHTS', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(882, 0, 'en', '_json', 'Book Hotel Rooms', 'BOOK HOTEL ROOMS', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(883, 0, 'en', '_json', 'I Want To Go', 'I WANT TO GO', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(884, 0, 'en', '_json', 'CheckIn', 'CHECKIN', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(885, 0, 'en', '_json', 'CheckOut', 'CHECKOUT', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(886, 0, 'en', '_json', 'BEST OFFERS', 'BEST OFFERS', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(887, 0, 'en', '_json', 'We are finding the cheapest available flights for you. Hold on for some seconds', 'WE ARE FINDING THE CHEAPEST AVAILABLE FLIGHTS FOR YOU. HOLD ON FOR SOME SECONDS', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(888, 0, 'en', '_json', 'Departure Airport', 'DEPARTURE AIRPORT', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(889, 0, 'en', '_json', 'Destination Airport', 'DESTINATION AIRPORT', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(890, 0, 'en', '_json', 'Cabin', 'CABIN', '2021-02-05 22:34:44', '2021-05-19 10:14:06'),
-	(891, 0, 'fr', '_json', 'Explore the world', 'Explorer le monde', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(892, 0, 'fr', '_json', 'Destinations', 'Les destinations', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(893, 0, 'fr', '_json', 'Add place', 'Ajouter une Destination', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(894, 0, 'fr', '_json', 'Type a city or location', 'Saisissez une ville ou un emplacement', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(895, 0, 'fr', '_json', 'Popular cities', 'Villes populaires', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(896, 0, 'fr', '_json', 'Get the App', 'Obtenir l\'application', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(897, 0, 'fr', '_json', 'Download the app and go to travel the world.', 'Téléchargez l\'application et partez parcourir le monde.', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(898, 0, 'fr', '_json', 'Related stories', 'Histoires en Relation', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(899, 0, 'fr', '_json', 'Popular:', 'Populaire', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(900, 0, 'fr', '_json', 'View more', 'Voir plus', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(901, 0, 'fr', '_json', '404 Error', 'Erreur 404', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(902, 0, 'fr', '_json', 'All cities', 'Toutes les villes', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(903, 0, 'fr', '_json', 'Avatar', 'Avatar', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(904, 0, 'fr', '_json', 'Basic Info', 'Informations de base', '2021-02-05 22:37:34', '2021-05-19 10:14:06'),
-	(905, 0, 'fr', '_json', 'Change Password', 'Changer le mot de passe', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(906, 0, 'fr', '_json', 'Continue with', 'Continuer avec', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(907, 0, 'fr', '_json', 'Enter facebook', 'Entrez Facebook', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(908, 0, 'fr', '_json', 'Enter instagram', 'Entez Instagram', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(909, 0, 'fr', '_json', 'Enter new password', 'Entrez un nouveau mot de passe', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(910, 0, 'fr', '_json', 'Enter old password', 'Entrez l\'ancien mot de passe', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(911, 0, 'fr', '_json', 'Enter phone number', 'Entrez le numéro de téléphone', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(912, 0, 'fr', '_json', 'Enter your name', 'Entrez votre nom', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(913, 0, 'fr', '_json', 'Facebook', 'Facebook', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(914, 0, 'fr', '_json', 'Faqs', 'FAQS', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(915, 0, 'fr', '_json', 'Forgot password', 'Mot de passe oublié', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(916, 0, 'fr', '_json', 'Full name', 'Nom complet', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(917, 0, 'fr', '_json', 'Homepage', 'Page d\'accueil', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(918, 0, 'fr', '_json', 'Make sure you\'ve typed in the URL correctly or try go', 'Assurez-vous que vous avez correctement saisi l\'URL ou essayez d\'aller', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(919, 0, 'fr', '_json', 'My account', 'Mon compte', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(920, 0, 'fr', '_json', 'My Places', 'Destinations', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(921, 0, 'fr', '_json', 'New password', 'Nouveau mot de passe', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(922, 0, 'fr', '_json', 'No item found', 'Aucun élément trouvé', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(923, 0, 'fr', '_json', 'Old password', 'Ancien mot de passe', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(924, 0, 'fr', '_json', 'Place', 'Destination', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(925, 0, 'fr', '_json', 'Place name', 'Nom de la destination', '2021-02-05 22:37:35', '2021-05-19 10:14:06'),
-	(926, 0, 'fr', '_json', 'Profile Setting', 'Réglage du profil', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(927, 0, 'fr', '_json', 'Re-new password', 'Nouveau mot de passe', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(928, 0, 'fr', '_json', 'Reset Password', 'réinitialiser le mot de passe', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(929, 0, 'fr', '_json', 'Search', 'Rechercher', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(930, 0, 'fr', '_json', 'Sorry, we couldn\'t find that page.', 'Désolé, nous n\'avons pas pu trouver cette page.', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(931, 0, 'fr', '_json', 'Thumb', 'Thumb', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(932, 0, 'fr', '_json', 'Upload new', 'Importer un nouveau', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(933, 0, 'fr', '_json', 'We can\'t find the page or studio you\'re looking for.', 'Nous ne trouvons pas la page ou le studio que vous recherchez.', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(934, 0, 'fr', '_json', 'Browse Businesses by Category', 'Parcourir par catégorie', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(935, 0, 'fr', '_json', 'categories', 'Categories', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(936, 0, 'fr', '_json', 'Featured Cities', 'Villes en vedette', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(937, 0, 'fr', '_json', 'Find', 'Trouver', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(938, 0, 'fr', '_json', 'From Our Blog', 'Depuis notre Blog', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(939, 0, 'fr', '_json', 'Instagram', 'Instagram', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(940, 0, 'fr', '_json', 'Log In', 'Connexion', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(941, 0, 'fr', '_json', 'Or', 'Ou', '2021-02-05 22:37:36', '2021-05-19 10:14:06'),
-	(942, 0, 'fr', '_json', 'Search places ...', 'Recherche Destinations ...', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(943, 0, 'fr', '_json', 'Where', 'Où', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(944, 0, 'fr', '_json', 'Add amenities', 'Ajouter un service', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(945, 0, 'fr', '_json', 'Add Activity', 'Ajouter une activité', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(946, 0, 'fr', '_json', 'SEO title', 'titre SEO', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(947, 0, 'fr', '_json', 'Meta Description', 'Meta Description', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(948, 0, 'fr', '_json', 'All Places', 'Toutes les destinations', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(949, 0, 'fr', '_json', 'Activity Type', 'Type d\'activités', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(950, 0, 'fr', '_json', 'Countries', 'Pays', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(951, 0, 'fr', '_json', 'Pages', 'Pages', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(952, 0, 'fr', '_json', 'Bookings', 'Réservations', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(953, 0, 'fr', '_json', 'SEO', 'SEO', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(954, 0, 'fr', '_json', 'Choose your next destination', 'Choisissez votre prochaine destination', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(956, 0, 'fr', '_json', 'Business Listing', 'Business Listing', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(957, 0, 'fr', '_json', 'Trending Business Places', 'Destinations en tendance', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(958, 0, 'fr', '_json', 'Choose the city you\'ll be living in next', 'Choisissez la prochaine ville dans laquelle vous vivrez', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(959, 0, 'fr', '_json', 'Lost your password? Please enter your email address. You will receive a link to create a new password via email.', 'Mot de passe perdu? Veuillez saisir votre adresse e-mail. Vous recevrez un lien pour créer un nouveau mot de passe par e-mail.', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(960, 0, 'fr', '_json', 'Paris', 'Paris', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(961, 0, 'fr', '_json', 'Amenities Name', 'Nom du service', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(962, 0, 'fr', '_json', 'Add', 'Ajouter', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(963, 0, 'fr', '_json', 'Cancel', 'Annuler', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(964, 0, 'fr', '_json', 'Booking at', 'Réservation au', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(965, 0, 'fr', '_json', 'Booking place', 'Lieu de réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(966, 0, 'fr', '_json', 'Booking datetime', 'Date de réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(967, 0, 'fr', '_json', 'Number of Adult', 'Nombre d\'adultes', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(968, 0, 'fr', '_json', 'Number of Children', 'Nombre d\'enfants', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(969, 0, 'fr', '_json', 'Booking status', 'Statut de réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(970, 0, 'fr', '_json', 'Category Name', 'Nom de la catégorie', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(971, 0, 'fr', '_json', 'Priority', 'Priorité', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(972, 0, 'fr', '_json', 'Add city', 'Ajouter une ville', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(973, 0, 'fr', '_json', 'City Name', 'Nom de la ville', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(974, 0, 'fr', '_json', 'Add country', 'Ajouter un pays', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(975, 0, 'fr', '_json', 'Country name', 'Nom du pays', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(976, 0, 'fr', '_json', 'Users', 'Utilisateurs', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(977, 0, 'fr', '_json', 'Booking Make', 'Faire une réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(978, 0, 'fr', '_json', 'Booking type', 'Type de réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(979, 0, 'fr', '_json', 'Affiliate Book Buttons', 'Boutons d\'affiliation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(981, 0, 'fr', '_json', 'Booking link', 'Lien de réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(982, 0, 'fr', '_json', 'Add Post', 'Ajouter un Article', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(983, 0, 'fr', '_json', 'Title', 'Titre', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(984, 0, 'fr', '_json', 'Content', 'Contenu', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(985, 0, 'fr', '_json', 'Posts', 'Articles', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(986, 0, 'fr', '_json', 'Booking form', 'Formulaire de réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(987, 0, 'fr', '_json', 'Enquiry Form', 'Formulaire', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(988, 0, 'fr', '_json', 'Welcome to Admin Dashboard.', 'Bienvenue dans le tableau de bord d\'administration.', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(989, 0, 'fr', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete, edit, create) places, categories, cities, country, manage users, review, booking...', 'Le site d\'administration est une zone à laquelle seul l\'administrateur peut accéder. De là, vous pouvez gérer (supprimer, modifier, créer) des lieux, des catégories, des villes, des pays, gérer les utilisateurs, consulter, réserver.', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(990, 0, 'fr', '_json', 'Staticts', 'Statistiques', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(991, 0, 'fr', '_json', 'Booking detail', 'Détails de la réservation', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(992, 0, 'fr', '_json', 'Add category', 'Ajouter une catégorie', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(993, 0, 'fr', '_json', 'Color', 'Couleur', '2021-02-05 22:37:37', '2021-05-19 10:14:06'),
-	(994, 0, 'fr', '_json', 'Intro', 'Intro', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(995, 0, 'fr', '_json', 'All Posts', 'Tous les posts', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(996, 0, 'fr', '_json', 'Testimonials', 'Témoignages', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(997, 0, 'fr', '_json', 'General Settings', 'Paramètre géréraux', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(998, 0, 'fr', '_json', 'Add place type', 'Ajouter un type de lieu', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(999, 0, 'fr', '_json', 'Place type name', 'Nom du type de destination', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1000, 0, 'fr', '_json', 'Publish', 'Publier', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1001, 0, 'fr', '_json', 'Learn More', 'Lire plus', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1002, 0, 'fr', '_json', 'Add New', 'Ajouter un nouveau', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1003, 0, 'fr', '_json', 'Offre Date', 'Fin de l\'Offre', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1004, 0, 'fr', '_json', 'New Booking', 'Nouvelle Réservation', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1005, 0, 'fr', '_json', 'User Name', 'Nom Utilisateur', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1006, 0, 'fr', '_json', 'PENDING', 'En cours', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1007, 0, 'fr', '_json', 'Edit Booking', 'Modifier la réservation', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1008, 0, 'fr', '_json', 'Approved', 'Approuvé', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1009, 0, 'fr', '_json', 'Place deleted', 'Destination supprimée', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1010, 0, 'fr', '_json', 'Approve', 'Approuver', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1011, 0, 'fr', '_json', 'Comment', 'Commentaire', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1012, 0, 'fr', '_json', 'Booking', 'Réservation', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1013, 0, 'fr', '_json', 'Please select country first', 'Veuillez d\'abord sélectionner le pays', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1014, 0, 'fr', '_json', 'Star', 'Étoile', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1015, 0, 'fr', '_json', 'Add New Booking', 'Ajouter une nouvelle réservation', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1016, 0, 'fr', '_json', 'Add new Post', 'Ajouter un nouveau post', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1017, 0, 'fr', '_json', 'Add new Testimonial', 'Ajouter un témoignage', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1018, 0, 'fr', '_json', 'New user', 'Nouvelle Utilisateur', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1019, 0, 'fr', '_json', 'Add New User', 'Ajouter un nouvel utilisateur', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1020, 0, 'fr', '_json', 'and', 'et', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1021, 0, 'fr', '_json', 'Account Management', 'Gestion des Comptes', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1022, 0, 'fr', '_json', 'New Sale', 'Nouvelle Vente', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1023, 0, 'fr', '_json', 'New Supplier', 'Nouveau Fournisseur', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1024, 0, 'fr', '_json', 'Create Booking', 'Ajouter une Réservation', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1025, 0, 'fr', '_json', 'Edit Page', 'Modifier la page', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1026, 0, 'fr', '_json', 'Purchase Status', 'Status d\'Achat', '2021-02-05 22:37:38', '2021-05-19 10:14:06'),
-	(1027, 0, 'fr', '_json', 'Add testimonial', 'Ajouter un témoignage', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1028, 0, 'fr', '_json', 'Password', 'Mot de passe', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1029, 0, 'fr', '_json', 'Edit User', 'Modifier l\'utilisateur', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1030, 0, 'fr', '_json', 'View all', 'Voir tout', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1031, 0, 'fr', '_json', 'Subtotal', 'Sous Total', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1032, 0, 'fr', '_json', 'Continue Shopping', 'Continuer votre achat', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1033, 0, 'fr', '_json', 'Add Page', 'Ajouter une page', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1034, 0, 'fr', '_json', 'City?', 'Ville?', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1035, 0, 'fr', '_json', 'Select Activity', 'Sélection d\'Activité', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1036, 0, 'fr', '_json', 'Role', 'Rôle', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1037, 0, 'fr', '_json', 'Wholeseller', 'Fournisseur', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1038, 0, 'fr', '_json', 'Where are you going?', 'Où allez vous ?', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1039, 0, 'fr', '_json', 'Visitor', 'Visiteur', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1040, 0, 'fr', '_json', 'time', 'temp', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1041, 0, 'fr', '_json', 'Home Page', 'Accueil', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1042, 0, 'fr', '_json', 'Add new Page', 'Ajouter une nouvelle page', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1043, 0, 'fr', '_json', 'Booking Now', 'Réservez maintenant', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1044, 0, 'fr', '_json', 'All Activities', 'Toutes les activités', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1045, 0, 'fr', '_json', 'Is Admin', 'est Admin', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1046, 0, 'fr', '_json', 'Accept the', 'Accepter', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1047, 0, 'fr', '_json', 'Latest Stories', 'Derniers Articles', '2021-02-05 22:37:39', '2021-05-19 10:14:06'),
-	(1048, 0, 'en', '_json', 'VILLES A VOIR', 'VILLES A VOIR', '2021-02-07 12:36:46', '2021-05-19 10:14:06'),
-	(1049, 0, 'en', '_json', '404 Error', '404 Error', '2021-02-07 12:37:54', '2021-05-19 10:14:06'),
-	(1050, 0, 'fr', '_json', 'ACTIVE', 'ACTIF', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1051, 0, 'fr', '_json', 'Activity List', 'Liste d\'activités', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1052, 0, 'fr', '_json', 'Adult', 'Adulte', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1053, 0, 'fr', '_json', 'Affiliate Banner Ads', 'Annonces de bannière d\'affiliation', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1054, 0, 'fr', '_json', 'Agent', 'Agent', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1055, 0, 'fr', '_json', 'Amenities List', 'Liste des Services', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1056, 0, 'fr', '_json', 'BEST OFFERS', 'Meilleures offres', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1057, 0, 'fr', '_json', 'Banner image', 'Image de bannière', '2021-02-07 20:24:12', '2021-05-19 10:14:06'),
-	(1058, 0, 'fr', '_json', 'Banner link', 'Lien de bannière', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1059, 0, 'fr', '_json', 'Book Flight Tickets', 'Réserver un billet d\'avion', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1060, 0, 'fr', '_json', 'Book Hotel Rooms', 'Réserver des chambres d\'hôtel', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1061, 0, 'fr', '_json', 'Cabin', 'Cabine', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1062, 0, 'fr', '_json', 'Categories', 'Catégories', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1063, 0, 'fr', '_json', 'Categories List', 'Liste des catégories', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1064, 0, 'fr', '_json', 'Category name', 'Nom de l\'activité', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1065, 0, 'fr', '_json', 'CheckIn', 'Enregistrement', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1066, 0, 'fr', '_json', 'CheckOut', 'Check-out', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1067, 0, 'fr', '_json', 'Child', 'Enfant', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1068, 0, 'fr', '_json', 'Children', 'Enfants', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1069, 0, 'fr', '_json', 'Cities', 'Villes', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1070, 0, 'fr', '_json', 'Cities List', 'Liste des villes', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1071, 0, 'fr', '_json', 'Contact form', 'Formulaire de contact', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1072, 0, 'fr', '_json', 'Countries List', 'Liste des pays', '2021-02-07 20:24:13', '2021-05-19 10:14:06'),
-	(1073, 0, 'fr', '_json', 'Departure Airport', 'Aéroport de départ', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1074, 0, 'fr', '_json', 'Departure City', 'Ville de départ', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1075, 0, 'fr', '_json', 'Departure Date', 'Date de départ', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1076, 0, 'fr', '_json', 'Destination Airport', 'Aéroport de destination', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1077, 0, 'fr', '_json', 'Destination City', 'Destination', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1078, 0, 'fr', '_json', 'Detail', 'Détails', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1079, 0, 'fr', '_json', 'Edit place', 'Modifier le lieu', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1080, 0, 'fr', '_json', 'Edit testimonial', 'Modifier le témoignage', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1081, 0, 'fr', '_json', 'Find Cheap Flights', 'Trouver des vols pas chers', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1082, 0, 'fr', '_json', 'Gallery images', 'Images de la galerie', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1083, 0, 'fr', '_json', 'Hightlight', 'Hightlight', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1084, 0, 'fr', '_json', 'I Want To Go', 'Je veux y aller', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1085, 0, 'fr', '_json', 'ID', 'ID', '2021-02-07 20:24:14', '2021-05-19 10:14:06'),
-	(1086, 0, 'fr', '_json', 'INACTIVE', 'INACTIF', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1087, 0, 'fr', '_json', 'Infants', 'Les bébés', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1088, 0, 'fr', '_json', 'Is feature', 'Vedette', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1089, 0, 'fr', '_json', 'Job title', 'Profession', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1090, 0, 'fr', '_json', 'Latest Booking', 'Dernière réservation', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1091, 0, 'fr', '_json', 'Multi Destination', 'Multi-Destinations', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1092, 0, 'fr', '_json', 'Number of adult', 'Nombre d\'adultes', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1093, 0, 'fr', '_json', 'One Way', 'Aller simple', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1094, 0, 'fr', '_json', 'Opening hours', 'Horaires d\'ouvertures', '2021-02-07 20:24:15', '2021-05-19 10:14:06'),
-	(1095, 0, 'fr', '_json', 'Place List', 'Liste des Destinations', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1096, 0, 'fr', '_json', 'Place type', 'Type de lieu', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1097, 0, 'fr', '_json', 'Price range', 'Échelle des prix', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1098, 0, 'fr', '_json', 'Return Date', 'Date de retour', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1099, 0, 'fr', '_json', 'Reviewer', 'Critique', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1100, 0, 'fr', '_json', 'Reviews', 'Avis', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1101, 0, 'fr', '_json', 'Round Trip', 'Aller-retour', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1102, 0, 'fr', '_json', 'Search Flights', 'Recherche de vols', '2021-02-07 20:24:16', '2021-05-19 10:14:06'),
-	(1103, 0, 'fr', '_json', 'Search address...', 'Rechercher une adresse ...', '2021-02-07 20:24:17', '2021-05-19 10:14:06'),
-	(1104, 0, 'fr', '_json', 'Search city location...', 'Rechercher un emplacement dans la ville ...', '2021-02-07 20:24:17', '2021-05-19 10:14:06'),
-	(1105, 0, 'fr', '_json', 'Select Country', 'Choisissez le pays', '2021-02-07 20:24:17', '2021-05-19 10:14:06'),
-	(1106, 0, 'fr', '_json', 'Thumbnail image', 'Image miniature', '2021-02-07 20:24:17', '2021-05-19 10:14:06'),
-	(1107, 0, 'fr', '_json', 'Time', 'Temps', '2021-02-07 20:24:17', '2021-05-19 10:14:06'),
-	(1108, 0, 'fr', '_json', 'Time to visit', 'Temps de visiter', '2021-02-07 20:24:17', '2021-05-19 10:14:06'),
-	(1109, 0, 'fr', '_json', 'VILLES A VOIR', 'VILLES A VOIR', '2021-02-07 20:24:17', '2021-05-19 10:14:06'),
-	(1110, 0, 'fr', '_json', 'We are finding the cheapest available flights for you. Hold on for some seconds', 'Nous recherchons pour vous les vols disponibles les moins chers. Attends quelques secondes', '2021-02-07 20:24:18', '2021-05-19 10:14:06'),
-	(1111, 0, 'fr', '_json', 'below 2yrs', 'en dessous de 2 ans', '2021-02-07 20:24:18', '2021-05-19 10:14:06'),
-	(1113, 0, 'en', '_json', 'Accept the', 'ACCEPT THE', '2021-02-07 20:33:20', '2021-05-19 10:14:06'),
-	(1114, 0, 'en', '_json', 'Add New', 'ADD NEW', '2021-02-07 20:33:20', '2021-05-19 10:14:06'),
-	(1115, 0, 'en', '_json', 'Add Post', 'ADD POST', '2021-02-07 20:33:20', '2021-05-19 10:14:06'),
-	(1116, 0, 'en', '_json', 'Add new Post', 'ADD NEW POST', '2021-02-07 20:33:20', '2021-05-19 10:14:06'),
-	(1117, 0, 'en', '_json', 'Affiliate Book Buttons', 'AFFILIATE BOOK BUTTONS', '2021-02-07 20:33:21', '2021-05-19 10:14:06'),
-	(1118, 0, 'en', '_json', 'Basic Info', 'BASIC INFO', '2021-02-07 20:33:21', '2021-05-19 10:14:06'),
-	(1119, 0, 'en', '_json', 'Booking Make', 'BOOKING MAKE', '2021-02-07 20:33:21', '2021-05-19 10:14:06'),
-	(1120, 0, 'en', '_json', 'Business Listing', 'BUSINESS LISTING', '2021-02-07 20:33:21', '2021-05-19 10:14:06'),
-	(1121, 0, 'en', '_json', 'By clicking Register you agree to the', 'BY CLICKING REGISTER YOU AGREE TO THE', '2021-02-07 20:33:22', '2021-05-19 10:14:06'),
-	(1122, 0, 'en', '_json', 'Change Password', 'CHANGE PASSWORD', '2021-02-07 20:33:22', '2021-05-19 10:14:06'),
-	(1123, 0, 'en', '_json', 'Choose the city you\'ll be living in next', 'CHOOSE THE CITY YOU\'LL BE LIVING IN NEXT', '2021-02-07 20:33:22', '2021-05-19 10:14:06'),
-	(1124, 0, 'en', '_json', 'Choose your next destination', 'Choose your next destination', '2021-02-07 20:33:22', '2021-05-19 10:14:06'),
-	(1125, 0, 'en', '_json', 'Continue Shopping', 'CONTINUE SHOPPING', '2021-02-07 20:33:22', '2021-05-19 10:14:06'),
-	(1126, 0, 'en', '_json', 'Continue with', 'CONTINUE WITH', '2021-02-07 20:33:22', '2021-05-19 10:14:06'),
-	(1127, 0, 'en', '_json', 'Destinations', 'DESTINATIONS', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1128, 0, 'en', '_json', 'Download the app and go to travel the world.', 'DOWNLOAD THE APP AND GO TO TRAVEL THE WORLD.', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1129, 0, 'en', '_json', 'Enter facebook', 'ENTER FACEBOOK', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1130, 0, 'en', '_json', 'Enter instagram', 'ENTER INSTAGRAM', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1131, 0, 'en', '_json', 'Enter old password', 'ENTER OLD PASSWORD', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1132, 0, 'en', '_json', 'Enter phone number', 'ENTER PHONE NUMBER', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1133, 0, 'en', '_json', 'Enter your name', 'ENTER YOUR NAME', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1134, 0, 'en', '_json', 'Explore the world', 'EXPLORE THE WORLD', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1135, 0, 'en', '_json', 'Facebook', 'FACEBOOK', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1136, 0, 'en', '_json', 'Faqs', 'FAQS', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1137, 0, 'en', '_json', 'Featured Cities', 'FEATURED CITIES', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1138, 0, 'en', '_json', 'Forgot password', 'FORGOT PASSWORD', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1139, 0, 'en', '_json', 'From Our Blog', 'FROM OUR BLOG', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1140, 0, 'en', '_json', 'Full name', 'FULL NAME', '2021-02-07 20:33:23', '2021-05-19 10:14:06'),
-	(1141, 0, 'en', '_json', 'Get the App', 'GET THE APP', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1142, 0, 'en', '_json', 'Homepage', 'HOMEPAGE', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1143, 0, 'en', '_json', 'Instagram', 'INSTAGRAM', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1144, 0, 'en', '_json', 'Latest Stories', 'LATEST STORIES', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1145, 0, 'en', '_json', 'Learn More', 'LEARN MORE', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1146, 0, 'en', '_json', 'Log In', 'LOG IN', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1147, 0, 'en', '_json', 'Lost your password? Please enter your email address. You will receive a link to create a new password via email.', 'LOST YOUR PASSWORD? PLEASE ENTER YOUR EMAIL ADDRESS. YOU WILL RECEIVE A LINK TO CREATE A NEW PASSWORD VIA EMAIL.', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1148, 0, 'en', '_json', 'Make sure you\'ve typed in the URL correctly or try go', 'MAKE SURE YOU\'VE TYPED IN THE URL CORRECTLY OR TRY GO', '2021-02-07 20:33:24', '2021-05-19 10:14:06'),
-	(1149, 0, 'en', '_json', 'My Places', 'MY PLACES', '2021-02-07 20:33:25', '2021-05-19 10:14:06'),
-	(1150, 0, 'en', '_json', 'Old password', 'OLD PASSWORD', '2021-02-07 20:33:25', '2021-05-19 10:14:06'),
-	(1151, 0, 'en', '_json', 'Or', 'OR', '2021-02-07 20:33:25', '2021-05-19 10:14:06'),
-	(1152, 0, 'en', '_json', 'Paris', 'PARIS', '2021-02-07 20:33:25', '2021-05-19 10:14:06'),
-	(1153, 0, 'en', '_json', 'Popular cities', 'POPULAR CITIES', '2021-02-07 20:33:26', '2021-05-19 10:14:06'),
-	(1154, 0, 'en', '_json', 'Popular:', 'POPULAR:', '2021-02-07 20:33:26', '2021-05-19 10:14:06'),
-	(1155, 0, 'en', '_json', 'Posts', 'POSTS', '2021-02-07 20:33:26', '2021-05-19 10:14:06'),
-	(1156, 0, 'en', '_json', 'Profile Setting', 'PROFILE SETTING', '2021-02-07 20:33:26', '2021-05-19 10:14:06'),
-	(1157, 0, 'en', '_json', 'Purchase Status', 'PURCHASE STATUS', '2021-02-07 20:33:26', '2021-05-19 10:14:06'),
-	(1158, 0, 'en', '_json', 'Related stories', 'RELATED STORIES', '2021-02-07 20:33:26', '2021-05-19 10:14:06'),
-	(1159, 0, 'en', '_json', 'Search places ...', 'SEARCH PLACES ...', '2021-02-07 20:33:26', '2021-05-19 10:14:06'),
-	(1160, 0, 'en', '_json', 'Sorry we couldn\'t find that page.', 'SORRY WE COULDN\'T FIND THAT PAGE.', '2021-02-07 20:33:27', '2021-05-19 10:14:06'),
-	(1161, 0, 'en', '_json', 'Subtotal', 'SUBTOTAL', '2021-02-07 20:33:27', '2021-05-19 10:14:06'),
-	(1162, 0, 'en', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete edit create) places categories cities country manage users review booking...', 'THE ADMIN SITE IS AN AREA WHICH ONLY THE ADMINISTRATOR​ CAN ACCESS. FROM HERE YOU CAN MANAGE (DELETE EDIT CREATE) PLACES CATEGORIES CITIES COUNTRY MANAGE USERS REVIEW BOOKING...', '2021-02-07 20:33:27', '2021-05-19 10:14:06'),
-	(1163, 0, 'en', '_json', 'Trending Business Places', 'TRENDING BUSINESS PLACES', '2021-02-07 20:33:27', '2021-05-19 10:14:06'),
-	(1164, 0, 'en', '_json', 'Type a city or location', 'TYPE A CITY OR LOCATION', '2021-02-07 20:33:27', '2021-05-19 10:14:06'),
-	(1165, 0, 'en', '_json', 'Upload new', 'UPLOAD NEW', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1166, 0, 'en', '_json', 'View all', 'VIEW ALL', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1167, 0, 'en', '_json', 'View more', 'VIEW MORE', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1168, 0, 'en', '_json', 'We can\'t find the page or studio you\'re looking for.', 'WE CAN\'T FIND THE PAGE OR STUDIO YOU\'RE LOOKING FOR.', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1169, 0, 'en', '_json', 'We\'re sorry but we do not have any listings matching your search try to change you search settings', 'WE\'RE SORRY BUT WE DO NOT HAVE ANY LISTINGS MATCHING YOUR SEARCH TRY TO CHANGE YOU SEARCH SETTINGS', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1170, 0, 'en', '_json', 'Welcome to Admin Dashboard.', 'WELCOME TO ADMIN DASHBOARD.', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1171, 0, 'en', '_json', 'Your Booking is Pending We Will Contact You as Soon as Possible.', 'YOUR BOOKING IS PENDING WE WILL CONTACT YOU AS SOON AS POSSIBLE.', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1172, 0, 'en', '_json', 'Youtube Vimeo video url', 'YOUTUBE VIMEO VIDEO URL', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1173, 0, 'en', '_json', 'and', 'AND', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1174, 0, 'en', '_json', 'categories', 'CATEGORIES', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1175, 0, 'en', '_json', 'set out by this site including our Cookie Use.', 'SET OUT BY THIS SITE INCLUDING OUR COOKIE USE.', '2021-02-07 20:33:28', '2021-05-19 10:14:06'),
-	(1177, 0, 'en', '_json', 'Sorry, we couldn\'t find that page.', 'Sorry, we couldn\'t find that page.', '2021-02-07 20:34:52', '2021-05-19 10:14:06'),
-	(1178, 0, 'en', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete, edit, create) places, categories, cities, country, manage users, review, booking...', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete, edit, create) places, categories, cities, country, manage users, review, booking...', '2021-02-07 20:35:00', '2021-05-19 10:14:06'),
-	(1179, 0, 'fr', '_json', 'Youtube Vimeo video url', 'Youtube Vimeo video url', '2021-02-07 20:35:27', '2021-05-19 10:14:06'),
-	(1180, 0, 'fr', '_json', 'Your Booking is Pending We Will Contact You as Soon as Possible.', 'Votre réservation est en attente Nous vous contacterons dès que possible.', '2021-02-11 20:51:01', '2021-05-19 10:14:06'),
-	(1181, 0, 'fr', '_json', 'We\'re sorry but we do not have any listings matching your search try to change you search settings', 'Nous sommes désolés, mais nous n\'avons aucune annonce correspondant à votre recherche. Essayez de modifier vos paramètres de recherche', '2021-02-11 20:51:14', '2021-05-19 10:14:06'),
-	(1182, 0, 'fr', '_json', 'Sorry we couldn\'t find that page.', 'Désolé, nous n\'avons pas pu trouver cette page.', '2021-02-11 20:51:30', '2021-05-19 10:14:06'),
-	(1185, 0, 'fr', '_json', 'Sur Name', 'Nom', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1187, 0, 'fr', '_json', 'Valid Email', 'Email Valide', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1192, 0, 'fr', '_json', 'Add new', 'Ajouter', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1198, 0, 'fr', '_json', 'Client infos', 'infos client', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1203, 0, 'fr', '_json', 'Itinerary', 'itinéraires', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1204, 0, 'fr', '_json', 'Included', 'Inclus', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1206, 0, 'fr', '_json', 'Guest', 'Nombre de Visiteurs', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1207, 0, 'fr', '_json', 'Enter your phone', 'Entrez votre numéro', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1208, 0, 'fr', '_json', 'Enter your message', 'Entrez votre message', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1211, 0, 'fr', '_json', 'Search Hotels', 'Recherche des Hotels', '2021-02-11 20:51:59', '2021-05-19 10:14:06'),
-	(1213, 0, 'fr', '_json', 'Obtenir l\'application', 'Obtenir l\'application', '2021-02-11 20:52:00', '2021-05-19 10:14:06'),
-	(1216, 0, 'fr', '_json', 'Hello', 'Bonjour', '2021-02-11 20:52:00', '2021-05-19 10:14:06'),
-	(1218, 0, 'fr', '_json', 'Online', 'En ligne', '2021-02-11 20:52:00', '2021-05-19 10:14:06'),
-	(1220, 0, 'fr', '_json', 'My Transactions', 'Mes Transactions', '2021-02-11 20:52:00', '2021-05-19 10:14:06'),
-	(1221, 0, 'fr', '_json', 'Hi,', 'Bonjour,', '2021-02-11 20:52:00', '2021-05-19 10:14:06'),
-	(1222, 0, 'fr', '_json', 'By clicking Register you agree to the', 'En cliquant sur S\'inscrire, vous acceptez les', '2021-02-11 20:52:33', '2021-05-19 10:14:06'),
-	(1223, 0, 'en', '_json', 'Client infos', 'Client infos', '2021-02-11 20:52:43', '2021-05-19 10:14:06'),
-	(1224, 0, 'en', '_json', 'Enter your message', 'Enter your message', '2021-02-11 20:53:53', '2021-05-19 10:14:06'),
-	(1225, 0, 'en', '_json', 'Enter your phone', 'Enter your phone', '2021-02-11 20:53:57', '2021-05-19 10:14:06'),
-	(1226, 0, 'en', '_json', 'Hello', 'Hello', '2021-02-11 20:54:07', '2021-05-19 10:14:06'),
-	(1227, 0, 'en', '_json', 'Search Hotels', 'Search Hotels', '2021-02-11 20:57:13', '2021-05-19 10:14:06'),
-	(1228, 0, 'fr', '_json', 'Cities to visit', 'Villes à visiter', '2021-02-11 21:39:17', '2021-05-19 10:14:06'),
-	(1230, 0, 'en', '_json', 'Cities to visit', 'Cities to visit', '2021-02-11 21:40:51', '2021-05-19 10:14:06'),
-	(1231, 0, 'fr', '_json', 'Sign up to receive our best offers.', 'Inscrivez-vous pour recevoir nos meilleures offres.', '2021-02-11 22:13:06', '2021-05-19 10:14:06'),
-	(1232, 0, 'en', '_json', 'Sign up to receive our best offers.', 'Sign up to receive our best offers.', '2021-02-11 22:13:16', '2021-05-19 10:14:06'),
-	(1233, 0, 'fr', '_json', 'Vats Management', 'Gestion de la TAX', '2021-02-12 17:03:30', '2021-05-19 10:14:06'),
-	(1237, 0, 'fr', '_json', 'Vat List', 'List TVA', '2021-02-12 17:03:30', '2021-05-19 10:14:06'),
-	(1240, 0, 'fr', '_json', 'Contact information', 'Informations de contact', '2021-02-12 17:03:31', '2021-05-19 10:14:06'),
-	(1241, 0, 'fr', '_json', 'Manage Pages', 'Gérer les pages', '2021-02-12 17:03:31', '2021-05-19 10:14:06'),
-	(1242, 0, 'fr', '_json', 'Administration', 'Administration', '2021-02-12 17:03:31', '2021-05-19 10:14:06'),
-	(1243, 0, 'en', '_json', 'Administration', 'Administration', '2021-02-12 17:03:54', '2021-05-19 10:14:06'),
-	(1244, 0, 'en', '_json', 'Manage Pages', 'Manage Pages', '2021-02-15 16:16:29', '2021-05-19 10:14:06'),
-	(1245, 0, 'en', '_json', 'Included', 'Included', '2021-02-15 16:33:06', '2021-05-19 10:14:06'),
-	(1246, 0, 'en', '_json', 'My Transactions', 'My Transactions', '2021-02-15 16:33:53', '2021-05-19 10:14:06'),
-	(1247, 0, 'en', '_json', 'Obtenir l\'application', 'Get the application', '2021-02-15 16:34:35', '2021-05-19 10:14:06'),
-	(1248, 0, 'en', '_json', 'Vat List', 'Vat List', '2021-02-15 16:37:07', '2021-05-19 10:14:06'),
-	(1249, 0, 'en', '_json', 'Vats Management', 'Vats Management', '2021-02-15 16:37:43', '2021-05-19 10:14:06'),
-	(1250, 0, 'en', '_json', 'Transactions', 'Transactions', '2021-02-15 16:37:50', '2021-05-19 10:14:06'),
-	(1251, 0, 'en', '_json', 'Terms & Conditions', 'Terms & Conditions', '2021-02-15 16:37:58', '2021-05-19 10:14:06'),
-	(1252, 0, 'en', '_json', 'Sur Name', 'Name', '2021-02-15 16:38:08', '2021-05-19 10:14:06'),
-	(1254, 0, 'fr', '_json', 'Enter Day', 'Entez le jour', '2021-02-15 21:08:34', '2021-05-19 10:14:06'),
-	(1255, 0, 'fr', '_json', 'Save here and book later', 'Enregistrer ici et réservez plus tard', '2021-02-15 21:08:34', '2021-05-19 10:14:06'),
-	(1256, 0, 'fr', '_json', 'Quick Links', 'Liens Rapides', '2021-02-15 21:08:34', '2021-05-19 10:14:06'),
-	(1257, 0, 'en', '_json', 'Quick Links', 'Quick Links', '2021-02-15 21:10:23', '2021-05-19 10:14:06'),
-	(1258, 0, 'fr', '_json', 'account', 'Compte', '2021-02-15 21:18:57', '2021-05-19 10:14:06'),
-	(1259, 0, 'en', '_json', 'account', 'Account', '2021-02-15 21:19:54', '2021-05-19 10:14:06'),
-	(1260, 0, 'en', '_json', 'Hi,', 'Hi,', '2021-02-16 17:37:53', '2021-05-19 10:14:06'),
-	(1261, 0, 'en', '_json', 'Valid Email', 'Valid Email', '2021-02-16 20:43:33', '2021-05-19 10:14:06'),
-	(1262, 0, 'fr', '_json', 'Lundi - Vendredi', 'Lundi - Vendredi', '2021-02-16 20:51:45', '2021-05-19 10:14:06'),
-	(1263, 0, 'fr', '_json', 'Booking list', 'Liste des réservations', '2021-02-16 20:51:45', '2021-05-19 10:14:06'),
-	(1264, 0, 'fr', '_json', 'Clear Cache', 'Vider le cache', '2021-02-16 20:51:46', '2021-05-19 10:14:06'),
-	(1266, 0, 'en', '_json', 'Itinerary', 'Itinerary', '2021-02-16 20:52:41', '2021-05-19 10:14:06'),
-	(1267, 0, 'en', '_json', 'Lundi - Vendredi', 'Monday - Friday', '2021-02-16 20:53:21', '2021-05-19 10:14:06'),
-	(1269, 0, 'fr', '_json', 'Choose between hundred places', 'Choisissez entre une centaine de destinations', '2021-02-17 16:50:22', '2021-05-19 10:14:06'),
-	(1270, 0, 'fr', '_json', 'Home', 'Accueil', '2021-02-17 16:50:22', '2021-05-19 10:14:06'),
-	(1273, 0, 'fr', '_json', 'Rentacstours, motocycle rental company and tour operator, located in Casablanca, relies on\n                            the technical know-how and years of experience acquired from EagleRider, a world leader\n                            company since 1992. Rentacstours was created by 2 motorcycle enthusiasts and HOG Harley\n                            Davidson road team certified.', 'Rentacstours, société de location de motos et tour opérateur, située à Casablanca, s\'appuie sur le savoir-faire technique et les années d\'expérience acquises auprès d\'EagleRider, leader mondial depuis 1992. Rentacstours a été créée par 2 passionnés de moto et certifiés HOG Harley Davidson road team.', '2021-02-17 18:02:21', '2021-05-19 10:14:06'),
-	(1274, 0, 'fr', '_json', 'Rentacstours, motocycle rental company and tour operator, located in Casablanca, relies on\n                            the technical know-how and years of experience acquired from EagleRider, a world leader\n                            company since 1992. Rentacstours was created by 2 motorcycle enthusiasts and HOG Harley\n                            Davidson road team certified', 'Rentacstours, société de location de motos et tour opérateur, située à Casablanca, s\'appuie sur le savoir-faire technique et les années d\'expérience acquises auprès d\'EagleRider, leader mondial depuis 1992. Rentacstours a été créée par 2 passionnés de moto et certifiés HOG Harley Davidson road team.', '2021-02-17 18:02:38', '2021-05-19 10:14:06'),
-	(1275, 0, 'fr', '_json', 'Rentacstours about info', 'Fondée par deux bikers passionnés certifiés par HOG Harley-Davidson: Nizar CHAWAD et Mohamed Ali ANOUAR, et profitant de l\'expertise managériale de monsieur Ali Amrani, Rentacstours est aujourd’hui une extension de savoir-faire et une multitude de services sur mesure allant des voyages organisés hôtels, hébergement, vol aux activités de divertissement, sports extrêmes et bien-être Motorcycle, Golf tour, Bivouacs, Trekking, Surf, Yoga .. Nous proposons aussi des services à l’international grâce à la participation de différents partenaires qui ont accepté de prendre part à cette aventure.', '2021-02-17 18:04:05', '2021-05-19 10:14:06'),
-	(1276, 0, 'en', '_json', 'Rentacstours about info', 'Rentacstours, motocycle rental company and tour operator, located in Casablanca, relies on the technical know-how and years of experience acquired from EagleRider, a world leader company since 1992. Rentacstours was created by 2 motorcycle enthusiasts and HOG Harley Davidson road team certified.', '2021-02-17 18:04:40', '2021-05-19 10:14:06'),
-	(1277, 0, 'en', '_json', 'Guest', 'Guest', '2021-02-19 21:25:38', '2021-05-19 10:14:06'),
-	(1280, 0, 'fr', '_json', 'Booking For', 'Réservation pour', '2021-03-01 21:59:32', '2021-05-19 10:14:06'),
-	(1281, 0, 'fr', '_json', '60 characters or less', '60 caractères ou moins', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1282, 0, 'fr', '_json', '160 characters or less', '160 caractères ou moins', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1283, 0, 'fr', '_json', 'Other Name', 'Nom utilisateur', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1284, 0, 'fr', '_json', 'Add VAT', 'Ajouter la TAX', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1285, 0, 'fr', '_json', 'choose vat type', 'choisir le type de TVA', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1286, 0, 'fr', '_json', 'vat value e.g. 12.00', 'valeur de la tva, par exemple 12,00', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1287, 0, 'fr', '_json', 'Value Type', 'Type de valeur', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1288, 0, 'fr', '_json', 'Value', 'Valeur', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1289, 0, 'fr', '_json', 'Email Subscriptions', 'Inscription des Email', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1290, 0, 'fr', '_json', 'Emails', 'Emails', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1291, 0, 'fr', '_json', 'Menu Management', 'Gestion du Menu', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1292, 0, 'fr', '_json', 'Packages Categories', 'Catégories de paquets', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1293, 0, 'fr', '_json', 'Package Categories', 'Pack d\'activité', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1294, 0, 'fr', '_json', 'Package Category', 'Pack d\'activité', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1295, 0, 'fr', '_json', 'Active', 'Actif', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1296, 0, 'fr', '_json', 'Disabled', 'Désactivé', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1297, 0, 'fr', '_json', 'Edit package category', 'Modifier la catégorie de paquet', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1298, 0, 'fr', '_json', 'Open hourses', 'Heures d\'ouverture', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1299, 0, 'fr', '_json', 'BOOKING TYPE', 'Type de Réservation', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1300, 0, 'fr', '_json', 'City name', 'Nom de la ville', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1301, 0, 'fr', '_json', 'Package Itinerary', 'Pack Itineraire', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1302, 0, 'fr', '_json', 'Opening Hours', 'Horaires d\'ouvertures', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1303, 0, 'fr', '_json', 'Airport or City Name', 'Airport ou nom de la Ville', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1304, 0, 'fr', '_json', 'E.g. City, Airport', 'Par exemple, ville, aéroport', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1305, 0, 'fr', '_json', 'Téléchargez l\'application et partez parcourir le monde.', 'Download the application and travel the world.', '2021-03-01 21:59:33', '2021-05-19 10:14:06'),
-	(1307, 0, 'fr', '_json', 'Offline(Bank)', 'T/T (Banque)', '2021-03-01 21:59:34', '2021-05-19 10:14:06'),
-	(1308, 0, 'fr', '_json', 'Menu Settings', 'Réglage Menu', '2021-03-01 21:59:34', '2021-05-19 10:14:06'),
-	(1309, 0, 'fr', '_json', 'Clear translations', 'Nettoyer la traduction', '2021-03-01 21:59:34', '2021-05-19 10:14:06'),
-	(1310, 0, 'fr', '_json', 'Deleted', 'Supprimé', '2021-03-03 17:08:46', '2021-05-19 10:14:06'),
-	(1311, 0, 'fr', '_json', 'New Booking(s).', 'Nouvelle Reservation', '2021-03-03 17:08:47', '2021-05-19 10:14:06'),
-	(1312, 0, 'fr', '_json', 'You Have a new order.', 'Vous avez une nouvelle commande', '2021-03-03 17:08:47', '2021-05-19 10:14:06'),
-	(1313, 0, 'fr', '_json', 'No New Notifications.', 'Aucune Notifications.', '2021-03-03 17:08:47', '2021-05-19 10:14:06'),
-	(1314, 0, 'fr', '_json', 'New Notification(s).', 'Nouvelle Notification(s)', '2021-03-03 17:08:47', '2021-05-19 10:14:06'),
-	(1315, 0, 'fr', '_json', 'A New User Has Registered.', 'Un nouvel utilisateur s\'est inscrit.', '2021-03-03 17:08:47', '2021-05-19 10:14:06'),
-	(1316, 0, 'fr', '_json', 'Hi', 'Bonjour', '2021-03-03 17:08:47', '2021-05-19 10:14:06'),
-	(1317, 0, 'fr', '_json', 'Successful Flight Bookings', 'Réservations de vol réussies', '2021-03-08 17:31:18', '2021-05-19 10:14:06'),
-	(1318, 0, 'fr', '_json', 'Successful Hotel Bookings', 'Réservations hôtel réussies', '2021-03-08 17:31:18', '2021-05-19 10:14:06'),
-	(1319, 0, 'fr', '_json', 'Successful Package Bookings', 'Réservations de Pack   réussies', '2021-03-08 17:31:18', '2021-05-19 10:14:06'),
-	(1320, 0, 'fr', '_json', 'Booking Size', 'Taille de la réservation', '2021-03-08 17:31:18', '2021-05-19 10:14:06'),
-	(1321, 0, 'fr', '_json', 'Packages', 'Pack', '2021-03-08 17:31:18', '2021-05-19 10:14:06'),
-	(1322, 0, 'fr', '_json', 'Enter Pnr or booking reference', 'Entrer le Pnr ou la reference de reservation', '2021-03-08 17:31:19', '2021-05-19 10:14:06'),
-	(1323, 0, 'fr', '_json', 'Terms & Conditions', 'CONDITIONS GÉNÉRALES DE VENTE', '2021-03-08 17:45:58', '2021-05-19 10:14:06'),
-	(1324, 0, 'fr', '_json', 'Menu Structure', 'Structure du Menu', '2021-03-08 17:51:26', '2021-05-19 10:14:06'),
-	(1325, 0, 'fr', '_json', 'Select the menu you want to edit', 'Sélectionnez le menu que vous souhaitez modifier', '2021-03-08 17:51:26', '2021-05-19 10:14:06'),
-	(1326, 0, 'fr', '_json', 'or', 'ou', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1327, 0, 'fr', '_json', 'Create new menu', 'Créer un nouveau Menu', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1328, 0, 'fr', '_json', 'Custom Link', 'Lien personnalisé', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1329, 0, 'fr', '_json', 'Press return or enter to expand', 'Appuyez sur retour ou sur entrée pour développer', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1330, 0, 'fr', '_json', 'URL', 'Lien (URL)', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1331, 0, 'fr', '_json', 'Label', 'Nom', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1332, 0, 'fr', '_json', 'Add menu item', 'Ajouter un élément au menu', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1333, 0, 'fr', '_json', 'Create menu', 'Créer un Menu', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1334, 0, 'fr', '_json', 'Enter menu name', 'Entrer le nom du Menu', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1335, 0, 'fr', '_json', 'Save menu', 'Enregistrer le Menu', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1336, 0, 'fr', '_json', 'Place each item in the order you prefer. Click on the arrow to the right of the item to display more configuration options.', 'Placez chaque article dans l\'ordre que vous préférez. Cliquez sur la flèche à droite de l\'élément pour afficher plus d\'options de configuration.', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1337, 0, 'fr', '_json', 'Please enter the name and select "Create menu" button', 'Veuillez saisir le nom et sélectionner le bouton "Créer un menu"', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1338, 0, 'fr', '_json', 'Link', 'Lien', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1339, 0, 'fr', '_json', 'Class CSS (optional)', 'Class CSS (optionnel)', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1340, 0, 'fr', '_json', 'Update item', 'Mise à jour de l\'element', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1341, 0, 'fr', '_json', 'Move up', 'Déplacer vers le haut', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1343, 0, 'fr', '_json', 'Delete menu', 'Supprimé le Menu', '2021-03-08 17:58:46', '2021-05-19 10:14:06'),
-	(1344, 0, 'fr', '_json', 'Using Email', 'Utilisation du courrier électronique', '2021-04-20 15:52:54', '2021-05-19 10:14:06'),
-	(1345, 0, 'fr', '_json', 'Hotel Name', 'Nom de l\'hôtel', '2021-04-20 15:52:54', '2021-05-19 10:14:06'),
-	(1346, 0, 'fr', '_json', 'Manage Your Information', 'Gerer vos informations', '2021-04-20 15:52:54', '2021-05-19 10:14:06'),
-	(1347, 0, 'fr', '_json', 'Surname', 'Nom', '2021-04-20 15:52:54', '2021-05-19 10:14:06'),
-	(1348, 0, 'fr', '_json', 'First Name', 'Nom', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1349, 0, 'fr', '_json', 'Update Customer Information', 'Mise à jour des informations sur les clients', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1350, 0, 'fr', '_json', 'Enter New Password', 'Entrer le nouveau mot de passe', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1351, 0, 'fr', '_json', 'Confirm New Password', 'Confirmer le nouveau mot de passe', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1352, 0, 'fr', '_json', 'You are logged in!', 'Vous êtes connecté !', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1353, 0, 'fr', '_json', 'Bookings List', 'Liste des réservations', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1354, 0, 'fr', '_json', 'Actions', 'Actions', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1355, 0, 'fr', '_json', 'Reference', 'Référence', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1356, 0, 'fr', '_json', 'Reservation Status', 'Statut de la réservation', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1357, 0, 'fr', '_json', 'Customer Name', 'Nom du client', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1358, 0, 'fr', '_json', 'Reservations Attempts', 'Tentatives de réservation', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1359, 0, 'fr', '_json', 'Payed Successful Reservations', 'Réservations réussies payées', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1360, 0, 'fr', '_json', 'Payed Unsuccessful Reservations', 'Réservations infructueuses payées', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1361, 0, 'fr', '_json', 'Failed Reservations', 'Réservations échouées', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1362, 0, 'fr', '_json', 'Cancelled Reservations', 'Réservations annulées', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1364, 0, 'fr', '_json', 'Due Date', 'Date d\'expiration', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1365, 0, 'fr', '_json', 'Cancellation Status', 'Statut d\'annulation', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1366, 0, 'fr', '_json', 'Successful', 'Succès de', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1367, 0, 'fr', '_json', 'Incomplete', 'Incomplète', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1368, 0, 'fr', '_json', 'Feature title', 'Titre en vedette', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1369, 0, 'fr', '_json', 'Icon Marker', 'Marqueur d\'icône', '2021-04-20 15:52:55', '2021-05-19 10:14:06'),
-	(1370, 0, 'fr', '_json', 'City List', 'Liste des villes', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1371, 0, 'fr', '_json', 'ICE', 'ICE', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1372, 0, 'fr', '_json', 'Code Postal', 'Code postal', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1374, 0, 'fr', '_json', 'Pays', 'Pays', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1375, 0, 'fr', '_json', 'Subscribers', 'Abonnès à la newsletter', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1376, 0, 'fr', '_json', 'Today', 'Aujourd\'hui', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1377, 0, 'fr', '_json', 'Last month', 'Le mois dernier', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1378, 0, 'fr', '_json', 'Last 6 month', '6 derniers mois', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1379, 0, 'fr', '_json', 'Last year', 'L\'année dernière', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1380, 0, 'fr', '_json', 'Total Sales', 'Total des ventes', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1381, 0, 'fr', '_json', 'Total Purchases', 'Total des achats', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1382, 0, 'fr', '_json', 'Total Return', 'Total des avoirs', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1383, 0, 'fr', '_json', 'Wallet Balance', 'Solde du portefeuille', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1384, 0, 'fr', '_json', 'Infos', 'Infos', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1385, 0, 'fr', '_json', 'Add Terms and Conditions', 'Ajouter des conditions générales', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1386, 0, 'fr', '_json', 'Unpublish', 'Dépublier', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1387, 0, 'fr', '_json', 'Edit Terms and Conditions', 'Modifier les conditions générales', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1388, 0, 'fr', '_json', 'Terms and Conditions List', 'Terms and Conditions', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1390, 0, 'fr', '_json', 'title', 'titre', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1391, 0, 'fr', '_json', 'reference', 'référence', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1392, 0, 'fr', '_json', 'Unit Price', 'Prix Unitaire', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1393, 0, 'fr', '_json', 'Order Tax', 'Taxe sur les commandes', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1394, 0, 'fr', '_json', 'CHOOSE A TEMPLATE', 'CHOISIR UN MODÈLE', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1395, 0, 'fr', '_json', 'New message', 'Nouveau Message', '2021-04-20 15:52:56', '2021-05-19 10:14:06'),
-	(1396, 0, 'fr', '_json', 'Recipient', 'Bénéficiaire', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1397, 0, 'fr', '_json', 'Subject', 'Sujet', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1398, 0, 'fr', '_json', 'close', 'fermer', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1399, 0, 'fr', '_json', 'Send Mail', 'Envoyer un courrier', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1401, 0, 'fr', '_json', 'Add newsletter', 'Ajouter une newsletter', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1402, 0, 'fr', '_json', 'Edit newsletter', 'Modification Newsletter', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1404, 0, 'fr', '_json', 'Email List', 'Liste des Email', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1405, 0, 'fr', '_json', 'Add Email', 'Ajouter un Email', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1406, 0, 'fr', '_json', 'Send Email Promotion', 'Envoyer un courriel de promotion', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1407, 0, 'fr', '_json', 'Send Mail to Subscribers', 'Envoyer un courrier', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1408, 0, 'fr', '_json', 'Enter subject of E-mail', 'Entrez l\'objet de l\'e-mail', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1409, 0, 'fr', '_json', 'itinerary', 'itinéraire', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1410, 0, 'fr', '_json', 'Edit  place', 'Modifier le lieu', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1411, 0, 'fr', '_json', 'Places List', 'Liste des lieux', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1412, 0, 'fr', '_json', 'Activity Type List', 'Liste des types d\'activités', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1413, 0, 'fr', '_json', 'Posts List', 'Liste des postes', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1414, 0, 'fr', '_json', 'All Categories', 'Toutes catégories', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1415, 0, 'fr', '_json', 'Print', 'Impression', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1416, 0, 'fr', '_json', 'Select supplier', 'Choisir le fournisseur', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1418, 0, 'fr', '_json', 'Wire', 'FIL', '2021-04-20 15:52:57', '2021-05-19 10:14:06'),
-	(1420, 0, 'fr', '_json', 'Paid Amount', 'Montant payé', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1421, 0, 'fr', '_json', 'Change Amount', 'Changement Montant', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1422, 0, 'fr', '_json', 'Validate', 'Valider', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1423, 0, 'fr', '_json', 'Purchases List', 'Liste des Achats', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1424, 0, 'fr', '_json', 'View details', 'Voir les détails', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1425, 0, 'fr', '_json', 'Complete', 'Compléter', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1426, 0, 'fr', '_json', 'purchase Status', 'statut d\'achat', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1427, 0, 'fr', '_json', 'SubTotal', 'Sous-total', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1428, 0, 'fr', '_json', 'Total Cost', 'Coût total', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1429, 0, 'fr', '_json', 'Total Tax', 'Total des impôts', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1430, 0, 'fr', '_json', 'Document', 'Document', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1431, 0, 'fr', '_json', 'Invoice', 'Facture', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1433, 0, 'fr', '_json', 'Create New Return', 'Créer un avoir', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1434, 0, 'fr', '_json', 'New Return', 'Nouveau avoir', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1435, 0, 'fr', '_json', 'Return Status', 'Status de retour', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1437, 0, 'fr', '_json', 'WIRE', 'FIL', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1438, 0, 'fr', '_json', 'Return Note', 'Note d\'avoir', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1439, 0, 'fr', '_json', 'Returns List', 'Liste des avoirs', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1440, 0, 'fr', '_json', 'Returns', 'Avoir', '2021-04-20 15:52:58', '2021-05-19 10:14:06'),
-	(1441, 0, 'fr', '_json', 'Add New Return', 'Ajouter un nouveau retour', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1442, 0, 'fr', '_json', 'return Status', 'retourner l\'état', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1443, 0, 'fr', '_json', 'Sales List', 'Liste des ventes', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1444, 0, 'fr', '_json', 'Orders Table', 'Tableau des commandes', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1445, 0, 'fr', '_json', 'Total Price', 'Prix total', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1446, 0, 'fr', '_json', 'Quotation', 'Devis', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1447, 0, 'fr', '_json', 'Return', 'Avoirs', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1448, 0, 'fr', '_json', 'Bank Detail', 'Détail de la Banque', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1449, 0, 'fr', '_json', 'Add Bank Account Details', 'Ajouter les détails du compte bancaire', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1450, 0, 'fr', '_json', 'Account Name', 'Nom du compte', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1451, 0, 'fr', '_json', 'Account Number', 'Numero de compte', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1452, 0, 'fr', '_json', 'Bank', 'Banque', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1453, 0, 'fr', '_json', 'SELECT BANK', 'SELECTIONNER LA BANQUE', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1454, 0, 'fr', '_json', 'Branch', 'Branche', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1455, 0, 'fr', '_json', 'Ifsc Code', 'Code Ifsc', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1456, 0, 'fr', '_json', 'iBAN Code', 'Code IBAN', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1457, 0, 'fr', '_json', 'Bank Details', 'Détails de la banque', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1458, 0, 'fr', '_json', 'Bank Name', 'Nom de la banque', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1459, 0, 'fr', '_json', 'IFSC Code', 'Code IFSC', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1460, 0, 'fr', '_json', 'Airline Markdown', 'Markdown des compagnies aériennes', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1461, 0, 'fr', '_json', 'Add Markdown', 'Ajouter Markdown', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1462, 0, 'fr', '_json', 'Airline', 'Compagnie aérienne', '2021-04-20 15:52:59', '2021-05-19 10:14:06'),
-	(1464, 0, 'fr', '_json', 'SELECT', 'SÉLECTIONNER', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1465, 0, 'fr', '_json', 'Percentage', 'Pourcentage', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1466, 0, 'fr', '_json', 'Dirham Marocain', 'Dirham Marocain', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1467, 0, 'fr', '_json', 'Airlines Markdown', 'Compagnies aériennes Markdown', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1468, 0, 'fr', '_json', 'Airline Code', 'Code de la compagnie aérienne', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1469, 0, 'fr', '_json', 'Airline Name', 'Nom de la compagnie aérienne', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1470, 0, 'fr', '_json', 'Add Markup', 'Ajouter un balisage', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1471, 0, 'fr', '_json', 'all fields are required', 'tous les champs sont obligatoires', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1472, 0, 'fr', '_json', 'Enter your address to help use serve you better', 'Saisissez votre adresse pour nous aider à mieux vous servir', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1473, 0, 'fr', '_json', 'Edit Your Profile Image', 'Modifier l\'image de votre profil', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1474, 0, 'fr', '_json', 'Enter New Image', 'Entrer une nouvelle image', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1475, 0, 'fr', '_json', 'Gender', 'Sexe', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1476, 0, 'fr', '_json', 'User Type', 'Type d\'utilisateur', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1477, 0, 'fr', '_json', 'Surname (Family name)', 'Nom', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1478, 0, 'fr', '_json', 'First name (Your name)', 'Nom', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1479, 0, 'fr', '_json', 'Other name', 'Nom utilisateur', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1480, 0, 'fr', '_json', 'Other name (Your other name)', 'Username (Votre nom d\'utilisateur)', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1481, 0, 'fr', '_json', 'address', 'adresse', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1482, 0, 'fr', '_json', 'All Users', 'Tous les utilisateurs', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1483, 0, 'fr', '_json', 'Profile Status', 'Statut du profil', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1484, 0, 'fr', '_json', 'Update User', 'Mise à jour de l\'utilisateur', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1485, 0, 'fr', '_json', 'Super Admin', 'Super Administrateur', '2021-04-20 15:53:00', '2021-05-19 10:14:06'),
-	(1486, 0, 'fr', '_json', 'Create Slider', 'Créez un slider', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1487, 0, 'fr', '_json', 'Edit Slider', 'Modifier le curseur', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1488, 0, 'fr', '_json', 'Sliders List', 'Liste des images Slider', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1489, 0, 'fr', '_json', 'Slider List', 'Liste des images Slider', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1490, 0, 'fr', '_json', 'Add New Slider', 'Ajouter un nouveau curseur', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1491, 0, 'fr', '_json', 'Image', 'Image', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1492, 0, 'fr', '_json', 'Testimonials List', 'Liste de témoignages', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1493, 0, 'fr', '_json', 'Deal booking', 'Réservation de l\'offre', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1494, 0, 'fr', '_json', 'Existing users, please login', 'Utilisateurs existants, veuillez vous connecter', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1495, 0, 'fr', '_json', 'Sign In', 'Connexion', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1496, 0, 'fr', '_json', 'Forget Password', 'Mot de passe oublié', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1497, 0, 'fr', '_json', 'Not a registered customer ? Register here.', 'Vous n\'êtes pas un client enregistré ? Inscrivez-vous ici.', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1498, 0, 'fr', '_json', 'password_confirmation', 'confirmation_du_mot de passe', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1499, 0, 'fr', '_json', 'Booking Details', 'Détails de la réservation', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1501, 0, 'fr', '_json', 'Use logged in customer details', 'Utiliser les détails du client connecté', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1502, 0, 'fr', '_json', 'CONTINUE', 'CONTINUER', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1503, 0, 'fr', '_json', 'Details', 'Détails', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1504, 0, 'fr', '_json', 'DEAL NAME', 'NOM DE L\'AFFAIRE', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1505, 0, 'fr', '_json', 'FLIGHT', 'Vol', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1506, 0, 'fr', '_json', 'HOTEL', 'HÔTEL', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1507, 0, 'fr', '_json', 'ATTRACTION', 'ATTRACTION', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1508, 0, 'fr', '_json', 'ADULT PRICE', 'Prix d\'Adulte', '2021-04-20 15:53:01', '2021-05-19 10:14:06'),
-	(1509, 0, 'fr', '_json', 'CHILD PRICE', 'PRIX POUR LES ENFANTS', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1510, 0, 'fr', '_json', 'INFANT PRICE', 'PRIX INFANT', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1511, 0, 'fr', '_json', 'CONTACT NUMBER', 'NUMÉRO DE CONTACT', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1512, 0, 'fr', '_json', 'Need Help', 'Besoin d\'aide', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1513, 0, 'fr', '_json', 'Contact us for assistance', 'Contactez-nous pour obtenir de l\'aide', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1514, 0, 'fr', '_json', 'Price Details', 'Détails des prix', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1515, 0, 'fr', '_json', 'SERVICE FEES', 'FRAIS DE SERVICE', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1516, 0, 'fr', '_json', 'TAXES', 'IMPÔTS', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1517, 0, 'fr', '_json', 'DISCOUNT', 'DISCOUNT', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1518, 0, 'fr', '_json', 'TOTAL PRICE', 'PRIX TOTAL', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1519, 0, 'fr', '_json', 'Need Help? Call us or drop a message. Our agents will be in touch shortly', 'Besoin d\'aide ? Appelez-nous ou envoyez-nous un message. Nos agents vous contacteront sous peu.', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1520, 0, 'fr', '_json', 'Result Found Matching Your Search', 'Résultat trouvé correspondant à votre recherche', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1521, 0, 'fr', '_json', 'Any', 'Quelconque', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1523, 0, 'fr', '_json', 'Select', 'Sélectionnez', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1524, 0, 'fr', '_json', 'Email new booking', 'Envoyer une nouvelle réservation par courriel', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1525, 0, 'fr', '_json', 'You have booking from website', 'Vous avez réservé à partir du site web', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1526, 0, 'fr', '_json', 'Datetime', 'Date-heure', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1527, 0, 'fr', '_json', 'Number of children', 'Nombre d\'enfants', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1528, 0, 'fr', '_json', 'Email from system', 'Courriel du système', '2021-04-20 15:53:02', '2021-05-19 10:14:06'),
-	(1529, 0, 'fr', '_json', 'You Have a reservation.', 'Vous avez une réservation.', '2021-04-20 15:53:03', '2021-05-19 10:14:06'),
-	(1531, 0, 'fr', '_json', 'My Bookings', 'Mes Reservations', '2021-04-20 15:53:03', '2021-05-19 10:14:06'),
-	(1532, 0, 'fr', '_json', 'Slides', 'Image du Slider', '2021-04-20 15:53:03', '2021-05-19 10:14:06'),
-	(1533, 0, 'fr', '_json', 'Users List', 'Liste des utilisateurs', '2021-04-20 15:53:03', '2021-05-19 10:14:06'),
-	(1534, 0, 'fr', '_json', 'Return List', 'Liste des avoirs', '2021-04-20 15:53:03', '2021-05-19 10:14:06'),
-	(1535, 0, 'fr', '_json', 'Mail to Subscribers', 'Compagne Emailing', '2021-04-20 15:53:03', '2021-05-19 10:14:06'),
-	(1536, 0, 'fr', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete edit create) places categories cities country manage users review booking...', 'Le site d\'administration est une zone à laquelle seul l\'administrateur peut accéder. De là, vous pouvez gérer (supprimer, modifier, créer) les lieux, les catégories, les villes, les pays, les utilisateurs, les réservations...', '2021-04-22 16:00:43', '2021-05-19 10:14:06'),
-	(1537, 0, 'fr', '_json', 'set out by this site including our Cookie Use.', 'définis par ce site, y compris notre utilisation des cookies.', '2021-04-22 16:13:44', '2021-05-19 10:14:06'),
-	(1538, 0, 'en', '_json', 'Other Name', 'Username', '2021-04-22 17:42:46', '2021-05-19 10:14:06'),
-	(1539, 0, 'en', '_json', 'Other name', 'Username', '2021-04-22 17:42:51', '2021-05-19 10:14:06'),
-	(1540, 0, 'fr', 'Loading', '..', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1541, 0, 'fr', 'E', 'g. City, Airport', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1542, 0, 'fr', '_json', 'Golf Tours', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1543, 0, 'fr', '_json', 'Sign up Using Email', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1544, 0, 'fr', '_json', 'Bad Request', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1545, 0, 'fr', '_json', 'Unauthorized Access', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1546, 0, 'fr', '_json', 'Access Denied/Forbidden !', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1547, 0, 'fr', '_json', 'Not Found', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1548, 0, 'fr', '_json', 'Page Expired', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1549, 0, 'fr', '_json', 'Too Many Requests', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1550, 0, 'fr', '_json', 'Internal Server Error', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1551, 0, 'fr', '_json', 'Service Unavailable', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1552, 0, 'fr', '_json', 'Troubleshooting Error, Looks like something is wrong.', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1553, 0, 'fr', '_json', 'Oh no', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1554, 0, 'fr', '_json', 'Go Home', 'Retour vers l\'acceuil', '2021-05-18 09:46:54', '2021-05-19 10:14:06'),
-	(1555, 0, 'fr', '_json', 'Attempted Bookings', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1556, 0, 'fr', '_json', 'Paid Bookings', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1557, 0, 'fr', '_json', 'Pending/Failed Bookings', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1558, 0, 'fr', '_json', 'Deal Bookings', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1559, 0, 'fr', '_json', '(S/N)', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1560, 0, 'fr', '_json', 'Deal Name', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1561, 0, 'fr', '_json', 'Amount Paid', 'Montant à Payer', '2021-05-18 09:46:54', '2021-05-19 10:14:06'),
-	(1562, 0, 'fr', '_json', 'Date Booked', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1563, 0, 'fr', '_json', 'Reservations Created', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1564, 0, 'fr', '_json', 'Issued Ticket', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1565, 0, 'fr', '_json', 'Cancelled Reservation', NULL, '2021-05-18 09:46:54', '2021-05-18 09:46:54'),
-	(1566, 0, 'fr', '_json', 'Void Tickets', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1567, 0, 'fr', '_json', 'Agent Flight Reservations', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1568, 0, 'fr', '_json', 'PNR', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1569, 0, 'fr', '_json', 'Agent Name', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1570, 0, 'fr', '_json', 'Amount', 'Montant', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1571, 0, 'fr', '_json', 'Ticket Time Limit', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1572, 0, 'fr', '_json', 'Ticket Status', 'Status du Ticket', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1573, 0, 'fr', '_json', 'Created Date<', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1574, 0, 'fr', '_json', 'Customer Flight Reservations', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1575, 0, 'fr', '_json', 'Created Date', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1576, 0, 'fr', '_json', 'Flight Reservations', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1577, 0, 'fr', '_json', 'My Hotel Reservations', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1578, 0, 'fr', '_json', 'Category Type List', 'Liste de type d\'activité', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1579, 0, 'fr', '_json', 'Add Category Type', 'Ajoute type d\'activité', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1580, 0, 'fr', '_json', 'Category type Name', 'Nom de type d\'activité', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1581, 0, 'fr', '_json', 'Ville', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1582, 0, 'fr', '_json', '#', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1583, 0, 'fr', '_json', 'newsletters', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1584, 0, 'fr', '_json', 'Newsletters', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1585, 0, 'fr', '_json', 'Add Offer', 'Ajouter une offre', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1586, 0, 'fr', '_json', 'Offer name', 'Nom de l\'offre', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1587, 0, 'fr', '_json', 'What the name of offer', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1588, 0, 'fr', '_json', 'Edit Offer', 'Modifier l\'offre', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1589, 0, 'fr', '_json', 'Offer List', 'Liste des offres', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1590, 0, 'fr', '_json', 'Add Package', NULL, '2021-05-18 09:46:55', '2021-05-18 09:46:55'),
-	(1591, 0, 'fr', '_json', 'Period', 'Durée', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1592, 0, 'fr', '_json', 'Start Date', 'Date d\'arrivée', '2021-05-18 09:46:55', '2021-05-19 10:14:06'),
-	(1593, 0, 'fr', '_json', 'End Date', 'Date de départ', '2021-05-18 09:46:56', '2021-05-19 10:14:06'),
-	(1594, 0, 'fr', '_json', 'Features', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1595, 0, 'fr', '_json', 'Conditions', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1596, 0, 'fr', '_json', 'Create', 'Creation', '2021-05-18 09:46:56', '2021-05-19 10:14:06'),
-	(1597, 0, 'fr', '_json', 'Package List', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1598, 0, 'fr', '_json', 'Min Stay', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1599, 0, 'fr', '_json', 'Available On', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1600, 0, 'fr', '_json', 'Prix', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1601, 0, 'fr', '_json', 'Trait', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1602, 0, 'fr', '_json', 'Bon de Commande', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1603, 0, 'fr', '_json', 'TRAIT', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1604, 0, 'fr', '_json', 'Type', NULL, '2021-05-18 09:46:56', '2021-05-18 09:46:56'),
-	(1605, 0, 'fr', '_json', 'Category detail', 'Detail d\'activité', '2021-05-18 09:46:56', '2021-05-19 10:14:06'),
-	(1606, 0, 'fr', '_json', 'Category Type detail', 'Detail de type d\'activité', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1607, 0, 'fr', '_json', 'City detail', 'Detail de la ville', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1608, 0, 'fr', '_json', 'Infant', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1609, 0, 'fr', '_json', 'Rentacs Tours - Travel Agency', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1610, 0, 'fr', '_json', 'Best Offers', 'Meilleures offres', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1611, 0, 'fr', '_json', 'Offer', 'Offre', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1612, 0, 'fr', '_json', 'Read More', 'Lire plus', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1613, 0, 'fr', '_json', '(Excluding Tax)', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1614, 0, 'fr', '_json', 'Package', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1615, 0, 'fr', '_json', 'Cart', 'Panier', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1616, 0, 'fr', '_json', 'Nuit', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1617, 0, 'fr', '_json', 'Personne', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1618, 0, 'fr', '_json', 'Checkout', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1619, 0, 'fr', '_json', 'Days', 'Jours', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1620, 0, 'fr', '_json', 'Persons', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1621, 0, 'fr', '_json', 'subtotal', 'Sous Total', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1622, 0, 'fr', '_json', 'Menu', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1623, 0, 'fr', '_json', 'Special Offers', 'Offre Special', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1624, 0, 'fr', '_json', 'Offers List', 'Liste des offres', '2021-05-18 09:46:57', '2021-05-19 10:14:06'),
-	(1625, 0, 'fr', '_json', 'Transactions', NULL, '2021-05-18 09:46:57', '2021-05-18 09:46:57'),
-	(1626, 0, 'fr', '_json', 'Add Offer Type', NULL, '2021-05-19 09:28:40', '2021-05-19 09:28:40'),
-	(1627, 0, 'fr', '_json', 'Date d’émission', NULL, '2021-05-19 09:28:41', '2021-05-19 09:28:41'),
-	(1628, 0, 'fr', '_json', 'From', 'Depuis', '2021-05-19 09:28:41', '2021-05-19 10:14:06'),
-	(1629, 0, 'fr', '_json', 'To', NULL, '2021-05-19 09:28:42', '2021-05-19 09:28:42'),
-	(1630, 0, 'fr', '_json', 'Service', NULL, '2021-05-19 09:28:42', '2021-05-19 09:28:42'),
-	(1631, 0, 'fr', '_json', 'Bon pour Accord', NULL, '2021-05-19 09:28:42', '2021-05-19 09:28:42'),
-	(1632, 0, 'fr', '_json', 'Contact Details', 'Details du Contact', '2021-05-19 09:28:42', '2021-05-19 10:14:06'),
-	(1633, 0, 'fr', '_json', 'User Profile', 'Profil Utilisateur', '2021-05-19 09:28:45', '2021-05-19 10:14:06'),
-	(1634, 0, 'en', '_json', 'Prix', 'Price', '2021-05-19 09:48:09', '2021-05-19 10:14:06'),
-	(1635, 0, 'en', '_json', 'Ville', 'City', '2021-05-19 09:55:37', '2021-05-19 10:14:06'),
-	(1636, 0, 'en', '_json', 'Nuit', 'Night', '2021-05-19 09:56:39', '2021-05-19 10:14:06'),
-	(1637, 0, 'fr', '_json', 'Special Offers List', NULL, '2021-05-19 10:09:21', '2021-05-19 10:09:21'),
-	(1638, 0, 'fr', '_json', 'Special Offers Type', NULL, '2021-05-19 10:09:21', '2021-05-19 10:09:21'),
-	(1639, 0, 'fr', '_json', 'Offers', 'Offres', '2021-05-19 10:09:21', '2021-05-19 10:14:06'),
-	(1640, 0, 'fr', '_json', 'Offers Category List', 'Activité des Offres', '2021-05-19 10:09:21', '2021-05-19 10:14:06'),
-	(1641, 0, 'fr', '_json', 'Offers Category Type List', 'Type d\'activité des Offres', '2021-05-19 10:09:21', '2021-05-19 10:14:06'),
-	(1642, 0, 'fr', '_json', 'Edit Package', NULL, '2021-05-20 12:29:17', '2021-05-20 12:29:17'),
-	(1643, 0, 'fr', '_json', 'nights', NULL, '2021-05-20 12:29:18', '2021-05-20 12:29:18');
+	(78, 0, 'en', '_json', 'Translations', 'TRANSLATIONS', '2021-01-28 15:18:08', '2021-05-27 11:29:38'),
+	(79, 0, 'en', '_json', 'Settings', 'SETTINGS', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(80, 0, 'en', '_json', 'Vats', 'VATS', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(81, 0, 'en', '_json', 'Markups', 'MARKUPS', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(82, 0, 'en', '_json', 'Markdowns', 'MARKDOWNS', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(83, 0, 'en', '_json', 'Banks', 'BANKS', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(84, 0, 'en', '_json', 'Users Management', 'USERS MANAGEMENT', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(85, 0, 'en', '_json', 'Email Subscribers', 'EMAIL SUBSCRIBERS', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(86, 0, 'en', '_json', 'Visa Applications', 'VISA APPLICATIONS', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(87, 0, 'en', '_json', 'Wallets Management', 'WALLETS MANAGEMENT', '2021-01-28 15:25:15', '2021-05-27 11:29:38'),
+	(88, 0, 'en', '_json', 'New Customer', 'NEW CUSTOMER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(89, 0, 'en', '_json', 'Create Customer', 'CREATE CUSTOMER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(90, 0, 'en', '_json', 'Name', 'NAME', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(91, 0, 'en', '_json', 'Company Name', 'COMPANY NAME', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(92, 0, 'en', '_json', 'Email', 'EMAIL', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(93, 0, 'en', '_json', 'Phone Number', 'PHONE NUMBER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(94, 0, 'en', '_json', 'Tax Number', 'TAX NUMBER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(95, 0, 'en', '_json', 'Address', 'ADDRESS', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(96, 0, 'en', '_json', 'Postal Code', 'POSTAL CODE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(97, 0, 'en', '_json', 'City', 'CITY', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(98, 0, 'en', '_json', 'Country', 'COUNTRY', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(99, 0, 'en', '_json', 'Save', 'SAVE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(100, 0, 'en', '_json', 'Back', 'BACK', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(101, 0, 'en', '_json', 'Edit Customer', 'EDIT CUSTOMER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(102, 0, 'en', '_json', 'Update', 'UPDATE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(103, 0, 'en', '_json', 'Customers List', 'CUSTOMERS LIST', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(104, 0, 'en', '_json', 'Customers', 'CUSTOMERS', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(105, 0, 'en', '_json', 'Add New Customer', 'ADD NEW CUSTOMER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(106, 0, 'en', '_json', 'Company name', 'COMPANY NAME', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(107, 0, 'en', '_json', 'Phone', 'Phone', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(108, 0, 'en', '_json', 'Created at', 'CREATED AT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(109, 0, 'en', '_json', 'Edit', 'EDIT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(110, 0, 'en', '_json', 'Delete', 'DELETE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(111, 0, 'en', '_json', 'New Purchase', 'NEW PURCHASE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(112, 0, 'en', '_json', 'Reference no', 'REFERENCE NO', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(113, 0, 'en', '_json', 'Supplier', 'SUPPLIER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(114, 0, 'en', '_json', 'User', 'USER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(115, 0, 'en', '_json', 'Select user', 'SELECT USER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(116, 0, 'en', '_json', 'Product', 'PRODUCT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(117, 0, 'en', '_json', 'Qty', 'QTY', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(118, 0, 'en', '_json', 'Price', 'PRICE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(119, 0, 'en', '_json', 'Total', 'TOTAL', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(120, 0, 'en', '_json', 'Enter Product Name', 'ENTER PRODUCT NAME', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(121, 0, 'en', '_json', 'Enter Qty', 'ENTER QTY', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(122, 0, 'en', '_json', 'Enter Unit Price', 'ENTER UNIT PRICE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(123, 0, 'en', '_json', 'Add Row', 'ADD ROW', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(124, 0, 'en', '_json', 'Delete Row', 'DELETE ROW', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(125, 0, 'en', '_json', 'Sub Total', 'SUB TOTAL', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(126, 0, 'en', '_json', 'Tax', 'TAX', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(127, 0, 'en', '_json', 'Tax Amount', 'TAX AMOUNT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(128, 0, 'en', '_json', 'Grand Total', 'GRAND TOTAL', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(129, 0, 'en', '_json', 'Sale Status', 'SALE STATUS', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(130, 0, 'en', '_json', 'Completed', 'COMPLETED', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(131, 0, 'en', '_json', 'Pending', 'PENDING', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(132, 0, 'en', '_json', 'Payment Status', 'PAYMENT STATUS', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(133, 0, 'en', '_json', 'Due', 'DUE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(134, 0, 'en', '_json', 'Partial', 'PARTIAL', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(135, 0, 'en', '_json', 'Paid', 'PAID', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(136, 0, 'en', '_json', 'Paid By', 'PAID BY', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(137, 0, 'en', '_json', 'Cash', 'CASH', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(138, 0, 'en', '_json', 'Cheque', 'CHEQUE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(139, 0, 'en', '_json', 'Deposit', 'DEPOSIT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(140, 0, 'en', '_json', 'Attach Document', 'ATTACH DOCUMENT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(141, 0, 'en', '_json', 'Total Amount', 'TOTAL AMOUNT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(142, 0, 'en', '_json', 'Paying Amount', 'PAYING AMOUNT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(143, 0, 'en', '_json', 'Change', 'CHANGE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(144, 0, 'en', '_json', 'Purchase Note', 'PURCHASE NOTE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(145, 0, 'en', '_json', 'Edit Purchase', 'EDIT PURCHASE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(146, 0, 'en', '_json', 'Total amount', 'TOTAL AMOUNT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(147, 0, 'en', '_json', 'Purchases', 'PURCHASES', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(148, 0, 'en', '_json', 'Add New Purchase', 'ADD NEW PURCHASE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(149, 0, 'en', '_json', 'Status', 'STATUS', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(150, 0, 'en', '_json', 'Grand total', 'GRAND TOTAL', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(151, 0, 'en', '_json', 'Payment status', 'PAYMENT STATUS', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(152, 0, 'en', '_json', 'Create Sale', 'CREATE SALE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(153, 0, 'en', '_json', 'Customer', 'CUSTOMER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(154, 0, 'en', '_json', 'Select Customer', 'SELECT CUSTOMER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(155, 0, 'en', '_json', 'Select Supplier', 'SELECT SUPPLIER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(156, 0, 'en', '_json', 'Recieved Amount', 'RECIEVED AMOUNT', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(157, 0, 'en', '_json', 'Payment Note', 'PAYMENT NOTE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(158, 0, 'en', '_json', 'Sale Note', 'SALE NOTE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(159, 0, 'en', '_json', 'Staff Note', 'STAFF NOTE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(160, 0, 'en', '_json', 'Edit Sale', 'EDIT SALE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(161, 0, 'en', '_json', 'Sales', 'SALES', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(162, 0, 'en', '_json', 'Add New Sale', 'ADD NEW SALE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(163, 0, 'en', '_json', 'Booking ID', 'BOOKING ID', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(164, 0, 'en', '_json', 'Booking Type', 'BOOKING TYPE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(165, 0, 'en', '_json', 'Create Supplier', 'CREATE SUPPLIER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(166, 0, 'en', '_json', 'Edit Supplier', 'EDIT SUPPLIER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(167, 0, 'en', '_json', 'Suppliers', 'SUPPLIERS', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(168, 0, 'en', '_json', 'Add New Supplier', 'ADD NEW SUPPLIER', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(169, 0, 'en', '_json', 'Supplier Name', 'SUPPLIER NAME', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(170, 0, 'en', '_json', 'Supplier Company', 'SUPPLIER COMPANY', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(171, 0, 'en', '_json', 'Language', 'LANGUAGE', '2021-01-29 11:43:26', '2021-05-27 11:29:38'),
+	(172, 0, 'en', '_json', 'Create New Purchase', 'CREATE NEW PURCHASE', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(173, 0, 'en', '_json', 'Create New Sale', 'CREATE NEW SALE', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(174, 0, 'en', '_json', 'Create User', 'CREATE USER', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(175, 0, 'en', '_json', 'Close', 'CLOSE', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(176, 0, 'en', '_json', 'Create New Supplier', 'CREATE NEW SUPPLIER', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(177, 0, 'en', '_json', 'Action', 'ACTION', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(178, 0, 'en', '_json', 'Travel Packages', 'TRAVEL PACKAGES', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(179, 0, 'en', '_json', 'Continue(Save Package)', 'CONTINUE(SAVE PACKAGE)', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(180, 0, 'en', '_json', 'Attraction', 'ATTRACTION', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(181, 0, 'en', '_json', 'Attraction Name', 'ATTRACTION NAME', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(182, 0, 'en', '_json', 'Attraction City', 'ATTRACTION CITY', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(183, 0, 'en', '_json', 'Attraction Date', 'ATTRACTION DATE', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(184, 0, 'en', '_json', 'Location Description', 'LOCATION DESCRIPTION', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(185, 0, 'en', '_json', 'Attraction Additional Information', 'ATTRACTION ADDITIONAL INFORMATION', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(186, 0, 'en', '_json', 'Sight Seeings', 'SIGHT SEEINGS', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(187, 0, 'en', '_json', 'Add More Sight Seeing', 'ADD MORE SIGHT SEEING', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(188, 0, 'en', '_json', 'Sight Seeing Title', 'SIGHT SEEING TITLE', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(189, 0, 'en', '_json', 'Sight Seeing Description', 'SIGHT SEEING DESCRIPTION', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(190, 0, 'en', '_json', 'Continue (Save Attraction)', 'CONTINUE (SAVE ATTRACTION)', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(191, 0, 'en', '_json', 'Attraction Gallery', 'ATTRACTION GALLERY', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(192, 0, 'en', '_json', 'Drag and Drop or Click On Box to Select Multiple Images', 'DRAG AND DROP OR CLICK ON BOX TO SELECT MULTIPLE IMAGES', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(193, 0, 'en', '_json', 'Continue', 'CONTINUE', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(194, 0, 'en', '_json', 'Create New Package', 'CREATE NEW PACKAGE', '2021-01-29 16:41:41', '2021-05-27 11:29:38'),
+	(195, 0, 'en', '_json', 'Package type', 'PACKAGE TYPE', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(196, 0, 'en', '_json', 'Package category', 'PACKAGE CATEGORY', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(197, 0, 'en', '_json', 'Package name', 'PACKAGE NAME', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(198, 0, 'en', '_json', 'Phone number', 'PHONE NUMBER', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(199, 0, 'en', '_json', 'Adult price', 'ADULT PRICE', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(200, 0, 'en', '_json', 'Children price', 'CHILDREN PRICE', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(201, 0, 'en', '_json', 'Infants price', 'INFANTS PRICE', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(202, 0, 'en', '_json', 'Flight', 'FLIGHT', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(203, 0, 'en', '_json', 'Hotel', 'HOTEL', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(204, 0, 'en', '_json', 'Deactivated', 'DEACTIVATED', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(205, 0, 'en', '_json', 'Activated', 'ACTIVATED', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(206, 0, 'en', '_json', 'Add sight seeing', 'ADD SIGHT SEEING', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(207, 0, 'en', '_json', 'Confirmation', 'CONFIRMATION', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(208, 0, 'en', '_json', 'Flight Information', 'FLIGHT INFORMATION', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(209, 0, 'en', '_json', 'Are you sure', 'ARE YOU SURE', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(210, 0, 'en', '_json', 'Booking Confirmation', 'BOOKING CONFIRMATION', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(211, 0, 'en', '_json', 'Inclusion', 'INCLUSION', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(212, 0, 'en', '_json', 'Exclusion', 'EXCLUSION', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(213, 0, 'en', '_json', 'KNOW MORE', 'KNOW MORE', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(214, 0, 'en', '_json', 'LAST MINUTE DEALS', 'LAST MINUTE DEALS', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(215, 0, 'en', '_json', 'SAVE MORE', 'SAVE MORE', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(216, 0, 'en', '_json', 'Starting From', 'STARTING FROM', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(217, 0, 'en', '_json', 'VIEW DETAIL', 'VIEW DETAIL', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(218, 0, 'en', '_json', 'Home Settings', 'HOME SETTINGS', '2021-01-29 16:41:42', '2021-05-27 11:29:38'),
+	(219, 0, 'en', '_json', 'Login', 'LOGIN', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(220, 0, 'en', '_json', 'Oh snap!', 'OH SNAP!', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(221, 0, 'en', '_json', 'Login with', 'LOGIN WITH', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(222, 0, 'en', '_json', 'Your Email', 'YOUR EMAIL', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(223, 0, 'en', '_json', 'Enter Password', 'ENTER PASSWORD', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(224, 0, 'en', '_json', 'Remember Me', 'REMEMBER ME', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(225, 0, 'en', '_json', 'Forgot Password?', 'FORGOT PASSWORD?', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(226, 0, 'en', '_json', 'Recover password', 'RECOVER PASSWORD', '2021-01-30 09:59:38', '2021-05-27 11:29:38'),
+	(227, 0, 'en', '_json', 'New to', 'NEW TO', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(228, 0, 'en', '_json', 'Sign Up', 'SIGN UP', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(229, 0, 'en', '_json', 'Recover Password', 'RECOVER PASSWORD', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(230, 0, 'en', '_json', 'Great !!!', 'GREAT !!!', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(231, 0, 'en', '_json', 'We will send you a link to reset password.', 'WE WILL SEND YOU A LINK TO RESET PASSWORD.', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(232, 0, 'en', '_json', 'Your Email Address', 'YOUR EMAIL ADDRESS', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(233, 0, 'en', '_json', 'Create Account', 'CREATE ACCOUNT', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(234, 0, 'en', '_json', 'Reset your password now', 'RESET YOUR PASSWORD NOW', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(235, 0, 'en', '_json', 'Your password', 'YOUR PASSWORD', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(236, 0, 'en', '_json', 'Confirm Password', 'CONFIRM PASSWORD', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(237, 0, 'en', '_json', 'I Agree', 'I AGREE', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(238, 0, 'en', '_json', 'By clicking Register, you agree to the', 'By clicking Register, you agree to the', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(239, 0, 'en', '_json', 'Terms and Conditions', 'Terms and Conditions', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(240, 0, 'en', '_json', 'set out by this site, including our Cookie Use.', 'set out by this site, including our Cookie Use.', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(241, 0, 'en', '_json', 'Register', 'REGISTER', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(242, 0, 'en', '_json', 'Dashboard', 'DASHBOARD', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(243, 0, 'en', '_json', 'Edit Profile', 'EDIT PROFILE', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(244, 0, 'en', '_json', 'Logout', 'LOGOUT', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(245, 0, 'en', '_json', 'Book Flight', 'BOOK FLIGHT', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(246, 0, 'en', '_json', 'Book Hotel', 'BOOK HOTEL', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(247, 0, 'en', '_json', 'Navigation', 'NAVIGATION', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(248, 0, 'en', '_json', 'Create New', 'CREATE NEW', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(249, 0, 'en', '_json', 'Commercial', 'COMMERCIAL', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(250, 0, 'en', '_json', 'Sale List', 'SALE LIST', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(251, 0, 'en', '_json', 'Purchase', 'PURCHASE', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(252, 0, 'en', '_json', 'Purchase List', 'PURCHASE LIST', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(253, 0, 'en', '_json', 'Suppliers List', 'SUPPLIERS LIST', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(254, 0, 'en', '_json', 'Manage Bookings', 'MANAGE BOOKINGS', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(255, 0, 'en', '_json', 'Manage Packages', 'MANAGE PACKAGES', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(256, 0, 'en', '_json', 'Packages List', 'PACKAGES LIST', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(257, 0, 'en', '_json', 'Manage Categories', 'MANAGE CATEGORIES', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(258, 0, 'en', '_json', 'My Wallet', 'MY WALLET', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(259, 0, 'en', '_json', 'Manage Profile', 'MANAGE PROFILE', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(260, 0, 'en', '_json', 'Log Out', 'LOG OUT', '2021-01-30 09:59:39', '2021-05-27 11:29:38'),
+	(261, 0, 'en', '_json', 'Sign in', 'SIGN IN', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(262, 0, 'en', '_json', 'Who we are', 'WHO WE ARE', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(263, 0, 'en', '_json', 'Read more', 'READ MORE', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(264, 0, 'en', '_json', 'Discover amazing things to do everywhere you go.', 'DISCOVER AMAZING THINGS TO DO EVERYWHERE YOU GO.', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(265, 0, 'en', '_json', 'Company', 'COMPANY', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(266, 0, 'en', '_json', 'About Us', 'ABOUT US', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(267, 0, 'en', '_json', 'Blog', 'BLOG', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(268, 0, 'en', '_json', 'Contact', 'CONTACT', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(269, 0, 'en', '_json', 'Contact Us', 'CONTACT US', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(270, 0, 'en', '_json', 'Adresse', 'ADRESSE', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(271, 0, 'en', '_json', 'Enter your email', 'ENTER YOUR EMAIL', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(272, 0, 'en', '_json', 'Sign-up to receive regular updates from us.', 'SIGN-UP TO RECEIVE REGULAR UPDATES FROM US.', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(273, 0, 'en', '_json', 'Rentacs Tours', 'RENTACS TOURS', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(274, 0, 'en', '_json', 'All rights reserved.', 'ALL RIGHTS RESERVED.', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(275, 0, 'en', '_json', 'Profile', 'PROFILE', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(276, 0, 'en', '_json', 'Wishlist', 'WISHLIST', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(277, 0, 'en', '_json', 'Flights', 'FLIGHTS', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(278, 0, 'en', '_json', 'Hotels', 'HOTELS', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(279, 0, 'en', '_json', 'Hot Deals', 'HOT DEALS', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(280, 0, 'en', '_json', 'Golf tours', 'GOLF TOURS', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(281, 0, 'en', '_json', 'Motorcycle', 'MOTORCYCLE', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(282, 0, 'en', '_json', 'Surf', 'SURF', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(283, 0, 'en', '_json', 'Trekking', 'TREKKING', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(284, 0, 'en', '_json', 'Bivouacs', 'BIVOUACS', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(285, 0, 'en', '_json', 'Best offers', 'BEST OFFERS', '2021-01-31 11:34:57', '2021-05-27 11:29:38'),
+	(286, 0, 'fr', '_json', 'Login', 'S\'identifier', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(287, 0, 'fr', '_json', 'Oh snap!', 'Oh snap!', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(288, 0, 'fr', '_json', 'Login with', 'Connectez-vous avec', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(289, 0, 'fr', '_json', 'Your Email', 'Votre e-mail', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(290, 0, 'fr', '_json', 'Enter Password', 'Entrer le mot de passe', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(291, 0, 'fr', '_json', 'Remember Me', 'Souviens-toi de moi', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(292, 0, 'fr', '_json', 'Forgot Password?', 'Mot de passe oublié?', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(293, 0, 'fr', '_json', 'Recover password', 'Récupérer mot de passe', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(294, 0, 'fr', '_json', 'New to', 'Nouveau sur', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(295, 0, 'fr', '_json', 'Sign Up', 'S\'inscrire', '2021-02-01 10:24:16', '2021-05-27 11:29:38'),
+	(296, 0, 'fr', '_json', 'Recover Password', 'Récupérer mot de passe', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(297, 0, 'fr', '_json', 'Great !!!', 'Génial !!!', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(298, 0, 'fr', '_json', 'We will send you a link to reset password.', 'Nous vous enverrons un lien pour réinitialiser le mot de passe.', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(299, 0, 'fr', '_json', 'Your Email Address', 'Votre adresse email', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(300, 0, 'fr', '_json', 'Create Account', 'Créer un compte', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(301, 0, 'fr', '_json', 'Reset your password now', 'Réinitialisez votre mot de passe maintenant', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(302, 0, 'fr', '_json', 'Your password', 'Votre mot de passe', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(303, 0, 'fr', '_json', 'Confirm Password', 'Confirmez le mot de passe', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(304, 0, 'fr', '_json', 'I Agree', 'Je suis d\'accord', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(305, 0, 'fr', '_json', 'By clicking Register, you agree to the', 'En cliquant sur S\'inscrire, vous acceptez les', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(306, 0, 'fr', '_json', 'Terms and Conditions', 'CONDITIONS GÉNÉRALES DE VENTE', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(307, 0, 'fr', '_json', 'set out by this site, including our Cookie Use.', 'défini par ce site, y compris notre utilisation des cookies.', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(308, 0, 'fr', '_json', 'Register', 'S\'inscrire', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(309, 0, 'fr', '_json', 'Dashboard', 'Tableau de bord', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(310, 0, 'fr', '_json', 'No places', 'Aucune destination', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(311, 0, 'fr', '_json', 'Category', 'Catégorie', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(312, 0, 'fr', '_json', 'Places', 'Destinations', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(313, 0, 'fr', '_json', 'Back to list', 'Retour à la liste', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(314, 0, 'fr', '_json', 'Show all', 'Afficher tout', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(315, 0, 'fr', '_json', 'Introducing', 'Présentation', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(316, 0, 'fr', '_json', 'Currency', 'Devise', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(317, 0, 'fr', '_json', 'Languages', 'LANGUES', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(318, 0, 'fr', '_json', 'Best time to visit', 'MEILLEUR MOMENT POUR VISITER', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(319, 0, 'fr', '_json', 'Maps view', 'Affichage des cartes', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(320, 0, 'fr', '_json', 'See all', 'Voir tout', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(321, 0, 'fr', '_json', 'results', 'résultats', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(322, 0, 'fr', '_json', 'Clear All', 'Tout effacer', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(323, 0, 'fr', '_json', 'Filter', 'Filtre', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(324, 0, 'fr', '_json', 'Sort By', 'Trier par', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(325, 0, 'fr', '_json', 'Newest', 'Le plus récent', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(326, 0, 'fr', '_json', 'Average rating', 'Note moyenne', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(327, 0, 'fr', '_json', 'Price: Low to high', 'Prix: Plus bas au plus haut', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(328, 0, 'fr', '_json', 'Price: High to low', 'Prix: plus haut au plus bas', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(329, 0, 'fr', '_json', 'Price Filter', 'Filtre de prix', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(330, 0, 'fr', '_json', 'Free', 'Gratuit', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(331, 0, 'fr', '_json', 'Low: $', 'Faible: $', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(332, 0, 'fr', '_json', 'Medium: $$', 'Moyen: $$', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(333, 0, 'fr', '_json', 'High: $$$', 'Élevé: $$$', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(334, 0, 'fr', '_json', 'Types', 'Les types', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(335, 0, 'fr', '_json', 'Amenities', 'Services', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(336, 0, 'fr', '_json', 'Explorer Other Cities', 'Explorer d\'autres villes', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(337, 0, 'fr', '_json', 'places', 'Destinations', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(338, 0, 'fr', '_json', 'No cities', 'Pas de villes', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(339, 0, 'fr', '_json', 'reviews', 'Avis', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(340, 0, 'fr', '_json', 'About Us', 'À propos', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(341, 0, 'fr', '_json', 'Our Offices', 'Horaires d\'ouvertures', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(342, 0, 'fr', '_json', 'Get Direction', 'Obtenir la direction', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(343, 0, 'fr', '_json', 'Get in touch with us', 'Prenez contact avec nous', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(344, 0, 'fr', '_json', 'First name', 'Nom', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(345, 0, 'fr', '_json', 'Last name', 'Nom', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(346, 0, 'fr', '_json', 'Email', 'Email', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(347, 0, 'fr', '_json', 'Phone number', 'Numéro de téléphone', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(348, 0, 'fr', '_json', 'Message', 'Message', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(349, 0, 'fr', '_json', 'Send Message', 'Envoyer le message', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(350, 0, 'fr', '_json', 'Contact Us', 'Nous contacter', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(351, 0, 'fr', '_json', 'We want to hear from you.', 'Nous voulons de vos nouvelles.', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(352, 0, 'fr', '_json', 'Adresse', 'Adresse', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(353, 0, 'fr', '_json', 'Genaral', 'Générale', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(354, 0, 'fr', '_json', 'Location', 'Emplacement', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(355, 0, 'fr', '_json', 'Contact info', 'Informations de contact', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(356, 0, 'fr', '_json', 'Social network', 'Réseau social', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(357, 0, 'fr', '_json', 'Open hours', 'Heures d\'ouverture', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(358, 0, 'fr', '_json', 'Media', 'Médias', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(359, 0, 'fr', '_json', 'Edit my place', 'Modifier ma place', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(360, 0, 'fr', '_json', 'Add new place', 'Ajouter une nouvelle destination', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(361, 0, 'fr', '_json', 'Place Name', 'Nom du lieu', '2021-02-01 10:24:17', '2021-05-27 11:29:38'),
+	(362, 0, 'fr', '_json', 'What the name of place', 'quel est le nom de l\'offre special', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(363, 0, 'fr', '_json', 'Price Range', 'Intervalle des prix', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(364, 0, 'fr', '_json', 'Description', 'Description', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(365, 0, 'fr', '_json', 'Select Category', 'Choisir une catégorie', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(366, 0, 'fr', '_json', 'Place Type', 'Type de destination', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(367, 0, 'fr', '_json', 'Select Place Type', 'Sélectionnez le type de destination', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(368, 0, 'fr', '_json', 'Place Address', 'Adresse de la destination', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(369, 0, 'fr', '_json', 'Select country', 'Sélection de Pays', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(370, 0, 'fr', '_json', 'Select city', 'Sélection de ville', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(371, 0, 'fr', '_json', 'Full Address', 'Adresse complète', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(372, 0, 'fr', '_json', 'Place Location at Google Map', 'Placer la position sur Google Map', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(373, 0, 'fr', '_json', 'Your email address', 'Votre adresse email', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(374, 0, 'fr', '_json', 'Your phone number', 'Votre numéro de téléphone', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(375, 0, 'fr', '_json', 'Website', 'Site Internet', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(376, 0, 'fr', '_json', 'Your website url', 'L\'adresse URL de votre site', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(377, 0, 'fr', '_json', 'Social Networks', 'Réseau social', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(378, 0, 'fr', '_json', 'Select network', 'Sélectionnez réseau', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(379, 0, 'fr', '_json', 'Enter URL include http or www', 'Entrez l\'URL inclure http ou www', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(380, 0, 'fr', '_json', 'Add more', 'Ajouter plus de', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(382, 0, 'fr', '_json', 'Thumb image', 'Image du pouce', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(383, 0, 'fr', '_json', 'Maximum file size: 1 MB', 'Taille maximale du fichier: 1 Mo', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(384, 0, 'fr', '_json', 'Gallery Images', 'Galerie d\'images', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(385, 0, 'fr', '_json', 'Video', 'Vidéo', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(386, 0, 'fr', '_json', 'Youtube, Vimeo video url', 'Youtube, URL vidéo Vimeo', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(387, 0, 'fr', '_json', 'Login to submit', 'Login to submit', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(388, 0, 'fr', '_json', 'Update', 'Mise à jour', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(389, 0, 'fr', '_json', 'Submit', 'Envoyer', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(390, 0, 'fr', '_json', 'Gallery', 'Galerie', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(391, 0, 'fr', '_json', 'Show more', 'Montrer plus', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(392, 0, 'fr', '_json', 'Book now', 'Réserver maintenant', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(393, 0, 'fr', '_json', 'Location & Maps', 'Emplacement et cartes', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(394, 0, 'fr', '_json', 'Direction', 'Direction', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(395, 0, 'fr', '_json', 'Contact Info', 'Informations de contact', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(396, 0, 'fr', '_json', 'Review', 'Avis', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(397, 0, 'fr', '_json', 'to review', 'réviser', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(398, 0, 'fr', '_json', 'Write a review', 'Partagé votre Avis', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(399, 0, 'fr', '_json', 'Rate This Place', 'Évaluez cette destination', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(400, 0, 'fr', '_json', 'error!', 'erreur!', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(401, 0, 'fr', '_json', 'Booking online', 'Réservation en ligne', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(402, 0, 'fr', '_json', 'Make a reservation', 'Faire une réservation', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(403, 0, 'fr', '_json', 'Send me a message', 'Envoyez-moi un message', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(404, 0, 'fr', '_json', 'Send', 'Envoyer', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(405, 0, 'fr', '_json', 'Banner Ads', 'Bannière publicitaire', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(406, 0, 'fr', '_json', 'View', 'Vue', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(407, 0, 'fr', '_json', 'Person', 'Personne', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(408, 0, 'fr', '_json', 'Adults', 'Adultes', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(409, 0, 'fr', '_json', 'Childrens', 'Enfants', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(410, 0, 'fr', '_json', 'You won\'t be charged yet', 'Vous ne serez pas encore facturé', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(411, 0, 'fr', '_json', 'You successfully created your booking.', 'Vous avez créé votre réservation avec succès.', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(412, 0, 'fr', '_json', 'Your Booking is Pending, We Will Contact You as Soon as Possible.', 'Votre réservation est en attente, nous vous contacterons dès que possible.', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(413, 0, 'fr', '_json', 'An error occurred. Please try again.', 'Une erreur est survenue. Veuillez réessayer.', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(414, 0, 'fr', '_json', 'Similar places', 'Destinations similaires', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(415, 0, 'fr', '_json', 'Overview', 'Aperçu', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(416, 0, 'fr', '_json', 'By Booking.com', 'Par Booking.com', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(417, 0, 'fr', '_json', 'All Country', 'Tous les pays', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(418, 0, 'fr', '_json', 'All City', 'Toutes les villes', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(419, 0, 'fr', '_json', 'Select Categories', 'Sélection catégories', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(420, 0, 'fr', '_json', 'All categories', 'Toutes les catégories', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(421, 0, 'fr', '_json', 'by', 'par', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(422, 0, 'fr', '_json', 'Related Articles', 'Articles similaires', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(423, 0, 'fr', '_json', 'Blog', 'Blog', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(424, 0, 'fr', '_json', 'All', 'Tout', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(425, 0, 'fr', '_json', 'Search results', 'Résultats de recherche', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(426, 0, 'fr', '_json', 'results for', 'résultats pour', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(427, 0, 'fr', '_json', 'Date', 'Date', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(428, 0, 'fr', '_json', 'cities', 'Villes', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(429, 0, 'fr', '_json', 'Activity', 'Activité', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(430, 0, 'fr', '_json', 'More', 'Plus', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(431, 0, 'fr', '_json', 'Apply', 'Appliquer', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(432, 0, 'fr', '_json', 'Maps', 'Plans', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(433, 0, 'fr', '_json', 'Nothing found!', 'Rien n\'a été trouvé!', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(434, 0, 'fr', '_json', 'We\'re sorry but we do not have any listings matching your search, try to change you search settings', 'Nous sommes désolés, mais aucune resultat ne correspond à votre recherche, essayez de modifier les mots vos de recherche', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(435, 0, 'fr', '_json', 'Close', 'Fermer', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(436, 0, 'fr', '_json', 'New Customer', 'Nouveau Client', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(437, 0, 'fr', '_json', 'Create Customer', 'Ajouter un Client', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(438, 0, 'fr', '_json', 'Name', 'Nom', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(439, 0, 'fr', '_json', 'Company Name', 'Nom de Société', '2021-02-01 10:24:18', '2021-05-27 11:29:38'),
+	(440, 0, 'fr', '_json', 'Phone Number', 'Numéro de téléphone', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(441, 0, 'fr', '_json', 'Tax Number', 'N° ICE', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(442, 0, 'fr', '_json', 'Address', 'Adresse', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(443, 0, 'fr', '_json', 'Postal Code', 'Code Postal', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(444, 0, 'fr', '_json', 'City', 'Ville', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(445, 0, 'fr', '_json', 'Country', 'Pays', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(446, 0, 'fr', '_json', 'Save', 'sauvegarder', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(447, 0, 'fr', '_json', 'Back', 'Retour', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(448, 0, 'fr', '_json', 'Edit Customer', 'Modifier le Client', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(449, 0, 'fr', '_json', 'Customers List', 'Liste des clients', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(450, 0, 'fr', '_json', 'Customers', 'Clients', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(451, 0, 'fr', '_json', 'Add New Customer', 'Ajouter un nouveau client', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(452, 0, 'fr', '_json', 'Company name', 'Nom de l\'entreprise', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(453, 0, 'fr', '_json', 'Phone', 'Téléphone', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(454, 0, 'fr', '_json', 'Created at', 'Créé à', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(455, 0, 'fr', '_json', 'Edit', 'Modifier', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(456, 0, 'fr', '_json', 'Delete', 'Supprimer', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(457, 0, 'fr', '_json', 'Create New Purchase', 'Créer un nouvel achat', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(458, 0, 'fr', '_json', 'New Purchase', 'Nouvel Achat', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(459, 0, 'fr', '_json', 'Reference no', 'Numéro de référence', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(460, 0, 'fr', '_json', 'Supplier', 'Fournisseur', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(461, 0, 'fr', '_json', 'User', 'Utilisateur', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(462, 0, 'fr', '_json', 'Select user', 'Sélection Utilisateur', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(463, 0, 'fr', '_json', 'Product', 'Produit', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(464, 0, 'fr', '_json', 'Qty', 'Qty', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(465, 0, 'fr', '_json', 'Price', 'Prix', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(466, 0, 'fr', '_json', 'Total', 'Total', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(467, 0, 'fr', '_json', 'Enter Product Name', 'Entrez le nom', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(468, 0, 'fr', '_json', 'Enter Qty', 'Entrez la quantité', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(469, 0, 'fr', '_json', 'Enter Unit Price', 'Entrez le prix unitaire', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(470, 0, 'fr', '_json', 'Add Row', 'Ajouter une ligne', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(471, 0, 'fr', '_json', 'Delete Row', 'Supprimer une ligne', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(472, 0, 'fr', '_json', 'Sub Total', 'Sous Total', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(473, 0, 'fr', '_json', 'Tax', 'TVA', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(474, 0, 'fr', '_json', 'Tax Amount', 'Montant TVA', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(475, 0, 'fr', '_json', 'Grand Total', 'Total', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(476, 0, 'fr', '_json', 'Sale Status', 'Status de Vente', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(477, 0, 'fr', '_json', 'Completed', 'Terminé', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(478, 0, 'fr', '_json', 'Pending', 'En attente', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(479, 0, 'fr', '_json', 'Payment Status', 'Statut de paiement', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(480, 0, 'fr', '_json', 'Due', 'Impayé', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(481, 0, 'fr', '_json', 'Partial', 'Partiel', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(482, 0, 'fr', '_json', 'Paid', 'Payé', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(483, 0, 'fr', '_json', 'Paid By', 'Payé par', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(484, 0, 'fr', '_json', 'Cash', 'Cash', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(485, 0, 'fr', '_json', 'Cheque', 'Chèque', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(486, 0, 'fr', '_json', 'Deposit', 'Dépôt', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(487, 0, 'fr', '_json', 'Attach Document', 'Joindre un document', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(488, 0, 'fr', '_json', 'Total Amount', 'Montant Total', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(489, 0, 'fr', '_json', 'Paying Amount', 'Montant de paiement', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(490, 0, 'fr', '_json', 'Change', 'Changer', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(491, 0, 'fr', '_json', 'Purchase Note', 'Note d\'Achat', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(492, 0, 'fr', '_json', 'Edit Purchase', 'Modifier l\'Achat', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(493, 0, 'fr', '_json', 'Select Supplier', 'Sélection fournisseur', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(494, 0, 'fr', '_json', 'Total amount', 'Montant total', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(495, 0, 'fr', '_json', 'Purchases', 'Achats', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(496, 0, 'fr', '_json', 'Add New Purchase', 'Ajouter un Achat', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(497, 0, 'fr', '_json', 'Status', 'Statut', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(498, 0, 'fr', '_json', 'Grand total', 'Somme finale', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(499, 0, 'fr', '_json', 'Payment status', 'Statut de paiement', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(500, 0, 'fr', '_json', 'Create New Sale', 'Créer une nouvelle vente', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(501, 0, 'fr', '_json', 'Create Sale', 'Ajouter une Vente', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(502, 0, 'fr', '_json', 'Customer', 'Client', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(503, 0, 'fr', '_json', 'Select Customer', 'Sélectionnez le client', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(504, 0, 'fr', '_json', 'Recieved Amount', 'Montant Reçu', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(505, 0, 'fr', '_json', 'Payment Note', 'Note de paiement', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(506, 0, 'fr', '_json', 'Sale Note', 'Note de Vente', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(507, 0, 'fr', '_json', 'Staff Note', 'Note Staff', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(508, 0, 'fr', '_json', 'Edit Sale', 'Modifier la vente', '2021-02-01 10:24:19', '2021-05-27 11:29:38'),
+	(509, 0, 'fr', '_json', 'Sales', 'Ventes', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(510, 0, 'fr', '_json', 'Add New Sale', 'Ajouter une vente', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(511, 0, 'fr', '_json', 'Booking ID', 'Réservation ID', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(512, 0, 'fr', '_json', 'Booking Type', 'Type de réservation', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(513, 0, 'fr', '_json', 'Settings', 'Réglage', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(514, 0, 'fr', '_json', 'Users Management', 'Gestion des utilisateurs', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(515, 0, 'fr', '_json', 'Create User', 'Ajouter un utilisateur', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(516, 0, 'fr', '_json', 'Create New Supplier', 'Créer un nouveau fournisseur', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(517, 0, 'fr', '_json', 'Create Supplier', 'Ajouter un fournisseur', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(518, 0, 'fr', '_json', 'Edit Supplier', 'Modifier le fournisseur', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(519, 0, 'fr', '_json', 'Suppliers', 'Fournisseurs', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(520, 0, 'fr', '_json', 'Add New Supplier', 'Ajouter un fournisseur', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(521, 0, 'fr', '_json', 'Supplier Name', 'Nom du fournisseur', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(522, 0, 'fr', '_json', 'Supplier Company', 'Entreprise fournisseur', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(523, 0, 'fr', '_json', 'Action', 'Action', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(524, 0, 'fr', '_json', 'Travel Packages', 'Forfaits de voyage', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(525, 0, 'fr', '_json', 'Continue(Save Package)', 'Continuer (Enregistrer le package)', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(526, 0, 'fr', '_json', 'Attraction', 'Attraction', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(527, 0, 'fr', '_json', 'Attraction Name', 'Nom de l\'attraction', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(528, 0, 'fr', '_json', 'Attraction City', 'Ville d\'attraction', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(529, 0, 'fr', '_json', 'Attraction Date', 'Date de l\'attraction', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(530, 0, 'fr', '_json', 'Location Description', 'Description de l\'emplacement', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(531, 0, 'fr', '_json', 'Attraction Additional Information', 'Informations supplémentaires sur l\'attraction', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(532, 0, 'fr', '_json', 'Sight Seeings', 'Visites touristiques', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(533, 0, 'fr', '_json', 'Add More Sight Seeing', 'Ajouter plus de vue', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(534, 0, 'fr', '_json', 'Sight Seeing Title', 'Titre voyant', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(535, 0, 'fr', '_json', 'Sight Seeing Description', 'Description de la vue', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(536, 0, 'fr', '_json', 'Continue (Save Attraction)', 'Continuer (Enregistrer l\'attraction)', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(537, 0, 'fr', '_json', 'Attraction Gallery', 'Galerie d\'attraction', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(538, 0, 'fr', '_json', 'Drag and Drop or Click On Box to Select Multiple Images', 'Faites glisser et déposez ou cliquez sur la zone pour sélectionner plusieurs images', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(539, 0, 'fr', '_json', 'Continue', 'Continuer', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(540, 0, 'fr', '_json', 'Create New Package', 'Créer un nouveau package', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(541, 0, 'fr', '_json', 'Package type', 'Type d\'emballage', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(542, 0, 'fr', '_json', 'Package category', 'Catégorie de package', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(543, 0, 'fr', '_json', 'Package name', 'Nom du pack', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(544, 0, 'fr', '_json', 'Adult price', 'Prix ​​adulte', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(545, 0, 'fr', '_json', 'Children price', 'Prix ​​enfants', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(546, 0, 'fr', '_json', 'Infants price', 'Prix ​​nourrissons', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(547, 0, 'fr', '_json', 'Flight', 'Vol', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(548, 0, 'fr', '_json', 'Hotel', 'Hôtel', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(549, 0, 'fr', '_json', 'Deactivated', 'Désactivé', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(550, 0, 'fr', '_json', 'Activated', 'Activé', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(551, 0, 'fr', '_json', 'Add sight seeing', 'Ajouter des visites touristiques', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(552, 0, 'fr', '_json', 'Confirmation', 'Confirmation', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(553, 0, 'fr', '_json', 'Flight Information', 'Information de vol', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(554, 0, 'fr', '_json', 'Are you sure', 'Êtes-vous sûr?', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(555, 0, 'fr', '_json', 'Booking Confirmation', 'Confirmation de réservation', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(556, 0, 'fr', '_json', 'Inclusion', 'Inclusion', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(557, 0, 'fr', '_json', 'Exclusion', 'Exclusion', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(558, 0, 'fr', '_json', 'Sign in', 'Se connecter', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(559, 0, 'fr', '_json', 'KNOW MORE', 'SAVOIR PLUS', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(560, 0, 'fr', '_json', 'Who we are', 'Qui sommes nous', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(561, 0, 'fr', '_json', 'Read more', 'En Savoir plus', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(562, 0, 'fr', '_json', 'Starting From', 'A partir de', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(563, 0, 'fr', '_json', 'Edit Profile', 'Modifcation du profil', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(564, 0, 'fr', '_json', 'Logout', 'Se déconnecter', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(565, 0, 'fr', '_json', 'Book Flight', 'Réserver un vol', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(566, 0, 'fr', '_json', 'Book Hotel', 'Réserver un hôtel', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(567, 0, 'fr', '_json', 'Navigation', 'Navigation', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(568, 0, 'fr', '_json', 'Create New', 'Créer un nouveau', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(569, 0, 'fr', '_json', 'Commercial', 'Commercial', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(570, 0, 'fr', '_json', 'Sale List', 'Liste de vente', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(571, 0, 'fr', '_json', 'Purchase', 'Achat', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(572, 0, 'fr', '_json', 'Purchase List', 'Liste d\'achats', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(573, 0, 'fr', '_json', 'Suppliers List', 'Liste des fournisseurs', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(574, 0, 'fr', '_json', 'Manage Bookings', 'Gérer les réservations', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(575, 0, 'fr', '_json', 'Manage Packages', 'Gérer les packages', '2021-02-01 10:24:20', '2021-05-27 11:29:38'),
+	(576, 0, 'fr', '_json', 'Packages List', 'Liste des packages', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(577, 0, 'fr', '_json', 'Manage Categories', 'Gérer les catégories', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(578, 0, 'fr', '_json', 'My Wallet', 'Mon portefeuille', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(579, 0, 'fr', '_json', 'Manage Profile', 'Gérer le profil', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(580, 0, 'fr', '_json', 'Home Settings', 'Paramètres General', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(581, 0, 'fr', '_json', 'Vats', 'TAX', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(582, 0, 'fr', '_json', 'Markups', 'Marquages', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(583, 0, 'fr', '_json', 'Markdowns', 'Démarques', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(584, 0, 'fr', '_json', 'Banks', 'Banques', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(585, 0, 'fr', '_json', 'Email Subscribers', 'Abonnés aux courriels', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(586, 0, 'fr', '_json', 'Visa Applications', 'Demandes de visa', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(587, 0, 'fr', '_json', 'Language', 'Langue', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(588, 0, 'fr', '_json', 'Translations', 'Traductions', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(589, 0, 'fr', '_json', 'Wallets Management', 'Gestion des portefeuilles', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(590, 0, 'fr', '_json', 'Log Out', 'Se déconnecter', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(591, 0, 'fr', '_json', 'Discover amazing things to do everywhere you go.', 'Découvrez des choses incroyables à faire partout où vous allez.', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(592, 0, 'fr', '_json', 'Company', 'Société', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(593, 0, 'fr', '_json', 'Contact', 'Contact', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(594, 0, 'fr', '_json', 'Enter your email', 'Entrez votre email', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(595, 0, 'fr', '_json', 'Sign-up to receive regular updates from us.', 'Inscrivez-vous pour recevoir des mises à jour régulières de notre part.', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(596, 0, 'fr', '_json', 'Rentacs Tours', 'Visites à Rentacs', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(597, 0, 'fr', '_json', 'All rights reserved.', 'Tous droits réservés', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(598, 0, 'fr', '_json', 'LAST MINUTE DEALS', 'OFFRES DE LA DERNIÈRE MINUTE', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(599, 0, 'fr', '_json', 'SAVE MORE', 'ÉCONOMISEZ PLUS', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(600, 0, 'fr', '_json', 'VIEW DETAIL', 'VOIR LES DÉTAILS', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(601, 0, 'fr', '_json', 'Profile', 'Profil', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(602, 0, 'fr', '_json', 'Wishlist', 'Liste de souhaits', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(603, 0, 'fr', '_json', 'Flights', 'Vols', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(604, 0, 'fr', '_json', 'Hotels', 'Hôtels', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(605, 0, 'fr', '_json', 'Hot Deals', 'Bonnes affaires', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(606, 0, 'fr', '_json', 'Golf tours', 'Tours de golf', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(607, 0, 'fr', '_json', 'Motorcycle', 'Moto', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(608, 0, 'fr', '_json', 'Surf', 'Le surf', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(609, 0, 'fr', '_json', 'Trekking', 'Trekking', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(610, 0, 'fr', '_json', 'Bivouacs', 'Bivouacs', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(611, 0, 'fr', '_json', 'Best offers', 'Meilleures offres', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(612, 0, 'fr', '_json', 'Log out', 'Se déconnecter', '2021-02-01 10:24:21', '2021-05-27 11:29:38'),
+	(614, 0, 'en', '_json', 'Amenities', 'AMENITIES', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(615, 0, 'en', '_json', 'Add amenities', 'ADD AMENITIES', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(616, 0, 'en', '_json', 'Amenities Name', 'AMENITIES NAME', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(617, 0, 'en', '_json', 'Add', 'ADD', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(618, 0, 'en', '_json', 'Cancel', 'CANCEL', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(619, 0, 'en', '_json', 'Create Booking', 'CREATE BOOKING', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(620, 0, 'en', '_json', 'New Booking', 'NEW BOOKING', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(621, 0, 'en', '_json', 'User Name', 'USER NAME', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(622, 0, 'en', '_json', 'Place', 'PLACE', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(623, 0, 'en', '_json', 'Number of adult', 'NUMBER OF ADULT', '2021-02-01 16:27:22', '2021-05-27 11:29:38'),
+	(624, 0, 'en', '_json', 'Number of Children', 'NUMBER OF CHILDREN', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(625, 0, 'en', '_json', 'Date', 'DATE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(626, 0, 'en', '_json', 'time', 'TIME', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(627, 0, 'en', '_json', 'Time', 'TIME', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(628, 0, 'en', '_json', 'ACTIVE', 'ACTIVE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(629, 0, 'en', '_json', 'INACTIVE', 'INACTIVE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(630, 0, 'en', '_json', 'PENDING', 'PENDING', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(631, 0, 'en', '_json', 'Edit Booking', 'EDIT BOOKING', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(632, 0, 'en', '_json', 'Bookings', 'BOOKINGS', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(633, 0, 'en', '_json', 'Add New Booking', 'ADD NEW BOOKING', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(634, 0, 'en', '_json', 'Booking at', 'BOOKING AT', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(635, 0, 'en', '_json', 'Approved', 'APPROVED', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(636, 0, 'en', '_json', 'Detail', 'DETAIL', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(637, 0, 'en', '_json', 'Approve', 'APPROVE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(638, 0, 'en', '_json', 'Place deleted', 'PLACE DELETED', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(639, 0, 'en', '_json', 'Booking detail', 'BOOKING DETAIL', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(640, 0, 'en', '_json', 'Booking place', 'BOOKING PLACE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(641, 0, 'en', '_json', 'Booking datetime', 'BOOKING DATETIME', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(642, 0, 'en', '_json', 'Number of Adult', 'NUMBER OF ADULT', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(643, 0, 'en', '_json', 'Booking status', 'BOOKING STATUS', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(644, 0, 'en', '_json', 'Activity', 'ACTIVITY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(645, 0, 'en', '_json', 'Add Activity', 'ADD ACTIVITY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(646, 0, 'en', '_json', 'Category Name', 'CATEGORY NAME', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(647, 0, 'en', '_json', 'Priority', 'PRIORITY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(648, 0, 'en', '_json', 'Is feature', 'IS FEATURE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(649, 0, 'en', '_json', 'Add category', 'ADD CATEGORY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(650, 0, 'en', '_json', 'Category name', 'CATEGORY NAME', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(651, 0, 'en', '_json', 'Color', 'COLOR', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(652, 0, 'en', '_json', 'SEO title', 'SEO TITLE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(653, 0, 'en', '_json', 'Meta Description', 'META DESCRIPTION', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(654, 0, 'en', '_json', 'Add city', 'ADD CITY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(655, 0, 'en', '_json', 'Select country', 'SELECT COUNTRY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(656, 0, 'en', '_json', 'City Name', 'CITY NAME', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(657, 0, 'en', '_json', 'Description', 'DESCRIPTION', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(658, 0, 'en', '_json', 'Intro', 'INTRO', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(659, 0, 'en', '_json', 'Thumbnail image', 'THUMBNAIL IMAGE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(660, 0, 'en', '_json', 'Banner image', 'BANNER IMAGE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(661, 0, 'en', '_json', 'Time to visit', 'TIME TO VISIT', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(662, 0, 'en', '_json', 'Currency', 'CURRENCY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(663, 0, 'en', '_json', 'Location', 'LOCATION', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(664, 0, 'en', '_json', 'Search city location...', 'SEARCH CITY LOCATION...', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(665, 0, 'en', '_json', 'Countries', 'COUNTRIES', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(666, 0, 'en', '_json', 'Add country', 'ADD COUNTRY', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(667, 0, 'en', '_json', 'Country name', 'COUNTRY NAME', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(668, 0, 'en', '_json', 'All Places', 'ALL PLACES', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(669, 0, 'en', '_json', 'Activity Type', 'ACTIVITY TYPE', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(670, 0, 'en', '_json', 'Cities', 'Cities', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(671, 0, 'en', '_json', 'All Posts', 'ALL POSTS', '2021-02-01 16:27:23', '2021-05-27 11:29:38'),
+	(672, 0, 'en', '_json', 'Categories', 'CATEGORIES', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(673, 0, 'en', '_json', 'Pages', 'PAGES', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(674, 0, 'en', '_json', 'Reviews', 'REVIEWS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(675, 0, 'en', '_json', 'Account Management', 'ACCOUNT MANAGEMENT', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(676, 0, 'en', '_json', 'Users', 'USERS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(677, 0, 'en', '_json', 'Testimonials', 'TESTIMONIALS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(678, 0, 'en', '_json', 'General Settings', 'GENERAL SETTINGS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(679, 0, 'en', '_json', 'Languages', 'LANGUAGES', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(680, 0, 'en', '_json', 'Home Page', 'HOME PAGE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(681, 0, 'en', '_json', 'Add Page', 'ADD PAGE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(682, 0, 'en', '_json', 'Title', 'TITLE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(683, 0, 'en', '_json', 'Content', 'CONTENT', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(684, 0, 'en', '_json', 'SEO', 'SEO', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(685, 0, 'en', '_json', 'Publish', 'PUBLISH', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(686, 0, 'en', '_json', 'Edit Page', 'EDIT PAGE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(687, 0, 'en', '_json', 'Add new Page', 'ADD NEW PAGE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(688, 0, 'en', '_json', 'All categories', 'ALL CATEGORIES', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(689, 0, 'en', '_json', 'Genaral', 'GENARAL', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(690, 0, 'en', '_json', 'Place name', 'PLACE NAME', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(691, 0, 'en', '_json', 'What the name of place', 'WHAT THE NAME OF PLACE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(692, 0, 'en', '_json', 'Price range', 'PRICE RANGE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(693, 0, 'en', '_json', 'Offre Date', 'OFFRE DATE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(694, 0, 'en', '_json', 'Category', 'CATEGORY', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(695, 0, 'en', '_json', 'Place type', 'PLACE TYPE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(696, 0, 'en', '_json', 'Select Country', 'SELECT COUNTRY', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(697, 0, 'en', '_json', 'Please select country first', 'PLEASE SELECT COUNTRY FIRST', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(698, 0, 'en', '_json', 'Place Address', 'PLACE ADDRESS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(699, 0, 'en', '_json', 'Search address...', 'SEARCH ADDRESS...', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(700, 0, 'en', '_json', 'Contact info', 'CONTACT INFO', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(701, 0, 'en', '_json', 'Website', 'WEBSITE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(702, 0, 'en', '_json', 'Social Networks', 'SOCIAL NETWORKS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(703, 0, 'en', '_json', 'Enter URL include http or www', 'ENTER URL INCLUDE HTTP OR WWW', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(704, 0, 'en', '_json', 'Opening hours', 'OPENING HOURS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(705, 0, 'en', '_json', 'Media', 'MEDIA', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(706, 0, 'en', '_json', 'Gallery images', 'GALLERY IMAGES', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(707, 0, 'en', '_json', 'Video', 'VIDEO', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(708, 0, 'en', '_json', 'Booking type', 'BOOKING TYPE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(709, 0, 'en', '_json', 'Booking form', 'BOOKING FORM', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(710, 0, 'en', '_json', 'Enquiry Form', 'ENQUIRY FORM', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(711, 0, 'en', '_json', 'Booking Now', 'BOOKING NOW', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(712, 0, 'en', '_json', 'Affiliate Banner Ads', 'AFFILIATE BANNER ADS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(713, 0, 'en', '_json', 'Submit', 'SUBMIT', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(714, 0, 'en', '_json', 'Add more', 'ADD MORE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(715, 0, 'en', '_json', 'Contact form', 'CONTACT FORM', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(716, 0, 'en', '_json', 'Banner link', 'BANNER LINK', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(717, 0, 'en', '_json', 'Maps', 'MAPS', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(718, 0, 'en', '_json', 'Add place', 'ADD PLACE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(719, 0, 'en', '_json', 'Hightlight', 'HIGHTLIGHT', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(720, 0, 'en', '_json', 'Social network', 'SOCIAL NETWORK', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(722, 0, 'en', '_json', 'Booking link', 'BOOKING LINK', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(723, 0, 'en', '_json', 'Places', 'PLACES', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(724, 0, 'en', '_json', 'All Country', 'ALL COUNTRY', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(725, 0, 'en', '_json', 'Select city', 'SELECT CITY', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(726, 0, 'en', '_json', 'All City', 'ALL CITY', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(727, 0, 'en', '_json', 'Select Activity', 'SELECT ACTIVITY', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(728, 0, 'en', '_json', 'All Activities', 'ALL ACTIVITIES', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(729, 0, 'en', '_json', 'Add place type', 'ADD PLACE TYPE', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(730, 0, 'en', '_json', 'Place type name', 'PLACE TYPE NAME', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(731, 0, 'en', '_json', 'Select Category', 'SELECT CATEGORY', '2021-02-01 16:27:24', '2021-05-27 11:29:38'),
+	(732, 0, 'en', '_json', 'Reviewer', 'REVIEWER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(733, 0, 'en', '_json', 'Comment', 'COMMENT', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(734, 0, 'en', '_json', 'Star', 'STAR', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(735, 0, 'en', '_json', 'New Sale', 'NEW SALE', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(736, 0, 'en', '_json', 'New Supplier', 'NEW SUPPLIER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(737, 0, 'en', '_json', 'Edit testimonial', 'EDIT TESTIMONIAL', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(738, 0, 'en', '_json', 'Add testimonial', 'ADD TESTIMONIAL', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(739, 0, 'en', '_json', 'Add new Testimonial', 'ADD NEW TESTIMONIAL', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(740, 0, 'en', '_json', 'Avatar', 'AVATAR', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(741, 0, 'en', '_json', 'Job title', 'JOB TITLE', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(742, 0, 'en', '_json', 'New user', 'NEW USER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(743, 0, 'en', '_json', 'Password', 'PASSWORD', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(744, 0, 'en', '_json', 'Role', 'ROLE', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(745, 0, 'en', '_json', 'Visitor', 'VISITOR', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(746, 0, 'en', '_json', 'Wholeseller', 'WHOLESELLER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(747, 0, 'en', '_json', 'Agent', 'AGENT', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(748, 0, 'en', '_json', 'Edit User', 'EDIT USER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(749, 0, 'en', '_json', 'Add New User', 'ADD NEW USER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(750, 0, 'en', '_json', 'Is Admin', 'IS ADMIN', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(751, 0, 'en', '_json', 'No places', 'NO PLACES', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(752, 0, 'en', '_json', 'Back to list', 'BACK TO LIST', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(753, 0, 'en', '_json', 'Show all', 'SHOW ALL', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(754, 0, 'en', '_json', 'Introducing', 'INTRODUCING', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(755, 0, 'en', '_json', 'Best time to visit', 'BEST TIME TO VISIT', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(756, 0, 'en', '_json', 'Maps view', 'MAPS VIEW', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(757, 0, 'en', '_json', 'See all', 'SEE ALL', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(758, 0, 'en', '_json', 'results', 'RESULTS', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(759, 0, 'en', '_json', 'Clear All', 'CLEAR ALL', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(760, 0, 'en', '_json', 'Filter', 'FILTER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(761, 0, 'en', '_json', 'Sort By', 'SORT BY', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(762, 0, 'en', '_json', 'Newest', 'NEWEST', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(763, 0, 'en', '_json', 'Average rating', 'AVERAGE RATING', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(764, 0, 'en', '_json', 'Price: Low to high', 'PRICE: LOW TO HIGH', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(765, 0, 'en', '_json', 'Price: High to low', 'PRICE: HIGH TO LOW', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(766, 0, 'en', '_json', 'Price Filter', 'PRICE FILTER', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(767, 0, 'en', '_json', 'Free', 'FREE', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(768, 0, 'en', '_json', 'Low: $', 'LOW: $', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(769, 0, 'en', '_json', 'Medium: $$', 'MEDIUM: $$', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(770, 0, 'en', '_json', 'High: $$$', 'HIGH: $$$', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(771, 0, 'en', '_json', 'Types', 'TYPES', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(772, 0, 'en', '_json', 'Explorer Other Cities', 'EXPLORER OTHER CITIES', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(773, 0, 'en', '_json', 'places', 'PLACES', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(774, 0, 'en', '_json', 'No cities', 'NO CITIES', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(775, 0, 'en', '_json', 'reviews', 'REVIEWS', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(776, 0, 'en', '_json', 'Our Offices', 'OUR OFFICES', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(777, 0, 'en', '_json', 'Get Direction', 'GET DIRECTION', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(778, 0, 'en', '_json', 'Get in touch with us', 'GET IN TOUCH WITH US', '2021-02-01 16:27:25', '2021-05-27 11:29:38'),
+	(779, 0, 'en', '_json', 'First name', 'FIRST NAME', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(780, 0, 'en', '_json', 'Last name', 'LAST NAME', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(781, 0, 'en', '_json', 'Message', 'MESSAGE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(782, 0, 'en', '_json', 'Send Message', 'SEND MESSAGE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(783, 0, 'en', '_json', 'We want to hear from you.', 'WE WANT TO HEAR FROM YOU.', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(784, 0, 'en', '_json', 'Open hours', 'OPEN HOURS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(785, 0, 'en', '_json', 'Edit my place', 'EDIT MY PLACE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(786, 0, 'en', '_json', 'Add new place', 'ADD NEW PLACE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(787, 0, 'en', '_json', 'Place Name', 'PLACE NAME', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(788, 0, 'en', '_json', 'Price Range', 'PRICE RANGE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(789, 0, 'en', '_json', 'Place Type', 'PLACE TYPE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(790, 0, 'en', '_json', 'Select Place Type', 'SELECT PLACE TYPE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(791, 0, 'en', '_json', 'Full Address', 'FULL ADDRESS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(792, 0, 'en', '_json', 'Place Location at Google Map', 'PLACE LOCATION AT GOOGLE MAP', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(793, 0, 'en', '_json', 'Your email address', 'YOUR EMAIL ADDRESS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(794, 0, 'en', '_json', 'Your phone number', 'YOUR PHONE NUMBER', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(795, 0, 'en', '_json', 'Your website url', 'YOUR WEBSITE URL', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(796, 0, 'en', '_json', 'Select network', 'SELECT NETWORK', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(798, 0, 'en', '_json', 'Thumb image', 'THUMB IMAGE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(799, 0, 'en', '_json', 'Maximum file size: 1 MB', 'MAXIMUM FILE SIZE: 1 MB', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(800, 0, 'en', '_json', 'Gallery Images', 'GALLERY IMAGES', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(801, 0, 'en', '_json', 'Youtube, Vimeo video url', 'Youtube, Vimeo video url', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(802, 0, 'en', '_json', 'Login to submit', 'LOGIN TO SUBMIT', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(803, 0, 'en', '_json', 'Gallery', 'GALLERY', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(804, 0, 'en', '_json', 'Show more', 'SHOW MORE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(805, 0, 'en', '_json', 'Book now', 'BOOK NOW', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(806, 0, 'en', '_json', 'Location & Maps', 'LOCATION & MAPS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(807, 0, 'en', '_json', 'Direction', 'DIRECTION', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(808, 0, 'en', '_json', 'Contact Info', 'CONTACT INFO', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(809, 0, 'en', '_json', 'Review', 'REVIEW', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(810, 0, 'en', '_json', 'to review', 'TO REVIEW', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(811, 0, 'en', '_json', 'Write a review', 'WRITE A REVIEW', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(812, 0, 'en', '_json', 'Rate This Place', 'RATE THIS PLACE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(813, 0, 'en', '_json', 'error!', 'ERROR!', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(814, 0, 'en', '_json', 'Booking online', 'BOOKING ONLINE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(815, 0, 'en', '_json', 'Make a reservation', 'MAKE A RESERVATION', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(816, 0, 'en', '_json', 'Send me a message', 'SEND ME A MESSAGE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(817, 0, 'en', '_json', 'Send', 'SEND', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(818, 0, 'en', '_json', 'Banner Ads', 'BANNER ADS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(819, 0, 'en', '_json', 'View', 'VIEW', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(820, 0, 'en', '_json', 'Person', 'PERSON', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(821, 0, 'en', '_json', 'Adults', 'ADULTS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(822, 0, 'en', '_json', 'Childrens', 'CHILDRENS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(823, 0, 'en', '_json', 'You won\'t be charged yet', 'YOU WON\'T BE CHARGED YET', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(824, 0, 'en', '_json', 'You successfully created your booking.', 'YOU SUCCESSFULLY CREATED YOUR BOOKING.', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(825, 0, 'en', '_json', 'Your Booking is Pending, We Will Contact You as Soon as Possible.', 'Your Booking is Pending, We Will Contact You as Soon as Possible.', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(826, 0, 'en', '_json', 'An error occurred. Please try again.', 'AN ERROR OCCURRED. PLEASE TRY AGAIN.', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(827, 0, 'en', '_json', 'Similar places', 'SIMILAR PLACES', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(828, 0, 'en', '_json', 'Overview', 'OVERVIEW', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(829, 0, 'en', '_json', 'By Booking.com', 'BY BOOKING.COM', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(830, 0, 'en', '_json', 'Select Categories', 'SELECT CATEGORIES', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(831, 0, 'en', '_json', 'by', 'BY', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(832, 0, 'en', '_json', 'Related Articles', 'RELATED ARTICLES', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(833, 0, 'en', '_json', 'All', 'ALL', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(834, 0, 'en', '_json', 'Search results', 'SEARCH RESULTS', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(835, 0, 'en', '_json', 'results for', 'RESULTS FOR', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(836, 0, 'en', '_json', 'cities', 'CITIES', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(837, 0, 'en', '_json', 'More', 'MORE', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(838, 0, 'en', '_json', 'Apply', 'APPLY', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(839, 0, 'en', '_json', 'Nothing found!', 'NOTHING FOUND!', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(840, 0, 'en', '_json', 'We\'re sorry but we do not have any listings matching your search, try to change you search settings', 'We\'re sorry but we do not have any listings matching your search, try to change you search settings', '2021-02-01 16:27:26', '2021-05-27 11:29:38'),
+	(841, 0, 'en', '_json', 'Staticts', 'STATICTS', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(842, 0, 'en', '_json', 'Find', 'FIND', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(843, 0, 'en', '_json', 'Where are you going?', 'WHERE ARE YOU GOING?', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(844, 0, 'en', '_json', 'Where', 'WHERE', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(845, 0, 'en', '_json', 'City?', 'CITY?', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(846, 0, 'en', '_json', 'Place List', 'PLACE LIST', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(847, 0, 'en', '_json', 'Categories List', 'CATEGORIES LIST', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(848, 0, 'en', '_json', 'Log out', 'LOG OUT', '2021-02-01 16:27:27', '2021-05-27 11:29:38'),
+	(849, 0, 'en', '_json', 'Booking', 'BOOKING', '2021-02-03 17:09:36', '2021-05-27 11:29:38'),
+	(850, 0, 'en', '_json', 'Edit place', 'EDIT PLACE', '2021-02-03 17:09:36', '2021-05-27 11:29:38'),
+	(851, 0, 'en', '_json', 'Browse Businesses by Category', 'BROWSE BUSINESSES BY CATEGORY', '2021-02-03 17:09:37', '2021-05-27 11:29:38'),
+	(852, 0, 'en', '_json', 'Activity List', 'ACTIVITY LIST', '2021-02-03 17:09:37', '2021-05-27 11:29:38'),
+	(853, 0, 'en', '_json', 'Amenities List', 'AMENITIES LIST', '2021-02-03 17:09:37', '2021-05-27 11:29:38'),
+	(854, 0, 'en', '_json', 'Cities List', 'Cities List', '2021-02-03 17:09:37', '2021-05-27 11:29:38'),
+	(855, 0, 'en', '_json', 'Countries List', 'COUNTRIES LIST', '2021-02-03 17:09:37', '2021-05-27 11:29:38'),
+	(856, 0, 'en', '_json', 'My account', 'MY ACCOUNT', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(857, 0, 'en', '_json', 'Reset Password', 'RESET PASSWORD', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(858, 0, 'en', '_json', 'New password', 'NEW PASSWORD', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(859, 0, 'en', '_json', 'Enter new password', 'ENTER NEW PASSWORD', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(860, 0, 'en', '_json', 'Re-new password', 'RE-NEW PASSWORD', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(861, 0, 'en', '_json', 'All cities', 'ALL CITIES', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(862, 0, 'en', '_json', 'Search', 'SEARCH', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(863, 0, 'en', '_json', 'ID', 'ID', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(864, 0, 'en', '_json', 'Thumb', 'THUMB', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(865, 0, 'en', '_json', 'No item found', 'NO ITEM FOUND', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(866, 0, 'en', '_json', 'Children', 'CHILDREN', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(867, 0, 'en', '_json', 'Infants', 'INFANTS', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(868, 0, 'en', '_json', 'Latest Booking', 'LATEST BOOKING', '2021-02-05 22:34:43', '2021-05-27 11:29:38'),
+	(869, 0, 'en', '_json', 'Find Cheap Flights', 'FIND CHEAP FLIGHTS', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(870, 0, 'en', '_json', 'One Way', 'ONE WAY', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(871, 0, 'en', '_json', 'Round Trip', 'ROUND TRIP', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(872, 0, 'en', '_json', 'Multi Destination', 'MULTI DESTINATION', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(873, 0, 'en', '_json', 'Departure City', 'DEPARTURE CITY', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(874, 0, 'en', '_json', 'Destination City', 'DESTINATION CITY', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(875, 0, 'en', '_json', 'Departure Date', 'DEPARTURE DATE', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(876, 0, 'en', '_json', 'Return Date', 'RETURN DATE', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(877, 0, 'en', '_json', 'Book Flight Tickets', 'BOOK FLIGHT TICKETS', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(878, 0, 'en', '_json', 'Adult', 'ADULT', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(879, 0, 'en', '_json', 'Child', 'CHILD', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(880, 0, 'en', '_json', 'below 2yrs', 'BELOW 2YRS', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(881, 0, 'en', '_json', 'Search Flights', 'SEARCH FLIGHTS', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(882, 0, 'en', '_json', 'Book Hotel Rooms', 'BOOK HOTEL ROOMS', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(883, 0, 'en', '_json', 'I Want To Go', 'I WANT TO GO', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(884, 0, 'en', '_json', 'CheckIn', 'CHECKIN', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(885, 0, 'en', '_json', 'CheckOut', 'CHECKOUT', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(886, 0, 'en', '_json', 'BEST OFFERS', 'BEST OFFERS', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(887, 0, 'en', '_json', 'We are finding the cheapest available flights for you. Hold on for some seconds', 'WE ARE FINDING THE CHEAPEST AVAILABLE FLIGHTS FOR YOU. HOLD ON FOR SOME SECONDS', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(888, 0, 'en', '_json', 'Departure Airport', 'DEPARTURE AIRPORT', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(889, 0, 'en', '_json', 'Destination Airport', 'DESTINATION AIRPORT', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(890, 0, 'en', '_json', 'Cabin', 'CABIN', '2021-02-05 22:34:44', '2021-05-27 11:29:38'),
+	(891, 0, 'fr', '_json', 'Explore the world', 'Explorer le monde', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(892, 0, 'fr', '_json', 'Destinations', 'Les destinations', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(893, 0, 'fr', '_json', 'Add place', 'Ajouter une Destination', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(894, 0, 'fr', '_json', 'Type a city or location', 'Saisissez une ville ou un emplacement', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(895, 0, 'fr', '_json', 'Popular cities', 'Villes populaires', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(896, 0, 'fr', '_json', 'Get the App', 'Obtenir l\'application', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(897, 0, 'fr', '_json', 'Download the app and go to travel the world.', 'Téléchargez l\'application et partez parcourir le monde.', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(898, 0, 'fr', '_json', 'Related stories', 'Histoires en Relation', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(899, 0, 'fr', '_json', 'Popular:', 'Populaire', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(900, 0, 'fr', '_json', 'View more', 'Voir plus', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(901, 0, 'fr', '_json', '404 Error', 'Erreur 404', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(902, 0, 'fr', '_json', 'All cities', 'Toutes les villes', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(903, 0, 'fr', '_json', 'Avatar', 'Avatar', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(904, 0, 'fr', '_json', 'Basic Info', 'Informations de base', '2021-02-05 22:37:34', '2021-05-27 11:29:38'),
+	(905, 0, 'fr', '_json', 'Change Password', 'Changer le mot de passe', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(906, 0, 'fr', '_json', 'Continue with', 'Continuer avec', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(907, 0, 'fr', '_json', 'Enter facebook', 'Entrez Facebook', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(908, 0, 'fr', '_json', 'Enter instagram', 'Entez Instagram', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(909, 0, 'fr', '_json', 'Enter new password', 'Entrez un nouveau mot de passe', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(910, 0, 'fr', '_json', 'Enter old password', 'Entrez l\'ancien mot de passe', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(911, 0, 'fr', '_json', 'Enter phone number', 'Entrez le numéro de téléphone', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(912, 0, 'fr', '_json', 'Enter your name', 'Entrez votre nom', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(913, 0, 'fr', '_json', 'Facebook', 'Facebook', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(914, 0, 'fr', '_json', 'Faqs', 'FAQS', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(915, 0, 'fr', '_json', 'Forgot password', 'Mot de passe oublié', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(916, 0, 'fr', '_json', 'Full name', 'Nom complet', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(917, 0, 'fr', '_json', 'Homepage', 'Page d\'accueil', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(918, 0, 'fr', '_json', 'Make sure you\'ve typed in the URL correctly or try go', 'Assurez-vous que vous avez correctement saisi l\'URL ou essayez d\'aller', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(919, 0, 'fr', '_json', 'My account', 'Mon compte', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(920, 0, 'fr', '_json', 'My Places', 'Destinations', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(921, 0, 'fr', '_json', 'New password', 'Nouveau mot de passe', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(922, 0, 'fr', '_json', 'No item found', 'Aucun élément trouvé', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(923, 0, 'fr', '_json', 'Old password', 'Ancien mot de passe', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(924, 0, 'fr', '_json', 'Place', 'Destination', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(925, 0, 'fr', '_json', 'Place name', 'Nom de la destination', '2021-02-05 22:37:35', '2021-05-27 11:29:38'),
+	(926, 0, 'fr', '_json', 'Profile Setting', 'Réglage du profil', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(927, 0, 'fr', '_json', 'Re-new password', 'Nouveau mot de passe', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(928, 0, 'fr', '_json', 'Reset Password', 'réinitialiser le mot de passe', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(929, 0, 'fr', '_json', 'Search', 'Rechercher', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(930, 0, 'fr', '_json', 'Sorry, we couldn\'t find that page.', 'Désolé, nous n\'avons pas pu trouver cette page.', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(931, 0, 'fr', '_json', 'Thumb', 'Thumb', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(932, 0, 'fr', '_json', 'Upload new', 'Importer un nouveau', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(933, 0, 'fr', '_json', 'We can\'t find the page or studio you\'re looking for.', 'Nous ne trouvons pas la page ou le studio que vous recherchez.', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(934, 0, 'fr', '_json', 'Browse Businesses by Category', 'Parcourir par catégorie', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(935, 0, 'fr', '_json', 'categories', 'Categories', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(936, 0, 'fr', '_json', 'Featured Cities', 'Villes en vedette', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(937, 0, 'fr', '_json', 'Find', 'Trouver', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(938, 0, 'fr', '_json', 'From Our Blog', 'Depuis notre Blog', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(939, 0, 'fr', '_json', 'Instagram', 'Instagram', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(940, 0, 'fr', '_json', 'Log In', 'Connexion', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(941, 0, 'fr', '_json', 'Or', 'Ou', '2021-02-05 22:37:36', '2021-05-27 11:29:38'),
+	(942, 0, 'fr', '_json', 'Search places ...', 'Recherche Destinations ...', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(943, 0, 'fr', '_json', 'Where', 'Où', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(944, 0, 'fr', '_json', 'Add amenities', 'Ajouter un service', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(945, 0, 'fr', '_json', 'Add Activity', 'Ajouter une activité', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(946, 0, 'fr', '_json', 'SEO title', 'titre SEO', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(947, 0, 'fr', '_json', 'Meta Description', 'Meta Description', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(948, 0, 'fr', '_json', 'All Places', 'Toutes les destinations', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(949, 0, 'fr', '_json', 'Activity Type', 'Type d\'activités', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(950, 0, 'fr', '_json', 'Countries', 'Pays', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(951, 0, 'fr', '_json', 'Pages', 'Pages', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(952, 0, 'fr', '_json', 'Bookings', 'Réservations', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(953, 0, 'fr', '_json', 'SEO', 'SEO', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(954, 0, 'fr', '_json', 'Choose your next destination', 'Choisissez votre prochaine destination', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(956, 0, 'fr', '_json', 'Business Listing', 'Business Listing', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(957, 0, 'fr', '_json', 'Trending Business Places', 'Destinations en tendance', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(958, 0, 'fr', '_json', 'Choose the city you\'ll be living in next', 'Choisissez la prochaine ville dans laquelle vous vivrez', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(959, 0, 'fr', '_json', 'Lost your password? Please enter your email address. You will receive a link to create a new password via email.', 'Mot de passe perdu? Veuillez saisir votre adresse e-mail. Vous recevrez un lien pour créer un nouveau mot de passe par e-mail.', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(960, 0, 'fr', '_json', 'Paris', 'Paris', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(961, 0, 'fr', '_json', 'Amenities Name', 'Nom du service', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(962, 0, 'fr', '_json', 'Add', 'Ajouter', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(963, 0, 'fr', '_json', 'Cancel', 'Annuler', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(964, 0, 'fr', '_json', 'Booking at', 'Réservation au', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(965, 0, 'fr', '_json', 'Booking place', 'Lieu de réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(966, 0, 'fr', '_json', 'Booking datetime', 'Date de réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(967, 0, 'fr', '_json', 'Number of Adult', 'Nombre d\'adultes', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(968, 0, 'fr', '_json', 'Number of Children', 'Nombre d\'enfants', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(969, 0, 'fr', '_json', 'Booking status', 'Statut de réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(970, 0, 'fr', '_json', 'Category Name', 'Nom de la catégorie', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(971, 0, 'fr', '_json', 'Priority', 'Priorité', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(972, 0, 'fr', '_json', 'Add city', 'Ajouter une ville', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(973, 0, 'fr', '_json', 'City Name', 'Nom de la ville', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(974, 0, 'fr', '_json', 'Add country', 'Ajouter un pays', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(975, 0, 'fr', '_json', 'Country name', 'Nom du pays', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(976, 0, 'fr', '_json', 'Users', 'Utilisateurs', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(977, 0, 'fr', '_json', 'Booking Make', 'Faire une réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(978, 0, 'fr', '_json', 'Booking type', 'Type de réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(979, 0, 'fr', '_json', 'Affiliate Book Buttons', 'Boutons d\'affiliation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(981, 0, 'fr', '_json', 'Booking link', 'Lien de réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(982, 0, 'fr', '_json', 'Add Post', 'Ajouter un Article', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(983, 0, 'fr', '_json', 'Title', 'Titre', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(984, 0, 'fr', '_json', 'Content', 'Contenu', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(985, 0, 'fr', '_json', 'Posts', 'Articles', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(986, 0, 'fr', '_json', 'Booking form', 'Formulaire de réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(987, 0, 'fr', '_json', 'Enquiry Form', 'Formulaire', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(988, 0, 'fr', '_json', 'Welcome to Admin Dashboard.', 'Bienvenue dans le tableau de bord d\'administration.', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(989, 0, 'fr', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete, edit, create) places, categories, cities, country, manage users, review, booking...', 'Le site d\'administration est une zone à laquelle seul l\'administrateur peut accéder. De là, vous pouvez gérer (supprimer, modifier, créer) des lieux, des catégories, des villes, des pays, gérer les utilisateurs, consulter, réserver.', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(990, 0, 'fr', '_json', 'Staticts', 'Statistiques', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(991, 0, 'fr', '_json', 'Booking detail', 'Détails de la réservation', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(992, 0, 'fr', '_json', 'Add category', 'Ajouter une catégorie', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(993, 0, 'fr', '_json', 'Color', 'Couleur', '2021-02-05 22:37:37', '2021-05-27 11:29:38'),
+	(994, 0, 'fr', '_json', 'Intro', 'Intro', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(995, 0, 'fr', '_json', 'All Posts', 'Tous les posts', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(996, 0, 'fr', '_json', 'Testimonials', 'Témoignages', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(997, 0, 'fr', '_json', 'General Settings', 'Paramètre géréraux', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(998, 0, 'fr', '_json', 'Add place type', 'Ajouter un type de lieu', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(999, 0, 'fr', '_json', 'Place type name', 'Nom du type de destination', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1000, 0, 'fr', '_json', 'Publish', 'Publier', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1001, 0, 'fr', '_json', 'Learn More', 'Lire plus', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1002, 0, 'fr', '_json', 'Add New', 'Ajouter un nouveau', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1003, 0, 'fr', '_json', 'Offre Date', 'Fin de l\'Offre', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1004, 0, 'fr', '_json', 'New Booking', 'Nouvelle Réservation', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1005, 0, 'fr', '_json', 'User Name', 'Nom Utilisateur', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1006, 0, 'fr', '_json', 'PENDING', 'En cours', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1007, 0, 'fr', '_json', 'Edit Booking', 'Modifier la réservation', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1008, 0, 'fr', '_json', 'Approved', 'Approuvé', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1009, 0, 'fr', '_json', 'Place deleted', 'Destination supprimée', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1010, 0, 'fr', '_json', 'Approve', 'Approuver', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1011, 0, 'fr', '_json', 'Comment', 'Commentaire', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1012, 0, 'fr', '_json', 'Booking', 'Réservation', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1013, 0, 'fr', '_json', 'Please select country first', 'Veuillez d\'abord sélectionner le pays', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1014, 0, 'fr', '_json', 'Star', 'Étoile', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1015, 0, 'fr', '_json', 'Add New Booking', 'Ajouter une nouvelle réservation', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1016, 0, 'fr', '_json', 'Add new Post', 'Ajouter un nouveau post', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1017, 0, 'fr', '_json', 'Add new Testimonial', 'Ajouter un témoignage', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1018, 0, 'fr', '_json', 'New user', 'Nouvelle Utilisateur', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1019, 0, 'fr', '_json', 'Add New User', 'Ajouter un nouvel utilisateur', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1020, 0, 'fr', '_json', 'and', 'et', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1021, 0, 'fr', '_json', 'Account Management', 'Gestion des Comptes', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1022, 0, 'fr', '_json', 'New Sale', 'Nouvelle Vente', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1023, 0, 'fr', '_json', 'New Supplier', 'Nouveau Fournisseur', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1024, 0, 'fr', '_json', 'Create Booking', 'Ajouter une Réservation', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1025, 0, 'fr', '_json', 'Edit Page', 'Modifier la page', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1026, 0, 'fr', '_json', 'Purchase Status', 'Status d\'Achat', '2021-02-05 22:37:38', '2021-05-27 11:29:38'),
+	(1027, 0, 'fr', '_json', 'Add testimonial', 'Ajouter un témoignage', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1028, 0, 'fr', '_json', 'Password', 'Mot de passe', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1029, 0, 'fr', '_json', 'Edit User', 'Modifier l\'utilisateur', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1030, 0, 'fr', '_json', 'View all', 'Voir tout', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1031, 0, 'fr', '_json', 'Subtotal', 'Sous Total', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1032, 0, 'fr', '_json', 'Continue Shopping', 'Continuer votre achat', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1033, 0, 'fr', '_json', 'Add Page', 'Ajouter une page', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1034, 0, 'fr', '_json', 'City?', 'Ville?', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1035, 0, 'fr', '_json', 'Select Activity', 'Sélection d\'Activité', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1036, 0, 'fr', '_json', 'Role', 'Rôle', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1037, 0, 'fr', '_json', 'Wholeseller', 'Fournisseur', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1038, 0, 'fr', '_json', 'Where are you going?', 'Où allez vous ?', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1039, 0, 'fr', '_json', 'Visitor', 'Visiteur', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1040, 0, 'fr', '_json', 'time', 'temp', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1041, 0, 'fr', '_json', 'Home Page', 'Accueil', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1042, 0, 'fr', '_json', 'Add new Page', 'Ajouter une nouvelle page', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1043, 0, 'fr', '_json', 'Booking Now', 'Réservez maintenant', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1044, 0, 'fr', '_json', 'All Activities', 'Toutes les activités', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1045, 0, 'fr', '_json', 'Is Admin', 'est Admin', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1046, 0, 'fr', '_json', 'Accept the', 'Accepter', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1047, 0, 'fr', '_json', 'Latest Stories', 'Derniers Articles', '2021-02-05 22:37:39', '2021-05-27 11:29:38'),
+	(1048, 0, 'en', '_json', 'VILLES A VOIR', 'VILLES A VOIR', '2021-02-07 12:36:46', '2021-05-27 11:29:38'),
+	(1049, 0, 'en', '_json', '404 Error', '404 Error', '2021-02-07 12:37:54', '2021-05-27 11:29:38'),
+	(1050, 0, 'fr', '_json', 'ACTIVE', 'ACTIF', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1051, 0, 'fr', '_json', 'Activity List', 'Liste d\'activités', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1052, 0, 'fr', '_json', 'Adult', 'Adulte', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1053, 0, 'fr', '_json', 'Affiliate Banner Ads', 'Annonces de bannière d\'affiliation', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1054, 0, 'fr', '_json', 'Agent', 'Agent', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1055, 0, 'fr', '_json', 'Amenities List', 'Liste des Services', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1056, 0, 'fr', '_json', 'BEST OFFERS', 'Meilleures offres', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1057, 0, 'fr', '_json', 'Banner image', 'Image de bannière', '2021-02-07 20:24:12', '2021-05-27 11:29:38'),
+	(1058, 0, 'fr', '_json', 'Banner link', 'Lien de bannière', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1059, 0, 'fr', '_json', 'Book Flight Tickets', 'Réserver un billet d\'avion', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1060, 0, 'fr', '_json', 'Book Hotel Rooms', 'Réserver des chambres d\'hôtel', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1061, 0, 'fr', '_json', 'Cabin', 'Cabine', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1062, 0, 'fr', '_json', 'Categories', 'Catégories', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1063, 0, 'fr', '_json', 'Categories List', 'Liste des catégories', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1064, 0, 'fr', '_json', 'Category name', 'Nom de l\'activité', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1065, 0, 'fr', '_json', 'CheckIn', 'Enregistrement', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1066, 0, 'fr', '_json', 'CheckOut', 'Check-out', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1067, 0, 'fr', '_json', 'Child', 'Enfant', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1068, 0, 'fr', '_json', 'Children', 'Enfants', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1069, 0, 'fr', '_json', 'Cities', 'Villes', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1070, 0, 'fr', '_json', 'Cities List', 'Liste des villes', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1071, 0, 'fr', '_json', 'Contact form', 'Formulaire de contact', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1072, 0, 'fr', '_json', 'Countries List', 'Liste des pays', '2021-02-07 20:24:13', '2021-05-27 11:29:38'),
+	(1073, 0, 'fr', '_json', 'Departure Airport', 'Aéroport de départ', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1074, 0, 'fr', '_json', 'Departure City', 'Ville de départ', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1075, 0, 'fr', '_json', 'Departure Date', 'Date de départ', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1076, 0, 'fr', '_json', 'Destination Airport', 'Aéroport de destination', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1077, 0, 'fr', '_json', 'Destination City', 'Destination', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1078, 0, 'fr', '_json', 'Detail', 'Détails', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1079, 0, 'fr', '_json', 'Edit place', 'Modifier le lieu', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1080, 0, 'fr', '_json', 'Edit testimonial', 'Modifier le témoignage', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1081, 0, 'fr', '_json', 'Find Cheap Flights', 'Trouver des vols pas chers', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1082, 0, 'fr', '_json', 'Gallery images', 'Images de la galerie', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1083, 0, 'fr', '_json', 'Hightlight', 'Hightlight', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1084, 0, 'fr', '_json', 'I Want To Go', 'Je veux y aller', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1085, 0, 'fr', '_json', 'ID', 'ID', '2021-02-07 20:24:14', '2021-05-27 11:29:38'),
+	(1086, 0, 'fr', '_json', 'INACTIVE', 'INACTIF', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1087, 0, 'fr', '_json', 'Infants', 'Les bébés', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1088, 0, 'fr', '_json', 'Is feature', 'Vedette', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1089, 0, 'fr', '_json', 'Job title', 'Profession', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1090, 0, 'fr', '_json', 'Latest Booking', 'Dernière réservation', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1091, 0, 'fr', '_json', 'Multi Destination', 'Multi-Destinations', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1092, 0, 'fr', '_json', 'Number of adult', 'Nombre d\'adultes', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1093, 0, 'fr', '_json', 'One Way', 'Aller simple', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1094, 0, 'fr', '_json', 'Opening hours', 'Horaires d\'ouvertures', '2021-02-07 20:24:15', '2021-05-27 11:29:38'),
+	(1095, 0, 'fr', '_json', 'Place List', 'Liste des Destinations', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1096, 0, 'fr', '_json', 'Place type', 'Type de lieu', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1097, 0, 'fr', '_json', 'Price range', 'Échelle des prix', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1098, 0, 'fr', '_json', 'Return Date', 'Date de retour', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1099, 0, 'fr', '_json', 'Reviewer', 'Critique', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1100, 0, 'fr', '_json', 'Reviews', 'Avis', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1101, 0, 'fr', '_json', 'Round Trip', 'Aller-retour', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1102, 0, 'fr', '_json', 'Search Flights', 'Recherche de vols', '2021-02-07 20:24:16', '2021-05-27 11:29:38'),
+	(1103, 0, 'fr', '_json', 'Search address...', 'Rechercher une adresse ...', '2021-02-07 20:24:17', '2021-05-27 11:29:38'),
+	(1104, 0, 'fr', '_json', 'Search city location...', 'Rechercher un emplacement dans la ville ...', '2021-02-07 20:24:17', '2021-05-27 11:29:38'),
+	(1105, 0, 'fr', '_json', 'Select Country', 'Choisissez le pays', '2021-02-07 20:24:17', '2021-05-27 11:29:38'),
+	(1106, 0, 'fr', '_json', 'Thumbnail image', 'Image miniature', '2021-02-07 20:24:17', '2021-05-27 11:29:38'),
+	(1107, 0, 'fr', '_json', 'Time', 'Temps', '2021-02-07 20:24:17', '2021-05-27 11:29:38'),
+	(1108, 0, 'fr', '_json', 'Time to visit', 'Temps de visiter', '2021-02-07 20:24:17', '2021-05-27 11:29:38'),
+	(1109, 0, 'fr', '_json', 'VILLES A VOIR', 'VILLES A VOIR', '2021-02-07 20:24:17', '2021-05-27 11:29:38'),
+	(1110, 0, 'fr', '_json', 'We are finding the cheapest available flights for you. Hold on for some seconds', 'Nous recherchons pour vous les vols disponibles les moins chers. Attends quelques secondes', '2021-02-07 20:24:18', '2021-05-27 11:29:38'),
+	(1111, 0, 'fr', '_json', 'below 2yrs', 'en dessous de 2 ans', '2021-02-07 20:24:18', '2021-05-27 11:29:38'),
+	(1113, 0, 'en', '_json', 'Accept the', 'ACCEPT THE', '2021-02-07 20:33:20', '2021-05-27 11:29:38'),
+	(1114, 0, 'en', '_json', 'Add New', 'ADD NEW', '2021-02-07 20:33:20', '2021-05-27 11:29:38'),
+	(1115, 0, 'en', '_json', 'Add Post', 'ADD POST', '2021-02-07 20:33:20', '2021-05-27 11:29:38'),
+	(1116, 0, 'en', '_json', 'Add new Post', 'ADD NEW POST', '2021-02-07 20:33:20', '2021-05-27 11:29:38'),
+	(1117, 0, 'en', '_json', 'Affiliate Book Buttons', 'AFFILIATE BOOK BUTTONS', '2021-02-07 20:33:21', '2021-05-27 11:29:38'),
+	(1118, 0, 'en', '_json', 'Basic Info', 'BASIC INFO', '2021-02-07 20:33:21', '2021-05-27 11:29:38'),
+	(1119, 0, 'en', '_json', 'Booking Make', 'BOOKING MAKE', '2021-02-07 20:33:21', '2021-05-27 11:29:38'),
+	(1120, 0, 'en', '_json', 'Business Listing', 'BUSINESS LISTING', '2021-02-07 20:33:21', '2021-05-27 11:29:38'),
+	(1121, 0, 'en', '_json', 'By clicking Register you agree to the', 'BY CLICKING REGISTER YOU AGREE TO THE', '2021-02-07 20:33:22', '2021-05-27 11:29:38'),
+	(1122, 0, 'en', '_json', 'Change Password', 'CHANGE PASSWORD', '2021-02-07 20:33:22', '2021-05-27 11:29:38'),
+	(1123, 0, 'en', '_json', 'Choose the city you\'ll be living in next', 'CHOOSE THE CITY YOU\'LL BE LIVING IN NEXT', '2021-02-07 20:33:22', '2021-05-27 11:29:38'),
+	(1124, 0, 'en', '_json', 'Choose your next destination', 'Choose your next destination', '2021-02-07 20:33:22', '2021-05-27 11:29:38'),
+	(1125, 0, 'en', '_json', 'Continue Shopping', 'CONTINUE SHOPPING', '2021-02-07 20:33:22', '2021-05-27 11:29:38'),
+	(1126, 0, 'en', '_json', 'Continue with', 'CONTINUE WITH', '2021-02-07 20:33:22', '2021-05-27 11:29:38'),
+	(1127, 0, 'en', '_json', 'Destinations', 'DESTINATIONS', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1128, 0, 'en', '_json', 'Download the app and go to travel the world.', 'DOWNLOAD THE APP AND GO TO TRAVEL THE WORLD.', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1129, 0, 'en', '_json', 'Enter facebook', 'ENTER FACEBOOK', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1130, 0, 'en', '_json', 'Enter instagram', 'ENTER INSTAGRAM', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1131, 0, 'en', '_json', 'Enter old password', 'ENTER OLD PASSWORD', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1132, 0, 'en', '_json', 'Enter phone number', 'ENTER PHONE NUMBER', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1133, 0, 'en', '_json', 'Enter your name', 'ENTER YOUR NAME', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1134, 0, 'en', '_json', 'Explore the world', 'EXPLORE THE WORLD', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1135, 0, 'en', '_json', 'Facebook', 'FACEBOOK', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1136, 0, 'en', '_json', 'Faqs', 'FAQS', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1137, 0, 'en', '_json', 'Featured Cities', 'FEATURED CITIES', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1138, 0, 'en', '_json', 'Forgot password', 'FORGOT PASSWORD', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1139, 0, 'en', '_json', 'From Our Blog', 'FROM OUR BLOG', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1140, 0, 'en', '_json', 'Full name', 'FULL NAME', '2021-02-07 20:33:23', '2021-05-27 11:29:38'),
+	(1141, 0, 'en', '_json', 'Get the App', 'GET THE APP', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1142, 0, 'en', '_json', 'Homepage', 'HOMEPAGE', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1143, 0, 'en', '_json', 'Instagram', 'INSTAGRAM', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1144, 0, 'en', '_json', 'Latest Stories', 'LATEST STORIES', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1145, 0, 'en', '_json', 'Learn More', 'LEARN MORE', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1146, 0, 'en', '_json', 'Log In', 'LOG IN', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1147, 0, 'en', '_json', 'Lost your password? Please enter your email address. You will receive a link to create a new password via email.', 'LOST YOUR PASSWORD? PLEASE ENTER YOUR EMAIL ADDRESS. YOU WILL RECEIVE A LINK TO CREATE A NEW PASSWORD VIA EMAIL.', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1148, 0, 'en', '_json', 'Make sure you\'ve typed in the URL correctly or try go', 'MAKE SURE YOU\'VE TYPED IN THE URL CORRECTLY OR TRY GO', '2021-02-07 20:33:24', '2021-05-27 11:29:38'),
+	(1149, 0, 'en', '_json', 'My Places', 'MY PLACES', '2021-02-07 20:33:25', '2021-05-27 11:29:38'),
+	(1150, 0, 'en', '_json', 'Old password', 'OLD PASSWORD', '2021-02-07 20:33:25', '2021-05-27 11:29:38'),
+	(1151, 0, 'en', '_json', 'Or', 'OR', '2021-02-07 20:33:25', '2021-05-27 11:29:38'),
+	(1152, 0, 'en', '_json', 'Paris', 'PARIS', '2021-02-07 20:33:25', '2021-05-27 11:29:38'),
+	(1153, 0, 'en', '_json', 'Popular cities', 'POPULAR CITIES', '2021-02-07 20:33:26', '2021-05-27 11:29:38'),
+	(1154, 0, 'en', '_json', 'Popular:', 'POPULAR:', '2021-02-07 20:33:26', '2021-05-27 11:29:38'),
+	(1155, 0, 'en', '_json', 'Posts', 'POSTS', '2021-02-07 20:33:26', '2021-05-27 11:29:38'),
+	(1156, 0, 'en', '_json', 'Profile Setting', 'PROFILE SETTING', '2021-02-07 20:33:26', '2021-05-27 11:29:38'),
+	(1157, 0, 'en', '_json', 'Purchase Status', 'PURCHASE STATUS', '2021-02-07 20:33:26', '2021-05-27 11:29:38'),
+	(1158, 0, 'en', '_json', 'Related stories', 'RELATED STORIES', '2021-02-07 20:33:26', '2021-05-27 11:29:38'),
+	(1159, 0, 'en', '_json', 'Search places ...', 'SEARCH PLACES ...', '2021-02-07 20:33:26', '2021-05-27 11:29:38'),
+	(1160, 0, 'en', '_json', 'Sorry we couldn\'t find that page.', 'SORRY WE COULDN\'T FIND THAT PAGE.', '2021-02-07 20:33:27', '2021-05-27 11:29:38'),
+	(1161, 0, 'en', '_json', 'Subtotal', 'SUBTOTAL', '2021-02-07 20:33:27', '2021-05-27 11:29:38'),
+	(1162, 0, 'en', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete edit create) places categories cities country manage users review booking...', 'THE ADMIN SITE IS AN AREA WHICH ONLY THE ADMINISTRATOR​ CAN ACCESS. FROM HERE YOU CAN MANAGE (DELETE EDIT CREATE) PLACES CATEGORIES CITIES COUNTRY MANAGE USERS REVIEW BOOKING...', '2021-02-07 20:33:27', '2021-05-27 11:29:38'),
+	(1163, 0, 'en', '_json', 'Trending Business Places', 'TRENDING BUSINESS PLACES', '2021-02-07 20:33:27', '2021-05-27 11:29:38'),
+	(1164, 0, 'en', '_json', 'Type a city or location', 'TYPE A CITY OR LOCATION', '2021-02-07 20:33:27', '2021-05-27 11:29:38'),
+	(1165, 0, 'en', '_json', 'Upload new', 'UPLOAD NEW', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1166, 0, 'en', '_json', 'View all', 'VIEW ALL', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1167, 0, 'en', '_json', 'View more', 'VIEW MORE', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1168, 0, 'en', '_json', 'We can\'t find the page or studio you\'re looking for.', 'WE CAN\'T FIND THE PAGE OR STUDIO YOU\'RE LOOKING FOR.', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1169, 0, 'en', '_json', 'We\'re sorry but we do not have any listings matching your search try to change you search settings', 'WE\'RE SORRY BUT WE DO NOT HAVE ANY LISTINGS MATCHING YOUR SEARCH TRY TO CHANGE YOU SEARCH SETTINGS', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1170, 0, 'en', '_json', 'Welcome to Admin Dashboard.', 'WELCOME TO ADMIN DASHBOARD.', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1171, 0, 'en', '_json', 'Your Booking is Pending We Will Contact You as Soon as Possible.', 'YOUR BOOKING IS PENDING WE WILL CONTACT YOU AS SOON AS POSSIBLE.', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1172, 0, 'en', '_json', 'Youtube Vimeo video url', 'YOUTUBE VIMEO VIDEO URL', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1173, 0, 'en', '_json', 'and', 'AND', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1174, 0, 'en', '_json', 'categories', 'CATEGORIES', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1175, 0, 'en', '_json', 'set out by this site including our Cookie Use.', 'SET OUT BY THIS SITE INCLUDING OUR COOKIE USE.', '2021-02-07 20:33:28', '2021-05-27 11:29:38'),
+	(1177, 0, 'en', '_json', 'Sorry, we couldn\'t find that page.', 'Sorry, we couldn\'t find that page.', '2021-02-07 20:34:52', '2021-05-27 11:29:38'),
+	(1178, 0, 'en', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete, edit, create) places, categories, cities, country, manage users, review, booking...', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete, edit, create) places, categories, cities, country, manage users, review, booking...', '2021-02-07 20:35:00', '2021-05-27 11:29:38'),
+	(1179, 0, 'fr', '_json', 'Youtube Vimeo video url', 'Youtube Vimeo video url', '2021-02-07 20:35:27', '2021-05-27 11:29:38'),
+	(1180, 0, 'fr', '_json', 'Your Booking is Pending We Will Contact You as Soon as Possible.', 'Votre réservation est en attente Nous vous contacterons dès que possible.', '2021-02-11 20:51:01', '2021-05-27 11:29:38'),
+	(1181, 0, 'fr', '_json', 'We\'re sorry but we do not have any listings matching your search try to change you search settings', 'Nous sommes désolés, mais nous n\'avons aucune annonce correspondant à votre recherche. Essayez de modifier vos paramètres de recherche', '2021-02-11 20:51:14', '2021-05-27 11:29:38'),
+	(1182, 0, 'fr', '_json', 'Sorry we couldn\'t find that page.', 'Désolé, nous n\'avons pas pu trouver cette page.', '2021-02-11 20:51:30', '2021-05-27 11:29:38'),
+	(1185, 0, 'fr', '_json', 'Sur Name', 'Nom', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1187, 0, 'fr', '_json', 'Valid Email', 'Email Valide', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1192, 0, 'fr', '_json', 'Add new', 'Ajouter', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1198, 0, 'fr', '_json', 'Client infos', 'infos client', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1203, 0, 'fr', '_json', 'Itinerary', 'itinéraires', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1204, 0, 'fr', '_json', 'Included', 'Inclus', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1206, 0, 'fr', '_json', 'Guest', 'Nombre de Visiteurs', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1207, 0, 'fr', '_json', 'Enter your phone', 'Entrez votre numéro', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1208, 0, 'fr', '_json', 'Enter your message', 'Entrez votre message', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1211, 0, 'fr', '_json', 'Search Hotels', 'Recherche des Hotels', '2021-02-11 20:51:59', '2021-05-27 11:29:38'),
+	(1213, 0, 'fr', '_json', 'Obtenir l\'application', 'Obtenir l\'application', '2021-02-11 20:52:00', '2021-05-27 11:29:38'),
+	(1216, 0, 'fr', '_json', 'Hello', 'Bonjour', '2021-02-11 20:52:00', '2021-05-27 11:29:38'),
+	(1218, 0, 'fr', '_json', 'Online', 'En ligne', '2021-02-11 20:52:00', '2021-05-27 11:29:38'),
+	(1220, 0, 'fr', '_json', 'My Transactions', 'Mes Transactions', '2021-02-11 20:52:00', '2021-05-27 11:29:38'),
+	(1221, 0, 'fr', '_json', 'Hi,', 'Bonjour,', '2021-02-11 20:52:00', '2021-05-27 11:29:38'),
+	(1222, 0, 'fr', '_json', 'By clicking Register you agree to the', 'En cliquant sur S\'inscrire, vous acceptez les', '2021-02-11 20:52:33', '2021-05-27 11:29:38'),
+	(1223, 0, 'en', '_json', 'Client infos', 'Client infos', '2021-02-11 20:52:43', '2021-05-27 11:29:38'),
+	(1224, 0, 'en', '_json', 'Enter your message', 'Enter your message', '2021-02-11 20:53:53', '2021-05-27 11:29:38'),
+	(1225, 0, 'en', '_json', 'Enter your phone', 'Enter your phone', '2021-02-11 20:53:57', '2021-05-27 11:29:38'),
+	(1226, 0, 'en', '_json', 'Hello', 'Hello', '2021-02-11 20:54:07', '2021-05-27 11:29:38'),
+	(1227, 0, 'en', '_json', 'Search Hotels', 'Search Hotels', '2021-02-11 20:57:13', '2021-05-27 11:29:38'),
+	(1228, 0, 'fr', '_json', 'Cities to visit', 'Villes à visiter', '2021-02-11 21:39:17', '2021-05-27 11:29:38'),
+	(1230, 0, 'en', '_json', 'Cities to visit', 'Cities to visit', '2021-02-11 21:40:51', '2021-05-27 11:29:38'),
+	(1231, 0, 'fr', '_json', 'Sign up to receive our best offers.', 'Inscrivez-vous pour recevoir nos meilleures offres.', '2021-02-11 22:13:06', '2021-05-27 11:29:38'),
+	(1232, 0, 'en', '_json', 'Sign up to receive our best offers.', 'Sign up to receive our best offers.', '2021-02-11 22:13:16', '2021-05-27 11:29:38'),
+	(1233, 0, 'fr', '_json', 'Vats Management', 'Gestion de la TAX', '2021-02-12 17:03:30', '2021-05-27 11:29:38'),
+	(1237, 0, 'fr', '_json', 'Vat List', 'List TVA', '2021-02-12 17:03:30', '2021-05-27 11:29:38'),
+	(1240, 0, 'fr', '_json', 'Contact information', 'Informations de contact', '2021-02-12 17:03:31', '2021-05-27 11:29:38'),
+	(1241, 0, 'fr', '_json', 'Manage Pages', 'Gérer les pages', '2021-02-12 17:03:31', '2021-05-27 11:29:38'),
+	(1242, 0, 'fr', '_json', 'Administration', 'Administration', '2021-02-12 17:03:31', '2021-05-27 11:29:38'),
+	(1243, 0, 'en', '_json', 'Administration', 'Administration', '2021-02-12 17:03:54', '2021-05-27 11:29:38'),
+	(1244, 0, 'en', '_json', 'Manage Pages', 'Manage Pages', '2021-02-15 16:16:29', '2021-05-27 11:29:38'),
+	(1245, 0, 'en', '_json', 'Included', 'Included', '2021-02-15 16:33:06', '2021-05-27 11:29:38'),
+	(1246, 0, 'en', '_json', 'My Transactions', 'My Transactions', '2021-02-15 16:33:53', '2021-05-27 11:29:38'),
+	(1247, 0, 'en', '_json', 'Obtenir l\'application', 'Get the application', '2021-02-15 16:34:35', '2021-05-27 11:29:38'),
+	(1248, 0, 'en', '_json', 'Vat List', 'Vat List', '2021-02-15 16:37:07', '2021-05-27 11:29:38'),
+	(1249, 0, 'en', '_json', 'Vats Management', 'Vats Management', '2021-02-15 16:37:43', '2021-05-27 11:29:38'),
+	(1250, 0, 'en', '_json', 'Transactions', 'Transactions', '2021-02-15 16:37:50', '2021-05-27 11:29:38'),
+	(1251, 0, 'en', '_json', 'Terms & Conditions', 'Terms & Conditions', '2021-02-15 16:37:58', '2021-05-27 11:29:38'),
+	(1252, 0, 'en', '_json', 'Sur Name', 'Name', '2021-02-15 16:38:08', '2021-05-27 11:29:38'),
+	(1254, 0, 'fr', '_json', 'Enter Day', 'Entez le jour', '2021-02-15 21:08:34', '2021-05-27 11:29:38'),
+	(1255, 0, 'fr', '_json', 'Save here and book later', 'Enregistrer ici et réservez plus tard', '2021-02-15 21:08:34', '2021-05-27 11:29:38'),
+	(1256, 0, 'fr', '_json', 'Quick Links', 'Liens Rapides', '2021-02-15 21:08:34', '2021-05-27 11:29:38'),
+	(1257, 0, 'en', '_json', 'Quick Links', 'Quick Links', '2021-02-15 21:10:23', '2021-05-27 11:29:38'),
+	(1258, 0, 'fr', '_json', 'account', 'Compte', '2021-02-15 21:18:57', '2021-05-27 11:29:38'),
+	(1259, 0, 'en', '_json', 'account', 'Account', '2021-02-15 21:19:54', '2021-05-27 11:29:38'),
+	(1260, 0, 'en', '_json', 'Hi,', 'Hi,', '2021-02-16 17:37:53', '2021-05-27 11:29:38'),
+	(1261, 0, 'en', '_json', 'Valid Email', 'Valid Email', '2021-02-16 20:43:33', '2021-05-27 11:29:38'),
+	(1262, 0, 'fr', '_json', 'Lundi - Vendredi', 'Lundi - Vendredi', '2021-02-16 20:51:45', '2021-05-27 11:29:38'),
+	(1263, 0, 'fr', '_json', 'Booking list', 'Liste des réservations', '2021-02-16 20:51:45', '2021-05-27 11:29:38'),
+	(1264, 0, 'fr', '_json', 'Clear Cache', 'Vider le cache', '2021-02-16 20:51:46', '2021-05-27 11:29:38'),
+	(1266, 0, 'en', '_json', 'Itinerary', 'Itinerary', '2021-02-16 20:52:41', '2021-05-27 11:29:38'),
+	(1267, 0, 'en', '_json', 'Lundi - Vendredi', 'Monday - Friday', '2021-02-16 20:53:21', '2021-05-27 11:29:38'),
+	(1269, 0, 'fr', '_json', 'Choose between hundred places', 'Choisissez entre une centaine de destinations', '2021-02-17 16:50:22', '2021-05-27 11:29:38'),
+	(1270, 0, 'fr', '_json', 'Home', 'Accueil', '2021-02-17 16:50:22', '2021-05-27 11:29:38'),
+	(1273, 0, 'fr', '_json', 'Rentacstours, motocycle rental company and tour operator, located in Casablanca, relies on\n                            the technical know-how and years of experience acquired from EagleRider, a world leader\n                            company since 1992. Rentacstours was created by 2 motorcycle enthusiasts and HOG Harley\n                            Davidson road team certified.', 'Rentacstours, société de location de motos et tour opérateur, située à Casablanca, s\'appuie sur le savoir-faire technique et les années d\'expérience acquises auprès d\'EagleRider, leader mondial depuis 1992. Rentacstours a été créée par 2 passionnés de moto et certifiés HOG Harley Davidson road team.', '2021-02-17 18:02:21', '2021-05-27 11:29:38'),
+	(1274, 0, 'fr', '_json', 'Rentacstours, motocycle rental company and tour operator, located in Casablanca, relies on\n                            the technical know-how and years of experience acquired from EagleRider, a world leader\n                            company since 1992. Rentacstours was created by 2 motorcycle enthusiasts and HOG Harley\n                            Davidson road team certified', 'Rentacstours, société de location de motos et tour opérateur, située à Casablanca, s\'appuie sur le savoir-faire technique et les années d\'expérience acquises auprès d\'EagleRider, leader mondial depuis 1992. Rentacstours a été créée par 2 passionnés de moto et certifiés HOG Harley Davidson road team.', '2021-02-17 18:02:38', '2021-05-27 11:29:38'),
+	(1275, 0, 'fr', '_json', 'Rentacstours about info', 'Fondée par deux bikers passionnés certifiés par HOG Harley-Davidson: Nizar CHAWAD et Mohamed Ali ANOUAR, et profitant de l\'expertise managériale de monsieur Ali Amrani, Rentacstours est aujourd’hui une extension de savoir-faire et une multitude de services sur mesure allant des voyages organisés hôtels, hébergement, vol aux activités de divertissement, sports extrêmes et bien-être Motorcycle, Golf tour, Bivouacs, Trekking, Surf, Yoga .. Nous proposons aussi des services à l’international grâce à la participation de différents partenaires qui ont accepté de prendre part à cette aventure.', '2021-02-17 18:04:05', '2021-05-27 11:29:38'),
+	(1276, 0, 'en', '_json', 'Rentacstours about info', 'Rentacstours, motocycle rental company and tour operator, located in Casablanca, relies on the technical know-how and years of experience acquired from EagleRider, a world leader company since 1992. Rentacstours was created by 2 motorcycle enthusiasts and HOG Harley Davidson road team certified.', '2021-02-17 18:04:40', '2021-05-27 11:29:38'),
+	(1277, 0, 'en', '_json', 'Guest', 'Guest', '2021-02-19 21:25:38', '2021-05-27 11:29:38'),
+	(1280, 0, 'fr', '_json', 'Booking For', 'Réservation pour', '2021-03-01 21:59:32', '2021-05-27 11:29:38'),
+	(1281, 0, 'fr', '_json', '60 characters or less', '60 caractères ou moins', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1282, 0, 'fr', '_json', '160 characters or less', '160 caractères ou moins', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1283, 0, 'fr', '_json', 'Other Name', 'Nom utilisateur', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1284, 0, 'fr', '_json', 'Add VAT', 'Ajouter la TAX', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1285, 0, 'fr', '_json', 'choose vat type', 'choisir le type de TVA', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1286, 0, 'fr', '_json', 'vat value e.g. 12.00', 'valeur de la tva, par exemple 12,00', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1287, 0, 'fr', '_json', 'Value Type', 'Type de valeur', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1288, 0, 'fr', '_json', 'Value', 'Valeur', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1289, 0, 'fr', '_json', 'Email Subscriptions', 'Inscription des Email', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1290, 0, 'fr', '_json', 'Emails', 'Emails', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1291, 0, 'fr', '_json', 'Menu Management', 'Gestion du Menu', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1292, 0, 'fr', '_json', 'Packages Categories', 'Catégories de paquets', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1293, 0, 'fr', '_json', 'Package Categories', 'Pack d\'activité', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1294, 0, 'fr', '_json', 'Package Category', 'Pack d\'activité', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1295, 0, 'fr', '_json', 'Active', 'Actif', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1296, 0, 'fr', '_json', 'Disabled', 'Désactivé', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1297, 0, 'fr', '_json', 'Edit package category', 'Modifier la catégorie de pack', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1298, 0, 'fr', '_json', 'Open hourses', 'Heures d\'ouverture', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1299, 0, 'fr', '_json', 'BOOKING TYPE', 'Type de Réservation', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1300, 0, 'fr', '_json', 'City name', 'Nom de la ville', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1301, 0, 'fr', '_json', 'Package Itinerary', 'Pack Itineraire', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1302, 0, 'fr', '_json', 'Opening Hours', 'Horaires d\'ouvertures', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1303, 0, 'fr', '_json', 'Airport or City Name', 'Airport ou nom de la Ville', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1304, 0, 'fr', '_json', 'E.g. City, Airport', 'Par exemple, ville, aéroport', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1305, 0, 'fr', '_json', 'Téléchargez l\'application et partez parcourir le monde.', 'Download the application and travel the world.', '2021-03-01 21:59:33', '2021-05-27 11:29:38'),
+	(1307, 0, 'fr', '_json', 'Offline(Bank)', 'T/T (Banque)', '2021-03-01 21:59:34', '2021-05-27 11:29:38'),
+	(1308, 0, 'fr', '_json', 'Menu Settings', 'Réglage Menu', '2021-03-01 21:59:34', '2021-05-27 11:29:38'),
+	(1309, 0, 'fr', '_json', 'Clear translations', 'Nettoyer la traduction', '2021-03-01 21:59:34', '2021-05-27 11:29:38'),
+	(1310, 0, 'fr', '_json', 'Deleted', 'Supprimé', '2021-03-03 17:08:46', '2021-05-27 11:29:38'),
+	(1311, 0, 'fr', '_json', 'New Booking(s).', 'Nouvelle Reservation', '2021-03-03 17:08:47', '2021-05-27 11:29:38'),
+	(1312, 0, 'fr', '_json', 'You Have a new order.', 'Vous avez une nouvelle commande', '2021-03-03 17:08:47', '2021-05-27 11:29:38'),
+	(1313, 0, 'fr', '_json', 'No New Notifications.', 'Aucune Notifications.', '2021-03-03 17:08:47', '2021-05-27 11:29:38'),
+	(1314, 0, 'fr', '_json', 'New Notification(s).', 'Nouvelle Notification(s)', '2021-03-03 17:08:47', '2021-05-27 11:29:38'),
+	(1315, 0, 'fr', '_json', 'A New User Has Registered.', 'Un nouvel utilisateur s\'est inscrit.', '2021-03-03 17:08:47', '2021-05-27 11:29:38'),
+	(1316, 0, 'fr', '_json', 'Hi', 'Bonjour', '2021-03-03 17:08:47', '2021-05-27 11:29:38'),
+	(1317, 0, 'fr', '_json', 'Successful Flight Bookings', 'Réservations de vol réussies', '2021-03-08 17:31:18', '2021-05-27 11:29:38'),
+	(1318, 0, 'fr', '_json', 'Successful Hotel Bookings', 'Réservations hôtel réussies', '2021-03-08 17:31:18', '2021-05-27 11:29:38'),
+	(1319, 0, 'fr', '_json', 'Successful Package Bookings', 'Réservations de Pack   réussies', '2021-03-08 17:31:18', '2021-05-27 11:29:38'),
+	(1320, 0, 'fr', '_json', 'Booking Size', 'Taille de la réservation', '2021-03-08 17:31:18', '2021-05-27 11:29:38'),
+	(1321, 0, 'fr', '_json', 'Packages', 'Pack', '2021-03-08 17:31:18', '2021-05-27 11:29:38'),
+	(1322, 0, 'fr', '_json', 'Enter Pnr or booking reference', 'Entrer le Pnr ou la reference de reservation', '2021-03-08 17:31:19', '2021-05-27 11:29:38'),
+	(1323, 0, 'fr', '_json', 'Terms & Conditions', 'CONDITIONS GÉNÉRALES DE VENTE', '2021-03-08 17:45:58', '2021-05-27 11:29:38'),
+	(1324, 0, 'fr', '_json', 'Menu Structure', 'Structure du Menu', '2021-03-08 17:51:26', '2021-05-27 11:29:38'),
+	(1325, 0, 'fr', '_json', 'Select the menu you want to edit', 'Sélectionnez le menu que vous souhaitez modifier', '2021-03-08 17:51:26', '2021-05-27 11:29:38'),
+	(1326, 0, 'fr', '_json', 'or', 'ou', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1327, 0, 'fr', '_json', 'Create new menu', 'Créer un nouveau Menu', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1328, 0, 'fr', '_json', 'Custom Link', 'Lien personnalisé', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1329, 0, 'fr', '_json', 'Press return or enter to expand', 'Appuyez sur retour ou sur entrée pour développer', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1330, 0, 'fr', '_json', 'URL', 'Lien (URL)', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1331, 0, 'fr', '_json', 'Label', 'Nom', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1332, 0, 'fr', '_json', 'Add menu item', 'Ajouter un élément au menu', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1333, 0, 'fr', '_json', 'Create menu', 'Créer un Menu', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1334, 0, 'fr', '_json', 'Enter menu name', 'Entrer le nom du Menu', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1335, 0, 'fr', '_json', 'Save menu', 'Enregistrer le Menu', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1336, 0, 'fr', '_json', 'Place each item in the order you prefer. Click on the arrow to the right of the item to display more configuration options.', 'Placez chaque article dans l\'ordre que vous préférez. Cliquez sur la flèche à droite de l\'élément pour afficher plus d\'options de configuration.', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1338, 0, 'fr', '_json', 'Link', 'Lien', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1339, 0, 'fr', '_json', 'Class CSS (optional)', 'Class CSS (optionnel)', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1340, 0, 'fr', '_json', 'Update item', 'Mise à jour de l\'element', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1341, 0, 'fr', '_json', 'Move up', 'Déplacer vers le haut', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1343, 0, 'fr', '_json', 'Delete menu', 'Supprimé le Menu', '2021-03-08 17:58:46', '2021-05-27 11:29:38'),
+	(1344, 0, 'fr', '_json', 'Using Email', 'Utilisation du courrier électronique', '2021-04-20 15:52:54', '2021-05-27 11:29:38'),
+	(1345, 0, 'fr', '_json', 'Hotel Name', 'Nom de l\'hôtel', '2021-04-20 15:52:54', '2021-05-27 11:29:38'),
+	(1346, 0, 'fr', '_json', 'Manage Your Information', 'Gerer vos informations', '2021-04-20 15:52:54', '2021-05-27 11:29:38'),
+	(1347, 0, 'fr', '_json', 'Surname', 'Nom', '2021-04-20 15:52:54', '2021-05-27 11:29:38'),
+	(1348, 0, 'fr', '_json', 'First Name', 'Nom', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1349, 0, 'fr', '_json', 'Update Customer Information', 'Mise à jour des informations sur les clients', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1350, 0, 'fr', '_json', 'Enter New Password', 'Entrer le nouveau mot de passe', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1351, 0, 'fr', '_json', 'Confirm New Password', 'Confirmer le nouveau mot de passe', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1352, 0, 'fr', '_json', 'You are logged in!', 'Vous êtes connecté !', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1353, 0, 'fr', '_json', 'Bookings List', 'Liste des réservations', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1354, 0, 'fr', '_json', 'Actions', 'Actions', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1355, 0, 'fr', '_json', 'Reference', 'Référence', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1356, 0, 'fr', '_json', 'Reservation Status', 'Statut de la réservation', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1357, 0, 'fr', '_json', 'Customer Name', 'Nom du client', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1358, 0, 'fr', '_json', 'Reservations Attempts', 'Tentatives de réservation', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1359, 0, 'fr', '_json', 'Payed Successful Reservations', 'Réservations réussies payées', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1360, 0, 'fr', '_json', 'Payed Unsuccessful Reservations', 'Réservations infructueuses payées', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1361, 0, 'fr', '_json', 'Failed Reservations', 'Réservations échouées', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1362, 0, 'fr', '_json', 'Cancelled Reservations', 'Réservations annulées', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1364, 0, 'fr', '_json', 'Due Date', 'Date d\'expiration', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1365, 0, 'fr', '_json', 'Cancellation Status', 'Statut d\'annulation', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1366, 0, 'fr', '_json', 'Successful', 'Succès de', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1367, 0, 'fr', '_json', 'Incomplete', 'Incomplète', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1368, 0, 'fr', '_json', 'Feature title', 'Titre en vedette', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1369, 0, 'fr', '_json', 'Icon Marker', 'Marqueur d\'icône', '2021-04-20 15:52:55', '2021-05-27 11:29:38'),
+	(1370, 0, 'fr', '_json', 'City List', 'Liste des villes', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1371, 0, 'fr', '_json', 'ICE', 'ICE', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1372, 0, 'fr', '_json', 'Code Postal', 'Code postal', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1374, 0, 'fr', '_json', 'Pays', 'Pays', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1375, 0, 'fr', '_json', 'Subscribers', 'Abonnès à la newsletter', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1376, 0, 'fr', '_json', 'Today', 'Aujourd\'hui', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1377, 0, 'fr', '_json', 'Last month', 'Le mois dernier', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1378, 0, 'fr', '_json', 'Last 6 month', '6 derniers mois', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1379, 0, 'fr', '_json', 'Last year', 'L\'année dernière', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1380, 0, 'fr', '_json', 'Total Sales', 'Total des ventes', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1381, 0, 'fr', '_json', 'Total Purchases', 'Total des achats', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1382, 0, 'fr', '_json', 'Total Return', 'Total des avoirs', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1383, 0, 'fr', '_json', 'Wallet Balance', 'Solde du portefeuille', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1384, 0, 'fr', '_json', 'Infos', 'Infos', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1385, 0, 'fr', '_json', 'Add Terms and Conditions', 'Ajouter des conditions générales', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1386, 0, 'fr', '_json', 'Unpublish', 'Dépublier', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1387, 0, 'fr', '_json', 'Edit Terms and Conditions', 'Modifier les conditions générales', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1388, 0, 'fr', '_json', 'Terms and Conditions List', 'Terms and Conditions', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1390, 0, 'fr', '_json', 'title', 'titre', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1391, 0, 'fr', '_json', 'reference', 'référence', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1392, 0, 'fr', '_json', 'Unit Price', 'Prix Unitaire', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1393, 0, 'fr', '_json', 'Order Tax', 'Taxe sur les commandes', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1394, 0, 'fr', '_json', 'CHOOSE A TEMPLATE', 'CHOISIR UN MODÈLE', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1395, 0, 'fr', '_json', 'New message', 'Nouveau Message', '2021-04-20 15:52:56', '2021-05-27 11:29:38'),
+	(1396, 0, 'fr', '_json', 'Recipient', 'Bénéficiaire', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1397, 0, 'fr', '_json', 'Subject', 'Sujet', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1398, 0, 'fr', '_json', 'close', 'fermer', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1399, 0, 'fr', '_json', 'Send Mail', 'Envoyer un courrier', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1401, 0, 'fr', '_json', 'Add newsletter', 'Ajouter une newsletter', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1402, 0, 'fr', '_json', 'Edit newsletter', 'Modification Newsletter', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1404, 0, 'fr', '_json', 'Email List', 'Liste des Email', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1405, 0, 'fr', '_json', 'Add Email', 'Ajouter un Email', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1406, 0, 'fr', '_json', 'Send Email Promotion', 'Envoyer un courriel de promotion', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1407, 0, 'fr', '_json', 'Send Mail to Subscribers', 'Envoyer un courrier', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1408, 0, 'fr', '_json', 'Enter subject of E-mail', 'Entrez l\'objet de l\'e-mail', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1409, 0, 'fr', '_json', 'itinerary', 'itinéraire', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1410, 0, 'fr', '_json', 'Edit  place', 'Modifier le lieu', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1411, 0, 'fr', '_json', 'Places List', 'Liste des lieux', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1412, 0, 'fr', '_json', 'Activity Type List', 'Liste des types d\'activités', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1413, 0, 'fr', '_json', 'Posts List', 'Liste des postes', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1414, 0, 'fr', '_json', 'All Categories', 'Toutes catégories', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1415, 0, 'fr', '_json', 'Print', 'Impression', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1416, 0, 'fr', '_json', 'Select supplier', 'Choisir le fournisseur', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1418, 0, 'fr', '_json', 'Wire', 'FIL', '2021-04-20 15:52:57', '2021-05-27 11:29:38'),
+	(1420, 0, 'fr', '_json', 'Paid Amount', 'Montant payé', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1421, 0, 'fr', '_json', 'Change Amount', 'Changement Montant', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1422, 0, 'fr', '_json', 'Validate', 'Valider', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1423, 0, 'fr', '_json', 'Purchases List', 'Liste des Achats', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1424, 0, 'fr', '_json', 'View details', 'Voir les détails', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1425, 0, 'fr', '_json', 'Complete', 'Terminé', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1426, 0, 'fr', '_json', 'purchase Status', 'statut d\'achat', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1427, 0, 'fr', '_json', 'SubTotal', 'Sous-total', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1428, 0, 'fr', '_json', 'Total Cost', 'Coût total', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1429, 0, 'fr', '_json', 'Total Tax', 'Total des impôts', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1430, 0, 'fr', '_json', 'Document', 'Document', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1431, 0, 'fr', '_json', 'Invoice', 'Facture', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1433, 0, 'fr', '_json', 'Create New Return', 'Créer un avoir', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1434, 0, 'fr', '_json', 'New Return', 'Nouveau avoir', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1435, 0, 'fr', '_json', 'Return Status', 'Status de retour', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1437, 0, 'fr', '_json', 'WIRE', 'FIL', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1438, 0, 'fr', '_json', 'Return Note', 'Note d\'avoir', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1439, 0, 'fr', '_json', 'Returns List', 'Liste des avoirs', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1440, 0, 'fr', '_json', 'Returns', 'Avoir', '2021-04-20 15:52:58', '2021-05-27 11:29:38'),
+	(1441, 0, 'fr', '_json', 'Add New Return', 'Ajouter un avoir', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1442, 0, 'fr', '_json', 'return Status', 'retourner l\'état', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1443, 0, 'fr', '_json', 'Sales List', 'Liste des ventes', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1444, 0, 'fr', '_json', 'Orders Table', 'Tableau des commandes', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1445, 0, 'fr', '_json', 'Total Price', 'Prix total', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1446, 0, 'fr', '_json', 'Quotation', 'Devis', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1447, 0, 'fr', '_json', 'Return', 'Avoirs', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1448, 0, 'fr', '_json', 'Bank Detail', 'Détail de la Banque', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1449, 0, 'fr', '_json', 'Add Bank Account Details', 'Ajouter les détails du compte bancaire', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1450, 0, 'fr', '_json', 'Account Name', 'Nom du compte', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1451, 0, 'fr', '_json', 'Account Number', 'Numero de compte', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1452, 0, 'fr', '_json', 'Bank', 'Banque', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1453, 0, 'fr', '_json', 'SELECT BANK', 'SELECTIONNER LA BANQUE', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1454, 0, 'fr', '_json', 'Branch', 'Branche', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1455, 0, 'fr', '_json', 'Ifsc Code', 'Code Ifsc', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1456, 0, 'fr', '_json', 'iBAN Code', 'Code IBAN', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1457, 0, 'fr', '_json', 'Bank Details', 'Détails de la banque', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1458, 0, 'fr', '_json', 'Bank Name', 'Nom de la banque', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1459, 0, 'fr', '_json', 'IFSC Code', 'Code IFSC', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1460, 0, 'fr', '_json', 'Airline Markdown', 'Markdown des compagnies aériennes', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1461, 0, 'fr', '_json', 'Add Markdown', 'Ajouter Markdown', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1462, 0, 'fr', '_json', 'Airline', 'Compagnie aérienne', '2021-04-20 15:52:59', '2021-05-27 11:29:38'),
+	(1464, 0, 'fr', '_json', 'SELECT', 'SÉLECTIONNER', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1465, 0, 'fr', '_json', 'Percentage', 'Pourcentage', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1466, 0, 'fr', '_json', 'Dirham Marocain', 'Dirham Marocain', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1467, 0, 'fr', '_json', 'Airlines Markdown', 'Compagnies aériennes Markdown', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1468, 0, 'fr', '_json', 'Airline Code', 'Code de la compagnie aérienne', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1469, 0, 'fr', '_json', 'Airline Name', 'Nom de la compagnie aérienne', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1470, 0, 'fr', '_json', 'Add Markup', 'Ajouter un balisage', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1471, 0, 'fr', '_json', 'all fields are required', 'tous les champs sont obligatoires', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1472, 0, 'fr', '_json', 'Enter your address to help use serve you better', 'Saisissez votre adresse pour nous aider à mieux vous servir', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1473, 0, 'fr', '_json', 'Edit Your Profile Image', 'Modifier l\'image de votre profil', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1474, 0, 'fr', '_json', 'Enter New Image', 'Entrer une nouvelle image', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1475, 0, 'fr', '_json', 'Gender', 'Sexe', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1476, 0, 'fr', '_json', 'User Type', 'Type d\'utilisateur', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1477, 0, 'fr', '_json', 'Surname (Family name)', 'Nom', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1478, 0, 'fr', '_json', 'First name (Your name)', 'Nom', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1479, 0, 'fr', '_json', 'Other name', 'Nom utilisateur', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1480, 0, 'fr', '_json', 'Other name (Your other name)', 'Username (Votre nom d\'utilisateur)', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1481, 0, 'fr', '_json', 'address', 'adresse', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1482, 0, 'fr', '_json', 'All Users', 'Tous les utilisateurs', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1483, 0, 'fr', '_json', 'Profile Status', 'Statut du profil', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1484, 0, 'fr', '_json', 'Update User', 'Mise à jour de l\'utilisateur', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1485, 0, 'fr', '_json', 'Super Admin', 'Super Administrateur', '2021-04-20 15:53:00', '2021-05-27 11:29:38'),
+	(1486, 0, 'fr', '_json', 'Create Slider', 'Créez un slider', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1487, 0, 'fr', '_json', 'Edit Slider', 'Modifier le slider', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1488, 0, 'fr', '_json', 'Sliders List', 'Liste des images Slider', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1489, 0, 'fr', '_json', 'Slider List', 'Liste des images Slider', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1490, 0, 'fr', '_json', 'Add New Slider', 'Ajoute de slider', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1491, 0, 'fr', '_json', 'Image', 'Image', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1492, 0, 'fr', '_json', 'Testimonials List', 'Liste de témoignages', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1493, 0, 'fr', '_json', 'Deal booking', 'Réservation de l\'offre', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1494, 0, 'fr', '_json', 'Existing users, please login', 'Utilisateurs existants, veuillez vous connecter', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1495, 0, 'fr', '_json', 'Sign In', 'Connexion', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1496, 0, 'fr', '_json', 'Forget Password', 'Mot de passe oublié', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1497, 0, 'fr', '_json', 'Not a registered customer ? Register here.', 'Vous n\'êtes pas un client enregistré ? Inscrivez-vous ici.', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1498, 0, 'fr', '_json', 'password_confirmation', 'confirmation_du_mot de passe', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1499, 0, 'fr', '_json', 'Booking Details', 'Détails de la réservation', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1501, 0, 'fr', '_json', 'Use logged in customer details', 'Utiliser les détails du client connecté', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1502, 0, 'fr', '_json', 'CONTINUE', 'CONTINUER', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1503, 0, 'fr', '_json', 'Details', 'Détails', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1504, 0, 'fr', '_json', 'DEAL NAME', 'NOM DE L\'AFFAIRE', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1505, 0, 'fr', '_json', 'FLIGHT', 'Vol', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1506, 0, 'fr', '_json', 'HOTEL', 'HÔTEL', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1507, 0, 'fr', '_json', 'ATTRACTION', 'ATTRACTION', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1508, 0, 'fr', '_json', 'ADULT PRICE', 'Prix d\'Adulte', '2021-04-20 15:53:01', '2021-05-27 11:29:38'),
+	(1509, 0, 'fr', '_json', 'CHILD PRICE', 'PRIX POUR LES ENFANTS', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1510, 0, 'fr', '_json', 'INFANT PRICE', 'PRIX INFANT', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1511, 0, 'fr', '_json', 'CONTACT NUMBER', 'NUMÉRO DE CONTACT', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1512, 0, 'fr', '_json', 'Need Help', 'Besoin d\'aide', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1513, 0, 'fr', '_json', 'Contact us for assistance', 'Contactez-nous pour obtenir de l\'aide', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1514, 0, 'fr', '_json', 'Price Details', 'Détails des prix', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1515, 0, 'fr', '_json', 'SERVICE FEES', 'FRAIS DE SERVICE', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1516, 0, 'fr', '_json', 'TAXES', 'IMPÔTS', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1517, 0, 'fr', '_json', 'DISCOUNT', 'DISCOUNT', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1518, 0, 'fr', '_json', 'TOTAL PRICE', 'PRIX TOTAL', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1519, 0, 'fr', '_json', 'Need Help? Call us or drop a message. Our agents will be in touch shortly', 'Besoin d\'aide ? Appelez-nous ou envoyez-nous un message. Nos agents vous contacteront sous peu.', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1520, 0, 'fr', '_json', 'Result Found Matching Your Search', 'Résultat trouvé correspondant à votre recherche', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1521, 0, 'fr', '_json', 'Any', 'Quelconque', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1523, 0, 'fr', '_json', 'Select', 'Sélectionnez', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1524, 0, 'fr', '_json', 'Email new booking', 'Envoyer une nouvelle réservation par courriel', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1525, 0, 'fr', '_json', 'You have booking from website', 'Vous avez réservé à partir du site web', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1526, 0, 'fr', '_json', 'Datetime', 'Date-heure', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1527, 0, 'fr', '_json', 'Number of children', 'Nombre d\'enfants', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1528, 0, 'fr', '_json', 'Email from system', 'Email du système', '2021-04-20 15:53:02', '2021-05-27 11:29:38'),
+	(1529, 0, 'fr', '_json', 'You Have a reservation.', 'Vous avez une réservation.', '2021-04-20 15:53:03', '2021-05-27 11:29:38'),
+	(1531, 0, 'fr', '_json', 'My Bookings', 'Mes Reservations', '2021-04-20 15:53:03', '2021-05-27 11:29:38'),
+	(1532, 0, 'fr', '_json', 'Slides', 'Image du Slider', '2021-04-20 15:53:03', '2021-05-27 11:29:38'),
+	(1533, 0, 'fr', '_json', 'Users List', 'Liste des utilisateurs', '2021-04-20 15:53:03', '2021-05-27 11:29:38'),
+	(1534, 0, 'fr', '_json', 'Return List', 'Liste des avoirs', '2021-04-20 15:53:03', '2021-05-27 11:29:38'),
+	(1535, 0, 'fr', '_json', 'Mail to Subscribers', 'Compagne Emailing', '2021-04-20 15:53:03', '2021-05-27 11:29:38'),
+	(1536, 0, 'fr', '_json', 'The Admin Site is an area which only the administrator​ can access. From here you can manage (delete edit create) places categories cities country manage users review booking...', 'Le site d\'administration est une zone à laquelle seul l\'administrateur peut accéder. De là, vous pouvez gérer (supprimer, modifier, créer) les lieux, les catégories, les villes, les pays, les utilisateurs, les réservations...', '2021-04-22 16:00:43', '2021-05-27 11:29:38'),
+	(1537, 0, 'fr', '_json', 'set out by this site including our Cookie Use.', 'définis par ce site, y compris notre utilisation des cookies.', '2021-04-22 16:13:44', '2021-05-27 11:29:38'),
+	(1538, 0, 'en', '_json', 'Other Name', 'Username', '2021-04-22 17:42:46', '2021-05-27 11:29:38'),
+	(1539, 0, 'en', '_json', 'Other name', 'Username', '2021-04-22 17:42:51', '2021-05-27 11:29:38'),
+	(1554, 0, 'fr', '_json', 'Go Home', 'Retour vers l\'acceuil', '2021-05-18 09:46:54', '2021-05-27 11:29:38'),
+	(1561, 0, 'fr', '_json', 'Amount Paid', 'Montant à Payer', '2021-05-18 09:46:54', '2021-05-27 11:29:38'),
+	(1570, 0, 'fr', '_json', 'Amount', 'Montant', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1572, 0, 'fr', '_json', 'Ticket Status', 'Status du Ticket', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1578, 0, 'fr', '_json', 'Category Type List', 'Liste de type d\'activité', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1579, 0, 'fr', '_json', 'Add Category Type', 'Ajoute type d\'activité', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1580, 0, 'fr', '_json', 'Category type Name', 'Nom de type d\'activité', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1585, 0, 'fr', '_json', 'Add Offer', 'Ajouter une offre', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1586, 0, 'fr', '_json', 'Offer name', 'Nom de l\'offre', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1588, 0, 'fr', '_json', 'Edit Offer', 'Modifier l\'offre', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1589, 0, 'fr', '_json', 'Offer List', 'Liste des offres', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1591, 0, 'fr', '_json', 'Period', 'Durée', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1592, 0, 'fr', '_json', 'Start Date', 'Date d\'arrivée', '2021-05-18 09:46:55', '2021-05-27 11:29:38'),
+	(1593, 0, 'fr', '_json', 'End Date', 'Date de départ', '2021-05-18 09:46:56', '2021-05-27 11:29:38'),
+	(1596, 0, 'fr', '_json', 'Create', 'Creation', '2021-05-18 09:46:56', '2021-05-27 11:29:38'),
+	(1605, 0, 'fr', '_json', 'Category detail', 'Detail d\'activité', '2021-05-18 09:46:56', '2021-05-27 11:29:38'),
+	(1606, 0, 'fr', '_json', 'Category Type detail', 'Detail de type d\'activité', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1607, 0, 'fr', '_json', 'City detail', 'Detail de la ville', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1610, 0, 'fr', '_json', 'Best Offers', 'Meilleures offres', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1611, 0, 'fr', '_json', 'Offer', 'Offre', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1612, 0, 'fr', '_json', 'Read More', 'Lire plus', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1615, 0, 'fr', '_json', 'Cart', 'Panier', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1619, 0, 'fr', '_json', 'Days', 'Jours', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1621, 0, 'fr', '_json', 'subtotal', 'Sous Total', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1623, 0, 'fr', '_json', 'Special Offers', 'Offre Special', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1624, 0, 'fr', '_json', 'Offers List', 'Liste des offres', '2021-05-18 09:46:57', '2021-05-27 11:29:38'),
+	(1628, 0, 'fr', '_json', 'From', 'Depuis', '2021-05-19 09:28:41', '2021-05-27 11:29:38'),
+	(1632, 0, 'fr', '_json', 'Contact Details', 'Details du Contact', '2021-05-19 09:28:42', '2021-05-27 11:29:38'),
+	(1633, 0, 'fr', '_json', 'User Profile', 'Profil Utilisateur', '2021-05-19 09:28:45', '2021-05-27 11:29:38'),
+	(1634, 0, 'en', '_json', 'Prix', 'Price', '2021-05-19 09:48:09', '2021-05-27 11:29:38'),
+	(1635, 0, 'en', '_json', 'Ville', 'City', '2021-05-19 09:55:37', '2021-05-27 11:29:38'),
+	(1636, 0, 'en', '_json', 'Nuit', 'Night', '2021-05-19 09:56:39', '2021-05-27 11:29:38'),
+	(1639, 0, 'fr', '_json', 'Offers', 'Offres', '2021-05-19 10:09:21', '2021-05-27 11:29:38'),
+	(1640, 0, 'fr', '_json', 'Offers Category List', 'Activité des Offres', '2021-05-19 10:09:21', '2021-05-27 11:29:38'),
+	(1641, 0, 'fr', '_json', 'Offers Category Type List', 'Type d\'activité des Offres', '2021-05-19 10:09:21', '2021-05-27 11:29:38'),
+	(1642, 0, 'fr', 'Loading', '..', NULL, '2021-05-27 10:06:00', '2021-05-27 10:06:00'),
+	(1643, 0, 'fr', 'E', 'g. City, Airport', NULL, '2021-05-27 10:06:00', '2021-05-27 10:06:00'),
+	(1644, 0, 'fr', '_json', 'Golf Tours', NULL, '2021-05-27 10:06:00', '2021-05-27 10:06:00'),
+	(1645, 0, 'fr', '_json', 'Sign up Using Email', 'Inscription par email', '2021-05-27 10:06:00', '2021-05-27 11:29:38'),
+	(1646, 0, 'fr', '_json', 'Bad Request', 'Mauvaise requête', '2021-05-27 10:06:00', '2021-05-27 11:29:38'),
+	(1647, 0, 'fr', '_json', 'Unauthorized Access', NULL, '2021-05-27 10:06:00', '2021-05-27 10:06:00'),
+	(1648, 0, 'fr', '_json', 'Access Denied/Forbidden !', 'Accès refusé/interdit', '2021-05-27 10:06:00', '2021-05-27 11:29:38'),
+	(1649, 0, 'fr', '_json', 'Not Found', 'Non trouvé', '2021-05-27 10:06:00', '2021-05-27 11:29:38'),
+	(1650, 0, 'fr', '_json', 'Page Expired', 'Page expirée', '2021-05-27 10:06:00', '2021-05-27 11:29:38'),
+	(1651, 0, 'fr', '_json', 'Too Many Requests', 'Trop de requêtes', '2021-05-27 10:06:00', '2021-05-27 11:29:38'),
+	(1652, 0, 'fr', '_json', 'Internal Server Error', 'Erreur interne du serveur', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1653, 0, 'fr', '_json', 'Service Unavailable', 'Service indisponible', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1654, 0, 'fr', '_json', 'Troubleshooting Error, Looks like something is wrong.', 'Erreur, On dirait que quelque chose ne va pas.', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1655, 0, 'fr', '_json', 'Oh no', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1656, 0, 'fr', '_json', 'Attempted Bookings', 'Tentatives de réservations', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1657, 0, 'fr', '_json', 'Paid Bookings', 'Réservations payées', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1658, 0, 'fr', '_json', 'Pending/Failed Bookings', 'Réservations en attente/échec', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1659, 0, 'fr', '_json', 'Deal Bookings', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1660, 0, 'fr', '_json', '(S/N)', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1661, 0, 'fr', '_json', 'Deal Name', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1662, 0, 'fr', '_json', 'Date Booked', 'Date de réservation', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1663, 0, 'fr', '_json', 'Reservations Created', 'Réservations effectuées', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1664, 0, 'fr', '_json', 'Issued Ticket', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1665, 0, 'fr', '_json', 'Cancelled Reservation', 'Réservation annulée', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1666, 0, 'fr', '_json', 'Void Tickets', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1667, 0, 'fr', '_json', 'Agent Flight Reservations', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1668, 0, 'fr', '_json', 'PNR', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1669, 0, 'fr', '_json', 'Agent Name', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1670, 0, 'fr', '_json', 'Ticket Time Limit', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1671, 0, 'fr', '_json', 'Created Date', 'Date de création', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1672, 0, 'fr', '_json', 'Customer Flight Reservations', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1673, 0, 'fr', '_json', 'Flight Reservations', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1674, 0, 'fr', '_json', 'My Hotel Reservations', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1675, 0, 'fr', '_json', 'Add Offer Type', 'Ajouter un type d\'offre', '2021-05-27 10:06:01', '2021-05-27 11:29:38'),
+	(1676, 0, 'fr', '_json', 'Ville', NULL, '2021-05-27 10:06:01', '2021-05-27 10:06:01'),
+	(1677, 0, 'fr', '_json', '#', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1678, 0, 'fr', '_json', 'Date d’émission', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1679, 0, 'fr', '_json', 'To', 'Vers', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1680, 0, 'fr', '_json', 'Service', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1681, 0, 'fr', '_json', 'Bon pour Accord', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1682, 0, 'fr', '_json', 'newsletters', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1683, 0, 'fr', '_json', 'Newsletters', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1684, 0, 'fr', '_json', 'What the name of offer', 'quel est le nom de l\'offre', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1685, 0, 'fr', '_json', 'Add Package', 'Ajouter un pack', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1686, 0, 'fr', '_json', 'Features', 'Caractéristiques', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1687, 0, 'fr', '_json', 'Conditions', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1688, 0, 'fr', '_json', 'Capacity', 'Capacité', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1689, 0, 'fr', '_json', 'Edit Package', 'Modifier le pack', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1690, 0, 'fr', '_json', 'Package List', 'Liste des Pack', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1691, 0, 'fr', '_json', 'Min Stay', 'Séjour minimum', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1692, 0, 'fr', '_json', 'Available On', 'Disponible le', '2021-05-27 10:06:02', '2021-05-27 11:29:38'),
+	(1693, 0, 'fr', '_json', 'Prix', NULL, '2021-05-27 10:06:02', '2021-05-27 10:06:02'),
+	(1694, 0, 'fr', '_json', 'Trait', NULL, '2021-05-27 10:06:03', '2021-05-27 10:06:03'),
+	(1695, 0, 'fr', '_json', 'Bon de Commande', NULL, '2021-05-27 10:06:03', '2021-05-27 10:06:03'),
+	(1696, 0, 'fr', '_json', 'TRAIT', NULL, '2021-05-27 10:06:03', '2021-05-27 10:06:03'),
+	(1697, 0, 'fr', '_json', 'Type', NULL, '2021-05-27 10:06:03', '2021-05-27 10:06:03'),
+	(1698, 0, 'fr', '_json', 'Infant', NULL, '2021-05-27 10:06:03', '2021-05-27 10:06:03'),
+	(1699, 0, 'fr', '_json', 'Rentacs Tours - Travel Agency', 'Rentacs Tours - Agence de voyage', '2021-05-27 10:06:03', '2021-05-27 11:29:38'),
+	(1700, 0, 'fr', '_json', '(Excluding Tax)', '(hors taxes)', '2021-05-27 10:06:03', '2021-05-27 11:29:38'),
+	(1701, 0, 'fr', '_json', 'Package', 'Pack', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1702, 0, 'fr', '_json', 'Package Summary', 'Resumé du Pack', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1703, 0, 'fr', '_json', 'nights', 'nuits', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1704, 0, 'fr', '_json', 'Make a Booking', 'Faire une réservation', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1705, 0, 'fr', '_json', 'BOOK', 'Réserver', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1706, 0, 'fr', '_json', 'Need Assistance', 'Besoin d\'aide', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1707, 0, 'fr', '_json', 'Need Help? Call us or drop a message. Our agents will be in touch shortly.', 'Besoin d\'aide ? Appelez-nous ou envoyez-nous un message. Nos agents vous contacteront sous peu.', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1708, 0, 'fr', '_json', 'Email Us', 'Contactez Nous', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1709, 0, 'fr', '_json', 'Nuit', 'Nuit', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1710, 0, 'fr', '_json', 'Personne', NULL, '2021-05-27 10:06:04', '2021-05-27 10:06:04'),
+	(1711, 0, 'fr', '_json', 'Checkout', 'Validation de commande', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1712, 0, 'fr', '_json', 'Quantity', 'Quantité', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1713, 0, 'fr', '_json', 'Bill To Name', 'Nom', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1714, 0, 'fr', '_json', 'Bill To Company', 'Société', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1715, 0, 'fr', '_json', 'Bill To Address', 'Adresse de facturation', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1716, 0, 'fr', '_json', 'Bill To City', 'Ville', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1717, 0, 'fr', '_json', 'Bill To State', 'Etat', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1718, 0, 'fr', '_json', 'Menu', NULL, '2021-05-27 10:06:04', '2021-05-27 10:06:04'),
+	(1719, 0, 'fr', '_json', 'Special Offers List', 'Liste des offres spéciales', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1720, 0, 'fr', '_json', 'Special Offers Type', 'Type des offres spéciales', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1721, 0, 'fr', '_json', 'Pages Management', 'Gestion des Pages', '2021-05-27 10:06:04', '2021-05-27 11:29:38'),
+	(1722, 0, 'fr', '_json', 'Termes et Conditions', NULL, '2021-05-27 10:06:04', '2021-05-27 10:06:04'),
+	(1723, 0, 'fr', '_json', 'Transactions', NULL, '2021-05-27 10:06:04', '2021-05-27 10:06:04'),
+	(1724, 0, 'fr', 'pagination', 'next', 'Suivant »', '2021-05-27 10:37:31', '2021-05-27 10:37:52'),
+	(1725, 0, 'fr', 'pagination', 'previous', '« Précédent', '2021-05-27 10:37:48', '2021-05-27 10:37:52'),
+	(1726, 0, 'fr', 'passwords', 'password', 'Les mots de passe doivent comporter au moins six caractères et correspondre à la confirmation.', '2021-05-27 10:38:45', '2021-05-27 10:39:28'),
+	(1727, 0, 'fr', 'passwords', 'reset', 'Votre mot de passe a été réinitialisé !', '2021-05-27 10:38:56', '2021-05-27 10:39:28'),
+	(1728, 0, 'fr', 'passwords', 'sent', 'Nous vous avons envoyé par e-mail le lien de réinitialisation de votre mot de passe !', '2021-05-27 10:39:06', '2021-05-27 10:39:28'),
+	(1729, 0, 'fr', 'passwords', 'token', 'Ce jeton de réinitialisation de mot de passe est invalide.', '2021-05-27 10:39:15', '2021-05-27 10:39:28'),
+	(1730, 0, 'fr', 'passwords', 'user', 'We can\'t find a user with that e-mail address.', '2021-05-27 10:39:19', '2021-05-27 10:39:28'),
+	(1731, 0, 'en', '_json', 'Personne', 'Person', '2021-05-27 10:48:08', '2021-05-27 11:29:38'),
+	(1732, 0, 'en', '_json', 'Pays', 'Country', '2021-05-27 10:48:29', '2021-05-27 11:29:38'),
+	(1733, 0, 'fr', '_json', 'Oops!', 'Oups', '2021-05-27 11:06:15', '2021-05-27 11:29:38');
 /*!40000 ALTER TABLE `ltm_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. markdowns
@@ -19427,6 +19407,7 @@ CREATE TABLE IF NOT EXISTS `markdowns` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.markdowns : ~8 rows (environ)
+DELETE FROM `markdowns`;
 /*!40000 ALTER TABLE `markdowns` DISABLE KEYS */;
 INSERT INTO `markdowns` (`id`, `airline_code`, `type`, `value`, `created_at`, `updated_at`) VALUES
 	(1, 'AF', 1, 7000, '2021-01-28 10:16:30', '2021-01-28 10:16:30'),
@@ -19457,6 +19438,7 @@ CREATE TABLE IF NOT EXISTS `markups` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.markups : ~2 rows (environ)
+DELETE FROM `markups`;
 /*!40000 ALTER TABLE `markups` DISABLE KEYS */;
 INSERT INTO `markups` (`id`, `role_id`, `flight_markup_type`, `flight_markup_value`, `hotel_markup_type`, `hotel_markup_value`, `car_markup_type`, `car_markup_value`, `package_markup_type`, `package_markup_value`, `created_at`, `updated_at`) VALUES
 	(1, 2, 1, 10000, 1, 10000, 1, 10000, 1, 10000, '2021-01-28 10:16:30', '2021-01-28 10:16:30'),
@@ -19473,6 +19455,7 @@ CREATE TABLE IF NOT EXISTS `markup_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.markup_types : ~4 rows (environ)
+DELETE FROM `markup_types`;
 /*!40000 ALTER TABLE `markup_types` DISABLE KEYS */;
 INSERT INTO `markup_types` (`id`, `type`, `created_at`, `updated_at`) VALUES
 	(1, 'Flight', '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -19491,6 +19474,7 @@ CREATE TABLE IF NOT EXISTS `markup_value_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.markup_value_types : ~2 rows (environ)
+DELETE FROM `markup_value_types`;
 /*!40000 ALTER TABLE `markup_value_types` DISABLE KEYS */;
 INSERT INTO `markup_value_types` (`id`, `type`, `created_at`, `updated_at`) VALUES
 	(1, 'Dirham Marocain', '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -19505,7 +19489,8 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.migrations : ~99 rows (environ)
+-- Listage des données de la table rentacs.migrations : ~112 rows (environ)
+DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(51, '2020_02_26_041322_create_post_translations_table', 1),
@@ -19631,7 +19616,8 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.newsletters : ~0 rows (environ)
+-- Listage des données de la table rentacs.newsletters : ~1 rows (environ)
+DELETE FROM `newsletters`;
 /*!40000 ALTER TABLE `newsletters` DISABLE KEYS */;
 INSERT INTO `newsletters` (`id`, `email`, `created_at`, `updated_at`) VALUES
 	(1, 'zakarialabib@gmail.com', '2021-04-13 12:04:03', '2021-04-13 12:04:03');
@@ -19648,7 +19634,8 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table rentacs.notifications : ~1 rows (environ)
+-- Listage des données de la table rentacs.notifications : ~3 rows (environ)
+DELETE FROM `notifications`;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 INSERT INTO `notifications` (`id`, `booking_id`, `user_id`, `is_read`, `created_at`, `updated_at`) VALUES
 	(2, NULL, 14, 1, '2021-04-08 14:00:51', '2021-04-08 14:01:45'),
@@ -19683,7 +19670,8 @@ CREATE TABLE IF NOT EXISTS `offers` (
   CONSTRAINT `foreing_offer_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=' x';
 
--- Listage des données de la table rentacs.offers : ~0 rows (environ)
+-- Listage des données de la table rentacs.offers : ~1 rows (environ)
+DELETE FROM `offers`;
 /*!40000 ALTER TABLE `offers` DISABLE KEYS */;
 INSERT INTO `offers` (`id`, `user_id`, `category_id`, `city_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
 	(8, 1, 11, 31, NULL, 'hotel-du-golf-rotana-golf-club-rotana', NULL, '0000000001', 0, NULL, NULL, '["60a64a03b9ff4_1621510659.jpg"]', '[{"title":"Day 1","description":"DAY 1"}]', 1, NULL, NULL, '2021-05-12 11:33:16', '2021-05-20 12:51:31');
@@ -19701,13 +19689,10 @@ CREATE TABLE IF NOT EXISTS `offer_translations` (
   KEY `offer_translations_locale_index` (`locale`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.offer_translations : ~6 rows (environ)
+-- Listage des données de la table rentacs.offer_translations : ~2 rows (environ)
+DELETE FROM `offer_translations`;
 /*!40000 ALTER TABLE `offer_translations` DISABLE KEYS */;
 INSERT INTO `offer_translations` (`id`, `offer_id`, `locale`, `name`, `description`) VALUES
-	(3, 4, 'en', 'Rotana', '<p><br />\r\nRotana</p>'),
-	(4, 4, 'fr', 'Rotana', '<p>Rotana</p>'),
-	(5, 5, 'en', 'Rotana', '<p>Rotana</p>'),
-	(6, 5, 'fr', 'Rotana', '<p>Rotana</p>'),
 	(7, 8, 'en', 'Hotel du Golf Rotana / Golf Club Rotana', '<p>With an outstanding location overlooking one of the most sought-after golf courses in Marrakech, <strong>H&ocirc;tel du Golf Rotana</strong> is the place to relax and enjoy 5 star luxury and world-class facilities. Nestled at the heart of the stunning <strong>Palmeraie Rotana Resort </strong>is&nbsp;situated in the north of the Marrakech.&nbsp;This design-led property blends modern Moroccan architecture with art deco style and a warm inviting colour scheme to create a cosy and laid-back ambiance. Magnificent views of the fairways at the <strong>Golf Club Rotana</strong> and the stunning Atlas Mountains backdrop are part of this exceptional lifestyle experience.</p>\r\n\r\n<p><strong>All 315 hotel rooms</strong> and suites are modern, spacious and ideal for both leisure and business stays in Marrakech. Expansive floor-to-ceiling windows are a design highlight, flooding each room with glorious Moroccan sunshine and offering guests breath-taking views of the gardens, pool and/or the golf course.</p>\r\n\r\n<p>Guests can choose from the resort&rsquo;s <strong>12 unique dining experiences</strong>, from specialty restaurants serving authentic Moroccan, Italian, Mediterranean and Asian flavours, to casual pool bars and beach lounges, including Nikki Beach Club where inventive fusion cuisine and a party atmosphere await. For convenience, three of these venues - an international restaurant, poolside snack bar and a bar lounge - are located at the <strong>H&ocirc;tel du Golf Rotana</strong> Palmeraie.</p>\r\n\r\n<p>In addition to the 18-hole championship golf course, a wide range of resort facilities are on the hotel&rsquo;s doorstep, including the purpose-built Conference Centre, which caters to all corporate and social occasions in Marrakech. For some well-deserved me time, work out or relax in the fully equipped <strong>Bodylines Fitness &amp; Wellness Club</strong> with indoor swimming pool, Jacuzzi, sauna and steam rooms, or be pampered at <strong>Zen the spa at Rotana</strong>. For a bit of fun guests can also enjoy the resort&#39;s offers bowling, tennis, basketball and a vast entertainment programme designed for all ages and our kids&rsquo; club keeps young guests busy with activities galore.</p>'),
 	(8, 8, 'fr', 'Hotel du Golf Rotana / Golf Club Rotana', '<p>With an outstanding location overlooking one of the most sought-after golf courses in Marrakech, <strong>H&ocirc;tel du Golf Rotana</strong> is the place to relax and enjoy 5 star luxury and world-class facilities. Nestled at the heart of the stunning <strong>Palmeraie Rotana Resort </strong>is&nbsp;situated in the north of the Marrakech.&nbsp;This design-led property blends modern Moroccan architecture with art deco style and a warm inviting colour scheme to create a cosy and laid-back ambiance. Magnificent views of the fairways at the <strong>Golf Club Rotana</strong> and the stunning Atlas Mountains backdrop are part of this exceptional lifestyle experience.</p>\r\n\r\n<p><strong>All 315 hotel rooms</strong> and suites are modern, spacious and ideal for both leisure and business stays in Marrakech. Expansive floor-to-ceiling windows are a design highlight, flooding each room with glorious Moroccan sunshine and offering guests breath-taking views of the gardens, pool and/or the golf course.</p>\r\n\r\n<p>Guests can choose from the resort&rsquo;s <strong>12 unique dining experiences</strong>, from specialty restaurants serving authentic Moroccan, Italian, Mediterranean and Asian flavours, to casual pool bars and beach lounges, including Nikki Beach Club where inventive fusion cuisine and a party atmosphere await. For convenience, three of these venues - an international restaurant, poolside snack bar and a bar lounge - are located at the <strong>H&ocirc;tel du Golf Rotana</strong> Palmeraie.</p>\r\n\r\n<p>In addition to the 18-hole championship golf course, a wide range of resort facilities are on the hotel&rsquo;s doorstep, including the purpose-built Conference Centre, which caters to all corporate and social occasions in Marrakech. For some well-deserved me time, work out or relax in the fully equipped <strong>Bodylines Fitness &amp; Wellness Club</strong> with indoor swimming pool, Jacuzzi, sauna and steam rooms, or be pampered at <strong>Zen the spa at Rotana</strong>. For a bit of fun guests can also enjoy the resort&#39;s offers bowling, tennis, basketball and a vast entertainment programme designed for all ages and our kids&rsquo; club keeps young guests busy with activities galore.</p>');
 /*!40000 ALTER TABLE `offer_translations` ENABLE KEYS */;
@@ -19730,6 +19715,7 @@ CREATE TABLE IF NOT EXISTS `online_payments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.online_payments : ~0 rows (environ)
+DELETE FROM `online_payments`;
 /*!40000 ALTER TABLE `online_payments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `online_payments` ENABLE KEYS */;
 
@@ -19748,7 +19734,8 @@ CREATE TABLE IF NOT EXISTS `packages` (
   CONSTRAINT `packages_offer_id_foreign` FOREIGN KEY (`offer_id`) REFERENCES `offers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.packages : ~0 rows (environ)
+-- Listage des données de la table rentacs.packages : ~2 rows (environ)
+DELETE FROM `packages`;
 /*!40000 ALTER TABLE `packages` DISABLE KEYS */;
 INSERT INTO `packages` (`id`, `offer_id`, `title`, `period`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
 	(1, 8, 'GOLF PACKAGE HOLE IN ONE 3 nights', 3, '2020-11-01', '2021-10-31', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19766,7 +19753,8 @@ CREATE TABLE IF NOT EXISTS `package_attractions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_attractions : ~0 rows (environ)
+-- Listage des données de la table rentacs.package_attractions : ~1 rows (environ)
+DELETE FROM `package_attractions`;
 /*!40000 ALTER TABLE `package_attractions` DISABLE KEYS */;
 INSERT INTO `package_attractions` (`id`, `package_id`, `attraction_name`, `address`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'rotana', NULL, NULL, NULL);
@@ -19796,6 +19784,7 @@ CREATE TABLE IF NOT EXISTS `package_bookings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.package_bookings : ~0 rows (environ)
+DELETE FROM `package_bookings`;
 /*!40000 ALTER TABLE `package_bookings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `package_bookings` ENABLE KEYS */;
 
@@ -19810,6 +19799,7 @@ CREATE TABLE IF NOT EXISTS `package_categories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.package_categories : ~7 rows (environ)
+DELETE FROM `package_categories`;
 /*!40000 ALTER TABLE `package_categories` DISABLE KEYS */;
 INSERT INTO `package_categories` (`id`, `category`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 'Food & Culinary', 1, '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -19833,7 +19823,8 @@ CREATE TABLE IF NOT EXISTS `package_conditions` (
   CONSTRAINT `package_conditions_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_conditions : ~2 rows (environ)
+-- Listage des données de la table rentacs.package_conditions : ~3 rows (environ)
+DELETE FROM `package_conditions`;
 /*!40000 ALTER TABLE `package_conditions` DISABLE KEYS */;
 INSERT INTO `package_conditions` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'city taxes not included', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19853,7 +19844,8 @@ CREATE TABLE IF NOT EXISTS `package_features` (
   CONSTRAINT `package_features_package_id_foreign` FOREIGN KEY (`package_id`) REFERENCES `packages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.package_features : ~2 rows (environ)
+-- Listage des données de la table rentacs.package_features : ~3 rows (environ)
+DELETE FROM `package_features`;
 /*!40000 ALTER TABLE `package_features` DISABLE KEYS */;
 INSERT INTO `package_features` (`id`, `package_id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'transfert airoport', '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19876,6 +19868,7 @@ CREATE TABLE IF NOT EXISTS `package_flights` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.package_flights : ~0 rows (environ)
+DELETE FROM `package_flights`;
 /*!40000 ALTER TABLE `package_flights` DISABLE KEYS */;
 /*!40000 ALTER TABLE `package_flights` ENABLE KEYS */;
 
@@ -19895,6 +19888,7 @@ CREATE TABLE IF NOT EXISTS `package_hotels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.package_hotels : ~0 rows (environ)
+DELETE FROM `package_hotels`;
 /*!40000 ALTER TABLE `package_hotels` DISABLE KEYS */;
 /*!40000 ALTER TABLE `package_hotels` ENABLE KEYS */;
 
@@ -19915,6 +19909,7 @@ CREATE TABLE IF NOT EXISTS `package_rates` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.package_rates : ~5 rows (environ)
+DELETE FROM `package_rates`;
 /*!40000 ALTER TABLE `package_rates` DISABLE KEYS */;
 INSERT INTO `package_rates` (`id`, `package_id`, `title`, `start_date`, `end_date`, `price`, `capacity`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'Single Room', '2021-04-15', '2021-10-31', 4126.00, 1, '2021-05-12 11:38:01', '2021-05-12 11:38:01'),
@@ -19935,6 +19930,7 @@ CREATE TABLE IF NOT EXISTS `package_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.package_types : ~2 rows (environ)
+DELETE FROM `package_types`;
 /*!40000 ALTER TABLE `package_types` DISABLE KEYS */;
 INSERT INTO `package_types` (`id`, `type`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 'Flight', 1, '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -19955,6 +19951,7 @@ CREATE TABLE IF NOT EXISTS `page_translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Listage des données de la table rentacs.page_translations : ~0 rows (environ)
+DELETE FROM `page_translations`;
 /*!40000 ALTER TABLE `page_translations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `page_translations` ENABLE KEYS */;
 
@@ -19967,6 +19964,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.password_resets : ~0 rows (environ)
+DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
@@ -19983,6 +19981,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.permissions : ~0 rows (environ)
+DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
@@ -19997,6 +19996,7 @@ CREATE TABLE IF NOT EXISTS `permission_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.permission_role : ~0 rows (environ)
+DELETE FROM `permission_role`;
 /*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 
@@ -20030,7 +20030,8 @@ CREATE TABLE IF NOT EXISTS `places` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table rentacs.places : ~7 rows (environ)
+-- Listage des données de la table rentacs.places : ~6 rows (environ)
+DELETE FROM `places`;
 /*!40000 ALTER TABLE `places` DISABLE KEYS */;
 INSERT INTO `places` (`id`, `user_id`, `country_id`, `city_id`, `reference`, `category`, `place_type`, `name`, `slug`, `description`, `price`, `amenities`, `address`, `lat`, `lng`, `thumb`, `gallery`, `itinerary`, `booking_type`, `link_bookingcom`, `status`, `seo_title`, `seo_description`, `updated_at`, `created_at`) VALUES
 	(33, NULL, 13, 35, NULL, '["22"]', '["34"]', NULL, 'mazagan-beach-golf-resort', NULL, 1280, '["9","8","7","6"]', 'Km 10, Route de Casablanca، El Jadida 24000, Maroc', 33.281561, -8.383829, '6024f892640ba_1613035666.jpg', '["6024f7be7fade_1613035454.jpg","6024f7c0743c1_1613035456.jpg","6024f85689f32_1613035606.jpg"]', '[{"question":"Day 1","answer":"<p>Description<\\/p>"}]', 1, NULL, 0, 'Hôtel Mazagan Beach & Golf Resort', 'Vivez l’une des plus belles expériences de votre vie à l\'hôtel Mazagan Beach Golf avec Rentacs Tours. Réservez votre prochain séjour dès maintenant.', '2021-03-04 14:38:51', '2021-02-03 09:34:48'),
@@ -20054,7 +20055,8 @@ CREATE TABLE IF NOT EXISTS `place_translations` (
   CONSTRAINT `place_translations_place_id_foreign` FOREIGN KEY (`place_id`) REFERENCES `places` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Listage des données de la table rentacs.place_translations : ~12 rows (environ)
+-- Listage des données de la table rentacs.place_translations : ~11 rows (environ)
+DELETE FROM `place_translations`;
 /*!40000 ALTER TABLE `place_translations` DISABLE KEYS */;
 INSERT INTO `place_translations` (`id`, `place_id`, `locale`, `name`, `description`) VALUES
 	(24, 33, 'en', 'Mazagan Beach & Golf Resort', '<div class="ie001e">Hotel details</div>\r\n<p><span class="ggV7z kno-desc-sh" data-ved="2ahUKEwjmz-mVwOHuAhUtUBUIHX2wDXAQ200wDHoECAoQAw">In a modern Moorish-style complex, this upscale beach and golf resort on the Atlantic Ocean lies 104 km from Casablanca Mohammed V International Airport <span class="yZlgBd kd-hc" data-ved="2ahUKEwjmz-mVwOHuAhUtUBUIHX2wDXAQ3E0wDHoECAoQBQ"><span class="lnMzfb"><br /><br />Posh rooms have French balconies, sitting areas and minibars, plus flat-screens and free Wi-Fi; some offer ocean views. Elegant suites add living rooms. Room service is available 24/7.</span><span class="lnMzfb"><br /><br />Airport transfers are complimentary. There are 13 restaurants, in addition to a bar, a nightclub and a casino. Other amenities include an 18-hole golf course and a spa, plus tennis, an outdoor pool with a kids\' section, and a kids\' club. Breakfast is offered.</span></span></span></p>'),
@@ -20067,7 +20069,6 @@ INSERT INTO `place_translations` (`id`, `place_id`, `locale`, `name`, `descripti
 	(31, 36, 'fr', 'DAKHLA ATTITUDE', '<p>S&eacute;jour en Pension Compl&eacute;te &amp; Transferts A&eacute;roport/H&ocirc;tel/A&eacute;roport<br />Bungalow double : 1295 DHS/ Nuit<br />Bungalow Single: 920 DHS /Nuit<br />&bull; Des Excursions pour explorer la magnifique Baie de Dakhla sont disponibles &agrave; la demande.<br />&bull; Possibilit&eacute; de louer des Bungalow Triples &amp; Quadruples</p>'),
 	(32, 37, 'en', 'Douceur de vivre Hivernal BY KENZI', '<p>Profitez d\'un s&eacute;jour en All Inclusive &agrave; Marrakech:<br />Gratuit&eacute; pour 1 enfant de moins de 5ans<br />Acc&egrave;s &agrave; la piscine chauff&eacute;e<br />Acc&egrave;s &agrave; la salle de sport sous r&eacute;servation &agrave; l\'avance<br /><br />Navette au centre-ville 717, horaire selon programme affich&eacute;.<br />A Partir de 870 DHS par personne en chambre double de luxe<br />en formule ALL INCLUSIVE<br />* Offre Valable jusqu\'au 20 Mars 2021 Hors taxes de s&eacute;jour</p>'),
 	(33, 37, 'fr', 'Douceur de vivre Hivernal BY KENZI', '<p>Profitez d\'un s&eacute;jour en All Inclusive &agrave; Marrakech:<br />Gratuit&eacute; pour 1 enfant de moins de 5ans<br />Acc&egrave;s &agrave; la piscine chauff&eacute;e<br />Acc&egrave;s &agrave; la salle de sport sous r&eacute;servation &agrave; l\'avance<br /><br />Navette au centre-ville 717, horaire selon programme affich&eacute;.<br />A Partir de 870 DHS par personne en chambre double de luxe<br />en formule ALL INCLUSIVE<br />* Offre Valable jusqu\'au 20 Mars 2021 Hors taxes de s&eacute;jour</p>'),
-	(34, 38, 'en', NULL, NULL),
 	(35, 38, 'fr', 'Aqua Mirage Marrakech', '<p>Bienvenue &agrave; Aqua Mirage Club, &eacute;lu Meilleure H&ocirc;tel pour familles &agrave; Marrakech pour 4 ann&eacute;es cons&eacute;cutives. Ce lieu s&#39;&eacute;tend sur 20 hectares de nature au pied des fabuleuses montagnes de l&#39;Atlas. Il pr&eacute;sente aussi un point de d&eacute;part id&eacute;al pour explorer les environs de la ville de Marrakech. Avec son personnel professionnel, sa cuisine Marocaine et son &eacute;quipe d&#39;animation, Aqua Mirage est le choix id&eacute;al pour tous les amoureux du plaisir, du calme et de la haute qualit&eacute; du service. Il dispose de plusieurs piscines, un aqua parc, un sauna, un centre de massage et un centre de fitness. Profitez d&#39;un wifi gratuit, une navette centre ville, un club pour enfants, un centre de conf&eacute;rence et beaucoup plus...</p>');
 /*!40000 ALTER TABLE `place_translations` ENABLE KEYS */;
 
@@ -20079,21 +20080,11 @@ CREATE TABLE IF NOT EXISTS `place_types` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Listage des données de la table rentacs.place_types : ~10 rows (environ)
+-- Listage des données de la table rentacs.place_types : ~0 rows (environ)
+DELETE FROM `place_types`;
 /*!40000 ALTER TABLE `place_types` DISABLE KEYS */;
-INSERT INTO `place_types` (`id`, `category_id`, `name`, `created_at`, `updated_at`) VALUES
-	(25, 12, 'Restaurant', '2019-10-25 11:17:39', '2019-10-25 11:17:39'),
-	(26, 12, 'Coffee Shop', '2019-10-25 11:17:50', '2019-10-25 11:17:50'),
-	(30, 11, 'Culture', '2019-11-04 16:40:25', '2019-11-04 16:40:25'),
-	(31, 11, 'Park', '2019-11-04 16:40:39', '2019-11-04 16:40:39'),
-	(32, 11, 'Market', '2019-11-04 16:40:54', '2019-11-04 16:40:54'),
-	(33, 13, 'Hostel', '2019-11-04 16:41:13', '2019-11-04 16:41:13'),
-	(34, 13, 'Hotel', '2019-11-04 16:41:22', '2019-11-04 16:41:22'),
-	(35, 13, 'Luxury', '2019-11-04 16:41:33', '2019-11-04 16:41:33'),
-	(36, 13, 'Apartment', '2019-11-04 16:42:03', '2019-11-04 16:42:03'),
-	(38, 12, 'Bakeries', '2019-11-04 16:42:39', '2019-11-04 16:42:39');
 /*!40000 ALTER TABLE `place_types` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. place_type_translations
@@ -20106,31 +20097,11 @@ CREATE TABLE IF NOT EXISTS `place_type_translations` (
   UNIQUE KEY `place_type_translations_place_type_id_locale_unique` (`place_type_id`,`locale`),
   KEY `place_type_translations_locale_index` (`locale`),
   CONSTRAINT `place_type_translations_place_type_id_foreign` FOREIGN KEY (`place_type_id`) REFERENCES `place_types` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Listage des données de la table rentacs.place_type_translations : ~20 rows (environ)
+-- Listage des données de la table rentacs.place_type_translations : ~0 rows (environ)
+DELETE FROM `place_type_translations`;
 /*!40000 ALTER TABLE `place_type_translations` DISABLE KEYS */;
-INSERT INTO `place_type_translations` (`id`, `place_type_id`, `locale`, `name`) VALUES
-	(1, 25, 'en', 'CIRCUITS EN MOTO AUTONOMES'),
-	(2, 26, 'en', 'GUIDED VISIT WITH MOTO'),
-	(6, 30, 'en', 'TARAGALT LUXURY DESERT CAMP'),
-	(7, 31, 'en', 'TOUAREG DREAM CHEGAGA LUXURY CAMP'),
-	(8, 32, 'en', 'TIZIPLUS LUXURY DESERT CAMP'),
-	(9, 33, 'en', 'Compétitions'),
-	(10, 34, 'en', 'Golf Packages'),
-	(11, 35, 'en', 'RENT'),
-	(12, 36, 'en', 'Golf Courses'),
-	(14, 38, 'en', 'MOTO RENT'),
-	(17, 38, 'fr', 'LOCATION DE MOTOS'),
-	(18, 36, 'fr', 'Golf Courses'),
-	(19, 35, 'fr', 'Location'),
-	(20, 34, 'fr', 'Golf Packages'),
-	(21, 33, 'fr', 'Compétitions'),
-	(22, 32, 'fr', 'TIZIPLUS LUXURY DESERT CAMP'),
-	(23, 31, 'fr', 'TOUAREG DREAM CHEGAGA LUXURY CAMP'),
-	(24, 30, 'fr', 'TARAGALT LUXURY DESERT CAMP'),
-	(25, 26, 'fr', 'VISITES GUIDÉES EN MOTO'),
-	(26, 25, 'fr', 'CIRCUITS EN MOTO AUTONOMES');
 /*!40000 ALTER TABLE `place_type_translations` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. posts
@@ -20152,6 +20123,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table rentacs.posts : ~5 rows (environ)
+DELETE FROM `posts`;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 INSERT INTO `posts` (`id`, `user_id`, `category`, `title`, `slug`, `content`, `thumb`, `status`, `type`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
 	(21, 1, NULL, NULL, 'a-propos', NULL, '6025606266e78_1613062242.JPG', 1, 'page', NULL, NULL, '2021-02-10 14:40:49', '2021-02-11 16:51:50'),
@@ -20175,6 +20147,7 @@ CREATE TABLE IF NOT EXISTS `post_translations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.post_translations : ~10 rows (environ)
+DELETE FROM `post_translations`;
 /*!40000 ALTER TABLE `post_translations` DISABLE KEYS */;
 INSERT INTO `post_translations` (`id`, `post_id`, `locale`, `title`, `content`) VALUES
 	(6, 21, 'en', 'About us', '<p><span style="font-weight: 400;">Gustave Nadaud a dit "Rester, c&rsquo;est exister. Voyager, c&rsquo;est vivre".</span></p>\r\n<p>&nbsp;</p>\r\n<p><span style="font-weight: 400;">C&rsquo;est pourquoi l&rsquo;&eacute;quipe Rentacs Tours est d&rsquo;autant plus fi&egrave;re de vivre avec vous, cette nouvelle ann&eacute;e 2021 avec des nouveaut&eacute;s dans sa structure.</span></p>\r\n<p><span style="font-weight: 400;">&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">Durant toutes ces ann&eacute;es d&rsquo;exp&eacute;riences et de savoir-faire, nous avons pu parcourir ensemble de merveilleux endroits, nous avons s&eacute;journ&eacute; dans des lieux paradisiaques et nous avons pu voir avec les yeux d&rsquo;un passionn&eacute; la beaut&eacute; des plus belles destinations du monde.&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">Ainsi, nous voulons faire d&eacute;couvrir &agrave; plus de personnes la beaut&eacute; exceptionnelle du monde auquel nous appartenons et qui donne envie de vivre avec passion et de survivre aux probl&egrave;mes et aux difficult&eacute;s que le monde d&rsquo;aujourd&rsquo;hui conna&icirc;t.</span></p>\r\n<p><span style="font-weight: 400;">&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">C&rsquo;est dans cette optique que Rentacs Tours s&rsquo;&eacute;largit et devient une agence de voyage multi-services accessible, disponible et accueillante, qui s&rsquo;efforce de vous offrir le meilleur confort et l&rsquo;exp&eacute;rience de voyage la plus singuli&egrave;re&nbsp; qui, nous l&rsquo;esp&eacute;rons, r&eacute;pondra &agrave; toutes vos attentes.&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">Fond&eacute;e par deux bikers passionn&eacute;s certifi&eacute;s par HOG Harley-Davidson: Nizar CHAWAD, ancien pr&eacute;sident du HOG Chapter Casablanca, et Mohamed Ali ANOUAR, ancien secr&eacute;taire g&eacute;n&eacute;ral du HOG Chapter Casablanca.&nbsp; La force de Rentacs Tours repose sur la diversit&eacute; des services qu&rsquo;elle propose mais aussi et surtout sur le professionnalisme sans d&eacute;faut de son &eacute;quipe qui b&eacute;n&eacute;ficie des comp&eacute;tences manag&eacute;riales sans faille de monsieur Ali Amrani ayant &agrave; son actif plus de 18 ann&eacute;es d&rsquo;exp&eacute;riences en zones touristiques des USA.</span></p>\r\n<p><span style="font-weight: 400;">&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">Rentacstours aujourd&rsquo;hui, est une extension de savoir-faire, une multitude de services sur mesure allant des voyages organis&eacute;s h&ocirc;tels, h&eacute;bergement, vol aux activit&eacute;s de divertissement et de bien-&ecirc;tre motocycle, golf tour, bivouacs, trekking, surf, yoga .. Nous proposons aussi des services &agrave; l&rsquo;international gr&acirc;ce &agrave; la participation de diff&eacute;rents partenaires qui ont accept&eacute; de prendre part &agrave; cette aventure.</span></p>\r\n<p><span style="font-weight: 400;">&nbsp;</span></p>\r\n<p><span style="font-weight: 400;">Et pour tous les friands et amateurs de circuits &agrave; moto, vous pouvez profiter des offres exclusives et des meilleurs mod&egrave;les de motos Harley Davidson et Yamaha gr&acirc;ce &agrave; notre partenaire Rentacs Motor, repr&eacute;sentant exclusif de Eaglerider au Maroc. Le tout pour vous faire vivre des voyages exceptionnels et des aventures atypiques.&nbsp;</span></p>\r\n<p>&nbsp;</p>\r\n<p><span style="font-weight: 400;">D&eacute;couvrez nos meilleures offres ou contactez-nous maintenant pour organiser votre prochain voyage.</span></p>\r\n<p>&nbsp;</p>'),
@@ -20206,20 +20179,16 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   PRIMARY KEY (`id`),
   KEY `Foreign_User_Id` (`user_id`),
   CONSTRAINT `Foreign_User_Id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.profiles : ~9 rows (environ)
+-- Listage des données de la table rentacs.profiles : ~4 rows (environ)
+DELETE FROM `profiles`;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
 INSERT INTO `profiles` (`id`, `user_id`, `title_id`, `gender_id`, `sur_name`, `first_name`, `other_name`, `phone_number`, `address`, `photo`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1, 1, 'Travel', 'Portal', 'Admin', '09090909090', 'Address', '', '2021-01-28 10:14:55', '2021-02-15 17:39:26'),
 	(2, 2, 1, 1, 'First', 'Portal', 'Agent', '09090111111', 'Travel portal agent shop at that place', '', '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
 	(3, 3, 1, 1, 'First', 'Test', 'Customer', '09090222222', 'First test customer', '', '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
-	(4, 4, 1, 1, 'Lb', 'zakaria', 'l', '09090444444', 'everywhere', '', '2021-01-28 10:14:55', '2021-02-12 16:50:12'),
-	(5, 10, 1, 1, 'Kiki', 'zakaria', 'll', '66666666', '', NULL, '2021-02-05 11:30:32', '2021-02-05 11:30:32'),
-	(6, 11, 1, 1, 'Bouhamidi', 'abderrahim', 'bou', '0623337189', '', NULL, '2021-03-01 05:22:28', '2021-03-01 05:22:28'),
-	(7, 12, 1, 1, 'Kiki', 'zakaria', 'c', '6666', '', NULL, '2021-03-02 22:32:57', '2021-03-02 22:32:57'),
-	(8, 13, 1, 1, 'll', 'll', 'll', '66655544411', '', NULL, '2021-03-08 16:05:57', '2021-03-08 16:05:57'),
-	(9, 14, 1, 1, 'ok', 'ok', 'ok', '666666666', '', NULL, '2021-04-08 14:00:50', '2021-04-08 14:00:50');
+	(4, 10, 1, 1, 'First', 'Test', 'Customer', '09090222222', 'First test customer', NULL, '2021-01-28 10:14:55', '2021-01-28 10:14:55');
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. purchases
@@ -20252,6 +20221,7 @@ CREATE TABLE IF NOT EXISTS `purchases` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.purchases : ~1 rows (environ)
+DELETE FROM `purchases`;
 /*!40000 ALTER TABLE `purchases` DISABLE KEYS */;
 INSERT INTO `purchases` (`id`, `reference_no`, `user_id`, `supplier_id`, `total_qty`, `tax`, `total_tax`, `total_cost`, `grand_total`, `paid_amount`, `status`, `paid_by`, `payment_status`, `document`, `note`, `payment_note`, `staff_note`, `is_locked`, `created_at`, `updated_at`) VALUES
 	(7, '369', 1, 3, 1, 100, 4995, 10989, 9990, 21978, 1, 1, 1, '369-Absolue_Oleo_Serum_600X600.jpg', NULL, NULL, NULL, 0, '2021-03-09 17:31:44', '2021-04-02 09:55:10');
@@ -20273,6 +20243,7 @@ CREATE TABLE IF NOT EXISTS `purchase_details` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.purchase_details : ~1 rows (environ)
+DELETE FROM `purchase_details`;
 /*!40000 ALTER TABLE `purchase_details` DISABLE KEYS */;
 INSERT INTO `purchase_details` (`id`, `purchase_id`, `name`, `qty`, `price`, `total`, `updated_at`, `created_at`) VALUES
 	(21, 7, 'merceds', 5, 999, 4995, '2021-03-09', '2021-03-09');
@@ -20293,12 +20264,13 @@ CREATE TABLE IF NOT EXISTS `rate_booking` (
   CONSTRAINT `rate_booking_rate_id_foreign` FOREIGN KEY (`rate_id`) REFERENCES `package_rates` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.rate_booking : ~2 rows (environ)
+-- Listage des données de la table rentacs.rate_booking : ~3 rows (environ)
+DELETE FROM `rate_booking`;
 /*!40000 ALTER TABLE `rate_booking` DISABLE KEYS */;
 INSERT INTO `rate_booking` (`id`, `booking_id`, `rate_id`, `quantity`, `created_at`, `updated_at`) VALUES
-	(1, 132, 4, 0, NULL, NULL),
-	(2, 132, 5, 0, NULL, NULL),
-	(3, 133, 3, 5, NULL, NULL);
+	(1, 2, 4, 0, NULL, NULL),
+	(2, 2, 5, 0, NULL, NULL),
+	(3, 3, 3, 5, NULL, NULL);
 /*!40000 ALTER TABLE `rate_booking` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. returns
@@ -20329,13 +20301,15 @@ CREATE TABLE IF NOT EXISTS `returns` (
   KEY `Foreign_Return_Customer_Id` (`customer_id`),
   CONSTRAINT `Foreign_Return_Customer_Id` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Return_User_ID` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table rentacs.returns : ~0 rows (environ)
+-- Listage des données de la table rentacs.returns : ~3 rows (environ)
+DELETE FROM `returns`;
 /*!40000 ALTER TABLE `returns` DISABLE KEYS */;
 INSERT INTO `returns` (`id`, `reference_no`, `user_id`, `customer_id`, `booking_reference`, `total_qty`, `tax`, `total_tax`, `total_cost`, `grand_total`, `paid_amount`, `status`, `paid_by`, `payment_status`, `document`, `note`, `payment_note`, `staff_note`, `is_locked`, `created_at`, `updated_at`) VALUES
 	(2, '25424', 1, 1, NULL, 1, 20, 256, 1280, 1536, 0, 1, 0, 2, '', NULL, NULL, NULL, 0, '2021-04-13 12:40:41', '2021-04-13 12:40:41'),
-	(3, '000000001', 1, 3, NULL, 1, 0, 0, 999, 999, 999, 1, 1, 3, NULL, NULL, NULL, NULL, 1, '2021-04-14 10:54:49', '2021-04-14 10:54:49');
+	(3, '000000001', 1, 3, NULL, 1, 0, 0, 999, 999, 999, 1, 1, 3, NULL, NULL, NULL, NULL, 1, '2021-04-14 10:54:49', '2021-04-14 10:54:49'),
+	(4, '000000001', 1, 3, NULL, 1, 10, 299.7, 2997, 3296.7, 0, 1, 1, 3, NULL, NULL, NULL, NULL, 1, '2021-05-27 11:27:03', '2021-05-27 11:27:03');
 /*!40000 ALTER TABLE `returns` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. return_details
@@ -20351,13 +20325,15 @@ CREATE TABLE IF NOT EXISTS `return_details` (
   PRIMARY KEY (`id`),
   KEY `Return_Details_ID` (`return_id`),
   CONSTRAINT `Return_Details_ID` FOREIGN KEY (`return_id`) REFERENCES `returns` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table rentacs.return_details : ~0 rows (environ)
+-- Listage des données de la table rentacs.return_details : ~3 rows (environ)
+DELETE FROM `return_details`;
 /*!40000 ALTER TABLE `return_details` DISABLE KEYS */;
 INSERT INTO `return_details` (`id`, `return_id`, `name`, `qty`, `price`, `total`, `updated_at`, `created_at`) VALUES
 	(4, 2, 'Mazagan Beach & Golf Resort', 1, 1280, 1280, '2021-04-13', '2021-04-13'),
-	(5, 3, 'Sol House Taghazout Bay Surf', 1, 999, 999, '2021-04-14', '2021-04-14');
+	(5, 3, 'Sol House Taghazout Bay Surf', 1, 999, 999, '2021-04-14', '2021-04-14'),
+	(6, 4, 'Sol House Taghazout Bay Surf', 3, 999, 2997, '2021-05-27', '2021-05-27');
 /*!40000 ALTER TABLE `return_details` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. reviews
@@ -20374,6 +20350,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table rentacs.reviews : ~1 rows (environ)
+DELETE FROM `reviews`;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
 INSERT INTO `reviews` (`id`, `user_id`, `place_id`, `score`, `comment`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 1, 33, 3, 'avis', 1, '2021-02-15 10:20:56', '2021-02-15 10:20:56');
@@ -20392,6 +20369,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.roles : ~5 rows (environ)
+DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
 	(1, 'admin', 'Admin', 'General control of the entire system', '2021-01-28 10:14:54', '2021-01-28 10:14:54'),
@@ -20411,18 +20389,14 @@ CREATE TABLE IF NOT EXISTS `role_user` (
   CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.role_user : ~8 rows (environ)
+-- Listage des données de la table rentacs.role_user : ~4 rows (environ)
+DELETE FROM `role_user`;
 /*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
 INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
 	(1, 1),
 	(2, 2),
 	(3, 3),
-	(10, 3),
-	(11, 3),
-	(12, 3),
-	(13, 3),
-	(14, 3),
-	(4, 4);
+	(10, 3);
 /*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. sales
@@ -20453,12 +20427,13 @@ CREATE TABLE IF NOT EXISTS `sales` (
   KEY `Sale User` (`user_id`),
   CONSTRAINT `Sale Customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Sale User` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.sales : ~0 rows (environ)
+-- Listage des données de la table rentacs.sales : ~1 rows (environ)
+DELETE FROM `sales`;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
 INSERT INTO `sales` (`id`, `reference_no`, `booking_reference`, `user_id`, `customer_id`, `total_qty`, `tax`, `total_tax`, `total_price`, `grand_total`, `status`, `payment_status`, `document`, `paid_amount`, `paid_by`, `payment_note`, `note`, `staff_note`, `is_locked`, `created_at`, `updated_at`) VALUES
-	(2, '000000001', NULL, 1, 3, 1, 10, 299.7, 2997, 3296.7, 1, 3, NULL, 0, 1, NULL, NULL, NULL, 1, '2021-04-14 11:06:07', '2021-04-14 11:47:22');
+	(3, '2105278246534', NULL, 1, 3, 1, 0, 0, 1000, 1000, 1, 3, NULL, 0, 1, NULL, NULL, NULL, 1, '2021-05-27 11:31:11', '2021-05-27 12:20:22');
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. sale_details
@@ -20474,12 +20449,13 @@ CREATE TABLE IF NOT EXISTS `sale_details` (
   PRIMARY KEY (`id`),
   KEY `sale_id` (`sale_id`),
   CONSTRAINT `sale_id` FOREIGN KEY (`sale_id`) REFERENCES `sales` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.sale_details : ~1 rows (environ)
+DELETE FROM `sale_details`;
 /*!40000 ALTER TABLE `sale_details` DISABLE KEYS */;
 INSERT INTO `sale_details` (`id`, `sale_id`, `name`, `qty`, `price`, `total`, `updated_at`, `created_at`) VALUES
-	(4, 2, 'Sol House Taghazout Bay Surf', 3, 999, 2997, '2021-04-14', '2021-04-14');
+	(10, 3, 'okokokok', 10, 100, 1000, '2021-05-27', '2021-05-27');
 /*!40000 ALTER TABLE `sale_details` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. settings
@@ -20494,6 +20470,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.settings : ~34 rows (environ)
+DELETE FROM `settings`;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `name`, `val`, `type`, `created_at`, `updated_at`) VALUES
 	(11, 'app_name', 'Rentacs Tours', 'string', '2019-12-18 07:53:47', '2020-12-18 16:11:50'),
@@ -20545,6 +20522,7 @@ CREATE TABLE IF NOT EXISTS `sight_seeings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.sight_seeings : ~0 rows (environ)
+DELETE FROM `sight_seeings`;
 /*!40000 ALTER TABLE `sight_seeings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `sight_seeings` ENABLE KEYS */;
 
@@ -20559,6 +20537,7 @@ CREATE TABLE IF NOT EXISTS `sliders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.sliders : ~0 rows (environ)
+DELETE FROM `sliders`;
 /*!40000 ALTER TABLE `sliders` DISABLE KEYS */;
 /*!40000 ALTER TABLE `sliders` ENABLE KEYS */;
 
@@ -20580,6 +20559,7 @@ CREATE TABLE IF NOT EXISTS `suppliers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.suppliers : ~5 rows (environ)
+DELETE FROM `suppliers`;
 /*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
 INSERT INTO `suppliers` (`id`, `name`, `company_name`, `tax_number`, `email`, `phone_number`, `address`, `city`, `postal_code`, `country`, `created_at`, `updated_at`) VALUES
 	(3, 'admin', 'gfsd', '12', 'bebest@mail.com', '0666666666', 'gfsd', 'hgfd', 'hgf', 'hgd', '2021-01-14 14:34:43', '2021-01-19 12:13:53'),
@@ -20603,6 +20583,7 @@ CREATE TABLE IF NOT EXISTS `testimonials` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table rentacs.testimonials : ~3 rows (environ)
+DELETE FROM `testimonials`;
 /*!40000 ALTER TABLE `testimonials` DISABLE KEYS */;
 INSERT INTO `testimonials` (`id`, `name`, `job_title`, `avatar`, `content`, `status`, `created_at`, `updated_at`) VALUES
 	(10, NULL, NULL, '5ee19cf5de0ab_1591844085.jpg', NULL, 1, '2020-05-28 15:27:45', '2020-06-11 02:54:45'),
@@ -20622,6 +20603,7 @@ CREATE TABLE IF NOT EXISTS `testimonial_translations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table rentacs.testimonial_translations : ~5 rows (environ)
+DELETE FROM `testimonial_translations`;
 /*!40000 ALTER TABLE `testimonial_translations` DISABLE KEYS */;
 INSERT INTO `testimonial_translations` (`id`, `testimonial_id`, `locale`, `name`, `job_title`, `content`) VALUES
 	(3, 10, 'en', 'Kari Granleese', 'CEO Alididi', 'Really useful app to find interesting things to see do, drink and eat in new places. I’ve been using it regularly in my travels over the past few months.'),
@@ -20641,6 +20623,7 @@ CREATE TABLE IF NOT EXISTS `titles` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.titles : ~3 rows (environ)
+DELETE FROM `titles`;
 /*!40000 ALTER TABLE `titles` DISABLE KEYS */;
 INSERT INTO `titles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'Mr', '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -20668,6 +20651,7 @@ CREATE TABLE IF NOT EXISTS `travel_packages` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.travel_packages : ~2 rows (environ)
+DELETE FROM `travel_packages`;
 /*!40000 ALTER TABLE `travel_packages` DISABLE KEYS */;
 INSERT INTO `travel_packages` (`id`, `category_id`, `name`, `flight`, `hotel`, `attraction`, `phone_number`, `information`, `adult_price`, `child_price`, `infant_price`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'Casablanca', 1, 0, 0, '+212638041919', 'Casablancabrief', 999, 499, 399, 1, '2021-01-28 10:30:28', '2021-01-29 14:38:10'),
@@ -20691,20 +20675,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `customer_id_user_id` (`customer_id`),
   CONSTRAINT `customer_id_user_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table rentacs.users : ~8 rows (environ)
+-- Listage des données de la table rentacs.users : ~4 rows (environ)
+DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `password`, `delete_status`, `profile_complete_status`, `api_token`, `remember_token`, `customer_id`, `is_admin`, `created_at`, `updated_at`) VALUES
-	(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'WIo1wDOiLsWMiQVObLc5kL7Km2rl9aYtqg6Y46mRZo3QFoDPSHk0XBPlrGUA', NULL, 1, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
+	(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'TjLCL028X4laK0QL9PKXSsweR5mZLdLLObAGJOZcP9lLSFr0hs7xXTOm1kpy', NULL, 1, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
 	(2, 'agent@agent.com', '$2y$10$1.KCk1DJuYp4ZaPgLgDE0.t9Ob0zGegdWu11uKR8uT3cFJfT/6oRe', 0, 0, '', '0R82vHJuH2EMedA0yZOMPp53Nify6JwM4Xv6N16YNIHkSenT2GcH3kEj2H57', NULL, 0, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
 	(3, 'customer@customer.com', '$2y$10$liBmx5acvAXNb3O6e9tFBOU3bmNwwLlMXpRnM8UyutR9IkH1Cqcr2', 0, 0, '', NULL, NULL, 0, '2021-01-28 10:14:55', '2021-01-28 10:14:55'),
-	(4, 'first_agency@firstagency.com', '$2y$10$eyiO28RvYh.NIpwpmKuHY.V2imHUlRVvN92WY3NYs4zIQuTpDn8Cm', 1, 0, '', NULL, NULL, 0, '2021-01-28 10:14:55', '2021-03-02 22:37:57'),
-	(10, 'zakarialabib@gmail.com', '$2y$10$SmWHSt2kh.oheEoRsxNzHuR.AN4LjjP1.XlrH1nTOlvScAcVPCB4.', 1, 0, NULL, NULL, NULL, 0, '2021-02-05 11:30:32', '2021-03-02 22:38:04'),
-	(11, 'abderrahimybouhamidi@gmail.com', '$2y$10$xR.eBd8NcQdyivUrsnPvderNO3Ut08uf.IuXmU5I/h6iszR3Bzoc2', 0, 0, NULL, NULL, NULL, 0, '2021-03-01 05:22:28', '2021-03-01 05:22:28'),
-	(12, 'z@admin.com', '$2y$10$LcCoHDgDg5mNcrpAZ38MBO..wxFos6Etv8fBXwwH3exOSCWsDVDiK', 1, 0, NULL, NULL, NULL, 0, '2021-03-02 22:32:57', '2021-03-02 22:53:46'),
-	(13, 'gg@g.c', '$2y$10$jsVKqzKjKHJIlAoeTl8kbeCIVsAuYVRSFRdoGox6j8FdMuolv55zu', 0, 0, NULL, NULL, NULL, 0, '2021-03-08 16:05:57', '2021-03-08 16:05:57'),
-	(14, 'OK@ok.ok', '$2y$10$HTJuF77BPUc4GtdPvznNAOEmE68oxw/dOY1O4C9cvX8BkVO75PzW.', 0, 0, NULL, NULL, NULL, 0, '2021-04-08 14:00:50', '2021-04-08 14:00:50');
+	(10, 'zakarialabib@gmail.com', '$2y$10$SmWHSt2kh.oheEoRsxNzHuR.AN4LjjP1.XlrH1nTOlvScAcVPCB4.', 1, 0, NULL, NULL, NULL, 0, '2021-02-05 11:30:32', '2021-03-02 22:38:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Listage de la structure de la table rentacs. vats
@@ -20724,6 +20704,7 @@ CREATE TABLE IF NOT EXISTS `vats` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.vats : ~1 rows (environ)
+DELETE FROM `vats`;
 /*!40000 ALTER TABLE `vats` DISABLE KEYS */;
 INSERT INTO `vats` (`id`, `flight_vat_type`, `flight_vat_value`, `hotel_vat_type`, `hotel_vat_value`, `car_vat_type`, `car_vat_value`, `package_vat_type`, `package_vat_value`, `created_at`, `updated_at`) VALUES
 	(1, 2, 1, 2, 1, 2, 1, 2, 1, '2021-01-28 10:16:30', '2021-01-28 10:16:30');
@@ -20745,6 +20726,7 @@ CREATE TABLE IF NOT EXISTS `visa_applications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.visa_applications : ~0 rows (environ)
+DELETE FROM `visa_applications`;
 /*!40000 ALTER TABLE `visa_applications` DISABLE KEYS */;
 /*!40000 ALTER TABLE `visa_applications` ENABLE KEYS */;
 
@@ -20760,6 +20742,7 @@ CREATE TABLE IF NOT EXISTS `vouchers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.vouchers : ~4 rows (environ)
+DELETE FROM `vouchers`;
 /*!40000 ALTER TABLE `vouchers` DISABLE KEYS */;
 INSERT INTO `vouchers` (`id`, `amount`, `code`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 10000, 'C61DY', 1, '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -20781,6 +20764,7 @@ CREATE TABLE IF NOT EXISTS `wallets` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.wallets : ~4 rows (environ)
+DELETE FROM `wallets`;
 /*!40000 ALTER TABLE `wallets` DISABLE KEYS */;
 INSERT INTO `wallets` (`id`, `user_id`, `balance`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1000000000, '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -20802,6 +20786,7 @@ CREATE TABLE IF NOT EXISTS `wallet_logs` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.wallet_logs : ~5 rows (environ)
+DELETE FROM `wallet_logs`;
 /*!40000 ALTER TABLE `wallet_logs` DISABLE KEYS */;
 INSERT INTO `wallet_logs` (`id`, `user_id`, `amount`, `status`, `type_id`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1000000000, 1, 1, '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -20821,6 +20806,7 @@ CREATE TABLE IF NOT EXISTS `wallet_log_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table rentacs.wallet_log_types : ~8 rows (environ)
+DELETE FROM `wallet_log_types`;
 /*!40000 ALTER TABLE `wallet_log_types` DISABLE KEYS */;
 INSERT INTO `wallet_log_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin Wallet Credit', '2021-01-28 10:16:31', '2021-01-28 10:16:31'),
@@ -20843,7 +20829,8 @@ CREATE TABLE IF NOT EXISTS `wishlists` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table rentacs.wishlists : ~7 rows (environ)
+-- Listage des données de la table rentacs.wishlists : ~8 rows (environ)
+DELETE FROM `wishlists`;
 /*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
 INSERT INTO `wishlists` (`id`, `user_id`, `place_id`, `created_at`, `updated_at`) VALUES
 	(1, 8, 21, '2020-06-22 15:42:16', '2020-06-22 15:42:16'),

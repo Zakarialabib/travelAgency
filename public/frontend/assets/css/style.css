@@ -4549,7 +4549,7 @@ a.place__comments__reply i {
 	background: #ee5000 none repeat scroll 0 0;
 	color: #fff;
 	padding: 15px 0;
-    margin-bottom: 20px;	
+    margin: -12px 0 10px 0;
     font-weight: bold;
 	letter-spacing: 1px;
 	position: relative;
@@ -9623,6 +9623,14 @@ color: gray;
    .breadcrumbs-custom-subtitle + .breadcrumbs-custom-title {
 	margin-top: 15px;
    }
+   @media (min-width: 375px) {
+    .breadcrumbs-custom-inner {
+        padding: 30px 0 15px;
+    }
+    .breadcrumbs-custom-title{
+        font-size: 1.5em;
+    }
+    }
    @media (min-width: 576px) {
 	.breadcrumbs-custom-path {
 	 margin-left: -30px;
@@ -9635,6 +9643,12 @@ color: gray;
 	* + .breadcrumbs-custom-path {
 	 margin-top: 30px;
 	}
+    .breadcrumbs-custom-inner {
+        padding: 40px 0 20px;
+    }
+    .breadcrumbs-custom-title{
+        font-size: 1.5em;
+    }
    }
    @media (min-width: 768px) {
 	.breadcrumbs-custom {

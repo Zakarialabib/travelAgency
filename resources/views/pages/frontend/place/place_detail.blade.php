@@ -1,10 +1,24 @@
 @extends('layouts.app')
 @section('content')
+<section class="breadcrumbs-custom bg-image context-dark">
+    <div class="breadcrumbs-custom-inner">
+        <div class="container breadcrumbs-custom-container">
+            <div class="breadcrumbs-custom-main" >
+                <h1 class="breadcrumbs-custom-title"> {{ $place->name }}</h1>
+            </div>
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="{{ route('home')}}">{{__('Home')}}</a></li>
+                <li><a href="">{{__('Offers')}}</a></li>
+                <li><a href="">{{ $place->name }}</a></li>
+            </ul>
+        </div>
+    </div>
+</section> 
    <main id="main" class="site-main place-04">
     <div class="place">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6 clear-padding">
+    <div class="row package-detail">
+        <div class="container-fluid clear-padding">
+        <div class="main-content col-md-8">
           <div class="slick-sliders">
             <div class="slick-slider photoswipe" data-item="1" data-arrows="true" data-itemscroll="1" data-dots="true" data-infinite="true" data-centermode="true" data-centerPadding="0">
               @if(isset($place->gallery))
@@ -62,29 +76,6 @@
               </a>
             </div>
             <!-- .place-item__photo -->
-            <div class="place-breadcrumbs">
-              <ul class="breadcrumbs">
-                <li>
-                  <a title="{{$city->name}}" href="{{route('city_detail', $city->slug)}}">{{$city->name}}
-                  </a>
-                </li>
-                @foreach($categories as $cat)
-                <li>
-                  <a href="{{route('city_category_detail', [$city->slug, $cat->slug])}}" title="{{$cat->name}}">{{$cat->name}}
-                  </a>
-                </li>
-                @endforeach
-              </ul>
-              <!-- .place__breadcrumbs -->
-              @if(isset($place_types))
-              <div class="place__category">
-                @foreach($place_types as $type)
-                <a title="{{$type->name}}" href="#">{{$type->name}}
-                </a>
-                @endforeach
-              </div>
-              @endif
-            </div>
             <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
               <!-- Background of PhotoSwipe.It's a separate element as animating opacity is faster than rgba(). -->
               <div class="pswp__bg">
@@ -143,30 +134,34 @@
           </div>
           <!-- .place-slider -->
         </div>
-        <div class="col-md-6 clear-padding">
-          <div class="widget widget-shadows widget-reservation">
-            <h1 style="font-weight: 800;">{{$place->name}}</h1>
-            <h4 style="color: #ee5000;">{{$place->price}} DH</h4>
-            </span>
-            <div class="place__box place__box-overview">
-              <div class="place__desc">{!! $place->description !!} </div>
-              <!-- .place__desc -->
-              <div class="place__box place__box-hightlight">
-                              <div class="hightlight-grid">
-                      @foreach($amenities as $key => $item)
-                      <div class="place__amenities">
-                          <img src="{{getImageUrl($item->icon)}}" alt="{{$item->name}}"> {{$item->name}}
-                      </div>
-                      @endforeach
-                      </div>
+        <div class="col-md-4 package-detail-sidebar sidebar-wrapper clear-padding">
+        <div class="package-summary sidebar-item">
+            <h4><i class="fa fa-bookmark"></i>{{__('Package Summary')}}</h4>
+            <div class="package-summary-body">
+                <h5><i class="fa fa-heart"></i>{{__('Special Offer')}}</h5>
+                <p>{{$place->name}}</p>
+                <h5><i class="fa fa-map-marker"></i>{{__('Price')}}</h5>
+                <p><span id="package-title">{{$place->price}} DH</span></p>
+                <h5><i class="fa fa-globe"></i>{{__('Description')}}</h5>
+                <p>
+                  {!! Illuminate\Support\Str::limit($place->description, 100) !!}
+                </p>
+                <h5><i class="fa fa-globe"></i>{{__('Services')}}</h5>
+                <p>  
+                  <div class="hightlight-grid">
+                    @foreach($amenities as $key => $item)
+                    <div class="place__amenities">
+                        <img src="{{getImageUrl($item->icon)}}" alt="{{$item->name}}"> {{$item->name}}
                     </div>
+                    @endforeach
+                  </div>
+                </p>
             </div>
-          </div>
         </div>
       </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-6 col-md-6">
+          <div class="col-lg-8 col-md-8">
             <div class="package-complete-detail">
               <ul class="nav nav-tabs">
               <li class="nav-item">
@@ -364,7 +359,7 @@
             </div>
           </div>
        </div>
-       <div class="col-lg-6 col-md-6">
+       <div class="col-lg-4 col-md-4">
        <div class="sidebar-booking-box">
                 @if($place->booking_type === \App\Booking::TYPE_BOOKING_FORM)
               <aside  id="booking"  class="booking-box-body">
