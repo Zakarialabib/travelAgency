@@ -4,44 +4,28 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Booking;
 
 class CmiController extends Controller
 {
     const STORE_KEY = 'Rentacs0';
 
-
-    public function okFail(Request $request)
+    public function ok(Request $request) 
     {
-        $cmi = $this->validate($request, [
-            'okUrl' => '',
-            'amount' => '',
-            'failUrl' => '',
-            'TranType' => '',
-            'callbackUrl' => '', 
-            'shopurl' => '',
-            'currency' => '',
-            'rnd' => '',
-            'storetype' => '',
-            'hashAlgorithm' => '',
-            'lang' => '',
-            'refreshtime' => '', 
-            'clientid' => '',
-            'email' => '',
-            'BillToName' => '',
-            'BillToCompany' => '',
-            'BillToStreet1' => '',
-            'tel' => '',
-            'BillToPostalCode' => '',
-            'BillToCity' => '',
-            'BillToCountry' => '',
-            'BillToStateProv' => '',
-            'encoding' => '',
-            'oid' => '',
-            'HASH' => '',
-        ]);
+        $booking = Booking::where('reference', $request->input('ReturnOid'))->first();
+
+        if($booking) {
+
+            return view('pages.frontend.cmi.ok', compact('booking'));
+        }
 
         return redirect()->route('home');
+    }
 
+    public function fail(Request $request)
+    {
+        dd($request);
+        return redirect()->route('home');
         //return view('pages.frontend.cmi.ok-fail', compact('cmi'));
     }
 

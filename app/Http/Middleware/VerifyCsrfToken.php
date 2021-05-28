@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'https://rentacs.local/cmi/okFail',
+        'https://rentacs.local/cmi/ok',
+        'https://rentacs.local/cmi/fail',
     ];
 }
