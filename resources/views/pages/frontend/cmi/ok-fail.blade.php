@@ -20,7 +20,7 @@
 			
 			$hashval = "";					
 			foreach ($postParams as $param){				
-				$paramValue = trim(html_entity_decode($_POST[$param], ENT_QUOTES, 'UTF-8')); 
+				$paramValue = trim(html_entity_decode($cmi[$param], ENT_QUOTES, 'UTF-8')); 
 				$escapedParamValue = str_replace("|", "\\|", str_replace("\\", "\\\\", $paramValue));	
 					
 				$lowerParam = strtolower($param);
@@ -36,7 +36,7 @@
 			$calculatedHashValue = hash('sha512', $hashval);  
 			$actualHash = base64_encode (pack('H*',$calculatedHashValue));
 			
-			$retrievedHash = $_POST["HASH"];
+			$retrievedHash = $cmi["HASH"];
 			if($retrievedHash == $actualHash )	{
 				echo "<h4>HASH is successfull</h4>"  . " <br />\r\n";	
 			}else {

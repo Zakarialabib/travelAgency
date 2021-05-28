@@ -78,18 +78,6 @@
           </table>
         </div>
         <div class="col-md-6">
-          @if (! Auth::user())   
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="first_name">{{ __('First name') }}</label>
-              <input type="text" class="form-control" name="first_name" placeholder="First name">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="last_name">{{ __('Last name') }}</label>
-              <input type="text" class="form-control" name="last_name" placeholder="Last name">
-            </div>
-          </div>
-          @endif
           <div class="row">
             <div class="form-group col-md-6">
               <label for="BillToName">{{ __('Bill To Name') }}</label>
@@ -127,28 +115,6 @@
             <div class="form-group col-md-4">
               <label for="BillToPostalCode">Zip</label>
               <input type="text" class="form-control" name="BillToPostalCode">
-            </div>
-          </div>
-          @if (! Auth::user())    
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" name="email" placeholder="Email">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-          </div>
-          @endif
-          <div class="row">
-            <div class="form-group col-md-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="condition_check" required>
-                <label class="form-check-label" for="condition_check">
-                  Check me out
-                </label>
-              </div>
             </div>
           </div>
         </div>

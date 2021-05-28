@@ -143,7 +143,7 @@ Route::group([
         Route::get('/categories', 'CategoryController@search')->name('category_search');
         Route::post('/avis', 'ReviewController@create')->name('review_create')->middleware('auth');
        
-        Route::post('/bookings', 'BookingController@booking')->name('booking_submit');
+        
         Route::get('/offres/map', 'PlaceController@getListMap')->name('place_get_list_map');
         Route::get('/villes/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
         Route::get('/villes', 'CityController@search')->name('city_search');
@@ -159,6 +159,10 @@ Route::group([
         Route::get('/add-to-cart/{id}', 'BookingController@addToCart')->name('add-to-cart');
         Route::put('/update-cart', 'BookingController@update');
         Route::delete('/remove-from-cart', 'BookingController@remove')->name('remove-from-cart');
+
+        Route::post('/bookings/signin', 'BookingController@signInUser')->name('booking_user_signin');
+        Route::post('/bookings/register', 'BookingController@createUser')->name('booking_user_register');
+        Route::post('/bookings', 'BookingController@booking')->name('booking_submit');
 
      });
 
@@ -268,14 +272,14 @@ Route::group([
 
         Route::group(['prefix' => 'reservations'],function(){
 
-        Route::get('/', 'BookingController@list')->name('booking_list');
-        Route::get('/add', 'BookingController@create')->name('booking_create');
-        Route::post('/store', 'BookingController@store')->name('booking_store');
-        Route::get('/edit/{id}', 'BookingController@edit')->name('booking_edit');
-        Route::put('/update', 'BookingController@update')->name('booking_update');
-        Route::put('/', 'BookingController@updateStatus')->name('booking_update_status');
-        Route::delete('/{id}', 'BookingController@destroy')->name('booking_delete');
-          });
+            Route::get('/', 'BookingController@list')->name('booking_list');
+            Route::get('/add', 'BookingController@create')->name('booking_create');
+            Route::post('/store', 'BookingController@store')->name('booking_store');
+            Route::get('/edit/{id}', 'BookingController@edit')->name('booking_edit');
+            Route::put('/update', 'BookingController@update')->name('booking_update');
+            Route::put('/', 'BookingController@updateStatus')->name('booking_update_status');
+            Route::delete('/{id}', 'BookingController@destroy')->name('booking_delete');
+        });
           
         Route::group(['prefix' => 'achats'],function(){
         Route::get('/', 'PurchaseController@list')->name('purchase_list');

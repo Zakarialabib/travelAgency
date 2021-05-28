@@ -6,12 +6,12 @@ use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use App\Booking;
 use App\Place;
-use App\Offer;
 use App\Package;
 use App\User;
 use Carbon\Carbon;
 use nilsenj\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -87,11 +87,76 @@ class BookingController extends Controller
                 }
             
                 Toastr::success('Vous avez créé votre réservation avec succès','Success');
+
+                if(Auth::user())
+                    return view('pages.frontend.user.user_checkout', compact('booking'));
+                else
+                    return view('pages.frontend.user.user_login_register', compact('booking'));
+            }
+        }
+
+    }
+
+    public function signInUser(Request $request) {
+
+        $data = $this->validate($request, [
+            'booking_id' => '',
+            'email'      => '',
+            'password'   => '',
+        ]);
+
+        $booking = Booking::find($data['booking_id']);
+
+        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) 
+        { 
+            session (['email' => $data['email']]);
+            $booking->update(['user_id' => Auth::id()]);
+            return view('pages.frontend.user.user_checkout', compact('booking'));
+        } 
+        return view('pages.frontend.user.user_login_register', compact('booking'));
+
+    }
+
+    public function createUser(Request $request) {
+
+        $data = $this->validate($request, [
+            'booking_id' => '',
+            'last_name'   => '',
+            'first_name' => '',
+            'email'      => '',
+            'tel'      => '',
+            'address' => '',
+            'password'   => '',
+        ]);
+
+        $booking = Booking::find($data['booking_id']);
+
         
+        $user = User::create([
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        if($user)
+        {
+            $user->attachRole(3);
+    
+            $user->profile()->create([
+                'sur_name' => $data['last_name'],
+                'first_name' => $data['first_name'],
+                'phone_number' => $data['tel'],
+                'address' => $data['address'],
+            ]);
+
+            if(Auth::attempt(['email' => $user->email, 'password' => $data['password']])) 
+            {
+                session (['email' => $user->email]);
+                $booking->update(['user_id' => Auth::id()]);
                 return view('pages.frontend.user.user_checkout', compact('booking'));
             }
         }
 
+        return view('pages.frontend.user.user_login_register', compact('booking'));
     }
 
     public function cart()

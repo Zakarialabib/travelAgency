@@ -12,71 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function show() {
-        $booking = Booking::find(142);
-        return view('pages.frontend.user.user_checkout', compact('booking'));
-    }
-
     public function store(Request $request) {
 
-        $data = $this->validate($request, [
-            'booking_id' => '',
-            'first_name' => 'sometimes',
-            'last_name' => 'sometimes',
-            'email' => 'sometimes',
-            'password' => 'sometimes',
-            'condition_check' => '',
-            'okUrl' => '',
-            'amount' => '',
-            'failUrl' => '',
-            'TranType' => '',
-            'callbackUrl' => '', 
-            'shopurl' => '',
-            'currency' => '',
-            'rnd' => '',
-            'storetype' => '',
-            'hashAlgorithm' => '',
-            'lang' => '',
-            'refreshtime' => '', 
-            'clientid' => '',
-            'BillToName' => '',
-            'BillToCompany' => '',
-            'BillToStreet1' => '',
-            'tel' => '',
-            'BillToPostalCode' => '',
-            'BillToCity' => '',
-            'BillToCountry' => '',
-            'BillToStateProv' => '',
-            'encoding' => '',
-            'oid' => '',
-        ]);
+        $booking = Booking::find($request->input('booking_id'));
 
-        $user = Auth::user();
-
-        if(! $user)
-        {
-
-            $user = User::create([
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-
-            if($user)
-            {
-                $user->attachRole(3);
-        
-                $user->profile()->create([
-                    'sur_name' => $data['last_name'],
-                    'first_name' => $data['first_name'],
-                    'phone_number' => $data['tel'],
-                    'address' => $data['BillToStreet1'],
-                ]);
-            }
-    
-        }
-
-        $booking = Booking::find($data['booking_id']);
-
+        /*
         $cmi = [
             'clientid' => $data['clientid'],
             'email' => $user->email,
@@ -103,7 +43,8 @@ class CheckoutController extends Controller
             'encoding' => $data['encoding'],
             'oid' => $data['oid'],
         ];
-
+        
+        */
         /*
 
         foreach ($booking->rates as $key => $rate) {
@@ -111,7 +52,9 @@ class CheckoutController extends Controller
             $cmi["ProductCode{$count}"] = $rate->title;
             $cmi["Qty{$count}"] = $rate->pivot->quantity;
         }
-        */
+        */ 
+
+        $cmi = $request->all();
         
         return view('pages.frontend.cmi.payment', compact('cmi'));
     }

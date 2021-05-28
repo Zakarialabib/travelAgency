@@ -160,10 +160,12 @@ class UserController extends Controller
     }
 
     public function signIn(Request $request){
-        $this->validate($request, [
+        $data = $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required|string|min:6'
         ]);
+
+        dd($data);
 
         if(Auth::attempt([
             'email' => $request->get ( 'email' ),

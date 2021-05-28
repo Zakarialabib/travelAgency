@@ -46,6 +46,7 @@ class CmiController extends Controller
     public function cmiCallback(Request $request)
     {
         $data = $this->validate($request, [
+            '_TOKEN' => '',
             'okUrl' => '',
             'amount' => '',
             'failUrl' => '',

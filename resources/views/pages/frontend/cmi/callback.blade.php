@@ -1,6 +1,6 @@
 <?php
 
-	$storeKey = "TEST1234";
+	$storeKey = "Rentacs0";
 	
 	
 	$postParams = array();
