@@ -155,7 +155,8 @@ Route::group([
         Route::post('/checkout', 'CheckoutController@store')->name('checkout_store');
 
         Route::post('/cmi/callback', 'CmiController@cmiCallback')->name('cmi_callback');
-        Route::post('/cmi/okFail', 'CmiController@okFail')->name('cmi_ok_fail');
+        Route::post('/cmi/ok', 'CmiController@ok')->name('cmi_ok');
+        Route::post('/cmi/fail', 'CmiController@fail')->name('cmi_fail');
 
         Route::get('/add-to-cart/{id}', 'BookingController@addToCart')->name('add-to-cart');
         Route::put('/update-cart', 'BookingController@update');

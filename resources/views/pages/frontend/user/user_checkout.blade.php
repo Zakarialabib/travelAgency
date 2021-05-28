@@ -8,8 +8,8 @@
 
 @php
 		$orgClientId  = '600002306';
-    $orgOkUrl =  route('cmi_ok_fail');
-    $orgFailUrl = route('cmi_ok_fail');
+    $orgOkUrl =  route('cmi_ok');
+    $orgFailUrl = route('cmi_fail');
     $shopurl = route('home');
     $orgTransactionType = "PreAuth";
     $orgRnd =  microtime();
