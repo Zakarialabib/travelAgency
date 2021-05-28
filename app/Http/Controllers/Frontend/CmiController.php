@@ -40,13 +40,14 @@ class CmiController extends Controller
             'HASH' => '',
         ]);
 
-        return view('pages.frontend.cmi.ok-fail', compact('cmi'));
+        return redirect()->route('home');
+
+        //return view('pages.frontend.cmi.ok-fail', compact('cmi'));
     }
 
     public function cmiCallback(Request $request)
     {
         $data = $this->validate($request, [
-            '_TOKEN' => '',
             'okUrl' => '',
             'amount' => '',
             'failUrl' => '',
@@ -96,9 +97,9 @@ class CmiController extends Controller
         $hach = "";
         $hashval = "";					
         foreach ($postParams as $param) {				
-            $paramValue = html_entity_decode(preg_replace("/\n$/","",$_POST[$param]), ENT_QUOTES, 'UTF-8'); 
+            $paramValue = html_entity_decode(preg_replace("/\n$/","",$postParams[$param]), ENT_QUOTES, 'UTF-8'); 
         
-            $hach = $hach . "(!".$param."!:!".$_POST[$param]."!)";
+            $hach = $hach . "(!".$param."!:!".$postParams[$param]."!)";
             $escapedParamValue = str_replace("|", "\\|", str_replace("\\", "\\\\", $paramValue));	
             
             $lowerParam = strtolower($param);

@@ -14,12 +14,38 @@ class CheckoutController extends Controller
 {
     public function store(Request $request) {
 
-        $booking = Booking::find($request->input('booking_id'));
+        $data = $this->validate($request, [
+            'booking_id' => '',
+            'email' => 'sometimes',
+            'password' => 'sometimes',
+            'okUrl' => '',
+            'amount' => '',
+            'failUrl' => '',
+            'TranType' => '',
+            'callbackUrl' => '', 
+            'shopurl' => '',
+            'currency' => '',
+            'rnd' => '',
+            'storetype' => '',
+            'hashAlgorithm' => '',
+            'lang' => '',
+            'refreshtime' => '', 
+            'clientid' => '',
+            'BillToName' => '',
+            'BillToCompany' => '',
+            'BillToStreet1' => '',
+            'tel' => '',
+            'BillToPostalCode' => '',
+            'BillToCity' => '',
+            'BillToCountry' => '',
+            'BillToStateProv' => '',
+            'encoding' => '',
+            'oid' => '',
+        ]);        
 
-        /*
         $cmi = [
             'clientid' => $data['clientid'],
-            'email' => $user->email,
+            'email' => Auth::user()->email,
             'okUrl' => $data['okUrl'],
             'amount' => $data['amount'],
             'failUrl' => $data['failUrl'],
@@ -43,18 +69,15 @@ class CheckoutController extends Controller
             'encoding' => $data['encoding'],
             'oid' => $data['oid'],
         ];
-        
-        */
-        /*
 
+        /*
+        $booking = Booking::find($data['booking_id']);
         foreach ($booking->rates as $key => $rate) {
             $count = $key + 1;
             $cmi["ProductCode{$count}"] = $rate->title;
             $cmi["Qty{$count}"] = $rate->pivot->quantity;
         }
         */ 
-
-        $cmi = $request->all();
         
         return view('pages.frontend.cmi.payment', compact('cmi'));
     }
