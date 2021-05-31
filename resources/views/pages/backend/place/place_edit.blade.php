@@ -132,16 +132,6 @@
                                             </select>
                                         </div>
                                     </div>
-                        
-                                    <div class="form-group">
-                                        <label for="place_address">{{__('Place Address')}}: *</label>
-                                        <input type="text" class="form-control" id="place_address" name="address" value="{{$place->address}}" placeholder="Full Address" autocomplete="off" required>
-                                        <input type="hidden" id="place_lat" name="lat" value="{{$place->lat}}">
-                                        <input type="hidden" id="place_lng" name="lng" value="{{$place->lng}}">
-                                    </div>
-                        
-                                    {{--<input type="text" id="pac-input" class="form-control" value="{{$place->address}}" placeholder="Search address..." autocomplete="off">--}}
-                                    <div id="map"></div>
                                 </div>
                         
                                 <div id="itinerary">
@@ -243,5 +233,4 @@
 @push('scripts')
 <script src="{{asset('admin/js/page_place_create.js')}}"></script>
 <script src="{{asset('admin/js/page_post.js')}}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-2mhVoLX7oIOgRQ-6bxlJt4TF5k0xhWc&libraries=places&callback=placeMap"></script>
 @endpush

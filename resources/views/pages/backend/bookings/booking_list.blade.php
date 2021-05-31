@@ -21,6 +21,7 @@
                                     <th >{{__('Booking For')}}</th>
                                     <th >{{__('Booking at')}}</th>
                                     <th >{{__('Status')}}</th>
+                                    <th >{{__('Payment')}}</th>
                                     <th >{{__('Actions')}}</th>
                                 </tr>
                                 </thead>
@@ -58,6 +59,13 @@
                                         <span class="status-approved">{{__('Approved')}}</span>
                                     @else
                                         <span class="status-cancel">{{__('Cancel')}}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($booking->payment_status === \App\Booking::STATUS_PAID)
+                                        <span class="status-approved">{{__('Paid')}}</span>
+                                    @else
+                                        <span class="status-pending">{{__('Unpaid')}}</span>
                                     @endif
                                 </td>
                                 <td>

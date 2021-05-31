@@ -12,10 +12,12 @@ class CmiController extends Controller
 
     public function ok(Request $request) 
     {
+        dd($request);
         $booking = Booking::where('reference', $request->input('ReturnOid'))->first();
 
-        if($booking) {
-
+        if($booking) 
+        {
+            $booking->update(['payment_status' => 1]);
             return view('pages.frontend.cmi.ok', compact('booking'));
         }
 
@@ -24,7 +26,7 @@ class CmiController extends Controller
 
     public function fail(Request $request)
     {
-        dd($request);
+    
         return redirect()->route('home');
         //return view('pages.frontend.cmi.ok-fail', compact('cmi'));
     }

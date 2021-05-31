@@ -141,21 +141,20 @@ class UserController extends Controller
             'photo'         => array_get($data,'photo',''),
         ]);
 
-        if($profile AND $user){
+        $wallet = Wallet::create([
+            'user_id' => $user->id,
+            'balance' => 0
+        ]);
+
+
+        if($user && $profile && $wallet){
             Toastr::success('Nouvelle inscription');
         }
         else{
             Toastr::error('Erreur lors de la nouvelle inscription');
         }
 
-        if($user->hasRole('agent') || $user->hasRole('admin')){
-             Wallet::create([
-                 'user_id' => $user->id,
-                 'balance' => 0
-             ]);
-        }
-
-        return back();
+              return back();
 
     }
 
