@@ -10,6 +10,7 @@ use App\User;
 use App\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use nilsenj\Toastr\Facades\Toastr;
 
@@ -43,8 +44,11 @@ class PurchaseController extends Controller
         $purchases = Purchase::all();
         $suppliers = Supplier::all();
         $users = User::all();
+
+        $reference = Carbon::now()->format('ymd') . mt_rand(1000000, 9999999);
           
         return view('pages.backend.purchase.purchase_create', [
+            'reference_no' => $reference,
             'purchases' => $purchases,
             'suppliers' => $suppliers,
             'users' => $users,
@@ -185,7 +189,8 @@ class PurchaseController extends Controller
                 "paid_amount" => "",
                 "note" => "",
                 "payment_note" => "",
-                "staff_note" => ""
+                "staff_note" => "",
+                "is_locked" => ""
             ]);
 
             $purchase = Purchase::find($id);

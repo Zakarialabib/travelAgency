@@ -2,14 +2,15 @@ $(function() {
     
     setSubTotal();
 
-    $('#add_sale_details').on('click', function() {
+    $('#add_details').on('click', function() {
         duplicateTableRow();
     });
 
     $(document).on('click', '.delete-row', function() {
-        if($('#sale_details').find('tr').length > 2)
+        if($('#details_table').find('tr').length > 2) {
             removeTableRow($(this));
             setSubTotal();
+        }
     });
 
     $(document).on('change keyup', '.qty', function() {
@@ -112,13 +113,13 @@ function setItemTotal(element, total) {
 }
 
 function duplicateTableRow() {
-    let tr = $(`#sale_details`).find('tr:last').clone();
+    let tr = $(`#details_table`).find('tr:last').clone();
     tr.children('td').first('td').text(parseInt(tr.first('td').text()) + 1);
     tr.find('input[name="name[]"]').val('');
     tr.find('input[name="qty[]"]').val('');
     tr.find('input[name="price[]"]').val('');
     tr.find('input[name="total[]"]').val('');
-    $(`#sale_details`).append(tr);
+    $(`#details_table`).append(tr);
 }
 
 function removeTableRow(element) {

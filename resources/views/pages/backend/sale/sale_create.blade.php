@@ -20,7 +20,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label> {{__('Reference no')}} *</label>
-                                    <input type="text" name="reference_no" id="reference_no" class="form-control" value="{{$reference_no}}" />
+                                        <input type="text" name="reference_no" id="reference_no" class="form-control" value="{{$reference_no}}" />
                                     @if ($booking)    
                                     <input type="hidden" name="booking_reference" value="{{$booking->reference}}" />
                                     @endif
@@ -57,7 +57,7 @@
                         
                         <div class="row clearfix">
                             <div class="col-md-12">
-                                <table class="table table-bordered table-hover" id="sale_details">
+                                <table class="table table-bordered table-hover" id="details_table">
                                     <thead>
                                         <tr>
                                             <th class="text-center"> # </th>
@@ -65,7 +65,7 @@
                                             <th class="text-center"> {{__('Qty')}} </th>
                                             <th class="text-center"> {{__('Price')}} </th>
                                             <th class="text-center"> {{__('Total')}} </th>
-                                            <th class="text-center"> </th>
+                                            <th class="text-center"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-12">
-                                <a id="add_sale_details" class="btn btn-primary text-white pull-left">{{__('Add')}}</a>
+                                <a id="add_details" class="btn btn-primary text-white pull-left">{{__('Add')}}</a>
                             </div>
                         </div>
                         <div class="row clearfix" style="margin-top:20px">

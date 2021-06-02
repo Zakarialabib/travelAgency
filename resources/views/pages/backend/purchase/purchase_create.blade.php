@@ -11,7 +11,7 @@
     
     <div class="row">
         <div class="col-md-12 bg-white"> 
-            <form method="post" action="{{ route('purchase_create') }}" class="form-horizontal" role="form" enctype="multipart/form-data">
+            <form method="post" action="{{ route('purchase_create') }}" class="form-horizontal" id="form" enctype="multipart/form-data">
                 @csrf
                   <div class="row mb-2">
                             <div class="col-md-12 col-sm-12">
@@ -20,7 +20,7 @@
                                      <div class="col-md-4">
                                          <div class="form-group">
                                              <label> {{__('Reference no')}} *</label>
-                                                <input type="text" name="reference_no" id="reference_no" class="form-control" />
+                                                <input type="text" name="reference_no" id="reference_no" class="form-control" value="{{$reference_no}}" />
                                                 <input type="hidden" name="is_locked" value="0" />
                                          </div>
                                      </div>
@@ -47,33 +47,35 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-md-12">
-                                      <table class="table table-bordered table-hover" id="tab_logic">
+                                      <table class="table table-bordered table-hover" id="details_table">
                                         <thead>
                                           <tr>
-                                            <th class="text-center"> # </th>
-                                            <th class="text-center"> {{__('Product')}} </th>
-                                            <th class="text-center"> {{__('Qty')}} </th>
-                                            <th class="text-center"> {{__('Prix')}} </th>
-                                            <th class="text-center"> {{__('Total')}} </th>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center">{{__('Product')}}</th>
+                                            <th class="text-center">{{__('Qty')}}</th>
+                                            <th class="text-center">{{__('Price')}}</th>
+                                            <th class="text-center">{{__('Total')}}</th>
+                                            <th></th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <tr id='addr0'>
+                                          <tr>
                                             <td>1</td>
                                             <td><input type="text" name='name[]'  placeholder="{{__('Enter Product Name')}}" class="form-control"/></td>
                                             <td><input type="number" name='qty[]' placeholder="{{__('Enter Qty')}}" class="form-control qty" step="0" min="0"/></td>
-                                            <td><input type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control prix"  step="0.00" min="0"/></td>
+                                            <td><input type="number" name='price[]' placeholder="{{__('Enter Unit Price')}}" class="form-control price"  step="0.00" min="0"/></td>
                                             <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly/></td>
+                                            <td>
+                                                <a class="delete-row">X</a>
+                                            </td>
                                           </tr>
-                                          <tr id='addr1'></tr>
                                         </tbody>
                                       </table>
                                     </div>
                                   </div>
                                   <div class="row clearfix">
                                     <div class="col-md-12">
-                                      <a id="add_row" class="btn btn-primary text-white pull-left">{{__('Add Row')}}</a>
-                                      <a id='delete_row' class="pull-right text-white btn btn-primary">{{__('Delete Row')}}</a>
+                                        <a id="add_details" class="btn btn-primary text-white pull-left">{{__('Add')}}</a>
                                     </div>
                                   </div>
                                   <div class="row clearfix" style="margin-top:20px">
@@ -208,30 +210,5 @@
 
 
 @push('scripts')
-<script src="{{asset('admin/js/page_purchase_create.js')}}"></script>
-<script>
-$('#js-validate-btn').click(function(event){
-    event.preventDefault();
-    $('input[name="is_locked"]').val(1);
-    swal({
-        title: "Validation success",
-        text: "purchase validated successfully",
-        icon: "success",
-    });
-});
-
-$( "#js-save" ).click(function(event) {
-    event.preventDefault();
-    if($('input[name="is_locked"]').val() == 0) {
-        swal({
-            title: "Validation",
-            text: "purchase need validation",
-            icon: "error",
-        });
-    } else {
-        $( "#form" ).submit();
-    }
-});
-
-</script>
+<script src="{{asset('admin/js/page_purchase.js')}}"></script>
 @endpush
