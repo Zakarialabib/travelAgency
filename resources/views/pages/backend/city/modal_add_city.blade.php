@@ -85,15 +85,6 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="city_currency">{{__('Location')}}:</label>
-                                    <input type="hidden" class="form-control" id="city_lat" name="lat">
-                                    <input type="hidden" class="form-control" id="city_lng" name="lng">
-                                    <input type="text" id="pac-input" class="form-control" name="address" placeholder="{{__('Search city location...')}}" required>
-                                    <div id="map"></div>
-                                </div>
-                            </div>
 
                             <div class="row">
                                 <div class="col-md-12">

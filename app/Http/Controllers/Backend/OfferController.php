@@ -74,7 +74,7 @@ class OfferController extends Controller
         $request['slug'] = getSlug($request, 'name');
         $request['user_id'] = Auth::id();
 
-        $rules = [
+        $rule_factory = RuleFactory::make([
             'user_id' => '',
             '%name%' => 'required',
             '%description%' => 'required',
@@ -87,11 +87,8 @@ class OfferController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ];
-
-        $rule_factory = RuleFactory::make($rules);
-
-        $data = $this->validate($request, $rule_factory);
+            ]);
+            $data = $this->validate($request, $rule_factory);
 
         //dd($data);
 
@@ -141,7 +138,7 @@ class OfferController extends Controller
     {
         $request['slug'] = getSlug($request, 'name');
         
-        $rules = [
+        $rule_factory = RuleFactory::make([
             'user_id' => '',
             '%name%' => 'required',
             '%description%' => 'required',
@@ -154,11 +151,10 @@ class OfferController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ];
-
-        $rule_factory = RuleFactory::make($rules);
+            ]);
 
         $data = $this->validate($request, $rule_factory);
+    
 
         if (!isset($data['itinerary'])) {
             $data['itinerary'] = null;

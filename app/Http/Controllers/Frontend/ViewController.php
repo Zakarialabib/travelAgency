@@ -15,6 +15,7 @@ use App\TravelPackage;
 use App\Amenities;
 use App\Category;
 use App\City;
+use App\Slider;
 use App\Country;
 use App\Place;
 use App\PlaceType;
@@ -80,13 +81,15 @@ class ViewController extends Controller
             ->limit(5)
             ->get();
 
+            $sliders = Slider::all();
+
             $categories = Category::query()
             ->where('categories.type', Category::TYPE_OFFER)
             //->orWhere('categories.type', Category::TYPE_PLACE)
             ->limit(5)
             ->get();
 
-        return view('pages.frontend.home',compact('blog_posts','places','categories'));
+        return view('pages.frontend.home',compact('blog_posts','places','sliders','categories'));
 
     }
 
@@ -112,7 +115,6 @@ class ViewController extends Controller
         ->withCount('reviews')
         ->with('avgReview')
         ->withCount('wishList')
-        ->orWhere('address', 'like', "%{$keyword}%")
         ->whereTranslationLike('name', "%{$keyword}%")
         ->where('status', Place::STATUS_ACTIVE);
 
@@ -212,7 +214,6 @@ class ViewController extends Controller
             ->with('place_types')
             ->with('avgReview')
             ->withCount('wishList')
-            ->orWhere('address', 'like', "%{$keyword}%")
             ->whereTranslationLike('name', "%{$keyword}%")
             ->where('status', Place::STATUS_ACTIVE);
 
@@ -331,7 +332,6 @@ class ViewController extends Controller
                 return $query->select('id', 'name', 'slug');
             }])
             ->whereTranslationLike('name', "%{$keyword}%")
-            ->orWhere('address', 'like', "%{$keyword}%")
             ->where('status', Place::STATUS_ACTIVE);
 
         if ($category_id) {
@@ -342,7 +342,7 @@ class ViewController extends Controller
             $places->where('city_id', $city_id);
         }
 
-        $places = $places->get(['id', 'city_id', 'name', 'slug', 'address']);
+        $places = $places->get(['id', 'city_id', 'name', 'slug']);
 
         $html = '<ul class="custom-scrollbar">';
         foreach ($places as $place):

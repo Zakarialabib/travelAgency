@@ -80,31 +80,24 @@ class PlaceController extends Controller
         $cities = $this->city->getListByCountry($country_id);
         $amenities = $this->amenities->getListAll();
 
-        $place_types = Category::query()
-            ->with('place_type')
-            ->get();
 
-        return view('pages.backend.place.place_create', compact('countries', 'cities', 'categories', 'place_types', 'amenities', 'place'));
+        return view('pages.backend.place.place_create', compact('countries', 'cities', 'categories', 'amenities', 'place'));
     }
 
     public function store(Request $request)
     {
         $request['slug'] = getSlug($request, 'name');
 
-        $rules = [
+        $rule_factory = RuleFactory::make([
             'user_id' => '',
             'country_id' => '',
             'city_id' => '',
             'category' => '',
-            'place_type' => '',
             '%name%' => '',
             'slug' => '',
             '%description%' => '',
             'price' => '',
             'amenities' => '',
-            'address' => '',
-            'lat' => '',
-            'lng' => '',
             'gallery' => '',
             'video' => '',
             'booking_type' => '',
@@ -113,9 +106,7 @@ class PlaceController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ];
-
-        $rule_factory = RuleFactory::make($rules);
+            ]);
 
         $data = $this->validate($request, $rule_factory);
 
@@ -164,11 +155,8 @@ class PlaceController extends Controller
         $cities = $this->city->getListByCountry($country_id);
         $amenities = $this->amenities->getListAll();
 
-        $place_types = Category::query()
-            ->with('place_type')
-            ->get();
 
-        return view('pages.backend.place.place_edit',compact('countries', 'cities', 'categories', 'place_types', 'amenities', 'place'));
+        return view('pages.backend.place.place_edit',compact('countries', 'cities', 'categories', 'amenities', 'place'));
     }
 
 
@@ -179,20 +167,16 @@ class PlaceController extends Controller
 
         $request['slug'] = getSlug($request, 'name');
         
-        $rules = [
+        $rule_factory = RuleFactory::make([
 
             'country_id' => '',
             'city_id' => '',
             'category' => '',
-            'place_type' => '',
             '%name%' => '',
             '%description%' => '',
             'slug' => '',
             'price' => '',
             'amenities' => '',
-            'address' => '',
-            'lat' => '',
-            'lng' => '',
             'gallery' => '',
             'video' => '',
             'booking_type' => '',
@@ -201,9 +185,8 @@ class PlaceController extends Controller
             'seo_title' => '',
             'seo_description' => '',
             'itinerary' => '',
-        ];
+            ]);
 
-        $rule_factory = RuleFactory::make($rules);
 
         $data = $this->validate($request, $rule_factory);
 

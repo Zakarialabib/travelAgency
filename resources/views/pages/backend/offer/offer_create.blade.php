@@ -42,7 +42,7 @@
                                     <label for="offer_description">Description
                                         <small>({{ $language->code }})</small>
                                         : *</label>
-                                    <textarea type="text" class="form-control" id="ckeditor" name="offer_description"
+                                    <textarea type="text" class="form-control" id="ckeditor"
                                         required name="{{ $language->code }}[description]" rows="6"
                                         {{ $index !== 0 ?: "required" }}></textarea>
                                 </div>

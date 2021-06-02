@@ -9,7 +9,7 @@
         </div>
         <div class="title_right">
             <div class="pull-right">
-                <button class="btn btn-primary" id="btn_add_place_type">{{__('Add Activity')}}</button>
+                <button class="btn btn-primary" id="btn_add_place_type">{{__('Add Activity Type')}}</button>
             </div>
         </div>
     </div>

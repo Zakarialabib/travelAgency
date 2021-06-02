@@ -51,7 +51,8 @@
                                         <input type="text" class="form-control" id="category_priority" name="priority">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                            @endif
+                             {{--   <div class="col-md-6">
                                       <div class="form-group">
                                             <p><strong>{{__('Color')}} :</strong></p>
                                             <div class="input-group demo2">
@@ -61,16 +62,15 @@
                                       </div>
                                 </div>
                              </div>
-                             {{--
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p><strong>{{__('Icon Marker')}}:</strong></p>
-                                        <img id="preview_icon" src="https://via.placeholder.com/100x100?text=icon" style="width:60px;height:60px;object-fit:cover;margin-bottom:10px">
-                                        <input type="file" class="form-control" id="icon_map_marker" name="icon_map_marker">
-                                    </div>
+                               --}}
+                           
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p><strong>{{__('Image')}}:</strong></p>
+                                    <img id="preview_image" src="https://via.placeholder.com/100x100?text=icon" style="width:60px;height:60px;object-fit:cover;margin-bottom:10px">
+                                    <input type="file" class="form-control" id="image" name="image">
                                 </div>
-                            --}}
-                            @endif
+                            </div>
 
                             <div class="row mt-2">
                                 <div class="col-md-12">

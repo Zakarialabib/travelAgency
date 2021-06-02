@@ -182,12 +182,13 @@ function previewUploadImage(input, element_id) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
+$('#ckeditor').each(function () {
     //CKEDITOR.replace( 'ckeditor');
     CKEDITOR.replace( 'ckeditor',{
         filebrowserUploadUrl: "{{route('uploadImages', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });
+});
 
 $('#seo_title').keyup(function() {    
     var characterCount = $(this).val().length,

@@ -1,3 +1,6 @@
+(function ($) {
+  'use strict';
+
 $(document).on("click", ".place_type_edit", function () {
     let cat_id = $(this).attr('data-catid');
     let place_type_id = $(this).attr('data-id');
@@ -43,3 +46,6 @@ $('#btn_add_place_type').click(function () {
     $('#category_id').val(selected_category_id);
     $('#modal_add_place_type').modal('show');
 });
+
+
+})(jQuery);

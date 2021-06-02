@@ -29,7 +29,7 @@
                         @foreach($amenities as $item)
                             <tr>
                                 <td>{{$item->id}}</td>
-                                <td><img class="amenities_icon" src="{{getImageUrl($item->icon)}}" alt="Amenities icon"></td>
+                                <td><img class="amenities_icon" src="{{getImageUrl($item->icon)}}" class="height:70px" alt="Amenities icon"></td>
                                 <td>{{$item->name}}</td>
                                 <td class="golo-flex action">
                                 <div class="btn-group row">

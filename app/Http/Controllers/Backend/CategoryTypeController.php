@@ -65,24 +65,11 @@ class CategoryTypeController extends Controller
         $rule_factory = RuleFactory::make([
             'category_id' => 'required',
             '%name%' => '',
- /*            'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
-            'icon' => 'mimes:jpeg,jpg,png,gif,svg|max:10000', */
             'color' => '',
         ]);
         $data = $this->validate($request, $rule_factory);
     
-    /*     if ($request->hasFile('image')) {
-            $icon = $request->file('image');
-            $file_name = $this->uploadImage($icon, '');
-            $data['image'] = $file_name;
-        }
 
-        if ($request->hasFile('icon')) {
-            $icon = $request->file('icon');
-            $file_name = $this->uploadImage($icon, '');
-            $data['icon'] = $file_name;
-        } */
-        
         $model = new CategoryType();
         $model->fill($data)->save();
 

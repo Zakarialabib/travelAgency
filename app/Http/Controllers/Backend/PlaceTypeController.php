@@ -45,7 +45,7 @@ class PlaceTypeController extends Controller
     public function store(Request $request)
     {
         $categories = Category::query()
-        ->where('type', Category::TYPE_POST)
+        ->where('type', Category::TYPE_PLACE)
         ->where('status', Category::STATUS_ACTIVE)
         ->get();
 
@@ -59,26 +59,24 @@ class PlaceTypeController extends Controller
     }
     public function create(Request $request)
     {
-        $rules = [
+        $rule_factory = RuleFactory::make([
             'category_id' => 'required',
             '%name%' => ''
-        ];
-        $rule_factory = RuleFactory::make($rules);
+            ]);
         $data = $this->validate($request, $rule_factory);
 
         $model = new PlaceType();
         $model->fill($data)->save();
-
+        
         return back()->with('success', "Type d'activité ajoutée avec succes!");
     }
 
     public function update(Request $request)
     {
-        $rules = [
+        $rule_factory = RuleFactory::make([
             'category_id' => 'required',
             '%name%' => ''
-        ];
-        $rule_factory = RuleFactory::make($rules);
+            ]);
         $data = $this->validate($request, $rule_factory);
 
         $model = PlaceType::find($request->place_type_id);

@@ -83,19 +83,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                        
-                                        <div class="col-md-6">
-                                            <label for="name">{{__('Place type')}}: *</label>
-                                            <select class="form-control myselect" id="" name="place_type[]" multiple data-live-search="true" required>
-                                                @foreach($place_types as $cat)
-                                                    <optgroup label="{{$cat->name}}">
-                                                        @foreach($cat['place_type'] as $type)
-                                                            <option value="{{$type->id}}" {{isSelected($type->id, $place->place_type)}}>{{$type->name}}</option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                @endforeach
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                         
@@ -132,16 +119,6 @@
                                             </select>
                                         </div>
                                     </div>
-                        
-                                    <div class="form-group">
-                                        <label for="place_address">{{__('Place Address')}}: *</label>
-                                        <input type="text" class="form-control" id="place_address" name="address" value="{{$place->address}}" placeholder="Full Address" autocomplete="off" required>
-                                        <input type="hidden" id="place_lat" name="lat" value="{{$place->lat}}">
-                                        <input type="hidden" id="place_lng" name="lng" value="{{$place->lng}}">
-                                    </div>
-                        
-                                    {{--<input type="text" id="pac-input" class="form-control" value="{{$place->address}}" placeholder="Search address..." autocomplete="off">--}}
-                                    <div id="map"></div>
                                 </div>
                         
                                 <div id="itinerary">
@@ -243,5 +220,4 @@
 @push('scripts')
 <script src="{{asset('admin/js/page_place_create.js')}}"></script>
 <script src="{{asset('admin/js/page_post.js')}}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-2mhVoLX7oIOgRQ-6bxlJt4TF5k0xhWc&libraries=places&callback=placeMap"></script>
 @endpush

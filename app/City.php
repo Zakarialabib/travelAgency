@@ -17,7 +17,7 @@ class City extends Model implements TranslatableContract
     protected $fillable = [
         'country_id', 'slug',
         'thumb', 'banner', 'best_time_to_visit', 'currency', 'language', 
-        'lat', 'lng', 'seo_title', 'seo_description',
+         'seo_title', 'seo_description',
         'priority', 'status'
     ];
 
@@ -26,8 +26,6 @@ class City extends Model implements TranslatableContract
     protected $casts = [
         'country_id' => 'integer',
         'priority' => 'integer',
-        'lat' => 'double',
-        'lng' => 'double',
         'status' => 'integer',
     ];
 

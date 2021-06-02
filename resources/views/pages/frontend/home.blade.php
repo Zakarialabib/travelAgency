@@ -579,9 +579,9 @@
                 slide_counter           :   1,		//Display slide numbers
                 slide_captions          :   1,		//Slide caption (Pull from "title" in slides array)
                 slides 					:  	[		//Slideshow Images
-                    {image : 'frontend/assets/images/1.jpg', title : 'Slide 1'},
-                    {image : 'frontend/assets/images/2.jpg', title : 'Slide 2'},
-                    {image : 'frontend/assets/images/3.jpg', title : 'Slide 3'},
+                @foreach ($sliders as $slider)
+                        {image : '{{ asset('images/' . $slider->photo) }}', title : '{{ $slider->title }}' },
+                @endforeach
                 ]
             });
         });

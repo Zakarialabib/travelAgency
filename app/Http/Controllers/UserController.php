@@ -324,7 +324,6 @@ class UserController extends Controller
         $wishlists = array_column($wishlists, 'place_id');
 
         $places = Place::query()
-            ->with('place_types')
             ->withCount('reviews')
             ->with('avgReview')
             ->withCount('wishList')

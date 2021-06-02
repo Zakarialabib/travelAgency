@@ -42,14 +42,7 @@ class CityController extends Controller
         /**
          * Menu category
          */
-             $categories = Category::query()
-//            ->with('places')
-            ->where('categories.status', Category::STATUS_ACTIVE)
-            ->join('places', 'places.category', 'like', DB::raw("CONCAT('%', categories.id, '%')"))
-            ->select('categories.id as id', 'categories.name as name', 'categories.priority as priority', 'categories.slug as slug', DB::raw("count(places.category) as place_count"))
-            ->groupBy('categories.id')
-            ->orderBy('categories.priority')
-            ->get();
+       
         /**
          * Loop categories feature and its places
          */
@@ -130,7 +123,6 @@ class CityController extends Controller
 
         return view('pages.frontend.city.city_detail', [
             'city' => $city,
-            'categories' => $categories,
             'features' => $features,
             'places_by_category' => $places_by_category,
             'other_cities' => $other_cities,

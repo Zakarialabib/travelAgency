@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" style="padding: 60px;" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add place type</h4>
+                <h4 class="modal-title">{{__('Add Activity Type')}}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
 
@@ -23,7 +23,7 @@
                             </ul>
 
                             <div class="form-group">
-                                <label for="password">Category: *</label>
+                                <label for="password">{{__('Category')}}: *</label>
                                 <select class="form-control" id="category_id" name="category_id" required>
                                     @foreach($categories as $cat)
                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -35,7 +35,7 @@
                                 @foreach($languages as $index => $language)
                                     <div class="tab-pane fade show {{$index !== 0 ?: "active"}}" id="language_{{$language->code}}" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="form-group">
-                                            <label for="name">Place type name <small>({{$language->code}})</small>: *</label>
+                                            <label for="name">{{__('Place type name')}} <small>({{$language->code}})</small>: *</label>
                                             <input type="text" class="form-control" name="{{$language->code}}[name]" {{$index !== 0 ?: "required"}}>
                                         </div>
                                     </div>
