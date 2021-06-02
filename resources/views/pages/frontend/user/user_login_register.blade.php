@@ -63,7 +63,7 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="tel">{{__('Phone')}}</label>
-              <input type="tel" name="tel" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" required>
+              <input type="tel" name="tel" id="phone" class="form-control" autocomplete="off" style="width:100%" data-intl-tel-input-id="0" required>
             </div>
             <div class="form-group col-md-6">
               <label for="address">{{__('Address')}}</label>

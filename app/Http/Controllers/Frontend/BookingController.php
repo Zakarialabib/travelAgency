@@ -148,6 +148,11 @@ class BookingController extends Controller
                 'address' => $data['address'],
             ]);
 
+            $wallet = Wallet::create([
+                'user_id' => $user->id,
+                'balance' => 0
+            ]);    
+
             if(Auth::attempt(['email' => $user->email, 'password' => $data['password']])) 
             {
                 session (['email' => $user->email]);

@@ -18,7 +18,8 @@ class Booking extends Model
         'numbber_of_adult' => 'integer',
         'numbber_of_children' => 'integer',
         'type' => 'integer',
-        'status' => 'integer'
+        'status' => 'integer',
+        'payment_status' => 'integer',
     ];
 
     const TYPE_BOOKING_FORM = 1;
@@ -30,6 +31,9 @@ class Booking extends Model
     const STATUS_DEACTIVE = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_PENDING = 2;
+    
+    const STATUS_PAID = 1;
+    const STATUS_UNPAID = 0;
 
     public function user()
     {
@@ -54,6 +58,16 @@ class Booking extends Model
     public function rates()
     {
         return $this->belongsToMany(PackageRate::class, 'rate_booking', 'booking_id', 'rate_id')->withPivot('quantity');
+    }
+
+    public function scopePaid($query)
+    {
+        return $query->where('payment_status', '=', 1);
+    }
+
+    public function scopeUnpaid($query)
+    {
+        return $query->where('payment_status', '=', 0);
     }
 
 }

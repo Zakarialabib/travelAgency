@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('page-title') Welcome @endsection
-
 @section('css')
 <link rel="stylesheet" href="{{asset('frontend/assets/css/intlTelInput.min.css')}}">
 @endsection
@@ -17,7 +15,7 @@
         </div>
     </div>
   </div><!-- .page-title -->
-  <div class="container-fluid my-5">
+  <div class="mw-box my-5">
     <div class="row">
       <div class="col-md-6 mx-auto">
         <div class="row">

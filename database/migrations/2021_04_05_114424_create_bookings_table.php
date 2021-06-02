@@ -24,6 +24,7 @@ class CreateBookingsTable extends Migration {
 			$table->string('phone_number', 20)->nullable();
 			$table->string('message', 500)->nullable();
 			$table->integer('type')->nullable();
+			$table->integer('payment_status')->default(0);
 			$table->integer('status')->nullable()->default(2)->comment('status default pending: 2');
 			$table->timestamps();
 		});
