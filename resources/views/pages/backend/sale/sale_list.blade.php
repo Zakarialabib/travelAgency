@@ -145,14 +145,18 @@
                                     </div>
                                     <!-- Modal End -->
                                 </td>
+                                
                                 <td>
-                                @if(Auth::user()->is_admin === 1)
+                                @role('admin')
                                     <input data-id="{{$sale->id}}" class="js-switch toggle-class" type="checkbox" {{isChecked($sale->is_locked, 1)}}/> 
-                                @elseif($sale->is_locked)
+                                @endrole
+                                @role('agent')
+                                @if($sale->is_locked)
                                     <i class="la la-lock"></i>
                                 @else
                                     <i class="la la-lock-open"></i>
                                 @endif
+                                @endrole
                                 </td>
                                 <td>
                                     <div class="dropdown">
@@ -160,7 +164,9 @@
                                             {{ __('Actions') }}
                                           </button>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            @if(!$sale->is_locked)    
                                     <a class="dropdown-item" href="{{route('sale_edit', $sale->id)}}">{{__('Edit')}}</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Invoice::SALE_TYPE, 'id' => $sale->id])}}">{{__('Invoice')}}</a>
                                     <a class="dropdown-item" href="{{route('sale_quotation', $sale->id)}}">{{__('Quotation')}}</a>
                                     <form class="d-inline" action="{{route('return_create')}}" method="POST">
@@ -168,11 +174,13 @@
                                         <input type="hidden" name="sale_id" value="{{$sale->id}}">
                                         <button type="submit" class="dropdown-item">{{__('Return')}}</button>
                                     </form>
+                                    @role('admin')
                                     <form action="{{route('sale_delete',$sale->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="dropdown-item user_delete">{{__('Delete')}}</button>
                                     </form>
+                                    @endrole
                                   </div>
                                  </div>
                                 </td>

@@ -45,8 +45,8 @@
                                         @endphp
                                         <td>{{$booking_name}}</td>
                                     @endif
-                                    @if($booking->place)
-                                        <td><a href="{{route('place_detail', $booking['place']['slug'])}}" target="_blank">{{$booking['place']['name']}}</a></td>
+                                    @if($booking->bookable && (get_class($booking->bookable) === 'App\Place'))
+                                        <td><a href="{{route('place_detail', $booking->bookable->slug)}}" target="_blank">{{$booking->bookable->name}}</a></td>
                                     @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Package'))
                                     <td><a href="{{route('offer.show', $booking->bookable->offer->slug)}}" target="_blank">{{$booking->bookable->offer->name}}</a></td>
                                     @endif

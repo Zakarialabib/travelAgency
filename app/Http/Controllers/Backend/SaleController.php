@@ -46,12 +46,12 @@ class SaleController extends Controller
             if(Sale::where('booking_reference', $booking->reference)->count() > 0)
                 return $this->edit(Sale::where('booking_reference', $booking->reference)->first()->id);
 
-            if($booking->place_id){
+            if(get_class($booking->bookable) === 'App\Place'){
                 array_push($booking_items, new BookingItem(
-                    $booking->place->id,
-                    $booking->place->name,
+                    $booking->bookable->id,
+                    $booking->bookable->name,
                     $booking->numbber_of_adult,
-                    $booking->place->price
+                    $booking->bookable->price
                 ));
             } else if(get_class($booking->bookable) === 'App\Package') {
                 foreach ($booking->rates as $key => $rate) {

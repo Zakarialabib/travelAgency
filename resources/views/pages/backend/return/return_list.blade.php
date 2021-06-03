@@ -151,9 +151,16 @@
                                     <!-- Modal End -->
                                 </td>
                                 <td>
-                                @if($user->is_admin === 1)
+                                  @role('admin')
                                     <input data-id="{{$return->id}}" class="js-switch toggle-class" type="checkbox" {{isChecked($return->is_locked, 1)}}/> 
+                              @endrole
+                                @role('agent')
+                                @if($return->is_locked)
+                                     <i class="la la-lock"></i>
+                                @else
+                                    <i class="la la-lock-open"></i>
                                 @endif
+                                @endrole
                                 </td>
                                 <td>
                                     <div class="dropdown">
@@ -161,16 +168,18 @@
                                             {{ __('Actions') }}
                                           </button>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                       @if(!$return->is_locked)            
                                     <a class="dropdown-item" href="{{route('return_edit', $return->id)}}">{{__('Edit')}}</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Invoice::RETURN_TYPE, 'id' => $return->id])}}">{{__('Invoice')}}</a>
                                     <a class="dropdown-item" href="{{route('return_quotation', $return->id)}}">{{__('Bon de Commande')}}</a>
-                                    @if($user->is_admin === 1)
+                                    @role('admin')
                                     <form action="{{route('return_delete',$return->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="dropdown-item user_delete">{{__('Delete')}}</button>
                                     </form>
-                                    @endif
+                                    @endrole
                                   </div>    
                                 </div>
                                 </td>
