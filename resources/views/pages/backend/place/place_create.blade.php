@@ -54,7 +54,7 @@
                                                             <label for="place_description">{{ __('Description') }}
                                                                 <small>({{ $language->code }})</small>
                                                                 : *</label>
-                                                            <textarea type="text" class="form-control" id="ckeditor" 
+                                                            <textarea type="text" class="form-control" id="description" 
                                                                 required
                                                                 name="{{ $language->code }}[description]" rows="6"
                                                                 {{ $index !== 0 ?: 'required' }}></textarea>
@@ -135,11 +135,11 @@
                                         <div class="row form-group itinerary_item" id="itinerary_item_0">
                                             <div class="col-md-11">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="itinerary[0][question]"
+                                                    <input type="text" class="form-control" id="itinerary1"  name="itinerary[0][question]"
                                                         placeholder="{{ __('Enter Day') }}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea type="text" class="form-control" id="ckeditor"
+                                                    <textarea type="text" class="form-control" id="itinerary2" 
                                                         name="itinerary[0][answer]" rows="3"
                                                         placeholder="Enter Description"> </textarea>
                                                 </div>

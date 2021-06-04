@@ -182,12 +182,22 @@ function previewUploadImage(input, element_id) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-$('#ckeditor').each(function () {
-    //CKEDITOR.replace( 'ckeditor');
-    CKEDITOR.replace( 'ckeditor',{
-        filebrowserUploadUrl: "{{route('uploadImages', ['_token' => csrf_token() ])}}",
-        filebrowserUploadMethod: 'form'
-    });
+// $('#ckeditor').each(function () {
+//     //CKEDITOR.replace( 'ckeditor');
+//     CKEDITOR.replace( 'ckeditor',{
+//         filebrowserUploadUrl: "{{route('uploadImages', ['_token' => csrf_token() ])}}",
+//         filebrowserUploadMethod: 'form'
+//     });
+// });
+
+$( 'textarea').each( function() {
+
+    CKEDITOR.replace( $(this).attr('id') ,{
+               filebrowserUploadUrl: "{{route('uploadImages', ['_token' => csrf_token() ])}}",
+               filebrowserUploadMethod: 'form'
+           });
+    
+
 });
 
 $('#seo_title').keyup(function() {    
