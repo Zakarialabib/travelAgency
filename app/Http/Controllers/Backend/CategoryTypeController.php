@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\CategoryType;
-use App\User;
+use App\Models\Category;
+use App\Models\CategoryType;
+use App\Models\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 

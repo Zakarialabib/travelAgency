@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
-use App\Returns;
+use App\Models\Returns;
 use App\ReturnDetails;
-use App\Sale;
-use App\User;
+use App\Models\Sale;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;

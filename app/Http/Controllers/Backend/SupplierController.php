@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
-use App\Supplier;
-use App\User;
+use App\Models\Supplier;
+use App\Models\User;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
 

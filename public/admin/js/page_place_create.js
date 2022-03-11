@@ -26,10 +26,10 @@ $('#itinerary_addmore').click(function () {
         <div class="row form-group itinerary_item" id="itinerary_item_${itinerary_item}">
             <div class="col-md-11">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="itinerary[${itinerary_item}][question]" value="" placeholder="Titre">
+                    <input type="text" class="form-control" name="itinerary[${itinerary_item}][title]" id="itinerary[${itinerary_item}][title]" value="">
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control" id="ckeditor" name="itinerary[${itinerary_item}][answer]" placeholder="Description"></textarea>
+                    <textarea type="text" class="form-control" id="ckeditor" name="itinerary[${itinerary_item}][description]" ></textarea>
                 </div>
             </div>
             <div class="col-md-1">
@@ -43,6 +43,8 @@ $(document).on("click", ".itinerary_item_remove", function (event) {
     let id = event.currentTarget.getAttribute('id');
     $(`#itinerary_item_${id}`).remove();
 });
+
+$('#lfm').filemanager('image');
 
 
 $('#thumb').change(function () {
@@ -133,7 +135,3 @@ $('input[name=booking_type]').change(function () {
 $(function () {
     $("#place_gallery_thumbs").sortable().disableSelection();
 });
-
-
-
-

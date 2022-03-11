@@ -35,16 +35,16 @@
                                 <td>{{$purchase->id}}</td>
                                 <td>{{$purchase->supplier->company_name}}</td>
                                 <td>
-                                    @if($purchase->status == App\Purchase::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
-                                    @elseif($purchase->status == App\Purchase::STATUS_COMPLETE)<span class="status-approved">{{__('Complete')}}</span>
+                                    @if($purchase->status == App\Models\Purchase::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
+                                    @elseif($purchase->status == App\Models\Purchase::STATUS_COMPLETE)<span class="status-approved">{{__('Complete')}}</span>
                                     @endif    
                                 </td>
                                 <td>{{$purchase->grand_total}}</td>
                                 <td>
-                                    @if($purchase->payment_status == App\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
-                                    @elseif($purchase->payment_status == App\Payment::STATUS_DUE)<span class="status-due">{{__('Due')}}</span>
-                                    @elseif($purchase->payment_status == App\Payment::STATUS_PARTIAL)<span class="status-partial">{{__('Partial')}}</span>
-                                    @elseif($purchase->payment_status == App\Payment::STATUS_PAID)<span class="status-approved">{{__('Paid')}}</span>
+                                    @if($purchase->payment_status == App\Models\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
+                                    @elseif($purchase->payment_status == App\Models\Payment::STATUS_DUE)<span class="status-due">{{__('Due')}}</span>
+                                    @elseif($purchase->payment_status == App\Models\Payment::STATUS_PARTIAL)<span class="status-partial">{{__('Partial')}}</span>
+                                    @elseif($purchase->payment_status == App\Models\Payment::STATUS_PAID)<span class="status-approved">{{__('Paid')}}</span>
                                     @endif
                                 </td>
                                 <td>{{formatDate($purchase->created_at, 'H:i d/m/Y')}}</td>
@@ -68,16 +68,16 @@
                                                         <p><strong>{{__('User')}}: </strong>{{$purchase->user->profile->sur_name}}</p>
                                                         <p>
                                                             <strong>{{__('purchase Status')}}: </strong>
-                                                            @if($purchase->status== App\Purchase::STATUS_PENDING){{'Pending'}}
-                                                            @elseif($purchase->status== App\Purchase::STATUS_COMPLETE){{'Complete'}}
+                                                            @if($purchase->status== App\Models\Purchase::STATUS_PENDING){{'Pending'}}
+                                                            @elseif($purchase->status== App\Models\Purchase::STATUS_COMPLETE){{'Complete'}}
                                                             @endif
                                                         </p>
                                                         <p>
                                                             <strong>{{__('Payment Status')}}: </strong>
-                                                            @if($purchase->payment_status == App\Payment::STATUS_PENDING){{__('Pending')}}
-                                                            @elseif($purchase->payment_status == App\Payment::STATUS_DUE){{__('Due')}}
-                                                            @elseif($purchase->payment_status == App\Payment::STATUS_PARTIAL){{__('Partial')}}
-                                                            @elseif($purchase->payment_status == App\Payment::STATUS_PAID){{__('Paid')}}
+                                                            @if($purchase->payment_status == App\Models\Payment::STATUS_PENDING){{__('Pending')}}
+                                                            @elseif($purchase->payment_status == App\Models\Payment::STATUS_DUE){{__('Due')}}
+                                                            @elseif($purchase->payment_status == App\Models\Payment::STATUS_PARTIAL){{__('Partial')}}
+                                                            @elseif($purchase->payment_status == App\Models\Payment::STATUS_PAID){{__('Paid')}}
                                                             @endif
                                                         </p>
                                                         <h3>Orders Table</h3>
@@ -160,7 +160,7 @@
                                 @endrole
                                  </td>
                                 <td>
-                                    <div class="dropdown">
+                                    <div class="dropdown dropup">
                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Actions') }}
                                           </button>
@@ -168,7 +168,7 @@
                                            @if(!$purchase->is_locked)    
                                     <a class="dropdown-item" href="{{route('purchase_edit', $purchase->id)}}">{{__('Edit')}}</a>
                                      @endif
-                                    <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Invoice::PURCHASE_TYPE, 'id' => $purchase->id])}}">{{__('Invoice')}}</a>
+                                    <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Models\Invoice::PURCHASE_TYPE, 'id' => $purchase->id])}}">{{__('Invoice')}}</a>
                                     <a class="dropdown-item" href="{{route('purchase_quotation', $purchase->id)}}">{{__('Bon de Commande')}}</a>
                                         @role('admin')
                                     <form action="{{route('purchase_delete',$purchase->id)}}" method="POST">

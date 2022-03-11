@@ -150,8 +150,8 @@
                                 <tr>
                                     <td>{{$booking->reference}}</td>
                                     <td>{{$booking->pnr}}</td>
-                                    <td>{{\App\Profile::where('user_id',$booking->user_id)->first()->sur_name}}
-                                        {{\App\Profile::where('user_id',$booking->user_id)->first()->first_name}}
+                                    <td>{{\App\Models\Profile::where('user_id',$booking->user_id)->first()->sur_name}}
+                                        {{\App\Models\Profile::where('user_id',$booking->user_id)->first()->first_name}}
                                     </td>
                                     <td>{{$booking->hotel_name}}</td>
                                     <td>{{$booking->check_in_date}}</td>

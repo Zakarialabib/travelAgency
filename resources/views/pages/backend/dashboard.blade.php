@@ -568,7 +568,7 @@
                                 <tbody>
                                      @foreach($bookings as $booking)
                                      <tr>
-                                    @if($booking->type === \App\Booking::TYPE_BOOKING_FORM)
+                                    @if($booking->type === \App\Models\Booking::TYPE_BOOKING_FORM)
                                         @php
                                             $booking_name = $booking->name;
                                             $booking_email = $booking->email;
@@ -587,15 +587,15 @@
                                     @endif
                                     @if(isset($booking['place']))
                                         <td><a href="{{route('place_detail', $booking['place']['slug'])}}" target="_blank">{{$booking['place']['name']}}</a></td>
-                                    @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Package'))
+                                    @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Models\Package'))
                                     <td><a href="{{route('offer.show', $booking->bookable->offer->slug)}}" target="_blank">{{$booking->bookable->offer->name}}</a></td>
                                     @endif
                                     <td>{{$booking->date}}</td>
                                     <td>{{formatDate($booking->created_at, 'H:i d/m/Y')}}</td>
                                     <td>
-                                        @if($booking->status === \App\Booking::STATUS_PENDING)
+                                        @if($booking->status === \App\Models\Booking::STATUS_PENDING)
                                             <span class="status-pending">{{__('PENDING')}}</span>
-                                        @elseif($booking->status === \App\Booking::STATUS_ACTIVE)
+                                        @elseif($booking->status === \App\Models\Booking::STATUS_ACTIVE)
                                             <span class="status-approved">{{__('Approved')}}</span>
                                         @else
                                             <span class="status-cancel">{{__('Cancel')}}</span>

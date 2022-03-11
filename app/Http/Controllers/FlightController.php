@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FlightBooking;
-use App\Profile;
+use App\Models\Profile;
 use App\Services\AmadeusConfig;
 use App\Services\AmadeusRequestXML;
 use App\Services\AmadeusHelper;
@@ -14,7 +14,7 @@ use App\Markdown;
 use App\Markup;
 use App\Vat;
 use App\Voucher;
-use App\User;
+use App\Models\User;
 
 class FlightController extends Controller
 {

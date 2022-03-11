@@ -37,19 +37,19 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Surname</label>
+                                        <label>{{__('Surname')}}</label>
                                         <input type="text" name="customer_sur_name" required class="form-control" value="{{$profile->sur_name}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>First Name</label>
+                                        <label>{{__('First Name')}}</label>
                                         <input type="text" name="customer_first_name" required class="form-control" value="{{$profile->first_name}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Other Name</label>
+                                        <label>{{__('Other Name')}}</label>
                                         <input type="text" name="customer_other_name" required class="form-control" value="{{$profile->other_name}}"/>
                                     </div>
                                 </div>
@@ -57,19 +57,27 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Phone Number</label>
+                                        <label>{{__('Phone Number')}}</label>
                                         <input type="text" name="customer_phone_number" required class="form-control" value="{{$profile->phone_number}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Email</label>
+                                        <label>{{__('Email')}}</label>
                                         <input type="email" name="customer_email" required disabled class="form-control" value="{{$user->email}}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Address</label>
+                                        <label>{{__('Nationality')}}</label>
+                                        <input name="customer_nationality" type="text" value="{{$profile->nationality}}" class="form-control" placeholder="Nationality">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>{{__('Address')}}</label>
                                         <textarea class="form-control" name="customer_address" required placeholder="Enter your address to help use serve you better">{{$profile->address}}</textarea>
                                     </div>
                                 </div>

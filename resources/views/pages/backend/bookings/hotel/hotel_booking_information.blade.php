@@ -6,7 +6,7 @@
 
     @php
         $user = \App\User::find($booking->user_id);
-        $profile = \App\Profile::where('user_id',$booking->user_id)->first();
+        $profile = \App\Models\Profile::where('user_id',$booking->user_id)->first();
         $user['profile'] = $profile;
     @endphp
 

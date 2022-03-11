@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Booking;
-use App\Place;
-use App\Package;
-use App\User;
+use App\Models\Booking;
+use App\Models\Place;
+use App\Models\Package;
+use App\Models\User;
 use Carbon\Carbon;
 use nilsenj\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;

@@ -62,7 +62,6 @@ Route::get('/user/wishlist', 'UserController@pageWishList')->name('user_wishlist
 Route::get('/get-logged-in-user',function(){
     return App\User::findOrFail(auth()->user()->id)
         ->join('profiles','profiles.user_id','=','users.id')
-        ->join('role_user','role_user.user_id','=','users.id')
         ->first();
 });
 
@@ -97,15 +96,9 @@ Route::group([
 
         Route::group(['prefix' => '/deals'],function(){
 
-            Route::get('','ViewController@hotDeals');
-            Route::get('flight','ViewController@flightDeals');
-            Route::get('hotel','ViewController@hotelDeals');
-            Route::get('attraction','ViewController@attractionDeals');
             Route::get('details/{id}','ViewController@dealDetails');
             Route::get('booking/{id}','ViewController@dealBooking');
             Route::post('booking','TravelPackageController@bookDeal');
-            Route::get('payment-options','ViewController@dealPaymentOptions')->middleware('deals.booking.id');
-            Route::get('booking-confirmation','ViewController@dealBookingConfirmation')->middleware('payment.info','deals.booking.id');
             Route::post('calculateBookingAmount','TravelPackageController@calculateBookingAmount');
             Route::post('wallet-payment','WalletController@dealWalletPayment');
             Route::post('bank-payment','BankPaymentController@dealBankPayment');
@@ -172,7 +165,16 @@ Route::group([
     'prefix' => 'backoffice',
     'namespace' => 'Backend', 
     'middleware' => ['auth']], function(){
-        
+
+        Route::get('/users', 'UserController@index')->name('users.index');
+        Route::get('/users/show/{id}/', 'UserController@show')->name('users.show');
+        Route::get('/users/add', 'UserController@create')->name('users.create');
+        Route::post('/users/store', 'UserController@store')->name('users.store');
+        Route::get('/users/edit/{id}/', 'UserController@edit')->name('users.edit');
+        Route::patch('/users/update/{id}/', 'UserController@update')->name('users.update');
+        Route::patch('/users-update/{id}/', 'UserController@updateUser')->name('users_update');
+        Route::delete('/users/{id}/', 'UserController@destroy')->name('users.destroy');
+
         Route::get('/country', 'CountryController@list')->name('country_list');
         Route::post('/country', 'CountryController@create')->name('country_create');
         Route::put('/country', 'CountryController@update')->name('country_update');
@@ -185,29 +187,34 @@ Route::group([
         Route::delete('/city/{id}', 'CityController@destroy')->name('city_delete');
 
         Route::group(['prefix' => 'customers'],function(){
-        Route::get('/', 'CustomerController@list')->name('customer_list');
-        Route::get('/add', 'CustomerController@create')->name('customer_create_view');
-        Route::post('/', 'CustomerController@store')->name('customer_create');
-        Route::get('/edit/{id}', 'CustomerController@edit')->name('customer_edit');
-        Route::put('/update/{id}', 'CustomerController@update')->name('customer_update');
-        Route::delete('/{id}', 'CustomerController@destroy')->name('customer_delete');
+    
+            Route::get('/', 'CustomerController@list')->name('customer_list');
+            Route::get('/add', 'CustomerController@create')->name('customer_create_view');
+            Route::post('/', 'CustomerController@store')->name('customer_create');
+            Route::get('/edit/{id}', 'CustomerController@edit')->name('customer_edit');
+            Route::put('/update/{id}', 'CustomerController@update')->name('customer_update');
+            Route::delete('/{id}', 'CustomerController@destroy')->name('customer_delete');
     
         });
 
         Route::group(['prefix' => 'fournisseur'],function(){
-        Route::get('/', 'SupplierController@list')->name('supplier_list');
-        Route::get('/add', 'SupplierController@create')->name('supplier_create_view');
-        Route::post('/', 'SupplierController@store')->name('supplier_create');
-        Route::get('/edit/{id}', 'SupplierController@edit')->name('supplier_edit');
-        Route::put('/update/{id}', 'SupplierController@update')->name('supplier_update');
-        Route::delete('/{id}', 'SupplierController@destroy')->name('supplier_delete');
+
+            Route::get('/', 'SupplierController@list')->name('supplier_list');
+            Route::get('/add', 'SupplierController@create')->name('supplier_create_view');
+            Route::post('/', 'SupplierController@store')->name('supplier_create');
+            Route::get('/edit/{id}', 'SupplierController@edit')->name('supplier_edit');
+            Route::put('/update/{id}', 'SupplierController@update')->name('supplier_update');
+            Route::delete('/{id}', 'SupplierController@destroy')->name('supplier_delete');
+
       });
         
       
         Route::group(['prefix' => 'facture'], function() {
-        Route::get('create/{type}/{id}', 'InvoiceController@create')->name('invoice_create');
-        Route::get('action/{action}/{type}/{id}/{template}', 'InvoiceController@action')->name('invoice_action');
-        Route::post('send/{id}', 'InvoiceController@sendEmail')->name('invoice_send');
+        
+            Route::get('create/{type}/{id}', 'InvoiceController@create')->name('invoice_create');
+            Route::get('action/{action}/{type}/{id}/{template}', 'InvoiceController@action')->name('invoice_action');
+            Route::post('send/{id}', 'InvoiceController@sendEmail')->name('invoice_send');
+
         });
 
          // FAQ Route
@@ -281,21 +288,25 @@ Route::group([
             Route::put('/update', 'BookingController@update')->name('booking_update');
             Route::put('/', 'BookingController@updateStatus')->name('booking_update_status');
             Route::delete('/{id}', 'BookingController@destroy')->name('booking_delete');
+        
         });
           
         Route::group(['prefix' => 'achats'],function(){
-        Route::get('/', 'PurchaseController@list')->name('purchase_list');
-        Route::get('/ajax-delete-file', 'PurchaseController@deletePurchaseFile');
-        Route::get('/add', 'PurchaseController@createView')->name('purchase_create_view');
-        Route::post('/', 'PurchaseController@create')->name('purchase_create');
-        Route::get('/edit/{id}', 'PurchaseController@edit')->name('purchase_edit');
-        Route::put('/update/{id}', 'PurchaseController@update')->name('purchase_update');
-        Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
-        Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
-        Route::get('/status', 'PurchaseController@updateStatus');
+        
+            Route::get('/', 'PurchaseController@list')->name('purchase_list');
+            Route::get('/ajax-delete-file', 'PurchaseController@deletePurchaseFile');
+            Route::get('/add', 'PurchaseController@createView')->name('purchase_create_view');
+            Route::post('/', 'PurchaseController@create')->name('purchase_create');
+            Route::get('/edit/{id}', 'PurchaseController@edit')->name('purchase_edit');
+            Route::put('/update/{id}', 'PurchaseController@update')->name('purchase_update');
+            Route::delete('/{id}', 'PurchaseController@destroy')->name('purchase_delete');
+            Route::get('gen_quotation/{id}', 'PurchaseController@genQuotation')->name('purchase_quotation');
+            Route::get('/status', 'PurchaseController@updateStatus');
+            
         });
 
         Route::group(['prefix' => 'ventes'],function(){
+
             Route::get('/', 'SaleController@list')->name('sale_list');
             Route::get('/ajax-delete-file', 'SaleController@deleteSaleFile');
             Route::get('/add', 'SaleController@createView')->name('sale_create_view');
@@ -306,7 +317,8 @@ Route::group([
             Route::delete('/{id}', 'SaleController@destroy')->name('sale_delete');
             Route::get('gen_devis/{id}', 'SaleController@genQuotation')->name('sale_quotation');
             Route::get('/status', 'SaleController@updateStatus');
-            });
+            
+        });
         
         Route::group(['prefix' => 'avoirs'],function(){
     
@@ -320,13 +332,8 @@ Route::group([
             Route::delete('/{id}', 'ReturnController@destroy')->name('return_delete');
             Route::get('gen_devis/{id}', 'ReturnController@genQuotation')->name('return_quotation');
             Route::get('/status', 'ReturnController@updateStatus');
-            });
 
-        Route::get('/avis', 'TestimonialController@list')->name('testimonial_list');
-        Route::get('/testimonials/add', 'TestimonialController@pageCreate')->name('testimonial_page_add');
-        Route::get('/testimonials/edit/{id}', 'TestimonialController@pageCreate')->name('testimonial_page_edit');
-        Route::post('/testimonials', 'TestimonialController@create')->name('testimonial_action');
-        Route::put('/testimonials', 'TestimonialController@update')->name('testimonial_action');
+        });
    
         Route::get('/settings', 'SettingController@index')->name('settings');
         Route::post('/settings', 'SettingController@store')->name('setting_create');
@@ -384,21 +391,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard','BackEndViewController@dashboard')->name('dashboard');
 
     Route::group(['prefix' => 'settings'],function(){
-        Route::get('vats','BackEndViewController@vat')->name('vats');
-        Route::post('vat', 'VatController@saveVat')->name('backend-save-vat');
-        Route::get('getVat/{type}','VatController@getVat');
-        Route::get('markups', 'BackEndViewController@markupView');
-        Route::post('markup/admin', 'MarkupController@saveAdminMarkup')->name('backend-save-markup');
-        Route::get('getMarkup/{id}','MarkupController@getMarkupById');
-        Route::get('markdown', 'BackEndViewController@index');
-        Route::post('createOrUpdateMarkdown','MarkdownController@createOrUpdate');
-        Route::get('getMarkdown/{id}','MarkdownController@getMarkdownById');
+        
         Route::get('/profile', 'BackEndViewController@profile')->name('profile');
         Route::post('/updateProfile','ProfileController@updateProfileImageJs');
         Route::post('/update/user/profile','ProfileController@updateUserProfile')->name('update-profile');
         Route::post('/update/user/image','ProfileController@updateUserProfileImage')->name('update-profile-image');
         Route::post('/update/user/password','ProfileController@updateUserProfilePassword')->name('update-profile-password');
-        Route::get('visa-application-requests','BackEndViewController@visaApplicationRequests');
 
     //    Route::get('subscribers','BackEndViewController@emailSubscriptions');
   ///   Route::get('/', 'SettingController@index')->name('settings');
@@ -414,7 +412,6 @@ Route::middleware(['auth'])->group(function(){
         });
 
         Route::group(['prefix' => 'users'],function(){
-            Route::get('/', 'BackEndViewController@usersManagement')->name('users.management');
             Route::post('/add-new','UserController@addNew');
             Route::get('/delete-user/{id}','UserController@deleteUser');
             Route::post('/update-user','UserController@updateUser');

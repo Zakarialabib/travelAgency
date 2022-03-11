@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
-use App\Booking;
-use App\Place;
-use App\User;
-use App\Profile;
+use App\Models\Booking;
+use App\Models\Place;
+use App\Models\Package;
+use App\Models\User;
+use App\Models\Profile;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
+use App\Services\PortalCustomNotificationHandler;
 
 class BookingController extends Controller
 {
@@ -38,12 +40,18 @@ class BookingController extends Controller
 
     public function create(Request $request)
     {
-        $places = Place::all();
         $users = User::all();
-          
+        $booking = Booking::all();
+        $places = Place::all();
+        $packages = Package::query()
+        ->with('offer')
+        ->get();
+  
         return view('pages.backend.bookings.booking_create', [
             'places' => $places,
             'users' => $users,
+            'packages' => $packages,
+            'booking' => $booking,
         ]);
     }
 
@@ -51,40 +59,86 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
-        $places = Place::all();
         $users = User::all();
-
+      
         $request['user_id'] = Auth::id();
 
-        if ($request->date) {
-            $request['date'] = Carbon::parse($request->date);
-        }
-
         $data = $this->validate($request, [
-            'user_id' => '',
-            'place_id' => '',
             'numbber_of_adult' => '',
-            'numbber_of_children' => '',
+            'numbber_of_children' => 'sometimes',
             'date' => '',
+            'end_date' => 'sometimes',
             'name' => '',
             'email' => '',
             'phone_number' => '',
-            'price' => '',
-            'message' => '',
             'type' => '',
             'status' => '',
         ]);
+        
+        if($request->has('place_id')) {
+            $places = Place::find($request->place_id);
+        }
+        else if($request->has('package_id')) {
+            $packages = Package::find($request->package_id);
+        }
+        
+        if($places) {
 
-        $booking = new Booking();
-        $booking->fill($data);
-        $booking->save();
+            // generate refenrce number
+            $reference = Carbon::now()->format('ymd') . mt_rand(1000000, 9999999);
+
+            $booking = new Booking();
+            $booking->fill([
+                'user_id' => Auth::id() ?? NULL,
+                'reference' => $reference,
+                'numbber_of_adult' => $data['numbber_of_adult'],
+                'numbber_of_children' => $data['numbber_of_children'] ?? 0,
+                'date' => Carbon::parse($data['date']),
+                'end_date' => $data['end_date'],
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'phone_number' => $data['phone_number'],
+                'type' => $data['type'],
+            ]);
+
+            $booking->bookable()->associate($places);
+            $booking->save();
+            
+            PortalCustomNotificationHandler::bookingCreated($booking);
+            return redirect()->route('booking_list', compact('booking','places','users'));
+                
+        } else if ($request->has('package_id')){
+
+            $packages = Package::find($request->package_id);
+            // generate refenrce number
+            $reference = Carbon::now()->format('ymd') . mt_rand(1000000, 9999999);
+
+            $booking = new Booking();
+            $booking->fill([
+                'user_id' => Auth::id() ?? NULL,
+                'reference' => $reference,
+                'numbber_of_adult' => $data['numbber_of_adult'],
+                'numbber_of_children' => $data['numbber_of_children'] ?? 0,
+                'date' => Carbon::parse($data['date']),
+                'end_date' => $data['end_date'],
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'phone_number' => $data['phone_number'],
+                'type' => $data['type'],
+            ]);
+
+            $booking->bookable()->associate($packages);
+            $booking->save();
+            
+            PortalCustomNotificationHandler::bookingCreated($booking);
+
            
-        return view('pages.backend.bookings.booking_create', [
-            'booking' => $booking,
-            'places' => $places,
-            'users' => $users,
-        ]);
-    }
+            
+            return redirect()->route('booking_list', compact('booking','places','users'));
+                
+        }
+
+    }      
 
       /**
      * Show the form for editing the specified resource.
@@ -98,7 +152,10 @@ class BookingController extends Controller
         $places = Place::all();
         $users = User::all();
 
-        return view('pages.backend.bookings.booking_edit',compact('booking','users','places'));
+        $profile = \App\Models\Profile::where('user_id',$booking->user_id)->first();
+        $user['profile'] = $profile;
+
+        return view('pages.backend.bookings.booking_edit',compact('booking','profile','users','places'));
     }
 
 

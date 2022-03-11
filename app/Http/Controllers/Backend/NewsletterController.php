@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Support\Facades\Mail;
 use App\Emailsetting;
-use App\User;
-use App\Setting;
-use App\Language;
-use App\Newsletter;
+use App\Models\User;
+use App\Models\Setting;
+use App\Models\Language;
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;

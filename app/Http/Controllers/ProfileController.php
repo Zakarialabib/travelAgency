@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Role;
-use App\User;
-use App\Profile;
+use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Services\PortalCustomNotificationHandler;
@@ -35,6 +35,7 @@ class ProfileController extends Controller
             'customer_first_name'   => 'required|string|max:255',
             'customer_other_name'     => 'required|string|max:255',
             'customer_phone_number'  => 'required|digits:11',
+            'customer_nationality'     => 'required|string|max:255',
             'customer_address'       => 'required',
         ]);
 
@@ -43,6 +44,7 @@ class ProfileController extends Controller
         $profile->first_name = $r->customer_first_name;
         $profile->other_name = $r->customer_other_name;
         $profile->phone_number = $r->customer_phone_number;
+        $profile->nationality = $r->nationality;
         $profile->address = $r->customer_address;
         $update = $profile->update();
         if($update){

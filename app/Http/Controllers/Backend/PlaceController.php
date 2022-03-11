@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\City;
-use App\Country;
-use App\Amenities;
-use App\Place;
-use App\User;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\Amenities;
+use App\Models\Place;
+use App\Models\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
-use App\Purchase;
-use App\PurchaseDetails;
-use App\User;
-use App\Supplier;
+use App\Models\Purchase;
+use App\Models\PurchaseDetails;
+use App\Models\User;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\PackageType;
+use App\Models\PackageType;
 class PackageTypeTableSeeder extends Seeder
 {
     /**

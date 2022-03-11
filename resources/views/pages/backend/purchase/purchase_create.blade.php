@@ -105,8 +105,8 @@
                                         <div class="form-group">
                                             <label>{{__('Purchase Status')}} *</label>
                                             <select name="status" class="form-control">
-                                                <option value="{{App\Purchase::STATUS_COMPLETE}}">{{__('Completed')}}</option>
-                                                <option value="{{App\Purchase::STATUS_PENDING}}">{{__('Pending')}}</option>
+                                                <option value="{{App\Models\Purchase::STATUS_COMPLETE}}">{{__('Completed')}}</option>
+                                                <option value="{{App\Models\Purchase::STATUS_PENDING}}">{{__('Pending')}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -114,10 +114,10 @@
                                         <div class="form-group">
                                             <label>{{__('Payment Status')}} *</label>
                                             <select name="payment_status" class="form-control">
-                                                <option value="{{App\Payment::STATUS_PENDING}}">{{__('Pending')}}</option>
-                                                <option value="{{App\Payment::STATUS_DUE}}">{{__('Due')}}</option>
-                                                <option value="{{App\Payment::STATUS_PARTIAL}}">{{__('Partial')}}</option>
-                                                <option value="{{App\Payment::STATUS_PAID}}">{{__('Paid')}}</option>
+                                                <option value="{{App\Models\Payment::STATUS_PENDING}}">{{__('Pending')}}</option>
+                                                <option value="{{App\Models\Payment::STATUS_DUE}}">{{__('Due')}}</option>
+                                                <option value="{{App\Models\Payment::STATUS_PARTIAL}}">{{__('Partial')}}</option>
+                                                <option value="{{App\Models\Payment::STATUS_PAID}}">{{__('Paid')}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -125,10 +125,10 @@
                                             <div class="form-group">
                                                 <label>{{__('Paid By')}}</label>
                                                 <select name="paid_by" class="form-control">
-                                                    <option value="{{App\Payment::MEDIUM_CASH}}">{{__('Cash')}}</option>
-                                                    <option value="{{App\Payment::MEDIUM_CHECK}}">{{__('Cheque')}}</option>
-                                                    <option value="{{App\Payment::MEDIUM_WIRE}}">{{__('Wire')}}</option>
-                                                    <option value="{{App\Payment::MEDIUM_TRAIT}}">{{__('Trait')}}</option>
+                                                    <option value="{{App\Models\Payment::MEDIUM_CASH}}">{{__('Cash')}}</option>
+                                                    <option value="{{App\Models\Payment::MEDIUM_CHECK}}">{{__('Cheque')}}</option>
+                                                    <option value="{{App\Models\Payment::MEDIUM_WIRE}}">{{__('Wire')}}</option>
+                                                    <option value="{{App\Models\Payment::MEDIUM_TRAIT}}">{{__('Trait')}}</option>
                                                 </select>
                                             </div>
                                     </div>

@@ -1,9 +1,5 @@
 @extends('layouts.backend')
 @section('content')
-@php
-$profile = \App\Profile::where('user_id',$booking->user_id)->first();
-$user['profile'] = $profile;
-@endphp
 <div class="page-title">
         <div class="title_left">
             <h3>{{__('Edit Booking')}}</h3>
@@ -69,9 +65,9 @@ $user['profile'] = $profile;
                     <div class="col-md-6 form-group">
                     <label>{{__('Status')}}</label>
                     <select name="status"  class="form-control">
-                    <option  class="form-control" value="{{\App\Booking::STATUS_ACTIVE}}">{{__('ACTIVE')}}</option>
-                    <option  class="form-control" value="{{\App\Booking::STATUS_DEACTIVE}}">{{__('INACTIVE')}}</option>
-                    <option  class="form-control" value="{{\App\Booking::STATUS_PENDING}}">{{__('PENDING')}}</option>
+                    <option  class="form-control" value="{{\App\Models\Booking::STATUS_ACTIVE}}">{{__('ACTIVE')}}</option>
+                    <option  class="form-control" value="{{\App\Models\Booking::STATUS_DEACTIVE}}">{{__('INACTIVE')}}</option>
+                    <option  class="form-control" value="{{\App\Models\Booking::STATUS_PENDING}}">{{__('PENDING')}}</option>
                     </select>
                     </div>
                     <input type="hidden" name="type" id="type" value="1">

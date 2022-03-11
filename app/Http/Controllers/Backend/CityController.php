@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\City;
-use App\User;
-use App\Country;
+use App\Models\City;
+use App\Models\User;
+use App\Models\Country;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 

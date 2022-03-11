@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
-@section('page-title') Welcome @endsection
+@section('page-title')  {{__('ٌٌYour Cart')}}  @endsection
 
-@php
-    $checkout_title_bg = "style='background-image:url(/assets/images/img-bg-blog.png)'";
-@endphp
 @section('content')
 <main id="main" class="site-main">
   <div class="page-title page-title--small page-title--blog align-left" {!! $checkout_title_bg !!}>

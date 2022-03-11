@@ -1,13 +1,13 @@
-<div class="modal fade" id="modal_booking_detail" style="margin: 50px 0;" tabindex="-1" role="dialog" aria-labelledby="modal_booking_detail" aria-hidden="true">
+<div class="modal fade" id="modal_booking_detail" tabindex="-1" role="dialog" aria-labelledby="modal_booking_detail" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width: max-content;">
+        <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">{{__('Booking detail')}} </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
 
-            <div class="modal-body row">
-            <div class="col-6 col-lg-6 col-sm-6"> 
+            <div class="modal-body">
+            <div class="container"> 
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -39,7 +39,7 @@
                     </tbody>
                 </table>
                 </div>
-                <div class="col-6 col-lg-6 col-sm-6"> 
+                <div class="container"> 
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -57,11 +57,11 @@
                         <td id="booking_numberofchildren"></td>
                     </tr>
                     <tr>
-                        <th scope="row">Price</th>
+                        <th scope="row">{{__('Price')}}</th>
                         <td id="booking_price"></td>
                     </tr>
                     <tr>
-                        <th scope="row">Message</th>
+                        <th scope="row">{{__('Message')}}</th>
                         <td id="booking_message"></td>
                     </tr>
                     {{--<tr>--}}

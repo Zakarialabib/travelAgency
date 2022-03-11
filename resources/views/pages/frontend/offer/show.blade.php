@@ -210,7 +210,7 @@
                             <form action="{{route('booking_submit')}}" method="POST">
                                 @csrf
                                 <input type="hidden" id="package_id" name="package_id" value="{{$offer->packages->first()->id}}">
-                                <input type="hidden" name="type" value="{{\App\Booking::TYPE_BOOKING_FORM}}">
+                                <input type="hidden" name="type" value="{{\App\Models\Booking::TYPE_BOOKING_FORM}}">
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <label>{{__('Start')  }}</label>

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\City;
-use App\Offer;
-use App\User;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Offer;
+use App\Models\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -44,7 +44,7 @@
                  {{--    <li class="dropdown nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:;" id="notf_user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user"></i>
-                            <span data-href="{{ route('user-notf-count') }}" id="user-notf-count">{{ App\Notification::countRegistration() }}</span>
+                            <span data-href="{{ route('user-notf-count') }}" id="user-notf-count">{{ App\Models\Notification::countRegistration() }}</span>
                         </a>
                             <ul class="dropdown-menu" style="width:300px;">
                             <div class="dropdownmenu-wrapper" data-href="{{ route('user-notf-show') }}" id="user-notf-show">
@@ -53,7 +53,7 @@
                     <li class="dropdown nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:;" id="notf_booking" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
-                            <span data-href="{{ route('booking-notf-count') }}" id="booking-notf-count">{{ App\Notification::countBooking() }}</span>
+                            <span data-href="{{ route('booking-notf-count') }}" id="booking-notf-count">{{ App\Models\Notification::countBooking() }}</span>
                         </a>
                             <ul class="dropdown-menu" style="width:300px;">
                             <div class="dropdownmenu-wrapper" data-href="{{ route('booking-notf-show') }}" id="booking-notf-show">
@@ -63,7 +63,7 @@
                     
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <span class="mr-1">{{__('Hello')}},<span class="user-name text-bold-700">{{\App\Profile::where('user_id',auth()->user()->id)->first()->first_name}}</span></span>
+                            <span class="mr-1">{{__('Hello')}},<span class="user-name text-bold-700">{{\App\Models\Profile::where('user_id',auth()->user()->id)->first()->first_name}}</span></span>
                             <span class="avatar avatar-online">
                                 <img src="{{asset('backend/app-assets/images/logo/logo.png')}}" alt="avatar"><i></i>
                             </span></a>

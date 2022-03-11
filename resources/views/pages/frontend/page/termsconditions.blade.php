@@ -1,7 +1,5 @@
 @extends('layouts.app')
-@php
-$about_title_bg = "style='background-image:url(/assets/images/about-01.png)'";
-@endphp
+@section('page-title')  {{__('Terms and Conditions')}}  @endsection
 
 @section('content')
 <main id="main" class="site-main" >

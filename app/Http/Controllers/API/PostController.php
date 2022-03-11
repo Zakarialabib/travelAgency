@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Post;
+use App\Models\Post;
 
 class PostController extends Controller
 {

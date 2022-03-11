@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade as PDF;
-use App\Sale;
-use App\SaleDetails;
-use App\User;
-use App\Supplier;
+use App\Models\Sale;
+use App\Models\SaleDetails;
+use App\Models\User;
+use App\Models\Supplier;
 use Carbon\Carbon;
-use App\Booking;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
 use Illuminate\Database\QueryException;
@@ -46,14 +46,14 @@ class SaleController extends Controller
             if(Sale::where('booking_reference', $booking->reference)->count() > 0)
                 return $this->edit(Sale::where('booking_reference', $booking->reference)->first()->id);
 
-            if(get_class($booking->bookable) === 'App\Place'){
+            if(get_class($booking->bookable) === 'App\Models\Place'){
                 array_push($booking_items, new BookingItem(
                     $booking->bookable->id,
                     $booking->bookable->name,
                     $booking->numbber_of_adult,
                     $booking->bookable->price
                 ));
-            } else if(get_class($booking->bookable) === 'App\Package') {
+            } else if(get_class($booking->bookable) === 'App\Models\Package') {
                 foreach ($booking->rates as $key => $rate) {
                     array_push($booking_items, new BookingItem(
                         $rate->id,
@@ -62,7 +62,7 @@ class SaleController extends Controller
                         $rate->price
                     ));
                 }
-            } else if(get_class($booking->bookable) === 'App\Offer') {
+            } else if(get_class($booking->bookable) === 'App\Models\Offer') {
                 array_push($booking_items, new BookingItem(
                     $booking->bookable->id,
                     $booking->bookable->name,

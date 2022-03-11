@@ -36,12 +36,12 @@
                     @elseif(auth()->user())
                     <div class="col-md-7 col-xs-7 clear-padding user-logged">
                         <a href="{{route('dashboard')}}" class="transition-effect">
-                            @if(!empty(\App\Profile::getUserInfo(auth()->user()->id)->photo))
-                            <img src="{{asset(\App\Profile::getUserInfo(auth()->user()->id)->photo)}}" alt="{{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}">
+                            @if(!empty(\App\Models\Profile::getUserInfo(auth()->user()->id)->photo))
+                            <img src="{{asset(\App\Models\Profile::getUserInfo(auth()->user()->id)->photo)}}" alt="{{\App\Models\Profile::getUserInfo(auth()->user()->id)->first_name}}">
                             @else
                             <img src="{{asset('frontend/assets/images/portal_images/user.png')}}" alt="user">
                             @endif
-                            {{__('Hi')}}, {{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}
+                            {{__('Hi')}}, {{\App\Models\Profile::getUserInfo(auth()->user()->id)->first_name}}
                         </a>
                         <a class="btn btn-primary btn-sm" href="{{route('dashboard')}}">
                             {{__('Bookings')}}  

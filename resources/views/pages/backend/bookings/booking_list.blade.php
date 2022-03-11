@@ -7,6 +7,11 @@
         <div class="title_left">
             <h3>{{__('Bookings')}}</h3>
         </div>
+        <div class="title_right">
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{route('booking_create')}}" >{{__('Create Booking')}}</a>
+            </div>
+        </div>
     </div>
     <div class="clearfix"></div>
     <div class="row">
@@ -16,11 +21,11 @@
                     <table class="table table-striped table-bordered col-4-datatable">
                         <thead>
                                 <tr>
-                                    <th >{{__('Client infos')}}</th>
-                                    <th >{{__('Place')}}</th>
-                                    <th >{{__('Booking For')}}</th>
                                     <th >{{__('Booking at')}}</th>
-                                    <th >{{__('Status')}}</th>
+                                    <th >{{__('Booking For')}}</th>
+                                    <th >{{__('Client infos')}}</th>
+                                    <th >{{__('Deal Name')}}</th>
+                                     <th >{{__('Status')}}</th>
                                     <th >{{__('Payment')}}</th>
                                     <th >{{__('Actions')}}</th>
                                 </tr>
@@ -28,7 +33,9 @@
                                 <tbody>
                                      @foreach($bookings as $booking)
                                      <tr>
-                                    @if($booking->type === \App\Booking::TYPE_BOOKING_FORM)
+                                        <td>{{formatDate($booking->created_at, 'd/m/Y H:i')}}</td>        
+                                        <td>{{formatDate($booking->date, 'd/m/Y')}}</td>
+                                    @if($booking->type === \App\Models\Booking::TYPE_BOOKING_FORM)
                                         @php
                                             $booking_name = $booking->name;
                                             $booking_email = $booking->email;
@@ -43,63 +50,63 @@
                                             $booking_email = $booking->email;
                                             $booking_phone = $booking->phone_number;
                                         @endphp
-                                        <td>{{$booking_name}}</td>
+                                        <td>{{$booking_name}} - <small> {{$booking->phone_number}} - {{$booking->email}}</small>
+                                        </td>
                                     @endif
-                                    @if($booking->bookable && (get_class($booking->bookable) === 'App\Place'))
+                                    @if($booking->bookable && (get_class($booking->bookable) === 'App\Models\Place'))
                                         <td><a href="{{route('place_detail', $booking->bookable->slug)}}" target="_blank">{{$booking->bookable->name}}</a></td>
-                                    @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Package'))
-                                    <td><a href="{{route('offer.show', $booking->bookable->offer->slug)}}" target="_blank">{{$booking->bookable->offer->name}}</a></td>
+                                    @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Models\Package'))
+                                        <td><a href="{{route('offer.show', $booking->bookable->offer->slug)}}" target="_blank">{{$booking->bookable->offer->name}}</a></td>
                                     @endif
-                                    <td>{{$booking->date}}</td>
-                                <td>{{formatDate($booking->created_at, 'd/m/Y H:i')}}</td>
                                 <td>
-                                    @if($booking->status === \App\Booking::STATUS_PENDING)
+                                    @if($booking->status === \App\Models\Booking::STATUS_PENDING)
                                         <span class="status-pending">{{__('PENDING')}}</span>
-                                    @elseif($booking->status === \App\Booking::STATUS_ACTIVE)
+                                    @elseif($booking->status === \App\Models\Booking::STATUS_ACTIVE)
                                         <span class="status-approved">{{__('Approved')}}</span>
                                     @else
                                         <span class="status-cancel">{{__('Cancel')}}</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($booking->payment_status === \App\Booking::STATUS_PAID)
+                                    @if($booking->payment_status === \App\Models\Booking::STATUS_PAID)
                                         <span class="status-approved">{{__('Paid')}}</span>
                                     @else
-                                        <span class="status-pending">{{__('Unpaid')}}</span>
+                                        <span class="status-cancel">{{__('Unpaid')}}</span>
                                     @endif
                                 </td>
                                 <td>
-                                <div class="dropdown">
+                                <div class="dropdown dropup">
                                     <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ __('Actions') }}
                                       </button>
                                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    @if(isset($booking['place']))
+                                          
+                                    @if($booking->bookable && (get_class($booking->bookable) === 'App\Models\Place'))
                                         <button type="button" data-target="modal_booking_detail"  class="dropdown-item booking_detail"
                                                 data-id="{{$booking->id}}"
                                                 data-reference="{{$booking->reference}}"
                                                 data-name="{{$booking_name}}"
                                                 data-email="{{$booking_email}}"
                                                 data-phone="{{$booking_phone}}"
-                                                data-place="{{$booking['place']['name']}}"
+                                                data-place="{{$booking->bookable->name}}"
                                                 data-bookingdatetime="{{$booking->time}} {{formatDate($booking->date, 'd/m/Y')}}"
                                                 data-bookingat="{{formatDate($booking->created_at, 'H:i d/m/Y')}}"
                                                 data-status="{{STATUS[$booking->status]}}"
-                                                data-price="{{$booking['place']['price']}}"
+                                                data-price="{{$booking->bookable->price}}"
                                                 data-message="{{$booking->message}}"
                                                 data-adult="{{$booking->numbber_of_adult}}"
                                                 data-children="{{$booking->numbber_of_children}}"
                                                 data-type="{{$booking->type}}"
                                         >{{__('Detail')}}
                                         </button>
-                                        @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Package'))
+                                        @elseif($booking->bookable && (get_class($booking->bookable) === 'App\Models\Package'))
                                                 <button type="button" data-target="modal_booking_detail"  class="dropdown-item booking_detail"
                                                 data-id="{{$booking->bookable->offer->id}}"
                                                 data-reference="{{$booking->reference}}"
                                                 data-name="{{$booking_name}}"
                                                 data-email="{{$booking_email}}"
                                                 data-phone="{{$booking_phone}}"
-                                                data-place="{{$booking->name}}"
+                                                data-place="{{$booking->bookable->offer->name}}"
                                                 data-bookingdatetime="{{$booking->bookable->offer->time}} {{formatDate($booking->bookable->offer->date, 'd/m/Y')}}"
                                                 data-bookingat="{{formatDate($booking->bookable->offer->created_at, 'H:i d/m/Y')}}"
                                                 data-status="{{STATUS[$booking->bookable->offer->status]}}"
@@ -111,25 +118,25 @@
                                         >{{__('Detail')}}
                                         </button>
                                     @endif
-                                    @if($booking->status === \App\Booking::STATUS_PENDING || $booking->status === \App\Booking::STATUS_DEACTIVE)
+                                    @if($booking->status === \App\Models\Booking::STATUS_PENDING || $booking->status === \App\Models\Booking::STATUS_DEACTIVE)
                                             <form class="d-inline" action="{{route('booking_update_status')}}" method="POST">
                                                 @method('PUT')
                                                 @csrf
                                                 <input type="hidden" name="booking_id" value="{{$booking->id}}">
-                                                <input type="hidden" name="status" value="{{\App\Booking::STATUS_ACTIVE}}">
+                                                <input type="hidden" name="status" value="{{\App\Models\Booking::STATUS_ACTIVE}}">
                                                 <button type="button" class="dropdown-item booking_approve" data-id="{{$booking->id}}">{{__('Approve')}}</button>
                                             </form>
                                         @endif
-                                        @if($booking->status === \App\Booking::STATUS_PENDING || $booking->status === \App\Booking::STATUS_ACTIVE)
+                                        @if($booking->status === \App\Models\Booking::STATUS_PENDING || $booking->status === \App\Models\Booking::STATUS_ACTIVE)
                                             <form class="d-inline" action="{{route('booking_update_status')}}" method="POST">
                                                 @method('PUT')
                                                 @csrf
                                                 <input type="hidden" name="booking_id" value="{{$booking->id}}">
-                                                <input type="hidden" name="status" value="{{\App\Booking::STATUS_DEACTIVE}}">
+                                                <input type="hidden" name="status" value="{{\App\Models\Booking::STATUS_DEACTIVE}}">
                                                 <button type="button" class="dropdown-item booking_cancel">{{__('Cancel')}}</button>
                                             </form>
                                         @endif
-                                        @if($booking->status === \App\Booking::STATUS_PENDING || $booking->status === \App\Booking::STATUS_ACTIVE)
+                                        @if($booking->status === \App\Models\Booking::STATUS_PENDING || $booking->status === \App\Models\Booking::STATUS_ACTIVE)
                                             <form class="d-inline" action="{{route('sale_create_view')}}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$booking->id}}">

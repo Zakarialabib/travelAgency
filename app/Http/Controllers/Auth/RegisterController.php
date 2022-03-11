@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Profile;
+use App\Models\Profile;
 use App\Services\PortalCustomNotificationHandler;
-use App\User;
-use App\Booking;
-use App\Wallet;
+use App\Models\User;
+use App\Models\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,13 +54,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $validator = Validator::make($data, [
-            'sur_name'   => 'required|string|max:255',
-            'first_name' => 'string|max:255',
-            'other_name' => 'required|string|max:255',
-            'email'      => 'required|string|email|max:255|unique:users',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone'      => 'required',
             'password'   => 'required|string|min:6|confirmed',
-            'booking_id' => '',
         ]);
 
         if ($validator->fails()) {
@@ -90,35 +86,21 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
         $user = User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        $user->attachRole(3);
+    
+        $user->assignRole('customer');
 
         $data['user'] = $user;
 
-        Profile::store($data);
-
-        if($data['booking_id'])
-        {
-            $booking = Booking::find($data['booking_id']);
-            $booking->update(['user_id' => $user->id]);
-            PortalCustomNotificationHandler::bookingAttachedToUser($booking);
-        }
-
-        $userWallet = $user->wallet()->create([
-            'balance' => 0,
-        ]);
-
         PortalCustomNotificationHandler::registrationSuccessful($user);
-
-        Toastr::success('Merci pour votre inscription');
 
         return $user;
     }

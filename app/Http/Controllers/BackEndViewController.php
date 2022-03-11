@@ -2,36 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\BankPayment;
-use App\FlightBooking;
-use App\Gender;
-use App\HotelBooking;
-use App\OnlinePayment;
-use App\PackageBooking;
-use App\Profile;
-use App\Title;
-use App\User;
-use App\VisaApplication;
-use App\Wallet;
-use App\Newsletter;
-use App\WalletLog;
-use App\MarkupType;
-use App\MarkupValueType;
-use App\Vat;
-use App\Role;
-use App\Markdown;
-use App\Booking;
-use App\City;
-use App\Place;
-use App\Review;
-use App\Post;
-use App\Sale;
-use App\Purchase;
-use App\Returns;
+use App\Models\BankPayment;
+use App\Models\FlightBooking;
+use App\Models\HotelBooking;
+use App\Models\OnlinePayment;
+use App\Models\PackageBooking;
+use App\Models\Profile;
+use App\Models\User;
+use App\Models\VisaApplication;
+use App\Models\Wallet;
+use App\Models\Newsletter;
+use App\Models\WalletLog;
+use App\Models\Vat;
+use App\Models\Role;
+use App\Models\Booking;
+use App\Models\City;
+use App\Models\Place;
+use App\Models\Post;
+use App\Models\Sale;
+use App\Models\Purchase;
+use App\Models\Returns;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
-use App\Services\InterswitchConfig;
 use Carbon\Carbon;
 
 class BackEndViewController extends Controller
@@ -150,44 +143,6 @@ class BackEndViewController extends Controller
     return response($response, 200);
 }
 
-    public function vat(){
-        $markups = new MarkupType();
-
-        $valueTypes = new MarkupValueType();
-
-        $vat_types = $markups->fetchTypes();
-
-        $vat_value_types = $valueTypes->fetchTypes();
-
-        $vat = Vat::find(1);
-
-        return view('pages.backend.settings.vats',compact('vat_types', 'vat_value_types','vat'));
-    }
-
-    public function markupView()
-    {
-        $markups = new MarkupType();
-
-        $valueTypes = new MarkupValueType();
-
-        $roles = new Role();
-
-        $markup_types = $markups->fetchTypes();
-
-        $markup_value_types = $valueTypes->fetchTypes();
-
-        $roles = $roles->fetchRolesExceptAdmin();
-
-        return view('pages/backend/settings/markups', compact('markup_types', 'markup_value_types', 'roles'));
-    }
-
-    public function index(){
-
-        $markdowns = Markdown::all();
-        return view('pages.backend.settings.markdown',compact('markdowns'));
-
-    }
-
     public function profile(){
         $user = auth()->user();
         $profile = Profile::getUserInfo($user->id);
@@ -285,61 +240,6 @@ class BackEndViewController extends Controller
         return view('pages.backend.payment_confirmation',compact('paymentInfo'));
     }
 
-    public function onlinePayment(){
-
-        $interswitchPayments = OnlinePayment::where('gateway_id',1)->orderBy('id','desc')->get();
-        $amountSuccessful = 0;
-        $amountPending = 0;
-        $countSuccessful = 0;
-        $countPending = 0;
-        foreach($interswitchPayments as $serial => $interswitchPayment){
-            if($interswitchPayment->payment_status == 1){
-                $amountSuccessful = $amountSuccessful + $interswitchPayment->amount;
-                $countSuccessful = $countSuccessful + 1;
-            }
-            if($interswitchPayment->payment_status == 0){
-                $amountPending = $amountPending + $interswitchPayment->amount;
-                $countPending = $countPending + 1;
-            }
-        }
-        return view('pages.backend.transactions.online_payments',compact('interswitchPayments','amountSuccessful','amountPending','countSuccessful','countPending'));
-
-    }
-
-    public function userOnlinePayment(){
-
-        $interswitchPayments = OnlinePayment::where('gateway_id',1)->where('user_id',auth()->id())->orderBy('id','desc')->get();
-        $amountSuccessful = 0;
-        $amountPending = 0;
-        $countSuccessful = 0;
-        $countPending = 0;
-        foreach($interswitchPayments as $serial => $interswitchPayment){
-            if($interswitchPayment->payment_status == 1){
-                $amountSuccessful = $amountSuccessful + $interswitchPayment->amount;
-                $countSuccessful = $countSuccessful + 1;
-            }
-            if($interswitchPayment->payment_status == 0){
-                $amountPending = $amountPending + $interswitchPayment->amount;
-                $countPending = $countPending + 1;
-            }
-        }
-        return view('pages.backend.transactions.user_online_payments',compact('interswitchPayments','amountSuccessful','amountPending','countSuccessful','countPending'));
-
-    }
-
-    public function usersManagement(){
-
-        $users   = User::where('delete_status',0)
-            ->join('profiles','profiles.user_id','=','users.id')
-            ->join('role_user','role_user.user_id','=','users.id')
-            ->get();
-        $titles  = Title::all();
-        $genders = Gender::all();
-        $roles   = Role::all();
-
-        return view('pages.backend.settings.user-management',compact('users','titles','genders','roles'));
-
-    }
 
     public function userHotelBookings(){
         $bookings = HotelBooking::where('user_id',auth()->id())
@@ -457,9 +357,8 @@ class BackEndViewController extends Controller
         $walletDebits = WalletLog::where('user_id',auth()->id())
             ->where('status',0)
             ->sum('amount');
-        $InterswitchConfig = new InterswitchConfig();
         $user = User::authenticatedUserInfo();
-        return view('pages.backend.user_wallet',compact('userWallet','userWalletLogs','walletCredits','walletDebits','InterswitchConfig','user'));
+        return view('pages.backend.user_wallet',compact('userWallet','userWalletLogs','walletCredits','walletDebits','user'));
     }
 
     public function bankPayment(){

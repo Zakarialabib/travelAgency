@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Booking;
+use App\Models\Booking;
 
 class CmiController extends Controller
 {

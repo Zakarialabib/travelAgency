@@ -25,7 +25,7 @@
                         <tr>
                             <th>ID</th>
                             <th>{{__('Category Name')}}</th>
-                            @if($type === \App\Category::TYPE_PLACE)
+                            @if($type === \App\Models\Category::TYPE_PLACE)
                                 <th>{{__('Priority')}}</th>
                                 <th>{{__('Is feature')}}</th>
                             @endif
@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
-                                @if($type === \App\Category::TYPE_PLACE)
+                                @if($type === \App\Models\Category::TYPE_PLACE)
                                 <td>{{$category->priority}}</td>
                                 <td>
                                     <input type="checkbox" class="js-switch category_is_feature" name="is_feature" data-id="{{$category->id}}" {{isChecked(1, $category->is_feature)}} />

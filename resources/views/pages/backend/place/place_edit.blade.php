@@ -51,7 +51,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="name">{{__('Description')}}  <small>({{$language->code}})</small>: *</label>
-                                                            <textarea type="text" class="form-control" id="ckeditor" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
+                                                            <textarea type="text" class="form-control" id="{{$language->code}}[description]" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -67,9 +67,9 @@
                                         <div class="col-md-6">
                                             <label for="booking_type">{{__('Booking type')}}</label>
                                                 <select class="form-control" name="booking_type" required>
-                                                    <option  value="{{\App\Booking::TYPE_BOOKING_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BOOKING_FORM)}}>{{__('Booking form')}}</option>
-                                                    <option  value="{{\App\Booking::TYPE_CONTACT_FORM}}" {{isChecked($place->booking_type, \App\Booking::TYPE_CONTACT_FORM)}}>{{__('Contact form')}}</option>
-                                                    <option  value="{{\App\Booking::TYPE_BANNER}}" {{isChecked($place->booking_type, \App\Booking::TYPE_BANNER)}}>{{__('Banner Ads')}}</option>
+                                                    <option  value="{{\App\Models\Booking::TYPE_BOOKING_FORM}}" {{isChecked($place->booking_type, \App\Models\Booking::TYPE_BOOKING_FORM)}}>{{__('Booking form')}}</option>
+                                                    <option  value="{{\App\Models\Booking::TYPE_CONTACT_FORM}}" {{isChecked($place->booking_type, \App\Models\Booking::TYPE_CONTACT_FORM)}}>{{__('Contact form')}}</option>
+                                                    <option  value="{{\App\Models\Booking::TYPE_BANNER}}" {{isChecked($place->booking_type, \App\Models\Booking::TYPE_BANNER)}}>{{__('Banner Ads')}}</option>
                                                 </select>
                                         </div>
                                     </div>
@@ -126,13 +126,13 @@
                                     <div id="itinerary_list">
                                         @if($place->itinerary)
                                             @foreach($place->itinerary as $key => $menu)
-                                                <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}">
+                                                <div class="row form-group itinerary_item" id="itinerary_item_{{$key}}"> 
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}" placeholder="{{__('Title')}}">
+                                                            <input type="text" class="form-control" name="itinerary[{{$key}}][question]" value="{{$menu['question']}}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <textarea type="text" class="form-control" id="ckeditor" name="itinerary[{{$key}}][answer]" value="{{$menu['answer']}}" rows="3" placeholder="{{__('Description')}}"></textarea>
+                                                            <textarea type="text" class="form-control" id="itinerary[{{$key}}][answer]"  name="itinerary[{{$key}}][answer]" rows="3" >{{$menu['answer']}}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">

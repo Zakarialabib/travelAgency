@@ -125,7 +125,7 @@
                                   <tr>
                                 <td>{{$booking->reference}}</td>
                                 <td>{{$booking->pnr}}</td>
-                                <td>{{\App\Profile::getUserInfo($booking->user_id)->sur_name}} {{\App\Profile::getUserInfo($booking->user_id)->first_name}}</td>
+                                <td>{{\App\Models\Profile::getUserInfo($booking->user_id)->sur_name}} {{\App\Models\Profile::getUserInfo($booking->user_id)->first_name}}</td>
                                 <th>&#x20a6; {{number_format(($booking->total_amount/100), 2)}}</th>
                                 <td>{{date('d D, M Y G:i A',strtotime($booking->ticket_time_limit))}}</td>
                                  <td>

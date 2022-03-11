@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\AmadeusConfig;
 use App\Services\AmadeusRequestXML;
 use App\Services\AmadeusHelper;
 use App\Voucher;
-use App\Profile;
+use App\Models\Profile;
 use App\FlightBooking;
 use App\Markup;
 use App\Markdown;

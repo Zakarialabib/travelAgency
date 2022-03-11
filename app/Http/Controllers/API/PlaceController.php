@@ -5,15 +5,15 @@ namespace App\Http\Controllers\API;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Amenities;
-use App\Category;
-use App\City;
-use App\Country;
-use App\Place;
-use App\PlaceType;
-use App\Review;
-use App\User;
-use App\Wishlist;
+use App\Models\Amenities;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\Place;
+use App\Models\PlaceType;
+use App\Models\Review;
+use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

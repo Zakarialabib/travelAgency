@@ -96,7 +96,7 @@
                     </div>
                 </div>
 
-                @if(($post_type === \App\Post::TYPE_BLOG) || ($post['type'] === \App\Post::TYPE_BLOG))
+                @if(($post_type === \App\Models\Post::TYPE_BLOG) || ($post['type'] === \App\Models\Post::TYPE_BLOG))
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>{{__('Category')}}</h2>
@@ -137,7 +137,7 @@
 @push('scripts')
     <script src="{{asset('admin/js/page_post.js')}}"></script>
 
-    @if(($post_type === \App\Post::TYPE_BLOG) || ($post['type'] === \App\Post::TYPE_BLOG))
+    @if(($post_type === \App\Models\Post::TYPE_BLOG) || ($post['type'] === \App\Models\Post::TYPE_BLOG))
         <script>
             $("#menu_blog").addClass("active");
             $("#menu_blog .child_menu").show();

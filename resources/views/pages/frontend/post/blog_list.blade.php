@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@php
-    $blog_title_bg = "style='background-image:url(/assets/images/img-bg-blog.png)'";
-@endphp
+
+@section('page-title')  {{__('ٌٌBlog')}}  @endsection
+
 @section('content')
     <main id="main" class="site-main">
     <section class="breadcrumbs-custom bg-image context-dark">

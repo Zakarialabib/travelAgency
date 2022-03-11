@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Review;
-use App\User;
+use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller

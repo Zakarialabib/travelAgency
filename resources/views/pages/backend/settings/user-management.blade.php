@@ -2,10 +2,7 @@
 
 @section('page-title') {{__('Users Management')}}  @endsection
 
-@section('activeSettings') open hover  @endsection
-
 @section('content')
-
 
     <section class="row">
 
@@ -75,16 +72,22 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{__('Email')}}</label>
                                             <input name="email" type="email" class="form-control" placeholder="{{__('Email')}}" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{__('Phone')}}</label>
                                             <input name="phone" type="tel" class="form-control" placeholder="{{__('Phone number')}}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{__('Nationality')}}</label>
+                                            <input type="text" name="nationality" required class="form-control" placeholder="{{__('Nationality')}}" />
                                         </div>
                                     </div>
                                 </div>
@@ -177,17 +180,6 @@
                                                                      </div>
                                                                  </div>
                                                                  <div class="col-md-4">
-                                                                     <div class="form-group">
-                                                                         <label>{{__('Gender')}}</label>
-                                                                         <select class="form-control" name="gender_id" required>
-                                                                             <option value="{{$user->gender_id}}">{{\App\Gender::find($user->gender_id)->type}}</option>
-                                                                             @foreach($genders as $serial => $gender)
-                                                                                 <option value="{{$gender->id}}">{{$gender->type}}</option>
-                                                                             @endforeach
-                                                                         </select>
-                                                                     </div>
-                                                                 </div>
-                                                                 <div class="col-md-4">
                                                                      <label>{{__('User Type')}}</label>
                                                                      <select class="form-control" name="user_type" required>
                                                                          <option value="{{$user->role_id}}">{{\App\Role::find($user->role_id)->display_name}}</option>
@@ -218,18 +210,24 @@
                                                                  </div>
                                                              </div>
                                                              <div class="row">
-                                                                 <div class="col-md-6">
+                                                                 <div class="col-md-4">
                                                                      <div class="form-group">
                                                                          <label>{{__('Email')}}</label>
                                                                          <input name="email" type="email" value="{{$user->email}}" class="form-control" placeholder="Email" required>
                                                                      </div>
                                                                  </div>
-                                                                 <div class="col-md-6">
+                                                                 <div class="col-md-4">
                                                                      <div class="form-group">
                                                                          <label>{{__('Phone')}}</label>
                                                                          <input name="phone" type="tel" value="{{$user->phone_number}}" class="form-control" placeholder="Phone number" required>
                                                                      </div>
                                                                  </div>
+                                                                 <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>{{__('Nationality')}}</label>
+                                                                        <input name="nationality" type="text" value="{{$user->nationality}}" class="form-control" placeholder="Nationality">
+                                                                    </div>
+                                                                </div>
                                                              </div>
                                                              <div class="row">
                                                                  <div class="col-md-12">
@@ -272,7 +270,7 @@
                                              @endif
                                          </td>
                                          <td>
-                                         <div class="dropdown">
+                                         <div class="dropdown dropup">
                                          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Actions') }}
                                           </button>

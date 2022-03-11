@@ -13,22 +13,22 @@
                     <ul class="nav nav-tabs search-top" role="tablist" id="searchTab">
                         <li role="presentation" class="active">
                             <a href="#places" aria-controls="places" role="tab" data-toggle="tab">
-                                <i class="fa fa-suitcase"></i>
+                                <i class="la la-suitcase"></i>
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="#flight" aria-controls="flight" role="tab" data-toggle="tab">
-                                <i class="fa fa-plane"></i>
+                                <i class="la la-plane-departure"></i>        
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">
-                                <i class="fa fa-bed"></i>
+                                <i class="la la-bed"></i>
                             </a>
                         </li>
                              <li role="presentation">
                             <a href="{{route('best_offers')}}">
-                                <i class="fa fa-star"></i>
+                                <i class="la la-star"></i>
                             </a>
                         </li>
                         <li role="presentation">

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('page-title')  {{ $place->name }}  @endsection
+
 @section('content')
 <section class="breadcrumbs-custom bg-image context-dark">
     <div class="breadcrumbs-custom-inner">
@@ -332,9 +335,9 @@
                         </div>
                       </div>
                       <div class="field-textarea">
-                        @if(!empty(\App\Profile::getUserInfo(auth()->user()->id)->photo))
-                        <img src="{{asset(\App\Profile::getUserInfo(auth()->user()->id)->photo)}}"
-                             alt="{{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}">
+                        @if(!empty(\App\Models\Profile::getUserInfo(auth()->user()->id)->photo))
+                        <img src="{{asset(\App\Models\Profile::getUserInfo(auth()->user()->id)->photo)}}"
+                             alt="{{\App\Models\Profile::getUserInfo(auth()->user()->id)->first_name}}">
                         @else
                         <img class="author-avatar"  src="{{asset('frontend/assets/images/portal_images/user.png')}}" alt="user">
                         @endif                                               
@@ -361,7 +364,7 @@
        </div>
        <div class="col-lg-4 col-md-4">
        <div class="sidebar-booking-box">
-                @if($place->booking_type === \App\Booking::TYPE_BOOKING_FORM)
+                @if($place->booking_type === \App\Models\Booking::TYPE_BOOKING_FORM)
               <aside  id="booking"  class="booking-box-body">
                 <h3 class="text-center">{{__('Make a reservation')}}
                 </h3>
@@ -435,7 +438,7 @@
                             </div>
                         </div>
                     </div>
-                  <input type="hidden" name="type" value="{{\App\Booking::TYPE_BOOKING_FORM}}">
+                  <input type="hidden" name="type" value="{{\App\Models\Booking::TYPE_BOOKING_FORM}}">
                   <input type="hidden" name="place_id" value="{{$place->id}}">
                  
                   <button class="btn btn-block booking_submit_btn">{{__('Send')}}
@@ -463,7 +466,7 @@
                 </form>
               </aside>
               <!-- .widget-reservation -->
-              @elseif($place->booking_type === \App\Booking::TYPE_CONTACT_FORM)
+              @elseif($place->booking_type === \App\Models\Booking::TYPE_CONTACT_FORM)
               <aside  id="booking"  class="widget widget-shadow widget-booking-form">
                 <h3 class="text-center">{{__('Send me a message')}}
                 </h3>
@@ -490,7 +493,7 @@
                     </textarea>
                   </div>
                   </div>
-                  <input type="hidden" name="type" value="{{\App\Booking::TYPE_CONTACT_FORM}}">
+                  <input type="hidden" name="type" value="{{\App\Models\Booking::TYPE_CONTACT_FORM}}">
                   <input type="hidden" name="place_id" value="{{$place->id}}">
                   <button class="btn btn-block booking_submit_btn">{{__('Send')}}
                   </button>

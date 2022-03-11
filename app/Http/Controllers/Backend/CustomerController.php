@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Customer;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use nilsenj\Toastr\Facades\Toastr;
 

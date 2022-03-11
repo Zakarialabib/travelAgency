@@ -3,8 +3,8 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\Controller;
-use App\Place;
-use App\User;
+use App\Models\Place;
+use App\Models\User;
 use App\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;

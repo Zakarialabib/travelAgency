@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
-use App\Language;
-use App\Setting;
+use App\Models\Language;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller

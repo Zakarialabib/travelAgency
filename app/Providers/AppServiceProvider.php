@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 
-use App\Category;
-use App\City;
-use App\Language;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Language;
 use Spatie\Menu\Laravel\Link;
 use Spatie\Menu\Laravel\Menu;
 use Illuminate\Support\Facades\Cache;

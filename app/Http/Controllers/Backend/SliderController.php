@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Slider;
 use App\Http\Controllers\Controller;
 use Storage;
-use App\User;
+use App\Models\User;
 
 class SliderController extends Controller
 {

@@ -40,10 +40,10 @@
                                 <td>{{$sale->customer->profile->sur_name}}</td>
                                 <td>{{$sale->grand_total}}</td>
                                 <td>
-                                    @if($sale->payment_status == App\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
-                                    @elseif($sale->payment_status == App\Payment::STATUS_DUE)<span class="status-due">{{__('Due')}}</span>
-                                    @elseif($sale->payment_status == App\Payment::STATUS_PARTIAL)<span class="status-partial">{{__('Partial')}}</span>
-                                    @elseif($sale->payment_status == App\Payment::STATUS_PAID)<span class="status-approved">{{__('Paid')}}</span>
+                                    @if($sale->payment_status == App\Models\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
+                                    @elseif($sale->payment_status == App\Models\Payment::STATUS_DUE)<span class="status-due">{{__('Due')}}</span>
+                                    @elseif($sale->payment_status == App\Models\Payment::STATUS_PARTIAL)<span class="status-partial">{{__('Partial')}}</span>
+                                    @elseif($sale->payment_status == App\Models\Payment::STATUS_PAID)<span class="status-approved">{{__('Paid')}}</span>
                                     @endif
                                 </td>
                                 <td>{{formatDate($sale->created_at, 'H:i d/m/Y')}}</td>
@@ -66,16 +66,16 @@
                                                         <p><strong>{{__('User')}}: </strong>{{$sale->user->profile->sur_name}}</p>
                                                         <p>
                                                             <strong>{{__('Sale Status')}}: </strong>
-                                                            @if($sale->status== App\Sale::STATUS_PENDING){{'Pending'}}
-                                                            @elseif($sale->status== App\Sale::STATUS_COMPLETE){{'Complete'}}
+                                                            @if($sale->status== App\Models\Sale::STATUS_PENDING){{'Pending'}}
+                                                            @elseif($sale->status== App\Models\Sale::STATUS_COMPLETE){{'Complete'}}
                                                             @endif
                                                         </p>
                                                         <p>
                                                             <strong>{{__('Payment Status')}}: </strong>
-                                                            @if($sale->payment_status == App\Payment::STATUS_PENDING){{__('Pending')}}
-                                                            @elseif($sale->payment_status == App\Payment::STATUS_DUE){{__('Due')}}
-                                                            @elseif($sale->payment_status == App\Payment::STATUS_PARTIAL){{__('Partial')}}
-                                                            @elseif($sale->payment_status == App\Payment::STATUS_PAID){{__('Paid')}}
+                                                            @if($sale->payment_status == App\Models\Payment::STATUS_PENDING){{__('Pending')}}
+                                                            @elseif($sale->payment_status == App\Models\Payment::STATUS_DUE){{__('Due')}}
+                                                            @elseif($sale->payment_status == App\Models\Payment::STATUS_PARTIAL){{__('Partial')}}
+                                                            @elseif($sale->payment_status == App\Models\Payment::STATUS_PAID){{__('Paid')}}
                                                             @endif
                                                         </p>
                                                         <h3>{{__('Orders Table')}}</h3>
@@ -159,7 +159,7 @@
                                 @endrole
                                 </td>
                                 <td>
-                                    <div class="dropdown">
+                                    <div class="dropdown dropup">
                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Actions') }}
                                           </button>
@@ -167,7 +167,7 @@
                                             @if(!$sale->is_locked)    
                                     <a class="dropdown-item" href="{{route('sale_edit', $sale->id)}}">{{__('Edit')}}</a>
                                     @endif
-                                    <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Invoice::SALE_TYPE, 'id' => $sale->id])}}">{{__('Invoice')}}</a>
+                                    <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Models\Invoice::SALE_TYPE, 'id' => $sale->id])}}">{{__('Invoice')}}</a>
                                     <a class="dropdown-item" href="{{route('sale_quotation', $sale->id)}}">{{__('Quotation')}}</a>
                                     <form class="d-inline" action="{{route('return_create')}}" method="POST">
                                         @csrf

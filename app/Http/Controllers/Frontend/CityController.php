@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
-use App\Amenities;
-use App\Category;
-use App\City;
-use App\Place;
-use App\PlaceType;
+use App\Models\Amenities;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Place;
+use App\Models\PlaceType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

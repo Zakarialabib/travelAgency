@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Invoice;
-use App\Purchase;
-use App\Returns;
-use App\Sale;
+use App\Models\Invoice;
+use App\Models\Purchase;
+use App\Models\Returns;
+use App\Models\Sale;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Mail;
 

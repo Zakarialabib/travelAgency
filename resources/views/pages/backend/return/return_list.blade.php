@@ -39,16 +39,16 @@
                             <tr>
                                 <td>{{$return->id}}</td>
                                 <td>
-                                    @if($return->status == App\Returns::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
-                                    @elseif($return->status == App\Returns::STATUS_COMPLETE)<span class="status-approved">{{__('Complete')}}</span>
+                                    @if($return->status == App\Models\Returns::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
+                                    @elseif($return->status == App\Models\Returns::STATUS_COMPLETE)<span class="status-approved">{{__('Complete')}}</span>
                                     @endif    
                                 </td>
                                 <td>{{$return->grand_total}}</td>
                                 <td>
-                                    @if($return->payment_status == App\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
-                                    @elseif($return->payment_status == App\Payment::STATUS_DUE)<span class="status-due">{{__('Due')}}</span>
-                                    @elseif($return->payment_status == App\Payment::STATUS_PARTIAL)<span class="status-partial">{{__('Partial')}}</span>
-                                    @elseif($return->payment_status == App\Payment::STATUS_PAID)<span class="status-approved">{{__('Paid')}}</span>
+                                    @if($return->payment_status == App\Models\Payment::STATUS_PENDING)<span class="status-pending">{{__('Pending')}}</span>
+                                    @elseif($return->payment_status == App\Models\Payment::STATUS_DUE)<span class="status-due">{{__('Due')}}</span>
+                                    @elseif($return->payment_status == App\Models\Payment::STATUS_PARTIAL)<span class="status-partial">{{__('Partial')}}</span>
+                                    @elseif($return->payment_status == App\Models\Payment::STATUS_PAID)<span class="status-approved">{{__('Paid')}}</span>
                                     @endif
                                 </td>
                                 <td>{{formatDate($return->created_at, 'H:i d/m/Y')}}</td>
@@ -71,16 +71,16 @@
                                                         <p><strong>{{__('User')}}: </strong>{{$return->user->profile->sur_name}}</p>
                                                         <p>
                                                             <strong>{{__('return Status')}}: </strong>
-                                                            @if($return->status== App\Returns::STATUS_PENDING){{'Pending'}}
-                                                            @elseif($return->status== App\Returns::STATUS_COMPLETE){{'Complete'}}
+                                                            @if($return->status== App\Models\Returns::STATUS_PENDING){{'Pending'}}
+                                                            @elseif($return->status== App\Models\Returns::STATUS_COMPLETE){{'Complete'}}
                                                             @endif
                                                         </p>
                                                         <p>
                                                             <strong>{{__('Payment Status')}}: </strong>
-                                                            @if($return->payment_status == App\Payment::STATUS_PENDING){{__('Pending')}}
-                                                            @elseif($return->payment_status == App\Payment::STATUS_DUE){{__('Due')}}
-                                                            @elseif($return->payment_status == App\Payment::STATUS_PARTIAL){{__('Partial')}}
-                                                            @elseif($return->payment_status == App\Payment::STATUS_PAID){{__('Paid')}}
+                                                            @if($return->payment_status == App\Models\Payment::STATUS_PENDING){{__('Pending')}}
+                                                            @elseif($return->payment_status == App\Models\Payment::STATUS_DUE){{__('Due')}}
+                                                            @elseif($return->payment_status == App\Models\Payment::STATUS_PARTIAL){{__('Partial')}}
+                                                            @elseif($return->payment_status == App\Models\Payment::STATUS_PAID){{__('Paid')}}
                                                             @endif
                                                         </p>
                                                         <h3>Orders Table</h3>
@@ -163,7 +163,7 @@
                                 @endrole
                                 </td>
                                 <td>
-                                    <div class="dropdown">
+                                    <div class="dropdown dropup">
                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Actions') }}
                                           </button>
@@ -171,7 +171,7 @@
                                        @if(!$return->is_locked)            
                                     <a class="dropdown-item" href="{{route('return_edit', $return->id)}}">{{__('Edit')}}</a>
                                     @endif
-                                    <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Invoice::RETURN_TYPE, 'id' => $return->id])}}">{{__('Invoice')}}</a>
+                                    <a class="dropdown-item" href="{{route('invoice_create', ['type' => App\Models\Invoice::RETURN_TYPE, 'id' => $return->id])}}">{{__('Invoice')}}</a>
                                     <a class="dropdown-item" href="{{route('return_quotation', $return->id)}}">{{__('Bon de Commande')}}</a>
                                     @role('admin')
                                     <form action="{{route('return_delete',$return->id)}}" method="POST">

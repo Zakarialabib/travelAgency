@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\HotelBooking;
 use App\Services\PortalCustomNotificationHandler;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\AmadeusConfig;
 use App\Services\AmadeusRequestXML;

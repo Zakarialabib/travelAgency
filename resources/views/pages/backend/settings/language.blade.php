@@ -7,7 +7,7 @@
             <div class="x_panel">
                 <div class="x_content">
 
-                    <form action="{{route('language_status', \App\Language::STATUS_ACTIVE)}}" method="post">
+                    <form action="{{route('language_status', \App\Models\Language::STATUS_ACTIVE)}}" method="post">
                         @csrf
                         @method('put')
                         <div class="form-group">
@@ -50,14 +50,14 @@
                                 </th>
                                 <td>{{$language->name}}</td>
                                 <td>
-                                    <input type="checkbox" class="js-switch language_default" name="is_default" data-id="{{$language->id}}" {{isChecked(\App\Language::IS_DEFAULT, $language->is_default)}} {{isDisabled(\App\Language::IS_DEFAULT, $language->is_default)}}/>
+                                    <input type="checkbox" class="js-switch language_default" name="is_default" data-id="{{$language->id}}" {{isChecked(\App\Models\Language::IS_DEFAULT, $language->is_default)}} {{isDisabled(\App\Models\Language::IS_DEFAULT, $language->is_default)}}/>
                                 </td>
                                 <td>
-                                    <form action="{{route('language_status', \App\Language::STATUS_DEACTIVE)}}" method="post">
+                                    <form action="{{route('language_status', \App\Models\Language::STATUS_DEACTIVE)}}" method="post">
                                         @csrf
                                         @method('put')
                                         <input type="hidden" name="language_id" value="{{$language->id}}">
-                                        <button type="submit" class="btn btn-warning btn-sm language_deactive" onclick="return confirm('Are you sure?');" {{isDisabled(\App\Language::IS_DEFAULT, $language->is_default)}}>Deactive</button>
+                                        <button type="submit" class="btn btn-warning btn-sm language_deactive" onclick="return confirm('Are you sure?');" {{isDisabled(\App\Models\Language::IS_DEFAULT, $language->is_default)}}>Deactive</button>
                                     </form>
                                 </td>
                                 <td><a class="btn btn-info btn-sm" href="{{url('/translations/view/_json')}}">Translation</a></td>

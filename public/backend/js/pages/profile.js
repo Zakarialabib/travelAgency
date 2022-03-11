@@ -6,6 +6,7 @@ $(function(){
        var first_name        = $('input[name="customer_first_name"]').val();
        var other_name      = $('input[name="customer_other_name"]').val();
        var phone_number     = $('input[name="customer_phone_number"]').val();
+       var nationality     = $('input[name="customer_nationality"]').val();
        var address          = $('textarea[name="customer_address"]').val();
        toastr.info("Updating your information. Please hold on for some seconds ...");
        axios.post(baseUrl+'/settings/update/user/profile',{
@@ -13,6 +14,7 @@ $(function(){
           customer_sur_name    : sur_name,
           customer_other_name  : other_name,
           customer_phone_number : phone_number,
+          customer_nationality : nationality,
           customer_address      : address
        })
            .then(function(response){

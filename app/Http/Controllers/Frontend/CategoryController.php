@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Amenities;
-use App\Category;
-use App\City;
-use App\Place;
-use App\PlaceType;
-use App\Offer;
-use App\CategoryType;
+use App\Models\Amenities;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Place;
+use App\Models\PlaceType;
+use App\Models\Offer;
+use App\Models\CategoryType;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

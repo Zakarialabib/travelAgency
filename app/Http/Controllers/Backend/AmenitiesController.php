@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
-use App\Amenities;
-use App\User;
+use App\Models\Amenities;
+use App\Models\User;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 

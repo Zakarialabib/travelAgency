@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Offer;
-use App\Package;
-use App\PackageCondition;
-use App\PackageFeature;
-use App\PackageRate;
+use App\Models\Offer;
+use App\Models\Package;
+use App\Models\PackageCondition;
+use App\Models\PackageFeature;
+use App\Models\PackageRate;
 
 class PackageController extends Controller
 {

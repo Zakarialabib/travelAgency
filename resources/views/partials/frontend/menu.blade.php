@@ -128,13 +128,13 @@
                     @elseif(auth()->user())
                     <div class="account js-user-auth">
                         <a href="#" style="color: white;" title="{{Auth::user()->name}}">
-                            @if(!empty(\App\Profile::getUserInfo(auth()->user()->id)->photo))
-                            <img src="{{asset(\App\Profile::getUserInfo(auth()->user()->id)->photo)}}"
-                                alt="{{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}">
+                            @if(!empty(\App\Models\Profile::getUserInfo(auth()->user()->id)->photo))
+                            <img src="{{asset(\App\Models\Profile::getUserInfo(auth()->user()->id)->photo)}}"
+                                alt="{{\App\Models\Profile::getUserInfo(auth()->user()->id)->first_name}}">
                             @else
                             <img src="{{asset('frontend/assets/images/portal_images/user.png')}}" alt="user">
                             @endif
-                            Hi, {{\App\Profile::getUserInfo(auth()->user()->id)->first_name}}
+                            Hi, {{\App\Models\Profile::getUserInfo(auth()->user()->id)->first_name}}
                             <span>
                                 {{Auth::user()->name}}
                                 <i class="la la-angle-down la-12"></i>

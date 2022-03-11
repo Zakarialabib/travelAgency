@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\Post;
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;

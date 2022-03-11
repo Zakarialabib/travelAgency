@@ -69,6 +69,14 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label>{{__('Nationality')}}</label>
+                                        <input name="customer_nationality" type="text" value="{{$profile->nationality}}" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>{{__('Address')}}</label>
                                         <textarea class="form-control" name="customer_address" required placeholder="Enter your address to help use serve you better">{{$profile->address}}</textarea>
                                     </div>

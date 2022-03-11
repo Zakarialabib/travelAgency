@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Language;
+use App\Models\Language;
 use Closure;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
@@ -44,7 +44,6 @@ class Locale
         } else {
             App::setLocale($language_default['code']);
         }
-
 
         return $next($request);
     }

@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\Role;
-use App\Profile;
-use App\Wallet;
-use App\Place;
-use App\RoleUser;
-use App\Wishlist;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Profile;
+use App\Models\Wallet;
+use App\Models\Place;
+use App\Models\Wishlist;
 use App\Services\PortalCustomNotificationHandler;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -87,7 +86,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::join('profiles','profiles.user_id','=','users.id')
-                      ->join('role_user','role_user.user_id','=','users.id')
                       ->get();
          return view('pages.backend.settings.user-management',compact('users'));
     }
@@ -104,7 +102,7 @@ class UserController extends Controller
 
         $user = User::store($request);
 
-        $user->attachRole(3);
+        $user->assignRole('customer');
 
         $request['user'] = $user;
 
@@ -131,23 +129,16 @@ class UserController extends Controller
 
         $profile = Profile::create([
             'user_id'       => $user->id,
-            'title_id'      => $data['title_id'],
-            'gender_id'     => $data['gender_id'],
             'sur_name'      => $data['sur_name'],
             'first_name'    => $data['first_name'],
-            'other_name'    => array_get($data,'first_name',''),
             'phone_number'  => $data['phone'],
             'address'       => $data['address'],
-            'photo'         => array_get($data,'photo',''),
+            'photo'         => Arr::get($data,'photo',''),
         ]);
 
-        $wallet = Wallet::create([
-            'user_id' => $user->id,
-            'balance' => 0
-        ]);
+    
 
-
-        if($user && $profile && $wallet){
+        if($user && $profile){
             Toastr::success('Nouvelle inscription');
         }
         else{
@@ -195,7 +186,7 @@ class UserController extends Controller
 
         $user = User::store($request);
 
-        $user->attachRole(3);
+        $user->assignRole('customer');
 
         $request['user'] = $user;
 
@@ -225,79 +216,12 @@ class UserController extends Controller
         return $user->changePassword($r);
     }
 
-    public function deleteUser($id){
-        $user = User::find($id);
-        $user->delete_status = 1;
-        $user->update();
-        return $user;
-    }
-
-    public function updateUser(Request $request){
-
-
-        $this->validate($request, [
-            'sur_name'   => 'required|string|max:255',
-            'first_name' => 'required|string|max:255',
-            'phone'      => 'required',
-            'address'    => 'required'
-        ]);
-
-
-
-        $user = User::find($request->user_id);
-
-        if($request->email != $user->email){
-            $this->validate($request, [
-                'email'      => 'required|string|email|max:255|unique:users',
-            ]);
-        }
-
-        $user->email = $request->email;
-        $updateUser = $user->update();
-
-        $profile = Profile::where('user_id',$request->user_id)->first();
-        $profile->title_id     = $request->title_id;
-        $profile->gender_id    = $request->gender_id;
-        $profile->sur_name     = $request->sur_name;
-        $profile->first_name   = $request->first_name;
-        $profile->other_name   = $request->other_name;
-        $profile->phone_number = $request->phone;
-        $profile->address      = $request->address;
-        $updateProfile = $profile->update();
-        $userRole = RoleUser::where('user_id',$request->user_id)->first()->role_id;
-
-        if($userRole != $request->user_type){
-            $user->detachRole($userRole);
-           $user->attachRole($request->user_type);
-        }
-
-        if($updateUser AND $updateProfile){
-            Toastr::success('Les informations sont à jour');
-        }
-        else{
-            Toastr::error('Erreur lors de la mise à jour des nouvelles informations');
-        }
-
-        if($request->user_type != 3){
-            Wallet::updateOrCreate(
-                [
-                    'user_id' => $user->id,
-                ],
-                [
-                    'balance' => 0
-                ]);
-        }
-        return back();
-    }
-
-
     public function pageProfile(Request $r)
     {
 
         $this->validate($r,[
             'customer_sur_name'    => 'required|string|max:255',
             'customer_first_name'   => 'required|string|max:255',
-            'customer_other_name'     => 'required|string|max:255',
             'customer_phone_number'  => 'required|digits:11',
             'customer_address'       => 'required',
         ]);
@@ -305,7 +229,6 @@ class UserController extends Controller
         $profile = Profile::where('user_id',auth()->user()->id)->first();
         $profile->sur_name = $r->customer_sur_name;
         $profile->first_name = $r->customer_first_name;
-        $profile->other_name = $r->customer_other_name;
         $profile->phone_number = $r->customer_phone_number;
         $profile->address = $r->customer_address;
         $update = $profile->update();

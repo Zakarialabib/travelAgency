@@ -2,29 +2,28 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\BankDetail;
-use App\FlightBooking;
-use App\HotelBooking;
-use App\Profile;
+use App\Models\BankDetail;
+use App\Models\FlightBooking;
+use App\Models\HotelBooking;
+use App\Models\Models\Profile;
 use App\Services\AmadeusConfig;
 use App\Services\AmadeusHelper;
-use App\Markup;
-use App\Title;
-use App\Vat;
-use App\TravelPackage;
-use App\Amenities;
-use App\Category;
-use App\City;
-use App\Slider;
-use App\Country;
-use App\Place;
-use App\PlaceType;
-use App\Post;
-use App\Page;
-use App\Review;
-use App\Testimonial;
-use App\Offer;
-use App\Faq;
+use App\Models\Markup;
+use App\Models\Title;
+use App\Models\Vat;
+use App\Models\TravelPackage;
+use App\Models\Amenities;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Slider;
+use App\Models\Country;
+use App\Models\Place;
+use App\Models\PlaceType;
+use App\Models\Post;
+use App\Models\Page;
+use App\Models\Review;
+use App\Models\Offer;
+use App\Models\Faq;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -33,7 +32,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use function Symfony\Component\VarDumper\Dumper\esc;
-
 
 class ViewController extends Controller
 { 
@@ -432,22 +430,6 @@ class ViewController extends Controller
 
     }
 
-    public function palindrome($string){
-        $cleanString = preg_replace("/[^a-zA-Z]+/","",$string);
-        $stringLength = strlen($cleanString);
-        $validator = 0;
-        for($i = 0; $i < $stringLength; $i++){
-            $initial = strtolower(substr($cleanString,$i,1));
-            $later = strtolower(substr($cleanString,(-1-$i),1));
-            if($initial != $later){
-                $validator = $validator + 1;
-            }
-        }
-        if($validator > 0){
-            return "It is not a palindrome";
-        }
-        return "It is a palindrome";
-    }
 
     public function availableHotels(){
 
@@ -548,59 +530,6 @@ class ViewController extends Controller
         return view('pages.frontend.hotel.hotel_payment_confirmation',compact('hotelInformation','searchParam','selectedRoom','paymentInfo','bookingInfo'));
     }
 
-    public function flightDeals(){
-
-        $flights = TravelPackage::where('attraction',0)
-            ->where('hotel', 0)
-            ->where('flight', 1)
-            ->where('status', 1)
-            ->orderBy('id','desc')
-            ->paginate(8);
-
-        return view('pages.frontend.deal.flight',compact('flights'));
-    }
-
-    public function hotelDeals(){
-
-        $hotelDeals = TravelPackage::orderBy('id','desc')
-            ->where('attraction',0)
-            ->where('hotel', 1)
-            ->where('flight', 0)
-            ->where('status', 1)
-            ->with('images')
-            ->with('hotelDeal')
-            ->get();
-        return view('pages.frontend.deal.hotel',compact('hotelDeals'));
-    }
-
-    public function attractionDeals(){
-
-        $attractionDeals = TravelPackage::where('attraction',1)
-            ->where('hotel', 0)
-            ->where('flight', 0)
-            ->where('status', 1)
-            ->orderBy('id','desc')
-            ->with('images')
-            ->with('sightSeeing')
-            ->orderBy('id','desc')
-            ->paginate(8);
-        return view('pages.frontend.deal.attraction',compact('attractionDeals'));
-
-    }
-
-    public function hotDeals(){
-
-        $hotDeals = TravelPackage::where('status', 1)
-            ->with('flightDeal')
-            ->with('hotelDeal')
-            ->with('attractionDeal')
-            ->with('sightSeeing')
-            ->with('images')
-            ->orderBy('id','desc')
-            ->paginate(8);
-        return view('pages.frontend.deal.attraction',compact('hotDeals'));
-    }
-
 
     public function dealDetails($slug){
         
@@ -695,46 +624,6 @@ class ViewController extends Controller
 
     }
 
-    public function dealPaymentOptions(){
-
-        $booking_id = session()->get('deal_booking_id');
-
-        $booking = PackageBooking::find($booking_id);
-
-        $deal = TravelPackage::where('id',$booking->package_id)
-            ->with('hotelDeal')
-            ->with('flightDeal')
-            ->with('attractionDeal')
-            ->with('sightSeeing')
-            ->with('images')
-            ->first();
-
-        $banks = BankDetail::where('status',1)->get();
-
-        $titles = Title::all();
-
-        return view('pages.frontend.deal.payment_options',compact('booking','deal','banks','titles'));
-
-    }
-
-    public function dealBookingConfirmation(){
-
-        $booking_id = session()->get('deal_booking_id');
-
-        $booking = PackageBooking::find($booking_id);
-
-        $deal = TravelPackage::where('id',$booking->package_id)
-            ->with('hotelDeal')
-            ->with('flightDeal')
-            ->with('attractionDeal')
-            ->with('sightSeeing')
-            ->with('images')
-            ->first();
-
-        $paymentInfo = session()->get('paymentInfo');
-
-        return view('pages.frontend.deal.booking_confirmation',compact('booking','deal','paymentInfo'));
-
-    }
+    
 
 }

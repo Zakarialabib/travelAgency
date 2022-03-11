@@ -40,6 +40,9 @@
         $('#modal_add_category').modal('show');
     });
 
+    $('#lfm').filemanager('image');
+
+
     $(document).on("click", ".category_delete", function () {
         swal({
             title: "Êtes-vous sûr?",

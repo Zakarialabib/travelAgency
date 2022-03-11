@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">{{__('Description')}}  <small>({{$language->code}})</small>: *</label>
-                                <textarea type="text" class="form-control" id="ckeditor"  name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
+                                <textarea type="text" class="form-control" id="{{$language->code}}[description]"  name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans ? $trans['description'] : ''}}</textarea>
                             </div>
                         </div>
                     @endforeach
@@ -75,12 +75,11 @@
                                 <div class="col-md-11">
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="itinerary[{{$key}}][title]" 
-                                        value="{{$menu['title']}}" placeholder="{{ __('Title') }}">
+                                        value="{{$menu['title']}}">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="ckeditor"  
-                                        name="itinerary[{{$key}}][description]" value="{{$menu['description']}}" rows="3" 
-                                        placeholder="{{ __('Description') }}">
+                                        <textarea type="text" class="form-control" id="itinerary[{{$key}}][description]"  
+                                        name="itinerary[{{$key}}][description]"  rows="3">{{$menu['description']}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-1">

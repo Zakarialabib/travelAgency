@@ -32,7 +32,7 @@
                                             <input type="text" class="form-control" name="{{$language->code}}[name]" {{$index !== 0 ?: "required"}}>
                                         </div>
 
-                                        @if($type === \App\Category::TYPE_PLACE)
+                                        @if($type === \App\Models\Category::TYPE_PLACE)
                                             <div class="form-group">
                                                 <label for="name">{{__('Feature title')}} <small>({{$language->code}})</small>:</label>
                                                 <input type="text" class="form-control" id="category_feature_title" name="{{$language->code}}[feature_title]">
@@ -43,7 +43,7 @@
                             </div>
 
                          
-                            @if($type === \App\Category::TYPE_PLACE)
+                            @if($type === \App\Models\Category::TYPE_PLACE)
                             <div class="row mt-2">
                                 <div class="col-md-6">
                                     <div class="form-group">

@@ -7,13 +7,10 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-zoom@1.7.21/jquery.zoom.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{setting('goolge_map_api_key', 'AIzaSyD-2mhVoLX7oIOgRQ-6bxlJt4TF5k0xhWc')}}&libraries=places&language={{\Illuminate\Support\Facades\App::getLocale()}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chosen-jquery@0.1.1/lib/chosen.jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{asset('backend/app-assets/vendors/js/extensions/sweetalert.min.js')}}" type="text/javascript" ></script>
 <script src="{{asset('frontend/assets/js/all.js')}}" type="text/javascript" ></script>
-<script src="{{asset('frontend/assets/plugins/gijgo/js/gijgo.min.js')}}" type="text/javascript"></script>
-<script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.fr-fr.js" type="text/javascript"></script>
 
 <script>
   window.watsonAssistantChatOptions = {

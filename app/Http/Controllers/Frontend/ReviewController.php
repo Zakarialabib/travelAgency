@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Commons\APICode;
 use App\Commons\Response;
 use App\Http\Controllers\Controller;
-use App\Review;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

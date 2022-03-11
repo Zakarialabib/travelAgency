@@ -13,19 +13,19 @@ if (!function_exists('setting')) {
     function setting($key, $default = null, $cache = false)
     {
         if (is_null($key)) {
-            return new \App\Setting();
+            return new \App\Models\Setting();
         }
 
         if (is_array($key)) {
-            return \App\Setting::set($key[0], $key[1]);
+            return \App\Models\Setting::set($key[0], $key[1]);
         }
 
         if ($cache) {
             $val = \Illuminate\Support\Facades\Cache::remember("setting_" . $key, 60, function () use ($key) {
-                return \App\Setting::get($key);
+                return \App\Models\Setting::get($key);
             });
         } else {
-            $val = \App\Setting::get($key);
+            $val = \App\Models\Setting::get($key);
         }
 
         return is_null($val) ? value($default) : $val;
@@ -95,8 +95,8 @@ function isDisabled($val1, $val2)
 
 function getSlug($request, $key)
 {
-    $language_default = \App\Language::query()
-        ->where('is_default', \App\Language::IS_DEFAULT)
+    $language_default = \App\Models\Language::query()
+        ->where('is_default', \App\Models\Language::IS_DEFAULT)
         ->select('code')
         ->first();
     $language_code = $language_default->code;

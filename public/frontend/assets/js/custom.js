@@ -587,10 +587,6 @@ $(function() {
                     alert("Please enter numbber of adult");
                     return;
                 }
-                if (!formData.date) {
-                    alert("Please select date");
-                    return;
-                }
 
                 GL_BOOKING.ajaxBooking(formData)
             });

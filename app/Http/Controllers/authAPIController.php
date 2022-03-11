@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Profile;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Hash;
 use App\Services\PortalCustomNotificationHandler;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\User;
+use App\Models\User;
 
 class authAPIController extends Controller
 {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Commons\Response;
-use App\Language;
+use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;

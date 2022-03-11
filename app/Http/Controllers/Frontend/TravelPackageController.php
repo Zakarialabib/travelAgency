@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 use App\Attraction;
 use App\CabinType;
 use App\FlightDeal;
 use App\Gallery;
 use App\HotelDeal;
-use App\PackageBooking;
-use App\PackageCategory;
+use App\Models\PackageBooking;
+use App\Models\PackageCategory;
 use App\SightSeeing;
 use App\TravelPackage;
 use Illuminate\Http\Request;

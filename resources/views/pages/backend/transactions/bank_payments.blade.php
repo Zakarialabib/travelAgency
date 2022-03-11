@@ -154,8 +154,8 @@
                               <td>{{$bankPayment->reference}}</td>
                               <td>{{$bankPayment->booking_reference}}</td>
                               <td>
-                                  {{\App\Profile::where('user_id',$bankPayment->user_id)->first()->sur_name}}
-                                  {{\App\Profile::where('user_id',$bankPayment->user_id)->first()->first_name}}
+                                  {{\App\Models\Profile::where('user_id',$bankPayment->user_id)->first()->sur_name}}
+                                  {{\App\Models\Profile::where('user_id',$bankPayment->user_id)->first()->first_name}}
                               </td>
                               <td>
                                   &#x20a6;{{number_format(($bankPayment->amount/100),2)}}

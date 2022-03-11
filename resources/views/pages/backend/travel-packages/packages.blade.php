@@ -45,16 +45,16 @@
                                             @endif
                                             {{--{{$package->packageType->type}}--}}
                                         </td>
-                                        <td>{{ \App\PackageCategory::find($package->category_id)->category}}</td>
+                                        <td>{{ \App\Models\PackageCategory::find($package->category_id)->category}}</td>
                                         <td>{{$package->name}}</td>
                                         <td>{{$package->phone_number}}</td>
                                         <td>{{number_format($package->adult_price)}}</td>
                                         <td>{{number_format($package->child_price)}}</td>
                                         <td>{{number_format($package->infant_price)}}</td>
                                         <td id="status{{$package->id}}">
-                                            @if($package->status == \App\Package::DEACTIVATED)
+                                            @if($package->status == \App\Models\Package::DEACTIVATED)
                                                 <span disabled class="btn btn-danger btn-xs">{{__('Deactivated')}}</span>
-                                            @elseif($package->status == \App\Package::ACTIVATED)
+                                            @elseif($package->status == \App\Models\Package::ACTIVATED)
                                                 <span disabled class="btn btn-success btn-xs">{{__('Activated')}}</span>
                                             @endif
                                         </td>

@@ -2,8 +2,6 @@
 
 @section('page-title') {{__('User Profile')}}  @endsection
 
-@section('activeSettings') open hover  @endsection
-
 @section('content')
 
     <div class="row">
@@ -75,13 +73,18 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>{{__('Address')}}</label>
-                                            <textarea class="form-control" name="customer_address" required placeholder="{{__('Enter your address to help use serve you better')}}">{{$profile->address}}</textarea>
+                                            <label>{{__('Nationality')}}</label>
+                                            <input type="text" name="customer_nationality" required class="form-control" value="{{$profile->nationality}}"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{__('Address')}}</label>
+                                            <textarea class="form-control" name="customer_address" required placeholder="{{__('Enter your address to help use serve you better')}}">{{$profile->address}}</textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">

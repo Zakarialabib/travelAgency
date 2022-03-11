@@ -54,7 +54,7 @@
                                                             <label for="place_description">{{ __('Description') }}
                                                                 <small>({{ $language->code }})</small>
                                                                 : *</label>
-                                                            <textarea type="text" class="form-control" id="description" 
+                                                            <textarea type="text" class="form-control" id="{{ $language->code }}[description]" 
                                                                 required
                                                                 name="{{ $language->code }}[description]" rows="6"
                                                                 {{ $index !== 0 ?: 'required' }}></textarea>
@@ -74,9 +74,9 @@
                                             <label for="booking_type">{{ __('Booking type') }}</label>
                                             <select class="form-control" name="booking_type" required>
                                                 <option value=""></option>
-                                                <option value="{{ \App\Booking::TYPE_BOOKING_FORM }}">{{ __('Booking form') }}
+                                                <option value="{{ \App\Models\Booking::TYPE_BOOKING_FORM }}">{{ __('Booking form') }}
                                                 </option>
-                                                <option value="{{ \App\Booking::TYPE_BANNER }}">{{ __('Banner Ads') }}
+                                                <option value="{{ \App\Models\Booking::TYPE_BANNER }}">{{ __('Banner Ads') }}
                                                 </option>
                                             </select>
                                         </div>
@@ -117,7 +117,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6"> 
                                             <label for="select_city">{{ __('City') }}: *</label>
                                             <select class="form-control myselect" id="select_city" name="city_id" required>
                                                 <option value="">{{ __('Please select country first') }}</option>
@@ -135,13 +135,13 @@
                                         <div class="row form-group itinerary_item" id="itinerary_item_0">
                                             <div class="col-md-11">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" id="itinerary1"  name="itinerary[0][question]"
-                                                        placeholder="{{ __('Enter Day') }}">
+                                                    <input type="text" class="form-control" id="itinerary[0][title]"  name="itinerary[0][title]"
+                                                        placeholder="{{ __('Enter Title') }}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea type="text" class="form-control" id="itinerary2" 
-                                                        name="itinerary[0][answer]" rows="3"
-                                                        placeholder="Enter Description"> </textarea>
+                                                    <textarea type="text" class="form-control" id="itinerary[0][description]" 
+                                                        name="itinerary[0][description]" rows="3"
+                                                        placeholder="{{ __('Enter Description') }}"> </textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">

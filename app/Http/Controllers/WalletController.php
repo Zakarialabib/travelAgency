@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Services\PortalCustomNotificationHandler;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Wallet;
 use App\WalletLog;
 use nilsenj\Toastr\Facades\Toastr;
 use App\FlightBooking;
 use App\HotelBooking;
-use App\PackageBooking;
+use App\Models\PackageBooking;
 use App\TravelPackage;
-use App\Profile;
+use App\Models\Profile;
 
 class WalletController extends Controller
 {
