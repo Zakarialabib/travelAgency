@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -39,7 +39,7 @@ mix.scripts([
    'public/frontend/assets/js/materialize.js',
    'public/frontend/assets/js/toastr.min.js',
    'public/frontend/assets/js/bootbox.min.js',
-   'public/frontend/assets/js/owl.carousel.min.js',
+   'public/frontend/assets/plugins/owl.carousel.min.js',
    'public/backend/app-assets/vendors/js/extensions/sweetalert.min.js', 
 ], 'public/frontend/assets/js/all.js');
 /*
