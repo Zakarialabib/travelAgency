@@ -1,15 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.9.7
--- https://www.phpmyadmin.net/
---
--- Hôte : localhost:8889
--- Généré le : mer. 16 juin 2021 à 15:44
--- Version du serveur :  5.7.32
--- Version de PHP : 7.4.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
 --
 -- Base de données : `rentacs`
 --
@@ -17304,23 +17292,9 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `reference`, `place_id`, `user_id`, `numbber_of_adult`, `numbber_of_children`, `bookable_id`, `date`, `end_date`, `name`, `email`, `phone_number`, `message`, `bookable_type`, `type`, `status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 33, NULL, 1, 0, NULL, '2021-02-26', NULL, 'zak', 'connect@chrilia.com', '666', NULL, NULL, 1, 1, '2021-02-09 08:39:21', '2021-02-15 10:06:57'),
-(115, NULL, 35, NULL, 1, 0, NULL, '2021-03-10', NULL, 'ggg ggg', 'gg@g.c', '66666', NULL, NULL, 1, 2, '2021-03-02 12:01:59', '2021-03-02 12:01:59'),
-(116, NULL, 35, NULL, 1, 0, NULL, '2021-03-10', NULL, 'ggg ggg', 'gg@g.c', '66666', NULL, NULL, 1, 2, '2021-03-02 13:54:25', '2021-03-02 13:54:25'),
-(119, NULL, 35, NULL, 1, 0, NULL, '2021-03-02', NULL, 'hhhhh', 'gg@g.ch', '66666', NULL, NULL, 1, 2, '2021-03-02 14:35:29', '2021-03-02 14:35:29'),
-(120, NULL, 35, NULL, 1, 0, NULL, '2021-03-10', NULL, 'hhhhh', 'gg@g.ch', '66666', NULL, NULL, 1, 2, '2021-03-02 16:23:25', '2021-03-02 16:23:25'),
-(121, NULL, 35, NULL, 1, 0, NULL, '2021-03-18', NULL, 'gfd gfd', 'admin@admin.com', '66666', NULL, NULL, 1, 2, '2021-03-02 16:24:53', '2021-03-02 16:24:53'),
-(122, NULL, 35, NULL, 1, 0, NULL, '2021-04-30', NULL, 'Zakaria', 'zakarialabib@gmail.com', '06606', NULL, NULL, 1, 2, '2021-04-06 11:52:59', '2021-04-06 11:52:59'),
-(123, NULL, 35, NULL, 1, 0, NULL, '2021-04-16', NULL, 'Zakaria labib', 'zakarialabib@gmail.com', '06606', NULL, NULL, 1, 2, '2021-04-06 11:54:25', '2021-04-06 11:54:25'),
-(124, '1', 35, NULL, 1, 0, NULL, '2021-04-22', NULL, 'Zakaria labib', 'zakarialabib@gmail.com', '06606', NULL, NULL, 1, 2, '2021-04-06 14:13:08', '2021-04-06 14:13:08'),
-(126, '2', 37, 14, 1, 0, NULL, '2021-04-29', NULL, 'okgo oki', 'ok@ok.ok', '66666666', NULL, NULL, 1, 2, '2021-04-08 14:02:50', '2021-04-08 14:02:50'),
-(127, '3', 37, 1, 1, 0, NULL, '2021-04-21', NULL, 'okgo oki', 'ok@ok.ok', '66666666', NULL, NULL, 1, 2, '2021-04-08 14:16:00', '2021-04-08 14:16:00'),
-(128, '4', 36, NULL, 1, 0, NULL, '2021-04-16', NULL, 'ok go', 'zlag@g.c', '111', NULL, NULL, 1, 2, '2021-04-08 14:16:59', '2021-04-08 14:16:59'),
-(129, '1128120421', 36, 1, 1, 0, NULL, '2021-04-30', NULL, 'okok', 'zakarialabib@gmail.com', '0666666', NULL, NULL, 1, 2, '2021-04-12 17:22:24', '2021-04-12 17:22:24'),
-(130, '129290421', 35, NULL, 1, 1, NULL, '2021-04-01', NULL, 'hdf', 'zakarialabib@gmail.com', '06060606', NULL, NULL, 1, 2, '2021-04-29 14:08:15', '2021-04-29 14:08:15'),
-(132, '131200521', NULL, 10, 1, 0, 2, '2021-05-20', '2021-05-27', 'zakaria labib', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 1, '2021-05-20 10:23:41', '2021-05-28 16:38:14'),
-(133, '132210521', NULL, NULL, 10, 0, 1, '2021-05-21', '2021-05-24', 'zakaria', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-21 11:44:26', '2021-05-21 11:44:26'),
-(134, '2105288672689', NULL, 10, 1, 0, 1, '2021-05-28', '2021-05-31', 'super-admin', 'k@gmail.com', '066666666', NULL, 'App\\Package', 1, 2, '2021-05-28 16:34:19', '2021-05-28 16:34:57');
+(166, '2107125884695', NULL, 1, 1, 1, 2, '2021-07-12', '2021-07-12', 'zak', 'zak@g.c', '000000', NULL, 'App\\Models\\Package', 1, 1, '2021-07-12 15:26:24', '2022-03-11 00:22:41'),
+(167, '2107125748104', NULL, 1, 1, 1, 33, '2021-07-12', '2021-07-20', 'zakaria', 'zakarialabib@gmail.com', '0000000', NULL, 'App\\Models\\Place', 1, 2, '2021-07-12 15:27:24', '2021-07-12 15:27:24'),
+(168, '2107139662988', NULL, 1, 1, 0, 1, '2021-07-13', '2021-07-16', 'zaa', 'zakarialabib@gmail.com', '066666666', NULL, 'App\\Models\\Package', 1, 2, '2021-07-13 16:48:35', '2021-07-13 16:48:35');
 
 -- --------------------------------------------------------
 
@@ -17587,27 +17561,6 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cooperate_customer_profiles`
---
-
-CREATE TABLE `cooperate_customer_profiles` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `company_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_address` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_cac_rc_number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_phone_number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_contact_person_email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_contact_person_phone_number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_contact_person_address` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `countries`
 --
 
@@ -17808,26 +17761,6 @@ CREATE TABLE `genders` (
 INSERT INTO `genders` (`id`, `type`, `created_at`, `updated_at`) VALUES
 (1, 'Male', '2021-01-28 09:16:31', '2021-01-28 09:16:31'),
 (2, 'Female', '2021-01-28 09:16:31', '2021-01-28 09:16:31');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `good_to_knows`
---
-
-CREATE TABLE `good_to_knows` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `package_id` int(11) DEFAULT NULL,
-  `check_in` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `check_out` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cancellation_prepayment` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `children_beds` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `internet` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pets` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `groups` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -19780,7 +19713,32 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (160, '2021_05_06_134208_create_package_rates_table', 2),
 (161, '2021_04_05_114424_create_packages_table', 3),
 (162, '2021_05_06_293551_add-role-id-to-menu-items-table', 4),
-(163, '2021_05_19_095150_create_rate_booking_table', 5);
+(163, '2021_05_19_095150_create_rate_booking_table', 5),
+(164, '2021_06_16_154102_create_permission_tables', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -19823,9 +19781,63 @@ CREATE TABLE `notifications` (
 
 INSERT INTO `notifications` (`id`, `booking_id`, `user_id`, `is_read`, `created_at`, `updated_at`) VALUES
 (2, NULL, 14, 1, '2021-04-08 13:00:51', '2021-04-08 13:01:45'),
-(3, 132, NULL, 0, '2021-05-20 09:23:42', '2021-05-20 09:23:42'),
-(4, 133, NULL, 0, '2021-05-21 10:44:26', '2021-05-21 10:44:26'),
-(5, 134, NULL, 0, '2021-05-28 15:34:19', '2021-05-28 15:34:19');
+(28, 176, NULL, 1, '2021-07-13 16:14:52', '2022-03-10 23:14:02'),
+(29, 177, NULL, 1, '2021-07-13 16:15:42', '2022-03-10 23:14:02'),
+(30, 178, NULL, 1, '2021-07-13 16:16:15', '2022-03-10 23:14:02'),
+(31, 179, NULL, 1, '2021-07-13 16:16:45', '2022-03-10 23:14:02'),
+(32, 180, NULL, 1, '2021-07-13 16:17:42', '2022-03-10 23:14:02'),
+(33, 181, NULL, 1, '2021-07-13 16:18:00', '2022-03-10 23:14:02'),
+(34, 182, NULL, 1, '2021-07-13 16:18:16', '2022-03-10 23:14:02'),
+(35, 183, NULL, 1, '2021-07-13 16:18:25', '2022-03-10 23:14:02'),
+(36, 184, NULL, 1, '2021-07-13 16:18:33', '2022-03-10 23:14:02'),
+(37, 185, NULL, 1, '2021-07-13 16:26:23', '2022-03-10 23:14:02'),
+(38, 186, NULL, 1, '2021-07-13 16:27:33', '2022-03-10 23:14:02'),
+(39, 187, NULL, 1, '2021-07-13 16:32:16', '2022-03-10 23:14:02'),
+(40, 188, NULL, 1, '2021-07-13 16:34:27', '2022-03-10 23:14:02'),
+(41, 189, NULL, 1, '2021-07-13 16:38:15', '2022-03-10 23:14:02'),
+(42, 190, NULL, 1, '2021-07-13 16:38:21', '2022-03-10 23:14:02'),
+(43, 191, NULL, 1, '2021-07-13 16:38:47', '2022-03-10 23:14:02'),
+(44, 192, NULL, 1, '2021-07-13 16:38:55', '2022-03-10 23:14:02'),
+(45, 193, NULL, 1, '2021-07-13 16:39:25', '2022-03-10 23:14:02'),
+(46, 194, NULL, 1, '2021-07-13 16:39:40', '2022-03-10 23:14:02'),
+(47, 195, NULL, 1, '2021-07-13 16:39:48', '2022-03-10 23:14:02'),
+(48, 196, NULL, 1, '2021-07-13 16:40:42', '2022-03-10 23:14:02'),
+(49, 197, NULL, 1, '2021-07-13 16:40:53', '2022-03-10 23:14:02'),
+(50, 198, NULL, 1, '2021-07-13 16:41:08', '2022-03-10 23:14:02'),
+(51, 199, NULL, 1, '2021-07-13 16:42:08', '2022-03-10 23:14:02'),
+(52, 200, NULL, 1, '2021-07-13 16:42:39', '2022-03-10 23:14:02'),
+(53, 201, NULL, 1, '2021-07-13 16:43:34', '2022-03-10 23:14:02'),
+(54, 202, NULL, 1, '2021-07-13 16:43:59', '2022-03-10 23:14:02'),
+(55, 203, NULL, 1, '2021-07-13 16:44:03', '2022-03-10 23:14:02'),
+(56, 204, NULL, 1, '2021-07-13 16:45:12', '2022-03-10 23:14:02'),
+(57, 205, NULL, 1, '2021-07-13 16:45:23', '2022-03-10 23:14:02'),
+(58, 206, NULL, 1, '2021-07-13 16:47:11', '2022-03-10 23:14:02'),
+(59, 207, NULL, 1, '2021-07-13 16:47:50', '2022-03-10 23:14:02'),
+(60, 208, NULL, 1, '2021-07-13 16:48:25', '2022-03-10 23:14:02'),
+(61, 209, NULL, 1, '2021-07-13 16:48:45', '2022-03-10 23:14:02'),
+(62, 210, NULL, 1, '2021-07-13 16:51:44', '2022-03-10 23:14:02'),
+(63, 211, NULL, 1, '2021-07-13 16:52:25', '2022-03-10 23:14:02'),
+(64, 212, NULL, 1, '2021-07-13 16:53:22', '2022-03-10 23:14:02'),
+(65, 213, NULL, 1, '2021-07-13 16:54:00', '2022-03-10 23:14:02'),
+(66, 214, NULL, 1, '2021-07-13 18:10:55', '2022-03-10 23:14:02'),
+(67, 215, NULL, 1, '2021-07-13 18:12:38', '2022-03-10 23:14:01'),
+(68, 216, NULL, 1, '2021-07-13 18:13:19', '2022-03-10 23:14:01'),
+(69, 217, NULL, 1, '2021-07-13 18:14:03', '2022-03-10 23:14:01'),
+(70, 218, NULL, 1, '2021-07-13 18:14:15', '2022-03-10 23:14:01'),
+(71, 219, NULL, 1, '2021-07-13 18:16:20', '2022-03-10 23:14:01'),
+(72, 220, NULL, 1, '2021-07-13 18:16:32', '2022-03-10 23:14:01'),
+(73, 221, NULL, 1, '2021-07-13 18:16:57', '2022-03-10 23:14:01'),
+(74, 222, NULL, 1, '2021-07-13 18:17:22', '2022-03-10 23:14:01'),
+(75, 223, NULL, 1, '2021-07-13 18:18:00', '2022-03-10 23:14:01'),
+(76, 224, NULL, 1, '2021-07-13 18:18:35', '2022-03-10 23:14:01'),
+(77, 225, NULL, 1, '2021-07-13 18:18:53', '2022-03-10 23:14:01'),
+(78, 226, NULL, 1, '2021-07-13 18:18:59', '2022-03-10 23:14:01'),
+(79, 227, NULL, 1, '2021-07-13 18:20:11', '2022-03-10 23:14:01'),
+(80, 228, NULL, 1, '2021-07-13 18:20:31', '2022-03-10 23:14:01'),
+(81, 229, NULL, 1, '2021-07-13 18:20:49', '2022-03-10 23:14:01'),
+(82, 230, NULL, 1, '2021-07-13 18:20:59', '2022-03-10 23:14:01'),
+(83, 231, NULL, 1, '2021-07-13 18:21:47', '2022-03-10 23:14:01'),
+(84, 232, NULL, 1, '2021-07-13 18:22:14', '2022-03-10 23:14:01');
 
 -- --------------------------------------------------------
 
@@ -19860,7 +19872,7 @@ CREATE TABLE `offers` (
 
 INSERT INTO `offers` (`id`, `user_id`, `category_id`, `city_id`, `name`, `slug`, `description`, `reference`, `price`, `address`, `thumb`, `gallery`, `itinerary`, `status`, `seo_title`, `seo_description`, `created_at`, `updated_at`) VALUES
 (8, 1, 11, 31, NULL, 'hotel-du-golf-rotana-golf-club-rotana', NULL, '0000000001', 0, NULL, NULL, '[\"60a64a03b9ff4_1621510659.jpg\"]', '[{\"title\":\"Day 1\",\"description\":\"DAY 1\"}]', 1, NULL, NULL, '2021-05-12 11:33:16', '2021-05-20 11:51:31'),
-(9, 1, 11, 23, NULL, 'sunreef-yachts', NULL, '2', 0, NULL, '60c89b94a3d74_1623759764.jpg', NULL, NULL, 1, NULL, NULL, '2021-06-15 11:22:44', '2021-06-15 11:22:44');
+(9, 1, 11, 23, NULL, 'sunreef-yachts', NULL, '2', 0, NULL, '60c89b94a3d74_1623759764.jpg', NULL, '[{\"title\":\"okok\",\"description\":\"okok\"}]', 1, NULL, NULL, '2021-06-15 11:22:44', '2021-07-13 12:07:13');
 
 -- --------------------------------------------------------
 
@@ -19887,7 +19899,7 @@ INSERT INTO `offer_translations` (`id`, `offer_id`, `locale`, `name`, `descripti
 (6, 5, 'fr', 'Rotana', '<p>Rotana</p>'),
 (7, 8, 'en', 'Hotel du Golf Rotana / Golf Club Rotana', '<p>With an outstanding location overlooking one of the most sought-after golf courses in Marrakech, <strong>H&ocirc;tel du Golf Rotana</strong> is the place to relax and enjoy 5 star luxury and world-class facilities. Nestled at the heart of the stunning <strong>Palmeraie Rotana Resort </strong>is&nbsp;situated in the north of the Marrakech.&nbsp;This design-led property blends modern Moroccan architecture with art deco style and a warm inviting colour scheme to create a cosy and laid-back ambiance. Magnificent views of the fairways at the <strong>Golf Club Rotana</strong> and the stunning Atlas Mountains backdrop are part of this exceptional lifestyle experience.</p>\r\n\r\n<p><strong>All 315 hotel rooms</strong> and suites are modern, spacious and ideal for both leisure and business stays in Marrakech. Expansive floor-to-ceiling windows are a design highlight, flooding each room with glorious Moroccan sunshine and offering guests breath-taking views of the gardens, pool and/or the golf course.</p>\r\n\r\n<p>Guests can choose from the resort&rsquo;s <strong>12 unique dining experiences</strong>, from specialty restaurants serving authentic Moroccan, Italian, Mediterranean and Asian flavours, to casual pool bars and beach lounges, including Nikki Beach Club where inventive fusion cuisine and a party atmosphere await. For convenience, three of these venues - an international restaurant, poolside snack bar and a bar lounge - are located at the <strong>H&ocirc;tel du Golf Rotana</strong> Palmeraie.</p>\r\n\r\n<p>In addition to the 18-hole championship golf course, a wide range of resort facilities are on the hotel&rsquo;s doorstep, including the purpose-built Conference Centre, which caters to all corporate and social occasions in Marrakech. For some well-deserved me time, work out or relax in the fully equipped <strong>Bodylines Fitness &amp; Wellness Club</strong> with indoor swimming pool, Jacuzzi, sauna and steam rooms, or be pampered at <strong>Zen the spa at Rotana</strong>. For a bit of fun guests can also enjoy the resort&#39;s offers bowling, tennis, basketball and a vast entertainment programme designed for all ages and our kids&rsquo; club keeps young guests busy with activities galore.</p>'),
 (8, 8, 'fr', 'Hotel du Golf Rotana / Golf Club Rotana', '<p>With an outstanding location overlooking one of the most sought-after golf courses in Marrakech, <strong>H&ocirc;tel du Golf Rotana</strong> is the place to relax and enjoy 5 star luxury and world-class facilities. Nestled at the heart of the stunning <strong>Palmeraie Rotana Resort </strong>is&nbsp;situated in the north of the Marrakech.&nbsp;This design-led property blends modern Moroccan architecture with art deco style and a warm inviting colour scheme to create a cosy and laid-back ambiance. Magnificent views of the fairways at the <strong>Golf Club Rotana</strong> and the stunning Atlas Mountains backdrop are part of this exceptional lifestyle experience.</p>\r\n\r\n<p><strong>All 315 hotel rooms</strong> and suites are modern, spacious and ideal for both leisure and business stays in Marrakech. Expansive floor-to-ceiling windows are a design highlight, flooding each room with glorious Moroccan sunshine and offering guests breath-taking views of the gardens, pool and/or the golf course.</p>\r\n\r\n<p>Guests can choose from the resort&rsquo;s <strong>12 unique dining experiences</strong>, from specialty restaurants serving authentic Moroccan, Italian, Mediterranean and Asian flavours, to casual pool bars and beach lounges, including Nikki Beach Club where inventive fusion cuisine and a party atmosphere await. For convenience, three of these venues - an international restaurant, poolside snack bar and a bar lounge - are located at the <strong>H&ocirc;tel du Golf Rotana</strong> Palmeraie.</p>\r\n\r\n<p>In addition to the 18-hole championship golf course, a wide range of resort facilities are on the hotel&rsquo;s doorstep, including the purpose-built Conference Centre, which caters to all corporate and social occasions in Marrakech. For some well-deserved me time, work out or relax in the fully equipped <strong>Bodylines Fitness &amp; Wellness Club</strong> with indoor swimming pool, Jacuzzi, sauna and steam rooms, or be pampered at <strong>Zen the spa at Rotana</strong>. For a bit of fun guests can also enjoy the resort&#39;s offers bowling, tennis, basketball and a vast entertainment programme designed for all ages and our kids&rsquo; club keeps young guests busy with activities galore.</p>'),
-(9, 9, 'en', 'Sunreef yachts', 'Sunreef yachts'),
+(9, 9, 'en', 'Sunreef yachts', '<p>Sunreef yachts</p>'),
 (10, 9, 'fr', 'Sunreef yachts', '<p>Sunreef yachts</p>');
 
 -- --------------------------------------------------------
@@ -20193,24 +20205,35 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `permissions` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `permission_role`
+-- Déchargement des données de la table `permissions`
 --
 
-CREATE TABLE `permission_role` (
-  `permission_id` int(10) UNSIGNED NOT NULL,
-  `role_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'role-list', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(2, 'role-create', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(3, 'role-edit', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(4, 'role-delete', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(5, 'posts-list', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(6, 'posts-create', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(7, 'posts-edit', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(8, 'posts-delete', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(9, 'create admin', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(10, 'edit admin', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(11, 'delete admin', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(12, 'create agent', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(13, 'edit agent', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(14, 'delete agent', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(15, 'create customer', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(16, 'edit customer', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(17, 'delete customer', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32');
 
 -- --------------------------------------------------------
 
@@ -20256,7 +20279,7 @@ INSERT INTO `places` (`id`, `user_id`, `country_id`, `city_id`, `reference`, `ca
 (35, NULL, 13, 34, NULL, '[\"22\",\"21\"]', '[\"34\"]', NULL, 'sol-house-taghazout-bay-surf', NULL, 999, '[\"9\",\"8\",\"7\",\"6\"]', 'Station Touristique de Taghazout, Avenue Hassan II, Taghazout 80023, Maroc', 30.5402361, -9.7005859, '6023e118a7872_1612964120.jpg', '[\"60240945cdd71_1612974405.jpg\",\"6024094ca18dc_1612974412.jpg\"]', NULL, 1, NULL, 1, 'Voyage à Sol House Taghazout Bay', 'Rentacs Tours vous emmène à Sol House Taghazout Bay Surf, un univers assez spéciale situé au bord de la mer à Taghazout, à 18 km d\'Agadir.', '2021-03-04 14:37:06', '2021-02-10 13:35:20'),
 (36, NULL, 13, 23, NULL, '[\"13\",\"22\",\"12\",\"21\",\"20\",\"11\"]', '[\"32\"]', NULL, 'dakhla-attitude', NULL, 920, '[\"9\",\"8\",\"7\",\"6\"]', 'DAKHLA', NULL, NULL, '602e8ff06c81c_1613664240.jpg', '[\"602e90250f964_1613664293.jpg\"]', '{\"6\":{\"question\":\"S\\u00e9jour en Pension Compl\\u00e9te & Transferts A\\u00e9roport\\/H\\u00f4tel\\/A\\u00e9roport\",\"answer\":\"<p>Bungalow double : 1295 DHS\\/ Nuit<br \\/>Bungalow Single: 920 DHS \\/Nuit<\\/p>\"}}', 1, NULL, 1, 'Voyage à DAKHLA', 'Rentacs Tours vous emmène vers la ville de Dakhla pour découvrir ce merveilleux paradis. Loin de tout bruit, découvrez maintenant notre offre de voyage et d\'activités à Dakhla.', '2021-03-04 14:34:45', '2021-02-18 16:04:00'),
 (37, NULL, 13, 31, NULL, '[\"22\",\"11\"]', '[\"30\"]', NULL, 'douceur-de-vivre-hivernal-by-kenzi', NULL, 870, '[\"9\",\"8\",\"7\",\"6\"]', 'KENZI', NULL, NULL, '602e92d33e60e_1613664979.jpg', '[\"602e93c79fed7_1613665223.jpg\",\"602e93caad1e8_1613665226.jpg\"]', '{\"6\":{\"question\":\"D\\u00e9part Tardif\",\"answer\":\"<p>Navette au centre-ville 717, horaire selon programme affich&eacute;.<\\/p>\"}}', 1, NULL, 1, 'Hôtel Kenzi - Marrakech', 'Rentacs Tours vous emmène à l\'hôtel KENZI. Réservez maintenant votre séjour dans ce lieu privilégié de classe mondiale.', '2021-03-04 14:21:01', '2021-02-18 16:16:19'),
-(38, NULL, 13, 31, NULL, '[\"22\"]', '[\"32\"]', NULL, 'aqua-mirage-marrakech', NULL, 1025, '[\"8\",\"7\",\"6\"]', 'Km 5, Route de Tahanaout، Marrakech 40065, Maroc', 31.5347314, -7.992452, '6046551d0c0ae_1615222045.jpg', '[\"6046332cd4ea1_1615213356.jpg\"]', '{\"6\":{\"question\":\"Destination 1\",\"answer\":\"<p>destination 1<\\/p>\"},\"1\":{\"question\":\"destination 2\",\"answer\":\"destination 2\"},\"2\":{\"question\":null,\"answer\":null}}', 1, NULL, 1, 'Aqua Mirage Club Marrakech - Hôtel à Marrakech', 'Vous êtes à la recherche d\'un hôtel à Marrakech pour passer une expérience singulière ? Rentacs Tours vous propose Aqua Mirage Club.', '2021-05-18 12:14:23', '2021-03-08 16:39:56');
+(38, NULL, 13, 31, NULL, '[\"22\"]', '[\"32\"]', NULL, 'aqua-mirage-marrakech', NULL, 1025, '[\"8\",\"7\",\"6\"]', 'Km 5, Route de Tahanaout، Marrakech 40065, Maroc', 31.5347314, -7.992452, '6046551d0c0ae_1615222045.jpg', '[\"6046332cd4ea1_1615213356.jpg\"]', '{\"6\":{\"question\":\"Destination 1\",\"answer\":\"<p><img alt=\\\"\\\" src=\\\"\\/photos\\/1\\/dakhla-750x499.jpg\\\" style=\\\"height:499px; width:750px\\\" \\/><\\/p>\"},\"1\":{\"question\":\"destination 2\",\"answer\":\"<p>okokok<\\/p>\"},\"2\":{\"question\":\"okokok\",\"answer\":\"<p><img alt=\\\"\\\" src=\\\"\\/photos\\/1\\/dakhla-750x499.jpg\\\" style=\\\"height:499px; width:750px\\\" \\/><\\/p>\"}}', 1, NULL, 1, 'Aqua Mirage Club Marrakech - Hôtel à Marrakech', '<p>Vous &ecirc;tes &agrave; la recherche d&#39;un h&ocirc;tel &agrave; Marrakech pour passer une exp&eacute;rience singuli&egrave;re ? Rentacs Tours vous propose Aqua Mirage Club.</p>', '2021-07-13 12:37:59', '2021-03-08 16:39:56');
 
 -- --------------------------------------------------------
 
@@ -20288,7 +20311,7 @@ INSERT INTO `place_translations` (`id`, `place_id`, `locale`, `name`, `descripti
 (32, 37, 'en', 'Douceur de vivre Hivernal BY KENZI', '<p>Profitez d\'un s&eacute;jour en All Inclusive &agrave; Marrakech:<br />Gratuit&eacute; pour 1 enfant de moins de 5ans<br />Acc&egrave;s &agrave; la piscine chauff&eacute;e<br />Acc&egrave;s &agrave; la salle de sport sous r&eacute;servation &agrave; l\'avance<br /><br />Navette au centre-ville 717, horaire selon programme affich&eacute;.<br />A Partir de 870 DHS par personne en chambre double de luxe<br />en formule ALL INCLUSIVE<br />* Offre Valable jusqu\'au 20 Mars 2021 Hors taxes de s&eacute;jour</p>'),
 (33, 37, 'fr', 'Douceur de vivre Hivernal BY KENZI', '<p>Profitez d\'un s&eacute;jour en All Inclusive &agrave; Marrakech:<br />Gratuit&eacute; pour 1 enfant de moins de 5ans<br />Acc&egrave;s &agrave; la piscine chauff&eacute;e<br />Acc&egrave;s &agrave; la salle de sport sous r&eacute;servation &agrave; l\'avance<br /><br />Navette au centre-ville 717, horaire selon programme affich&eacute;.<br />A Partir de 870 DHS par personne en chambre double de luxe<br />en formule ALL INCLUSIVE<br />* Offre Valable jusqu\'au 20 Mars 2021 Hors taxes de s&eacute;jour</p>'),
 (34, 38, 'en', NULL, NULL),
-(35, 38, 'fr', 'Aqua Mirage Marrakech', '<p>Bienvenue &agrave; Aqua Mirage Club, &eacute;lu Meilleure H&ocirc;tel pour familles &agrave; Marrakech pour 4 ann&eacute;es cons&eacute;cutives. Ce lieu s&#39;&eacute;tend sur 20 hectares de nature au pied des fabuleuses montagnes de l&#39;Atlas. Il pr&eacute;sente aussi un point de d&eacute;part id&eacute;al pour explorer les environs de la ville de Marrakech. Avec son personnel professionnel, sa cuisine Marocaine et son &eacute;quipe d&#39;animation, Aqua Mirage est le choix id&eacute;al pour tous les amoureux du plaisir, du calme et de la haute qualit&eacute; du service. Il dispose de plusieurs piscines, un aqua parc, un sauna, un centre de massage et un centre de fitness. Profitez d&#39;un wifi gratuit, une navette centre ville, un club pour enfants, un centre de conf&eacute;rence et beaucoup plus...</p>');
+(35, 38, 'fr', 'Aqua Mirage Marrakech', '<p>Bienvenue &agrave; Aqua Mirage Club, &eacute;lu Meilleure H&ocirc;tel pour familles &agrave; Marrakech pour 4 ann&eacute;es cons&eacute;cutives. Ce lieu s&#39;&eacute;tend sur 20 hectares de nature au pied des fabuleuses montagnes de l&#39;Atlas. Il pr&eacute;sente aussi un point de d&eacute;part id&eacute;al pour explorer les environs de la ville de Marrakech. Avec son personnel professionnel, sa cuisine Marocaine et son &eacute;quipe d&#39;animation, Aqua Mirage est le choix id&eacute;al pour tous les amoureux du plaisir, du calme et de la haute qualit&eacute; du service. Il dispose de plusieurs piscines, un aqua parc, un sauna, un centre de massage et un centre de fitness. Profitez d&#39;un wifi gratuit, une navette centre ville, un club pour enfants, un centre de conf&eacute;rence et beaucoup plus...</p>\r\n\r\n<p><img alt=\"\" src=\"/photos/1/dakhla-750x499.jpg\" style=\"height:499px; width:750px\" /></p>');
 
 -- --------------------------------------------------------
 
@@ -20439,6 +20462,7 @@ CREATE TABLE `profiles` (
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `other_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` longtext COLLATE utf8mb4_unicode_ci,
   `photo` longtext COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -20449,16 +20473,16 @@ CREATE TABLE `profiles` (
 -- Déchargement des données de la table `profiles`
 --
 
-INSERT INTO `profiles` (`id`, `user_id`, `title_id`, `gender_id`, `sur_name`, `first_name`, `other_name`, `phone_number`, `address`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 'Travel', 'Portal', 'Admin', '09090909090', 'Address', '', '2021-01-28 09:14:55', '2021-02-15 16:39:26'),
-(2, 2, 1, 1, 'First', 'Portal', 'Agent', '09090111111', 'Travel portal agent shop at that place', '', '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
-(3, 3, 1, 1, 'First', 'Test', 'Customer', '09090222222', 'First test customer', '', '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
-(4, 4, 1, 1, 'Lb', 'zakaria', 'l', '09090444444', 'everywhere', '', '2021-01-28 09:14:55', '2021-02-12 15:50:12'),
-(5, 10, 1, 1, 'Kiki', 'zakaria', 'll', '66666666', '', NULL, '2021-02-05 10:30:32', '2021-02-05 10:30:32'),
-(6, 11, 1, 1, 'Bouhamidi', 'abderrahim', 'bou', '0623337189', '', NULL, '2021-03-01 04:22:28', '2021-03-01 04:22:28'),
-(7, 12, 1, 1, 'Kiki', 'zakaria', 'c', '6666', '', NULL, '2021-03-02 21:32:57', '2021-03-02 21:32:57'),
-(8, 13, 1, 1, 'll', 'll', 'll', '66655544411', '', NULL, '2021-03-08 15:05:57', '2021-03-08 15:05:57'),
-(9, 14, 1, 1, 'ok', 'ok', 'ok', '666666666', '', NULL, '2021-04-08 13:00:50', '2021-04-08 13:00:50');
+INSERT INTO `profiles` (`id`, `user_id`, `title_id`, `gender_id`, `sur_name`, `first_name`, `other_name`, `phone_number`, `nationality`, `address`, `photo`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 'Travel', 'Portal', 'Admin', '09090909090', NULL, 'Address', '', '2021-01-28 09:14:55', '2021-02-15 16:39:26'),
+(2, 2, 1, 1, 'First', 'Portal', 'Agent', '09090111111', NULL, 'Travel portal agent shop at that place', '', '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
+(3, 3, 1, 1, 'First', 'Test', 'Customer', '09090222222', NULL, 'First test customer', '', '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
+(4, 4, 1, 1, 'Lb', 'zakaria', 'l', '09090444444', NULL, 'everywhere', '', '2021-01-28 09:14:55', '2021-02-12 15:50:12'),
+(5, 10, 1, 1, 'Kiki', 'zakaria', 'll', '66666666', NULL, '', NULL, '2021-02-05 10:30:32', '2021-02-05 10:30:32'),
+(6, 11, 1, 1, 'Bouhamidi', 'abderrahim', 'bou', '0623337189', NULL, '', NULL, '2021-03-01 04:22:28', '2021-03-01 04:22:28'),
+(7, 12, 1, 1, 'Kiki', 'zakaria', 'c', '6666', NULL, '', NULL, '2021-03-02 21:32:57', '2021-03-02 21:32:57'),
+(8, 13, 1, 1, 'll', 'll', 'll', '66655544411', NULL, '', NULL, '2021-03-08 15:05:57', '2021-03-08 15:05:57'),
+(9, 14, 1, 1, 'ok', 'ok', 'ok', '666666666', NULL, '', NULL, '2021-04-08 13:00:50', '2021-04-08 13:00:50');
 
 -- --------------------------------------------------------
 
@@ -20540,10 +20564,8 @@ CREATE TABLE `rate_booking` (
 --
 
 INSERT INTO `rate_booking` (`id`, `booking_id`, `rate_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(1, 132, 4, 0, NULL, NULL),
-(2, 132, 5, 0, NULL, NULL),
-(3, 133, 3, 5, NULL, NULL),
-(4, 134, 1, 1, NULL, NULL);
+(1, 168, 1, 1, NULL, NULL),
+(2, 168, 3, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -20639,10 +20661,9 @@ INSERT INTO `reviews` (`id`, `user_id`, `place_id`, `score`, `comment`, `status`
 --
 
 CREATE TABLE `roles` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -20651,12 +20672,61 @@ CREATE TABLE `roles` (
 -- Déchargement des données de la table `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin', 'General control of the entire system', '2021-01-28 09:14:54', '2021-01-28 09:14:54'),
-(2, 'agent', 'Agent', 'A customer that books for his/her personal customer', '2021-01-28 09:14:54', '2021-01-28 09:14:54'),
-(3, 'customer', 'Customer', 'A registered visitor, customer', '2021-01-28 09:14:54', '2021-01-28 09:14:54'),
-(4, 'branch', 'Branch', 'A branch of the portal company', '2021-01-28 09:14:54', '2021-01-28 09:14:54'),
-(5, 'cooperate', 'Cooperate Customer', 'A cooperate customer of the portal', '2021-01-28 09:14:54', '2021-01-28 09:14:54');
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(2, 'agent', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32'),
+(3, 'customer', 'web', '2022-03-09 17:25:32', '2022-03-09 17:25:32');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(1, 2),
+(2, 2),
+(3, 2),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 2),
+(13, 2),
+(14, 2),
+(15, 2),
+(16, 2),
+(17, 2);
 
 -- --------------------------------------------------------
 
@@ -20682,7 +20752,8 @@ INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
 (12, 3),
 (13, 3),
 (14, 3),
-(4, 4);
+(16, 3),
+(17, 3);
 
 -- --------------------------------------------------------
 
@@ -20710,6 +20781,7 @@ CREATE TABLE `sales` (
   `note` text COLLATE utf8mb4_unicode_ci,
   `staff_note` text COLLATE utf8mb4_unicode_ci,
   `is_locked` int(11) DEFAULT '1',
+  `deleted_at` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -20718,9 +20790,9 @@ CREATE TABLE `sales` (
 -- Déchargement des données de la table `sales`
 --
 
-INSERT INTO `sales` (`id`, `reference_no`, `booking_reference`, `user_id`, `customer_id`, `total_qty`, `tax`, `total_tax`, `total_price`, `grand_total`, `status`, `payment_status`, `document`, `paid_amount`, `paid_by`, `payment_note`, `note`, `staff_note`, `is_locked`, `created_at`, `updated_at`) VALUES
-(2, '000000001', NULL, 1, 3, 1, 10, 299.7, 2997, 3296.7, 1, 3, NULL, 0, 1, NULL, NULL, NULL, 1, '2021-04-14 11:06:07', '2021-04-14 11:47:22'),
-(3, '2105287247688', '131200521', 1, 10, 2, 0, 0, 10038, 10038, 1, 3, NULL, 0, 1, NULL, NULL, NULL, 1, '2021-05-28 15:39:00', '2021-05-28 15:39:00');
+INSERT INTO `sales` (`id`, `reference_no`, `booking_reference`, `user_id`, `customer_id`, `total_qty`, `tax`, `total_tax`, `total_price`, `grand_total`, `status`, `payment_status`, `document`, `paid_amount`, `paid_by`, `payment_note`, `note`, `staff_note`, `is_locked`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(2, '000000001', NULL, 1, 3, 1, 10, 299.7, 2997, 3296.7, 1, 3, NULL, 0, 1, NULL, NULL, NULL, 1, NULL, '2021-04-14 11:06:07', '2021-04-14 11:47:22'),
+(3, '2105287247688', '131200521', 1, 10, 2, 0, 0, 10038, 10038, 1, 3, NULL, 0, 1, NULL, NULL, NULL, 1, NULL, '2021-05-28 15:39:00', '2021-05-28 15:39:00');
 
 -- --------------------------------------------------------
 
@@ -20802,22 +20874,6 @@ INSERT INTO `settings` (`id`, `name`, `val`, `type`, `created_at`, `updated_at`)
 (43, 'top_navigation', NULL, 'string', '2021-02-10 16:15:11', '2021-02-11 18:01:36'),
 (44, 'google_analytics_js', NULL, 'string', '2021-02-17 15:05:44', '2021-02-17 15:05:44'),
 (45, 'facebook_pixel_js', NULL, 'string', '2021-02-17 15:05:44', '2021-02-17 15:05:44');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `sight_seeings`
---
-
-CREATE TABLE `sight_seeings` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `package_id` int(11) NOT NULL,
-  `attraction_id` int(11) NOT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -20986,6 +21042,7 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `customer_id` int(10) UNSIGNED DEFAULT NULL,
   `is_admin` int(11) DEFAULT '0',
+  `deleted_at` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -20994,16 +21051,16 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `delete_status`, `profile_complete_status`, `api_token`, `remember_token`, `customer_id`, `is_admin`, `created_at`, `updated_at`) VALUES
-(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'WIo1wDOiLsWMiQVObLc5kL7Km2rl9aYtqg6Y46mRZo3QFoDPSHk0XBPlrGUA', NULL, 1, '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
-(2, 'agent@agent.com', '$2y$10$1.KCk1DJuYp4ZaPgLgDE0.t9Ob0zGegdWu11uKR8uT3cFJfT/6oRe', 0, 0, '', '0R82vHJuH2EMedA0yZOMPp53Nify6JwM4Xv6N16YNIHkSenT2GcH3kEj2H57', NULL, 0, '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
-(3, 'customer@customer.com', '$2y$10$liBmx5acvAXNb3O6e9tFBOU3bmNwwLlMXpRnM8UyutR9IkH1Cqcr2', 0, 0, '', NULL, NULL, 0, '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
-(4, 'first_agency@firstagency.com', '$2y$10$eyiO28RvYh.NIpwpmKuHY.V2imHUlRVvN92WY3NYs4zIQuTpDn8Cm', 1, 0, '', NULL, NULL, 0, '2021-01-28 09:14:55', '2021-03-02 21:37:57'),
-(10, 'zakarialabib@gmail.com', '$2y$10$SmWHSt2kh.oheEoRsxNzHuR.AN4LjjP1.XlrH1nTOlvScAcVPCB4.', 1, 0, NULL, NULL, NULL, 0, '2021-02-05 10:30:32', '2021-03-02 21:38:04'),
-(11, 'abderrahimybouhamidi@gmail.com', '$2y$10$xR.eBd8NcQdyivUrsnPvderNO3Ut08uf.IuXmU5I/h6iszR3Bzoc2', 0, 0, NULL, NULL, NULL, 0, '2021-03-01 04:22:28', '2021-03-01 04:22:28'),
-(12, 'z@admin.com', '$2y$10$LcCoHDgDg5mNcrpAZ38MBO..wxFos6Etv8fBXwwH3exOSCWsDVDiK', 1, 0, NULL, NULL, NULL, 0, '2021-03-02 21:32:57', '2021-03-02 21:53:46'),
-(13, 'gg@g.c', '$2y$10$jsVKqzKjKHJIlAoeTl8kbeCIVsAuYVRSFRdoGox6j8FdMuolv55zu', 0, 0, NULL, NULL, NULL, 0, '2021-03-08 15:05:57', '2021-03-08 15:05:57'),
-(14, 'OK@ok.ok', '$2y$10$HTJuF77BPUc4GtdPvznNAOEmE68oxw/dOY1O4C9cvX8BkVO75PzW.', 0, 0, NULL, NULL, NULL, 0, '2021-04-08 13:00:50', '2021-04-08 13:00:50');
+INSERT INTO `users` (`id`, `email`, `password`, `delete_status`, `profile_complete_status`, `api_token`, `remember_token`, `customer_id`, `is_admin`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'admin@admin.com', '$2y$10$D897.afXJqCRq5Ij5X/Ba.VXu.TM96CbjkF8CzFGVz5PA05eOV2cW', 0, 0, '', 'K436riGM4daXfaf9CmWgIkUpoaa5544hGhaKXJXkxyv9hK8Dz3YdZzkGwKt7', NULL, 1, NULL, '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
+(2, 'agent@agent.com', '$2y$10$1.KCk1DJuYp4ZaPgLgDE0.t9Ob0zGegdWu11uKR8uT3cFJfT/6oRe', 0, 0, '', '0R82vHJuH2EMedA0yZOMPp53Nify6JwM4Xv6N16YNIHkSenT2GcH3kEj2H57', NULL, 0, NULL, '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
+(3, 'customer@customer.com', '$2y$10$liBmx5acvAXNb3O6e9tFBOU3bmNwwLlMXpRnM8UyutR9IkH1Cqcr2', 0, 0, '', NULL, NULL, 0, NULL, '2021-01-28 09:14:55', '2021-01-28 09:14:55'),
+(4, 'first_agency@firstagency.com', '$2y$10$eyiO28RvYh.NIpwpmKuHY.V2imHUlRVvN92WY3NYs4zIQuTpDn8Cm', 1, 0, '', NULL, NULL, 0, NULL, '2021-01-28 09:14:55', '2021-03-02 21:37:57'),
+(10, 'zakarialabib@gmail.com', '$2y$10$SmWHSt2kh.oheEoRsxNzHuR.AN4LjjP1.XlrH1nTOlvScAcVPCB4.', 1, 0, NULL, NULL, NULL, 0, NULL, '2021-02-05 10:30:32', '2021-03-02 21:38:04'),
+(11, 'abderrahimybouhamidi@gmail.com', '$2y$10$xR.eBd8NcQdyivUrsnPvderNO3Ut08uf.IuXmU5I/h6iszR3Bzoc2', 0, 0, NULL, NULL, NULL, 0, NULL, '2021-03-01 04:22:28', '2021-03-01 04:22:28'),
+(12, 'z@admin.com', '$2y$10$LcCoHDgDg5mNcrpAZ38MBO..wxFos6Etv8fBXwwH3exOSCWsDVDiK', 1, 0, NULL, NULL, NULL, 0, NULL, '2021-03-02 21:32:57', '2021-03-02 21:53:46'),
+(13, 'gg@g.c', '$2y$10$jsVKqzKjKHJIlAoeTl8kbeCIVsAuYVRSFRdoGox6j8FdMuolv55zu', 0, 0, NULL, NULL, NULL, 0, NULL, '2021-03-08 15:05:57', '2021-03-08 15:05:57'),
+(14, 'OK@ok.ok', '$2y$10$HTJuF77BPUc4GtdPvznNAOEmE68oxw/dOY1O4C9cvX8BkVO75PzW.', 0, 0, NULL, NULL, NULL, 0, NULL, '2021-04-08 13:00:50', '2021-04-08 13:00:50');
 
 -- --------------------------------------------------------
 
@@ -21031,25 +21088,6 @@ CREATE TABLE `vats` (
 
 INSERT INTO `vats` (`id`, `flight_vat_type`, `flight_vat_value`, `hotel_vat_type`, `hotel_vat_value`, `car_vat_type`, `car_vat_value`, `package_vat_type`, `package_vat_value`, `created_at`, `updated_at`) VALUES
 (1, 2, 1, 2, 1, 2, 1, 2, 1, '2021-01-28 09:16:30', '2021-01-28 09:16:30');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `visa_applications`
---
-
-CREATE TABLE `visa_applications` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `surname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `given_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `residence_country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `destination_country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ipAddress` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -21311,12 +21349,6 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `cooperate_customer_profiles`
---
-ALTER TABLE `cooperate_customer_profiles`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `countries`
 --
 ALTER TABLE `countries`
@@ -21363,12 +21395,6 @@ ALTER TABLE `galleries`
 -- Index pour la table `genders`
 --
 ALTER TABLE `genders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `good_to_knows`
---
-ALTER TABLE `good_to_knows`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -21430,6 +21456,20 @@ ALTER TABLE `markup_value_types`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Index pour la table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
 -- Index pour la table `newsletters`
@@ -21548,14 +21588,7 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `permissions_name_unique` (`name`);
-
---
--- Index pour la table `permission_role`
---
-ALTER TABLE `permission_role`
-  ADD PRIMARY KEY (`permission_id`,`role_id`),
-  ADD KEY `permission_role_role_id_foreign` (`role_id`);
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Index pour la table `places`
@@ -21655,7 +21688,14 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roles_name_unique` (`name`);
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Index pour la table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
 -- Index pour la table `role_user`
@@ -21683,12 +21723,6 @@ ALTER TABLE `sale_details`
 -- Index pour la table `settings`
 --
 ALTER TABLE `settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `sight_seeings`
---
-ALTER TABLE `sight_seeings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -21739,12 +21773,6 @@ ALTER TABLE `users`
 -- Index pour la table `vats`
 --
 ALTER TABLE `vats`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `visa_applications`
---
-ALTER TABLE `visa_applications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -21840,7 +21868,7 @@ ALTER TABLE `bank_payments`
 -- AUTO_INCREMENT pour la table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT pour la table `cabin_types`
@@ -21897,12 +21925,6 @@ ALTER TABLE `comments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `cooperate_customer_profiles`
---
-ALTER TABLE `cooperate_customer_profiles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `countries`
 --
 ALTER TABLE `countries`
@@ -21949,12 +21971,6 @@ ALTER TABLE `galleries`
 --
 ALTER TABLE `genders`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `good_to_knows`
---
-ALTER TABLE `good_to_knows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `hotels`
@@ -22014,7 +22030,7 @@ ALTER TABLE `markup_value_types`
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT pour la table `newsletters`
@@ -22026,7 +22042,7 @@ ALTER TABLE `newsletters`
 -- AUTO_INCREMENT pour la table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(191) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT pour la table `offers`
@@ -22116,7 +22132,7 @@ ALTER TABLE `page_translations`
 -- AUTO_INCREMENT pour la table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `places`
@@ -22176,7 +22192,7 @@ ALTER TABLE `purchase_details`
 -- AUTO_INCREMENT pour la table `rate_booking`
 --
 ALTER TABLE `rate_booking`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `returns`
@@ -22200,7 +22216,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT pour la table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `sales`
@@ -22219,12 +22235,6 @@ ALTER TABLE `sale_details`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
---
--- AUTO_INCREMENT pour la table `sight_seeings`
---
-ALTER TABLE `sight_seeings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `sliders`
@@ -22273,12 +22283,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `vats`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT pour la table `visa_applications`
---
-ALTER TABLE `visa_applications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `vouchers`
@@ -22345,6 +22349,18 @@ ALTER TABLE `customers`
   ADD CONSTRAINT `customer_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
+-- Contraintes pour la table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
 -- Contraintes pour la table `offers`
 --
 ALTER TABLE `offers`
@@ -22380,13 +22396,6 @@ ALTER TABLE `package_rates`
 --
 ALTER TABLE `page_translations`
   ADD CONSTRAINT `page_translations_page_id_foreign` FOREIGN KEY (`page_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `permission_role`
---
-ALTER TABLE `permission_role`
-  ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `place_translations`
@@ -22446,11 +22455,11 @@ ALTER TABLE `return_details`
   ADD CONSTRAINT `Return_Details_ID` FOREIGN KEY (`return_id`) REFERENCES `returns` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `role_user`
+-- Contraintes pour la table `role_has_permissions`
 --
-ALTER TABLE `role_user`
-  ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `sales`
@@ -22476,3 +22485,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `wallets`
   ADD CONSTRAINT `Foreing_User_Wallet_ID` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

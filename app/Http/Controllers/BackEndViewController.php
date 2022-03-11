@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BankPayment;
 use App\Models\FlightBooking;
 use App\Models\HotelBooking;
-use App\Models\OnlinePayment;
 use App\Models\PackageBooking;
 use App\Models\Profile;
 use App\Models\User;
-use App\Models\VisaApplication;
 use App\Models\Wallet;
 use App\Models\Newsletter;
 use App\Models\WalletLog;
@@ -64,7 +61,6 @@ class BackEndViewController extends Controller
 
         $bookings = Auth::user()->bookings()->with(['place'])->get();
 
-        $visaApplications = VisaApplication::orderBy('id','desc')->get();
         $generalTotalFlightBookings = FlightBooking::where('payment_status','1')->count();
         $generalTotalHotelBookings = HotelBooking::where('payment_status','1')->count();
         $generalTotalPackageBookings    = PackageBooking::where('payment_status','1')->count();
@@ -117,7 +113,7 @@ class BackEndViewController extends Controller
             ),
         );
         //dd($data);
-        return view('pages.backend.dashboard',compact('data','userWallet', 'count_cities', 'bookings', 'count_posts' ,'count_places', 'count_bookings','count_suscribers','count_users','count_sales','count_purchases','visaApplications','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
+        return view('pages.backend.dashboard',compact('data','userWallet', 'count_cities', 'bookings', 'count_posts' ,'count_places', 'count_bookings','count_suscribers','count_users','count_sales','count_purchases','generalTotalPackageBookings','generalTotalFlightBookings','generalTotalHotelBookings','generalSuccessfulFlightBookingPrice','generalSuccessfulHotelBookingPrice','generalSuccessfulPackageBookingPrice','userGeneralTotalPackageBookings','userGeneralTotalFlightBookings','userGeneralTotalHotelBookings','userGeneralSuccessfulFlightBookingPrice','userGeneralSuccessfulHotelBookingPrice','userGeneralSuccessfulPackageBookingPrice'));
 
     }
     
@@ -359,34 +355,6 @@ class BackEndViewController extends Controller
             ->sum('amount');
         $user = User::authenticatedUserInfo();
         return view('pages.backend.user_wallet',compact('userWallet','userWalletLogs','walletCredits','walletDebits','user'));
-    }
-
-    public function bankPayment(){
-        $bankPayments     = BankPayment::orderBy('id','desc')->get();
-        $amountSuccessful = BankPayment::where('status',1)->sum('amount');
-        $amountPending    = BankPayment::where('status',2)->sum('amount');
-        $amountDeclined   = BankPayment::where('status',0)->sum('amount');
-        $countSuccessful  = BankPayment::where('status',1)->count();
-        $countPending     = BankPayment::where('status',2)->count();
-        $countDeclined    = BankPayment::where('status',0)->count();
-        return view('pages.backend.transactions.bank_payments',compact('bankPayments','amountSuccessful','amountPending','amountDeclined','countSuccessful','countPending','countDeclined'));
-    }
-
-    public function userBankPayment(){
-        $bankPayments     = BankPayment::orderBy('id','desc')->where('user_id',auth()->id())->get();
-        $amountSuccessful = BankPayment::where('status',1)->where('user_id',auth()->id())->sum('amount');
-        $amountPending    = BankPayment::where('status',2)->where('user_id',auth()->id())->sum('amount');
-        $amountDeclined   = BankPayment::where('status',0)->where('user_id',auth()->id())->sum('amount');
-        $countSuccessful  = BankPayment::where('status',1)->where('user_id',auth()->id())->count();
-        $countPending     = BankPayment::where('status',2)->where('user_id',auth()->id())->count();
-        $countDeclined    = BankPayment::where('status',0)->where('user_id',auth()->id())->count();
-        return view('pages.backend.transactions.user_bank_payments',compact('bankPayments','amountSuccessful','amountPending','amountDeclined','countSuccessful','countPending','countDeclined'));
-    }
-
-
-    public function visaApplicationRequests(){
-        $visaApplications = VisaApplication::orderBy('id','desc')->get();
-        return view('pages.backend.settings.visa_applications',compact('visaApplications'));
     }
 
     public function userPackageBookings(){

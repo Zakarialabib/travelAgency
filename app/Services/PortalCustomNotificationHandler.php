@@ -18,7 +18,6 @@ use App\Mail\TicketIssued;
 use App\Mail\TicketVoid;
 use App\Mail\WalletCredit;
 use App\Mail\WalletDebit;
-use App\Mail\VisaApplicationRequest;
 use App\Mail\PackageReservationComplete;
 use Exception;
 use App\Mail\RegistrationInvitation;
@@ -161,14 +160,6 @@ class PortalCustomNotificationHandler
             Mail::to($user->email)->send(new WalletDebit($user,$walletLog));
         }catch(Exception $e){
             TOastr::error('Unable to send wallet debit email');
-        }
-    }
-
-    public static function visaApplicationRequest($details){
-        try{
-            Mail::to(PortalConfig::$adminVisaApplicationEmail)->send(new VisaApplicationRequest($details));
-        }catch(Exception $e){
-            Toastr::error('Unable to send visa application email','Email Error!!!');
         }
     }
 

@@ -453,7 +453,7 @@ Route::middleware(['auth'])->group(function(){
 
 
     Route::group(['prefix' => 'transactions'],function(){
-        Route::get('/online-payment','BackEndViewController@onlinePayment');
+        
         Route::get('/bank-payment','BackEndViewController@bankPayment');
         Route::get('/user/online-payment','BackEndViewController@userOnlinePayment');
         Route::get('/user/bank-payment','BackEndViewController@userBankPayment');
