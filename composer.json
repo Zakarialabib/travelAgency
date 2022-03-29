@@ -9,7 +9,7 @@
         "artesaos/seotools": "^0.20.1",
         "astrotomic/laravel-translatable": "^11.9",
         "barryvdh/laravel-dompdf": "^0.9.0",
-        "barryvdh/laravel-translation-manager": "^0.5.10",
+        "barryvdh/laravel-translation-manager": "^0.6.2",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
