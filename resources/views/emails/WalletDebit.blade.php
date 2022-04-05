@@ -8,7 +8,6 @@ A debit transaction has just happened on your wallet with us. Find below the tra
 
 Type             :   <i class="fa fa-minus"></i>Debit<br/>
 Amount           :   <b>&#x20a6;{{number_format(($walletLog->amount /100),2)}} </b><br/>
-Remark           :   {{\App\WalletLogType::find($walletLog->type_id)->name}}
 
 
 Follow the button below to your wallet management page

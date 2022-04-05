@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\FlightBooking;
 use App\Http\Controllers\NotificationController;
-use App\Mail\BankPaymentOptionNotification;
 use App\Mail\FlightReservationComplete;
 use App\Mail\HotelReservationComplete;
 use App\Mail\PasswordChange;
@@ -57,16 +56,6 @@ class PortalCustomNotificationHandler
         }catch(Exception $e){
            Toastr::info("Nous n'avons pas pu vous envoyer d'email de bienvenue.");
         }
-        return 0;
-    }
-
-    public static function payByBank($booking){
-        try{
-            Mail::to(auth()->user())->send(new BankPaymentOptionNotification($booking));
-        }catch(Exception $e){
-            Toastr::info("Sorry, unable to send you an email confirming your bank payment choice.");
-        }
-
         return 0;
     }
 

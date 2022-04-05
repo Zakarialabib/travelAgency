@@ -79,7 +79,6 @@
                                     <th>S/N</th>
                                     <th>Amount</th>
                                     <th>Status</th>
-                                    <th>Description</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -93,9 +92,6 @@
                                             @elseif($walletLog->status == 0)
                                                 <p class="danger"> Debit</p>
                                             @endif
-                                        </td>
-                                        <td>
-                                            {{\App\WalletLogType::find($walletLog->type_id)->name}}
                                         </td>
                                     </tr>
                                 @endforeach

@@ -404,33 +404,6 @@ class ViewController extends Controller
 
     }
 
-    public function flightBookingPayment(){
-
-        $itineraryPricingInfo   = session()->get('itineraryPricingInfo');
-        $selectedItinerary      = session()->get('selectedItinerary');
-        $flightSearchParam      = session()->get('flightSearchParam');
-        $pnr = session()->get('pnr');
-        $booking = FlightBooking::where('pnr',$pnr)->first();
-        $banks = BankDetail::where('status',1)->get();
-
-        return view('pages.frontend.flight.payment_option',compact('itineraryPricingInfo','selectedItinerary','flightSearchParam','booking','banks'));
-
-    }
-
-    public function flightPaymentConfirmation(){
-
-          $paymentInfo            = session()->get('paymentInfo');
-          $itineraryPricingInfo   = session()->get('itineraryPricingInfo');
-          $selectedItinerary      = session()->get('selectedItinerary');
-          $flightSearchParam      = session()->get('flightSearchParam');
-          $pnr = session()->get('pnr');
-          $booking = FlightBooking::where('pnr',$pnr)->first();
-          $profile = Profile::getUserInfo(auth()->user()->id);
-          return view('pages.frontend.flight.payment_confirmation',compact('paymentInfo','itineraryPricingInfo','selectedItinerary','flightSearchParam','booking','profile'));
-
-    }
-
-
     public function availableHotels(){
 
 
@@ -508,28 +481,6 @@ class ViewController extends Controller
         return view('pages.frontend.hotel.hotel_booking',compact('hotelRoomInformation','searchParam','selectedRoom','hotelInformation','titles'));
 
     }
-
-    public function hotelBookingPaymentPage(){
-        $hotelInformation = $this->HotelController->selectedHotel();
-        $searchParam      = session()->get('hotelSearchParam');
-        $selectedRoom     = session()->get('selectedRoom');
-        $hotelRoomInformation = session()->get('selectedHotelRoomInformation');
-        $banks = BankDetail::where('status',1)->get();
-        $titles = Title::all();
-        return view('pages.frontend.hotel.hotel_payment_option',compact('hotelRoomInformation','searchParam','selectedRoom','hotelInformation','banks','titles'));
-    }
-
-    public function hotelBookingCompletion(){
-        $hotelInformation = $this->HotelController->selectedHotel();
-        $searchParam      = session()->get('hotelSearchParam');
-        $selectedRoom     = session()->get('selectedRoom');
-        $paymentInfo      = session()->get('paymentInfo');
-        $bookingInfo      = HotelBooking::where('reference',$selectedRoom['bookingReference'])->first();
-
-
-        return view('pages.frontend.hotel.hotel_payment_confirmation',compact('hotelInformation','searchParam','selectedRoom','paymentInfo','bookingInfo'));
-    }
-
 
     public function dealDetails($slug){
         
