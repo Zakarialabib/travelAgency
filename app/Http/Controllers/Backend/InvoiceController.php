@@ -66,7 +66,7 @@ class InvoiceController extends Controller
             'beneficiary' => $beneficiary,
             'type' => $data['type'],
         ] , function($message) use($data, $pdf) {
-            $message->to($data['recepient'], 'rentacs Tours')
+            $message->to($data['recepient'], 'TravelAgency')
                     ->subject($data["subject"])
                     ->attachData($pdf->output(), "rapport.pdf");
         });

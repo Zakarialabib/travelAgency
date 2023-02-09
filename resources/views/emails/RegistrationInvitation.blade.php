@@ -31,8 +31,8 @@ class RegistrationInvitation extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply@rentacstours.com',config('app.name'))
-            ->subject('Inscription sur RentacsTours')
+        return $this->from('no-reply@TravelAgency.com',config('app.name'))
+            ->subject('Inscription sur TravelAgency')
             ->markdown('emails.RegistrationInvitation');
     }
 }

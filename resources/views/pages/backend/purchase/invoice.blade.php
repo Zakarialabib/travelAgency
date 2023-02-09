@@ -218,7 +218,7 @@
                     </div>
                     <div class="col company-details">
                         <h3 class="name">
-                            Rentacs Tours
+                            TravelAgency
                         </h3>
                         <div>13, Rue El Kassar, 1er Etage Maarif </div>
                         <div>20100 Casablanca, Maroc</div>
@@ -291,9 +291,9 @@
 
             </main>
             <footer style='width:600px; text-align:left; border-left:tomato 2px solid; padding:10px;'>
-                                 <p><font color="#E5511E;">RENTACS TOURS </font> - <b>Capital: </b> 300.000DH</p>
+                                 <p><font color="#E5511E;">TravelAgency </font> - <b>Capital: </b> 300.000DH</p>
                                  <p> <b>Adresse:</b> 13, Rue El Kassar, 1er Etage Maarif 20100 Casablanca, Maroc </p>   
-                                <p><b>Code Postal: </b>  20100 - <b>Tél:</b> +212 522 252 386 - <b>Email:</b> info@rentacstours.com</p>
+                                <p><b>Code Postal: </b>  20100 - <b>Tél:</b> +212 522 252 386 - <b>Email:</b> info@TravelAgency.com</p>
                                  <p><i class="la la-map-marker la-24" ></i> <b>RC: </b> 382573 <b>CNSS:</b> 4284098 <b>Patente:</b> 35781728 <b>IF:</b> 15220706 <b>ICE:</b> 001565693000053 </p>
                                 <p><i class="la la-envelope la-24" style="color: black;"></i> Attijariwafabank Agence centre d'affaire YACOUP EL MANSOUR</a> </p>
                                 <p><i class="la la-phone la-24" ></i>  <b>Code IBAN:</b> 007 780 000 339 400 000 25 46 93 - <b>Code SWIFT:</b> BCMAMAMC </a></p>

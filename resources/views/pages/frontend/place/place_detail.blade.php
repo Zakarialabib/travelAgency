@@ -35,7 +35,7 @@
               @else
               <div class="place-slider__item">
                 <a href="#">
-                  <img src="https://via.placeholder.com/1280x500?text=Rentacstours" alt="slider no image">
+                  <img src="https://via.placeholder.com/1280x500?text=TravelAgency" alt="slider no image">
                 </a>
               </div>
               @endif

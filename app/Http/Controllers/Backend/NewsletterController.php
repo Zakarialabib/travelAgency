@@ -96,8 +96,8 @@ class NewsletterController extends Controller
         foreach ($users as $user){
             Mail::send('pages.backend.newsletter.test', ['subject'=>$sub, 'content'=>$msg, 'user'=>$user],
              function($message) use ($user){
-                $message->to($user->email)->from('no_reply@rentacstours.com','Rentacs Tours')
-                ->subject('Rentacs Tours');
+                $message->to($user->email)->from('no_reply@TravelAgency.com','TravelAgency')
+                ->subject('TravelAgency');
              });
         }
 

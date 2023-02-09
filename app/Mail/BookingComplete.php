@@ -36,7 +36,7 @@ class BookingComplete extends Mailable
     public function build()
     {
         return $this->subject('Reservation Crée avec Succès')
-            ->from('no-reply@rentacstours.com',config('app.name'))
+            ->from('no-reply@TravelAgency.com',config('app.name'))
             ->markdown('emails.BookingComplete');
     }
 }

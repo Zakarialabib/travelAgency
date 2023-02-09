@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rentacs Tours</title>
+    <title>TravelAgency</title>
     <link rel="stylesheet" href="{{ asset('backend/app-assets/css/bootstrap2.css') }}">
 </head>
 
@@ -27,7 +27,7 @@
             <div class="col-xs-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>{{ __('From') }}: <a href="#">Rentacs Tours</a></h4>
+                        <h4>{{ __('From') }}: <a href="#">TravelAgency</a></h4>
                     </div>
                     <div class="panel-body">
                         <p>
@@ -149,9 +149,9 @@
                             <h4>{{ __('Contact Details') }}</h4>
                         </div>
                         <div class="panel-body">
-                            <p>RENTACS TOURS - Capital: 300.000DH
+                            <p>TravelAgency - Capital: 300.000DH
                                 Adresse: 13, Rue El Kassar, 1er Etage Maarif 20100 Casablanca, Maroc
-                                Code Postal: 20100 - Tél:+212 522 252 386 - Email: info@rentacstours.com </p>
+                                Code Postal: 20100 - Tél:+212 522 252 386 - Email: info@TravelAgency.com </p>
                         </div>
                     </div>
                 </div>

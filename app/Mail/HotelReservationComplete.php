@@ -41,7 +41,7 @@ class HotelReservationComplete extends Mailable
 
     public function build()
     {
-        return $this->from('no-reply@rentacstours.com',config('app.name'))
+        return $this->from('no-reply@TravelAgency.com',config('app.name'))
                     ->subject('Hotel Room Reservation')
                     ->markdown('emails.HotelReservationComplete');
     }

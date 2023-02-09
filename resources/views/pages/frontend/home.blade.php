@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title')  {{__('Rentacs Tours - Travel Agency')}}  @endsection
+@section('page-title')  {{__('TravelAgency - Travel Agency')}}  @endsection
 
 @section('content')
 <section class="">
@@ -350,7 +350,7 @@
                 <div class="col-sm-6 col-lg-6">
                     <div class="business-about-info">
                         <h2>{{__('Who we are')}} ?</h2>
-                        <p>{{__('Rentacstours about info')}}</p>
+                        <p>{{__('TravelAgency about info')}}</p>
                         <a href="{{url('/a-propos-21')}}" class="btn">{{__('Read more')}}</a>
                     </div>
                 </div>

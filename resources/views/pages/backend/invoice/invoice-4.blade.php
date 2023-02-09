@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Rentacs Tours</title>
+    <title>TravelAgency</title>
     <link rel="stylesheet" href="{{ asset('backend/app-assets/css/bootstrap2.css') }}">
 </head>
 

@@ -1771,7 +1771,7 @@
 		frameEndpoint: "/botman/chat",
 		timeFormat: "HH:MM",
 		dateTimeFormat: "m/d/yy HH:MM",
-		title: "Rentacs tours Chat",
+		title: "TravelAgency Chat",
 		cookieValidInDays: 1,
 		introMessage: "",
 		placeholderText: "Envoyer un message...",
@@ -1788,7 +1788,7 @@
 		mobileWidth: "300px",
 		videoHeight: 160,
 		aboutLink: "/",
-		aboutText: "⚡ Rentacs tours Chat",
+		aboutText: "⚡ TravelAgency Chat",
 		chatId: "",
 		userId: "",
 		alwaysUseFloatingButton: !1

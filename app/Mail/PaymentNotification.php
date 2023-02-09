@@ -31,7 +31,7 @@ class PaymentNotification extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply@rentacstours.com',config('app.name'))
+        return $this->from('no-reply@TravelAgency.com',config('app.name'))
             ->subject('Payment Notification')
             ->markdown('emails.PaymentNotification');
     }
