@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Sale;

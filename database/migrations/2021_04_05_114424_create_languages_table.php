@@ -16,7 +16,6 @@ class CreateLanguagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->string('native_name');
 			$table->string('code');
 			$table->integer('is_default');
 			$table->integer('is_active');
