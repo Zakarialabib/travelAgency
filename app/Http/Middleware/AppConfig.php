@@ -41,8 +41,8 @@ class AppConfig
         config(['mail.username' => setting('mail_username')]);
         config(['mail.password' => setting('mail_password')]);
         config(['mail.encryption' => setting('mail_encryption', 'ssl')]);
-        config(['mail.from.address' => setting('mail_from_address', 'hello@alphaboost.ma')]);
-        config(['mail.from.name' => setting('mail_from_name', 'alphaboost')]);
+        config(['mail.from.address' => setting('mail_from_address', 'hello@zakarialabib.com')]);
+        config(['mail.from.name' => setting('mail_from_name', 'zakarialabib')]);
 
 
         return $next($request);

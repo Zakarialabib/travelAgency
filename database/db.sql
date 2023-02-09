@@ -20847,9 +20847,9 @@ INSERT INTO `settings` (`id`, `name`, `val`, `type`, `created_at`, `updated_at`)
 (16, 'ads_sidebar_banner_image', '5e02cf9f0538b_1577242527.jpg', 'image', '2019-12-21 09:19:03', '2019-12-25 01:55:27'),
 (17, 'home_description', 'Fondée par deux bikers passionnés certifiés par HOG Harley-Davidson: Nizar CHAWAD, ancien président du HOG Chapter Casablanca, et Mohamed Ali ANOUAR, ancien secrétaire général du HOG Chapter Casablanca.  La force de TravelAgency repose sur la diversité des services qu’elle propose mais aussi et surtout sur le professionnalisme sans défaut de son équipe qui bénéficie des compétences managériales sans faille de monsieur Ali Amrani ayant à son actif plus de 18 années d’expériences en zones touristiques des USA.', 'string', '2020-06-22 15:09:58', '2021-02-11 18:01:36'),
 (18, 'mail_driver', 'smtp', 'string', '2020-06-22 15:09:58', '2020-06-22 15:09:58'),
-(19, 'mail_host', 'mail.alphaboost.ma', 'string', '2020-06-22 15:09:58', '2021-04-06 13:28:11'),
+(19, 'mail_host', 'mail.zakarialabib.com', 'string', '2020-06-22 15:09:58', '2021-04-06 13:28:11'),
 (20, 'mail_port', '465', 'string', '2020-06-22 15:09:58', '2020-06-22 15:09:58'),
-(21, 'mail_username', 'zlabib@alphaboost.ma', 'string', '2020-06-22 15:09:58', '2021-04-06 13:28:11'),
+(21, 'mail_username', 'zlabib@zakarialabib.com', 'string', '2020-06-22 15:09:58', '2021-04-06 13:28:11'),
 (22, 'mail_password', 'alphadev2020$', 'string', '2020-06-22 15:09:58', '2021-04-06 13:28:59'),
 (23, 'mail_encryption', 'ssl', 'string', '2020-06-22 15:09:58', '2020-06-22 15:09:58'),
 (24, 'mail_from_address', 'info@TravelAgency.com', 'string', '2020-06-22 15:09:58', '2021-02-11 18:01:36'),
@@ -20917,7 +20917,7 @@ CREATE TABLE `suppliers` (
 INSERT INTO `suppliers` (`id`, `name`, `company_name`, `tax_number`, `email`, `phone_number`, `address`, `city`, `postal_code`, `country`, `created_at`, `updated_at`) VALUES
 (3, 'admin', 'gfsd', '12', 'bebest@mail.com', '0666666666', 'gfsd', 'hgfd', 'hgf', 'hgd', '2021-01-14 13:34:43', '2021-01-19 11:13:53'),
 (4, 'gfs', 'gfs', '1', 'z@admin.com', '6', 'casablanca', 'Casablanca', '22222', 'Maroc', '2021-01-15 13:20:31', '2021-01-19 10:48:24'),
-(13, 'zakaria labib', 'Alphaboost', '55555', 'zakarialabib@gmail.com', '666', 'gfsd', 'hgfd', 'hgd', 'hgd', '2021-01-19 10:50:00', '2021-01-19 11:39:44'),
+(13, 'zakaria labib', 'zakarialabib', '55555', 'zakarialabib@gmail.com', '666', 'gfsd', 'hgfd', 'hgd', 'hgd', '2021-01-19 10:50:00', '2021-01-19 11:39:44'),
 (14, 'kkkk', 'gfsd', '6666', 'zakarialabib@g.com', '6666', NULL, NULL, NULL, NULL, '2021-01-29 11:23:33', '2021-01-29 11:37:15'),
 (15, 'kkkkk', 'llkk', NULL, NULL, '666666', NULL, NULL, NULL, NULL, '2021-01-29 11:28:45', '2021-01-29 11:37:01');
 

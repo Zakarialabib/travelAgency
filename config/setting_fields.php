@@ -182,14 +182,14 @@ return [
                 'type' => 'text',
                 'label' => 'Mail from address',
                 'rules' => '',
-                'value' => 'hello@alphaboost.ma'
+                'value' => 'hello@zakarialabib.com'
             ],
             [
                 'name' => 'mail_from_name',
                 'type' => 'text',
                 'label' => 'Mail from name',
                 'rules' => '',
-                'value' => 'alphaboost/'
+                'value' => 'zakarialabib/'
             ],
 
         ]
